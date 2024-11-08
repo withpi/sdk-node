@@ -1,10 +1,10 @@
-# Petstore Node API Library
+# Twopir Node API Library
 
 [![NPM version](https://img.shields.io/npm/v/twopir.svg)](https://npmjs.org/package/twopir) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/twopir)
 
-This library provides convenient access to the Petstore REST API from server-side TypeScript or JavaScript.
+This library provides convenient access to the Twopir REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found on [app.stainlessapi.com](https://app.stainlessapi.com/docs). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [docs.2pir.ai](https://docs.2pir.ai). The full API of this library can be found in [api.md](api.md).
 
 It is generated with [Stainless](https://www.stainlessapi.com/).
 
@@ -23,16 +23,27 @@ The full API of this library can be found in [api.md](api.md).
 
 <!-- prettier-ignore -->
 ```js
-import Petstore from 'twopir';
+import Twopir from 'twopir';
 
-const client = new Petstore({
-  apiKey: process.env['PETSTORE_API_KEY'], // This is the default and can be omitted
+const client = new Twopir({
+  apiKey: process.env['TWOPIR_API_KEY'], // This is the default and can be omitted
 });
 
 async function main() {
-  const order = await client.store.createOrder({ petId: 1, quantity: 1, status: 'placed' });
+  const contractsScoreMetrics = await client.contract.score({
+    contract: {
+      name: 'My Application',
+      description: 'You are a helpful assistant',
+      dimensions: [
+        { description: 'Test whether the LLM follows instructions', label: 'Instruction Following' },
+        { description: 'Test whether the LLM responds to the query', label: 'Topicality' },
+      ],
+    },
+    llm_input: { query: 'Help me with my problem' },
+    llm_output: 'llm_output',
+  });
 
-  console.log(order.id);
+  console.log(contractsScoreMetrics.scores);
 }
 
 main();
@@ -44,14 +55,19 @@ This library includes TypeScript definitions for all request params and response
 
 <!-- prettier-ignore -->
 ```ts
-import Petstore from 'twopir';
+import Twopir from 'twopir';
 
-const client = new Petstore({
-  apiKey: process.env['PETSTORE_API_KEY'], // This is the default and can be omitted
+const client = new Twopir({
+  apiKey: process.env['TWOPIR_API_KEY'], // This is the default and can be omitted
 });
 
 async function main() {
-  const response: Petstore.StoreInventoryResponse = await client.store.inventory();
+  const params: Twopir.ContractScoreParams = {
+    contract: { description: 'description', name: 'name' },
+    llm_input: 'string',
+    llm_output: 'llm_output',
+  };
+  const contractsScoreMetrics: Twopir.ContractsScoreMetrics = await client.contract.score(params);
 }
 
 main();
@@ -68,15 +84,21 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const response = await client.store.inventory().catch(async (err) => {
-    if (err instanceof Petstore.APIError) {
-      console.log(err.status); // 400
-      console.log(err.name); // BadRequestError
-      console.log(err.headers); // {server: 'nginx', ...}
-    } else {
-      throw err;
-    }
-  });
+  const contractsScoreMetrics = await client.contract
+    .score({
+      contract: { description: 'description', name: 'name' },
+      llm_input: 'string',
+      llm_output: 'llm_output',
+    })
+    .catch(async (err) => {
+      if (err instanceof Twopir.APIError) {
+        console.log(err.status); // 400
+        console.log(err.name); // BadRequestError
+        console.log(err.headers); // {server: 'nginx', ...}
+      } else {
+        throw err;
+      }
+    });
 }
 
 main();
@@ -106,12 +128,12 @@ You can use the `maxRetries` option to configure or disable this:
 <!-- prettier-ignore -->
 ```js
 // Configure the default for all requests:
-const client = new Petstore({
+const client = new Twopir({
   maxRetries: 0, // default is 2
 });
 
 // Or, configure per-request:
-await client.store.inventory({
+await client.contract.score({ contract: { description: 'description', name: 'name' }, llm_input: 'string', llm_output: 'llm_output' }, {
   maxRetries: 5,
 });
 ```
@@ -123,12 +145,12 @@ Requests time out after 1 minute by default. You can configure this with a `time
 <!-- prettier-ignore -->
 ```ts
 // Configure the default for all requests:
-const client = new Petstore({
+const client = new Twopir({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
 });
 
 // Override per-request:
-await client.store.inventory({
+await client.contract.score({ contract: { description: 'description', name: 'name' }, llm_input: 'string', llm_output: 'llm_output' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -147,15 +169,27 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 
 <!-- prettier-ignore -->
 ```ts
-const client = new Petstore();
+const client = new Twopir();
 
-const response = await client.store.inventory().asResponse();
+const response = await client.contract
+  .score({
+    contract: { description: 'description', name: 'name' },
+    llm_input: 'string',
+    llm_output: 'llm_output',
+  })
+  .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: response, response: raw } = await client.store.inventory().withResponse();
+const { data: contractsScoreMetrics, response: raw } = await client.contract
+  .score({
+    contract: { description: 'description', name: 'name' },
+    llm_input: 'string',
+    llm_output: 'llm_output',
+  })
+  .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(response);
+console.log(contractsScoreMetrics.scores);
 ```
 
 ### Making custom/undocumented requests
@@ -208,13 +242,13 @@ By default, this library uses `node-fetch` in Node, and expects a global `fetch`
 
 If you would prefer to use a global, web-standards-compliant `fetch` function even in a Node environment,
 (for example, if you are running Node with `--experimental-fetch` or using NextJS which polyfills with `undici`),
-add the following import before your first import `from "Petstore"`:
+add the following import before your first import `from "Twopir"`:
 
 ```ts
 // Tell TypeScript and the package to use the global web fetch instead of node-fetch.
 // Note, despite the name, this does not add any polyfills, but expects them to be provided if needed.
 import 'twopir/shims/web';
-import Petstore from 'twopir';
+import Twopir from 'twopir';
 ```
 
 To do the inverse, add `import "twopir/shims/node"` (which does import polyfills).
@@ -227,9 +261,9 @@ which can be used to inspect or alter the `Request` or `Response` before/after e
 
 ```ts
 import { fetch } from 'undici'; // as one example
-import Petstore from 'twopir';
+import Twopir from 'twopir';
 
-const client = new Petstore({
+const client = new Twopir({
   fetch: async (url: RequestInfo, init?: RequestInit): Promise<Response> => {
     console.log('About to make a request', url, init);
     const response = await fetch(url, init);
@@ -254,14 +288,17 @@ import http from 'http';
 import { HttpsProxyAgent } from 'https-proxy-agent';
 
 // Configure the default for all requests:
-const client = new Petstore({
+const client = new Twopir({
   httpAgent: new HttpsProxyAgent(process.env.PROXY_URL),
 });
 
 // Override per-request:
-await client.store.inventory({
-  httpAgent: new http.Agent({ keepAlive: false }),
-});
+await client.contract.score(
+  { contract: { description: 'description', name: 'name' }, llm_input: 'string', llm_output: 'llm_output' },
+  {
+    httpAgent: new http.Agent({ keepAlive: false }),
+  },
+);
 ```
 
 ## Semantic versioning

@@ -1,18 +1,49 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-export interface Order {
-  id?: number;
-
-  complete?: boolean;
-
-  petId?: number;
-
-  quantity?: number;
-
-  shipDate?: string;
+export interface Contract {
+  /**
+   * The description of the contract
+   */
+  description: string;
 
   /**
-   * Order Status
+   * The name of the contract
    */
-  status?: 'placed' | 'approved' | 'delivered';
+  name: string;
+}
+
+export interface Dimension {
+  /**
+   * The description of the dimension
+   */
+  description: string;
+
+  /**
+   * The label of the dimension
+   */
+  label: string;
+
+  /**
+   * The sub dimensions of the dimension
+   */
+  sub_dimensions: Array<SubDimension>;
+}
+
+export interface LlmResponse {
+  /**
+   * The generated text
+   */
+  text: string;
+}
+
+export interface SubDimension {
+  /**
+   * The description of the dimension
+   */
+  description: string;
+
+  /**
+   * The label of the dimension
+   */
+  label: string;
 }

@@ -2,59 +2,71 @@
 
 Types:
 
-- <code><a href="./src/resources/shared.ts">Order</a></code>
+- <code><a href="./src/resources/shared.ts">Contract</a></code>
+- <code><a href="./src/resources/shared.ts">Dimension</a></code>
+- <code><a href="./src/resources/shared.ts">LlmResponse</a></code>
+- <code><a href="./src/resources/shared.ts">SubDimension</a></code>
 
-# Pets
+# Inference
+
+Methods:
+
+- <code title="post /inference/run">client.inference.<a href="./src/resources/inference.ts">run</a>({ ...params }) -> LlmResponse</code>
+
+# Data
 
 Types:
 
-- <code><a href="./src/resources/pets.ts">APIResponse</a></code>
-- <code><a href="./src/resources/pets.ts">Pet</a></code>
-- <code><a href="./src/resources/pets.ts">PetFindByStatusResponse</a></code>
-- <code><a href="./src/resources/pets.ts">PetFindByTagsResponse</a></code>
+- <code><a href="./src/resources/data/data.ts">DataGenerationStatus</a></code>
+- <code><a href="./src/resources/data/data.ts">InputEvaluationMetrics</a></code>
+
+## Inputs
 
 Methods:
 
-- <code title="post /pet">client.pets.<a href="./src/resources/pets.ts">create</a>({ ...params }) -> Pet</code>
-- <code title="get /pet/{petId}">client.pets.<a href="./src/resources/pets.ts">retrieve</a>(petId) -> Pet</code>
-- <code title="put /pet">client.pets.<a href="./src/resources/pets.ts">update</a>({ ...params }) -> Pet</code>
-- <code title="delete /pet/{petId}">client.pets.<a href="./src/resources/pets.ts">delete</a>(petId) -> void</code>
-- <code title="get /pet/findByStatus">client.pets.<a href="./src/resources/pets.ts">findByStatus</a>({ ...params }) -> PetFindByStatusResponse</code>
-- <code title="get /pet/findByTags">client.pets.<a href="./src/resources/pets.ts">findByTags</a>({ ...params }) -> PetFindByTagsResponse</code>
-- <code title="post /pet/{petId}">client.pets.<a href="./src/resources/pets.ts">updateById</a>(petId, { ...params }) -> void</code>
-- <code title="post /pet/{petId}/uploadImage">client.pets.<a href="./src/resources/pets.ts">uploadImage</a>(petId, { ...params }) -> APIResponse</code>
+- <code title="post /data/input/evaluate">client.data.inputs.<a href="./src/resources/data/inputs.ts">evaluate</a>({ ...params }) -> InputEvaluationMetrics</code>
+- <code title="post /data/input/generate">client.data.inputs.<a href="./src/resources/data/inputs.ts">generate</a>({ ...params }) -> DataGenerationStatus</code>
+- <code title="get /data/input/generate/{job_id}">client.data.inputs.<a href="./src/resources/data/inputs.ts">get</a>(jobId) -> DataGenerationStatus</code>
 
-# Store
+# Tune
 
 Types:
 
-- <code><a href="./src/resources/store/store.ts">StoreInventoryResponse</a></code>
+- <code><a href="./src/resources/tune/tune.ts">OptimizationStatus</a></code>
+
+## Prompt
 
 Methods:
 
-- <code title="post /store/order">client.store.<a href="./src/resources/store/store.ts">createOrder</a>({ ...params }) -> Order</code>
-- <code title="get /store/inventory">client.store.<a href="./src/resources/store/store.ts">inventory</a>() -> StoreInventoryResponse</code>
+- <code title="get /tune/prompt/{job_id}">client.tune.prompt.<a href="./src/resources/tune/prompt.ts">get</a>(jobId) -> OptimizationStatus</code>
+- <code title="post /tune/prompt">client.tune.prompt.<a href="./src/resources/tune/prompt.ts">optimize</a>({ ...params }) -> OptimizationStatus</code>
 
-## Order
-
-Methods:
-
-- <code title="get /store/order/{orderId}">client.store.order.<a href="./src/resources/store/order.ts">retrieve</a>(orderId) -> Order</code>
-- <code title="delete /store/order/{orderId}">client.store.order.<a href="./src/resources/store/order.ts">deleteOrder</a>(orderId) -> void</code>
-
-# User
+# Experiment
 
 Types:
 
-- <code><a href="./src/resources/user.ts">User</a></code>
-- <code><a href="./src/resources/user.ts">UserLoginResponse</a></code>
+- <code><a href="./src/resources/experiment.ts">ExperimentStatus</a></code>
 
 Methods:
 
-- <code title="post /user">client.user.<a href="./src/resources/user.ts">create</a>({ ...params }) -> void</code>
-- <code title="get /user/{username}">client.user.<a href="./src/resources/user.ts">retrieve</a>(username) -> User</code>
-- <code title="put /user/{username}">client.user.<a href="./src/resources/user.ts">update</a>(existingUsername, { ...params }) -> void</code>
-- <code title="delete /user/{username}">client.user.<a href="./src/resources/user.ts">delete</a>(username) -> void</code>
-- <code title="post /user/createWithList">client.user.<a href="./src/resources/user.ts">createWithList</a>([ ...items ]) -> User</code>
-- <code title="get /user/login">client.user.<a href="./src/resources/user.ts">login</a>({ ...params }) -> string</code>
-- <code title="get /user/logout">client.user.<a href="./src/resources/user.ts">logout</a>() -> void</code>
+- <code title="post /experiments">client.experiment.<a href="./src/resources/experiment.ts">create</a>({ ...params }) -> ExperimentStatus</code>
+- <code title="get /experiments/{job_id}">client.experiment.<a href="./src/resources/experiment.ts">get</a>(jobId) -> ExperimentStatus</code>
+
+# Contract
+
+Types:
+
+- <code><a href="./src/resources/contract/contract.ts">ContractsScoreMetrics</a></code>
+
+Methods:
+
+- <code title="post /contracts/calibrate">client.contract.<a href="./src/resources/contract/contract.ts">calibrate</a>({ ...params }) -> Contract</code>
+- <code title="post /contracts/generate_dimensions">client.contract.<a href="./src/resources/contract/contract.ts">generateDimensions</a>({ ...params }) -> Contract</code>
+- <code title="post /contracts/score">client.contract.<a href="./src/resources/contract/contract.ts">score</a>({ ...params }) -> ContractsScoreMetrics</code>
+
+## Dimension
+
+Methods:
+
+- <code title="post /contracts/dimensions/generate">client.contract.dimension.<a href="./src/resources/contract/dimension.ts">generate</a>({ ...params }) -> Dimension</code>
+- <code title="post /contracts/dimensions/score">client.contract.dimension.<a href="./src/resources/contract/dimension.ts">score</a>({ ...params }) -> ContractsScoreMetrics</code>

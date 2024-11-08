@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Petstore from 'twopir';
+import Twopir from 'twopir';
 import { APIUserAbortError } from 'twopir';
 import { Headers } from 'twopir/core';
 import defaultFetch, { Response, type RequestInit, type RequestInfo } from 'node-fetch';
@@ -20,7 +20,7 @@ describe('instantiate client', () => {
   });
 
   describe('defaultHeaders', () => {
-    const client = new Petstore({
+    const client = new Twopir({
       baseURL: 'http://localhost:5000/',
       defaultHeaders: { 'X-My-Default-Header': '2' },
       apiKey: 'My API Key',
@@ -52,7 +52,7 @@ describe('instantiate client', () => {
 
   describe('defaultQuery', () => {
     test('with null query params given', () => {
-      const client = new Petstore({
+      const client = new Twopir({
         baseURL: 'http://localhost:5000/',
         defaultQuery: { apiVersion: 'foo' },
         apiKey: 'My API Key',
@@ -61,7 +61,7 @@ describe('instantiate client', () => {
     });
 
     test('multiple default query params', () => {
-      const client = new Petstore({
+      const client = new Twopir({
         baseURL: 'http://localhost:5000/',
         defaultQuery: { apiVersion: 'foo', hello: 'world' },
         apiKey: 'My API Key',
@@ -70,7 +70,7 @@ describe('instantiate client', () => {
     });
 
     test('overriding with `undefined`', () => {
-      const client = new Petstore({
+      const client = new Twopir({
         baseURL: 'http://localhost:5000/',
         defaultQuery: { hello: 'world' },
         apiKey: 'My API Key',
@@ -80,7 +80,7 @@ describe('instantiate client', () => {
   });
 
   test('custom fetch', async () => {
-    const client = new Petstore({
+    const client = new Twopir({
       baseURL: 'http://localhost:5000/',
       apiKey: 'My API Key',
       fetch: (url) => {
@@ -97,7 +97,7 @@ describe('instantiate client', () => {
   });
 
   test('custom signal', async () => {
-    const client = new Petstore({
+    const client = new Twopir({
       baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
       apiKey: 'My API Key',
       fetch: (...args) => {
@@ -124,69 +124,69 @@ describe('instantiate client', () => {
 
   describe('baseUrl', () => {
     test('trailing slash', () => {
-      const client = new Petstore({ baseURL: 'http://localhost:5000/custom/path/', apiKey: 'My API Key' });
+      const client = new Twopir({ baseURL: 'http://localhost:5000/custom/path/', apiKey: 'My API Key' });
       expect(client.buildURL('/foo', null)).toEqual('http://localhost:5000/custom/path/foo');
     });
 
     test('no trailing slash', () => {
-      const client = new Petstore({ baseURL: 'http://localhost:5000/custom/path', apiKey: 'My API Key' });
+      const client = new Twopir({ baseURL: 'http://localhost:5000/custom/path', apiKey: 'My API Key' });
       expect(client.buildURL('/foo', null)).toEqual('http://localhost:5000/custom/path/foo');
     });
 
     afterEach(() => {
-      process.env['PETSTORE_BASE_URL'] = undefined;
+      process.env['TWOPIR_BASE_URL'] = undefined;
     });
 
     test('explicit option', () => {
-      const client = new Petstore({ baseURL: 'https://example.com', apiKey: 'My API Key' });
+      const client = new Twopir({ baseURL: 'https://example.com', apiKey: 'My API Key' });
       expect(client.baseURL).toEqual('https://example.com');
     });
 
     test('env variable', () => {
-      process.env['PETSTORE_BASE_URL'] = 'https://example.com/from_env';
-      const client = new Petstore({ apiKey: 'My API Key' });
+      process.env['TWOPIR_BASE_URL'] = 'https://example.com/from_env';
+      const client = new Twopir({ apiKey: 'My API Key' });
       expect(client.baseURL).toEqual('https://example.com/from_env');
     });
 
     test('empty env variable', () => {
-      process.env['PETSTORE_BASE_URL'] = ''; // empty
-      const client = new Petstore({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('https://petstore3.swagger.io/api/v3');
+      process.env['TWOPIR_BASE_URL'] = ''; // empty
+      const client = new Twopir({ apiKey: 'My API Key' });
+      expect(client.baseURL).toEqual('https://api.2pir.ai/v1');
     });
 
     test('blank env variable', () => {
-      process.env['PETSTORE_BASE_URL'] = '  '; // blank
-      const client = new Petstore({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('https://petstore3.swagger.io/api/v3');
+      process.env['TWOPIR_BASE_URL'] = '  '; // blank
+      const client = new Twopir({ apiKey: 'My API Key' });
+      expect(client.baseURL).toEqual('https://api.2pir.ai/v1');
     });
   });
 
   test('maxRetries option is correctly set', () => {
-    const client = new Petstore({ maxRetries: 4, apiKey: 'My API Key' });
+    const client = new Twopir({ maxRetries: 4, apiKey: 'My API Key' });
     expect(client.maxRetries).toEqual(4);
 
     // default
-    const client2 = new Petstore({ apiKey: 'My API Key' });
+    const client2 = new Twopir({ apiKey: 'My API Key' });
     expect(client2.maxRetries).toEqual(2);
   });
 
   test('with environment variable arguments', () => {
     // set options via env var
-    process.env['PETSTORE_API_KEY'] = 'My API Key';
-    const client = new Petstore();
+    process.env['TWOPIR_API_KEY'] = 'My API Key';
+    const client = new Twopir();
     expect(client.apiKey).toBe('My API Key');
   });
 
   test('with overriden environment variable arguments', () => {
     // set options via env var
-    process.env['PETSTORE_API_KEY'] = 'another My API Key';
-    const client = new Petstore({ apiKey: 'My API Key' });
+    process.env['TWOPIR_API_KEY'] = 'another My API Key';
+    const client = new Twopir({ apiKey: 'My API Key' });
     expect(client.apiKey).toBe('My API Key');
   });
 });
 
 describe('request building', () => {
-  const client = new Petstore({ apiKey: 'My API Key' });
+  const client = new Twopir({ apiKey: 'My API Key' });
 
   describe('Content-Length', () => {
     test('handles multi-byte characters', () => {
@@ -228,7 +228,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new Petstore({ apiKey: 'My API Key', timeout: 10, fetch: testFetch });
+    const client = new Twopir({ apiKey: 'My API Key', timeout: 10, fetch: testFetch });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
     expect(count).toEqual(2);
@@ -258,7 +258,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new Petstore({ apiKey: 'My API Key', fetch: testFetch, maxRetries: 4 });
+    const client = new Twopir({ apiKey: 'My API Key', fetch: testFetch, maxRetries: 4 });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
 
@@ -282,7 +282,7 @@ describe('retries', () => {
       capturedRequest = init;
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
-    const client = new Petstore({ apiKey: 'My API Key', fetch: testFetch, maxRetries: 4 });
+    const client = new Twopir({ apiKey: 'My API Key', fetch: testFetch, maxRetries: 4 });
 
     expect(
       await client.request({
@@ -311,7 +311,7 @@ describe('retries', () => {
       capturedRequest = init;
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
-    const client = new Petstore({
+    const client = new Twopir({
       apiKey: 'My API Key',
       fetch: testFetch,
       maxRetries: 4,
@@ -344,7 +344,7 @@ describe('retries', () => {
       capturedRequest = init;
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
-    const client = new Petstore({ apiKey: 'My API Key', fetch: testFetch, maxRetries: 4 });
+    const client = new Twopir({ apiKey: 'My API Key', fetch: testFetch, maxRetries: 4 });
 
     expect(
       await client.request({
@@ -371,7 +371,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new Petstore({ apiKey: 'My API Key', fetch: testFetch });
+    const client = new Twopir({ apiKey: 'My API Key', fetch: testFetch });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
     expect(count).toEqual(2);
@@ -398,7 +398,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new Petstore({ apiKey: 'My API Key', fetch: testFetch });
+    const client = new Twopir({ apiKey: 'My API Key', fetch: testFetch });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
     expect(count).toEqual(2);
