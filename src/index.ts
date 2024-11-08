@@ -1,45 +1,32 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { type Agent } from './_shims/index';
-import * as qs from './internal/qs';
 import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
+import { Experiment, ExperimentCreateParams, ExperimentStatus } from './resources/experiment';
+import { Inference, InferenceRunParams } from './resources/inference';
 import {
-  APIResponse,
-  Pet,
-  PetCreateParams,
-  PetFindByStatusParams,
-  PetFindByStatusResponse,
-  PetFindByTagsParams,
-  PetFindByTagsResponse,
-  PetUpdateByIDParams,
-  PetUpdateParams,
-  PetUploadImageParams,
-  Pets,
-} from './resources/pets';
-import {
-  User,
-  UserCreateParams,
-  UserCreateWithListParams,
-  UserLoginParams,
-  UserLoginResponse,
-  UserResource,
-  UserUpdateParams,
-} from './resources/user';
-import { Store, StoreCreateOrderParams, StoreInventoryResponse } from './resources/store/store';
+  Contract,
+  ContractCalibrateParams,
+  ContractGenerateDimensionsParams,
+  ContractScoreParams,
+  ContractsScoreMetrics,
+} from './resources/contract/contract';
+import { Data, DataGenerationStatus, InputEvaluationMetrics } from './resources/data/data';
+import { OptimizationStatus, Tune } from './resources/tune/tune';
 
 export interface ClientOptions {
   /**
-   * Defaults to process.env['PETSTORE_API_KEY'].
+   * The API key required for authentication
    */
   apiKey?: string | undefined;
 
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
-   * Defaults to process.env['PETSTORE_BASE_URL'].
+   * Defaults to process.env['TWOPIR_BASE_URL'].
    */
   baseURL?: string | null | undefined;
 
@@ -94,18 +81,18 @@ export interface ClientOptions {
 }
 
 /**
- * API Client for interfacing with the Petstore API.
+ * API Client for interfacing with the Twopir API.
  */
-export class Petstore extends Core.APIClient {
+export class Twopir extends Core.APIClient {
   apiKey: string;
 
   private _options: ClientOptions;
 
   /**
-   * API Client for interfacing with the Petstore API.
+   * API Client for interfacing with the Twopir API.
    *
-   * @param {string | undefined} [opts.apiKey=process.env['PETSTORE_API_KEY'] ?? undefined]
-   * @param {string} [opts.baseURL=process.env['PETSTORE_BASE_URL'] ?? https://petstore3.swagger.io/api/v3] - Override the default base URL for the API.
+   * @param {string | undefined} [opts.apiKey=process.env['TWOPIR_API_KEY'] ?? undefined]
+   * @param {string} [opts.baseURL=process.env['TWOPIR_BASE_URL'] ?? https://api.2pir.ai/v1] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
    * @param {Core.Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -114,20 +101,20 @@ export class Petstore extends Core.APIClient {
    * @param {Core.DefaultQuery} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
   constructor({
-    baseURL = Core.readEnv('PETSTORE_BASE_URL'),
-    apiKey = Core.readEnv('PETSTORE_API_KEY'),
+    baseURL = Core.readEnv('TWOPIR_BASE_URL'),
+    apiKey = Core.readEnv('TWOPIR_API_KEY'),
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
-      throw new Errors.PetstoreError(
-        "The PETSTORE_API_KEY environment variable is missing or empty; either provide it, or instantiate the Petstore client with an apiKey option, like new Petstore({ apiKey: 'My API Key' }).",
+      throw new Errors.TwopirError(
+        "The TWOPIR_API_KEY environment variable is missing or empty; either provide it, or instantiate the Twopir client with an apiKey option, like new Twopir({ apiKey: 'My API Key' }).",
       );
     }
 
     const options: ClientOptions = {
       apiKey,
       ...opts,
-      baseURL: baseURL || `https://petstore3.swagger.io/api/v3`,
+      baseURL: baseURL || `https://api.2pir.ai/v1`,
     };
 
     super({
@@ -143,9 +130,11 @@ export class Petstore extends Core.APIClient {
     this.apiKey = apiKey;
   }
 
-  pets: API.Pets = new API.Pets(this);
-  store: API.Store = new API.Store(this);
-  user: API.UserResource = new API.UserResource(this);
+  inference: API.Inference = new API.Inference(this);
+  data: API.Data = new API.Data(this);
+  tune: API.Tune = new API.Tune(this);
+  experiment: API.Experiment = new API.Experiment(this);
+  contract: API.Contract = new API.Contract(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -159,17 +148,13 @@ export class Petstore extends Core.APIClient {
   }
 
   protected override authHeaders(opts: Core.FinalRequestOptions): Core.Headers {
-    return { api_key: this.apiKey };
+    return { 'x-api-key': this.apiKey };
   }
 
-  protected override stringifyQuery(query: Record<string, unknown>): string {
-    return qs.stringify(query, { arrayFormat: 'comma' });
-  }
-
-  static Petstore = this;
+  static Twopir = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
-  static PetstoreError = Errors.PetstoreError;
+  static TwopirError = Errors.TwopirError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -188,7 +173,7 @@ export class Petstore extends Core.APIClient {
 }
 
 export {
-  PetstoreError,
+  TwopirError,
   APIError,
   APIConnectionError,
   APIConnectionTimeoutError,
@@ -206,44 +191,43 @@ export {
 export import toFile = Uploads.toFile;
 export import fileFromPath = Uploads.fileFromPath;
 
-Petstore.Pets = Pets;
-Petstore.Store = Store;
-Petstore.UserResource = UserResource;
+Twopir.Inference = Inference;
+Twopir.Data = Data;
+Twopir.Tune = Tune;
+Twopir.Experiment = Experiment;
+Twopir.Contract = Contract;
 
-export declare namespace Petstore {
+export declare namespace Twopir {
   export type RequestOptions = Core.RequestOptions;
 
+  export { Inference as Inference, type InferenceRunParams as InferenceRunParams };
+
   export {
-    Pets as Pets,
-    type APIResponse as APIResponse,
-    type Pet as Pet,
-    type PetFindByStatusResponse as PetFindByStatusResponse,
-    type PetFindByTagsResponse as PetFindByTagsResponse,
-    type PetCreateParams as PetCreateParams,
-    type PetUpdateParams as PetUpdateParams,
-    type PetFindByStatusParams as PetFindByStatusParams,
-    type PetFindByTagsParams as PetFindByTagsParams,
-    type PetUpdateByIDParams as PetUpdateByIDParams,
-    type PetUploadImageParams as PetUploadImageParams,
+    Data as Data,
+    type DataGenerationStatus as DataGenerationStatus,
+    type InputEvaluationMetrics as InputEvaluationMetrics,
+  };
+
+  export { Tune as Tune, type OptimizationStatus as OptimizationStatus };
+
+  export {
+    Experiment as Experiment,
+    type ExperimentStatus as ExperimentStatus,
+    type ExperimentCreateParams as ExperimentCreateParams,
   };
 
   export {
-    Store as Store,
-    type StoreInventoryResponse as StoreInventoryResponse,
-    type StoreCreateOrderParams as StoreCreateOrderParams,
+    Contract as Contract,
+    type ContractsScoreMetrics as ContractsScoreMetrics,
+    type ContractCalibrateParams as ContractCalibrateParams,
+    type ContractGenerateDimensionsParams as ContractGenerateDimensionsParams,
+    type ContractScoreParams as ContractScoreParams,
   };
 
-  export {
-    UserResource as UserResource,
-    type User as User,
-    type UserLoginResponse as UserLoginResponse,
-    type UserCreateParams as UserCreateParams,
-    type UserUpdateParams as UserUpdateParams,
-    type UserCreateWithListParams as UserCreateWithListParams,
-    type UserLoginParams as UserLoginParams,
-  };
-
-  export type Order = API.Order;
+  export type Contract = API.Contract;
+  export type Dimension = API.Dimension;
+  export type LlmResponse = API.LlmResponse;
+  export type SubDimension = API.SubDimension;
 }
 
-export default Petstore;
+export default Twopir;
