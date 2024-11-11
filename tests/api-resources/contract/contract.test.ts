@@ -29,7 +29,40 @@ describe('resource contract', () => {
 
   test('calibrate: required and optional params', async () => {
     const response = await client.contract.calibrate({
-      contract: { description: 'description', name: 'name' },
+      contract: {
+        description: 'description',
+        name: 'name',
+        dimensions: [
+          {
+            description: 'description',
+            label: 'label',
+            sub_dimensions: [
+              { description: 'description', label: 'label' },
+              { description: 'description', label: 'label' },
+              { description: 'description', label: 'label' },
+            ],
+          },
+          {
+            description: 'description',
+            label: 'label',
+            sub_dimensions: [
+              { description: 'description', label: 'label' },
+              { description: 'description', label: 'label' },
+              { description: 'description', label: 'label' },
+            ],
+          },
+          {
+            description: 'description',
+            label: 'label',
+            sub_dimensions: [
+              { description: 'description', label: 'label' },
+              { description: 'description', label: 'label' },
+              { description: 'description', label: 'label' },
+            ],
+          },
+        ],
+        scorer_ast: 'string',
+      },
       feedbacks: [
         { labels: { foo: 'string' }, llm_input: 'string', llm_output: 'llm_output', scores: { foo: 0 } },
         { labels: { foo: 'string' }, llm_input: 'string', llm_output: 'llm_output', scores: { foo: 0 } },
@@ -53,7 +86,40 @@ describe('resource contract', () => {
 
   test('generateDimensions: required and optional params', async () => {
     const response = await client.contract.generateDimensions({
-      contract: { description: 'description', name: 'name' },
+      contract: {
+        description: 'description',
+        name: 'name',
+        dimensions: [
+          {
+            description: 'description',
+            label: 'label',
+            sub_dimensions: [
+              { description: 'description', label: 'label' },
+              { description: 'description', label: 'label' },
+              { description: 'description', label: 'label' },
+            ],
+          },
+          {
+            description: 'description',
+            label: 'label',
+            sub_dimensions: [
+              { description: 'description', label: 'label' },
+              { description: 'description', label: 'label' },
+              { description: 'description', label: 'label' },
+            ],
+          },
+          {
+            description: 'description',
+            label: 'label',
+            sub_dimensions: [
+              { description: 'description', label: 'label' },
+              { description: 'description', label: 'label' },
+              { description: 'description', label: 'label' },
+            ],
+          },
+        ],
+        scorer_ast: 'string',
+      },
     });
   });
 
@@ -74,7 +140,40 @@ describe('resource contract', () => {
 
   test('score: required and optional params', async () => {
     const response = await client.contract.score({
-      contract: { description: 'description', name: 'name' },
+      contract: {
+        description: 'description',
+        name: 'name',
+        dimensions: [
+          {
+            description: 'description',
+            label: 'label',
+            sub_dimensions: [
+              { description: 'description', label: 'label' },
+              { description: 'description', label: 'label' },
+              { description: 'description', label: 'label' },
+            ],
+          },
+          {
+            description: 'description',
+            label: 'label',
+            sub_dimensions: [
+              { description: 'description', label: 'label' },
+              { description: 'description', label: 'label' },
+              { description: 'description', label: 'label' },
+            ],
+          },
+          {
+            description: 'description',
+            label: 'label',
+            sub_dimensions: [
+              { description: 'description', label: 'label' },
+              { description: 'description', label: 'label' },
+              { description: 'description', label: 'label' },
+            ],
+          },
+        ],
+        scorer_ast: 'string',
+      },
       llm_input: 'string',
       llm_output: 'llm_output',
     });

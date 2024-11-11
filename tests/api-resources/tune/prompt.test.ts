@@ -43,7 +43,40 @@ describe('resource prompt', () => {
 
   test('optimize: required and optional params', async () => {
     const response = await client.tune.prompt.optimize({
-      contract: { description: 'description', name: 'name' },
+      contract: {
+        description: 'description',
+        name: 'name',
+        dimensions: [
+          {
+            description: 'description',
+            label: 'label',
+            sub_dimensions: [
+              { description: 'description', label: 'label' },
+              { description: 'description', label: 'label' },
+              { description: 'description', label: 'label' },
+            ],
+          },
+          {
+            description: 'description',
+            label: 'label',
+            sub_dimensions: [
+              { description: 'description', label: 'label' },
+              { description: 'description', label: 'label' },
+              { description: 'description', label: 'label' },
+            ],
+          },
+          {
+            description: 'description',
+            label: 'label',
+            sub_dimensions: [
+              { description: 'description', label: 'label' },
+              { description: 'description', label: 'label' },
+              { description: 'description', label: 'label' },
+            ],
+          },
+        ],
+        scorer_ast: 'string',
+      },
       experiment_id: 0,
     });
   });

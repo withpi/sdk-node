@@ -10,6 +10,16 @@ export interface Contract {
    * The name of the contract
    */
   name: string;
+
+  /**
+   * The dimensions of the contract
+   */
+  dimensions?: Array<Dimension>;
+
+  /**
+   * The scorer AST of the contract
+   */
+  scorer_ast?: string | unknown | null;
 }
 
 export interface Dimension {
