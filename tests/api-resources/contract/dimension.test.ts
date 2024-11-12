@@ -12,12 +12,12 @@ describe('resource dimension', () => {
   test('generate: only required params', async () => {
     const responsePromise = client.contract.dimension.generate({
       dimension: {
+        id: 'id',
         description: 'description',
-        label: 'label',
         sub_dimensions: [
-          { description: 'description', label: 'label' },
-          { description: 'description', label: 'label' },
-          { description: 'description', label: 'label' },
+          { id: 'id', description: 'description' },
+          { id: 'id', description: 'description' },
+          { id: 'id', description: 'description' },
         ],
       },
     });
@@ -33,12 +33,12 @@ describe('resource dimension', () => {
   test('generate: required and optional params', async () => {
     const response = await client.contract.dimension.generate({
       dimension: {
+        id: 'id',
         description: 'description',
-        label: 'label',
         sub_dimensions: [
-          { description: 'description', label: 'label' },
-          { description: 'description', label: 'label' },
-          { description: 'description', label: 'label' },
+          { id: 'id', description: 'description' },
+          { id: 'id', description: 'description' },
+          { id: 'id', description: 'description' },
         ],
       },
     });
@@ -47,12 +47,12 @@ describe('resource dimension', () => {
   test('score: only required params', async () => {
     const responsePromise = client.contract.dimension.score({
       dimension: {
+        id: 'id',
         description: 'description',
-        label: 'label',
         sub_dimensions: [
-          { description: 'description', label: 'label' },
-          { description: 'description', label: 'label' },
-          { description: 'description', label: 'label' },
+          { id: 'id', description: 'description' },
+          { id: 'id', description: 'description' },
+          { id: 'id', description: 'description' },
         ],
       },
       llm_input: 'string',
@@ -70,12 +70,12 @@ describe('resource dimension', () => {
   test('score: required and optional params', async () => {
     const response = await client.contract.dimension.score({
       dimension: {
+        id: 'id',
         description: 'description',
-        label: 'label',
         sub_dimensions: [
-          { description: 'description', label: 'label' },
-          { description: 'description', label: 'label' },
-          { description: 'description', label: 'label' },
+          { id: 'id', description: 'description' },
+          { id: 'id', description: 'description' },
+          { id: 'id', description: 'description' },
         ],
       },
       llm_input: 'string',

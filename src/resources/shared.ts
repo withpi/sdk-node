@@ -24,14 +24,14 @@ export interface Contract {
 
 export interface Dimension {
   /**
+   * The label of the dimension
+   */
+  id: string;
+
+  /**
    * The description of the dimension
    */
   description: string;
-
-  /**
-   * The label of the dimension
-   */
-  label: string;
 
   /**
    * The sub dimensions of the dimension
@@ -48,12 +48,12 @@ export interface LlmResponse {
 
 export interface SubDimension {
   /**
+   * The label of the dimension
+   */
+  id: string;
+
+  /**
    * The description of the dimension
    */
   description: string;
-
-  /**
-   * The label of the dimension
-   */
-  label: string;
 }
