@@ -172,31 +172,11 @@ export class Twopir extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-export {
-  TwopirError,
-  APIError,
-  APIConnectionError,
-  APIConnectionTimeoutError,
-  APIUserAbortError,
-  NotFoundError,
-  ConflictError,
-  RateLimitError,
-  BadRequestError,
-  AuthenticationError,
-  InternalServerError,
-  PermissionDeniedError,
-  UnprocessableEntityError,
-} from './error';
-
-export import toFile = Uploads.toFile;
-export import fileFromPath = Uploads.fileFromPath;
-
 Twopir.Inference = Inference;
 Twopir.Data = Data;
 Twopir.Tune = Tune;
 Twopir.Experiment = Experiment;
 Twopir.Contract = Contract;
-
 export declare namespace Twopir {
   export type RequestOptions = Core.RequestOptions;
 
@@ -229,5 +209,22 @@ export declare namespace Twopir {
   export type LlmResponse = API.LlmResponse;
   export type SubDimension = API.SubDimension;
 }
+
+export { toFile, fileFromPath } from 'twopir/uploads';
+export {
+  TwopirError,
+  APIError,
+  APIConnectionError,
+  APIConnectionTimeoutError,
+  APIUserAbortError,
+  NotFoundError,
+  ConflictError,
+  RateLimitError,
+  BadRequestError,
+  AuthenticationError,
+  InternalServerError,
+  PermissionDeniedError,
+  UnprocessableEntityError,
+} from 'twopir/error';
 
 export default Twopir;
