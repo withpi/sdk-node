@@ -35,30 +35,30 @@ describe('resource experiment', () => {
         name: 'name',
         dimensions: [
           {
+            id: 'id',
             description: 'description',
-            label: 'label',
             sub_dimensions: [
-              { description: 'description', label: 'label' },
-              { description: 'description', label: 'label' },
-              { description: 'description', label: 'label' },
+              { id: 'id', description: 'description' },
+              { id: 'id', description: 'description' },
+              { id: 'id', description: 'description' },
             ],
           },
           {
+            id: 'id',
             description: 'description',
-            label: 'label',
             sub_dimensions: [
-              { description: 'description', label: 'label' },
-              { description: 'description', label: 'label' },
-              { description: 'description', label: 'label' },
+              { id: 'id', description: 'description' },
+              { id: 'id', description: 'description' },
+              { id: 'id', description: 'description' },
             ],
           },
           {
+            id: 'id',
             description: 'description',
-            label: 'label',
             sub_dimensions: [
-              { description: 'description', label: 'label' },
-              { description: 'description', label: 'label' },
-              { description: 'description', label: 'label' },
+              { id: 'id', description: 'description' },
+              { id: 'id', description: 'description' },
+              { id: 'id', description: 'description' },
             ],
           },
         ],
