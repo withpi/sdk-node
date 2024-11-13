@@ -8,6 +8,9 @@ export class Data extends APIResource {
   inputs: InputsAPI.Inputs = new InputsAPI.Inputs(this._client);
 }
 
+/**
+ * DataGenerationStatus is the status of a data generation job.
+ */
 export interface DataGenerationStatus {
   /**
    * The generated data. Absent unless state is done
