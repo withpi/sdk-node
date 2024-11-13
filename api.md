@@ -38,8 +38,14 @@ Types:
 
 Methods:
 
-- <code title="get /tune/prompt/{job_id}">client.tune.prompt.<a href="./src/resources/tune/prompt.ts">get</a>(jobId) -> OptimizationStatus</code>
-- <code title="post /tune/prompt">client.tune.prompt.<a href="./src/resources/tune/prompt.ts">optimize</a>({ ...params }) -> OptimizationStatus</code>
+- <code title="get /tune/prompt/{job_id}">client.tune.prompt.<a href="./src/resources/tune/prompt/prompt.ts">get</a>(jobId) -> OptimizationStatus</code>
+- <code title="post /tune/prompt">client.tune.prompt.<a href="./src/resources/tune/prompt/prompt.ts">optimize</a>({ ...params }) -> OptimizationStatus</code>
+
+### Messages
+
+Methods:
+
+- <code title="get /tune/prompt/{job_id}/messages">client.tune.prompt.messages.<a href="./src/resources/tune/prompt/messages.ts">retrieve</a>(jobId) -> void</code>
 
 # Experiment
 

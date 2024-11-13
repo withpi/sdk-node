@@ -10,7 +10,7 @@ const client = new Twopir({
 
 describe('resource prompt', () => {
   test('get', async () => {
-    const responsePromise = client.tune.prompt.get(0);
+    const responsePromise = client.tune.prompt.get('job_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,7 +22,7 @@ describe('resource prompt', () => {
 
   test('get: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.tune.prompt.get(0, { path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.tune.prompt.get('job_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
       Twopir.NotFoundError,
     );
   });
@@ -30,7 +30,12 @@ describe('resource prompt', () => {
   test('optimize: only required params', async () => {
     const responsePromise = client.tune.prompt.optimize({
       contract: { description: 'description', name: 'name' },
-      experiment_id: 0,
+      examples: [
+        { llm_input: 'string', llm_output: 'llm_output' },
+        { llm_input: 'string', llm_output: 'llm_output' },
+        { llm_input: 'string', llm_output: 'llm_output' },
+      ],
+      model_id: 'gpt-4o-mini',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -77,7 +82,12 @@ describe('resource prompt', () => {
         ],
         scorer_ast: 'string',
       },
-      experiment_id: 0,
+      examples: [
+        { llm_input: 'string', llm_output: 'llm_output' },
+        { llm_input: 'string', llm_output: 'llm_output' },
+        { llm_input: 'string', llm_output: 'llm_output' },
+      ],
+      model_id: 'gpt-4o-mini',
     });
   });
 });
