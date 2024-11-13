@@ -6,7 +6,7 @@ import * as Shared from '../shared';
 import * as DimensionAPI from './dimension';
 import { Dimension, DimensionGenerateParams, DimensionScoreParams } from './dimension';
 
-export class Contract extends APIResource {
+export class Contracts extends APIResource {
   dimension: DimensionAPI.Dimension = new DimensionAPI.Dimension(this._client);
 
   /**
@@ -108,9 +108,9 @@ export interface ContractScoreParams {
   llm_output: string;
 }
 
-Contract.Dimension = Dimension;
+Contracts.Dimension = Dimension;
 
-export declare namespace Contract {
+export declare namespace Contracts {
   export {
     type ContractsScoreMetrics as ContractsScoreMetrics,
     type ContractCalibrateParams as ContractCalibrateParams,

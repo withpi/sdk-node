@@ -8,9 +8,9 @@ const client = new Twopir({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource contract', () => {
+describe('resource contracts', () => {
   test('calibrate: only required params', async () => {
-    const responsePromise = client.contract.calibrate({
+    const responsePromise = client.contracts.calibrate({
       contract: { description: 'description', name: 'name' },
       feedbacks: [
         { labels: { foo: 'string' }, llm_input: 'string', llm_output: 'llm_output', scores: { foo: 0 } },
@@ -28,7 +28,7 @@ describe('resource contract', () => {
   });
 
   test('calibrate: required and optional params', async () => {
-    const response = await client.contract.calibrate({
+    const response = await client.contracts.calibrate({
       contract: {
         description: 'description',
         name: 'name',
@@ -72,7 +72,7 @@ describe('resource contract', () => {
   });
 
   test('generateDimensions: only required params', async () => {
-    const responsePromise = client.contract.generateDimensions({
+    const responsePromise = client.contracts.generateDimensions({
       contract: { description: 'description', name: 'name' },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -85,7 +85,7 @@ describe('resource contract', () => {
   });
 
   test('generateDimensions: required and optional params', async () => {
-    const response = await client.contract.generateDimensions({
+    const response = await client.contracts.generateDimensions({
       contract: {
         description: 'description',
         name: 'name',
@@ -124,7 +124,7 @@ describe('resource contract', () => {
   });
 
   test('score: only required params', async () => {
-    const responsePromise = client.contract.score({
+    const responsePromise = client.contracts.score({
       contract: { description: 'description', name: 'name' },
       llm_input: 'string',
       llm_output: 'llm_output',
@@ -139,7 +139,7 @@ describe('resource contract', () => {
   });
 
   test('score: required and optional params', async () => {
-    const response = await client.contract.score({
+    const response = await client.contracts.score({
       contract: {
         description: 'description',
         name: 'name',
