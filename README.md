@@ -30,7 +30,7 @@ const client = new Twopir({
 });
 
 async function main() {
-  const contractsScoreMetrics = await client.contract.score({
+  const contractsScoreMetrics = await client.contracts.score({
     contract: {
       name: 'My Application',
       description: 'You are a helpful assistant',
@@ -67,7 +67,7 @@ async function main() {
     llm_input: 'string',
     llm_output: 'llm_output',
   };
-  const contractsScoreMetrics: Twopir.ContractsScoreMetrics = await client.contract.score(params);
+  const contractsScoreMetrics: Twopir.ContractsScoreMetrics = await client.contracts.score(params);
 }
 
 main();
@@ -84,7 +84,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const contractsScoreMetrics = await client.contract
+  const contractsScoreMetrics = await client.contracts
     .score({
       contract: { description: 'description', name: 'name' },
       llm_input: 'string',
@@ -133,7 +133,7 @@ const client = new Twopir({
 });
 
 // Or, configure per-request:
-await client.contract.score({ contract: { description: 'description', name: 'name' }, llm_input: 'string', llm_output: 'llm_output' }, {
+await client.contracts.score({ contract: { description: 'description', name: 'name' }, llm_input: 'string', llm_output: 'llm_output' }, {
   maxRetries: 5,
 });
 ```
@@ -150,7 +150,7 @@ const client = new Twopir({
 });
 
 // Override per-request:
-await client.contract.score({ contract: { description: 'description', name: 'name' }, llm_input: 'string', llm_output: 'llm_output' }, {
+await client.contracts.score({ contract: { description: 'description', name: 'name' }, llm_input: 'string', llm_output: 'llm_output' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -171,7 +171,7 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const client = new Twopir();
 
-const response = await client.contract
+const response = await client.contracts
   .score({
     contract: { description: 'description', name: 'name' },
     llm_input: 'string',
@@ -181,7 +181,7 @@ const response = await client.contract
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: contractsScoreMetrics, response: raw } = await client.contract
+const { data: contractsScoreMetrics, response: raw } = await client.contracts
   .score({
     contract: { description: 'description', name: 'name' },
     llm_input: 'string',
@@ -293,7 +293,7 @@ const client = new Twopir({
 });
 
 // Override per-request:
-await client.contract.score(
+await client.contracts.score(
   { contract: { description: 'description', name: 'name' }, llm_input: 'string', llm_output: 'llm_output' },
   {
     httpAgent: new http.Agent({ keepAlive: false }),

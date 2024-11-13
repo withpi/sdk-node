@@ -3,12 +3,16 @@
 import { APIResource } from '../../resource';
 import * as Shared from '../shared';
 import * as PromptAPI from './prompt';
-import { Prompt, PromptOptimizeParams } from './prompt';
+import { Prompt, PromptGetDetailedMessagesResponse, PromptOptimizeParams } from './prompt';
 
 export class Tune extends APIResource {
   prompt: PromptAPI.Prompt = new PromptAPI.Prompt(this._client);
 }
 
+/**
+ * OptimizationStatus is the status of a tuning job. The contract field is absent
+ * unless the state is done.
+ */
 export interface OptimizationStatus {
   /**
    * The optimized contract. Absent unless state is done
@@ -16,9 +20,14 @@ export interface OptimizationStatus {
   contract: Shared.Contract | null;
 
   /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
+
+  /**
    * The job id
    */
-  job_id: number;
+  job_id: string;
 
   /**
    * Current state of the job
@@ -31,5 +40,9 @@ Tune.Prompt = Prompt;
 export declare namespace Tune {
   export { type OptimizationStatus as OptimizationStatus };
 
-  export { Prompt as Prompt, type PromptOptimizeParams as PromptOptimizeParams };
+  export {
+    Prompt as Prompt,
+    type PromptGetDetailedMessagesResponse as PromptGetDetailedMessagesResponse,
+    type PromptOptimizeParams as PromptOptimizeParams,
+  };
 }

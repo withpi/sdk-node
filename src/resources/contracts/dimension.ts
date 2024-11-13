@@ -3,7 +3,7 @@
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
 import * as Shared from '../shared';
-import * as ContractAPI from './contract';
+import * as ContractsAPI from './contracts';
 
 export class Dimension extends APIResource {
   /**
@@ -19,7 +19,7 @@ export class Dimension extends APIResource {
   score(
     body: DimensionScoreParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<ContractAPI.ContractsScoreMetrics> {
+  ): Core.APIPromise<ContractsAPI.ContractsScoreMetrics> {
     return this._client.post('/contracts/dimensions/score', { body, ...options });
   }
 }

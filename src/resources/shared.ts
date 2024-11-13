@@ -10,18 +10,28 @@ export interface Contract {
    * The name of the contract
    */
   name: string;
+
+  /**
+   * The dimensions of the contract
+   */
+  dimensions?: Array<Dimension>;
+
+  /**
+   * The scorer AST of the contract
+   */
+  scorer_ast?: string | Record<string, unknown> | null;
 }
 
 export interface Dimension {
   /**
+   * The label of the dimension
+   */
+  id: string;
+
+  /**
    * The description of the dimension
    */
   description: string;
-
-  /**
-   * The label of the dimension
-   */
-  label: string;
 
   /**
    * The sub dimensions of the dimension
@@ -38,12 +48,12 @@ export interface LlmResponse {
 
 export interface SubDimension {
   /**
+   * The label of the dimension
+   */
+  id: string;
+
+  /**
    * The description of the dimension
    */
   description: string;
-
-  /**
-   * The label of the dimension
-   */
-  label: string;
 }

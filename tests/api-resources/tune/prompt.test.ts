@@ -9,8 +9,8 @@ const client = new Twopir({
 });
 
 describe('resource prompt', () => {
-  test('get', async () => {
-    const responsePromise = client.tune.prompt.get(0);
+  test('getDetailedMessages', async () => {
+    const responsePromise = client.tune.prompt.getDetailedMessages('job_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -20,17 +20,40 @@ describe('resource prompt', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('get: request options instead of params are passed correctly', async () => {
+  test('getDetailedMessages: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.tune.prompt.get(0, { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Twopir.NotFoundError,
-    );
+    await expect(
+      client.tune.prompt.getDetailedMessages('job_id', { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Twopir.NotFoundError);
+  });
+
+  test('getStatus', async () => {
+    const responsePromise = client.tune.prompt.getStatus('job_id');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('getStatus: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.tune.prompt.getStatus('job_id', { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Twopir.NotFoundError);
   });
 
   test('optimize: only required params', async () => {
     const responsePromise = client.tune.prompt.optimize({
       contract: { description: 'description', name: 'name' },
-      experiment_id: 0,
+      examples: [
+        { llm_input: 'string', llm_output: 'llm_output' },
+        { llm_input: 'string', llm_output: 'llm_output' },
+        { llm_input: 'string', llm_output: 'llm_output' },
+      ],
+      model_id: 'gpt-4o-mini',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -43,8 +66,46 @@ describe('resource prompt', () => {
 
   test('optimize: required and optional params', async () => {
     const response = await client.tune.prompt.optimize({
-      contract: { description: 'description', name: 'name' },
-      experiment_id: 0,
+      contract: {
+        description: 'description',
+        name: 'name',
+        dimensions: [
+          {
+            id: 'id',
+            description: 'description',
+            sub_dimensions: [
+              { id: 'id', description: 'description' },
+              { id: 'id', description: 'description' },
+              { id: 'id', description: 'description' },
+            ],
+          },
+          {
+            id: 'id',
+            description: 'description',
+            sub_dimensions: [
+              { id: 'id', description: 'description' },
+              { id: 'id', description: 'description' },
+              { id: 'id', description: 'description' },
+            ],
+          },
+          {
+            id: 'id',
+            description: 'description',
+            sub_dimensions: [
+              { id: 'id', description: 'description' },
+              { id: 'id', description: 'description' },
+              { id: 'id', description: 'description' },
+            ],
+          },
+        ],
+        scorer_ast: 'string',
+      },
+      examples: [
+        { llm_input: 'string', llm_output: 'llm_output' },
+        { llm_input: 'string', llm_output: 'llm_output' },
+        { llm_input: 'string', llm_output: 'llm_output' },
+      ],
+      model_id: 'gpt-4o-mini',
     });
   });
 });

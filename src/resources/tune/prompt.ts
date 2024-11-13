@@ -7,14 +7,25 @@ import * as TuneAPI from './tune';
 
 export class Prompt extends APIResource {
   /**
-   * Checks on a prompt optimization job
+   * Streams messages from a prompt optimization job, separated by newlines. The full
+   * job object can be retrieved from the /tune/prompt/{job_id} endpoint.
    */
-  get(jobId: number, options?: Core.RequestOptions): Core.APIPromise<TuneAPI.OptimizationStatus> {
+  getDetailedMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+    return this._client.get(`/tune/prompt/${jobId}/messages`, {
+      ...options,
+      headers: { Accept: 'text/plain', ...options?.headers },
+    });
+  }
+
+  /**
+   * Polls the status of a prompt optimization job.
+   */
+  getStatus(jobId: string, options?: Core.RequestOptions): Core.APIPromise<TuneAPI.OptimizationStatus> {
     return this._client.get(`/tune/prompt/${jobId}`, options);
   }
 
   /**
-   * Start a prompt optimization job
+   * Do Pi Prompt optimization.
    */
   optimize(
     body: PromptOptimizeParams,
@@ -24,6 +35,8 @@ export class Prompt extends APIResource {
   }
 }
 
+export type PromptGetDetailedMessagesResponse = string;
+
 export interface PromptOptimizeParams {
   /**
    * The contract to optimize
@@ -31,11 +44,36 @@ export interface PromptOptimizeParams {
   contract: Shared.Contract;
 
   /**
-   * The experiment id
+   * The examples to train and validate on
    */
-  experiment_id: number;
+  examples: Array<PromptOptimizeParams.Example>;
+
+  /**
+   * The model to use for generating responses
+   */
+  model_id: 'gpt-4o-mini' | 'mock-llm';
+}
+
+export namespace PromptOptimizeParams {
+  /**
+   * An example for training or evaluation
+   */
+  export interface Example {
+    /**
+     * The input to evaluate
+     */
+    llm_input: string | Record<string, string>;
+
+    /**
+     * The output to evaluate
+     */
+    llm_output: string;
+  }
 }
 
 export declare namespace Prompt {
-  export { type PromptOptimizeParams as PromptOptimizeParams };
+  export {
+    type PromptGetDetailedMessagesResponse as PromptGetDetailedMessagesResponse,
+    type PromptOptimizeParams as PromptOptimizeParams,
+  };
 }
