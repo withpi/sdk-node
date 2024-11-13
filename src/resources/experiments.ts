@@ -4,7 +4,7 @@ import { APIResource } from '../resource';
 import * as Core from '../core';
 import * as Shared from './shared';
 
-export class Experiment extends APIResource {
+export class Experiments extends APIResource {
   /**
    * Launches an experiment on a set of data
    */
@@ -66,6 +66,6 @@ export namespace ExperimentCreateParams {
   }
 }
 
-export declare namespace Experiment {
+export declare namespace Experiments {
   export { type ExperimentStatus as ExperimentStatus, type ExperimentCreateParams as ExperimentCreateParams };
 }

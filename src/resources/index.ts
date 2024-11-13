@@ -2,13 +2,13 @@
 
 export * from './shared';
 export {
-  Contract,
+  Contracts,
   type ContractsScoreMetrics,
   type ContractCalibrateParams,
   type ContractGenerateDimensionsParams,
   type ContractScoreParams,
-} from './contract/contract';
+} from './contracts/contracts';
 export { Data, type DataGenerationStatus, type InputEvaluationMetrics } from './data/data';
-export { Experiment, type ExperimentStatus, type ExperimentCreateParams } from './experiment';
+export { Experiments, type ExperimentStatus, type ExperimentCreateParams } from './experiments';
 export { Inference, type InferenceRunParams } from './inference';
 export { Tune, type OptimizationStatus } from './tune/tune';
