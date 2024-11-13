@@ -1,19 +1,26 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../../resource';
-import * as Core from '../../../core';
-import * as Shared from '../../shared';
-import * as TuneAPI from '../tune';
-import * as MessagesAPI from './messages';
-import { MessageRetrieveResponse, Messages } from './messages';
+import { APIResource } from '../../resource';
+import * as Core from '../../core';
+import * as Shared from '../shared';
+import * as TuneAPI from './tune';
 
 export class Prompt extends APIResource {
-  messages: MessagesAPI.Messages = new MessagesAPI.Messages(this._client);
+  /**
+   * Streams messages from a prompt optimization job, separated by newlines. The full
+   * job object can be retrieved from the /tune/prompt/{job_id} endpoint.
+   */
+  getDetailedMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+    return this._client.get(`/tune/prompt/${jobId}/messages`, {
+      ...options,
+      headers: { Accept: 'text/plain', ...options?.headers },
+    });
+  }
 
   /**
    * Polls the status of a prompt optimization job.
    */
-  get(jobId: string, options?: Core.RequestOptions): Core.APIPromise<TuneAPI.OptimizationStatus> {
+  getStatus(jobId: string, options?: Core.RequestOptions): Core.APIPromise<TuneAPI.OptimizationStatus> {
     return this._client.get(`/tune/prompt/${jobId}`, options);
   }
 
@@ -27,6 +34,8 @@ export class Prompt extends APIResource {
     return this._client.post('/tune/prompt', { body, ...options });
   }
 }
+
+export type PromptGetDetailedMessagesResponse = string;
 
 export interface PromptOptimizeParams {
   /**
@@ -62,10 +71,9 @@ export namespace PromptOptimizeParams {
   }
 }
 
-Prompt.Messages = Messages;
-
 export declare namespace Prompt {
-  export { type PromptOptimizeParams as PromptOptimizeParams };
-
-  export { Messages as Messages, type MessageRetrieveResponse as MessageRetrieveResponse };
+  export {
+    type PromptGetDetailedMessagesResponse as PromptGetDetailedMessagesResponse,
+    type PromptOptimizeParams as PromptOptimizeParams,
+  };
 }

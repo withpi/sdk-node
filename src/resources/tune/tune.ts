@@ -2,8 +2,8 @@
 
 import { APIResource } from '../../resource';
 import * as Shared from '../shared';
-import * as PromptAPI from './prompt/prompt';
-import { Prompt, PromptOptimizeParams } from './prompt/prompt';
+import * as PromptAPI from './prompt';
+import { Prompt, PromptGetDetailedMessagesResponse, PromptOptimizeParams } from './prompt';
 
 export class Tune extends APIResource {
   prompt: PromptAPI.Prompt = new PromptAPI.Prompt(this._client);
@@ -40,5 +40,9 @@ Tune.Prompt = Prompt;
 export declare namespace Tune {
   export { type OptimizationStatus as OptimizationStatus };
 
-  export { Prompt as Prompt, type PromptOptimizeParams as PromptOptimizeParams };
+  export {
+    Prompt as Prompt,
+    type PromptGetDetailedMessagesResponse as PromptGetDetailedMessagesResponse,
+    type PromptOptimizeParams as PromptOptimizeParams,
+  };
 }
