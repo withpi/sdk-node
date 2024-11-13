@@ -43,9 +43,13 @@ Methods:
 
 ### Messages
 
+Types:
+
+- <code><a href="./src/resources/tune/prompt/messages.ts">MessageRetrieveResponse</a></code>
+
 Methods:
 
-- <code title="get /tune/prompt/{job_id}/messages">client.tune.prompt.messages.<a href="./src/resources/tune/prompt/messages.ts">retrieve</a>(jobId) -> void</code>
+- <code title="get /tune/prompt/{job_id}/messages">client.tune.prompt.messages.<a href="./src/resources/tune/prompt/messages.ts">retrieve</a>(jobId) -> string</code>
 
 # Experiment
 
