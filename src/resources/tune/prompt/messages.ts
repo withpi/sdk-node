@@ -8,10 +8,16 @@ export class Messages extends APIResource {
    * Streams messages from a prompt optimization job, separated by newlines. The full
    * job object can be retrieved from the /tune/prompt/{job_id} endpoint.
    */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<void> {
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.get(`/tune/prompt/${jobId}/messages`, {
       ...options,
-      headers: { Accept: '*/*', ...options?.headers },
+      headers: { Accept: 'text/plain', ...options?.headers },
     });
   }
+}
+
+export type MessageRetrieveResponse = string;
+
+export declare namespace Messages {
+  export { type MessageRetrieveResponse as MessageRetrieveResponse };
 }
