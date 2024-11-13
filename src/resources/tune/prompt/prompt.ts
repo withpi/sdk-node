@@ -5,7 +5,7 @@ import * as Core from '../../../core';
 import * as Shared from '../../shared';
 import * as TuneAPI from '../tune';
 import * as MessagesAPI from './messages';
-import { Messages } from './messages';
+import { MessageRetrieveResponse, Messages } from './messages';
 
 export class Prompt extends APIResource {
   messages: MessagesAPI.Messages = new MessagesAPI.Messages(this._client);
@@ -67,5 +67,5 @@ Prompt.Messages = Messages;
 export declare namespace Prompt {
   export { type PromptOptimizeParams as PromptOptimizeParams };
 
-  export { Messages as Messages };
+  export { Messages as Messages, type MessageRetrieveResponse as MessageRetrieveResponse };
 }

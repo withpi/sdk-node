@@ -19,7 +19,7 @@ export interface Contract {
   /**
    * The scorer AST of the contract
    */
-  scorer_ast?: string | unknown | null;
+  scorer_ast?: string | Record<string, unknown> | null;
 }
 
 export interface Dimension {
