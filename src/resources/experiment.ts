@@ -50,6 +50,9 @@ export interface ExperimentCreateParams {
 }
 
 export namespace ExperimentCreateParams {
+  /**
+   * An example for training or evaluation
+   */
   export interface Example {
     /**
      * The input to evaluate
