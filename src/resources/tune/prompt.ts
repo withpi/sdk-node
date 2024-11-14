@@ -52,6 +52,11 @@ export interface PromptOptimizeParams {
    * The model to use for generating responses
    */
   model_id: 'gpt-4o-mini' | 'mock-llm';
+
+  /**
+   * The tuning algorithm to use
+   */
+  tuning_algorithm: 'pi' | 'dspy';
 }
 
 export namespace PromptOptimizeParams {
