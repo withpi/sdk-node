@@ -10,7 +10,7 @@ const client = new Twopir({
 
 describe('resource inference', () => {
   test('run: only required params', async () => {
-    const responsePromise = client.inference.run('string');
+    const responsePromise = client.inference.run({ llm_input: 'string', model_id: 'gpt_4o_mini_agent' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -21,6 +21,6 @@ describe('resource inference', () => {
   });
 
   test('run: required and optional params', async () => {
-    const response = await client.inference.run('string');
+    const response = await client.inference.run({ llm_input: 'string', model_id: 'gpt_4o_mini_agent' });
   });
 });
