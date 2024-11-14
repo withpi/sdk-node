@@ -54,6 +54,7 @@ describe('resource prompt', () => {
         { llm_input: 'string', llm_output: 'llm_output' },
       ],
       model_id: 'gpt-4o-mini',
+      tuning_algorithm: 'pi',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -106,6 +107,7 @@ describe('resource prompt', () => {
         { llm_input: 'string', llm_output: 'llm_output' },
       ],
       model_id: 'gpt-4o-mini',
+      tuning_algorithm: 'pi',
     });
   });
 });
