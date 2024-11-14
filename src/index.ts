@@ -6,7 +6,7 @@ import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
 import { ExperimentCreateParams, ExperimentStatus, Experiments } from './resources/experiments';
-import { Inference, InferenceRunParams } from './resources/inference';
+import { Inference, InferenceRunParams, InferenceRunResponse } from './resources/inference';
 import {
   ContractCalibrateParams,
   ContractGenerateDimensionsParams,
@@ -180,7 +180,11 @@ Twopir.Contracts = Contracts;
 export declare namespace Twopir {
   export type RequestOptions = Core.RequestOptions;
 
-  export { Inference as Inference, type InferenceRunParams as InferenceRunParams };
+  export {
+    Inference as Inference,
+    type InferenceRunResponse as InferenceRunResponse,
+    type InferenceRunParams as InferenceRunParams,
+  };
 
   export {
     Data as Data,
@@ -206,7 +210,6 @@ export declare namespace Twopir {
 
   export type Contract = API.Contract;
   export type Dimension = API.Dimension;
-  export type LlmResponse = API.LlmResponse;
   export type SubDimension = API.SubDimension;
 }
 

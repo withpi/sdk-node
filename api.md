@@ -4,14 +4,17 @@ Types:
 
 - <code><a href="./src/resources/shared.ts">Contract</a></code>
 - <code><a href="./src/resources/shared.ts">Dimension</a></code>
-- <code><a href="./src/resources/shared.ts">LlmResponse</a></code>
 - <code><a href="./src/resources/shared.ts">SubDimension</a></code>
 
 # Inference
 
+Types:
+
+- <code><a href="./src/resources/inference.ts">InferenceRunResponse</a></code>
+
 Methods:
 
-- <code title="post /inference/run">client.inference.<a href="./src/resources/inference.ts">run</a>({ ...params }) -> LlmResponse</code>
+- <code title="post /inference/run">client.inference.<a href="./src/resources/inference.ts">run</a>({ ...params }) -> InferenceRunResponse</code>
 
 # Data
 

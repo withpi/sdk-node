@@ -39,13 +39,6 @@ export interface Dimension {
   sub_dimensions: Array<SubDimension>;
 }
 
-export interface LlmResponse {
-  /**
-   * The generated text
-   */
-  text: string;
-}
-
 export interface SubDimension {
   /**
    * The label of the dimension
