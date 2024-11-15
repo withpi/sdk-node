@@ -213,7 +213,7 @@ export declare namespace Twopir {
   export type SubDimension = API.SubDimension;
 }
 
-export { toFile, fileFromPath } from 'twopir/uploads';
+export { toFile, fileFromPath } from './uploads';
 export {
   TwopirError,
   APIError,
@@ -228,6 +228,6 @@ export {
   InternalServerError,
   PermissionDeniedError,
   UnprocessableEntityError,
-} from 'twopir/error';
+} from './error';
 
 export default Twopir;
