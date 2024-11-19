@@ -4,17 +4,10 @@ import { APIResource } from '../../resource';
 import * as Core from '../../core';
 import * as Shared from '../shared';
 import * as DimensionAPI from './dimension';
-import { Dimension, DimensionGenerateParams, DimensionScoreParams } from './dimension';
+import { Dimension } from './dimension';
 
 export class Contracts extends APIResource {
   dimension: DimensionAPI.Dimension = new DimensionAPI.Dimension(this._client);
-
-  /**
-   * Calibrates a contract
-   */
-  calibrate(body: ContractCalibrateParams, options?: Core.RequestOptions): Core.APIPromise<Shared.Contract> {
-    return this._client.post('/contracts/calibrate', { body, ...options });
-  }
 
   /**
    * Genrate dimensions for a contract
@@ -51,42 +44,6 @@ export interface ContractsScoreMetrics {
   weights: Record<string, number>;
 }
 
-export interface ContractCalibrateParams {
-  /**
-   * The contract to calibrate
-   */
-  contract: Shared.Contract;
-
-  /**
-   * The feedbacks to use for calibration
-   */
-  feedbacks: Array<ContractCalibrateParams.Feedback>;
-}
-
-export namespace ContractCalibrateParams {
-  export interface Feedback {
-    /**
-     * The labels for each dimension
-     */
-    labels: Record<string, string>;
-
-    /**
-     * The input to evaluate
-     */
-    llm_input: string | Record<string, string>;
-
-    /**
-     * The output to evaluate
-     */
-    llm_output: string;
-
-    /**
-     * The scores for each dimension
-     */
-    scores: Record<string, number>;
-  }
-}
-
 export interface ContractGenerateDimensionsParams {
   contract: Shared.Contract;
 }
@@ -113,14 +70,9 @@ Contracts.Dimension = Dimension;
 export declare namespace Contracts {
   export {
     type ContractsScoreMetrics as ContractsScoreMetrics,
-    type ContractCalibrateParams as ContractCalibrateParams,
     type ContractGenerateDimensionsParams as ContractGenerateDimensionsParams,
     type ContractScoreParams as ContractScoreParams,
   };
 
-  export {
-    Dimension as Dimension,
-    type DimensionGenerateParams as DimensionGenerateParams,
-    type DimensionScoreParams as DimensionScoreParams,
-  };
+  export { Dimension as Dimension };
 }

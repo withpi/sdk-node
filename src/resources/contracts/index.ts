@@ -3,8 +3,7 @@
 export {
   Contracts,
   type ContractsScoreMetrics,
-  type ContractCalibrateParams,
   type ContractGenerateDimensionsParams,
   type ContractScoreParams,
 } from './contracts';
-export { Dimension, type DimensionGenerateParams, type DimensionScoreParams } from './dimension';
+export { Dimension } from './dimension';

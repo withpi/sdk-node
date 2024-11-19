@@ -5,7 +5,6 @@ import * as InputsAPI from './inputs/inputs';
 import {
   DataGenerationStatus as InputsAPIDataGenerationStatus,
   InputEvaluateParams,
-  InputGenerateParams,
   Inputs,
 } from './inputs/inputs';
 
@@ -67,6 +66,5 @@ export declare namespace Data {
     Inputs as Inputs,
     type InputsAPIDataGenerationStatus as DataGenerationStatus,
     type InputEvaluateParams as InputEvaluateParams,
-    type InputGenerateParams as InputGenerateParams,
   };
 }
