@@ -1,14 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
-import * as Shared from '../shared';
-import * as DimensionAPI from './dimension';
-import { Dimension } from './dimension';
+import { APIResource } from '../resource';
+import * as Core from '../core';
+import * as Shared from './shared';
 
 export class Contracts extends APIResource {
-  dimension: DimensionAPI.Dimension = new DimensionAPI.Dimension(this._client);
-
   /**
    * Generates dimensions for a contract which will be used to evaluate it
    */
@@ -65,14 +61,10 @@ export interface ContractScoreParams {
   llm_output: string;
 }
 
-Contracts.Dimension = Dimension;
-
 export declare namespace Contracts {
   export {
     type ContractsScoreMetrics as ContractsScoreMetrics,
     type ContractGenerateDimensionsParams as ContractGenerateDimensionsParams,
     type ContractScoreParams as ContractScoreParams,
   };
-
-  export { Dimension as Dimension };
 }

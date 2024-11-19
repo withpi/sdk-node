@@ -4,8 +4,12 @@ import { APIResource } from '../../../resource';
 import * as Core from '../../../core';
 import * as Shared from '../../shared';
 import * as DataAPI from '../data';
-import * as GenerateFromSeedsAPI from './generate-from-seeds/generate-from-seeds';
-import { GenerateFromSeeds } from './generate-from-seeds/generate-from-seeds';
+import * as GenerateFromSeedsAPI from './generate-from-seeds';
+import {
+  GenerateFromSeedGenerateParams,
+  GenerateFromSeedStreamMessagesResponse,
+  GenerateFromSeeds,
+} from './generate-from-seeds';
 
 export class Inputs extends APIResource {
   generateFromSeeds: GenerateFromSeedsAPI.GenerateFromSeeds = new GenerateFromSeedsAPI.GenerateFromSeeds(
@@ -23,31 +27,6 @@ export class Inputs extends APIResource {
   }
 }
 
-/**
- * DataGenerationStatus is the status of a data generation job.
- */
-export interface DataGenerationStatus {
-  /**
-   * The generated data. Absent unless state is done
-   */
-  data: Array<string> | null;
-
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
-
-  /**
-   * The job id
-   */
-  job_id: string;
-
-  /**
-   * Current state of the job
-   */
-  state: 'running' | 'done' | 'error';
-}
-
 export interface InputEvaluateParams {
   /**
    * The contract the input is intended to drive
@@ -63,10 +42,11 @@ export interface InputEvaluateParams {
 Inputs.GenerateFromSeeds = GenerateFromSeeds;
 
 export declare namespace Inputs {
-  export {
-    type DataGenerationStatus as DataGenerationStatus,
-    type InputEvaluateParams as InputEvaluateParams,
-  };
+  export { type InputEvaluateParams as InputEvaluateParams };
 
-  export { GenerateFromSeeds as GenerateFromSeeds };
+  export {
+    GenerateFromSeeds as GenerateFromSeeds,
+    type GenerateFromSeedStreamMessagesResponse as GenerateFromSeedStreamMessagesResponse,
+    type GenerateFromSeedGenerateParams as GenerateFromSeedGenerateParams,
+  };
 }

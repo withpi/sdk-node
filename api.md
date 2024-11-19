@@ -25,29 +25,21 @@ Types:
 
 ## Inputs
 
-Types:
-
-- <code><a href="./src/resources/data/inputs/inputs.ts">DataGenerationStatus</a></code>
-
 Methods:
 
 - <code title="post /data/input/evaluate">client.data.inputs.<a href="./src/resources/data/inputs/inputs.ts">evaluate</a>({ ...params }) -> InputEvaluationMetrics</code>
 
 ### GenerateFromSeeds
 
-Methods:
-
-- <code title="get /data/input/generate_from_seeds/{job_id}">client.data.inputs.generateFromSeeds.<a href="./src/resources/data/inputs/generate-from-seeds/generate-from-seeds.ts">retrieve</a>(jobId) -> DataGenerationStatus</code>
-
-#### Messages
-
 Types:
 
-- <code><a href="./src/resources/data/inputs/generate-from-seeds/messages.ts">MessageListResponse</a></code>
+- <code><a href="./src/resources/data/inputs/generate-from-seeds.ts">GenerateFromSeedStreamMessagesResponse</a></code>
 
 Methods:
 
-- <code title="get /data/input/generate_from_seeds/{job_id}/messages">client.data.inputs.generateFromSeeds.messages.<a href="./src/resources/data/inputs/generate-from-seeds/messages.ts">list</a>(jobId) -> string</code>
+- <code title="get /data/input/generate_from_seeds/{job_id}">client.data.inputs.generateFromSeeds.<a href="./src/resources/data/inputs/generate-from-seeds.ts">retrieve</a>(jobId) -> DataGenerationStatus</code>
+- <code title="post /data/input/generate_from_seeds">client.data.inputs.generateFromSeeds.<a href="./src/resources/data/inputs/generate-from-seeds.ts">generate</a>([ ...seeds ]) -> DataGenerationStatus</code>
+- <code title="get /data/input/generate_from_seeds/{job_id}/messages">client.data.inputs.generateFromSeeds.<a href="./src/resources/data/inputs/generate-from-seeds.ts">streamMessages</a>(jobId) -> string</code>
 
 # Tune
 
@@ -67,17 +59,13 @@ Methods:
 - <code title="get /tune/prompt/{job_id}">client.tune.prompt.<a href="./src/resources/tune/prompt.ts">getStatus</a>(jobId) -> OptimizationStatus</code>
 - <code title="post /tune/prompt">client.tune.prompt.<a href="./src/resources/tune/prompt.ts">optimize</a>({ ...params }) -> OptimizationStatus</code>
 
-# Experiments
-
 # Contracts
 
 Types:
 
-- <code><a href="./src/resources/contracts/contracts.ts">ContractsScoreMetrics</a></code>
+- <code><a href="./src/resources/contracts.ts">ContractsScoreMetrics</a></code>
 
 Methods:
 
-- <code title="post /contracts/generate_dimensions">client.contracts.<a href="./src/resources/contracts/contracts.ts">generateDimensions</a>({ ...params }) -> Contract</code>
-- <code title="post /contracts/score">client.contracts.<a href="./src/resources/contracts/contracts.ts">score</a>({ ...params }) -> ContractsScoreMetrics</code>
-
-## Dimension
+- <code title="post /contracts/generate_dimensions">client.contracts.<a href="./src/resources/contracts.ts">generateDimensions</a>({ ...params }) -> Contract</code>
+- <code title="post /contracts/score">client.contracts.<a href="./src/resources/contracts.ts">score</a>({ ...params }) -> ContractsScoreMetrics</code>
