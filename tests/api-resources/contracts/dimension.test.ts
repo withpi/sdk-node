@@ -14,11 +14,7 @@ describe('resource dimension', () => {
       dimension: {
         id: 'id',
         description: 'description',
-        sub_dimensions: [
-          { id: 'id', description: 'description' },
-          { id: 'id', description: 'description' },
-          { id: 'id', description: 'description' },
-        ],
+        sub_dimensions: [{ id: 'id', description: 'description' }],
       },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -35,11 +31,7 @@ describe('resource dimension', () => {
       dimension: {
         id: 'id',
         description: 'description',
-        sub_dimensions: [
-          { id: 'id', description: 'description' },
-          { id: 'id', description: 'description' },
-          { id: 'id', description: 'description' },
-        ],
+        sub_dimensions: [{ id: 'id', description: 'description' }],
       },
     });
   });
@@ -49,11 +41,7 @@ describe('resource dimension', () => {
       dimension: {
         id: 'id',
         description: 'description',
-        sub_dimensions: [
-          { id: 'id', description: 'description' },
-          { id: 'id', description: 'description' },
-          { id: 'id', description: 'description' },
-        ],
+        sub_dimensions: [{ id: 'id', description: 'description' }],
       },
       llm_input: 'string',
       llm_output: 'llm_output',
@@ -72,11 +60,7 @@ describe('resource dimension', () => {
       dimension: {
         id: 'id',
         description: 'description',
-        sub_dimensions: [
-          { id: 'id', description: 'description' },
-          { id: 'id', description: 'description' },
-          { id: 'id', description: 'description' },
-        ],
+        sub_dimensions: [{ id: 'id', description: 'description' }],
       },
       llm_input: 'string',
       llm_output: 'llm_output',

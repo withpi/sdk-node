@@ -12,11 +12,7 @@ describe('resource experiments', () => {
   test('create: only required params', async () => {
     const responsePromise = client.experiments.create({
       contract: { description: 'description', name: 'name' },
-      examples: [
-        { llm_input: 'string', llm_output: 'llm_output' },
-        { llm_input: 'string', llm_output: 'llm_output' },
-        { llm_input: 'string', llm_output: 'llm_output' },
-      ],
+      examples: [{ llm_input: 'string', llm_output: 'llm_output' }],
       scorer_id: 0,
     });
     const rawResponse = await responsePromise.asResponse();
@@ -37,38 +33,12 @@ describe('resource experiments', () => {
           {
             id: 'id',
             description: 'description',
-            sub_dimensions: [
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-            ],
-          },
-          {
-            id: 'id',
-            description: 'description',
-            sub_dimensions: [
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-            ],
-          },
-          {
-            id: 'id',
-            description: 'description',
-            sub_dimensions: [
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-            ],
+            sub_dimensions: [{ id: 'id', description: 'description' }],
           },
         ],
         scorer_ast: 'string',
       },
-      examples: [
-        { llm_input: 'string', llm_output: 'llm_output' },
-        { llm_input: 'string', llm_output: 'llm_output' },
-        { llm_input: 'string', llm_output: 'llm_output' },
-      ],
+      examples: [{ llm_input: 'string', llm_output: 'llm_output' }],
       scorer_id: 0,
     });
   });

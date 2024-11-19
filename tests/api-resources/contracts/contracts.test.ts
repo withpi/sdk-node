@@ -14,8 +14,6 @@ describe('resource contracts', () => {
       contract: { description: 'description', name: 'name' },
       feedbacks: [
         { labels: { foo: 'string' }, llm_input: 'string', llm_output: 'llm_output', scores: { foo: 0 } },
-        { labels: { foo: 'string' }, llm_input: 'string', llm_output: 'llm_output', scores: { foo: 0 } },
-        { labels: { foo: 'string' }, llm_input: 'string', llm_output: 'llm_output', scores: { foo: 0 } },
       ],
     });
     const rawResponse = await responsePromise.asResponse();
@@ -36,36 +34,12 @@ describe('resource contracts', () => {
           {
             id: 'id',
             description: 'description',
-            sub_dimensions: [
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-            ],
-          },
-          {
-            id: 'id',
-            description: 'description',
-            sub_dimensions: [
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-            ],
-          },
-          {
-            id: 'id',
-            description: 'description',
-            sub_dimensions: [
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-            ],
+            sub_dimensions: [{ id: 'id', description: 'description' }],
           },
         ],
         scorer_ast: 'string',
       },
       feedbacks: [
-        { labels: { foo: 'string' }, llm_input: 'string', llm_output: 'llm_output', scores: { foo: 0 } },
-        { labels: { foo: 'string' }, llm_input: 'string', llm_output: 'llm_output', scores: { foo: 0 } },
         { labels: { foo: 'string' }, llm_input: 'string', llm_output: 'llm_output', scores: { foo: 0 } },
       ],
     });
@@ -93,29 +67,7 @@ describe('resource contracts', () => {
           {
             id: 'id',
             description: 'description',
-            sub_dimensions: [
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-            ],
-          },
-          {
-            id: 'id',
-            description: 'description',
-            sub_dimensions: [
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-            ],
-          },
-          {
-            id: 'id',
-            description: 'description',
-            sub_dimensions: [
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-            ],
+            sub_dimensions: [{ id: 'id', description: 'description' }],
           },
         ],
         scorer_ast: 'string',
@@ -147,29 +99,7 @@ describe('resource contracts', () => {
           {
             id: 'id',
             description: 'description',
-            sub_dimensions: [
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-            ],
-          },
-          {
-            id: 'id',
-            description: 'description',
-            sub_dimensions: [
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-            ],
-          },
-          {
-            id: 'id',
-            description: 'description',
-            sub_dimensions: [
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-            ],
+            sub_dimensions: [{ id: 'id', description: 'description' }],
           },
         ],
         scorer_ast: 'string',

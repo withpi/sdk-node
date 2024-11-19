@@ -32,29 +32,7 @@ describe('resource inputs', () => {
           {
             id: 'id',
             description: 'description',
-            sub_dimensions: [
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-            ],
-          },
-          {
-            id: 'id',
-            description: 'description',
-            sub_dimensions: [
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-            ],
-          },
-          {
-            id: 'id',
-            description: 'description',
-            sub_dimensions: [
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-            ],
+            sub_dimensions: [{ id: 'id', description: 'description' }],
           },
         ],
         scorer_ast: 'string',
@@ -85,29 +63,7 @@ describe('resource inputs', () => {
           {
             id: 'id',
             description: 'description',
-            sub_dimensions: [
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-            ],
-          },
-          {
-            id: 'id',
-            description: 'description',
-            sub_dimensions: [
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-            ],
-          },
-          {
-            id: 'id',
-            description: 'description',
-            sub_dimensions: [
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-            ],
+            sub_dimensions: [{ id: 'id', description: 'description' }],
           },
         ],
         scorer_ast: 'string',
