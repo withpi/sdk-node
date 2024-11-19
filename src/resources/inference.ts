@@ -16,7 +16,7 @@ export interface InferenceRunResponse {
   /**
    * The structured output, if the model returns structure
    */
-  structured: unknown | null;
+  structured: Record<string, unknown> | null;
 
   /**
    * The generated text, if the model returns text
