@@ -25,11 +25,31 @@ Types:
 
 ## Inputs
 
+Types:
+
+- <code><a href="./src/resources/data/inputs/inputs.ts">DataGenerationStatus</a></code>
+
 Methods:
 
-- <code title="post /data/input/evaluate">client.data.inputs.<a href="./src/resources/data/inputs.ts">evaluate</a>({ ...params }) -> InputEvaluationMetrics</code>
-- <code title="post /data/input/generate">client.data.inputs.<a href="./src/resources/data/inputs.ts">generate</a>({ ...params }) -> DataGenerationStatus</code>
-- <code title="get /data/input/generate/{job_id}">client.data.inputs.<a href="./src/resources/data/inputs.ts">get</a>(jobId) -> DataGenerationStatus</code>
+- <code title="post /data/input/evaluate">client.data.inputs.<a href="./src/resources/data/inputs/inputs.ts">evaluate</a>({ ...params }) -> InputEvaluationMetrics</code>
+- <code title="post /data/input/generate">client.data.inputs.<a href="./src/resources/data/inputs/inputs.ts">generate</a>({ ...params }) -> DataGenerationStatus</code>
+- <code title="get /data/input/generate/{job_id}">client.data.inputs.<a href="./src/resources/data/inputs/inputs.ts">get</a>(jobId) -> DataGenerationStatus</code>
+
+### GenerateFromSeeds
+
+Methods:
+
+- <code title="get /data/input/generate_from_seeds/{job_id}">client.data.inputs.generateFromSeeds.<a href="./src/resources/data/inputs/generate-from-seeds/generate-from-seeds.ts">retrieve</a>(jobId) -> DataGenerationStatus</code>
+
+#### Messages
+
+Types:
+
+- <code><a href="./src/resources/data/inputs/generate-from-seeds/messages.ts">MessageListResponse</a></code>
+
+Methods:
+
+- <code title="get /data/input/generate_from_seeds/{job_id}/messages">client.data.inputs.generateFromSeeds.messages.<a href="./src/resources/data/inputs/generate-from-seeds/messages.ts">list</a>(jobId) -> string</code>
 
 # Tune
 
