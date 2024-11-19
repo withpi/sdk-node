@@ -5,15 +5,13 @@ import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
-import { ExperimentCreateParams, ExperimentStatus, Experiments } from './resources/experiments';
-import { Inference, InferenceRunParams } from './resources/inference';
 import {
-  ContractCalibrateParams,
   ContractGenerateDimensionsParams,
   ContractScoreParams,
   Contracts,
   ContractsScoreMetrics,
-} from './resources/contracts/contracts';
+} from './resources/contracts';
+import { Inference, InferenceRunParams, InferenceRunResponse } from './resources/inference';
 import { Data, DataGenerationStatus, InputEvaluationMetrics } from './resources/data/data';
 import { OptimizationStatus, Tune } from './resources/tune/tune';
 
@@ -133,7 +131,6 @@ export class Twopir extends Core.APIClient {
   inference: API.Inference = new API.Inference(this);
   data: API.Data = new API.Data(this);
   tune: API.Tune = new API.Tune(this);
-  experiments: API.Experiments = new API.Experiments(this);
   contracts: API.Contracts = new API.Contracts(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
@@ -175,12 +172,15 @@ export class Twopir extends Core.APIClient {
 Twopir.Inference = Inference;
 Twopir.Data = Data;
 Twopir.Tune = Tune;
-Twopir.Experiments = Experiments;
 Twopir.Contracts = Contracts;
 export declare namespace Twopir {
   export type RequestOptions = Core.RequestOptions;
 
-  export { Inference as Inference, type InferenceRunParams as InferenceRunParams };
+  export {
+    Inference as Inference,
+    type InferenceRunResponse as InferenceRunResponse,
+    type InferenceRunParams as InferenceRunParams,
+  };
 
   export {
     Data as Data,
@@ -191,26 +191,18 @@ export declare namespace Twopir {
   export { Tune as Tune, type OptimizationStatus as OptimizationStatus };
 
   export {
-    Experiments as Experiments,
-    type ExperimentStatus as ExperimentStatus,
-    type ExperimentCreateParams as ExperimentCreateParams,
-  };
-
-  export {
     Contracts as Contracts,
     type ContractsScoreMetrics as ContractsScoreMetrics,
-    type ContractCalibrateParams as ContractCalibrateParams,
     type ContractGenerateDimensionsParams as ContractGenerateDimensionsParams,
     type ContractScoreParams as ContractScoreParams,
   };
 
   export type Contract = API.Contract;
   export type Dimension = API.Dimension;
-  export type LlmResponse = API.LlmResponse;
   export type SubDimension = API.SubDimension;
 }
 
-export { toFile, fileFromPath } from 'twopir/uploads';
+export { toFile, fileFromPath } from './uploads';
 export {
   TwopirError,
   APIError,
@@ -225,6 +217,6 @@ export {
   InternalServerError,
   PermissionDeniedError,
   UnprocessableEntityError,
-} from 'twopir/error';
+} from './error';
 
 export default Twopir;

@@ -48,12 +48,9 @@ describe('resource prompt', () => {
   test('optimize: only required params', async () => {
     const responsePromise = client.tune.prompt.optimize({
       contract: { description: 'description', name: 'name' },
-      examples: [
-        { llm_input: 'string', llm_output: 'llm_output' },
-        { llm_input: 'string', llm_output: 'llm_output' },
-        { llm_input: 'string', llm_output: 'llm_output' },
-      ],
+      examples: [{ llm_input: 'string', llm_output: 'llm_output' }],
       model_id: 'gpt-4o-mini',
+      tuning_algorithm: 'pi',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -73,39 +70,14 @@ describe('resource prompt', () => {
           {
             id: 'id',
             description: 'description',
-            sub_dimensions: [
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-            ],
-          },
-          {
-            id: 'id',
-            description: 'description',
-            sub_dimensions: [
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-            ],
-          },
-          {
-            id: 'id',
-            description: 'description',
-            sub_dimensions: [
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-              { id: 'id', description: 'description' },
-            ],
+            sub_dimensions: [{ id: 'id', description: 'description' }],
           },
         ],
         scorer_ast: 'string',
       },
-      examples: [
-        { llm_input: 'string', llm_output: 'llm_output' },
-        { llm_input: 'string', llm_output: 'llm_output' },
-        { llm_input: 'string', llm_output: 'llm_output' },
-      ],
+      examples: [{ llm_input: 'string', llm_output: 'llm_output' }],
       model_id: 'gpt-4o-mini',
+      tuning_algorithm: 'pi',
     });
   });
 });

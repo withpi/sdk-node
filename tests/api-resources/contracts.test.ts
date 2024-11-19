@@ -8,18 +8,10 @@ const client = new Twopir({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource dimension', () => {
-  test('generate: only required params', async () => {
-    const responsePromise = client.contracts.dimension.generate({
-      dimension: {
-        id: 'id',
-        description: 'description',
-        sub_dimensions: [
-          { id: 'id', description: 'description' },
-          { id: 'id', description: 'description' },
-          { id: 'id', description: 'description' },
-        ],
-      },
+describe('resource contracts', () => {
+  test('generateDimensions: only required params', async () => {
+    const responsePromise = client.contracts.generateDimensions({
+      contract: { description: 'description', name: 'name' },
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -30,31 +22,26 @@ describe('resource dimension', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('generate: required and optional params', async () => {
-    const response = await client.contracts.dimension.generate({
-      dimension: {
-        id: 'id',
+  test('generateDimensions: required and optional params', async () => {
+    const response = await client.contracts.generateDimensions({
+      contract: {
         description: 'description',
-        sub_dimensions: [
-          { id: 'id', description: 'description' },
-          { id: 'id', description: 'description' },
-          { id: 'id', description: 'description' },
+        name: 'name',
+        dimensions: [
+          {
+            id: 'id',
+            description: 'description',
+            sub_dimensions: [{ id: 'id', description: 'description' }],
+          },
         ],
+        scorer_ast: 'string',
       },
     });
   });
 
   test('score: only required params', async () => {
-    const responsePromise = client.contracts.dimension.score({
-      dimension: {
-        id: 'id',
-        description: 'description',
-        sub_dimensions: [
-          { id: 'id', description: 'description' },
-          { id: 'id', description: 'description' },
-          { id: 'id', description: 'description' },
-        ],
-      },
+    const responsePromise = client.contracts.score({
+      contract: { description: 'description', name: 'name' },
       llm_input: 'string',
       llm_output: 'llm_output',
     });
@@ -68,15 +55,18 @@ describe('resource dimension', () => {
   });
 
   test('score: required and optional params', async () => {
-    const response = await client.contracts.dimension.score({
-      dimension: {
-        id: 'id',
+    const response = await client.contracts.score({
+      contract: {
         description: 'description',
-        sub_dimensions: [
-          { id: 'id', description: 'description' },
-          { id: 'id', description: 'description' },
-          { id: 'id', description: 'description' },
+        name: 'name',
+        dimensions: [
+          {
+            id: 'id',
+            description: 'description',
+            sub_dimensions: [{ id: 'id', description: 'description' }],
+          },
         ],
+        scorer_ast: 'string',
       },
       llm_input: 'string',
       llm_output: 'llm_output',

@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../resource';
-import * as InputsAPI from './inputs';
-import { InputEvaluateParams, InputGenerateParams, Inputs } from './inputs';
+import * as InputsAPI from './inputs/inputs';
+import { InputEvaluateParams, Inputs } from './inputs/inputs';
 
 export class Data extends APIResource {
   inputs: InputsAPI.Inputs = new InputsAPI.Inputs(this._client);
@@ -18,9 +18,14 @@ export interface DataGenerationStatus {
   data: Array<string> | null;
 
   /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
+
+  /**
    * The job id
    */
-  job_id: number;
+  job_id: string;
 
   /**
    * Current state of the job
@@ -53,9 +58,5 @@ export declare namespace Data {
     type InputEvaluationMetrics as InputEvaluationMetrics,
   };
 
-  export {
-    Inputs as Inputs,
-    type InputEvaluateParams as InputEvaluateParams,
-    type InputGenerateParams as InputGenerateParams,
-  };
+  export { Inputs as Inputs, type InputEvaluateParams as InputEvaluateParams };
 }
