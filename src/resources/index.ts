@@ -6,8 +6,7 @@ export {
   type ContractsScoreMetrics,
   type ContractGenerateDimensionsParams,
   type ContractScoreParams,
-} from './contracts/contracts';
+} from './contracts';
 export { Data, type DataGenerationStatus, type InputEvaluationMetrics } from './data/data';
-export { Experiments } from './experiments';
 export { Inference, type InferenceRunResponse, type InferenceRunParams } from './inference';
 export { Tune, type OptimizationStatus } from './tune/tune';
