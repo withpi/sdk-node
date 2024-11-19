@@ -5,10 +5,9 @@ import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
-import { ExperimentCreateParams, ExperimentStatus, Experiments } from './resources/experiments';
+import { Experiments } from './resources/experiments';
 import { Inference, InferenceRunParams, InferenceRunResponse } from './resources/inference';
 import {
-  ContractCalibrateParams,
   ContractGenerateDimensionsParams,
   ContractScoreParams,
   Contracts,
@@ -194,16 +193,11 @@ export declare namespace Twopir {
 
   export { Tune as Tune, type OptimizationStatus as OptimizationStatus };
 
-  export {
-    Experiments as Experiments,
-    type ExperimentStatus as ExperimentStatus,
-    type ExperimentCreateParams as ExperimentCreateParams,
-  };
+  export { Experiments as Experiments };
 
   export {
     Contracts as Contracts,
     type ContractsScoreMetrics as ContractsScoreMetrics,
-    type ContractCalibrateParams as ContractCalibrateParams,
     type ContractGenerateDimensionsParams as ContractGenerateDimensionsParams,
     type ContractScoreParams as ContractScoreParams,
   };
