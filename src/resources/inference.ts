@@ -5,7 +5,7 @@ import * as Core from '../core';
 
 export class Inference extends APIResource {
   /**
-   * Runs inference, returning a response
+   * Runs LLM inference, returning a response
    */
   run(body: InferenceRunParams, options?: Core.RequestOptions): Core.APIPromise<InferenceRunResponse> {
     return this._client.post('/inference/run', { body, ...options });

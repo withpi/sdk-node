@@ -10,7 +10,7 @@ export class Contracts extends APIResource {
   dimension: DimensionAPI.Dimension = new DimensionAPI.Dimension(this._client);
 
   /**
-   * Genrate dimensions for a contract
+   * Generates dimensions for a contract which will be used to evaluate it
    */
   generateDimensions(
     body: ContractGenerateDimensionsParams,
@@ -20,7 +20,7 @@ export class Contracts extends APIResource {
   }
 
   /**
-   * Scores a contract
+   * Scores a contract based on the provided input and output
    */
   score(body: ContractScoreParams, options?: Core.RequestOptions): Core.APIPromise<ContractsScoreMetrics> {
     return this._client.post('/contracts/score', { body, ...options });

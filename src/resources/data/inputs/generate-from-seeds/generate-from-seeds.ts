@@ -10,7 +10,7 @@ export class GenerateFromSeeds extends APIResource {
   messages: MessagesAPI.Messages = new MessagesAPI.Messages(this._client);
 
   /**
-   * Start an input data generation job
+   * Gets the current status of a data generation job
    */
   retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<DataAPI.DataGenerationStatus> {
     return this._client.get(`/data/input/generate_from_seeds/${jobId}`, options);
