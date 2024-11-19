@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.1.0-alpha.2 (2024-11-19)
+
+Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/2pir-ai/sdk-node/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
+
+### Features
+
+* **api:** api update ([#12](https://github.com/2pir-ai/sdk-node/issues/12)) ([e6aa393](https://github.com/2pir-ai/sdk-node/commit/e6aa3930f9411f5c3b4e97d0593ab0359ffcc041))
+* **api:** api update ([#14](https://github.com/2pir-ai/sdk-node/issues/14)) ([ca5f8b4](https://github.com/2pir-ai/sdk-node/commit/ca5f8b461ec324f6b816addca2389ac9cddaf155))
+* **api:** api update ([#17](https://github.com/2pir-ai/sdk-node/issues/17)) ([1cb86fc](https://github.com/2pir-ai/sdk-node/commit/1cb86fceb5f6b8efdb0320b823aaa810472c1cc0))
+* **api:** api update ([#19](https://github.com/2pir-ai/sdk-node/issues/19)) ([8bf2f14](https://github.com/2pir-ai/sdk-node/commit/8bf2f14387172fd626eff46be830086d384ac36d))
+* **api:** api update ([#20](https://github.com/2pir-ai/sdk-node/issues/20)) ([9e974bb](https://github.com/2pir-ai/sdk-node/commit/9e974bbe6af35f093a7bec2c999627f514a0d6b1))
+* **api:** api update ([#21](https://github.com/2pir-ai/sdk-node/issues/21)) ([b6dbf06](https://github.com/2pir-ai/sdk-node/commit/b6dbf06f5cff93b3a3e5f53349c503c2a467ef53))
+* **api:** api update ([#23](https://github.com/2pir-ai/sdk-node/issues/23)) ([0175e77](https://github.com/2pir-ai/sdk-node/commit/0175e772c6c999f1c4722fd5805f5fa14ccf21e0))
+* **api:** manual updates ([#22](https://github.com/2pir-ai/sdk-node/issues/22)) ([9cf611b](https://github.com/2pir-ai/sdk-node/commit/9cf611bdf6cfd979d169e771c7f005004a3e59ee))
+
+
+### Chores
+
+* rebuild project due to codegen change ([#15](https://github.com/2pir-ai/sdk-node/issues/15)) ([4c069f4](https://github.com/2pir-ai/sdk-node/commit/4c069f477ef487358cbe075a1d051d6f6a88252d))
+* rebuild project due to codegen change ([#16](https://github.com/2pir-ai/sdk-node/issues/16)) ([bad913d](https://github.com/2pir-ai/sdk-node/commit/bad913d02060525d9ad0983b09a40d03126f2f1d))
+* rebuild project due to codegen change ([#18](https://github.com/2pir-ai/sdk-node/issues/18)) ([b24cff4](https://github.com/2pir-ai/sdk-node/commit/b24cff4282cff6b5554d11e773166677fae877ac))
+
 ## 0.1.0-alpha.1 (2024-11-13)
 
 Full Changelog: [v0.0.1-alpha.1...v0.1.0-alpha.1](https://github.com/2pir-ai/sdk-node/compare/v0.0.1-alpha.1...v0.1.0-alpha.1)
