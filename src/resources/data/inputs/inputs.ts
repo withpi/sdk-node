@@ -21,23 +21,6 @@ export class Inputs extends APIResource {
   ): Core.APIPromise<DataAPI.InputEvaluationMetrics> {
     return this._client.post('/data/input/evaluate', { body, ...options });
   }
-
-  /**
-   * Start an input data generation job
-   */
-  generate(
-    body: InputGenerateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<DataAPI.DataGenerationStatus> {
-    return this._client.post('/data/input/generate', { body, ...options });
-  }
-
-  /**
-   * Checks on an input data generation job
-   */
-  get(jobId: number, options?: Core.RequestOptions): Core.APIPromise<DataAPI.DataGenerationStatus> {
-    return this._client.get(`/data/input/generate/${jobId}`, options);
-  }
 }
 
 /**
@@ -77,17 +60,12 @@ export interface InputEvaluateParams {
   llm_input: string | Record<string, string>;
 }
 
-export interface InputGenerateParams {
-  contract: Shared.Contract;
-}
-
 Inputs.GenerateFromSeeds = GenerateFromSeeds;
 
 export declare namespace Inputs {
   export {
     type DataGenerationStatus as DataGenerationStatus,
     type InputEvaluateParams as InputEvaluateParams,
-    type InputGenerateParams as InputGenerateParams,
   };
 
   export { GenerateFromSeeds as GenerateFromSeeds };
