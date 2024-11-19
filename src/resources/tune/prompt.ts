@@ -55,7 +55,7 @@ export interface PromptOptimizeParams {
   /**
    * The tuning algorithm to use
    */
-  tuning_algorithm: 'pi' | 'dspy';
+  tuning_algorithm: 'pi';
 }
 
 export namespace PromptOptimizeParams {
