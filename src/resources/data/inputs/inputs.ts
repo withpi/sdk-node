@@ -13,7 +13,7 @@ export class Inputs extends APIResource {
   );
 
   /**
-   * Evaluate an input
+   * Evaluates an input against a contract
    */
   evaluate(
     body: InputEvaluateParams,

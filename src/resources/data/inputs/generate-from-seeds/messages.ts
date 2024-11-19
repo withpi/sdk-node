@@ -5,7 +5,7 @@ import * as Core from '../../../../core';
 
 export class Messages extends APIResource {
   /**
-   * Opens a message stream about a job
+   * Streams messages from the data generation job
    */
   list(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.get(`/data/input/generate_from_seeds/${jobId}/messages`, {

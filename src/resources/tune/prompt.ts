@@ -7,8 +7,7 @@ import * as TuneAPI from './tune';
 
 export class Prompt extends APIResource {
   /**
-   * Streams messages from a prompt optimization job, separated by newlines. The full
-   * job object can be retrieved from the /tune/prompt/{job_id} endpoint.
+   * Opens a message stream about a prompt optimization job
    */
   getDetailedMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.get(`/tune/prompt/${jobId}/messages`, {
@@ -18,14 +17,14 @@ export class Prompt extends APIResource {
   }
 
   /**
-   * Polls the status of a prompt optimization job.
+   * Checks on a prompt optimization job
    */
   getStatus(jobId: string, options?: Core.RequestOptions): Core.APIPromise<TuneAPI.OptimizationStatus> {
     return this._client.get(`/tune/prompt/${jobId}`, options);
   }
 
   /**
-   * Do Pi Prompt optimization.
+   * Start a prompt optimization job
    */
   optimize(
     body: PromptOptimizeParams,
