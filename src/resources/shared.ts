@@ -15,11 +15,6 @@ export interface Contract {
    * The dimensions of the contract
    */
   dimensions?: Array<Dimension>;
-
-  /**
-   * The scorer AST of the contract
-   */
-  scorer_ast?: string | Record<string, unknown> | null;
 }
 
 export interface Dimension {
@@ -32,6 +27,11 @@ export interface Dimension {
    * The description of the dimension
    */
   description: string;
+
+  /**
+   * The type of scoring performed for this dimension
+   */
+  scoring_type: 'llm_as_a_judge';
 
   /**
    * The sub dimensions of the dimension
@@ -49,4 +49,9 @@ export interface SubDimension {
    * The description of the dimension
    */
   description: string;
+
+  /**
+   * The type of scoring performed for this dimension
+   */
+  scoring_type: 'llm_as_a_judge';
 }
