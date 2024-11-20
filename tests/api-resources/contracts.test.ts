@@ -31,10 +31,10 @@ describe('resource contracts', () => {
           {
             id: 'id',
             description: 'description',
-            sub_dimensions: [{ id: 'id', description: 'description' }],
+            scoring_type: 'llm_as_a_judge',
+            sub_dimensions: [{ id: 'id', description: 'description', scoring_type: 'llm_as_a_judge' }],
           },
         ],
-        scorer_ast: 'string',
       },
     });
   });
@@ -63,10 +63,10 @@ describe('resource contracts', () => {
           {
             id: 'id',
             description: 'description',
-            sub_dimensions: [{ id: 'id', description: 'description' }],
+            scoring_type: 'llm_as_a_judge',
+            sub_dimensions: [{ id: 'id', description: 'description', scoring_type: 'llm_as_a_judge' }],
           },
         ],
-        scorer_ast: 'string',
       },
       llm_input: 'string',
       llm_output: 'llm_output',
