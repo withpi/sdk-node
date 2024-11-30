@@ -70,10 +70,10 @@ describe('resource prompt', () => {
           {
             id: 'id',
             description: 'description',
-            sub_dimensions: [{ id: 'id', description: 'description' }],
+            scoring_type: 'llm_as_a_judge',
+            sub_dimensions: [{ id: 'id', description: 'description', scoring_type: 'llm_as_a_judge' }],
           },
         ],
-        scorer_ast: 'string',
       },
       examples: [{ llm_input: 'string', llm_output: 'llm_output' }],
       model_id: 'gpt-4o-mini',

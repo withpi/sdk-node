@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-alpha.3 (2024-11-27)
+
+Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/2pir-ai/sdk-node/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
+
+### Features
+
+* **api:** api update ([#28](https://github.com/2pir-ai/sdk-node/issues/28)) ([97b2adf](https://github.com/2pir-ai/sdk-node/commit/97b2adfde63f280b1e9f3681ab1821e888924981))
+* **internal:** make git install file structure match npm ([#29](https://github.com/2pir-ai/sdk-node/issues/29)) ([4a27f9d](https://github.com/2pir-ai/sdk-node/commit/4a27f9da709b3ca32af183674e8bc96b77eebdbc))
+
+
+### Chores
+
+* **internal:** version bump ([#25](https://github.com/2pir-ai/sdk-node/issues/25)) ([eaab16e](https://github.com/2pir-ai/sdk-node/commit/eaab16e08487fa9aba4f727858015a383705e910))
+* remove redundant word in comment ([#27](https://github.com/2pir-ai/sdk-node/issues/27)) ([8624ec4](https://github.com/2pir-ai/sdk-node/commit/8624ec4bda8190bd25efa3274446a01b5627218a))
+
 ## 0.1.0-alpha.2 (2024-11-19)
 
 Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/2pir-ai/sdk-node/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
