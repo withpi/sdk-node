@@ -1,5 +1,5 @@
 {
-  "name": "twopir",
+  "name": "@2pir-ai/twopir",
   "version": "0.1.0-alpha.4",
   "description": "The official TypeScript library for the Twopir API",
   "author": "Twopir <dev-feedback@2pir.ai>",
@@ -59,8 +59,8 @@
     "./shims/web.mjs"
   ],
   "imports": {
-    "twopir": ".",
-    "twopir/*": "./src/*"
+    "@2pir-ai/twopir": ".",
+    "@2pir-ai/twopir/*": "./src/*"
   },
   "exports": {
     "./_shims/auto/*": {

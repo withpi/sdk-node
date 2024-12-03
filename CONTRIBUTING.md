@@ -55,12 +55,12 @@ $ cd sdk-node
 # With yarn
 $ yarn link
 $ cd ../my-package
-$ yarn link twopir
+$ yarn link @2pir-ai/twopir
 
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global twopir
+$ pnpm link -—global @2pir-ai/twopir
 ```
 
 ## Running tests
