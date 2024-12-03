@@ -9,9 +9,9 @@ export function getRuntime({ manuallyImported }: { manuallyImported?: boolean } 
   const recommendation =
     manuallyImported ?
       `You may need to use polyfills`
-    : `Add one of these imports before your first \`import … from 'twopir'\`:
-- \`import 'twopir/shims/node'\` (if you're running on Node)
-- \`import 'twopir/shims/web'\` (otherwise)
+    : `Add one of these imports before your first \`import … from '@2pir-ai/twopir'\`:
+- \`import '@2pir-ai/twopir/shims/node'\` (if you're running on Node)
+- \`import '@2pir-ai/twopir/shims/web'\` (otherwise)
 `;
 
   let _fetch, _Request, _Response, _Headers;

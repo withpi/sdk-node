@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Twopir from 'twopir';
+import Twopir from '@2pir-ai/twopir';
 import { Response } from 'node-fetch';
 
 const client = new Twopir({
