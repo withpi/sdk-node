@@ -79,4 +79,4 @@ Types:
 
 Methods:
 
-- <code title="post /feedback/cluster">client.feedback.<a href="./src/resources/feedback.ts">cluster</a>([ ...body ]) -> FeedbackClusterResponse</code>
+- <code title="post /feedback/cluster">client.feedback.<a href="./src/resources/feedback.ts">cluster</a>([ ...feedbacks ]) -> FeedbackClusterResponse</code>
