@@ -11,6 +11,12 @@ import {
   Contracts,
   ContractsScoreMetrics,
 } from './resources/contracts';
+import {
+  Feedback,
+  FeedbackClusterParams,
+  FeedbackClusterResponse,
+  FeedbackTopicCluster,
+} from './resources/feedback';
 import { Inference, InferenceRunParams, InferenceRunResponse } from './resources/inference';
 import { Data, DataGenerationStatus, InputEvaluationMetrics } from './resources/data/data';
 import { OptimizationStatus, Tune } from './resources/tune/tune';
@@ -132,6 +138,7 @@ export class Twopir extends Core.APIClient {
   data: API.Data = new API.Data(this);
   tune: API.Tune = new API.Tune(this);
   contracts: API.Contracts = new API.Contracts(this);
+  feedback: API.Feedback = new API.Feedback(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -173,6 +180,7 @@ Twopir.Inference = Inference;
 Twopir.Data = Data;
 Twopir.Tune = Tune;
 Twopir.Contracts = Contracts;
+Twopir.Feedback = Feedback;
 export declare namespace Twopir {
   export type RequestOptions = Core.RequestOptions;
 
@@ -195,6 +203,13 @@ export declare namespace Twopir {
     type ContractsScoreMetrics as ContractsScoreMetrics,
     type ContractGenerateDimensionsParams as ContractGenerateDimensionsParams,
     type ContractScoreParams as ContractScoreParams,
+  };
+
+  export {
+    Feedback as Feedback,
+    type FeedbackTopicCluster as FeedbackTopicCluster,
+    type FeedbackClusterResponse as FeedbackClusterResponse,
+    type FeedbackClusterParams as FeedbackClusterParams,
   };
 
   export type Contract = API.Contract;
