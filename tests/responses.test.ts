@@ -1,5 +1,5 @@
-import { createResponseHeaders } from 'twopir/core';
-import { Headers } from 'twopir/_shims/index';
+import { createResponseHeaders } from '@2pir-ai/twopir/core';
+import { Headers } from '@2pir-ai/twopir/_shims/index';
 
 describe('response parsing', () => {
   // TODO: test unicode characters
