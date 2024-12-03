@@ -8,5 +8,11 @@ export {
   type ContractScoreParams,
 } from './contracts';
 export { Data, type DataGenerationStatus, type InputEvaluationMetrics } from './data/data';
+export {
+  Feedback,
+  type FeedbackTopicCluster,
+  type FeedbackClusterResponse,
+  type FeedbackClusterParams,
+} from './feedback';
 export { Inference, type InferenceRunResponse, type InferenceRunParams } from './inference';
 export { Tune, type OptimizationStatus } from './tune/tune';
