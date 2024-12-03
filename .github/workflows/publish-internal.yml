@@ -1,0 +1,22 @@
+name: Publish the NPM package to the GitHub Package Registry
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    concurrency: publish-internal
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      # Setup .npmrc file to publish to GitHub Packages
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@2pir-ai'
+      - run: yarn
+      - run: yarn npm publish --access restricted
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
