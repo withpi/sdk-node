@@ -69,3 +69,14 @@ Methods:
 
 - <code title="post /contracts/generate_dimensions">client.contracts.<a href="./src/resources/contracts.ts">generateDimensions</a>({ ...params }) -> Contract</code>
 - <code title="post /contracts/score">client.contracts.<a href="./src/resources/contracts.ts">score</a>({ ...params }) -> ContractsScoreMetrics</code>
+
+# Feedback
+
+Types:
+
+- <code><a href="./src/resources/feedback.ts">FeedbackTopicCluster</a></code>
+- <code><a href="./src/resources/feedback.ts">FeedbackClusterResponse</a></code>
+
+Methods:
+
+- <code title="post /feedback/cluster">client.feedback.<a href="./src/resources/feedback.ts">cluster</a>([ ...feedbacks ]) -> FeedbackClusterResponse</code>
