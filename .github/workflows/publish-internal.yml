@@ -17,6 +17,6 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           scope: '@2pir-ai'
       - run: yarn
-      - run: yarn npm publish --access restricted
+      - run: yarn build && (cd dist; yarn publish --access restricted)
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
