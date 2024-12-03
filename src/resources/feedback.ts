@@ -39,10 +39,10 @@ export interface FeedbackTopicCluster {
 
 export type FeedbackClusterResponse = Array<FeedbackTopicCluster>;
 
-export type FeedbackClusterParams = Array<FeedbackClusterParams.Body>;
+export type FeedbackClusterParams = Array<FeedbackClusterParams.Feedback>;
 
 export namespace FeedbackClusterParams {
-  export interface Body {
+  export interface Feedback {
     /**
      * The comment on the feedback
      */
