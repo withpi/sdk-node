@@ -2,7 +2,13 @@
 
 import { APIResource } from '../../resource';
 import * as InputsAPI from './inputs/inputs';
-import { InputEvaluateParams, Inputs } from './inputs/inputs';
+import {
+  InputClusterParams,
+  InputClusterResponse,
+  InputEvaluateParams,
+  InputTopicCluster,
+  Inputs,
+} from './inputs/inputs';
 
 export class Data extends APIResource {
   inputs: InputsAPI.Inputs = new InputsAPI.Inputs(this._client);
@@ -58,5 +64,11 @@ export declare namespace Data {
     type InputEvaluationMetrics as InputEvaluationMetrics,
   };
 
-  export { Inputs as Inputs, type InputEvaluateParams as InputEvaluateParams };
+  export {
+    Inputs as Inputs,
+    type InputTopicCluster as InputTopicCluster,
+    type InputClusterResponse as InputClusterResponse,
+    type InputClusterParams as InputClusterParams,
+    type InputEvaluateParams as InputEvaluateParams,
+  };
 }
