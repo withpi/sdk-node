@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.9 (2024-12-04)
+
+Full Changelog: [v0.1.0-alpha.8...v0.1.0-alpha.9](https://github.com/2pir-ai/sdk-node/compare/v0.1.0-alpha.8...v0.1.0-alpha.9)
+
+### Features
+
+* Automatically push to packages on merge ([#51](https://github.com/2pir-ai/sdk-node/issues/51)) ([7553f7c](https://github.com/2pir-ai/sdk-node/commit/7553f7cef4bb753420814fbc9c863bb4005be73d))
+
 ## 0.1.0-alpha.8 (2024-12-04)
 
 Full Changelog: [v0.1.0-alpha.7...v0.1.0-alpha.8](https://github.com/2pir-ai/sdk-node/compare/v0.1.0-alpha.7...v0.1.0-alpha.8)
