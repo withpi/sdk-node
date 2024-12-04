@@ -5,4 +5,10 @@ export {
   type GenerateFromSeedStreamMessagesResponse,
   type GenerateFromSeedGenerateParams,
 } from './generate-from-seeds';
-export { Inputs, type InputEvaluateParams } from './inputs';
+export {
+  Inputs,
+  type InputTopicCluster,
+  type InputClusterResponse,
+  type InputClusterParams,
+  type InputEvaluateParams,
+} from './inputs';
