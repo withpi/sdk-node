@@ -1,6 +1,8 @@
 name: Publish the NPM package to the GitHub Package Registry
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 jobs:
   build:
     concurrency: publish-internal
