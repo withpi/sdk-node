@@ -48,10 +48,10 @@ export interface InputTopicCluster {
 
 export type InputClusterResponse = Array<InputTopicCluster>;
 
-export type InputClusterParams = Array<InputClusterParams.Body>;
+export type InputClusterParams = Array<InputClusterParams.Input>;
 
 export namespace InputClusterParams {
-  export interface Body {
+  export interface Input {
     /**
      * The identifier of the input
      */

@@ -27,17 +27,26 @@ export interface ContractsScoreMetrics {
   /**
    * The score components for each dimension
    */
-  scores: Record<string, number>;
+  dimension_scores: Record<string, ContractsScoreMetrics.DimensionScores>;
 
   /**
    * The total score of the contract
    */
   total_score: number;
+}
 
-  /**
-   * Map of score names to their weights in the overall score
-   */
-  weights: Record<string, number>;
+export namespace ContractsScoreMetrics {
+  export interface DimensionScores {
+    /**
+     * The score components for each subdimension
+     */
+    subdimension_scores: Record<string, number>;
+
+    /**
+     * The total score of the dimension
+     */
+    total_score: number;
+  }
 }
 
 export interface ContractGenerateDimensionsParams {
