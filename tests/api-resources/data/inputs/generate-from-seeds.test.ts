@@ -28,7 +28,10 @@ describe('resource generateFromSeeds', () => {
   });
 
   test('generate: only required params', async () => {
-    const responsePromise = client.data.inputs.generateFromSeeds.generate(['string']);
+    const responsePromise = client.data.inputs.generateFromSeeds.generate({
+      num_inputs: 0,
+      seeds: ['string'],
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -39,7 +42,10 @@ describe('resource generateFromSeeds', () => {
   });
 
   test('generate: required and optional params', async () => {
-    const response = await client.data.inputs.generateFromSeeds.generate(['string']);
+    const response = await client.data.inputs.generateFromSeeds.generate({
+      num_inputs: 0,
+      seeds: ['string'],
+    });
   });
 
   test('streamMessages', async () => {
