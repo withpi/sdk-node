@@ -189,7 +189,7 @@ const { data: contractsScoreMetrics, response: raw } = await client.contracts
   })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(contractsScoreMetrics.scores);
+console.log(contractsScoreMetrics.dimension_scores);
 ```
 
 ### Making custom/undocumented requests
