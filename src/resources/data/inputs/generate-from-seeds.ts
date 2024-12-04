@@ -16,10 +16,15 @@ export class GenerateFromSeeds extends APIResource {
    * Generates input data from a list of seeds
    */
   generate(
-    body: GenerateFromSeedGenerateParams,
+    params: GenerateFromSeedGenerateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<DataAPI.DataGenerationStatus> {
-    return this._client.post('/data/input/generate_from_seeds', { body, ...options });
+    const { num_inputs, seeds } = params;
+    return this._client.post('/data/input/generate_from_seeds', {
+      query: { num_inputs },
+      body: seeds,
+      ...options,
+    });
   }
 
   /**
@@ -35,7 +40,17 @@ export class GenerateFromSeeds extends APIResource {
 
 export type GenerateFromSeedStreamMessagesResponse = string;
 
-export type GenerateFromSeedGenerateParams = Array<string>;
+export interface GenerateFromSeedGenerateParams {
+  /**
+   * Query param:
+   */
+  num_inputs: number;
+
+  /**
+   * Body param:
+   */
+  seeds: Array<string>;
+}
 
 export declare namespace GenerateFromSeeds {
   export {
