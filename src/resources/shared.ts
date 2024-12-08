@@ -62,7 +62,7 @@ export interface SubDimension {
   /**
    * The type of scoring performed for this dimension
    */
-  scoring_type: 'llm_as_a_judge' | 'glean' | 'glean_structured_detector' | 'python_code';
+  scoring_type: 'llm_as_a_judge' | 'glean_structured_detector' | 'python_code';
 
   /**
    * The weight of the subdimension. The sum of subdimension weights will be
