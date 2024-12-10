@@ -60,14 +60,9 @@ export interface SubDimension {
   parameters: Array<number> | null;
 
   /**
-   * The judge used for scoring this dimension (for llm_as_a_judge type)
-   */
-  scoring_method: 'twopir_judge' | null;
-
-  /**
    * The type of scoring performed for this dimension
    */
-  scoring_type: 'llm_as_a_judge';
+  scoring_type: 'llm_as_a_judge' | 'glean_structured_detector' | 'python_code';
 
   /**
    * The weight of the subdimension. The sum of subdimension weights will be
