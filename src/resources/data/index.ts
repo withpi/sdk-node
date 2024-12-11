@@ -7,4 +7,5 @@ export {
   type InputClusterResponse,
   type InputClusterParams,
   type InputEvaluateParams,
+  type InputGenerateSeedsParams,
 } from './inputs/index';

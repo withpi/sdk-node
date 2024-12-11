@@ -34,6 +34,7 @@ Methods:
 
 - <code title="post /data/input/cluster">client.data.inputs.<a href="./src/resources/data/inputs/inputs.ts">cluster</a>([ ...inputs ]) -> InputClusterResponse</code>
 - <code title="post /data/input/evaluate">client.data.inputs.<a href="./src/resources/data/inputs/inputs.ts">evaluate</a>({ ...params }) -> InputEvaluationMetrics</code>
+- <code title="post /data/input/generate_seeds">client.data.inputs.<a href="./src/resources/data/inputs/inputs.ts">generateSeeds</a>({ ...params }) -> DataGenerationStatus</code>
 
 ### GenerateFromSeeds
 
