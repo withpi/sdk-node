@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.1.0-alpha.11 (2024-12-11)
+
+Full Changelog: [v0.1.0-alpha.10...v0.1.0-alpha.11](https://github.com/2pir-ai/sdk-node/compare/v0.1.0-alpha.10...v0.1.0-alpha.11)
+
+### Features
+
+* **api:** manual updates ([#63](https://github.com/2pir-ai/sdk-node/issues/63)) ([b3ec522](https://github.com/2pir-ai/sdk-node/commit/b3ec522995f2710d0a1c2b6a69122447aeae39d9))
+* **api:** manual updates ([#64](https://github.com/2pir-ai/sdk-node/issues/64)) ([9829f5c](https://github.com/2pir-ai/sdk-node/commit/9829f5c3a36eb4c79e31f2ee269f83693804bc73))
+* **api:** manual updates ([#65](https://github.com/2pir-ai/sdk-node/issues/65)) ([998a651](https://github.com/2pir-ai/sdk-node/commit/998a651d658ec1287d5afd11acf4d976c578f4de))
+
+
+### Chores
+
+* **internal:** bump cross-spawn to v7.0.6 ([#61](https://github.com/2pir-ai/sdk-node/issues/61)) ([cb5b7d4](https://github.com/2pir-ai/sdk-node/commit/cb5b7d4d48bb40bfa8560cc4971f4c7dde62a5ae))
+* **internal:** codegen related update ([#62](https://github.com/2pir-ai/sdk-node/issues/62)) ([72afe38](https://github.com/2pir-ai/sdk-node/commit/72afe38e03d3f1f2990bd24a75b688b67a990d58))
+* **internal:** remove unnecessary getRequestClient function ([#59](https://github.com/2pir-ai/sdk-node/issues/59)) ([226814f](https://github.com/2pir-ai/sdk-node/commit/226814f48e71781229f3fee8a1d4a3c7814ea3fc))
+
 ## 0.1.0-alpha.10 (2024-12-08)
 
 Full Changelog: [v0.1.0-alpha.9...v0.1.0-alpha.10](https://github.com/2pir-ai/sdk-node/compare/v0.1.0-alpha.9...v0.1.0-alpha.10)
