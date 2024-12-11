@@ -39,8 +39,8 @@ async function main() {
         { description: 'Test whether the LLM responds to the query', label: 'Topicality' },
       ],
     },
-    llm_input: { query: 'Help me with my problem' },
-    llm_output: 'llm_output',
+    llm_input: 'Help me with my problem',
+    llm_output: 'Of course I can help with that',
   });
 
   console.log(contractsScoreMetrics.scores);
