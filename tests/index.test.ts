@@ -151,13 +151,13 @@ describe('instantiate client', () => {
     test('empty env variable', () => {
       process.env['TWOPIR_BASE_URL'] = ''; // empty
       const client = new Twopir({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('https://api.2pir.ai/v1');
+      expect(client.baseURL).toEqual('https://api.withpi.ai/v1');
     });
 
     test('blank env variable', () => {
       process.env['TWOPIR_BASE_URL'] = '  '; // blank
       const client = new Twopir({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('https://api.2pir.ai/v1');
+      expect(client.baseURL).toEqual('https://api.withpi.ai/v1');
     });
   });
 

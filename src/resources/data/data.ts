@@ -6,6 +6,7 @@ import {
   InputClusterParams,
   InputClusterResponse,
   InputEvaluateParams,
+  InputGenerateSeedsParams,
   InputTopicCluster,
   Inputs,
 } from './inputs/inputs';
@@ -44,16 +45,6 @@ export interface InputEvaluationMetrics {
    * The 0-1 score with 1 meaning filter
    */
   filter_score: number;
-
-  /**
-   * The score components for each dimension
-   */
-  scores: Record<string, number>;
-
-  /**
-   * Map of score names to their weights in the overall score
-   */
-  weights: Record<string, number>;
 }
 
 Data.Inputs = Inputs;
@@ -70,5 +61,6 @@ export declare namespace Data {
     type InputClusterResponse as InputClusterResponse,
     type InputClusterParams as InputClusterParams,
     type InputEvaluateParams as InputEvaluateParams,
+    type InputGenerateSeedsParams as InputGenerateSeedsParams,
   };
 }

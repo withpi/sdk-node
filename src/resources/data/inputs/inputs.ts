@@ -32,6 +32,16 @@ export class Inputs extends APIResource {
   ): Core.APIPromise<DataAPI.InputEvaluationMetrics> {
     return this._client.post('/data/input/evaluate', { body, ...options });
   }
+
+  /**
+   * Generates seed messages for input data.
+   */
+  generateSeeds(
+    body: InputGenerateSeedsParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<DataAPI.DataGenerationStatus> {
+    return this._client.post('/data/input/generate_seeds', { body, ...options });
+  }
 }
 
 export interface InputTopicCluster {
@@ -76,6 +86,37 @@ export interface InputEvaluateParams {
   llm_input: string | Record<string, string>;
 }
 
+export interface InputGenerateSeedsParams {
+  /**
+   * The contract to generate input seeds for.
+   */
+  contract: Shared.Contract;
+
+  /**
+   * Number of input seeds to generate.
+   */
+  num_inputs: number;
+
+  /**
+   * The types of context to generate for the input prompts if specified. Otherwise
+   * the context_types will be inferred.
+   */
+  context_types?: Array<
+    | 'none'
+    | 'article'
+    | 'conversation'
+    | 'debate'
+    | 'webpage'
+    | 'passage'
+    | 'chat history'
+    | 'email thread'
+    | 'text messages'
+    | 'financial document'
+    | 'scientific paper'
+    | 'slide presentation description'
+  > | null;
+}
+
 Inputs.GenerateFromSeeds = GenerateFromSeeds;
 
 export declare namespace Inputs {
@@ -84,6 +125,7 @@ export declare namespace Inputs {
     type InputClusterResponse as InputClusterResponse,
     type InputClusterParams as InputClusterParams,
     type InputEvaluateParams as InputEvaluateParams,
+    type InputGenerateSeedsParams as InputGenerateSeedsParams,
   };
 
   export {

@@ -45,14 +45,16 @@ describe('resource inputs', () => {
         name: 'name',
         dimensions: [
           {
-            id: 'id',
             description: 'description',
+            label: 'label',
             sub_dimensions: [
               {
-                id: 'id',
                 description: 'description',
+                label: 'label',
+                scoring_type: 'LLM_AS_A_JUDGE',
+                huggingface_url: 'huggingface_url',
                 parameters: [0],
-                scoring_type: 'llm_as_a_judge',
+                python_code: 'python_code',
                 weight: 0,
               },
             ],
@@ -61,6 +63,49 @@ describe('resource inputs', () => {
         ],
       },
       llm_input: 'string',
+    });
+  });
+
+  test('generateSeeds: only required params', async () => {
+    const responsePromise = client.data.inputs.generateSeeds({
+      contract: { description: 'description', name: 'name' },
+      num_inputs: 0,
+    });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('generateSeeds: required and optional params', async () => {
+    const response = await client.data.inputs.generateSeeds({
+      contract: {
+        description: 'description',
+        name: 'name',
+        dimensions: [
+          {
+            description: 'description',
+            label: 'label',
+            sub_dimensions: [
+              {
+                description: 'description',
+                label: 'label',
+                scoring_type: 'LLM_AS_A_JUDGE',
+                huggingface_url: 'huggingface_url',
+                parameters: [0],
+                python_code: 'python_code',
+                weight: 0,
+              },
+            ],
+            weight: 0,
+          },
+        ],
+      },
+      num_inputs: 0,
+      context_types: ['none'],
     });
   });
 });
