@@ -4,7 +4,7 @@
 
 This library provides convenient access to the Twopir REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found on [docs.2pir.ai](https://docs.2pir.ai). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [docs.withpi.ai](https://docs.withpi.ai). The full API of this library can be found in [api.md](api.md).
 
 It is generated with [Stainless](https://www.stainlessapi.com/).
 
@@ -39,8 +39,8 @@ async function main() {
         { description: 'Test whether the LLM responds to the query', label: 'Topicality' },
       ],
     },
-    llm_input: { query: 'Help me with my problem' },
-    llm_output: 'llm_output',
+    llm_input: 'Help me with my problem',
+    llm_output: 'Of course I can help with that',
   });
 
   console.log(contractsScoreMetrics.scores);
@@ -63,9 +63,16 @@ const client = new Twopir({
 
 async function main() {
   const params: Twopir.ContractScoreParams = {
-    contract: { description: 'description', name: 'name' },
-    llm_input: 'string',
-    llm_output: 'llm_output',
+    contract: {
+      name: 'My Application',
+      description: 'You are a helpful assistant',
+      dimensions: [
+        { description: 'Test whether the LLM follows instructions', label: 'Instruction Following' },
+        { description: 'Test whether the LLM responds to the query', label: 'Topicality' },
+      ],
+    },
+    llm_input: 'Help me with my problem',
+    llm_output: 'Of course I can help with that',
   };
   const contractsScoreMetrics: Twopir.ContractsScoreMetrics = await client.contracts.score(params);
 }
@@ -86,9 +93,16 @@ a subclass of `APIError` will be thrown:
 async function main() {
   const contractsScoreMetrics = await client.contracts
     .score({
-      contract: { description: 'description', name: 'name' },
-      llm_input: 'string',
-      llm_output: 'llm_output',
+      contract: {
+        name: 'My Application',
+        description: 'You are a helpful assistant',
+        dimensions: [
+          { description: 'Test whether the LLM follows instructions', label: 'Instruction Following' },
+          { description: 'Test whether the LLM responds to the query', label: 'Topicality' },
+        ],
+      },
+      llm_input: 'Help me with my problem',
+      llm_output: 'Of course I can help with that',
     })
     .catch(async (err) => {
       if (err instanceof Twopir.APIError) {
@@ -133,7 +147,7 @@ const client = new Twopir({
 });
 
 // Or, configure per-request:
-await client.contracts.score({ contract: { description: 'description', name: 'name' }, llm_input: 'string', llm_output: 'llm_output' }, {
+await client.contracts.score({ contract: { name: 'My Application', description: 'You are a helpful assistant', dimensions: [{ description: 'Test whether the LLM follows instructions', label: 'Instruction Following' }, { description: 'Test whether the LLM responds to the query', label: 'Topicality' }] }, llm_input: 'Help me with my problem', llm_output: 'Of course I can help with that' }, {
   maxRetries: 5,
 });
 ```
@@ -150,7 +164,7 @@ const client = new Twopir({
 });
 
 // Override per-request:
-await client.contracts.score({ contract: { description: 'description', name: 'name' }, llm_input: 'string', llm_output: 'llm_output' }, {
+await client.contracts.score({ contract: { name: 'My Application', description: 'You are a helpful assistant', dimensions: [{ description: 'Test whether the LLM follows instructions', label: 'Instruction Following' }, { description: 'Test whether the LLM responds to the query', label: 'Topicality' }] }, llm_input: 'Help me with my problem', llm_output: 'Of course I can help with that' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -173,9 +187,16 @@ const client = new Twopir();
 
 const response = await client.contracts
   .score({
-    contract: { description: 'description', name: 'name' },
-    llm_input: 'string',
-    llm_output: 'llm_output',
+    contract: {
+      name: 'My Application',
+      description: 'You are a helpful assistant',
+      dimensions: [
+        { description: 'Test whether the LLM follows instructions', label: 'Instruction Following' },
+        { description: 'Test whether the LLM responds to the query', label: 'Topicality' },
+      ],
+    },
+    llm_input: 'Help me with my problem',
+    llm_output: 'Of course I can help with that',
   })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
@@ -183,9 +204,16 @@ console.log(response.statusText); // access the underlying Response object
 
 const { data: contractsScoreMetrics, response: raw } = await client.contracts
   .score({
-    contract: { description: 'description', name: 'name' },
-    llm_input: 'string',
-    llm_output: 'llm_output',
+    contract: {
+      name: 'My Application',
+      description: 'You are a helpful assistant',
+      dimensions: [
+        { description: 'Test whether the LLM follows instructions', label: 'Instruction Following' },
+        { description: 'Test whether the LLM responds to the query', label: 'Topicality' },
+      ],
+    },
+    llm_input: 'Help me with my problem',
+    llm_output: 'Of course I can help with that',
   })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
@@ -294,7 +322,18 @@ const client = new Twopir({
 
 // Override per-request:
 await client.contracts.score(
-  { contract: { description: 'description', name: 'name' }, llm_input: 'string', llm_output: 'llm_output' },
+  {
+    contract: {
+      name: 'My Application',
+      description: 'You are a helpful assistant',
+      dimensions: [
+        { description: 'Test whether the LLM follows instructions', label: 'Instruction Following' },
+        { description: 'Test whether the LLM responds to the query', label: 'Topicality' },
+      ],
+    },
+    llm_input: 'Help me with my problem',
+    llm_output: 'Of course I can help with that',
+  },
   {
     httpAgent: new http.Agent({ keepAlive: false }),
   },
