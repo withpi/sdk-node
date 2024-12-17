@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.12 (2024-12-17)
+
+Full Changelog: [v0.1.0-alpha.11...v0.1.0-alpha.12](https://github.com/2pir-ai/sdk-node/compare/v0.1.0-alpha.11...v0.1.0-alpha.12)
+
+### Features
+
+* **api:** manual updates ([#69](https://github.com/2pir-ai/sdk-node/issues/69)) ([7d86ef3](https://github.com/2pir-ai/sdk-node/commit/7d86ef3fa3bbaafd56f5eb6fd0cd33dea3e9cd9b))
+
+
+### Chores
+
+* **internal:** update isAbsoluteURL ([#67](https://github.com/2pir-ai/sdk-node/issues/67)) ([bb8714b](https://github.com/2pir-ai/sdk-node/commit/bb8714baa513af37225af4c60f2acec1e29bea00))
+
 ## 0.1.0-alpha.11 (2024-12-11)
 
 Full Changelog: [v0.1.0-alpha.10...v0.1.0-alpha.11](https://github.com/2pir-ai/sdk-node/compare/v0.1.0-alpha.10...v0.1.0-alpha.11)
