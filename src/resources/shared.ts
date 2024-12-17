@@ -34,6 +34,20 @@ export interface Dimension {
   sub_dimensions: Array<SubDimension>;
 
   /**
+   * If `action_dimension` is set, this node is a part of short-circuit subtree. If
+   * the score of the action_dimension is > 0.5, then evaluate the node and return
+   * the actual score. If it is <= 0.5 return -1. The higher level node will ignore
+   * the -1 scores and thus we achieve the short-circuit behavior.
+   */
+  action_dimension?: SubDimension | null;
+
+  /**
+   * If `action_on_low_score = True`, the node emits the real value if action
+   * dimension score is <= 0.5 and it returns -1 otherwise.
+   */
+  action_on_low_score?: boolean;
+
+  /**
    * The weight of the dimension The sum of dimension weights will be normalized to
    * one internally. A higher weight counts for more when aggregating this dimension
    * is aggregated into the final score.
@@ -55,23 +69,37 @@ export interface SubDimension {
   /**
    * The type of scoring performed for this dimension
    */
-  scoring_type: 'LLM_AS_A_JUDGE' | 'HUGGINGFACE_SCORER' | 'PYTHON_CODE';
+  scoring_type: 'PI_SCORER' | 'HUGGINGFACE_SCORER' | 'PYTHON_CODE';
+
+  /**
+   * If `action_dimension` is set, this node is a part of short-circuit subtree. If
+   * the score of the action_dimension is > 0.5, then evaluate the node and return
+   * the actual score. If it is <= 0.5 return -1. The higher level node will ignore
+   * the -1 scores and thus we achieve the short-circuit behavior.
+   */
+  action_dimension?: SubDimension | null;
+
+  /**
+   * If `action_on_low_score = True`, the node emits the real value if action
+   * dimension score is <= 0.5 and it returns -1 otherwise.
+   */
+  action_on_low_score?: boolean;
 
   /**
    * The URL of the HuggingFace model to use for scoring. Only relevant for
-   * scoring_type of hugingface_scorer
+   * scoring_type of HUGGINGFACE_SCORER
    */
   huggingface_url?: string | null;
 
   /**
-   * The learned parameters for the scoring method. For llm_as_a_judge type, this
+   * The learned parameters for the scoring method. For PI_SCORER type, this
    * corresponds to the values assigned to each Likert point from 1-5, normalized to
    * a 0-1 range.
    */
   parameters?: Array<number> | null;
 
   /**
-   * The PYTHON code associated the python_code DimensionScoringType.
+   * The PYTHON code associated the PYTHON_CODE DimensionScoringType.
    */
   python_code?: string | null;
 
