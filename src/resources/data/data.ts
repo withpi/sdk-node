@@ -37,7 +37,7 @@ export interface DataGenerationStatus {
   /**
    * Current state of the job
    */
-  state: 'running' | 'done' | 'error';
+  state: 'queued' | 'running' | 'done' | 'error';
 }
 
 export interface InputEvaluationMetrics {

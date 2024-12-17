@@ -32,7 +32,7 @@ export interface OptimizationStatus {
   /**
    * Current state of the job
    */
-  state: 'running' | 'done' | 'error';
+  state: 'queued' | 'running' | 'done' | 'error';
 }
 
 Tune.Prompt = Prompt;
