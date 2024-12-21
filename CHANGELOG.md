@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.1.0-alpha.13 (2024-12-21)
+
+Full Changelog: [v0.1.0-alpha.12...v0.1.0-alpha.13](https://github.com/2pir-ai/sdk-node/compare/v0.1.0-alpha.12...v0.1.0-alpha.13)
+
+### Bug Fixes
+
+* **client:** normalize method ([#73](https://github.com/2pir-ai/sdk-node/issues/73)) ([d324b3f](https://github.com/2pir-ai/sdk-node/commit/d324b3f7739166f4224ecf0ea38cd85614efe757))
+
+
+### Chores
+
+* **internal:** codegen related update ([#74](https://github.com/2pir-ai/sdk-node/issues/74)) ([6dd8919](https://github.com/2pir-ai/sdk-node/commit/6dd8919e004173978fcf2ccad97821e3eab76128))
+* **internal:** codegen related update ([#75](https://github.com/2pir-ai/sdk-node/issues/75)) ([a7d1bf0](https://github.com/2pir-ai/sdk-node/commit/a7d1bf0f6718cb70c8d26b68b6d6422c59d14740))
+* **internal:** fix some typos ([#71](https://github.com/2pir-ai/sdk-node/issues/71)) ([2a94242](https://github.com/2pir-ai/sdk-node/commit/2a942422afc1059ab96043da02bca1dad970d13b))
+
+
+### Documentation
+
+* minor formatting changes ([#76](https://github.com/2pir-ai/sdk-node/issues/76)) ([0927590](https://github.com/2pir-ai/sdk-node/commit/0927590a3f72aeb87679294257b2857cb2f9ce04))
+
 ## 0.1.0-alpha.12 (2024-12-17)
 
 Full Changelog: [v0.1.0-alpha.11...v0.1.0-alpha.12](https://github.com/2pir-ai/sdk-node/compare/v0.1.0-alpha.11...v0.1.0-alpha.12)
