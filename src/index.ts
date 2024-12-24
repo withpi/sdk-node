@@ -17,7 +17,7 @@ import {
   FeedbackClusterResponse,
   FeedbackTopicCluster,
 } from './resources/feedback';
-import { Inference, InferenceRunParams, InferenceRunResponse } from './resources/inference';
+import { Inference } from './resources/inference';
 import { Data, DataGenerationStatus, InputEvaluationMetrics } from './resources/data/data';
 import { OptimizationStatus, Tune } from './resources/tune/tune';
 
@@ -184,11 +184,7 @@ Twopir.Feedback = Feedback;
 export declare namespace Twopir {
   export type RequestOptions = Core.RequestOptions;
 
-  export {
-    Inference as Inference,
-    type InferenceRunResponse as InferenceRunResponse,
-    type InferenceRunParams as InferenceRunParams,
-  };
+  export { Inference as Inference };
 
   export {
     Data as Data,
