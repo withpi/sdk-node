@@ -8,14 +8,6 @@ Types:
 
 # Inference
 
-Types:
-
-- <code><a href="./src/resources/inference.ts">InferenceRunResponse</a></code>
-
-Methods:
-
-- <code title="post /inference/run">client.inference.<a href="./src/resources/inference.ts">run</a>({ ...params }) -> InferenceRunResponse</code>
-
 # Data
 
 Types:
