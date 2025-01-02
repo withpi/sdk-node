@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-alpha.14 (2025-01-02)
+
+Full Changelog: [v0.1.0-alpha.13...v0.1.0-alpha.14](https://github.com/2pir-ai/sdk-node/compare/v0.1.0-alpha.13...v0.1.0-alpha.14)
+
+### Chores
+
+* **internal:** codegen related update ([#75](https://github.com/2pir-ai/sdk-node/issues/75)) ([01423c2](https://github.com/2pir-ai/sdk-node/commit/01423c236d5d9227dad30984894eaf61d0e1bfba))
+* **internal:** codegen related update ([#79](https://github.com/2pir-ai/sdk-node/issues/79)) ([486c5c6](https://github.com/2pir-ai/sdk-node/commit/486c5c60f26e5d93ec6ce1911570e3a284ca16b3))
+* **internal:** version bump ([#77](https://github.com/2pir-ai/sdk-node/issues/77)) ([67549c1](https://github.com/2pir-ai/sdk-node/commit/67549c100a68f38d693b51211c365611a64c6479))
+
+
+### Documentation
+
+* minor formatting changes ([#76](https://github.com/2pir-ai/sdk-node/issues/76)) ([ed00d16](https://github.com/2pir-ai/sdk-node/commit/ed00d1627c1ab88ad874330eda893e9388b6da77))
+
 ## 0.1.0-alpha.13 (2024-12-21)
 
 Full Changelog: [v0.1.0-alpha.12...v0.1.0-alpha.13](https://github.com/2pir-ai/sdk-node/compare/v0.1.0-alpha.12...v0.1.0-alpha.13)
