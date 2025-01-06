@@ -24,7 +24,7 @@ export class Inputs extends APIResource {
   }
 
   /**
-   * Evaluates an input against a contract
+   * Evaluates inputs against a contract description
    */
   evaluate(
     body: InputEvaluateParams,
@@ -81,9 +81,9 @@ export interface InputEvaluateParams {
   contract: Shared.Contract;
 
   /**
-   * The input to evaluate
+   * The inputs to evaluate
    */
-  llm_input: string | Record<string, string>;
+  llm_inputs: Array<string | Record<string, string>>;
 }
 
 export interface InputGenerateSeedsParams {

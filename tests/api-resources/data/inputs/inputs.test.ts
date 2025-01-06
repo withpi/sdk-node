@@ -27,7 +27,7 @@ describe('resource inputs', () => {
   test('evaluate: only required params', async () => {
     const responsePromise = client.data.inputs.evaluate({
       contract: { description: 'description', name: 'name' },
-      llm_input: 'string',
+      llm_inputs: ['string'],
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -74,7 +74,7 @@ describe('resource inputs', () => {
           },
         ],
       },
-      llm_input: 'string',
+      llm_inputs: ['string'],
     });
   });
 

@@ -69,10 +69,10 @@ export namespace FeedbackClusterParams {
     rating: 'positive' | 'negative';
 
     /**
-     * The source label of the feedback. When computing cluster statistics, per-source
+     * The source labels of the feedback. When computing cluster statistics, per-source
      * statistics will be maintained.
      */
-    source: 'internal' | 'external';
+    sources?: Array<string> | null;
   }
 }
 
