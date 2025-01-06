@@ -14,5 +14,5 @@ export {
   type FeedbackClusterResponse,
   type FeedbackClusterParams,
 } from './feedback';
-export { Inference, type InferenceRunResponse, type InferenceRunParams } from './inference';
+export { Inference } from './inference';
 export { Tune, type OptimizationStatus } from './tune/tune';
