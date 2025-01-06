@@ -49,8 +49,9 @@ describe('resource prompt', () => {
     const responsePromise = client.tune.prompt.optimize({
       contract: { description: 'description', name: 'name' },
       examples: [{ llm_input: 'string', llm_output: 'llm_output' }],
+      initial_system_instruction: 'initial_system_instruction',
       model_id: 'gpt-4o-mini',
-      tuning_algorithm: 'pi',
+      tuning_algorithm: 'PI',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -98,8 +99,9 @@ describe('resource prompt', () => {
         ],
       },
       examples: [{ llm_input: 'string', llm_output: 'llm_output' }],
+      initial_system_instruction: 'initial_system_instruction',
       model_id: 'gpt-4o-mini',
-      tuning_algorithm: 'pi',
+      tuning_algorithm: 'PI',
     });
   });
 });
