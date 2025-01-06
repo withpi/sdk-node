@@ -37,14 +37,14 @@ export interface DataGenerationStatus {
   /**
    * Current state of the job
    */
-  state: 'queued' | 'running' | 'done' | 'error';
+  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
 }
 
 export interface InputEvaluationMetrics {
   /**
-   * The 0-1 score with 1 meaning filter
+   * The 0-1 scores mean the probability of being filtered
    */
-  filter_score: number;
+  filter_scores: Array<number>;
 }
 
 Data.Inputs = Inputs;

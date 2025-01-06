@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../resource';
-import * as Shared from '../shared';
 import * as PromptAPI from './prompt';
 import { Prompt, PromptGetDetailedMessagesResponse, PromptOptimizeParams } from './prompt';
 
@@ -10,15 +9,10 @@ export class Tune extends APIResource {
 }
 
 /**
- * OptimizationStatus is the status of a tuning job. The contract field is absent
- * unless the state is done.
+ * OptimizationStatus is the status of a tuning job. The optimized_prompt_messages
+ * field is an empty list unless the state is done.
  */
 export interface OptimizationStatus {
-  /**
-   * The optimized contract. Absent unless state is done
-   */
-  contract: Shared.Contract | null;
-
   /**
    * Detailed status of the job
    */
@@ -30,9 +24,15 @@ export interface OptimizationStatus {
   job_id: string;
 
   /**
+   * The optimized prompt messages in the openai message format with the jinja
+   * {{ input }} variable for the next user prompt
+   */
+  optimized_prompt_messages: Array<Record<string, string>>;
+
+  /**
    * Current state of the job
    */
-  state: 'queued' | 'running' | 'done' | 'error';
+  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
 }
 
 Tune.Prompt = Prompt;

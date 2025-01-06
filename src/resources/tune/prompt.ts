@@ -48,6 +48,11 @@ export interface PromptOptimizeParams {
   examples: Array<PromptOptimizeParams.Example>;
 
   /**
+   * The initial system instruction
+   */
+  initial_system_instruction: string;
+
+  /**
    * The model to use for generating responses
    */
   model_id: 'gpt-4o-mini' | 'mock-llm';
@@ -55,7 +60,7 @@ export interface PromptOptimizeParams {
   /**
    * The tuning algorithm to use
    */
-  tuning_algorithm: 'pi';
+  tuning_algorithm: 'PI' | 'DSPY';
 }
 
 export namespace PromptOptimizeParams {
