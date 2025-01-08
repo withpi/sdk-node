@@ -6,6 +6,7 @@ import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
 import {
+  ContractCalibrateParams,
   ContractGenerateDimensionsParams,
   ContractScoreParams,
   Contracts,
@@ -17,7 +18,6 @@ import {
   FeedbackClusterResponse,
   FeedbackTopicCluster,
 } from './resources/feedback';
-import { Inference } from './resources/inference';
 import { Data, DataGenerationStatus, InputEvaluationMetrics } from './resources/data/data';
 import { OptimizationStatus, Tune } from './resources/tune/tune';
 
@@ -134,7 +134,6 @@ export class Twopir extends Core.APIClient {
     this.apiKey = apiKey;
   }
 
-  inference: API.Inference = new API.Inference(this);
   data: API.Data = new API.Data(this);
   tune: API.Tune = new API.Tune(this);
   contracts: API.Contracts = new API.Contracts(this);
@@ -176,15 +175,12 @@ export class Twopir extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-Twopir.Inference = Inference;
 Twopir.Data = Data;
 Twopir.Tune = Tune;
 Twopir.Contracts = Contracts;
 Twopir.Feedback = Feedback;
 export declare namespace Twopir {
   export type RequestOptions = Core.RequestOptions;
-
-  export { Inference as Inference };
 
   export {
     Data as Data,
@@ -197,6 +193,7 @@ export declare namespace Twopir {
   export {
     Contracts as Contracts,
     type ContractsScoreMetrics as ContractsScoreMetrics,
+    type ContractCalibrateParams as ContractCalibrateParams,
     type ContractGenerateDimensionsParams as ContractGenerateDimensionsParams,
     type ContractScoreParams as ContractScoreParams,
   };

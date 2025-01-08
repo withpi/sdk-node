@@ -35,8 +35,28 @@ async function main() {
       name: 'My Application',
       description: 'You are a helpful assistant',
       dimensions: [
-        { description: 'Test whether the LLM follows instructions', label: 'Instruction Following' },
-        { description: 'Test whether the LLM responds to the query', label: 'Topicality' },
+        {
+          description: 'Test whether the LLM follows instructions',
+          label: 'Instruction Following Dimension',
+          sub_dimensions: [
+            {
+              label: 'Instruction Following',
+              description: 'Does the response follow the given instructions?',
+              scoring_type: 'PI_SCORER',
+            },
+          ],
+        },
+        {
+          description: 'Test whether the LLM responds to the query',
+          label: 'Topicality Dimension',
+          sub_dimensions: [
+            {
+              label: 'Topicality',
+              description: 'Does the response answer the given question?',
+              scoring_type: 'PI_SCORER',
+            },
+          ],
+        },
       ],
     },
     llm_input: 'Help me with my problem',
@@ -67,8 +87,28 @@ async function main() {
       name: 'My Application',
       description: 'You are a helpful assistant',
       dimensions: [
-        { description: 'Test whether the LLM follows instructions', label: 'Instruction Following' },
-        { description: 'Test whether the LLM responds to the query', label: 'Topicality' },
+        {
+          description: 'Test whether the LLM follows instructions',
+          label: 'Instruction Following Dimension',
+          sub_dimensions: [
+            {
+              label: 'Instruction Following',
+              description: 'Does the response follow the given instructions?',
+              scoring_type: 'PI_SCORER',
+            },
+          ],
+        },
+        {
+          description: 'Test whether the LLM responds to the query',
+          label: 'Topicality Dimension',
+          sub_dimensions: [
+            {
+              label: 'Topicality',
+              description: 'Does the response answer the given question?',
+              scoring_type: 'PI_SCORER',
+            },
+          ],
+        },
       ],
     },
     llm_input: 'Help me with my problem',
@@ -97,8 +137,28 @@ async function main() {
         name: 'My Application',
         description: 'You are a helpful assistant',
         dimensions: [
-          { description: 'Test whether the LLM follows instructions', label: 'Instruction Following' },
-          { description: 'Test whether the LLM responds to the query', label: 'Topicality' },
+          {
+            description: 'Test whether the LLM follows instructions',
+            label: 'Instruction Following Dimension',
+            sub_dimensions: [
+              {
+                label: 'Instruction Following',
+                description: 'Does the response follow the given instructions?',
+                scoring_type: 'PI_SCORER',
+              },
+            ],
+          },
+          {
+            description: 'Test whether the LLM responds to the query',
+            label: 'Topicality Dimension',
+            sub_dimensions: [
+              {
+                label: 'Topicality',
+                description: 'Does the response answer the given question?',
+                scoring_type: 'PI_SCORER',
+              },
+            ],
+          },
         ],
       },
       llm_input: 'Help me with my problem',
@@ -147,7 +207,7 @@ const client = new Twopir({
 });
 
 // Or, configure per-request:
-await client.contracts.score({ contract: { name: 'My Application', description: 'You are a helpful assistant', dimensions: [{ description: 'Test whether the LLM follows instructions', label: 'Instruction Following' }, { description: 'Test whether the LLM responds to the query', label: 'Topicality' }] }, llm_input: 'Help me with my problem', llm_output: 'Of course I can help with that' }, {
+await client.contracts.score({ contract: { name: 'My Application', description: 'You are a helpful assistant', dimensions: [{ description: 'Test whether the LLM follows instructions', label: 'Instruction Following Dimension', sub_dimensions: [{ label: 'Instruction Following', description: 'Does the response follow the given instructions?', scoring_type: 'PI_SCORER' }] }, { description: 'Test whether the LLM responds to the query', label: 'Topicality Dimension', sub_dimensions: [{ label: 'Topicality', description: 'Does the response answer the given question?', scoring_type: 'PI_SCORER' }] }] }, llm_input: 'Help me with my problem', llm_output: 'Of course I can help with that' }, {
   maxRetries: 5,
 });
 ```
@@ -164,7 +224,7 @@ const client = new Twopir({
 });
 
 // Override per-request:
-await client.contracts.score({ contract: { name: 'My Application', description: 'You are a helpful assistant', dimensions: [{ description: 'Test whether the LLM follows instructions', label: 'Instruction Following' }, { description: 'Test whether the LLM responds to the query', label: 'Topicality' }] }, llm_input: 'Help me with my problem', llm_output: 'Of course I can help with that' }, {
+await client.contracts.score({ contract: { name: 'My Application', description: 'You are a helpful assistant', dimensions: [{ description: 'Test whether the LLM follows instructions', label: 'Instruction Following Dimension', sub_dimensions: [{ label: 'Instruction Following', description: 'Does the response follow the given instructions?', scoring_type: 'PI_SCORER' }] }, { description: 'Test whether the LLM responds to the query', label: 'Topicality Dimension', sub_dimensions: [{ label: 'Topicality', description: 'Does the response answer the given question?', scoring_type: 'PI_SCORER' }] }] }, llm_input: 'Help me with my problem', llm_output: 'Of course I can help with that' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -191,8 +251,28 @@ const response = await client.contracts
       name: 'My Application',
       description: 'You are a helpful assistant',
       dimensions: [
-        { description: 'Test whether the LLM follows instructions', label: 'Instruction Following' },
-        { description: 'Test whether the LLM responds to the query', label: 'Topicality' },
+        {
+          description: 'Test whether the LLM follows instructions',
+          label: 'Instruction Following Dimension',
+          sub_dimensions: [
+            {
+              label: 'Instruction Following',
+              description: 'Does the response follow the given instructions?',
+              scoring_type: 'PI_SCORER',
+            },
+          ],
+        },
+        {
+          description: 'Test whether the LLM responds to the query',
+          label: 'Topicality Dimension',
+          sub_dimensions: [
+            {
+              label: 'Topicality',
+              description: 'Does the response answer the given question?',
+              scoring_type: 'PI_SCORER',
+            },
+          ],
+        },
       ],
     },
     llm_input: 'Help me with my problem',
@@ -208,8 +288,28 @@ const { data: contractsScoreMetrics, response: raw } = await client.contracts
       name: 'My Application',
       description: 'You are a helpful assistant',
       dimensions: [
-        { description: 'Test whether the LLM follows instructions', label: 'Instruction Following' },
-        { description: 'Test whether the LLM responds to the query', label: 'Topicality' },
+        {
+          description: 'Test whether the LLM follows instructions',
+          label: 'Instruction Following Dimension',
+          sub_dimensions: [
+            {
+              label: 'Instruction Following',
+              description: 'Does the response follow the given instructions?',
+              scoring_type: 'PI_SCORER',
+            },
+          ],
+        },
+        {
+          description: 'Test whether the LLM responds to the query',
+          label: 'Topicality Dimension',
+          sub_dimensions: [
+            {
+              label: 'Topicality',
+              description: 'Does the response answer the given question?',
+              scoring_type: 'PI_SCORER',
+            },
+          ],
+        },
       ],
     },
     llm_input: 'Help me with my problem',
@@ -327,8 +427,28 @@ await client.contracts.score(
       name: 'My Application',
       description: 'You are a helpful assistant',
       dimensions: [
-        { description: 'Test whether the LLM follows instructions', label: 'Instruction Following' },
-        { description: 'Test whether the LLM responds to the query', label: 'Topicality' },
+        {
+          description: 'Test whether the LLM follows instructions',
+          label: 'Instruction Following Dimension',
+          sub_dimensions: [
+            {
+              label: 'Instruction Following',
+              description: 'Does the response follow the given instructions?',
+              scoring_type: 'PI_SCORER',
+            },
+          ],
+        },
+        {
+          description: 'Test whether the LLM responds to the query',
+          label: 'Topicality Dimension',
+          sub_dimensions: [
+            {
+              label: 'Topicality',
+              description: 'Does the response answer the given question?',
+              scoring_type: 'PI_SCORER',
+            },
+          ],
+        },
       ],
     },
     llm_input: 'Help me with my problem',
