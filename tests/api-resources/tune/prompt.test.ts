@@ -100,7 +100,7 @@ describe('resource prompt', () => {
           },
         ],
       },
-      examples: [{ llm_input: 'string', llm_output: 'llm_output' }],
+      examples: [{ llm_input: 'string', llm_output: 'llm_output', rating: 'Strongly Agree' }],
       initial_system_instruction: 'initial_system_instruction',
       model_id: 'gpt-4o-mini',
       tuning_algorithm: 'PI',

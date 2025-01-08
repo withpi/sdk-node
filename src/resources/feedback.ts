@@ -29,7 +29,7 @@ export interface FeedbackTopicCluster {
   /**
    * The rating of the feedback in this cluster
    */
-  rating: 'positive' | 'negative';
+  rating: 'Strongly Agree' | 'Agree' | 'Neutral' | 'Disagree' | 'Strongly Disagree';
 
   /**
    * The topic of the feedback in this cluster
@@ -66,7 +66,7 @@ export namespace FeedbackClusterParams {
     /**
      * Structured text rating of this feedback.
      */
-    rating: 'positive' | 'negative';
+    rating: 'Strongly Agree' | 'Agree' | 'Neutral' | 'Disagree' | 'Strongly Disagree';
 
     /**
      * The source labels of the feedback. When computing cluster statistics, per-source
