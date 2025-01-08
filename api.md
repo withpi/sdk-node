@@ -6,8 +6,6 @@ Types:
 - <code><a href="./src/resources/shared.ts">Dimension</a></code>
 - <code><a href="./src/resources/shared.ts">SubDimension</a></code>
 
-# Inference
-
 # Data
 
 Types:
@@ -66,6 +64,7 @@ Types:
 
 Methods:
 
+- <code title="post /contracts/calibrate">client.contracts.<a href="./src/resources/contracts.ts">calibrate</a>({ ...params }) -> Contract</code>
 - <code title="post /contracts/generate_dimensions">client.contracts.<a href="./src/resources/contracts.ts">generateDimensions</a>({ ...params }) -> Contract</code>
 - <code title="post /contracts/score">client.contracts.<a href="./src/resources/contracts.ts">score</a>({ ...params }) -> ContractsScoreMetrics</code>
 

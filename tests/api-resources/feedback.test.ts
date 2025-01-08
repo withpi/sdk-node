@@ -16,7 +16,7 @@ describe('resource feedback', () => {
         identifier: 'identifier',
         llm_input: 'string',
         llm_output: 'llm_output',
-        rating: 'positive',
+        rating: 'Strongly Agree',
       },
     ]);
     const rawResponse = await responsePromise.asResponse();
@@ -35,7 +35,7 @@ describe('resource feedback', () => {
         identifier: 'identifier',
         llm_input: 'string',
         llm_output: 'llm_output',
-        rating: 'positive',
+        rating: 'Strongly Agree',
         sources: ['string'],
       },
     ]);

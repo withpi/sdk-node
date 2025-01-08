@@ -4,6 +4,7 @@ export * from './shared';
 export {
   Contracts,
   type ContractsScoreMetrics,
+  type ContractCalibrateParams,
   type ContractGenerateDimensionsParams,
   type ContractScoreParams,
 } from './contracts';
@@ -14,5 +15,4 @@ export {
   type FeedbackClusterResponse,
   type FeedbackClusterParams,
 } from './feedback';
-export { Inference } from './inference';
 export { Tune, type OptimizationStatus } from './tune/tune';

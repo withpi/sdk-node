@@ -9,6 +9,62 @@ const client = new Twopir({
 });
 
 describe('resource contracts', () => {
+  test('calibrate: only required params', async () => {
+    const responsePromise = client.contracts.calibrate({
+      contract: { description: 'description', name: 'name' },
+      examples: [{ llm_input: 'string', llm_output: 'llm_output' }],
+    });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('calibrate: required and optional params', async () => {
+    const response = await client.contracts.calibrate({
+      contract: {
+        description: 'description',
+        name: 'name',
+        dimensions: [
+          {
+            description: 'description',
+            label: 'label',
+            sub_dimensions: [
+              {
+                description: 'description',
+                label: 'label',
+                scoring_type: 'PI_SCORER',
+                action_dimension: null,
+                action_on_low_score: true,
+                huggingface_url: 'huggingface_url',
+                parameters: [0],
+                python_code: 'python_code',
+                weight: 0,
+              },
+            ],
+            action_dimension: {
+              description: 'description',
+              label: 'label',
+              scoring_type: 'PI_SCORER',
+              action_dimension: null,
+              action_on_low_score: true,
+              huggingface_url: 'huggingface_url',
+              parameters: [0],
+              python_code: 'python_code',
+              weight: 0,
+            },
+            action_on_low_score: true,
+            weight: 0,
+          },
+        ],
+      },
+      examples: [{ llm_input: 'string', llm_output: 'llm_output', rating: 'Strongly Agree' }],
+    });
+  });
+
   test('generateDimensions: only required params', async () => {
     const responsePromise = client.contracts.generateDimensions({
       contract: { description: 'description', name: 'name' },
