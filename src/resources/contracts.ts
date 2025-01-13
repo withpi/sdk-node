@@ -6,6 +6,13 @@ import * as Shared from './shared';
 
 export class Contracts extends APIResource {
   /**
+   * Calibrate the contract scoring dimension
+   */
+  calibrate(body: ContractCalibrateParams, options?: Core.RequestOptions): Core.APIPromise<Shared.Contract> {
+    return this._client.post('/contracts/calibrate', { body, ...options });
+  }
+
+  /**
    * Generates dimensions for a contract which will be used to evaluate it
    */
   generateDimensions(
@@ -49,6 +56,40 @@ export namespace ContractsScoreMetrics {
   }
 }
 
+export interface ContractCalibrateParams {
+  /**
+   * The contract to calibrate
+   */
+  contract: Shared.Contract;
+
+  /**
+   * Rated examples to use when calibrating the contract
+   */
+  examples: Array<ContractCalibrateParams.Example>;
+}
+
+export namespace ContractCalibrateParams {
+  /**
+   * An example for training or evaluation
+   */
+  export interface Example {
+    /**
+     * The input to evaluate
+     */
+    llm_input: string | Record<string, string>;
+
+    /**
+     * The output to evaluate
+     */
+    llm_output: string;
+
+    /**
+     * The rating of the llm_output given the llm_input
+     */
+    rating?: 'Strongly Agree' | 'Agree' | 'Neutral' | 'Disagree' | 'Strongly Disagree' | null;
+  }
+}
+
 export interface ContractGenerateDimensionsParams {
   contract: Shared.Contract;
 }
@@ -73,6 +114,7 @@ export interface ContractScoreParams {
 export declare namespace Contracts {
   export {
     type ContractsScoreMetrics as ContractsScoreMetrics,
+    type ContractCalibrateParams as ContractCalibrateParams,
     type ContractGenerateDimensionsParams as ContractGenerateDimensionsParams,
     type ContractScoreParams as ContractScoreParams,
   };
