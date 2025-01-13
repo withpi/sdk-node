@@ -24,7 +24,7 @@ export interface OptimizationStatus {
   job_id: string;
 
   /**
-   * The optimized prompt messages in the openai message format with the jinja
+   * The optimized prompt messages in the OpenAI message format with the jinja
    * {{ input }} variable for the next user prompt
    */
   optimized_prompt_messages: Array<Record<string, string>>;

@@ -70,7 +70,7 @@ export interface ContractCalibrateParams {
 
 export namespace ContractCalibrateParams {
   /**
-   * An example for training or evaluation
+   * An labeled example for training or evaluation
    */
   export interface Example {
     /**
@@ -86,7 +86,7 @@ export namespace ContractCalibrateParams {
     /**
      * The rating of the llm_output given the llm_input
      */
-    rating?: 'Strongly Agree' | 'Agree' | 'Neutral' | 'Disagree' | 'Strongly Disagree' | null;
+    rating: 'Strongly Agree' | 'Agree' | 'Neutral' | 'Disagree' | 'Strongly Disagree';
   }
 }
 
