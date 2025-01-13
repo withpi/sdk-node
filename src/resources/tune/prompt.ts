@@ -77,11 +77,6 @@ export namespace PromptOptimizeParams {
      * The output to evaluate
      */
     llm_output: string;
-
-    /**
-     * The rating of the llm_output given the llm_input
-     */
-    rating?: 'Strongly Agree' | 'Agree' | 'Neutral' | 'Disagree' | 'Strongly Disagree' | null;
   }
 }
 

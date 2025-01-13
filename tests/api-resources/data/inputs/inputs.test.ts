@@ -10,7 +10,9 @@ const client = new Twopir({
 
 describe('resource inputs', () => {
   test('cluster: only required params', async () => {
-    const responsePromise = client.data.inputs.cluster([{ identifier: 'identifier', llm_input: 'string' }]);
+    const responsePromise = client.data.inputs.cluster([
+      { identifier: 'identifier', llm_input: 'Tell me something different' },
+    ]);
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -21,12 +23,17 @@ describe('resource inputs', () => {
   });
 
   test('cluster: required and optional params', async () => {
-    const response = await client.data.inputs.cluster([{ identifier: 'identifier', llm_input: 'string' }]);
+    const response = await client.data.inputs.cluster([
+      { identifier: 'identifier', llm_input: 'Tell me something different' },
+    ]);
   });
 
   test('evaluate: only required params', async () => {
     const responsePromise = client.data.inputs.evaluate({
-      contract: { description: 'description', name: 'name' },
+      contract: {
+        description: "Write a children's story communicating a simple life lesson.",
+        name: 'Sample Contract',
+      },
       llm_inputs: ['string'],
     });
     const rawResponse = await responsePromise.asResponse();
@@ -41,38 +48,40 @@ describe('resource inputs', () => {
   test('evaluate: required and optional params', async () => {
     const response = await client.data.inputs.evaluate({
       contract: {
-        description: 'description',
-        name: 'name',
+        description: "Write a children's story communicating a simple life lesson.",
+        name: 'Sample Contract',
         dimensions: [
           {
-            description: 'description',
-            label: 'label',
+            description: 'Relevance of the response',
+            label: 'Relevance',
             sub_dimensions: [
               {
-                description: 'description',
-                label: 'label',
+                description: 'Is the response relevant to the prompt?',
+                label: 'Relevance to Prompt',
                 scoring_type: 'PI_SCORER',
                 action_dimension: null,
                 action_on_low_score: true,
-                huggingface_url: 'huggingface_url',
-                parameters: [0],
-                python_code: 'python_code',
-                weight: 0,
+                huggingface_url: 'https://yourmodelid.us-east-1.aws.endpoints.huggingface.cloud',
+                parameters: [0.2, 0.4, 0.6, 0.6, 1],
+                python_code:
+                  '\ndef score(response_text, input_text, input_args, kwargs):\n    word_count = len(response_text.split())\n    if word_count > 10:\n        return {"score": 0.2, "explanation": "Response has more than 10 words"}\n    elif word_count > 5:\n        return{"score": 0.6, "explanation": "Response has more than 5 words"}\n    else:\n        return {"score": 1, "explanation": "Response has 5 or fewer words"}\n',
+                weight: 1,
               },
             ],
             action_dimension: {
-              description: 'description',
-              label: 'label',
+              description: 'Is the response relevant to the prompt?',
+              label: 'Relevance to Prompt',
               scoring_type: 'PI_SCORER',
               action_dimension: null,
               action_on_low_score: true,
-              huggingface_url: 'huggingface_url',
-              parameters: [0],
-              python_code: 'python_code',
-              weight: 0,
+              huggingface_url: 'https://yourmodelid.us-east-1.aws.endpoints.huggingface.cloud',
+              parameters: [0.2, 0.4, 0.6, 0.6, 1],
+              python_code:
+                '\ndef score(response_text, input_text, input_args, kwargs):\n    word_count = len(response_text.split())\n    if word_count > 10:\n        return {"score": 0.2, "explanation": "Response has more than 10 words"}\n    elif word_count > 5:\n        return{"score": 0.6, "explanation": "Response has more than 5 words"}\n    else:\n        return {"score": 1, "explanation": "Response has 5 or fewer words"}\n',
+              weight: 1,
             },
             action_on_low_score: true,
-            weight: 0,
+            weight: 1,
           },
         ],
       },
@@ -82,8 +91,11 @@ describe('resource inputs', () => {
 
   test('generateSeeds: only required params', async () => {
     const responsePromise = client.data.inputs.generateSeeds({
-      contract: { description: 'description', name: 'name' },
-      num_inputs: 0,
+      contract: {
+        description: "Write a children's story communicating a simple life lesson.",
+        name: 'Sample Contract',
+      },
+      num_inputs: 10,
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -97,42 +109,44 @@ describe('resource inputs', () => {
   test('generateSeeds: required and optional params', async () => {
     const response = await client.data.inputs.generateSeeds({
       contract: {
-        description: 'description',
-        name: 'name',
+        description: "Write a children's story communicating a simple life lesson.",
+        name: 'Sample Contract',
         dimensions: [
           {
-            description: 'description',
-            label: 'label',
+            description: 'Relevance of the response',
+            label: 'Relevance',
             sub_dimensions: [
               {
-                description: 'description',
-                label: 'label',
+                description: 'Is the response relevant to the prompt?',
+                label: 'Relevance to Prompt',
                 scoring_type: 'PI_SCORER',
                 action_dimension: null,
                 action_on_low_score: true,
-                huggingface_url: 'huggingface_url',
-                parameters: [0],
-                python_code: 'python_code',
-                weight: 0,
+                huggingface_url: 'https://yourmodelid.us-east-1.aws.endpoints.huggingface.cloud',
+                parameters: [0.2, 0.4, 0.6, 0.6, 1],
+                python_code:
+                  '\ndef score(response_text, input_text, input_args, kwargs):\n    word_count = len(response_text.split())\n    if word_count > 10:\n        return {"score": 0.2, "explanation": "Response has more than 10 words"}\n    elif word_count > 5:\n        return{"score": 0.6, "explanation": "Response has more than 5 words"}\n    else:\n        return {"score": 1, "explanation": "Response has 5 or fewer words"}\n',
+                weight: 1,
               },
             ],
             action_dimension: {
-              description: 'description',
-              label: 'label',
+              description: 'Is the response relevant to the prompt?',
+              label: 'Relevance to Prompt',
               scoring_type: 'PI_SCORER',
               action_dimension: null,
               action_on_low_score: true,
-              huggingface_url: 'huggingface_url',
-              parameters: [0],
-              python_code: 'python_code',
-              weight: 0,
+              huggingface_url: 'https://yourmodelid.us-east-1.aws.endpoints.huggingface.cloud',
+              parameters: [0.2, 0.4, 0.6, 0.6, 1],
+              python_code:
+                '\ndef score(response_text, input_text, input_args, kwargs):\n    word_count = len(response_text.split())\n    if word_count > 10:\n        return {"score": 0.2, "explanation": "Response has more than 10 words"}\n    elif word_count > 5:\n        return{"score": 0.6, "explanation": "Response has more than 5 words"}\n    else:\n        return {"score": 1, "explanation": "Response has 5 or fewer words"}\n',
+              weight: 1,
             },
             action_on_low_score: true,
-            weight: 0,
+            weight: 1,
           },
         ],
       },
-      num_inputs: 0,
+      num_inputs: 10,
       context_types: ['none'],
     });
   });
