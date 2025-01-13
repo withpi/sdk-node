@@ -12,10 +12,10 @@ describe('resource feedback', () => {
   test('cluster: only required params', async () => {
     const responsePromise = client.feedback.cluster([
       {
-        comment: 'comment',
-        identifier: 'identifier',
-        llm_input: 'string',
-        llm_output: 'llm_output',
+        comment: 'This is a great response',
+        identifier: '1234abcd',
+        llm_input: 'Tell me something different',
+        llm_output: 'The lazy dog was jumped over by the quick brown fox',
         rating: 'Strongly Agree',
       },
     ]);
@@ -31,12 +31,12 @@ describe('resource feedback', () => {
   test('cluster: required and optional params', async () => {
     const response = await client.feedback.cluster([
       {
-        comment: 'comment',
-        identifier: 'identifier',
-        llm_input: 'string',
-        llm_output: 'llm_output',
+        comment: 'This is a great response',
+        identifier: '1234abcd',
+        llm_input: 'Tell me something different',
+        llm_output: 'The lazy dog was jumped over by the quick brown fox',
         rating: 'Strongly Agree',
-        sources: ['string'],
+        sources: ['internal_review', 'user_feedback'],
       },
     ]);
   });

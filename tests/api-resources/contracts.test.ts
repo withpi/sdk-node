@@ -11,8 +11,17 @@ const client = new Twopir({
 describe('resource contracts', () => {
   test('calibrate: only required params', async () => {
     const responsePromise = client.contracts.calibrate({
-      contract: { description: 'description', name: 'name' },
-      examples: [{ llm_input: 'string', llm_output: 'llm_output' }],
+      contract: {
+        description: "Write a children's story communicating a simple life lesson.",
+        name: 'Sample Contract',
+      },
+      examples: [
+        {
+          llm_input: 'Tell me something different',
+          llm_output: 'The lazy dog was jumped over by the quick brown fox',
+          rating: 'Strongly Agree',
+        },
+      ],
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -26,48 +35,59 @@ describe('resource contracts', () => {
   test('calibrate: required and optional params', async () => {
     const response = await client.contracts.calibrate({
       contract: {
-        description: 'description',
-        name: 'name',
+        description: "Write a children's story communicating a simple life lesson.",
+        name: 'Sample Contract',
         dimensions: [
           {
-            description: 'description',
-            label: 'label',
+            description: 'Relevance of the response',
+            label: 'Relevance',
             sub_dimensions: [
               {
-                description: 'description',
-                label: 'label',
+                description: 'Is the response relevant to the prompt?',
+                label: 'Relevance to Prompt',
                 scoring_type: 'PI_SCORER',
                 action_dimension: null,
                 action_on_low_score: true,
-                huggingface_url: 'huggingface_url',
-                parameters: [0],
-                python_code: 'python_code',
-                weight: 0,
+                huggingface_url: 'https://yourmodelid.us-east-1.aws.endpoints.huggingface.cloud',
+                parameters: [0.2, 0.4, 0.6, 0.6, 1],
+                python_code:
+                  '\ndef score(response_text, input_text, input_args, kwargs):\n    word_count = len(response_text.split())\n    if word_count > 10:\n        return {"score": 0.2, "explanation": "Response has more than 10 words"}\n    elif word_count > 5:\n        return{"score": 0.6, "explanation": "Response has more than 5 words"}\n    else:\n        return {"score": 1, "explanation": "Response has 5 or fewer words"}\n',
+                weight: 1,
               },
             ],
             action_dimension: {
-              description: 'description',
-              label: 'label',
+              description: 'Is the response relevant to the prompt?',
+              label: 'Relevance to Prompt',
               scoring_type: 'PI_SCORER',
               action_dimension: null,
               action_on_low_score: true,
-              huggingface_url: 'huggingface_url',
-              parameters: [0],
-              python_code: 'python_code',
-              weight: 0,
+              huggingface_url: 'https://yourmodelid.us-east-1.aws.endpoints.huggingface.cloud',
+              parameters: [0.2, 0.4, 0.6, 0.6, 1],
+              python_code:
+                '\ndef score(response_text, input_text, input_args, kwargs):\n    word_count = len(response_text.split())\n    if word_count > 10:\n        return {"score": 0.2, "explanation": "Response has more than 10 words"}\n    elif word_count > 5:\n        return{"score": 0.6, "explanation": "Response has more than 5 words"}\n    else:\n        return {"score": 1, "explanation": "Response has 5 or fewer words"}\n',
+              weight: 1,
             },
             action_on_low_score: true,
-            weight: 0,
+            weight: 1,
           },
         ],
       },
-      examples: [{ llm_input: 'string', llm_output: 'llm_output', rating: 'Strongly Agree' }],
+      examples: [
+        {
+          llm_input: 'Tell me something different',
+          llm_output: 'The lazy dog was jumped over by the quick brown fox',
+          rating: 'Strongly Agree',
+        },
+      ],
     });
   });
 
   test('generateDimensions: only required params', async () => {
     const responsePromise = client.contracts.generateDimensions({
-      contract: { description: 'description', name: 'name' },
+      contract: {
+        description: "Write a children's story communicating a simple life lesson.",
+        name: 'Sample Contract',
+      },
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -81,38 +101,40 @@ describe('resource contracts', () => {
   test('generateDimensions: required and optional params', async () => {
     const response = await client.contracts.generateDimensions({
       contract: {
-        description: 'description',
-        name: 'name',
+        description: "Write a children's story communicating a simple life lesson.",
+        name: 'Sample Contract',
         dimensions: [
           {
-            description: 'description',
-            label: 'label',
+            description: 'Relevance of the response',
+            label: 'Relevance',
             sub_dimensions: [
               {
-                description: 'description',
-                label: 'label',
+                description: 'Is the response relevant to the prompt?',
+                label: 'Relevance to Prompt',
                 scoring_type: 'PI_SCORER',
                 action_dimension: null,
                 action_on_low_score: true,
-                huggingface_url: 'huggingface_url',
-                parameters: [0],
-                python_code: 'python_code',
-                weight: 0,
+                huggingface_url: 'https://yourmodelid.us-east-1.aws.endpoints.huggingface.cloud',
+                parameters: [0.2, 0.4, 0.6, 0.6, 1],
+                python_code:
+                  '\ndef score(response_text, input_text, input_args, kwargs):\n    word_count = len(response_text.split())\n    if word_count > 10:\n        return {"score": 0.2, "explanation": "Response has more than 10 words"}\n    elif word_count > 5:\n        return{"score": 0.6, "explanation": "Response has more than 5 words"}\n    else:\n        return {"score": 1, "explanation": "Response has 5 or fewer words"}\n',
+                weight: 1,
               },
             ],
             action_dimension: {
-              description: 'description',
-              label: 'label',
+              description: 'Is the response relevant to the prompt?',
+              label: 'Relevance to Prompt',
               scoring_type: 'PI_SCORER',
               action_dimension: null,
               action_on_low_score: true,
-              huggingface_url: 'huggingface_url',
-              parameters: [0],
-              python_code: 'python_code',
-              weight: 0,
+              huggingface_url: 'https://yourmodelid.us-east-1.aws.endpoints.huggingface.cloud',
+              parameters: [0.2, 0.4, 0.6, 0.6, 1],
+              python_code:
+                '\ndef score(response_text, input_text, input_args, kwargs):\n    word_count = len(response_text.split())\n    if word_count > 10:\n        return {"score": 0.2, "explanation": "Response has more than 10 words"}\n    elif word_count > 5:\n        return{"score": 0.6, "explanation": "Response has more than 5 words"}\n    else:\n        return {"score": 1, "explanation": "Response has 5 or fewer words"}\n',
+              weight: 1,
             },
             action_on_low_score: true,
-            weight: 0,
+            weight: 1,
           },
         ],
       },
@@ -121,9 +143,12 @@ describe('resource contracts', () => {
 
   test('score: only required params', async () => {
     const responsePromise = client.contracts.score({
-      contract: { description: 'description', name: 'name' },
-      llm_input: 'string',
-      llm_output: 'llm_output',
+      contract: {
+        description: "Write a children's story communicating a simple life lesson.",
+        name: 'Sample Contract',
+      },
+      llm_input: 'Tell me something different',
+      llm_output: 'The lazy dog was jumped over by the quick brown fox',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -137,43 +162,45 @@ describe('resource contracts', () => {
   test('score: required and optional params', async () => {
     const response = await client.contracts.score({
       contract: {
-        description: 'description',
-        name: 'name',
+        description: "Write a children's story communicating a simple life lesson.",
+        name: 'Sample Contract',
         dimensions: [
           {
-            description: 'description',
-            label: 'label',
+            description: 'Relevance of the response',
+            label: 'Relevance',
             sub_dimensions: [
               {
-                description: 'description',
-                label: 'label',
+                description: 'Is the response relevant to the prompt?',
+                label: 'Relevance to Prompt',
                 scoring_type: 'PI_SCORER',
                 action_dimension: null,
                 action_on_low_score: true,
-                huggingface_url: 'huggingface_url',
-                parameters: [0],
-                python_code: 'python_code',
-                weight: 0,
+                huggingface_url: 'https://yourmodelid.us-east-1.aws.endpoints.huggingface.cloud',
+                parameters: [0.2, 0.4, 0.6, 0.6, 1],
+                python_code:
+                  '\ndef score(response_text, input_text, input_args, kwargs):\n    word_count = len(response_text.split())\n    if word_count > 10:\n        return {"score": 0.2, "explanation": "Response has more than 10 words"}\n    elif word_count > 5:\n        return{"score": 0.6, "explanation": "Response has more than 5 words"}\n    else:\n        return {"score": 1, "explanation": "Response has 5 or fewer words"}\n',
+                weight: 1,
               },
             ],
             action_dimension: {
-              description: 'description',
-              label: 'label',
+              description: 'Is the response relevant to the prompt?',
+              label: 'Relevance to Prompt',
               scoring_type: 'PI_SCORER',
               action_dimension: null,
               action_on_low_score: true,
-              huggingface_url: 'huggingface_url',
-              parameters: [0],
-              python_code: 'python_code',
-              weight: 0,
+              huggingface_url: 'https://yourmodelid.us-east-1.aws.endpoints.huggingface.cloud',
+              parameters: [0.2, 0.4, 0.6, 0.6, 1],
+              python_code:
+                '\ndef score(response_text, input_text, input_args, kwargs):\n    word_count = len(response_text.split())\n    if word_count > 10:\n        return {"score": 0.2, "explanation": "Response has more than 10 words"}\n    elif word_count > 5:\n        return{"score": 0.6, "explanation": "Response has more than 5 words"}\n    else:\n        return {"score": 1, "explanation": "Response has 5 or fewer words"}\n',
+              weight: 1,
             },
             action_on_low_score: true,
-            weight: 0,
+            weight: 1,
           },
         ],
       },
-      llm_input: 'string',
-      llm_output: 'llm_output',
+      llm_input: 'Tell me something different',
+      llm_output: 'The lazy dog was jumped over by the quick brown fox',
     });
   });
 });
