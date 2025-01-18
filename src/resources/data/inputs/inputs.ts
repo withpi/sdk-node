@@ -83,7 +83,7 @@ export interface InputEvaluateParams {
   /**
    * The inputs to evaluate
    */
-  llm_inputs: Array<string | Record<string, string>>;
+  llm_inputs: Array<string>;
 }
 
 export interface InputGenerateSeedsParams {
