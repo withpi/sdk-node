@@ -69,9 +69,9 @@ export namespace PromptOptimizeParams {
    */
   export interface Example {
     /**
-     * The input to evaluate
+     * The input to LLM
      */
-    llm_input: string | Record<string, string>;
+    llm_input: string;
 
     /**
      * The output to evaluate
