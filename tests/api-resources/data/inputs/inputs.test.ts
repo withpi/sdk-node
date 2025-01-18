@@ -34,7 +34,10 @@ describe('resource inputs', () => {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Contract',
       },
-      llm_inputs: ['string'],
+      llm_inputs: [
+        'The quick brown fox jumped over the lazy dog',
+        'The lazy dog was jumped over by the quick brown fox',
+      ],
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -85,7 +88,10 @@ describe('resource inputs', () => {
           },
         ],
       },
-      llm_inputs: ['string'],
+      llm_inputs: [
+        'The quick brown fox jumped over the lazy dog',
+        'The lazy dog was jumped over by the quick brown fox',
+      ],
     });
   });
 
