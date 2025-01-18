@@ -61,12 +61,17 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/contracts.ts">ContractsScoreMetrics</a></code>
+- <code><a href="./src/resources/contracts.ts">ContractsScoreMetrics</a></code>
+- <code><a href="./src/resources/contracts.ts">SDKContract</a></code>
+- <code><a href="./src/resources/contracts.ts">ContractWriteToHfResponse</a></code>
 
 Methods:
 
 - <code title="post /contracts/calibrate">client.contracts.<a href="./src/resources/contracts.ts">calibrate</a>({ ...params }) -> Contract</code>
 - <code title="post /contracts/generate_dimensions">client.contracts.<a href="./src/resources/contracts.ts">generateDimensions</a>({ ...params }) -> Contract</code>
+- <code title="post /contracts/read_from_hf">client.contracts.<a href="./src/resources/contracts.ts">readFromHf</a>({ ...params }) -> Contract</code>
 - <code title="post /contracts/score">client.contracts.<a href="./src/resources/contracts.ts">score</a>({ ...params }) -> ContractsScoreMetrics</code>
+- <code title="post /contracts/write_to_hf">client.contracts.<a href="./src/resources/contracts.ts">writeToHf</a>({ ...params }) -> unknown</code>
 
 # Feedback
 

@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.1.0-alpha.16 (2025-01-18)
+
+Full Changelog: [v0.1.0-alpha.15...v0.1.0-alpha.16](https://github.com/2pir-ai/sdk-node/compare/v0.1.0-alpha.15...v0.1.0-alpha.16)
+
+### Features
+
+* **api:** api update ([#87](https://github.com/2pir-ai/sdk-node/issues/87)) ([442c4f8](https://github.com/2pir-ai/sdk-node/commit/442c4f854ef259e5a23dfa93ea0f91de9946ea48))
+* **api:** api update ([#89](https://github.com/2pir-ai/sdk-node/issues/89)) ([af6a0ed](https://github.com/2pir-ai/sdk-node/commit/af6a0edd5d718c2d2e206081aaa4b9f03d06e16b))
+* **api:** api update ([#90](https://github.com/2pir-ai/sdk-node/issues/90)) ([247f1f7](https://github.com/2pir-ai/sdk-node/commit/247f1f71756755b1037a0a3c8a88eb6188ca088c))
+* **api:** api update ([#91](https://github.com/2pir-ai/sdk-node/issues/91)) ([8acdf5a](https://github.com/2pir-ai/sdk-node/commit/8acdf5aa14391b618dd3fe2211af2f8ec796c980))
+
+
+### Chores
+
+* **internal:** codegen related update ([#88](https://github.com/2pir-ai/sdk-node/issues/88)) ([87c9d33](https://github.com/2pir-ai/sdk-node/commit/87c9d33e14dc2f37ac99b1e6f84357c1947d52c6))
+* **internal:** version bump ([#85](https://github.com/2pir-ai/sdk-node/issues/85)) ([f754c79](https://github.com/2pir-ai/sdk-node/commit/f754c796c0ce66e6f550924e70d1c4e9c5969474))
+
 ## 0.1.0-alpha.15 (2025-01-09)
 
 Full Changelog: [v0.1.0-alpha.14...v0.1.0-alpha.15](https://github.com/2pir-ai/sdk-node/compare/v0.1.0-alpha.14...v0.1.0-alpha.15)
