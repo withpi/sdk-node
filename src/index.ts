@@ -8,9 +8,13 @@ import * as API from './resources/index';
 import {
   ContractCalibrateParams,
   ContractGenerateDimensionsParams,
+  ContractReadFromHfParams,
   ContractScoreParams,
+  ContractWriteToHfParams,
+  ContractWriteToHfResponse,
   Contracts,
   ContractsScoreMetrics,
+  SDKContract,
 } from './resources/contracts';
 import {
   Feedback,
@@ -193,9 +197,13 @@ export declare namespace Twopir {
   export {
     Contracts as Contracts,
     type ContractsScoreMetrics as ContractsScoreMetrics,
+    type SDKContract as SDKContract,
+    type ContractWriteToHfResponse as ContractWriteToHfResponse,
     type ContractCalibrateParams as ContractCalibrateParams,
     type ContractGenerateDimensionsParams as ContractGenerateDimensionsParams,
+    type ContractReadFromHfParams as ContractReadFromHfParams,
     type ContractScoreParams as ContractScoreParams,
+    type ContractWriteToHfParams as ContractWriteToHfParams,
   };
 
   export {

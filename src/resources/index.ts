@@ -4,9 +4,13 @@ export * from './shared';
 export {
   Contracts,
   type ContractsScoreMetrics,
+  type SDKContract,
+  type ContractWriteToHfResponse,
   type ContractCalibrateParams,
   type ContractGenerateDimensionsParams,
+  type ContractReadFromHfParams,
   type ContractScoreParams,
+  type ContractWriteToHfParams,
 } from './contracts';
 export { Data, type DataGenerationStatus, type InputEvaluationMetrics } from './data/data';
 export {
