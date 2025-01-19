@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.0-alpha.17 (2025-01-19)
+
+Full Changelog: [v0.1.0-alpha.16...v0.1.0-alpha.17](https://github.com/2pir-ai/sdk-node/compare/v0.1.0-alpha.16...v0.1.0-alpha.17)
+
+### Features
+
+* **api:** api update ([#93](https://github.com/2pir-ai/sdk-node/issues/93)) ([07ac9bd](https://github.com/2pir-ai/sdk-node/commit/07ac9bdbcf64e866eeec19fda22fdd5b3f9cd605))
+* **api:** api update ([#95](https://github.com/2pir-ai/sdk-node/issues/95)) ([6eeb4b2](https://github.com/2pir-ai/sdk-node/commit/6eeb4b250e7f0212eb2abf5d09ea3203688ba059))
+* **api:** api update ([#96](https://github.com/2pir-ai/sdk-node/issues/96)) ([a337917](https://github.com/2pir-ai/sdk-node/commit/a3379177047a4e304ce4be0f5cc7267380d4d0d3))
+* **api:** api update ([#97](https://github.com/2pir-ai/sdk-node/issues/97)) ([83350ff](https://github.com/2pir-ai/sdk-node/commit/83350ff7a62d96e4c8b473fe9d858f8d5d306732))
+* **api:** api update ([#98](https://github.com/2pir-ai/sdk-node/issues/98)) ([bae94a4](https://github.com/2pir-ai/sdk-node/commit/bae94a4e0e4420a2619858f2d5a2b78457b91602))
+
 ## 0.1.0-alpha.16 (2025-01-18)
 
 Full Changelog: [v0.1.0-alpha.15...v0.1.0-alpha.16](https://github.com/2pir-ai/sdk-node/compare/v0.1.0-alpha.15...v0.1.0-alpha.16)

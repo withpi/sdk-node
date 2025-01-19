@@ -68,17 +68,17 @@ export namespace InputClusterParams {
     identifier: string;
 
     /**
-     * The input to evaluate
+     * The input to LLM
      */
-    llm_input: string | Record<string, string>;
+    llm_input: string;
   }
 }
 
 export interface InputEvaluateParams {
   /**
-   * The contract the input is intended to drive
+   * The application contract's description
    */
-  contract: Shared.Contract;
+  contract_description: string;
 
   /**
    * The inputs to evaluate
