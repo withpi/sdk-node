@@ -76,9 +76,9 @@ export namespace InputClusterParams {
 
 export interface InputEvaluateParams {
   /**
-   * The contract the input is intended to drive
+   * The application contract's description
    */
-  contract: Shared.Contract;
+  contract_description: string;
 
   /**
    * The inputs to evaluate
