@@ -29,6 +29,7 @@ describe('resource generateFromSeeds', () => {
 
   test('generate: only required params', async () => {
     const responsePromise = client.data.inputs.generateFromSeeds.generate({
+      contract_description: 'contract_description',
       num_inputs: 0,
       seeds: ['string'],
     });
@@ -43,6 +44,7 @@ describe('resource generateFromSeeds', () => {
 
   test('generate: required and optional params', async () => {
     const response = await client.data.inputs.generateFromSeeds.generate({
+      contract_description: 'contract_description',
       num_inputs: 0,
       seeds: ['string'],
     });
