@@ -29,8 +29,11 @@ describe('resource generateFromSeeds', () => {
 
   test('generate: only required params', async () => {
     const responsePromise = client.data.inputs.generateFromSeeds.generate({
-      num_inputs: 0,
-      seeds: ['string'],
+      num_inputs: 50,
+      seeds: [
+        "Write a short children's story about a brave little mouse who goes on an adventure to find the tallest cheese tower in the forest.",
+        'Tell a whimsical tale about a group of farm animals who band together to save their home from being sold. ',
+      ],
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -43,8 +46,11 @@ describe('resource generateFromSeeds', () => {
 
   test('generate: required and optional params', async () => {
     const response = await client.data.inputs.generateFromSeeds.generate({
-      num_inputs: 0,
-      seeds: ['string'],
+      num_inputs: 50,
+      seeds: [
+        "Write a short children's story about a brave little mouse who goes on an adventure to find the tallest cheese tower in the forest.",
+        'Tell a whimsical tale about a group of farm animals who band together to save their home from being sold. ',
+      ],
     });
   });
 
