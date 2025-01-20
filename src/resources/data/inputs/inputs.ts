@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../../resource';
 import * as Core from '../../../core';
-import * as Shared from '../../shared';
 import * as DataAPI from '../data';
 import * as GenerateFromSeedsAPI from './generate-from-seeds';
 import {
@@ -88,33 +87,15 @@ export interface InputEvaluateParams {
 
 export interface InputGenerateSeedsParams {
   /**
-   * The contract to generate input seeds for.
+   * The application contract's description
    */
-  contract: Shared.Contract;
+  contract_description: string;
 
   /**
-   * Number of input seeds to generate.
+   * Number of input seeds to generate. Must be <= 50. If you want to generate more,
+   * please use the generate_from_seeds API.
    */
   num_inputs: number;
-
-  /**
-   * The types of context to generate for the input prompts if specified. Otherwise
-   * the context_types will be inferred.
-   */
-  context_types?: Array<
-    | 'none'
-    | 'article'
-    | 'conversation'
-    | 'debate'
-    | 'webpage'
-    | 'passage'
-    | 'chat history'
-    | 'email thread'
-    | 'text messages'
-    | 'financial document'
-    | 'scientific paper'
-    | 'slide presentation description'
-  > | null;
 }
 
 Inputs.GenerateFromSeeds = GenerateFromSeeds;
