@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.19 (2025-01-20)
+
+Full Changelog: [v0.1.0-alpha.18...v0.1.0-alpha.19](https://github.com/2pir-ai/sdk-node/compare/v0.1.0-alpha.18...v0.1.0-alpha.19)
+
+### Features
+
+* **api:** api update ([#105](https://github.com/2pir-ai/sdk-node/issues/105)) ([d5afcdd](https://github.com/2pir-ai/sdk-node/commit/d5afcdd2e41de5c30f57836f5142ca2b8739bedf))
+
 ## 0.1.0-alpha.18 (2025-01-20)
 
 Full Changelog: [v0.1.0-alpha.17...v0.1.0-alpha.18](https://github.com/2pir-ai/sdk-node/compare/v0.1.0-alpha.17...v0.1.0-alpha.18)
