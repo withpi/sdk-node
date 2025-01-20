@@ -42,12 +42,6 @@ export interface Dimension {
   action_dimension?: Dimension.ActionDimension | null;
 
   /**
-   * @deprecated: If `action_on_low_score = True`, the node emits the real value if
-   * action dimension score is <= 0.5 and it returns -1 otherwise.
-   */
-  action_on_low_score?: boolean | null;
-
-  /**
    * The weight of the dimension The sum of dimension weights will be normalized to
    * one internally. A higher weight counts for more when aggregating this dimension
    * is aggregated into the final score.
@@ -120,12 +114,6 @@ export interface SubDimension {
    * the -1 scores and thus we achieve the short-circuit behavior.
    */
   action_dimension?: SubDimension.ActionDimension | null;
-
-  /**
-   * @deprecated: If `action_on_low_score = True`, the node emits the real value if
-   * action dimension score is <= 0.5 and it returns -1 otherwise.
-   */
-  action_on_low_score?: boolean | null;
 
   /**
    * The URL of the HuggingFace model to use for scoring. Only relevant for
