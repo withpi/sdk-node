@@ -19,9 +19,9 @@ export class GenerateFromSeeds extends APIResource {
     params: GenerateFromSeedGenerateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<DataAPI.DataGenerationStatus> {
-    const { num_inputs, seeds } = params;
+    const { contract_description, num_inputs, seeds } = params;
     return this._client.post('/data/input/generate_from_seeds', {
-      query: { num_inputs },
+      query: { contract_description, num_inputs },
       body: seeds,
       ...options,
     });
@@ -41,6 +41,11 @@ export class GenerateFromSeeds extends APIResource {
 export type GenerateFromSeedStreamMessagesResponse = string;
 
 export interface GenerateFromSeedGenerateParams {
+  /**
+   * Query param:
+   */
+  contract_description: string;
+
   /**
    * Query param:
    */
