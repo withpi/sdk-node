@@ -73,7 +73,6 @@ describe('resource inputs', () => {
     const response = await client.data.inputs.generateSeeds({
       contract_description: 'Write a haiku based on a topic description',
       num_inputs: 10,
-      context_types: ['none'],
     });
   });
 });

@@ -96,25 +96,6 @@ export interface InputGenerateSeedsParams {
    * please use the generate_from_seeds API.
    */
   num_inputs: number;
-
-  /**
-   * The types of context to generate for the input prompts if specified. Otherwise
-   * the context_types will be inferred.
-   */
-  context_types?: Array<
-    | 'none'
-    | 'article'
-    | 'conversation'
-    | 'debate'
-    | 'webpage'
-    | 'passage'
-    | 'chat history'
-    | 'email thread'
-    | 'text messages'
-    | 'financial document'
-    | 'scientific paper'
-    | 'slide presentation description'
-  > | null;
 }
 
 Inputs.GenerateFromSeeds = GenerateFromSeeds;
