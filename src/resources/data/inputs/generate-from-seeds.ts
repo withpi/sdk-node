@@ -16,10 +16,15 @@ export class GenerateFromSeeds extends APIResource {
    * Generates input data from a list of seeds
    */
   generate(
-    body: GenerateFromSeedGenerateParams,
+    params: GenerateFromSeedGenerateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<DataAPI.DataGenerationStatus> {
-    return this._client.post('/data/input/generate_from_seeds', { body, ...options });
+    const { num_inputs, seeds } = params;
+    return this._client.post('/data/input/generate_from_seeds', {
+      query: { num_inputs },
+      body: seeds,
+      ...options,
+    });
   }
 
   /**
@@ -35,20 +40,16 @@ export class GenerateFromSeeds extends APIResource {
 
 export type GenerateFromSeedStreamMessagesResponse = string;
 
-export type GenerateFromSeedGenerateParams = GenerateFromSeedGenerateParams.Seeds;
+export interface GenerateFromSeedGenerateParams {
+  /**
+   * Query param:
+   */
+  num_inputs: number;
 
-export namespace GenerateFromSeedGenerateParams {
-  export interface Seeds {
-    /**
-     * Number of LLM inputs to generate.
-     */
-    num_inputs: number;
-
-    /**
-     * The LLM inputs to be used as seeds to generate the additional LLM inputs
-     */
-    seeds: Array<string>;
-  }
+  /**
+   * Body param:
+   */
+  seeds: Array<string>;
 }
 
 export declare namespace GenerateFromSeeds {
