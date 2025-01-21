@@ -2,12 +2,13 @@
 
 import { APIResource } from '../../../resource';
 import * as Core from '../../../core';
+import * as DataAPI from '../data';
 
 export class GenerateFromSeeds extends APIResource {
   /**
    * Gets the current status of a data generation job
    */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<GenerateFromSeedRetrieveResponse> {
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<DataAPI.DataGenerationResult> {
     return this._client.get(`/data/input/generate_from_seeds/${jobId}`, options);
   }
 
@@ -17,7 +18,7 @@ export class GenerateFromSeeds extends APIResource {
   generate(
     body: GenerateFromSeedGenerateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<GenerateFromSeedGenerateResponse> {
+  ): Core.APIPromise<DataAPI.DataGenerationResult> {
     return this._client.post('/data/input/generate_from_seeds', { body, ...options });
   }
 
@@ -32,83 +33,27 @@ export class GenerateFromSeeds extends APIResource {
   }
 }
 
-/**
- * DataGenerationResult is the result of a data generation job.
- */
-export interface GenerateFromSeedRetrieveResponse {
-  /**
-   * The generated data. Absent unless state is done
-   */
-  data: Array<string> | null;
-
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
-
-  /**
-   * The job id
-   */
-  job_id: string;
-
-  /**
-   * Current state of the job
-   */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
-}
-
-/**
- * DataGenerationResult is the result of a data generation job.
- */
-export interface GenerateFromSeedGenerateResponse {
-  /**
-   * The generated data. Absent unless state is done
-   */
-  data: Array<string> | null;
-
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
-
-  /**
-   * The job id
-   */
-  job_id: string;
-
-  /**
-   * Current state of the job
-   */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
-}
-
 export type GenerateFromSeedStreamMessagesResponse = string;
 
-export type GenerateFromSeedGenerateParams = GenerateFromSeedGenerateParams.Seeds;
+export interface GenerateFromSeedGenerateParams {
+  /**
+   * The application description to generate contract for.
+   */
+  contract_description: string;
 
-export namespace GenerateFromSeedGenerateParams {
-  export interface Seeds {
-    /**
-     * The application description to generate contract for.
-     */
-    contract_description: string;
+  /**
+   * The number of LLM inputs to generate
+   */
+  num_inputs: number;
 
-    /**
-     * The number of LLM inputs to generate
-     */
-    num_inputs: number;
-
-    /**
-     * The list of LLM inputs to be used as seeds
-     */
-    seeds: Array<string>;
-  }
+  /**
+   * The list of LLM inputs to be used as seeds
+   */
+  seeds: Array<string>;
 }
 
 export declare namespace GenerateFromSeeds {
   export {
-    type GenerateFromSeedRetrieveResponse as GenerateFromSeedRetrieveResponse,
-    type GenerateFromSeedGenerateResponse as GenerateFromSeedGenerateResponse,
     type GenerateFromSeedStreamMessagesResponse as GenerateFromSeedStreamMessagesResponse,
     type GenerateFromSeedGenerateParams as GenerateFromSeedGenerateParams,
   };
