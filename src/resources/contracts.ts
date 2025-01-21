@@ -128,6 +128,17 @@ export interface ContractCalibrateParams {
    * Rated examples to use when calibrating the contract
    */
   examples: Array<ContractCalibrateParams.Example>;
+
+  /**
+   * Preference examples to use when calibrating the contract
+   */
+  preference_examples?: Array<ContractCalibrateParams.PreferenceExample>;
+
+  /**
+   * The strategy to use to calibrate the contract. FULL would take longer than LITE
+   * but may result in better result.
+   */
+  strategy?: 'LITE' | 'FULL';
 }
 
 export namespace ContractCalibrateParams {
@@ -149,6 +160,26 @@ export namespace ContractCalibrateParams {
      * The rating of the llm_output given the llm_input
      */
     rating: 'Strongly Agree' | 'Agree' | 'Neutral' | 'Disagree' | 'Strongly Disagree';
+  }
+
+  /**
+   * An preference example for training or evaluation
+   */
+  export interface PreferenceExample {
+    /**
+     * The chosen output in corresponding to the llm_input.
+     */
+    chosen: string;
+
+    /**
+     * The input to LLM
+     */
+    llm_input: string;
+
+    /**
+     * The rejected output in corresponding to the llm_input.
+     */
+    rejected: string;
   }
 }
 
