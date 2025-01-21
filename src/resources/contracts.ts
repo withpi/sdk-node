@@ -184,7 +184,10 @@ export namespace ContractCalibrateParams {
 }
 
 export interface ContractGenerateDimensionsParams {
-  contract: Shared.Contract;
+  /**
+   * The application description to generate contract for.
+   */
+  contract_description: string;
 }
 
 export interface ContractReadFromHfParams {
