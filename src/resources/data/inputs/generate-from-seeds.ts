@@ -15,15 +15,10 @@ export class GenerateFromSeeds extends APIResource {
    * Generates input data from a list of seeds
    */
   generate(
-    params: GenerateFromSeedGenerateParams,
+    body: GenerateFromSeedGenerateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<GenerateFromSeedGenerateResponse> {
-    const { contract_description, num_inputs, seeds } = params;
-    return this._client.post('/data/input/generate_from_seeds', {
-      query: { contract_description, num_inputs },
-      body: seeds,
-      ...options,
-    });
+    return this._client.post('/data/input/generate_from_seeds', { body, ...options });
   }
 
   /**
@@ -89,21 +84,25 @@ export interface GenerateFromSeedGenerateResponse {
 
 export type GenerateFromSeedStreamMessagesResponse = string;
 
-export interface GenerateFromSeedGenerateParams {
-  /**
-   * Query param:
-   */
-  contract_description: string;
+export type GenerateFromSeedGenerateParams = GenerateFromSeedGenerateParams.Seeds;
 
-  /**
-   * Query param:
-   */
-  num_inputs: number;
+export namespace GenerateFromSeedGenerateParams {
+  export interface Seeds {
+    /**
+     * The application description to generate contract for.
+     */
+    contract_description: string;
 
-  /**
-   * Body param:
-   */
-  seeds: Array<string>;
+    /**
+     * The number of LLM inputs to generate
+     */
+    num_inputs: number;
+
+    /**
+     * The list of LLM inputs to be used as seeds
+     */
+    seeds: Array<string>;
+  }
 }
 
 export declare namespace GenerateFromSeeds {
