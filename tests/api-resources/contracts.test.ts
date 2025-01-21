@@ -82,6 +82,14 @@ describe('resource contracts', () => {
           rating: 'Strongly Agree',
         },
       ],
+      preference_examples: [
+        {
+          chosen: 'The lazy dog was jumped over by the quick brown fox',
+          llm_input: 'Tell me something different',
+          rejected: 'The lazy dog was flied over by the quick brown fox',
+        },
+      ],
+      strategy: 'LITE',
     });
   });
 
