@@ -29,9 +29,12 @@ describe('resource generateFromSeeds', () => {
 
   test('generate: only required params', async () => {
     const responsePromise = client.data.inputs.generateFromSeeds.generate({
-      contract_description: 'contract_description',
-      num_inputs: 0,
-      seeds: ['string'],
+      contract_description: "Write a children's story communicating a simple life lesson.",
+      num_inputs: 50,
+      seeds: [
+        'The quick brown fox jumped over the lazy dog',
+        'The lazy dog was jumped over by the quick brown fox',
+      ],
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -44,9 +47,12 @@ describe('resource generateFromSeeds', () => {
 
   test('generate: required and optional params', async () => {
     const response = await client.data.inputs.generateFromSeeds.generate({
-      contract_description: 'contract_description',
-      num_inputs: 0,
-      seeds: ['string'],
+      contract_description: "Write a children's story communicating a simple life lesson.",
+      num_inputs: 50,
+      seeds: [
+        'The quick brown fox jumped over the lazy dog',
+        'The lazy dog was jumped over by the quick brown fox',
+      ],
     });
   });
 
