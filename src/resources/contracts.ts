@@ -184,6 +184,9 @@ export namespace ContractCalibrateParams {
 }
 
 export interface ContractGenerateDimensionsParams {
+  /**
+   * The application description to generate contract for.
+   */
   contract_description: string;
 }
 
