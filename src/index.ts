@@ -22,7 +22,7 @@ import {
   FeedbackClusterResponse,
   FeedbackTopicCluster,
 } from './resources/feedback';
-import { Data, DataGenerationStatus, InputEvaluationMetrics } from './resources/data/data';
+import { Data, InputEvaluationMetrics } from './resources/data/data';
 import { OptimizationStatus, Tune } from './resources/tune/tune';
 
 export interface ClientOptions {
@@ -186,11 +186,7 @@ Twopir.Feedback = Feedback;
 export declare namespace Twopir {
   export type RequestOptions = Core.RequestOptions;
 
-  export {
-    Data as Data,
-    type DataGenerationStatus as DataGenerationStatus,
-    type InputEvaluationMetrics as InputEvaluationMetrics,
-  };
+  export { Data as Data, type InputEvaluationMetrics as InputEvaluationMetrics };
 
   export { Tune as Tune, type OptimizationStatus as OptimizationStatus };
 
