@@ -12,7 +12,7 @@ export {
   type ContractScoreParams,
   type ContractWriteToHfParams,
 } from './contracts';
-export { Data, type DataGenerationStatus, type InputEvaluationMetrics } from './data/data';
+export { Data, type InputEvaluationMetrics } from './data/data';
 export {
   Feedback,
   type FeedbackTopicCluster,
