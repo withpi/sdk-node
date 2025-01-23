@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.0-alpha.25 (2025-01-23)
+
+Full Changelog: [v0.1.0-alpha.24...v0.1.0-alpha.25](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.24...v0.1.0-alpha.25)
+
+### Features
+
+* **api:** api update ([#129](https://github.com/withpi/sdk-node/issues/129)) ([f8185bc](https://github.com/withpi/sdk-node/commit/f8185bc3a7829d90f1947b397b1698b3253e8785))
+* **api:** manual updates ([#126](https://github.com/withpi/sdk-node/issues/126)) ([efe2740](https://github.com/withpi/sdk-node/commit/efe274055528a587e5c1e7e6af60a71a58e41f0f))
+* **api:** manual updates ([#128](https://github.com/withpi/sdk-node/issues/128)) ([ae38600](https://github.com/withpi/sdk-node/commit/ae386006b982878e658fad0aaa5a660b98d1d8c8))
+
 ## 0.1.0-alpha.24 (2025-01-21)
 
 Full Changelog: [v0.1.0-alpha.23...v0.1.0-alpha.24](https://github.com/2pir-ai/sdk-node/compare/v0.1.0-alpha.23...v0.1.0-alpha.24)
