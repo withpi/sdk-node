@@ -42,13 +42,11 @@ export let isFsReadStream: Shims['isFsReadStream'] | undefined = undefined;
 export function setShims(shims: Shims, options: { auto: boolean } = { auto: false }) {
   if (auto) {
     throw new Error(
-      `you must \`import '@2pir-ai/twopir/shims/${shims.kind}'\` before importing anything else from @2pir-ai/twopir`,
+      `you must \`import 'withpi/shims/${shims.kind}'\` before importing anything else from withpi`,
     );
   }
   if (kind) {
-    throw new Error(
-      `can't \`import '@2pir-ai/twopir/shims/${shims.kind}'\` after \`import '@2pir-ai/twopir/shims/${kind}'\``,
-    );
+    throw new Error(`can't \`import 'withpi/shims/${shims.kind}'\` after \`import 'withpi/shims/${kind}'\``);
   }
   auto = options.auto;
   kind = shims.kind;

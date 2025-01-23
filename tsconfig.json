@@ -9,9 +9,9 @@
     "esModuleInterop": true,
     "baseUrl": "./",
     "paths": {
-      "@2pir-ai/twopir/_shims/auto/*": ["src/_shims/auto/*-node"],
-      "@2pir-ai/twopir/*": ["src/*"],
-      "@2pir-ai/twopir": ["src/index.ts"]
+      "withpi/_shims/auto/*": ["src/_shims/auto/*-node"],
+      "withpi/*": ["src/*"],
+      "withpi": ["src/index.ts"]
     },
     "noEmit": true,
 

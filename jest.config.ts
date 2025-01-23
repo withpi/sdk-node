@@ -7,9 +7,9 @@ const config: JestConfigWithTsJest = {
     '^.+\\.(t|j)sx?$': ['@swc/jest', { sourceMaps: 'inline' }],
   },
   moduleNameMapper: {
-    '^@2pir-ai/twopir$': '<rootDir>/src/index.ts',
-    '^@2pir-ai/twopir/_shims/auto/(.*)$': '<rootDir>/src/_shims/auto/$1-node',
-    '^@2pir-ai/twopir/(.*)$': '<rootDir>/src/$1',
+    '^withpi$': '<rootDir>/src/index.ts',
+    '^withpi/_shims/auto/(.*)$': '<rootDir>/src/_shims/auto/$1-node',
+    '^withpi/(.*)$': '<rootDir>/src/$1',
   },
   modulePathIgnorePatterns: [
     '<rootDir>/ecosystem-tests/',

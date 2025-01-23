@@ -1,6 +1,6 @@
-import { multipartFormRequestOptions, createForm } from '@2pir-ai/twopir/core';
-import { Blob } from '@2pir-ai/twopir/_shims/index';
-import { toFile } from '@2pir-ai/twopir';
+import { multipartFormRequestOptions, createForm } from 'withpi/core';
+import { Blob } from 'withpi/_shims/index';
+import { toFile } from 'withpi';
 
 describe('form data validation', () => {
   test('valid values do not error', async () => {

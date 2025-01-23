@@ -42,25 +42,25 @@ If you’d like to use the repository from source, you can either install from g
 To install via git:
 
 ```sh
-$ npm install git+ssh://git@github.com:2pir-ai/sdk-node.git
+$ npm install git+ssh://git@github.com:withpi/sdk-node.git
 ```
 
 Alternatively, to link a local copy of the repo:
 
 ```sh
 # Clone
-$ git clone https://www.github.com/2pir-ai/sdk-node
+$ git clone https://www.github.com/withpi/sdk-node
 $ cd sdk-node
 
 # With yarn
 $ yarn link
 $ cd ../my-package
-$ yarn link @2pir-ai/twopir
+$ yarn link withpi
 
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global @2pir-ai/twopir
+$ pnpm link -—global withpi
 ```
 
 ## Running tests

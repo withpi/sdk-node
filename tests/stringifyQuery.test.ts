@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { Twopir } from '@2pir-ai/twopir';
+import { PiClient } from 'withpi';
 
-const { stringifyQuery } = Twopir.prototype as any;
+const { stringifyQuery } = PiClient.prototype as any;
 
 describe(stringifyQuery, () => {
   for (const [input, expected] of [
