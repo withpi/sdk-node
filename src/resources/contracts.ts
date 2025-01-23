@@ -42,7 +42,7 @@ export class Contracts extends APIResource {
   /**
    * Write a contract to Huggingface dataset
    */
-  writeToHf(body: ContractWriteToHfParams, options?: Core.RequestOptions): Core.APIPromise<unknown> {
+  writeToHf(body: ContractWriteToHfParams, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.post('/contracts/write_to_hf', { body, ...options });
   }
 }
@@ -73,7 +73,7 @@ export namespace ContractsScoreMetrics {
   }
 }
 
-export type ContractWriteToHfResponse = unknown;
+export type ContractWriteToHfResponse = string;
 
 export interface ContractCalibrateParams {
   /**
