@@ -26,7 +26,7 @@ The full API of this library can be found in [api.md](api.md).
 import PiClient from 'withpi';
 
 const client = new PiClient({
-  apiKey: process.env['TWOPIR_API_KEY'], // This is the default and can be omitted
+  apiKey: process.env['WITHPI_API_KEY'], // This is the default and can be omitted
 });
 
 async function main() {
@@ -78,7 +78,7 @@ This library includes TypeScript definitions for all request params and response
 import PiClient from 'withpi';
 
 const client = new PiClient({
-  apiKey: process.env['TWOPIR_API_KEY'], // This is the default and can be omitted
+  apiKey: process.env['WITHPI_API_KEY'], // This is the default and can be omitted
 });
 
 async function main() {
