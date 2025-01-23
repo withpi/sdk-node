@@ -73,23 +73,6 @@ export namespace ContractsScoreMetrics {
   }
 }
 
-export interface SDKContract {
-  /**
-   * The description of the contract
-   */
-  description: string;
-
-  /**
-   * The name of the contract
-   */
-  name: string;
-
-  /**
-   * The dimensions of the contract
-   */
-  dimensions?: Array<Shared.Dimension>;
-}
-
 export type ContractWriteToHfResponse = unknown;
 
 export interface ContractCalibrateParams {
@@ -217,7 +200,6 @@ export interface ContractWriteToHfParams {
 export declare namespace Contracts {
   export {
     type ContractsScoreMetrics as ContractsScoreMetrics,
-    type SDKContract as SDKContract,
     type ContractWriteToHfResponse as ContractWriteToHfResponse,
     type ContractCalibrateParams as ContractCalibrateParams,
     type ContractGenerateDimensionsParams as ContractGenerateDimensionsParams,

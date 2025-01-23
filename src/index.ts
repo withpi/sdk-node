@@ -14,7 +14,6 @@ import {
   ContractWriteToHfResponse,
   Contracts,
   ContractsScoreMetrics,
-  SDKContract,
 } from './resources/contracts';
 import {
   Feedback,
@@ -197,7 +196,6 @@ export declare namespace PiClient {
   export {
     Contracts as Contracts,
     type ContractsScoreMetrics as ContractsScoreMetrics,
-    type SDKContract as SDKContract,
     type ContractWriteToHfResponse as ContractWriteToHfResponse,
     type ContractCalibrateParams as ContractCalibrateParams,
     type ContractGenerateDimensionsParams as ContractGenerateDimensionsParams,
