@@ -73,32 +73,6 @@ export namespace ContractsScoreMetrics {
   }
 }
 
-export interface ContractsScoreMetrics {
-  /**
-   * The score components for each dimension
-   */
-  dimension_scores: Record<string, ContractsScoreMetrics.DimensionScores>;
-
-  /**
-   * The total score of the contract
-   */
-  total_score: number;
-}
-
-export namespace ContractsScoreMetrics {
-  export interface DimensionScores {
-    /**
-     * The score components for each subdimension
-     */
-    subdimension_scores: Record<string, number>;
-
-    /**
-     * The total score of the dimension
-     */
-    total_score: number;
-  }
-}
-
 export interface SDKContract {
   /**
    * The description of the contract

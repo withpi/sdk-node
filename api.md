@@ -61,7 +61,6 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/contracts.ts">ContractsScoreMetrics</a></code>
-- <code><a href="./src/resources/contracts.ts">ContractsScoreMetrics</a></code>
 - <code><a href="./src/resources/contracts.ts">SDKContract</a></code>
 - <code><a href="./src/resources/contracts.ts">ContractWriteToHfResponse</a></code>
 

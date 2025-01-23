@@ -1,12 +1,12 @@
 {
-  "name": "@2pir-ai/twopir",
+  "name": "withpi",
   "version": "0.1.0-alpha.24",
-  "description": "The official TypeScript library for the Twopir API",
-  "author": "Twopir <dev-feedback@2pir.ai>",
+  "description": "The official TypeScript library for the Pi Client API",
+  "author": "Pi Client <dev-feedback@2pir.ai>",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "type": "commonjs",
-  "repository": "github:2pir-ai/sdk-node",
+  "repository": "github:withpi/sdk-node",
   "license": "Apache-2.0",
   "packageManager": "yarn@1.22.22",
   "files": [
@@ -59,8 +59,8 @@
     "./shims/web.mjs"
   ],
   "imports": {
-    "@2pir-ai/twopir": ".",
-    "@2pir-ai/twopir/*": "./src/*"
+    "withpi": ".",
+    "withpi/*": "./src/*"
   },
   "exports": {
     "./_shims/auto/*": {

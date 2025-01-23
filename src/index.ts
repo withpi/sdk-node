@@ -34,7 +34,7 @@ export interface ClientOptions {
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
-   * Defaults to process.env['TWOPIR_BASE_URL'].
+   * Defaults to process.env['PI_CLIENT_BASE_URL'].
    */
   baseURL?: string | null | undefined;
 
@@ -89,18 +89,18 @@ export interface ClientOptions {
 }
 
 /**
- * API Client for interfacing with the Twopir API.
+ * API Client for interfacing with the Pi Client API.
  */
-export class Twopir extends Core.APIClient {
+export class PiClient extends Core.APIClient {
   apiKey: string;
 
   private _options: ClientOptions;
 
   /**
-   * API Client for interfacing with the Twopir API.
+   * API Client for interfacing with the Pi Client API.
    *
    * @param {string | undefined} [opts.apiKey=process.env['TWOPIR_API_KEY'] ?? undefined]
-   * @param {string} [opts.baseURL=process.env['TWOPIR_BASE_URL'] ?? https://api.withpi.ai/v1] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['PI_CLIENT_BASE_URL'] ?? https://api.withpi.ai/v1] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
    * @param {Core.Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -109,13 +109,13 @@ export class Twopir extends Core.APIClient {
    * @param {Core.DefaultQuery} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
   constructor({
-    baseURL = Core.readEnv('TWOPIR_BASE_URL'),
+    baseURL = Core.readEnv('PI_CLIENT_BASE_URL'),
     apiKey = Core.readEnv('TWOPIR_API_KEY'),
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
-      throw new Errors.TwopirError(
-        "The TWOPIR_API_KEY environment variable is missing or empty; either provide it, or instantiate the Twopir client with an apiKey option, like new Twopir({ apiKey: 'My API Key' }).",
+      throw new Errors.PiClientError(
+        "The TWOPIR_API_KEY environment variable is missing or empty; either provide it, or instantiate the PiClient client with an apiKey option, like new PiClient({ apiKey: 'My API Key' }).",
       );
     }
 
@@ -158,10 +158,10 @@ export class Twopir extends Core.APIClient {
     return { 'x-api-key': this.apiKey };
   }
 
-  static Twopir = this;
+  static PiClient = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
-  static TwopirError = Errors.TwopirError;
+  static PiClientError = Errors.PiClientError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -179,11 +179,11 @@ export class Twopir extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-Twopir.Data = Data;
-Twopir.Tune = Tune;
-Twopir.Contracts = Contracts;
-Twopir.Feedback = Feedback;
-export declare namespace Twopir {
+PiClient.Data = Data;
+PiClient.Tune = Tune;
+PiClient.Contracts = Contracts;
+PiClient.Feedback = Feedback;
+export declare namespace PiClient {
   export type RequestOptions = Core.RequestOptions;
 
   export {
@@ -220,7 +220,7 @@ export declare namespace Twopir {
 
 export { toFile, fileFromPath } from './uploads';
 export {
-  TwopirError,
+  PiClientError,
   APIError,
   APIConnectionError,
   APIConnectionTimeoutError,
@@ -235,4 +235,4 @@ export {
   UnprocessableEntityError,
 } from './error';
 
-export default Twopir;
+export default PiClient;

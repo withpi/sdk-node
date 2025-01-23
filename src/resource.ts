@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import type { Twopir } from './index';
+import type { PiClient } from './index';
 
 export class APIResource {
-  protected _client: Twopir;
+  protected _client: PiClient;
 
-  constructor(client: Twopir) {
+  constructor(client: PiClient) {
     this._client = client;
   }
 }
