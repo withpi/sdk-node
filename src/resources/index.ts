@@ -4,7 +4,6 @@ export * from './shared';
 export {
   Contracts,
   type ContractsScoreMetrics,
-  type SDKContract,
   type ContractWriteToHfResponse,
   type ContractCalibrateParams,
   type ContractGenerateDimensionsParams,

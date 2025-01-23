@@ -4,8 +4,8 @@
 /**
  * Types will get added to this namespace when you import one of the following:
  *
- *   import '@2pir-ai/twopir/shims/node'
- *   import '@2pir-ai/twopir/shims/web'
+ *   import 'withpi/shims/node'
+ *   import 'withpi/shims/web'
  *
  * Importing more than one will cause type and runtime errors.
  */

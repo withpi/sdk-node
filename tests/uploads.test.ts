@@ -1,6 +1,6 @@
 import fs from 'fs';
-import { toFile, type ResponseLike } from '@2pir-ai/twopir/uploads';
-import { File } from '@2pir-ai/twopir/_shims/index';
+import { toFile, type ResponseLike } from 'withpi/uploads';
+import { File } from 'withpi/_shims/index';
 
 class MyClass {
   name: string = 'foo';

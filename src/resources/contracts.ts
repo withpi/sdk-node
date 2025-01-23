@@ -42,7 +42,7 @@ export class Contracts extends APIResource {
   /**
    * Write a contract to Huggingface dataset
    */
-  writeToHf(body: ContractWriteToHfParams, options?: Core.RequestOptions): Core.APIPromise<unknown> {
+  writeToHf(body: ContractWriteToHfParams, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.post('/contracts/write_to_hf', { body, ...options });
   }
 }
@@ -73,50 +73,7 @@ export namespace ContractsScoreMetrics {
   }
 }
 
-export interface ContractsScoreMetrics {
-  /**
-   * The score components for each dimension
-   */
-  dimension_scores: Record<string, ContractsScoreMetrics.DimensionScores>;
-
-  /**
-   * The total score of the contract
-   */
-  total_score: number;
-}
-
-export namespace ContractsScoreMetrics {
-  export interface DimensionScores {
-    /**
-     * The score components for each subdimension
-     */
-    subdimension_scores: Record<string, number>;
-
-    /**
-     * The total score of the dimension
-     */
-    total_score: number;
-  }
-}
-
-export interface SDKContract {
-  /**
-   * The description of the contract
-   */
-  description: string;
-
-  /**
-   * The name of the contract
-   */
-  name: string;
-
-  /**
-   * The dimensions of the contract
-   */
-  dimensions?: Array<Shared.Dimension>;
-}
-
-export type ContractWriteToHfResponse = unknown;
+export type ContractWriteToHfResponse = string;
 
 export interface ContractCalibrateParams {
   /**
@@ -243,7 +200,6 @@ export interface ContractWriteToHfParams {
 export declare namespace Contracts {
   export {
     type ContractsScoreMetrics as ContractsScoreMetrics,
-    type SDKContract as SDKContract,
     type ContractWriteToHfResponse as ContractWriteToHfResponse,
     type ContractCalibrateParams as ContractCalibrateParams,
     type ContractGenerateDimensionsParams as ContractGenerateDimensionsParams,

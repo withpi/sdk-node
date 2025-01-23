@@ -5,8 +5,8 @@
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
-      "@2pir-ai/twopir/*": ["dist/src/*"],
-      "@2pir-ai/twopir": ["dist/src/index.ts"],
+      "withpi/*": ["dist/src/*"],
+      "withpi": ["dist/src/index.ts"],
     },
     "noEmit": false,
     "declaration": true,

@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Twopir from '@2pir-ai/twopir';
+import PiClient from 'withpi';
 import { Response } from 'node-fetch';
 
-const client = new Twopir({
+const client = new PiClient({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
