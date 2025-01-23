@@ -9,9 +9,9 @@ export function getRuntime({ manuallyImported }: { manuallyImported?: boolean } 
   const recommendation =
     manuallyImported ?
       `You may need to use polyfills`
-    : `Add one of these imports before your first \`import … from '@2pir-ai/twopir'\`:
-- \`import '@2pir-ai/twopir/shims/node'\` (if you're running on Node)
-- \`import '@2pir-ai/twopir/shims/web'\` (otherwise)
+    : `Add one of these imports before your first \`import … from 'withpi'\`:
+- \`import 'withpi/shims/node'\` (if you're running on Node)
+- \`import 'withpi/shims/web'\` (otherwise)
 `;
 
   let _fetch, _Request, _Response, _Headers;
@@ -95,7 +95,7 @@ export function getRuntime({ manuallyImported }: { manuallyImported?: boolean } 
     getDefaultAgent: (url: string) => undefined,
     fileFromPath: () => {
       throw new Error(
-        'The `fileFromPath` function is only supported in Node. See the README for more details: https://www.github.com/2pir-ai/sdk-node#file-uploads',
+        'The `fileFromPath` function is only supported in Node. See the README for more details: https://www.github.com/withpi/sdk-node#file-uploads',
       );
     },
     isFsReadStream: (value: any) => false,
