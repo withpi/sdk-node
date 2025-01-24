@@ -51,6 +51,7 @@ describe('resource prompt', () => {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Contract',
       },
+      dspy_optimization_type: 'BOOTSTRAP_FEW_SHOT',
       examples: [
         {
           llm_input: 'Tell me something different',
@@ -113,6 +114,7 @@ describe('resource prompt', () => {
           },
         ],
       },
+      dspy_optimization_type: 'BOOTSTRAP_FEW_SHOT',
       examples: [
         {
           llm_input: 'Tell me something different',
