@@ -18,4 +18,4 @@ export {
   type FeedbackClusterResponse,
   type FeedbackClusterParams,
 } from './feedback';
-export { Tune } from './tune/tune';
+export { Tune, type PromptOptimizationStatus } from './tune/tune';
