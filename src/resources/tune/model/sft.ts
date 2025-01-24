@@ -55,9 +55,9 @@ export interface SftStatus {
 export namespace SftStatus {
   export interface HostedFireworkModel {
     /**
-     * Firework's model id.
+     * Firework's hosted model id.
      */
-    model_id: string;
+    hosted_model_id: string;
   }
 }
 
