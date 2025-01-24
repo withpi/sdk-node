@@ -3,9 +3,12 @@
 import { APIResource } from '../../resource';
 import * as PromptAPI from './prompt';
 import { Prompt, PromptGetDetailedMessagesResponse, PromptOptimizeParams } from './prompt';
+import * as ModelAPI from './model/model';
+import { Model } from './model/model';
 
 export class Tune extends APIResource {
   prompt: PromptAPI.Prompt = new PromptAPI.Prompt(this._client);
+  model: ModelAPI.Model = new ModelAPI.Model(this._client);
 }
 
 /**
@@ -35,6 +38,7 @@ export interface PromptOptimizationStatus {
 }
 
 Tune.Prompt = Prompt;
+Tune.Model = Model;
 
 export declare namespace Tune {
   export { type PromptOptimizationStatus as PromptOptimizationStatus };
@@ -44,4 +48,6 @@ export declare namespace Tune {
     type PromptGetDetailedMessagesResponse as PromptGetDetailedMessagesResponse,
     type PromptOptimizeParams as PromptOptimizeParams,
   };
+
+  export { Model as Model };
 }

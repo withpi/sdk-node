@@ -56,6 +56,21 @@ Methods:
 - <code title="get /tune/prompt/{job_id}">client.tune.prompt.<a href="./src/resources/tune/prompt.ts">getStatus</a>(jobId) -> PromptOptimizationStatus</code>
 - <code title="post /tune/prompt">client.tune.prompt.<a href="./src/resources/tune/prompt.ts">optimize</a>({ ...params }) -> PromptOptimizationStatus</code>
 
+## Model
+
+### Sft
+
+Types:
+
+- <code><a href="./src/resources/tune/model/sft.ts">SftStatus</a></code>
+- <code><a href="./src/resources/tune/model/sft.ts">SftStreamMessagesResponse</a></code>
+
+Methods:
+
+- <code title="post /tune/model/sft/{job_id}">client.tune.model.sft.<a href="./src/resources/tune/model/sft.ts">getStatus</a>(jobId) -> SftStatus</code>
+- <code title="post /tune/model/sft">client.tune.model.sft.<a href="./src/resources/tune/model/sft.ts">startJob</a>({ ...params }) -> SftStatus</code>
+- <code title="post /tune/model/sft/{job_id}/messages">client.tune.model.sft.<a href="./src/resources/tune/model/sft.ts">streamMessages</a>(jobId) -> unknown</code>
+
 # Contracts
 
 Types:

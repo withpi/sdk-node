@@ -16,7 +16,7 @@ export class Data extends APIResource {
 }
 
 /**
- * DataGenerationResult is the result of a data generation job.
+ * DataGenerationStatus is the result of a data generation job.
  */
 export interface DataGenerationStatus {
   /**
