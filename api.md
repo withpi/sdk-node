@@ -40,19 +40,21 @@ Methods:
 
 # Tune
 
+Types:
+
+- <code><a href="./src/resources/tune/tune.ts">PromptOptimizationStatus</a></code>
+
 ## Prompt
 
 Types:
 
 - <code><a href="./src/resources/tune/prompt.ts">PromptGetDetailedMessagesResponse</a></code>
-- <code><a href="./src/resources/tune/prompt.ts">PromptGetStatusResponse</a></code>
-- <code><a href="./src/resources/tune/prompt.ts">PromptOptimizeResponse</a></code>
 
 Methods:
 
 - <code title="get /tune/prompt/{job_id}/messages">client.tune.prompt.<a href="./src/resources/tune/prompt.ts">getDetailedMessages</a>(jobId) -> string</code>
-- <code title="get /tune/prompt/{job_id}">client.tune.prompt.<a href="./src/resources/tune/prompt.ts">getStatus</a>(jobId) -> PromptGetStatusResponse</code>
-- <code title="post /tune/prompt">client.tune.prompt.<a href="./src/resources/tune/prompt.ts">optimize</a>({ ...params }) -> PromptOptimizeResponse</code>
+- <code title="get /tune/prompt/{job_id}">client.tune.prompt.<a href="./src/resources/tune/prompt.ts">getStatus</a>(jobId) -> PromptOptimizationStatus</code>
+- <code title="post /tune/prompt">client.tune.prompt.<a href="./src/resources/tune/prompt.ts">optimize</a>({ ...params }) -> PromptOptimizationStatus</code>
 
 # Contracts
 

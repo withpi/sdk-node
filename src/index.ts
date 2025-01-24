@@ -22,7 +22,7 @@ import {
   FeedbackTopicCluster,
 } from './resources/feedback';
 import { Data, DataGenerationStatus, InputEvaluationMetrics } from './resources/data/data';
-import { Tune } from './resources/tune/tune';
+import { PromptOptimizationStatus, Tune } from './resources/tune/tune';
 
 export interface ClientOptions {
   /**
@@ -191,7 +191,7 @@ export declare namespace PiClient {
     type InputEvaluationMetrics as InputEvaluationMetrics,
   };
 
-  export { Tune as Tune };
+  export { Tune as Tune, type PromptOptimizationStatus as PromptOptimizationStatus };
 
   export {
     Contracts as Contracts,
