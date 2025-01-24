@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-alpha.26 (2025-01-24)
+
+Full Changelog: [v0.1.0-alpha.25...v0.1.0-alpha.26](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.25...v0.1.0-alpha.26)
+
+### Features
+
+* **api:** manual updates ([#131](https://github.com/withpi/sdk-node/issues/131)) ([25142b3](https://github.com/withpi/sdk-node/commit/25142b3e1aab0cc93033cfc6835b0b9c03cf1e7e))
+* **api:** manual updates ([#134](https://github.com/withpi/sdk-node/issues/134)) ([02a4d4a](https://github.com/withpi/sdk-node/commit/02a4d4a774cd4e80782af2b9c647d37844fdda91))
+* **api:** manual updates ([#135](https://github.com/withpi/sdk-node/issues/135)) ([8f21f06](https://github.com/withpi/sdk-node/commit/8f21f06a726660f89dca31f3361b08016165a36e))
+
+
+### Chores
+
+* update SDK settings ([#133](https://github.com/withpi/sdk-node/issues/133)) ([f12e9dc](https://github.com/withpi/sdk-node/commit/f12e9dc6e9ce912524e24725d04f83ea9fcaa1d3))
+
 ## 0.1.0-alpha.25 (2025-01-23)
 
 Full Changelog: [v0.1.0-alpha.24...v0.1.0-alpha.25](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.24...v0.1.0-alpha.25)
