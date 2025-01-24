@@ -21,8 +21,8 @@ import {
   FeedbackClusterResponse,
   FeedbackTopicCluster,
 } from './resources/feedback';
-import { Data, DataGenerationResult, InputEvaluationMetrics } from './resources/data/data';
-import { OptimizationStatus, Tune } from './resources/tune/tune';
+import { Data, InputEvaluationMetrics } from './resources/data/data';
+import { Tune } from './resources/tune/tune';
 
 export interface ClientOptions {
   /**
@@ -185,13 +185,9 @@ PiClient.Feedback = Feedback;
 export declare namespace PiClient {
   export type RequestOptions = Core.RequestOptions;
 
-  export {
-    Data as Data,
-    type DataGenerationResult as DataGenerationResult,
-    type InputEvaluationMetrics as InputEvaluationMetrics,
-  };
+  export { Data as Data, type InputEvaluationMetrics as InputEvaluationMetrics };
 
-  export { Tune as Tune, type OptimizationStatus as OptimizationStatus };
+  export { Tune as Tune };
 
   export {
     Contracts as Contracts,
