@@ -11,11 +11,8 @@ It is generated with [Stainless](https://www.stainlessapi.com/).
 ## Installation
 
 ```sh
-npm install git+ssh://git@github.com:withpi/sdk-node.git
+npm install withpi
 ```
-
-> [!NOTE]
-> Once this package is [published to npm](https://app.stainlessapi.com/docs/guides/publish), this will become: `npm install withpi`
 
 ## Usage
 
@@ -26,7 +23,7 @@ The full API of this library can be found in [api.md](api.md).
 import PiClient from 'withpi';
 
 const client = new PiClient({
-  apiKey: process.env['TWOPIR_API_KEY'], // This is the default and can be omitted
+  apiKey: process.env['WITHPI_API_KEY'], // This is the default and can be omitted
 });
 
 async function main() {
@@ -78,7 +75,7 @@ This library includes TypeScript definitions for all request params and response
 import PiClient from 'withpi';
 
 const client = new PiClient({
-  apiKey: process.env['TWOPIR_API_KEY'], // This is the default and can be omitted
+  apiKey: process.env['WITHPI_API_KEY'], // This is the default and can be omitted
 });
 
 async function main() {

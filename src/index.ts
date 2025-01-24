@@ -98,7 +98,7 @@ export class PiClient extends Core.APIClient {
   /**
    * API Client for interfacing with the Pi Client API.
    *
-   * @param {string | undefined} [opts.apiKey=process.env['TWOPIR_API_KEY'] ?? undefined]
+   * @param {string | undefined} [opts.apiKey=process.env['WITHPI_API_KEY'] ?? undefined]
    * @param {string} [opts.baseURL=process.env['PI_CLIENT_BASE_URL'] ?? https://api.withpi.ai/v1] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
@@ -109,12 +109,12 @@ export class PiClient extends Core.APIClient {
    */
   constructor({
     baseURL = Core.readEnv('PI_CLIENT_BASE_URL'),
-    apiKey = Core.readEnv('TWOPIR_API_KEY'),
+    apiKey = Core.readEnv('WITHPI_API_KEY'),
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
       throw new Errors.PiClientError(
-        "The TWOPIR_API_KEY environment variable is missing or empty; either provide it, or instantiate the PiClient client with an apiKey option, like new PiClient({ apiKey: 'My API Key' }).",
+        "The WITHPI_API_KEY environment variable is missing or empty; either provide it, or instantiate the PiClient client with an apiKey option, like new PiClient({ apiKey: 'My API Key' }).",
       );
     }
 
