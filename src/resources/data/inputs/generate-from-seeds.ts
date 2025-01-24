@@ -2,13 +2,12 @@
 
 import { APIResource } from '../../../resource';
 import * as Core from '../../../core';
-import * as DataAPI from '../data';
 
 export class GenerateFromSeeds extends APIResource {
   /**
    * Gets the current status of a data generation job
    */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<DataAPI.DataGenerationResult> {
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<GenerateFromSeedRetrieveResponse> {
     return this._client.get(`/data/input/generate_from_seeds/${jobId}`, options);
   }
 
@@ -18,7 +17,7 @@ export class GenerateFromSeeds extends APIResource {
   generate(
     body: GenerateFromSeedGenerateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<DataAPI.DataGenerationResult> {
+  ): Core.APIPromise<GenerateFromSeedGenerateResponse> {
     return this._client.post('/data/input/generate_from_seeds', { body, ...options });
   }
 
@@ -31,6 +30,56 @@ export class GenerateFromSeeds extends APIResource {
       headers: { Accept: 'text/plain', ...options?.headers },
     });
   }
+}
+
+/**
+ * DataGenerationResult is the result of a data generation job.
+ */
+export interface GenerateFromSeedRetrieveResponse {
+  /**
+   * The generated data. Absent unless state is done
+   */
+  data: Array<string> | null;
+
+  /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
+
+  /**
+   * The job id
+   */
+  job_id: string;
+
+  /**
+   * Current state of the job
+   */
+  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
+}
+
+/**
+ * DataGenerationResult is the result of a data generation job.
+ */
+export interface GenerateFromSeedGenerateResponse {
+  /**
+   * The generated data. Absent unless state is done
+   */
+  data: Array<string> | null;
+
+  /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
+
+  /**
+   * The job id
+   */
+  job_id: string;
+
+  /**
+   * Current state of the job
+   */
+  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
 }
 
 export type GenerateFromSeedStreamMessagesResponse = string;
@@ -54,6 +103,8 @@ export interface GenerateFromSeedGenerateParams {
 
 export declare namespace GenerateFromSeeds {
   export {
+    type GenerateFromSeedRetrieveResponse as GenerateFromSeedRetrieveResponse,
+    type GenerateFromSeedGenerateResponse as GenerateFromSeedGenerateResponse,
     type GenerateFromSeedStreamMessagesResponse as GenerateFromSeedStreamMessagesResponse,
     type GenerateFromSeedGenerateParams as GenerateFromSeedGenerateParams,
   };

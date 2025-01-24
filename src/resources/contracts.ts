@@ -149,8 +149,8 @@ export interface ContractGenerateDimensionsParams {
 
 export interface ContractReadFromHfParams {
   /**
-   * Huggingface contract name e.g. 2pir/my_contract. You need to provide the
-   * hf_token if the contract dataset is not public or not own by the 2pir
+   * Huggingface contract name e.g. withpi/my_contract. You need to provide the
+   * hf_token if the contract dataset is not public or not own by the withpi
    * organization.
    */
   hf_contract_name: string;
@@ -185,8 +185,8 @@ export interface ContractWriteToHfParams {
   contract: Shared.Contract;
 
   /**
-   * Huggingface contract name e.g. 2pir/my_contract. By default we export to the
-   * 2pir organization. If you want to use your own organization, we provide the
+   * Huggingface contract name e.g. withpi/my_contract. By default we export to the
+   * withpi organization. If you want to use your own organization, we provide the
    * hf_token.
    */
   hf_contract_name: string;

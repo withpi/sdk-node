@@ -6,6 +6,8 @@ import * as DataAPI from '../data';
 import * as GenerateFromSeedsAPI from './generate-from-seeds';
 import {
   GenerateFromSeedGenerateParams,
+  GenerateFromSeedGenerateResponse,
+  GenerateFromSeedRetrieveResponse,
   GenerateFromSeedStreamMessagesResponse,
   GenerateFromSeeds,
 } from './generate-from-seeds';
@@ -38,7 +40,7 @@ export class Inputs extends APIResource {
   generateSeeds(
     body: InputGenerateSeedsParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<DataAPI.DataGenerationResult> {
+  ): Core.APIPromise<InputGenerateSeedsResponse> {
     return this._client.post('/data/input/generate_seeds', { body, ...options });
   }
 }
@@ -56,6 +58,31 @@ export interface InputTopicCluster {
 }
 
 export type InputClusterResponse = Array<InputTopicCluster>;
+
+/**
+ * DataGenerationResult is the result of a data generation job.
+ */
+export interface InputGenerateSeedsResponse {
+  /**
+   * The generated data. Absent unless state is done
+   */
+  data: Array<string> | null;
+
+  /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
+
+  /**
+   * The job id
+   */
+  job_id: string;
+
+  /**
+   * Current state of the job
+   */
+  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
+}
 
 export type InputClusterParams = Array<InputClusterParams.Input>;
 
@@ -104,6 +131,7 @@ export declare namespace Inputs {
   export {
     type InputTopicCluster as InputTopicCluster,
     type InputClusterResponse as InputClusterResponse,
+    type InputGenerateSeedsResponse as InputGenerateSeedsResponse,
     type InputClusterParams as InputClusterParams,
     type InputEvaluateParams as InputEvaluateParams,
     type InputGenerateSeedsParams as InputGenerateSeedsParams,
@@ -111,6 +139,8 @@ export declare namespace Inputs {
 
   export {
     GenerateFromSeeds as GenerateFromSeeds,
+    type GenerateFromSeedRetrieveResponse as GenerateFromSeedRetrieveResponse,
+    type GenerateFromSeedGenerateResponse as GenerateFromSeedGenerateResponse,
     type GenerateFromSeedStreamMessagesResponse as GenerateFromSeedStreamMessagesResponse,
     type GenerateFromSeedGenerateParams as GenerateFromSeedGenerateParams,
   };
