@@ -2,47 +2,26 @@
 
 import { APIResource } from '../../resource';
 import * as PromptAPI from './prompt';
-import { Prompt, PromptGetDetailedMessagesResponse, PromptOptimizeParams } from './prompt';
+import {
+  Prompt,
+  PromptGetDetailedMessagesResponse,
+  PromptGetStatusResponse,
+  PromptOptimizeParams,
+  PromptOptimizeResponse,
+} from './prompt';
 
 export class Tune extends APIResource {
   prompt: PromptAPI.Prompt = new PromptAPI.Prompt(this._client);
 }
 
-/**
- * OptimizationStatus is the status of a tuning job. The optimized_prompt_messages
- * field is an empty list unless the state is done.
- */
-export interface OptimizationStatus {
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
-
-  /**
-   * The job id
-   */
-  job_id: string;
-
-  /**
-   * The optimized prompt messages in the OpenAI message format with the jinja
-   * {{ input }} variable for the next user prompt
-   */
-  optimized_prompt_messages: Array<Record<string, string>>;
-
-  /**
-   * Current state of the job
-   */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
-}
-
 Tune.Prompt = Prompt;
 
 export declare namespace Tune {
-  export { type OptimizationStatus as OptimizationStatus };
-
   export {
     Prompt as Prompt,
     type PromptGetDetailedMessagesResponse as PromptGetDetailedMessagesResponse,
+    type PromptGetStatusResponse as PromptGetStatusResponse,
+    type PromptOptimizeResponse as PromptOptimizeResponse,
     type PromptOptimizeParams as PromptOptimizeParams,
   };
 }

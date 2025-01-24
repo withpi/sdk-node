@@ -113,7 +113,7 @@ describe('resource contracts', () => {
   });
 
   test('readFromHf: only required params', async () => {
-    const responsePromise = client.contracts.readFromHf({ hf_contract_name: '2pir/tldr_contract' });
+    const responsePromise = client.contracts.readFromHf({ hf_contract_name: 'withpi/tldr_contract' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -125,7 +125,7 @@ describe('resource contracts', () => {
 
   test('readFromHf: required and optional params', async () => {
     const response = await client.contracts.readFromHf({
-      hf_contract_name: '2pir/tldr_contract',
+      hf_contract_name: 'withpi/tldr_contract',
       hf_token: 'hf_token',
     });
   });
@@ -202,7 +202,7 @@ describe('resource contracts', () => {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Contract',
       },
-      hf_contract_name: '2pir/tldr_contract',
+      hf_contract_name: 'withpi/tldr_contract',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -256,7 +256,7 @@ describe('resource contracts', () => {
           },
         ],
       },
-      hf_contract_name: '2pir/tldr_contract',
+      hf_contract_name: 'withpi/tldr_contract',
       hf_token: 'hf_token',
     });
   });
