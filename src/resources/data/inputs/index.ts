@@ -2,6 +2,8 @@
 
 export {
   GenerateFromSeeds,
+  type GenerateFromSeedRetrieveResponse,
+  type GenerateFromSeedGenerateResponse,
   type GenerateFromSeedStreamMessagesResponse,
   type GenerateFromSeedGenerateParams,
 } from './generate-from-seeds';
@@ -9,6 +11,7 @@ export {
   Inputs,
   type InputTopicCluster,
   type InputClusterResponse,
+  type InputGenerateSeedsResponse,
   type InputClusterParams,
   type InputEvaluateParams,
   type InputGenerateSeedsParams,

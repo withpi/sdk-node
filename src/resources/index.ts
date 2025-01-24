@@ -11,11 +11,11 @@ export {
   type ContractScoreParams,
   type ContractWriteToHfParams,
 } from './contracts';
-export { Data, type DataGenerationResult, type InputEvaluationMetrics } from './data/data';
+export { Data, type InputEvaluationMetrics } from './data/data';
 export {
   Feedback,
   type FeedbackTopicCluster,
   type FeedbackClusterResponse,
   type FeedbackClusterParams,
 } from './feedback';
-export { Tune, type OptimizationStatus } from './tune/tune';
+export { Tune } from './tune/tune';
