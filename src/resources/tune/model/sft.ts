@@ -6,24 +6,24 @@ import * as Shared from '../../shared';
 
 export class Sft extends APIResource {
   /**
-   * Get the current status of a model SFT tuning job
+   * Start the model SFT tuning job
    */
-  getStatus(jobId: string, options?: Core.RequestOptions): Core.APIPromise<SftStatus> {
-    return this._client.post(`/tune/model/sft/${jobId}`, options);
+  create(body: SftCreateParams, options?: Core.RequestOptions): Core.APIPromise<SftStatus> {
+    return this._client.post('/model/sft', { body, ...options });
   }
 
   /**
-   * Start the model SFT tuning job
+   * Get the current status of a model SFT tuning job
    */
-  startJob(body: SftStartJobParams, options?: Core.RequestOptions): Core.APIPromise<SftStatus> {
-    return this._client.post('/tune/model/sft', { body, ...options });
+  getStatus(jobId: string, options?: Core.RequestOptions): Core.APIPromise<SftStatus> {
+    return this._client.post(`/model/sft/${jobId}`, options);
   }
 
   /**
    * Streams messages from a model SFT tuning job
    */
   streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<unknown> {
-    return this._client.post(`/tune/model/sft/${jobId}/messages`, options);
+    return this._client.post(`/model/sft/${jobId}/messages`, options);
   }
 }
 
@@ -63,7 +63,7 @@ export namespace SftStatus {
 
 export type SftStreamMessagesResponse = unknown;
 
-export interface SftStartJobParams {
+export interface SftCreateParams {
   /**
    * The contract to use in the SFT tuning process
    */
@@ -72,7 +72,7 @@ export interface SftStartJobParams {
   /**
    * Examples to use in the SFT tuning process
    */
-  examples: Array<SftStartJobParams.Example>;
+  examples: Array<SftCreateParams.Example>;
 
   /**
    * The base model to use in the SFT.
@@ -80,7 +80,7 @@ export interface SftStartJobParams {
   base_sft_model?: 'LLAMA_3.1_8B';
 }
 
-export namespace SftStartJobParams {
+export namespace SftCreateParams {
   /**
    * An example for training or evaluation
    */
@@ -101,6 +101,6 @@ export declare namespace Sft {
   export {
     type SftStatus as SftStatus,
     type SftStreamMessagesResponse as SftStreamMessagesResponse,
-    type SftStartJobParams as SftStartJobParams,
+    type SftCreateParams as SftCreateParams,
   };
 }

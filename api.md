@@ -48,13 +48,14 @@ Types:
 
 Types:
 
-- <code><a href="./src/resources/tune/prompt.ts">PromptGetDetailedMessagesResponse</a></code>
+- <code><a href="./src/resources/tune/prompt.ts">PromptOptimizationStatus</a></code>
+- <code><a href="./src/resources/tune/prompt.ts">PromptStreamMessagesResponse</a></code>
 
 Methods:
 
-- <code title="get /tune/prompt/{job_id}/messages">client.tune.prompt.<a href="./src/resources/tune/prompt.ts">getDetailedMessages</a>(jobId) -> string</code>
-- <code title="get /tune/prompt/{job_id}">client.tune.prompt.<a href="./src/resources/tune/prompt.ts">getStatus</a>(jobId) -> PromptOptimizationStatus</code>
-- <code title="post /tune/prompt">client.tune.prompt.<a href="./src/resources/tune/prompt.ts">optimize</a>({ ...params }) -> PromptOptimizationStatus</code>
+- <code title="post /prompt/optimize">client.tune.prompt.<a href="./src/resources/tune/prompt.ts">create</a>({ ...params }) -> PromptOptimizationStatus</code>
+- <code title="get /prompt/optimize/{job_id}">client.tune.prompt.<a href="./src/resources/tune/prompt.ts">getStatus</a>(jobId) -> PromptOptimizationStatus</code>
+- <code title="get /prompt/optimize/{job_id}/messages">client.tune.prompt.<a href="./src/resources/tune/prompt.ts">streamMessages</a>(jobId) -> string</code>
 
 ## Model
 
@@ -67,9 +68,9 @@ Types:
 
 Methods:
 
-- <code title="post /tune/model/sft/{job_id}">client.tune.model.sft.<a href="./src/resources/tune/model/sft.ts">getStatus</a>(jobId) -> SftStatus</code>
-- <code title="post /tune/model/sft">client.tune.model.sft.<a href="./src/resources/tune/model/sft.ts">startJob</a>({ ...params }) -> SftStatus</code>
-- <code title="post /tune/model/sft/{job_id}/messages">client.tune.model.sft.<a href="./src/resources/tune/model/sft.ts">streamMessages</a>(jobId) -> unknown</code>
+- <code title="post /model/sft">client.tune.model.sft.<a href="./src/resources/tune/model/sft.ts">create</a>({ ...params }) -> SftStatus</code>
+- <code title="post /model/sft/{job_id}">client.tune.model.sft.<a href="./src/resources/tune/model/sft.ts">getStatus</a>(jobId) -> SftStatus</code>
+- <code title="post /model/sft/{job_id}/messages">client.tune.model.sft.<a href="./src/resources/tune/model/sft.ts">streamMessages</a>(jobId) -> unknown</code>
 
 # Contracts
 
