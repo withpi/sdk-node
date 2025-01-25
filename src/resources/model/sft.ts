@@ -75,7 +75,7 @@ export interface SftStartJobParams {
   examples: Array<SftStartJobParams.Example>;
 
   /**
-   * The base model to use in the SFT.
+   * The base model to start the SFT tuning process.
    */
   base_sft_model?: 'LLAMA_3.1_8B';
 }
