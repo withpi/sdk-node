@@ -9,8 +9,26 @@ const client = new PiClient({
 });
 
 describe('resource sft', () => {
-  test('create: only required params', async () => {
-    const responsePromise = client.tune.model.sft.create({
+  test('getStatus', async () => {
+    const responsePromise = client.model.sft.getStatus('job_id');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('getStatus: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(client.model.sft.getStatus('job_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+      PiClient.NotFoundError,
+    );
+  });
+
+  test('startJob: only required params', async () => {
+    const responsePromise = client.model.sft.startJob({
       contract: {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Contract',
@@ -31,8 +49,8 @@ describe('resource sft', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('create: required and optional params', async () => {
-    const response = await client.tune.model.sft.create({
+  test('startJob: required and optional params', async () => {
+    const response = await client.model.sft.startJob({
       contract: {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Contract',
@@ -84,26 +102,8 @@ describe('resource sft', () => {
     });
   });
 
-  test('getStatus', async () => {
-    const responsePromise = client.tune.model.sft.getStatus('job_id');
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('getStatus: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.tune.model.sft.getStatus('job_id', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(PiClient.NotFoundError);
-  });
-
   test('streamMessages', async () => {
-    const responsePromise = client.tune.model.sft.streamMessages('job_id');
+    const responsePromise = client.model.sft.streamMessages('job_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -116,7 +116,7 @@ describe('resource sft', () => {
   test('streamMessages: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.tune.model.sft.streamMessages('job_id', { path: '/_stainless_unknown_path' }),
+      client.model.sft.streamMessages('job_id', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(PiClient.NotFoundError);
   });
 });
