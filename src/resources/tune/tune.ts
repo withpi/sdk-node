@@ -2,7 +2,12 @@
 
 import { APIResource } from '../../resource';
 import * as PromptAPI from './prompt';
-import { Prompt, PromptGetDetailedMessagesResponse, PromptOptimizeParams } from './prompt';
+import {
+  Prompt,
+  PromptCreateParams,
+  PromptOptimizationStatus as PromptAPIPromptOptimizationStatus,
+  PromptStreamMessagesResponse,
+} from './prompt';
 import * as ModelAPI from './model/model';
 import { Model } from './model/model';
 
@@ -45,8 +50,9 @@ export declare namespace Tune {
 
   export {
     Prompt as Prompt,
-    type PromptGetDetailedMessagesResponse as PromptGetDetailedMessagesResponse,
-    type PromptOptimizeParams as PromptOptimizeParams,
+    type PromptAPIPromptOptimizationStatus as PromptOptimizationStatus,
+    type PromptStreamMessagesResponse as PromptStreamMessagesResponse,
+    type PromptCreateParams as PromptCreateParams,
   };
 
   export { Model as Model };

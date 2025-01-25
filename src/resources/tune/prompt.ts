@@ -7,36 +7,62 @@ import * as TuneAPI from './tune';
 
 export class Prompt extends APIResource {
   /**
-   * Opens a message stream about a prompt optimization job
+   * Start a prompt optimization job
    */
-  getDetailedMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
-    return this._client.get(`/tune/prompt/${jobId}/messages`, {
-      ...options,
-      headers: { Accept: 'text/plain', ...options?.headers },
-    });
+  create(
+    body: PromptCreateParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<TuneAPI.PromptOptimizationStatus> {
+    return this._client.post('/prompt/optimize', { body, ...options });
   }
 
   /**
    * Checks on a prompt optimization job
    */
   getStatus(jobId: string, options?: Core.RequestOptions): Core.APIPromise<TuneAPI.PromptOptimizationStatus> {
-    return this._client.get(`/tune/prompt/${jobId}`, options);
+    return this._client.get(`/prompt/optimize/${jobId}`, options);
   }
 
   /**
-   * Start a prompt optimization job
+   * Opens a message stream about a prompt optimization job
    */
-  optimize(
-    body: PromptOptimizeParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<TuneAPI.PromptOptimizationStatus> {
-    return this._client.post('/tune/prompt', { body, ...options });
+  streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+    return this._client.get(`/prompt/optimize/${jobId}/messages`, {
+      ...options,
+      headers: { Accept: 'text/plain', ...options?.headers },
+    });
   }
 }
 
-export type PromptGetDetailedMessagesResponse = string;
+/**
+ * The optimized_prompt_messages field is an empty list unless the state is done.
+ */
+export interface PromptOptimizationStatus {
+  /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
 
-export interface PromptOptimizeParams {
+  /**
+   * The job id
+   */
+  job_id: string;
+
+  /**
+   * The optimized prompt messages in the OpenAI message format with the jinja
+   * {{ input }} variable for the next user prompt
+   */
+  optimized_prompt_messages: Array<Record<string, string>>;
+
+  /**
+   * Current state of the job
+   */
+  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
+}
+
+export type PromptStreamMessagesResponse = string;
+
+export interface PromptCreateParams {
   /**
    * The contract to optimize
    */
@@ -50,7 +76,7 @@ export interface PromptOptimizeParams {
   /**
    * The examples to train and validate on
    */
-  examples: Array<PromptOptimizeParams.Example>;
+  examples: Array<PromptCreateParams.Example>;
 
   /**
    * The initial system instruction
@@ -68,7 +94,7 @@ export interface PromptOptimizeParams {
   tuning_algorithm: 'PI' | 'DSPY';
 }
 
-export namespace PromptOptimizeParams {
+export namespace PromptCreateParams {
   /**
    * An example for training or evaluation
    */
@@ -87,7 +113,8 @@ export namespace PromptOptimizeParams {
 
 export declare namespace Prompt {
   export {
-    type PromptGetDetailedMessagesResponse as PromptGetDetailedMessagesResponse,
-    type PromptOptimizeParams as PromptOptimizeParams,
+    type PromptOptimizationStatus as PromptOptimizationStatus,
+    type PromptStreamMessagesResponse as PromptStreamMessagesResponse,
+    type PromptCreateParams as PromptCreateParams,
   };
 }
