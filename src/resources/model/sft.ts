@@ -1,22 +1,22 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../../resource';
-import * as Core from '../../../core';
-import * as Shared from '../../shared';
+import { APIResource } from '../../resource';
+import * as Core from '../../core';
+import * as Shared from '../shared';
 
 export class Sft extends APIResource {
-  /**
-   * Start the model SFT tuning job
-   */
-  create(body: SftCreateParams, options?: Core.RequestOptions): Core.APIPromise<SftStatus> {
-    return this._client.post('/model/sft', { body, ...options });
-  }
-
   /**
    * Get the current status of a model SFT tuning job
    */
   getStatus(jobId: string, options?: Core.RequestOptions): Core.APIPromise<SftStatus> {
     return this._client.post(`/model/sft/${jobId}`, options);
+  }
+
+  /**
+   * Start the model SFT tuning job
+   */
+  startJob(body: SftStartJobParams, options?: Core.RequestOptions): Core.APIPromise<SftStatus> {
+    return this._client.post('/model/sft', { body, ...options });
   }
 
   /**
@@ -63,7 +63,7 @@ export namespace SftStatus {
 
 export type SftStreamMessagesResponse = unknown;
 
-export interface SftCreateParams {
+export interface SftStartJobParams {
   /**
    * The contract to use in the SFT tuning process
    */
@@ -72,7 +72,7 @@ export interface SftCreateParams {
   /**
    * Examples to use in the SFT tuning process
    */
-  examples: Array<SftCreateParams.Example>;
+  examples: Array<SftStartJobParams.Example>;
 
   /**
    * The base model to use in the SFT.
@@ -80,7 +80,7 @@ export interface SftCreateParams {
   base_sft_model?: 'LLAMA_3.1_8B';
 }
 
-export namespace SftCreateParams {
+export namespace SftStartJobParams {
   /**
    * An example for training or evaluation
    */
@@ -101,6 +101,6 @@ export declare namespace Sft {
   export {
     type SftStatus as SftStatus,
     type SftStreamMessagesResponse as SftStreamMessagesResponse,
-    type SftCreateParams as SftCreateParams,
+    type SftStartJobParams as SftStartJobParams,
   };
 }

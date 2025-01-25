@@ -1,26 +1,25 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
-import * as Shared from '../shared';
-import * as TuneAPI from './tune';
+import { APIResource } from '../resource';
+import * as Core from '../core';
+import * as Shared from './shared';
 
 export class Prompt extends APIResource {
   /**
-   * Start a prompt optimization job
+   * Checks on a prompt optimization job
    */
-  create(
-    body: PromptCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<TuneAPI.PromptOptimizationStatus> {
-    return this._client.post('/prompt/optimize', { body, ...options });
+  getStatus(jobId: string, options?: Core.RequestOptions): Core.APIPromise<PromptOptimizationStatus> {
+    return this._client.get(`/prompt/optimize/${jobId}`, options);
   }
 
   /**
-   * Checks on a prompt optimization job
+   * Start a prompt optimization job
    */
-  getStatus(jobId: string, options?: Core.RequestOptions): Core.APIPromise<TuneAPI.PromptOptimizationStatus> {
-    return this._client.get(`/prompt/optimize/${jobId}`, options);
+  optimize(
+    body: PromptOptimizeParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<PromptOptimizationStatus> {
+    return this._client.post('/prompt/optimize', { body, ...options });
   }
 
   /**
@@ -62,7 +61,7 @@ export interface PromptOptimizationStatus {
 
 export type PromptStreamMessagesResponse = string;
 
-export interface PromptCreateParams {
+export interface PromptOptimizeParams {
   /**
    * The contract to optimize
    */
@@ -76,7 +75,7 @@ export interface PromptCreateParams {
   /**
    * The examples to train and validate on
    */
-  examples: Array<PromptCreateParams.Example>;
+  examples: Array<PromptOptimizeParams.Example>;
 
   /**
    * The initial system instruction
@@ -94,7 +93,7 @@ export interface PromptCreateParams {
   tuning_algorithm: 'PI' | 'DSPY';
 }
 
-export namespace PromptCreateParams {
+export namespace PromptOptimizeParams {
   /**
    * An example for training or evaluation
    */
@@ -115,6 +114,6 @@ export declare namespace Prompt {
   export {
     type PromptOptimizationStatus as PromptOptimizationStatus,
     type PromptStreamMessagesResponse as PromptStreamMessagesResponse,
-    type PromptCreateParams as PromptCreateParams,
+    type PromptOptimizeParams as PromptOptimizeParams,
   };
 }

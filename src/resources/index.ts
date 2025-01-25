@@ -18,4 +18,10 @@ export {
   type FeedbackClusterResponse,
   type FeedbackClusterParams,
 } from './feedback';
-export { Tune, type PromptOptimizationStatus } from './tune/tune';
+export { Model } from './model/model';
+export {
+  Prompt,
+  type PromptOptimizationStatus,
+  type PromptStreamMessagesResponse,
+  type PromptOptimizeParams,
+} from './prompt';
