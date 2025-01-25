@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../../resource';
+import { APIResource } from '../../resource';
 import * as SftAPI from './sft';
-import { Sft, SftCreateParams, SftStatus, SftStreamMessagesResponse } from './sft';
+import { Sft, SftStartJobParams, SftStatus, SftStreamMessagesResponse } from './sft';
 
 export class Model extends APIResource {
   sft: SftAPI.Sft = new SftAPI.Sft(this._client);
@@ -15,6 +15,6 @@ export declare namespace Model {
     Sft as Sft,
     type SftStatus as SftStatus,
     type SftStreamMessagesResponse as SftStreamMessagesResponse,
-    type SftCreateParams as SftCreateParams,
+    type SftStartJobParams as SftStartJobParams,
   };
 }

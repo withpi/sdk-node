@@ -21,8 +21,14 @@ import {
   FeedbackClusterResponse,
   FeedbackTopicCluster,
 } from './resources/feedback';
+import {
+  Prompt,
+  PromptOptimizationStatus,
+  PromptOptimizeParams,
+  PromptStreamMessagesResponse,
+} from './resources/prompt';
 import { Data, DataGenerationStatus, InputEvaluationMetrics } from './resources/data/data';
-import { PromptOptimizationStatus, Tune } from './resources/tune/tune';
+import { Model } from './resources/model/model';
 
 export interface ClientOptions {
   /**
@@ -138,7 +144,8 @@ export class PiClient extends Core.APIClient {
   }
 
   data: API.Data = new API.Data(this);
-  tune: API.Tune = new API.Tune(this);
+  prompt: API.Prompt = new API.Prompt(this);
+  model: API.Model = new API.Model(this);
   contracts: API.Contracts = new API.Contracts(this);
   feedback: API.Feedback = new API.Feedback(this);
 
@@ -179,7 +186,8 @@ export class PiClient extends Core.APIClient {
 }
 
 PiClient.Data = Data;
-PiClient.Tune = Tune;
+PiClient.Prompt = Prompt;
+PiClient.Model = Model;
 PiClient.Contracts = Contracts;
 PiClient.Feedback = Feedback;
 export declare namespace PiClient {
@@ -191,7 +199,14 @@ export declare namespace PiClient {
     type InputEvaluationMetrics as InputEvaluationMetrics,
   };
 
-  export { Tune as Tune, type PromptOptimizationStatus as PromptOptimizationStatus };
+  export {
+    Prompt as Prompt,
+    type PromptOptimizationStatus as PromptOptimizationStatus,
+    type PromptStreamMessagesResponse as PromptStreamMessagesResponse,
+    type PromptOptimizeParams as PromptOptimizeParams,
+  };
+
+  export { Model as Model };
 
   export {
     Contracts as Contracts,

@@ -38,39 +38,33 @@ Methods:
 - <code title="post /data/input/generate_from_seeds">client.data.inputs.generateFromSeeds.<a href="./src/resources/data/inputs/generate-from-seeds.ts">generate</a>({ ...params }) -> DataGenerationStatus</code>
 - <code title="get /data/input/generate_from_seeds/{job_id}/messages">client.data.inputs.generateFromSeeds.<a href="./src/resources/data/inputs/generate-from-seeds.ts">streamMessages</a>(jobId) -> string</code>
 
-# Tune
+# Prompt
 
 Types:
 
-- <code><a href="./src/resources/tune/tune.ts">PromptOptimizationStatus</a></code>
-
-## Prompt
-
-Types:
-
-- <code><a href="./src/resources/tune/prompt.ts">PromptOptimizationStatus</a></code>
-- <code><a href="./src/resources/tune/prompt.ts">PromptStreamMessagesResponse</a></code>
+- <code><a href="./src/resources/prompt.ts">PromptOptimizationStatus</a></code>
+- <code><a href="./src/resources/prompt.ts">PromptStreamMessagesResponse</a></code>
 
 Methods:
 
-- <code title="post /prompt/optimize">client.tune.prompt.<a href="./src/resources/tune/prompt.ts">create</a>({ ...params }) -> PromptOptimizationStatus</code>
-- <code title="get /prompt/optimize/{job_id}">client.tune.prompt.<a href="./src/resources/tune/prompt.ts">getStatus</a>(jobId) -> PromptOptimizationStatus</code>
-- <code title="get /prompt/optimize/{job_id}/messages">client.tune.prompt.<a href="./src/resources/tune/prompt.ts">streamMessages</a>(jobId) -> string</code>
+- <code title="get /prompt/optimize/{job_id}">client.prompt.<a href="./src/resources/prompt.ts">getStatus</a>(jobId) -> PromptOptimizationStatus</code>
+- <code title="post /prompt/optimize">client.prompt.<a href="./src/resources/prompt.ts">optimize</a>({ ...params }) -> PromptOptimizationStatus</code>
+- <code title="get /prompt/optimize/{job_id}/messages">client.prompt.<a href="./src/resources/prompt.ts">streamMessages</a>(jobId) -> string</code>
 
-## Model
+# Model
 
-### Sft
+## Sft
 
 Types:
 
-- <code><a href="./src/resources/tune/model/sft.ts">SftStatus</a></code>
-- <code><a href="./src/resources/tune/model/sft.ts">SftStreamMessagesResponse</a></code>
+- <code><a href="./src/resources/model/sft.ts">SftStatus</a></code>
+- <code><a href="./src/resources/model/sft.ts">SftStreamMessagesResponse</a></code>
 
 Methods:
 
-- <code title="post /model/sft">client.tune.model.sft.<a href="./src/resources/tune/model/sft.ts">create</a>({ ...params }) -> SftStatus</code>
-- <code title="post /model/sft/{job_id}">client.tune.model.sft.<a href="./src/resources/tune/model/sft.ts">getStatus</a>(jobId) -> SftStatus</code>
-- <code title="post /model/sft/{job_id}/messages">client.tune.model.sft.<a href="./src/resources/tune/model/sft.ts">streamMessages</a>(jobId) -> unknown</code>
+- <code title="post /model/sft/{job_id}">client.model.sft.<a href="./src/resources/model/sft.ts">getStatus</a>(jobId) -> SftStatus</code>
+- <code title="post /model/sft">client.model.sft.<a href="./src/resources/model/sft.ts">startJob</a>({ ...params }) -> SftStatus</code>
+- <code title="post /model/sft/{job_id}/messages">client.model.sft.<a href="./src/resources/model/sft.ts">streamMessages</a>(jobId) -> unknown</code>
 
 # Contracts
 
