@@ -28,7 +28,7 @@ export class Sft extends APIResource {
 }
 
 /**
- * SftStatus is the result of a SFT job.
+ * SftStatus is the status of a SFT job.
  */
 export interface SftStatus {
   /**
