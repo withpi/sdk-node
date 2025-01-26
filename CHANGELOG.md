@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.1.0-alpha.28 (2025-01-26)
+
+Full Changelog: [v0.1.0-alpha.27...v0.1.0-alpha.28](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.27...v0.1.0-alpha.28)
+
+### Features
+
+* **api:** api update ([#145](https://github.com/withpi/sdk-node/issues/145)) ([29564e5](https://github.com/withpi/sdk-node/commit/29564e5a48c1f11ac1589ff88cfdbb7c06db2ca7))
+* **api:** api update ([#146](https://github.com/withpi/sdk-node/issues/146)) ([d7ac96d](https://github.com/withpi/sdk-node/commit/d7ac96d9e0f69dfd519d152a57d74af4553afd3b))
+* **api:** api update ([#147](https://github.com/withpi/sdk-node/issues/147)) ([633338a](https://github.com/withpi/sdk-node/commit/633338a669b37c6764606d14587e79b5bb825eee))
+* **api:** api update ([#149](https://github.com/withpi/sdk-node/issues/149)) ([1096334](https://github.com/withpi/sdk-node/commit/1096334eb46eea0f4696d0470eca71bc1a11e474))
+* **api:** api update ([#150](https://github.com/withpi/sdk-node/issues/150)) ([65bd8c2](https://github.com/withpi/sdk-node/commit/65bd8c2e18aabcf84093c0eaef84dc6244512ae3))
+* **api:** api update ([#151](https://github.com/withpi/sdk-node/issues/151)) ([1f7f963](https://github.com/withpi/sdk-node/commit/1f7f963d2fd961f5fc91b25e5519eaa89586d1ee))
+* **api:** manual updates ([#142](https://github.com/withpi/sdk-node/issues/142)) ([56db0d1](https://github.com/withpi/sdk-node/commit/56db0d1697e20de89db89aa9e9e5460db3e84813))
+* **api:** manual updates ([#144](https://github.com/withpi/sdk-node/issues/144)) ([7c74cd9](https://github.com/withpi/sdk-node/commit/7c74cd9130d283a3f4120869e337cd829558cb9e))
+* **api:** manual updates ([#148](https://github.com/withpi/sdk-node/issues/148)) ([ca86102](https://github.com/withpi/sdk-node/commit/ca86102db520aa3f41492ba2e0bbe85342e8dad3))
+
 ## 0.1.0-alpha.27 (2025-01-24)
 
 Full Changelog: [v0.1.0-alpha.26...v0.1.0-alpha.27](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.26...v0.1.0-alpha.27)
