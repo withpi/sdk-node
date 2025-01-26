@@ -78,6 +78,16 @@ export interface SftStartJobParams {
    * The base model to start the SFT tuning process.
    */
   base_sft_model?: 'LLAMA_3.1_8B';
+
+  /**
+   * SFT learning rate
+   */
+  learning_rate?: number;
+
+  /**
+   * SFT number of train epochs
+   */
+  num_train_epochs?: number;
 }
 
 export namespace SftStartJobParams {
