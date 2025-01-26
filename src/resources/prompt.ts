@@ -1,25 +1,15 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
-import * as Shared from '../shared';
+import { APIResource } from '../resource';
+import * as Core from '../core';
+import * as Shared from './shared';
 
 export class Prompt extends APIResource {
   /**
-   * Opens a message stream about a prompt optimization job
-   */
-  getDetailedMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
-    return this._client.get(`/tune/prompt/${jobId}/messages`, {
-      ...options,
-      headers: { Accept: 'text/plain', ...options?.headers },
-    });
-  }
-
-  /**
    * Checks on a prompt optimization job
    */
-  getStatus(jobId: string, options?: Core.RequestOptions): Core.APIPromise<PromptGetStatusResponse> {
-    return this._client.get(`/tune/prompt/${jobId}`, options);
+  getStatus(jobId: string, options?: Core.RequestOptions): Core.APIPromise<PromptOptimizationStatus> {
+    return this._client.get(`/prompt/optimize/${jobId}`, options);
   }
 
   /**
@@ -28,17 +18,25 @@ export class Prompt extends APIResource {
   optimize(
     body: PromptOptimizeParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<PromptOptimizeResponse> {
-    return this._client.post('/tune/prompt', { body, ...options });
+  ): Core.APIPromise<PromptOptimizationStatus> {
+    return this._client.post('/prompt/optimize', { body, ...options });
+  }
+
+  /**
+   * Opens a message stream about a prompt optimization job
+   */
+  streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+    return this._client.get(`/prompt/optimize/${jobId}/messages`, {
+      ...options,
+      headers: { Accept: 'text/plain', ...options?.headers },
+    });
   }
 }
 
-export type PromptGetDetailedMessagesResponse = string;
-
 /**
  * The optimized_prompt_messages field is an empty list unless the state is done.
  */
-export interface PromptGetStatusResponse {
+export interface PromptOptimizationStatus {
   /**
    * Detailed status of the job
    */
@@ -61,31 +59,7 @@ export interface PromptGetStatusResponse {
   state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
 }
 
-/**
- * The optimized_prompt_messages field is an empty list unless the state is done.
- */
-export interface PromptOptimizeResponse {
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
-
-  /**
-   * The job id
-   */
-  job_id: string;
-
-  /**
-   * The optimized prompt messages in the OpenAI message format with the jinja
-   * {{ input }} variable for the next user prompt
-   */
-  optimized_prompt_messages: Array<Record<string, string>>;
-
-  /**
-   * Current state of the job
-   */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
-}
+export type PromptStreamMessagesResponse = string;
 
 export interface PromptOptimizeParams {
   /**
@@ -138,9 +112,8 @@ export namespace PromptOptimizeParams {
 
 export declare namespace Prompt {
   export {
-    type PromptGetDetailedMessagesResponse as PromptGetDetailedMessagesResponse,
-    type PromptGetStatusResponse as PromptGetStatusResponse,
-    type PromptOptimizeResponse as PromptOptimizeResponse,
+    type PromptOptimizationStatus as PromptOptimizationStatus,
+    type PromptStreamMessagesResponse as PromptStreamMessagesResponse,
     type PromptOptimizeParams as PromptOptimizeParams,
   };
 }

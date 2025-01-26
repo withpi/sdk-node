@@ -11,11 +11,17 @@ export {
   type ContractScoreParams,
   type ContractWriteToHfParams,
 } from './contracts';
-export { Data, type InputEvaluationMetrics } from './data/data';
+export { Data, type DataGenerationStatus, type InputEvaluationMetrics } from './data/data';
 export {
   Feedback,
   type FeedbackTopicCluster,
   type FeedbackClusterResponse,
   type FeedbackClusterParams,
 } from './feedback';
-export { Tune } from './tune/tune';
+export { Model } from './model/model';
+export {
+  Prompt,
+  type PromptOptimizationStatus,
+  type PromptStreamMessagesResponse,
+  type PromptOptimizeParams,
+} from './prompt';
