@@ -47,7 +47,7 @@ export interface SftStatus {
   state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
 
   /**
-   * A list of hosted firework models
+   * A list of hosted Firework models
    */
   hosted_firework_models?: Array<SftStatus.HostedFireworkModel> | null;
 }
