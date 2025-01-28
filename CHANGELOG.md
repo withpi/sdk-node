@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.0-alpha.30 (2025-01-28)
+
+Full Changelog: [v0.1.0-alpha.29...v0.1.0-alpha.30](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.29...v0.1.0-alpha.30)
+
+### Features
+
+* **api:** api update ([#156](https://github.com/withpi/sdk-node/issues/156)) ([00fd69e](https://github.com/withpi/sdk-node/commit/00fd69e11537b69029b768cfd3c7ac4b856f5c84))
+* **api:** api update ([#158](https://github.com/withpi/sdk-node/issues/158)) ([5fd8382](https://github.com/withpi/sdk-node/commit/5fd838202ada65b665140bad798e817607977c48))
+* **api:** api update ([#159](https://github.com/withpi/sdk-node/issues/159)) ([f842905](https://github.com/withpi/sdk-node/commit/f842905ccff574ee40d78cf75c05a085b4b8b8f5))
+
 ## 0.1.0-alpha.29 (2025-01-27)
 
 Full Changelog: [v0.1.0-alpha.28...v0.1.0-alpha.29](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.28...v0.1.0-alpha.29)
