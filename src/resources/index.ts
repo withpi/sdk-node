@@ -5,12 +5,11 @@ export {
   Contracts,
   type ContractsScoreMetrics,
   type ContractWriteToHfResponse,
-  type ContractCalibrateParams,
   type ContractGenerateDimensionsParams,
   type ContractReadFromHfParams,
   type ContractScoreParams,
   type ContractWriteToHfParams,
-} from './contracts';
+} from './contracts/contracts';
 export { Data, type DataGenerationStatus, type InputEvaluationMetrics } from './data/data';
 export {
   Feedback,
