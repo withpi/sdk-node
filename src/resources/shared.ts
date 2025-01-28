@@ -70,13 +70,19 @@ export namespace Dimension {
     /**
      * The type of scoring performed for this dimension
      */
-    scoring_type: 'PI_SCORER' | 'HUGGINGFACE_SCORER' | 'PYTHON_CODE';
+    scoring_type: 'PI_SCORER' | 'HUGGINGFACE_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER';
 
     /**
      * If `action_on_low_score = True`, the node emits the real value if action
      * dimension score is <= 0.5 and it returns -1 otherwise.
      */
     action_on_low_score?: boolean | null;
+
+    /**
+     * The ID of the custom model to use for scoring. Only relevant for scoring_type of
+     * CUSTOM_MODEL_SCORER
+     */
+    custom_model_id?: string | null;
 
     /**
      * The URL of the HuggingFace model to use for scoring. Only relevant for
@@ -105,7 +111,7 @@ export interface SubDimension {
   /**
    * The type of scoring performed for this dimension
    */
-  scoring_type: 'PI_SCORER' | 'HUGGINGFACE_SCORER' | 'PYTHON_CODE';
+  scoring_type: 'PI_SCORER' | 'HUGGINGFACE_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER';
 
   /**
    * If `action_dimension` is set, this node is a part of short-circuit subtree. If
@@ -114,6 +120,12 @@ export interface SubDimension {
    * the -1 scores and thus we achieve the short-circuit behavior.
    */
   action_dimension?: SubDimension.ActionDimension | null;
+
+  /**
+   * The ID of the custom model to use for scoring. Only relevant for scoring_type of
+   * CUSTOM_MODEL_SCORER
+   */
+  custom_model_id?: string | null;
 
   /**
    * The URL of the HuggingFace model to use for scoring. Only relevant for
@@ -161,13 +173,19 @@ export namespace SubDimension {
     /**
      * The type of scoring performed for this dimension
      */
-    scoring_type: 'PI_SCORER' | 'HUGGINGFACE_SCORER' | 'PYTHON_CODE';
+    scoring_type: 'PI_SCORER' | 'HUGGINGFACE_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER';
 
     /**
      * If `action_on_low_score = True`, the node emits the real value if action
      * dimension score is <= 0.5 and it returns -1 otherwise.
      */
     action_on_low_score?: boolean | null;
+
+    /**
+     * The ID of the custom model to use for scoring. Only relevant for scoring_type of
+     * CUSTOM_MODEL_SCORER
+     */
+    custom_model_id?: string | null;
 
     /**
      * The URL of the HuggingFace model to use for scoring. Only relevant for
