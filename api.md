@@ -70,16 +70,27 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/contracts.ts">ContractsScoreMetrics</a></code>
-- <code><a href="./src/resources/contracts.ts">ContractWriteToHfResponse</a></code>
+- <code><a href="./src/resources/contracts/contracts.ts">ContractsScoreMetrics</a></code>
+- <code><a href="./src/resources/contracts/contracts.ts">ContractWriteToHfResponse</a></code>
 
 Methods:
 
-- <code title="post /contracts/calibrate">client.contracts.<a href="./src/resources/contracts.ts">calibrate</a>({ ...params }) -> Contract</code>
-- <code title="post /contracts/generate_dimensions">client.contracts.<a href="./src/resources/contracts.ts">generateDimensions</a>({ ...params }) -> Contract</code>
-- <code title="post /contracts/read_from_hf">client.contracts.<a href="./src/resources/contracts.ts">readFromHf</a>({ ...params }) -> Contract</code>
-- <code title="post /contracts/score">client.contracts.<a href="./src/resources/contracts.ts">score</a>({ ...params }) -> ContractsScoreMetrics</code>
-- <code title="post /contracts/write_to_hf">client.contracts.<a href="./src/resources/contracts.ts">writeToHf</a>({ ...params }) -> string</code>
+- <code title="post /contracts/generate_dimensions">client.contracts.<a href="./src/resources/contracts/contracts.ts">generateDimensions</a>({ ...params }) -> Contract</code>
+- <code title="post /contracts/read_from_hf">client.contracts.<a href="./src/resources/contracts/contracts.ts">readFromHf</a>({ ...params }) -> Contract</code>
+- <code title="post /contracts/score">client.contracts.<a href="./src/resources/contracts/contracts.ts">score</a>({ ...params }) -> ContractsScoreMetrics</code>
+- <code title="post /contracts/write_to_hf">client.contracts.<a href="./src/resources/contracts/contracts.ts">writeToHf</a>({ ...params }) -> string</code>
+
+## Calibrate
+
+Types:
+
+- <code><a href="./src/resources/contracts/calibrate.ts">ContractCalibrationStatus</a></code>
+- <code><a href="./src/resources/contracts/calibrate.ts">CalibrateStreamMessagesResponse</a></code>
+
+Methods:
+
+- <code title="get /contracts/calibrate/{job_id}">client.contracts.calibrate.<a href="./src/resources/contracts/calibrate.ts">retrieve</a>(jobId) -> ContractCalibrationStatus</code>
+- <code title="get /contracts/calibrate/{job_id}/messages">client.contracts.calibrate.<a href="./src/resources/contracts/calibrate.ts">streamMessages</a>(jobId) -> unknown</code>
 
 # Feedback
 
