@@ -6,16 +6,6 @@ import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
 import {
-  ContractCalibrateParams,
-  ContractGenerateDimensionsParams,
-  ContractReadFromHfParams,
-  ContractScoreParams,
-  ContractWriteToHfParams,
-  ContractWriteToHfResponse,
-  Contracts,
-  ContractsScoreMetrics,
-} from './resources/contracts';
-import {
   Feedback,
   FeedbackClusterParams,
   FeedbackClusterResponse,
@@ -27,6 +17,15 @@ import {
   PromptOptimizeParams,
   PromptStreamMessagesResponse,
 } from './resources/prompt';
+import {
+  ContractGenerateDimensionsParams,
+  ContractReadFromHfParams,
+  ContractScoreParams,
+  ContractWriteToHfParams,
+  ContractWriteToHfResponse,
+  Contracts,
+  ContractsScoreMetrics,
+} from './resources/contracts/contracts';
 import { Data, DataGenerationStatus, InputEvaluationMetrics } from './resources/data/data';
 import { Model } from './resources/model/model';
 
@@ -212,7 +211,6 @@ export declare namespace PiClient {
     Contracts as Contracts,
     type ContractsScoreMetrics as ContractsScoreMetrics,
     type ContractWriteToHfResponse as ContractWriteToHfResponse,
-    type ContractCalibrateParams as ContractCalibrateParams,
     type ContractGenerateDimensionsParams as ContractGenerateDimensionsParams,
     type ContractReadFromHfParams as ContractReadFromHfParams,
     type ContractScoreParams as ContractScoreParams,

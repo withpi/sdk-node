@@ -1,16 +1,13 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import * as Core from '../core';
-import * as Shared from './shared';
+import { APIResource } from '../../resource';
+import * as Core from '../../core';
+import * as Shared from '../shared';
+import * as CalibrateAPI from './calibrate';
+import { Calibrate, CalibrateStreamMessagesResponse, ContractCalibrationStatus } from './calibrate';
 
 export class Contracts extends APIResource {
-  /**
-   * Calibrate the contract scoring dimension
-   */
-  calibrate(body: ContractCalibrateParams, options?: Core.RequestOptions): Core.APIPromise<Shared.Contract> {
-    return this._client.post('/contracts/calibrate', { body, ...options });
-  }
+  calibrate: CalibrateAPI.Calibrate = new CalibrateAPI.Calibrate(this._client);
 
   /**
    * Generates dimensions for a contract which will be used to evaluate it
@@ -75,71 +72,6 @@ export namespace ContractsScoreMetrics {
 
 export type ContractWriteToHfResponse = string;
 
-export interface ContractCalibrateParams {
-  /**
-   * The contract to calibrate
-   */
-  contract: Shared.Contract;
-
-  /**
-   * Rated examples to use when calibrating the contract
-   */
-  examples: Array<ContractCalibrateParams.Example>;
-
-  /**
-   * Preference examples to use when calibrating the contract
-   */
-  preference_examples?: Array<ContractCalibrateParams.PreferenceExample>;
-
-  /**
-   * The strategy to use to calibrate the contract. FULL would take longer than LITE
-   * but may result in better result.
-   */
-  strategy?: 'LITE' | 'FULL';
-}
-
-export namespace ContractCalibrateParams {
-  /**
-   * An labeled example for training or evaluation
-   */
-  export interface Example {
-    /**
-     * The input to LLM
-     */
-    llm_input: string;
-
-    /**
-     * The output to evaluate
-     */
-    llm_output: string;
-
-    /**
-     * The rating of the llm_output given the llm_input
-     */
-    rating: 'Strongly Agree' | 'Agree' | 'Neutral' | 'Disagree' | 'Strongly Disagree';
-  }
-
-  /**
-   * An preference example for training or evaluation
-   */
-  export interface PreferenceExample {
-    /**
-     * The chosen output in corresponding to the llm_input.
-     */
-    chosen: string;
-
-    /**
-     * The input to LLM
-     */
-    llm_input: string;
-
-    /**
-     * The rejected output in corresponding to the llm_input.
-     */
-    rejected: string;
-  }
-}
-
 export interface ContractGenerateDimensionsParams {
   /**
    * The application description to generate contract for.
@@ -197,14 +129,21 @@ export interface ContractWriteToHfParams {
   hf_token?: string | null;
 }
 
+Contracts.Calibrate = Calibrate;
+
 export declare namespace Contracts {
   export {
     type ContractsScoreMetrics as ContractsScoreMetrics,
     type ContractWriteToHfResponse as ContractWriteToHfResponse,
-    type ContractCalibrateParams as ContractCalibrateParams,
     type ContractGenerateDimensionsParams as ContractGenerateDimensionsParams,
     type ContractReadFromHfParams as ContractReadFromHfParams,
     type ContractScoreParams as ContractScoreParams,
     type ContractWriteToHfParams as ContractWriteToHfParams,
+  };
+
+  export {
+    Calibrate as Calibrate,
+    type ContractCalibrationStatus as ContractCalibrationStatus,
+    type CalibrateStreamMessagesResponse as CalibrateStreamMessagesResponse,
   };
 }
