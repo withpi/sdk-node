@@ -55,9 +55,24 @@ export interface SftStatus {
 export namespace SftStatus {
   export interface HostedFireworkModel {
     /**
-     * Firework's hosted model id.
+     * The contract score of the evaluation set
+     */
+    contract_score: number;
+
+    /**
+     * The evaluation loss
+     */
+    eval_loss: number;
+
+    /**
+     * Firework's hosted model id
      */
     hosted_model_id: string;
+
+    /**
+     * The training step
+     */
+    step: number;
   }
 }
 
