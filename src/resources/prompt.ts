@@ -68,11 +68,6 @@ export interface PromptOptimizeParams {
   contract: Shared.Contract;
 
   /**
-   * The DSPY teleprompter/optimizer to use
-   */
-  dspy_optimization_type: 'BOOTSTRAP_FEW_SHOT' | 'COPRO' | 'MIPROv2';
-
-  /**
    * The examples to train and validate on
    */
   examples: Array<PromptOptimizeParams.Example>;
@@ -91,6 +86,12 @@ export interface PromptOptimizeParams {
    * The tuning algorithm to use
    */
   tuning_algorithm: 'PI' | 'DSPY';
+
+  /**
+   * The DSPY teleprompter/optimizer to use. This is only applied for the DSPY
+   * otherwise leave it as None.
+   */
+  dspy_optimization_type?: 'BOOTSTRAP_FEW_SHOT' | 'COPRO' | 'MIPROv2' | null;
 }
 
 export namespace PromptOptimizeParams {

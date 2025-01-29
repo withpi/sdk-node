@@ -13,6 +13,16 @@ export class Calibrate extends APIResource {
   }
 
   /**
+   * Start a contract calibration job
+   */
+  startJob(
+    body: CalibrateStartJobParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<ContractCalibrationStatus> {
+    return this._client.post('/contracts/calibrate', { body, ...options });
+  }
+
+  /**
    * Opens a message stream about a contract calibration job
    */
   streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<unknown> {
@@ -44,9 +54,75 @@ export interface ContractCalibrationStatus {
 
 export type CalibrateStreamMessagesResponse = unknown;
 
+export interface CalibrateStartJobParams {
+  /**
+   * The contract to calibrate
+   */
+  contract: Shared.Contract;
+
+  /**
+   * Rated examples to use when calibrating the contract
+   */
+  examples: Array<CalibrateStartJobParams.Example>;
+
+  /**
+   * Preference examples to use when calibrating the contract
+   */
+  preference_examples?: Array<CalibrateStartJobParams.PreferenceExample>;
+
+  /**
+   * The strategy to use to calibrate the contract. FULL would take longer than LITE
+   * but may result in better result.
+   */
+  strategy?: 'LITE' | 'FULL';
+}
+
+export namespace CalibrateStartJobParams {
+  /**
+   * An labeled example for training or evaluation
+   */
+  export interface Example {
+    /**
+     * The input to LLM
+     */
+    llm_input: string;
+
+    /**
+     * The output to evaluate
+     */
+    llm_output: string;
+
+    /**
+     * The rating of the llm_output given the llm_input
+     */
+    rating: 'Strongly Agree' | 'Agree' | 'Neutral' | 'Disagree' | 'Strongly Disagree';
+  }
+
+  /**
+   * An preference example for training or evaluation
+   */
+  export interface PreferenceExample {
+    /**
+     * The chosen output in corresponding to the llm_input.
+     */
+    chosen: string;
+
+    /**
+     * The input to LLM
+     */
+    llm_input: string;
+
+    /**
+     * The rejected output in corresponding to the llm_input.
+     */
+    rejected: string;
+  }
+}
+
 export declare namespace Calibrate {
   export {
     type ContractCalibrationStatus as ContractCalibrationStatus,
     type CalibrateStreamMessagesResponse as CalibrateStreamMessagesResponse,
+    type CalibrateStartJobParams as CalibrateStartJobParams,
   };
 }

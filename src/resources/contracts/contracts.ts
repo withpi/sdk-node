@@ -4,7 +4,12 @@ import { APIResource } from '../../resource';
 import * as Core from '../../core';
 import * as Shared from '../shared';
 import * as CalibrateAPI from './calibrate';
-import { Calibrate, CalibrateStreamMessagesResponse, ContractCalibrationStatus } from './calibrate';
+import {
+  Calibrate,
+  CalibrateStartJobParams,
+  CalibrateStreamMessagesResponse,
+  ContractCalibrationStatus,
+} from './calibrate';
 
 export class Contracts extends APIResource {
   calibrate: CalibrateAPI.Calibrate = new CalibrateAPI.Calibrate(this._client);
@@ -145,5 +150,6 @@ export declare namespace Contracts {
     Calibrate as Calibrate,
     type ContractCalibrationStatus as ContractCalibrationStatus,
     type CalibrateStreamMessagesResponse as CalibrateStreamMessagesResponse,
+    type CalibrateStartJobParams as CalibrateStartJobParams,
   };
 }

@@ -1,6 +1,11 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-export { Calibrate, type ContractCalibrationStatus, type CalibrateStreamMessagesResponse } from './calibrate';
+export {
+  Calibrate,
+  type ContractCalibrationStatus,
+  type CalibrateStreamMessagesResponse,
+  type CalibrateStartJobParams,
+} from './calibrate';
 export {
   Contracts,
   type ContractsScoreMetrics,

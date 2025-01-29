@@ -33,7 +33,6 @@ describe('resource prompt', () => {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Contract',
       },
-      dspy_optimization_type: 'BOOTSTRAP_FEW_SHOT',
       examples: [
         {
           llm_input: 'Tell me something different',
@@ -99,7 +98,6 @@ describe('resource prompt', () => {
           },
         ],
       },
-      dspy_optimization_type: 'BOOTSTRAP_FEW_SHOT',
       examples: [
         {
           llm_input: 'Tell me something different',
@@ -109,6 +107,7 @@ describe('resource prompt', () => {
       initial_system_instruction: 'Write a great story around the given topic.',
       model_id: 'gpt-4o-mini',
       tuning_algorithm: 'PI',
+      dspy_optimization_type: 'BOOTSTRAP_FEW_SHOT',
     });
   });
 
