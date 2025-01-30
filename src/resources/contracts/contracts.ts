@@ -107,7 +107,7 @@ export interface ContractScoreParams {
   /**
    * The input to score
    */
-  llm_input: string | Record<string, string>;
+  llm_input: string;
 
   /**
    * The output to score
