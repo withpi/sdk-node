@@ -42,6 +42,12 @@ export interface Dimension {
   action_dimension?: Dimension.ActionDimension | null;
 
   /**
+   * The learned parameters for the scoring method. This represents piecewise linear
+   * interpolation between [0, 1].
+   */
+  parameters?: Array<number> | null;
+
+  /**
    * The weight of the dimension The sum of dimension weights will be normalized to
    * one internally. A higher weight counts for more when aggregating this dimension
    * is aggregated into the final score.
