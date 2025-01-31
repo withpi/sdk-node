@@ -115,6 +115,7 @@ describe('resource prompt', () => {
       model_id: 'gpt-4o-mini',
       tuning_algorithm: 'PI',
       dspy_optimization_type: 'BOOTSTRAP_FEW_SHOT',
+      use_chain_of_thought: false,
     });
   });
 
