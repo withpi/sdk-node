@@ -1,15 +1,19 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
-import * as Shared from '../shared';
+import { APIResource } from '../../../resource';
+import * as Core from '../../../core';
+import * as Shared from '../../shared';
+import * as MessagesAPI from './messages';
+import { MessageStreamResponse, Messages } from './messages';
 
 export class Sft extends APIResource {
+  messages: MessagesAPI.Messages = new MessagesAPI.Messages(this._client);
+
   /**
    * Get the current status of a model SFT tuning job
    */
-  getStatus(jobId: string, options?: Core.RequestOptions): Core.APIPromise<SftStatus> {
-    return this._client.post(`/model/sft/${jobId}`, options);
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<SftStatus> {
+    return this._client.get(`/model/sft/${jobId}`, options);
   }
 
   /**
@@ -17,13 +21,6 @@ export class Sft extends APIResource {
    */
   startJob(body: SftStartJobParams, options?: Core.RequestOptions): Core.APIPromise<SftStatus> {
     return this._client.post('/model/sft', { body, ...options });
-  }
-
-  /**
-   * Streams messages from a model SFT tuning job
-   */
-  streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<unknown> {
-    return this._client.post(`/model/sft/${jobId}/messages`, options);
   }
 }
 
@@ -60,6 +57,11 @@ export namespace SftStatus {
     contract_score: number;
 
     /**
+     * The training epoch
+     */
+    epoch: number;
+
+    /**
      * The evaluation loss
      */
     eval_loss: number;
@@ -75,8 +77,6 @@ export namespace SftStatus {
     step: number;
   }
 }
-
-export type SftStreamMessagesResponse = unknown;
 
 export interface SftStartJobParams {
   /**
@@ -122,10 +122,10 @@ export namespace SftStartJobParams {
   }
 }
 
+Sft.Messages = Messages;
+
 export declare namespace Sft {
-  export {
-    type SftStatus as SftStatus,
-    type SftStreamMessagesResponse as SftStreamMessagesResponse,
-    type SftStartJobParams as SftStartJobParams,
-  };
+  export { type SftStatus as SftStatus, type SftStartJobParams as SftStartJobParams };
+
+  export { Messages as Messages, type MessageStreamResponse as MessageStreamResponse };
 }

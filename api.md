@@ -57,14 +57,22 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/model/sft.ts">SftStatus</a></code>
-- <code><a href="./src/resources/model/sft.ts">SftStreamMessagesResponse</a></code>
+- <code><a href="./src/resources/model/sft/sft.ts">SftStatus</a></code>
 
 Methods:
 
-- <code title="post /model/sft/{job_id}">client.model.sft.<a href="./src/resources/model/sft.ts">getStatus</a>(jobId) -> SftStatus</code>
-- <code title="post /model/sft">client.model.sft.<a href="./src/resources/model/sft.ts">startJob</a>({ ...params }) -> SftStatus</code>
-- <code title="post /model/sft/{job_id}/messages">client.model.sft.<a href="./src/resources/model/sft.ts">streamMessages</a>(jobId) -> unknown</code>
+- <code title="get /model/sft/{job_id}">client.model.sft.<a href="./src/resources/model/sft/sft.ts">retrieve</a>(jobId) -> SftStatus</code>
+- <code title="post /model/sft">client.model.sft.<a href="./src/resources/model/sft/sft.ts">startJob</a>({ ...params }) -> SftStatus</code>
+
+### Messages
+
+Types:
+
+- <code><a href="./src/resources/model/sft/messages.ts">MessageStreamResponse</a></code>
+
+Methods:
+
+- <code title="get /model/sft/{job_id}/messages">client.model.sft.messages.<a href="./src/resources/model/sft/messages.ts">stream</a>(jobId) -> unknown</code>
 
 # Contracts
 
