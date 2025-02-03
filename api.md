@@ -58,11 +58,13 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/model/sft/sft.ts">SftStatus</a></code>
+- <code><a href="./src/resources/model/sft/sft.ts">SftStreamMessagesResponse</a></code>
 
 Methods:
 
 - <code title="get /model/sft/{job_id}">client.model.sft.<a href="./src/resources/model/sft/sft.ts">retrieve</a>(jobId) -> SftStatus</code>
 - <code title="post /model/sft">client.model.sft.<a href="./src/resources/model/sft/sft.ts">startJob</a>({ ...params }) -> SftStatus</code>
+- <code title="get /model/sft/{job_id}/messages">client.model.sft.<a href="./src/resources/model/sft/sft.ts">streamMessages</a>(jobId) -> unknown</code>
 
 ### Messages
 
