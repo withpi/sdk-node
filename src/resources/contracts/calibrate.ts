@@ -25,8 +25,11 @@ export class Calibrate extends APIResource {
   /**
    * Opens a message stream about a contract calibration job
    */
-  streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<unknown> {
-    return this._client.get(`/contracts/calibrate/${jobId}/messages`, options);
+  streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+    return this._client.get(`/contracts/calibrate/${jobId}/messages`, {
+      ...options,
+      headers: { Accept: 'text/plain', ...options?.headers },
+    });
   }
 }
 
@@ -52,7 +55,7 @@ export interface ContractCalibrationStatus {
   state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
 }
 
-export type CalibrateStreamMessagesResponse = unknown;
+export type CalibrateStreamMessagesResponse = string;
 
 export interface CalibrateStartJobParams {
   /**
@@ -61,14 +64,16 @@ export interface CalibrateStartJobParams {
   contract: Shared.Contract;
 
   /**
-   * Rated examples to use when calibrating the contract
+   * Rated examples to use when calibrating the contract. Must specify either the
+   * examples or the preference examples
    */
-  examples: Array<CalibrateStartJobParams.Example>;
+  examples?: Array<CalibrateStartJobParams.Example> | null;
 
   /**
-   * Preference examples to use when calibrating the contract
+   * Preference examples to use when calibrating the contract. Must specify either
+   * the examples or preference examples
    */
-  preference_examples?: Array<CalibrateStartJobParams.PreferenceExample>;
+  preference_examples?: Array<CalibrateStartJobParams.PreferenceExample> | null;
 
   /**
    * The strategy to use to calibrate the contract. FULL would take longer than LITE
