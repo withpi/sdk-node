@@ -2,7 +2,7 @@
 
 import { APIResource } from '../../resource';
 import * as SftAPI from './sft/sft';
-import { Sft, SftStartJobParams, SftStatus } from './sft/sft';
+import { Sft, SftStartJobParams, SftStatus, SftStreamMessagesResponse } from './sft/sft';
 
 export class Model extends APIResource {
   sft: SftAPI.Sft = new SftAPI.Sft(this._client);
@@ -11,5 +11,10 @@ export class Model extends APIResource {
 Model.Sft = Sft;
 
 export declare namespace Model {
-  export { Sft as Sft, type SftStatus as SftStatus, type SftStartJobParams as SftStartJobParams };
+  export {
+    Sft as Sft,
+    type SftStatus as SftStatus,
+    type SftStreamMessagesResponse as SftStreamMessagesResponse,
+    type SftStartJobParams as SftStartJobParams,
+  };
 }

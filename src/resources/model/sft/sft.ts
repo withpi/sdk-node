@@ -22,6 +22,13 @@ export class Sft extends APIResource {
   startJob(body: SftStartJobParams, options?: Core.RequestOptions): Core.APIPromise<SftStatus> {
     return this._client.post('/model/sft', { body, ...options });
   }
+
+  /**
+   * Streams messages from a model SFT tuning job
+   */
+  streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<unknown> {
+    return this._client.get(`/model/sft/${jobId}/messages`, options);
+  }
 }
 
 /**
@@ -78,6 +85,8 @@ export namespace SftStatus {
   }
 }
 
+export type SftStreamMessagesResponse = unknown;
+
 export interface SftStartJobParams {
   /**
    * The contract to use in the SFT tuning process
@@ -125,7 +134,11 @@ export namespace SftStartJobParams {
 Sft.Messages = Messages;
 
 export declare namespace Sft {
-  export { type SftStatus as SftStatus, type SftStartJobParams as SftStartJobParams };
+  export {
+    type SftStatus as SftStatus,
+    type SftStreamMessagesResponse as SftStreamMessagesResponse,
+    type SftStartJobParams as SftStartJobParams,
+  };
 
   export { Messages as Messages, type MessageStreamResponse as MessageStreamResponse };
 }
