@@ -61,14 +61,16 @@ export interface CalibrateStartJobParams {
   contract: Shared.Contract;
 
   /**
-   * Rated examples to use when calibrating the contract
+   * Rated examples to use when calibrating the contract. Must specify either the
+   * examples or the preference examples
    */
-  examples: Array<CalibrateStartJobParams.Example>;
+  examples?: Array<CalibrateStartJobParams.Example> | null;
 
   /**
-   * Preference examples to use when calibrating the contract
+   * Preference examples to use when calibrating the contract. Must specify either
+   * the examples or preference examples
    */
-  preference_examples?: Array<CalibrateStartJobParams.PreferenceExample>;
+  preference_examples?: Array<CalibrateStartJobParams.PreferenceExample> | null;
 
   /**
    * The strategy to use to calibrate the contract. FULL would take longer than LITE
