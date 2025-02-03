@@ -33,13 +33,6 @@ describe('resource calibrate', () => {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Contract',
       },
-      examples: [
-        {
-          llm_input: 'Tell me something different',
-          llm_output: 'The lazy dog was jumped over by the quick brown fox',
-          rating: 'Strongly Agree',
-        },
-      ],
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
