@@ -25,8 +25,11 @@ export class Calibrate extends APIResource {
   /**
    * Opens a message stream about a contract calibration job
    */
-  streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<unknown> {
-    return this._client.get(`/contracts/calibrate/${jobId}/messages`, options);
+  streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+    return this._client.get(`/contracts/calibrate/${jobId}/messages`, {
+      ...options,
+      headers: { Accept: 'text/plain', ...options?.headers },
+    });
   }
 }
 
@@ -52,7 +55,7 @@ export interface ContractCalibrationStatus {
   state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
 }
 
-export type CalibrateStreamMessagesResponse = unknown;
+export type CalibrateStreamMessagesResponse = string;
 
 export interface CalibrateStartJobParams {
   /**

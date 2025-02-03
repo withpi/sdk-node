@@ -7,12 +7,15 @@ export class Messages extends APIResource {
   /**
    * Streams messages from a model SFT tuning job
    */
-  stream(jobId: string, options?: Core.RequestOptions): Core.APIPromise<unknown> {
-    return this._client.get(`/model/sft/${jobId}/messages`, options);
+  stream(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+    return this._client.get(`/model/sft/${jobId}/messages`, {
+      ...options,
+      headers: { Accept: 'text/plain', ...options?.headers },
+    });
   }
 }
 
-export type MessageStreamResponse = unknown;
+export type MessageStreamResponse = string;
 
 export declare namespace Messages {
   export { type MessageStreamResponse as MessageStreamResponse };

@@ -26,8 +26,11 @@ export class Sft extends APIResource {
   /**
    * Streams messages from a model SFT tuning job
    */
-  streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<unknown> {
-    return this._client.get(`/model/sft/${jobId}/messages`, options);
+  streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+    return this._client.get(`/model/sft/${jobId}/messages`, {
+      ...options,
+      headers: { Accept: 'text/plain', ...options?.headers },
+    });
   }
 }
 
@@ -85,7 +88,7 @@ export namespace SftStatus {
   }
 }
 
-export type SftStreamMessagesResponse = unknown;
+export type SftStreamMessagesResponse = string;
 
 export interface SftStartJobParams {
   /**
