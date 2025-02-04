@@ -62,7 +62,7 @@ export interface SftStatus {
 export namespace SftStatus {
   export interface HostedFireworkModel {
     /**
-     * The contract score of the evaluation set
+     * The contract score of the eval set what isn't used in training
      */
     contract_score: number;
 
@@ -97,7 +97,8 @@ export interface SftStartJobParams {
   contract: Shared.Contract;
 
   /**
-   * Examples to use in the SFT tuning process
+   * Examples to use in the SFT tuning process. We split this data into train/eval
+   * 90/10.
    */
   examples: Array<SftStartJobParams.Example>;
 
