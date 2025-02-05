@@ -105,7 +105,7 @@ export interface SftStartJobParams {
   /**
    * The base model to start the SFT tuning process.
    */
-  base_sft_model?: 'LLAMA_3.1_8B';
+  base_sft_model?: 'LLAMA_3.2_1B' | 'LLAMA_3.2_3B' | 'LLAMA_3.1_8B';
 
   /**
    * SFT learning rate

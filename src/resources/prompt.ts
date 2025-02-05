@@ -80,7 +80,7 @@ export interface PromptOptimizeParams {
   /**
    * The model to use for generating responses
    */
-  model_id: 'gpt-4o-mini' | 'mock-llm';
+  model_id: 'gpt-4o-mini' | 'llama-3.1-8b' | 'mock-llm';
 
   /**
    * The tuning algorithm to use

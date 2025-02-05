@@ -108,7 +108,7 @@ describe('resource sft', () => {
           llm_output: 'The lazy dog was jumped over by the quick brown fox',
         },
       ],
-      base_sft_model: 'LLAMA_3.1_8B',
+      base_sft_model: 'LLAMA_3.2_1B',
       learning_rate: 0.0002,
       num_train_epochs: 10,
     });
