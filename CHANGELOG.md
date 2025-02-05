@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.1.0-alpha.35 (2025-02-05)
+
+Full Changelog: [v0.1.0-alpha.34...v0.1.0-alpha.35](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.34...v0.1.0-alpha.35)
+
+### Features
+
+* **api:** api update ([#181](https://github.com/withpi/sdk-node/issues/181)) ([db7bcae](https://github.com/withpi/sdk-node/commit/db7bcae17b3bf419674d2fc7a31cc429b21c1b28))
+* **api:** api update ([#183](https://github.com/withpi/sdk-node/issues/183)) ([2c228e8](https://github.com/withpi/sdk-node/commit/2c228e8aa5d4cae8d886560e4e47942c7683735b))
+* **api:** api update ([#184](https://github.com/withpi/sdk-node/issues/184)) ([d28364c](https://github.com/withpi/sdk-node/commit/d28364cc9297a9f8958e59f0cbb3f53b683824c0))
+* **client:** send `X-Stainless-Timeout` header ([#185](https://github.com/withpi/sdk-node/issues/185)) ([2a1dcb1](https://github.com/withpi/sdk-node/commit/2a1dcb17cb8bf8ba23341c4332fac167968c7690))
+
 ## 0.1.0-alpha.34 (2025-02-04)
 
 Full Changelog: [v0.1.0-alpha.33...v0.1.0-alpha.34](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.33...v0.1.0-alpha.34)
