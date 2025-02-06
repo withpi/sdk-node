@@ -15,3 +15,4 @@ export {
   type PromptStreamMessagesResponse,
   type PromptOptimizeParams,
 } from './prompt';
+export { Queries, type QueryGenerateFanoutsResponse, type QueryGenerateFanoutsParams } from './queries';
