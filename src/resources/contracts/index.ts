@@ -9,9 +9,6 @@ export {
 export {
   Contracts,
   type ContractsScoreMetrics,
-  type ContractWriteToHfResponse,
   type ContractGenerateDimensionsParams,
-  type ContractReadFromHfParams,
   type ContractScoreParams,
-  type ContractWriteToHfParams,
 } from './contracts';

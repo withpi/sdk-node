@@ -5,12 +5,7 @@ import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
-import {
-  Feedback,
-  FeedbackClusterParams,
-  FeedbackClusterResponse,
-  FeedbackTopicCluster,
-} from './resources/feedback';
+import { Feedback } from './resources/feedback';
 import {
   Prompt,
   PromptOptimizationStatus,
@@ -19,14 +14,11 @@ import {
 } from './resources/prompt';
 import {
   ContractGenerateDimensionsParams,
-  ContractReadFromHfParams,
   ContractScoreParams,
-  ContractWriteToHfParams,
-  ContractWriteToHfResponse,
   Contracts,
   ContractsScoreMetrics,
 } from './resources/contracts/contracts';
-import { Data, DataGenerationStatus, InputEvaluationMetrics } from './resources/data/data';
+import { Data, DataGenerationStatus } from './resources/data/data';
 import { Model } from './resources/model/model';
 
 export interface ClientOptions {
@@ -192,11 +184,7 @@ PiClient.Feedback = Feedback;
 export declare namespace PiClient {
   export type RequestOptions = Core.RequestOptions;
 
-  export {
-    Data as Data,
-    type DataGenerationStatus as DataGenerationStatus,
-    type InputEvaluationMetrics as InputEvaluationMetrics,
-  };
+  export { Data as Data, type DataGenerationStatus as DataGenerationStatus };
 
   export {
     Prompt as Prompt,
@@ -210,19 +198,11 @@ export declare namespace PiClient {
   export {
     Contracts as Contracts,
     type ContractsScoreMetrics as ContractsScoreMetrics,
-    type ContractWriteToHfResponse as ContractWriteToHfResponse,
     type ContractGenerateDimensionsParams as ContractGenerateDimensionsParams,
-    type ContractReadFromHfParams as ContractReadFromHfParams,
     type ContractScoreParams as ContractScoreParams,
-    type ContractWriteToHfParams as ContractWriteToHfParams,
   };
 
-  export {
-    Feedback as Feedback,
-    type FeedbackTopicCluster as FeedbackTopicCluster,
-    type FeedbackClusterResponse as FeedbackClusterResponse,
-    type FeedbackClusterParams as FeedbackClusterParams,
-  };
+  export { Feedback as Feedback };
 
   export type Contract = API.Contract;
   export type Dimension = API.Dimension;
