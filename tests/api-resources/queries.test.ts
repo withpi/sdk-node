@@ -11,6 +11,7 @@ const client = new PiClient({
 describe('resource queries', () => {
   test('generateFanouts: only required params', async () => {
     const responsePromise = client.queries.generateFanouts({
+      num_fanout_queries: 5,
       queries: [
         'Name the four largest fish and what they eat.',
         'What was the profession of both Ellery Queen and John Fowles?',
@@ -27,6 +28,7 @@ describe('resource queries', () => {
 
   test('generateFanouts: required and optional params', async () => {
     const response = await client.queries.generateFanouts({
+      num_fanout_queries: 5,
       queries: [
         'Name the four largest fish and what they eat.',
         'What was the profession of both Ellery Queen and John Fowles?',
