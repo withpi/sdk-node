@@ -5,7 +5,6 @@ import * as InputsAPI from './inputs/inputs';
 import {
   InputClusterParams,
   InputClusterResponse,
-  InputEvaluateParams,
   InputGenerateSeedsParams,
   InputTopicCluster,
   Inputs,
@@ -40,27 +39,16 @@ export interface DataGenerationStatus {
   state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
 }
 
-export interface InputEvaluationMetrics {
-  /**
-   * The 0-1 scores mean the probability of being filtered
-   */
-  filter_scores: Array<number>;
-}
-
 Data.Inputs = Inputs;
 
 export declare namespace Data {
-  export {
-    type DataGenerationStatus as DataGenerationStatus,
-    type InputEvaluationMetrics as InputEvaluationMetrics,
-  };
+  export { type DataGenerationStatus as DataGenerationStatus };
 
   export {
     Inputs as Inputs,
     type InputTopicCluster as InputTopicCluster,
     type InputClusterResponse as InputClusterResponse,
     type InputClusterParams as InputClusterParams,
-    type InputEvaluateParams as InputEvaluateParams,
     type InputGenerateSeedsParams as InputGenerateSeedsParams,
   };
 }

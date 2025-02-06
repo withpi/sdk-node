@@ -23,16 +23,6 @@ export class Inputs extends APIResource {
   }
 
   /**
-   * Evaluates inputs against a contract description
-   */
-  evaluate(
-    body: InputEvaluateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<DataAPI.InputEvaluationMetrics> {
-    return this._client.post('/data/input/evaluate', { body, ...options });
-  }
-
-  /**
    * Generates seed messages for input data.
    */
   generateSeeds(
@@ -73,18 +63,6 @@ export namespace InputClusterParams {
   }
 }
 
-export interface InputEvaluateParams {
-  /**
-   * The application contract's description
-   */
-  contract_description: string;
-
-  /**
-   * The inputs to evaluate
-   */
-  llm_inputs: Array<string>;
-}
-
 export interface InputGenerateSeedsParams {
   /**
    * The application contract's description
@@ -105,7 +83,6 @@ export declare namespace Inputs {
     type InputTopicCluster as InputTopicCluster,
     type InputClusterResponse as InputClusterResponse,
     type InputClusterParams as InputClusterParams,
-    type InputEvaluateParams as InputEvaluateParams,
     type InputGenerateSeedsParams as InputGenerateSeedsParams,
   };
 
