@@ -5,7 +5,6 @@ import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
-import { Feedback } from './resources/feedback';
 import {
   Prompt,
   PromptOptimizationStatus,
@@ -138,7 +137,6 @@ export class PiClient extends Core.APIClient {
   prompt: API.Prompt = new API.Prompt(this);
   model: API.Model = new API.Model(this);
   contracts: API.Contracts = new API.Contracts(this);
-  feedback: API.Feedback = new API.Feedback(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -180,7 +178,6 @@ PiClient.Data = Data;
 PiClient.Prompt = Prompt;
 PiClient.Model = Model;
 PiClient.Contracts = Contracts;
-PiClient.Feedback = Feedback;
 export declare namespace PiClient {
   export type RequestOptions = Core.RequestOptions;
 
@@ -201,8 +198,6 @@ export declare namespace PiClient {
     type ContractGenerateDimensionsParams as ContractGenerateDimensionsParams,
     type ContractScoreParams as ContractScoreParams,
   };
-
-  export { Feedback as Feedback };
 
   export type Contract = API.Contract;
   export type Dimension = API.Dimension;
