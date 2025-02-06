@@ -10,6 +10,5 @@ export {
   type InputTopicCluster,
   type InputClusterResponse,
   type InputClusterParams,
-  type InputEvaluateParams,
   type InputGenerateSeedsParams,
 } from './inputs';
