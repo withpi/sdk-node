@@ -11,7 +11,6 @@ Types:
 Types:
 
 - <code><a href="./src/resources/data/data.ts">DataGenerationStatus</a></code>
-- <code><a href="./src/resources/data/data.ts">InputEvaluationMetrics</a></code>
 
 ## Inputs
 
@@ -23,7 +22,6 @@ Types:
 Methods:
 
 - <code title="post /data/input/cluster">client.data.inputs.<a href="./src/resources/data/inputs/inputs.ts">cluster</a>([ ...inputs ]) -> InputClusterResponse</code>
-- <code title="post /data/input/evaluate">client.data.inputs.<a href="./src/resources/data/inputs/inputs.ts">evaluate</a>({ ...params }) -> InputEvaluationMetrics</code>
 - <code title="post /data/input/generate_seeds">client.data.inputs.<a href="./src/resources/data/inputs/inputs.ts">generateSeeds</a>({ ...params }) -> DataGenerationStatus</code>
 
 ### GenerateFromSeeds
@@ -81,14 +79,11 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/contracts/contracts.ts">ContractsScoreMetrics</a></code>
-- <code><a href="./src/resources/contracts/contracts.ts">ContractWriteToHfResponse</a></code>
 
 Methods:
 
 - <code title="post /contracts/generate_dimensions">client.contracts.<a href="./src/resources/contracts/contracts.ts">generateDimensions</a>({ ...params }) -> Contract</code>
-- <code title="post /contracts/read_from_hf">client.contracts.<a href="./src/resources/contracts/contracts.ts">readFromHf</a>({ ...params }) -> Contract</code>
 - <code title="post /contracts/score">client.contracts.<a href="./src/resources/contracts/contracts.ts">score</a>({ ...params }) -> ContractsScoreMetrics</code>
-- <code title="post /contracts/write_to_hf">client.contracts.<a href="./src/resources/contracts/contracts.ts">writeToHf</a>({ ...params }) -> string</code>
 
 ## Calibrate
 
@@ -102,14 +97,3 @@ Methods:
 - <code title="get /contracts/calibrate/{job_id}">client.contracts.calibrate.<a href="./src/resources/contracts/calibrate.ts">retrieve</a>(jobId) -> ContractCalibrationStatus</code>
 - <code title="post /contracts/calibrate">client.contracts.calibrate.<a href="./src/resources/contracts/calibrate.ts">startJob</a>({ ...params }) -> ContractCalibrationStatus</code>
 - <code title="get /contracts/calibrate/{job_id}/messages">client.contracts.calibrate.<a href="./src/resources/contracts/calibrate.ts">streamMessages</a>(jobId) -> string</code>
-
-# Feedback
-
-Types:
-
-- <code><a href="./src/resources/feedback.ts">FeedbackTopicCluster</a></code>
-- <code><a href="./src/resources/feedback.ts">FeedbackClusterResponse</a></code>
-
-Methods:
-
-- <code title="post /feedback/cluster">client.feedback.<a href="./src/resources/feedback.ts">cluster</a>([ ...feedbacks ]) -> FeedbackClusterResponse</code>

@@ -6,12 +6,6 @@ import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
 import {
-  Feedback,
-  FeedbackClusterParams,
-  FeedbackClusterResponse,
-  FeedbackTopicCluster,
-} from './resources/feedback';
-import {
   Prompt,
   PromptOptimizationStatus,
   PromptOptimizeParams,
@@ -19,14 +13,11 @@ import {
 } from './resources/prompt';
 import {
   ContractGenerateDimensionsParams,
-  ContractReadFromHfParams,
   ContractScoreParams,
-  ContractWriteToHfParams,
-  ContractWriteToHfResponse,
   Contracts,
   ContractsScoreMetrics,
 } from './resources/contracts/contracts';
-import { Data, DataGenerationStatus, InputEvaluationMetrics } from './resources/data/data';
+import { Data, DataGenerationStatus } from './resources/data/data';
 import { Model } from './resources/model/model';
 
 export interface ClientOptions {
@@ -146,7 +137,6 @@ export class PiClient extends Core.APIClient {
   prompt: API.Prompt = new API.Prompt(this);
   model: API.Model = new API.Model(this);
   contracts: API.Contracts = new API.Contracts(this);
-  feedback: API.Feedback = new API.Feedback(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -188,15 +178,10 @@ PiClient.Data = Data;
 PiClient.Prompt = Prompt;
 PiClient.Model = Model;
 PiClient.Contracts = Contracts;
-PiClient.Feedback = Feedback;
 export declare namespace PiClient {
   export type RequestOptions = Core.RequestOptions;
 
-  export {
-    Data as Data,
-    type DataGenerationStatus as DataGenerationStatus,
-    type InputEvaluationMetrics as InputEvaluationMetrics,
-  };
+  export { Data as Data, type DataGenerationStatus as DataGenerationStatus };
 
   export {
     Prompt as Prompt,
@@ -210,18 +195,8 @@ export declare namespace PiClient {
   export {
     Contracts as Contracts,
     type ContractsScoreMetrics as ContractsScoreMetrics,
-    type ContractWriteToHfResponse as ContractWriteToHfResponse,
     type ContractGenerateDimensionsParams as ContractGenerateDimensionsParams,
-    type ContractReadFromHfParams as ContractReadFromHfParams,
     type ContractScoreParams as ContractScoreParams,
-    type ContractWriteToHfParams as ContractWriteToHfParams,
-  };
-
-  export {
-    Feedback as Feedback,
-    type FeedbackTopicCluster as FeedbackTopicCluster,
-    type FeedbackClusterResponse as FeedbackClusterResponse,
-    type FeedbackClusterParams as FeedbackClusterParams,
   };
 
   export type Contract = API.Contract;
