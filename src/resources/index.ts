@@ -8,7 +8,6 @@ export {
   type ContractScoreParams,
 } from './contracts/contracts';
 export { Data, type DataGenerationStatus } from './data/data';
-export { Feedback } from './feedback';
 export { Model } from './model/model';
 export {
   Prompt,
