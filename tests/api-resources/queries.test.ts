@@ -11,19 +11,6 @@ const client = new PiClient({
 describe('resource queries', () => {
   test('generateFanouts: only required params', async () => {
     const responsePromise = client.queries.generateFanouts({
-      example_fanout_queries: [
-        {
-          fanout_queries: [
-            'Genus of the cheetah',
-            'Genus of the pronghorn',
-            'Genus of the springbok',
-            'Genus of the wildebeest',
-            'Genus of the lion',
-          ],
-          query: 'What are the genera of the five fastest land animals?',
-        },
-      ],
-      num_fanout_queries: 5,
       queries: [
         'Name the four largest fish and what they eat.',
         'What was the profession of both Ellery Queen and John Fowles?',
@@ -40,6 +27,10 @@ describe('resource queries', () => {
 
   test('generateFanouts: required and optional params', async () => {
     const response = await client.queries.generateFanouts({
+      queries: [
+        'Name the four largest fish and what they eat.',
+        'What was the profession of both Ellery Queen and John Fowles?',
+      ],
       example_fanout_queries: [
         {
           fanout_queries: [
@@ -53,10 +44,6 @@ describe('resource queries', () => {
         },
       ],
       num_fanout_queries: 5,
-      queries: [
-        'Name the four largest fish and what they eat.',
-        'What was the profession of both Ellery Queen and John Fowles?',
-      ],
     });
   });
 });
