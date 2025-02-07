@@ -29,8 +29,8 @@ describe('resource generateFromSeeds', () => {
 
   test('generate: only required params', async () => {
     const responsePromise = client.data.inputs.generateFromSeeds.generate({
-      contract_description: "Write a children's story communicating a simple life lesson.",
-      num_inputs: 50,
+      application_description: "Write a children's story communicating a simple life lesson.",
+      num_inputs_to_generate: 50,
       seeds: [
         'The quick brown fox jumped over the lazy dog',
         'The lazy dog was jumped over by the quick brown fox',
@@ -47,12 +47,15 @@ describe('resource generateFromSeeds', () => {
 
   test('generate: required and optional params', async () => {
     const response = await client.data.inputs.generateFromSeeds.generate({
-      contract_description: "Write a children's story communicating a simple life lesson.",
-      num_inputs: 50,
+      application_description: "Write a children's story communicating a simple life lesson.",
+      num_inputs_to_generate: 50,
       seeds: [
         'The quick brown fox jumped over the lazy dog',
         'The lazy dog was jumped over by the quick brown fox',
       ],
+      batch_size: 5,
+      num_shots: 5,
+      similarity_threshold: 0.85,
     });
   });
 
