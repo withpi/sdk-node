@@ -37,19 +37,19 @@ export namespace QueryGenerateFanoutsResponse {
 
 export interface QueryGenerateFanoutsParams {
   /**
+   * The list of queries to generate fanouts for
+   */
+  queries: Array<string>;
+
+  /**
    * The list of queries to use as few-shot examples for the fanout generation
    */
-  example_fanout_queries: Array<QueryGenerateFanoutsParams.ExampleFanoutQuery>;
+  example_fanout_queries?: Array<QueryGenerateFanoutsParams.ExampleFanoutQuery>;
 
   /**
    * The number of fanout queries to generate for each input query
    */
-  num_fanout_queries: number;
-
-  /**
-   * The list of queries to generate fanouts for
-   */
-  queries: Array<string>;
+  num_fanout_queries?: number;
 }
 
 export namespace QueryGenerateFanoutsParams {
