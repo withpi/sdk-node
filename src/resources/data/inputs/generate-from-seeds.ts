@@ -39,17 +39,35 @@ export interface GenerateFromSeedGenerateParams {
   /**
    * The application description to generate contract for.
    */
-  contract_description: string;
+  application_description: string;
 
   /**
    * The number of LLM inputs to generate
    */
-  num_inputs: number;
+  num_inputs_to_generate: number;
 
   /**
    * The list of LLM inputs to be used as seeds
    */
   seeds: Array<string>;
+
+  /**
+   * Number of inputs to generate in one LLM call. Must be <=10. Generally it could
+   * be same as `num_shots`.
+   */
+  batch_size?: number;
+
+  /**
+   * Number of inputs to be included in the prompt for generation. Generally it could
+   * be same as `batch_size`.
+   */
+  num_shots?: number;
+
+  /**
+   * If a generated input is similar to any of the existing ones with similarity >
+   * `similarity_threshold`, we reject it.
+   */
+  similarity_threshold?: number;
 }
 
 export declare namespace GenerateFromSeeds {
