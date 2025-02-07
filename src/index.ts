@@ -11,6 +11,7 @@ import {
   PromptOptimizeParams,
   PromptStreamMessagesResponse,
 } from './resources/prompt';
+import { Queries, QueryGenerateFanoutsParams, QueryGenerateFanoutsResponse } from './resources/queries';
 import {
   ContractGenerateDimensionsParams,
   ContractScoreParams,
@@ -137,6 +138,7 @@ export class PiClient extends Core.APIClient {
   prompt: API.Prompt = new API.Prompt(this);
   model: API.Model = new API.Model(this);
   contracts: API.Contracts = new API.Contracts(this);
+  queries: API.Queries = new API.Queries(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -178,6 +180,7 @@ PiClient.Data = Data;
 PiClient.Prompt = Prompt;
 PiClient.Model = Model;
 PiClient.Contracts = Contracts;
+PiClient.Queries = Queries;
 export declare namespace PiClient {
   export type RequestOptions = Core.RequestOptions;
 
@@ -197,6 +200,12 @@ export declare namespace PiClient {
     type ContractsScoreMetrics as ContractsScoreMetrics,
     type ContractGenerateDimensionsParams as ContractGenerateDimensionsParams,
     type ContractScoreParams as ContractScoreParams,
+  };
+
+  export {
+    Queries as Queries,
+    type QueryGenerateFanoutsResponse as QueryGenerateFanoutsResponse,
+    type QueryGenerateFanoutsParams as QueryGenerateFanoutsParams,
   };
 
   export type Contract = API.Contract;
