@@ -68,6 +68,17 @@ export interface GenerateFromSeedGenerateParams {
    * `similarity_threshold`, we reject it.
    */
   similarity_threshold?: number;
+
+  /**
+   * Hints to the process to generate inputs in specific fields or domains
+   */
+  themes?: Array<string>;
+
+  /**
+   * If `themes` exist, then `themes_coverage` decides how often to use them. Use <
+   * 1.0, if `themes` are not exhaustive.
+   */
+  themes_coverage?: number;
 }
 
 export declare namespace GenerateFromSeeds {
