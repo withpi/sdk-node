@@ -20,22 +20,27 @@ export type QueryGenerateFanoutsResponse =
 
 export namespace QueryGenerateFanoutsResponse {
   /**
-   * The result of generating fanout queries for an input query
+   * An input query and its associated fanout queries
    */
   export interface QueryGenerateFanoutsResponseItem {
     /**
-     * The list of fanout queries generated from the input
+     * The list of fanout queries associated with the input
      */
     fanout_queries: Array<string>;
 
     /**
-     * The input query to generate fanouts from.
+     * The input query that the fanout queries are based on.
      */
     query: string;
   }
 }
 
 export interface QueryGenerateFanoutsParams {
+  /**
+   * The list of queries to use as few-shot examples for the fanout generation
+   */
+  example_fanout_queries: Array<QueryGenerateFanoutsParams.ExampleFanoutQuery>;
+
   /**
    * The number of fanout queries to generate for each input query
    */
@@ -45,6 +50,23 @@ export interface QueryGenerateFanoutsParams {
    * The list of queries to generate fanouts for
    */
   queries: Array<string>;
+}
+
+export namespace QueryGenerateFanoutsParams {
+  /**
+   * An input query and its associated fanout queries
+   */
+  export interface ExampleFanoutQuery {
+    /**
+     * The list of fanout queries associated with the input
+     */
+    fanout_queries: Array<string>;
+
+    /**
+     * The input query that the fanout queries are based on.
+     */
+    query: string;
+  }
 }
 
 export declare namespace Queries {

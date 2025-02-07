@@ -11,6 +11,18 @@ const client = new PiClient({
 describe('resource queries', () => {
   test('generateFanouts: only required params', async () => {
     const responsePromise = client.queries.generateFanouts({
+      example_fanout_queries: [
+        {
+          fanout_queries: [
+            'Genus of the cheetah',
+            'Genus of the pronghorn',
+            'Genus of the springbok',
+            'Genus of the wildebeest',
+            'Genus of the lion',
+          ],
+          query: 'What are the genera of the five fastest land animals?',
+        },
+      ],
       num_fanout_queries: 5,
       queries: [
         'Name the four largest fish and what they eat.',
@@ -28,6 +40,18 @@ describe('resource queries', () => {
 
   test('generateFanouts: required and optional params', async () => {
     const response = await client.queries.generateFanouts({
+      example_fanout_queries: [
+        {
+          fanout_queries: [
+            'Genus of the cheetah',
+            'Genus of the pronghorn',
+            'Genus of the springbok',
+            'Genus of the wildebeest',
+            'Genus of the lion',
+          ],
+          query: 'What are the genera of the five fastest land animals?',
+        },
+      ],
       num_fanout_queries: 5,
       queries: [
         'Name the four largest fish and what they eat.',
