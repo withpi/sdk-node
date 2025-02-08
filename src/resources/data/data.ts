@@ -13,11 +13,6 @@ export class Data extends APIResource {
  */
 export interface DataGenerationStatus {
   /**
-   * The generated data. Absent unless state is done
-   */
-  data: Array<string> | null;
-
-  /**
    * Detailed status of the job
    */
   detailed_status: Array<string>;
@@ -31,6 +26,11 @@ export interface DataGenerationStatus {
    * Current state of the job
    */
   state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
+
+  /**
+   * The generated data. Absent unless state is done
+   */
+  data?: Array<string> | null;
 }
 
 Data.Inputs = Inputs;
