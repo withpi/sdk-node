@@ -6,5 +6,4 @@ export {
   type InputTopicCluster,
   type InputClusterResponse,
   type InputClusterParams,
-  type InputGenerateSeedsParams,
 } from './inputs/index';
