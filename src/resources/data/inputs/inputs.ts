@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../../resource';
 import * as Core from '../../../core';
-import * as DataAPI from '../data';
 import * as GenerateFromSeedsAPI from './generate-from-seeds';
 import {
   GenerateFromSeedGenerateParams,
@@ -20,16 +19,6 @@ export class Inputs extends APIResource {
    */
   cluster(body: InputClusterParams, options?: Core.RequestOptions): Core.APIPromise<InputClusterResponse> {
     return this._client.post('/data/input/cluster', { body, ...options });
-  }
-
-  /**
-   * Generates seed messages for input data.
-   */
-  generateSeeds(
-    body: InputGenerateSeedsParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<DataAPI.DataGenerationStatus> {
-    return this._client.post('/data/input/generate_seeds', { body, ...options });
   }
 }
 
@@ -63,19 +52,6 @@ export namespace InputClusterParams {
   }
 }
 
-export interface InputGenerateSeedsParams {
-  /**
-   * The application contract's description
-   */
-  contract_description: string;
-
-  /**
-   * Number of input seeds to generate. Must be <= 50. If you want to generate more,
-   * please use the generate_from_seeds API.
-   */
-  num_inputs: number;
-}
-
 Inputs.GenerateFromSeeds = GenerateFromSeeds;
 
 export declare namespace Inputs {
@@ -83,7 +59,6 @@ export declare namespace Inputs {
     type InputTopicCluster as InputTopicCluster,
     type InputClusterResponse as InputClusterResponse,
     type InputClusterParams as InputClusterParams,
-    type InputGenerateSeedsParams as InputGenerateSeedsParams,
   };
 
   export {

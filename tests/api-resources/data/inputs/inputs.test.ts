@@ -27,25 +27,4 @@ describe('resource inputs', () => {
       { identifier: 'identifier', llm_input: 'Tell me something different' },
     ]);
   });
-
-  test('generateSeeds: only required params', async () => {
-    const responsePromise = client.data.inputs.generateSeeds({
-      contract_description: 'Write a haiku based on a topic description',
-      num_inputs: 10,
-    });
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('generateSeeds: required and optional params', async () => {
-    const response = await client.data.inputs.generateSeeds({
-      contract_description: 'Write a haiku based on a topic description',
-      num_inputs: 10,
-    });
-  });
 });
