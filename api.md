@@ -74,6 +74,29 @@ Methods:
 
 - <code title="get /model/sft/{job_id}/messages">client.model.sft.messages.<a href="./src/resources/model/sft/messages.ts">stream</a>(jobId) -> string</code>
 
+## Rl
+
+### Ppo
+
+Types:
+
+- <code><a href="./src/resources/model/rl/ppo/ppo.ts">RlPpoStatus</a></code>
+
+Methods:
+
+- <code title="get /model/rl/ppo/{job_id}">client.model.rl.ppo.<a href="./src/resources/model/rl/ppo/ppo.ts">retrieve</a>(jobId) -> RlPpoStatus</code>
+- <code title="post /model/rl/ppo">client.model.rl.ppo.<a href="./src/resources/model/rl/ppo/ppo.ts">startJob</a>({ ...params }) -> RlPpoStatus</code>
+
+#### Messages
+
+Types:
+
+- <code><a href="./src/resources/model/rl/ppo/messages.ts">MessageStreamResponse</a></code>
+
+Methods:
+
+- <code title="get /model/rl/ppo/{job_id}/messages">client.model.rl.ppo.messages.<a href="./src/resources/model/rl/ppo/messages.ts">stream</a>(jobId) -> string</code>
+
 # Contracts
 
 Types:
