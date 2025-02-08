@@ -55,15 +55,15 @@ export interface SftStatus {
   state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
 
   /**
-   * A list of hosted Firework models
+   * A list of trained models selected based on the PI Contract score.
    */
-  hosted_firework_models?: Array<SftStatus.HostedFireworkModel> | null;
+  trained_models?: Array<SftStatus.TrainedModel> | null;
 }
 
 export namespace SftStatus {
-  export interface HostedFireworkModel {
+  export interface TrainedModel {
     /**
-     * The contract score of the eval set what isn't used in training
+     * The PI contract score of the eval set what isn't used in training
      */
     contract_score: number;
 
@@ -80,12 +80,17 @@ export namespace SftStatus {
     /**
      * Firework's hosted model id
      */
-    hosted_model_id: string;
+    firework_hosted_model_id: string;
 
     /**
      * The training step
      */
     step: number;
+
+    /**
+     * The SFT model weights in Huggingface
+     */
+    hf_model_name?: string;
   }
 }
 
