@@ -17,7 +17,8 @@ export class Sft extends APIResource {
   }
 
   /**
-   * Start the model SFT tuning job
+   * Initialize the supervised fine-tuning (SFT) job for the model. We implement
+   * Low-Rank Adaptation (LoRA) for the fine-tuning process, with a fixed rank of 16.
    */
   startJob(body: SftStartJobParams, options?: Core.RequestOptions): Core.APIPromise<SftStatus> {
     return this._client.post('/model/sft', { body, ...options });

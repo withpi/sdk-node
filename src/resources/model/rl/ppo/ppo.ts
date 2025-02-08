@@ -17,7 +17,9 @@ export class Ppo extends APIResource {
   }
 
   /**
-   * Start the Reinforcement Learning (RL) job using PPO
+   * Initialize the Proximal Policy Optimization (PPO) reinforcement learning job. We
+   * implement Low-Rank Adaptation (LoRA) for the reinforcement learning process,
+   * with a fixed rank of 16.
    */
   startJob(body: PpoStartJobParams, options?: Core.RequestOptions): Core.APIPromise<RlPpoStatus> {
     return this._client.post('/model/rl/ppo', { body, ...options });
