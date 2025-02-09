@@ -52,6 +52,11 @@ export interface GenerateFromSeedGenerateParams {
   seeds: Array<string>;
 
   /**
+   * If `true`, also use auto generated themes on the top of user provided ones.
+   */
+  augment_with_auto_themes?: boolean;
+
+  /**
    * Number of inputs to generate in one LLM call. Must be <=10. Generally it could
    * be same as `num_shots`.
    */
@@ -70,7 +75,8 @@ export interface GenerateFromSeedGenerateParams {
   similarity_threshold?: number;
 
   /**
-   * Hints to the process to generate inputs in specific fields or domains
+   * Hints to the process to generate inputs in specific fields or domains or user
+   * types
    */
   themes?: Array<string>;
 
