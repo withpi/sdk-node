@@ -90,7 +90,7 @@ export namespace SftStatus {
     /**
      * The SFT model weights in Huggingface
      */
-    hf_model_name?: string;
+    hf_model_name?: string | null;
   }
 }
 
