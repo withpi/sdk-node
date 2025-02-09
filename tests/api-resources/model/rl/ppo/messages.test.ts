@@ -8,11 +8,9 @@ const client = new PiClient({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource inputs', () => {
-  test('cluster: only required params', async () => {
-    const responsePromise = client.data.inputs.cluster([
-      { identifier: 'identifier', llm_input: 'Tell me something different' },
-    ]);
+describe('resource messages', () => {
+  test('stream', async () => {
+    const responsePromise = client.model.rl.ppo.messages.stream('job_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,9 +20,10 @@ describe('resource inputs', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('cluster: required and optional params', async () => {
-    const response = await client.data.inputs.cluster([
-      { identifier: 'identifier', llm_input: 'Tell me something different' },
-    ]);
+  test('stream: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.model.rl.ppo.messages.stream('job_id', { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(PiClient.NotFoundError);
   });
 });

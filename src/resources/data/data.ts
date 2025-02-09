@@ -2,13 +2,7 @@
 
 import { APIResource } from '../../resource';
 import * as InputsAPI from './inputs/inputs';
-import {
-  InputClusterParams,
-  InputClusterResponse,
-  InputGenerateSeedsParams,
-  InputTopicCluster,
-  Inputs,
-} from './inputs/inputs';
+import { InputClusterParams, InputClusterResponse, InputTopicCluster, Inputs } from './inputs/inputs';
 
 export class Data extends APIResource {
   inputs: InputsAPI.Inputs = new InputsAPI.Inputs(this._client);
@@ -18,11 +12,6 @@ export class Data extends APIResource {
  * DataGenerationStatus is the result of a data generation job.
  */
 export interface DataGenerationStatus {
-  /**
-   * The generated data. Absent unless state is done
-   */
-  data: Array<string> | null;
-
   /**
    * Detailed status of the job
    */
@@ -37,6 +26,11 @@ export interface DataGenerationStatus {
    * Current state of the job
    */
   state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
+
+  /**
+   * The generated data. Absent unless state is done
+   */
+  data?: Array<string> | null;
 }
 
 Data.Inputs = Inputs;
@@ -49,6 +43,5 @@ export declare namespace Data {
     type InputTopicCluster as InputTopicCluster,
     type InputClusterResponse as InputClusterResponse,
     type InputClusterParams as InputClusterParams,
-    type InputGenerateSeedsParams as InputGenerateSeedsParams,
   };
 }
