@@ -53,12 +53,9 @@ describe('resource generateFromSeeds', () => {
         'The quick brown fox jumped over the lazy dog',
         'The lazy dog was jumped over by the quick brown fox',
       ],
-      augment_with_auto_themes: false,
       batch_size: 5,
       num_shots: 5,
       similarity_threshold: 0.925,
-      themes: ['Chemistry', 'Software Engineering', 'Advanced Users'],
-      themes_coverage: 0.75,
     });
   });
 
