@@ -2,6 +2,7 @@
 
 export {
   GenerateFromSeeds,
+  type GenerateFromSeedStreamDataResponse,
   type GenerateFromSeedStreamMessagesResponse,
   type GenerateFromSeedGenerateParams,
 } from './generate-from-seeds';

@@ -5,6 +5,7 @@ import * as Core from '../../../core';
 import * as GenerateFromSeedsAPI from './generate-from-seeds';
 import {
   GenerateFromSeedGenerateParams,
+  GenerateFromSeedStreamDataResponse,
   GenerateFromSeedStreamMessagesResponse,
   GenerateFromSeeds,
 } from './generate-from-seeds';
@@ -63,6 +64,7 @@ export declare namespace Inputs {
 
   export {
     GenerateFromSeeds as GenerateFromSeeds,
+    type GenerateFromSeedStreamDataResponse as GenerateFromSeedStreamDataResponse,
     type GenerateFromSeedStreamMessagesResponse as GenerateFromSeedStreamMessagesResponse,
     type GenerateFromSeedGenerateParams as GenerateFromSeedGenerateParams,
   };
