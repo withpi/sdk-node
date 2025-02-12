@@ -1,14 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../../resource';
-import * as Core from '../../../core';
-import * as Shared from '../../shared';
-import * as MessagesAPI from './messages';
-import { MessageStreamResponse, Messages } from './messages';
+import { APIResource } from '../../resource';
+import * as Core from '../../core';
+import * as Shared from '../shared';
 
 export class Sft extends APIResource {
-  messages: MessagesAPI.Messages = new MessagesAPI.Messages(this._client);
-
   /**
    * Get the current status of a model SFT tuning job
    */
@@ -141,14 +137,10 @@ export namespace SftStartJobParams {
   }
 }
 
-Sft.Messages = Messages;
-
 export declare namespace Sft {
   export {
     type SftStatus as SftStatus,
     type SftStreamMessagesResponse as SftStreamMessagesResponse,
     type SftStartJobParams as SftStartJobParams,
   };
-
-  export { Messages as Messages, type MessageStreamResponse as MessageStreamResponse };
 }
