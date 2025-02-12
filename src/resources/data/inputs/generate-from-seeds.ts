@@ -23,6 +23,16 @@ export class GenerateFromSeeds extends APIResource {
   }
 
   /**
+   * Streams Data from the data generation job
+   */
+  streamData(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+    return this._client.get(`/data/input/generate_from_seeds/${jobId}/data`, {
+      ...options,
+      headers: { Accept: 'text/plain', ...options?.headers },
+    });
+  }
+
+  /**
    * Streams messages from the data generation job
    */
   streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
@@ -32,6 +42,8 @@ export class GenerateFromSeeds extends APIResource {
     });
   }
 }
+
+export type GenerateFromSeedStreamDataResponse = string;
 
 export type GenerateFromSeedStreamMessagesResponse = string;
 
@@ -72,6 +84,7 @@ export interface GenerateFromSeedGenerateParams {
 
 export declare namespace GenerateFromSeeds {
   export {
+    type GenerateFromSeedStreamDataResponse as GenerateFromSeedStreamDataResponse,
     type GenerateFromSeedStreamMessagesResponse as GenerateFromSeedStreamMessagesResponse,
     type GenerateFromSeedGenerateParams as GenerateFromSeedGenerateParams,
   };
