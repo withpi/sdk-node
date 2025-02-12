@@ -9,8 +9,8 @@ const client = new PiClient({
 });
 
 describe('resource prompt', () => {
-  test('getStatus', async () => {
-    const responsePromise = client.prompt.getStatus('job_id');
+  test('retrieve', async () => {
+    const responsePromise = client.prompt.retrieve('job_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -20,9 +20,9 @@ describe('resource prompt', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('getStatus: request options instead of params are passed correctly', async () => {
+  test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.prompt.getStatus('job_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.prompt.retrieve('job_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
       PiClient.NotFoundError,
     );
   });

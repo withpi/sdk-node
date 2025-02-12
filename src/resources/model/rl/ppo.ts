@@ -1,14 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../../../resource';
-import * as Core from '../../../../core';
-import * as Shared from '../../../shared';
-import * as MessagesAPI from './messages';
-import { MessageStreamResponse, Messages } from './messages';
+import { APIResource } from '../../../resource';
+import * as Core from '../../../core';
+import * as Shared from '../../shared';
 
 export class Ppo extends APIResource {
-  messages: MessagesAPI.Messages = new MessagesAPI.Messages(this._client);
-
   /**
    * Get the current status of the RL PPO job
    */
@@ -23,6 +19,16 @@ export class Ppo extends APIResource {
    */
   startJob(body: PpoStartJobParams, options?: Core.RequestOptions): Core.APIPromise<RlPpoStatus> {
     return this._client.post('/model/rl/ppo', { body, ...options });
+  }
+
+  /**
+   * Streams messages from the RL PPO job
+   */
+  streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+    return this._client.get(`/model/rl/ppo/${jobId}/messages`, {
+      ...options,
+      headers: { Accept: 'text/plain', ...options?.headers },
+    });
   }
 }
 
@@ -85,6 +91,8 @@ export namespace RlPpoStatus {
   }
 }
 
+export type PpoStreamMessagesResponse = string;
+
 export interface PpoStartJobParams {
   /**
    * The contract to use in the SFT tuning process
@@ -125,10 +133,10 @@ export namespace PpoStartJobParams {
   }
 }
 
-Ppo.Messages = Messages;
-
 export declare namespace Ppo {
-  export { type RlPpoStatus as RlPpoStatus, type PpoStartJobParams as PpoStartJobParams };
-
-  export { Messages as Messages, type MessageStreamResponse as MessageStreamResponse };
+  export {
+    type RlPpoStatus as RlPpoStatus,
+    type PpoStreamMessagesResponse as PpoStreamMessagesResponse,
+    type PpoStartJobParams as PpoStartJobParams,
+  };
 }
