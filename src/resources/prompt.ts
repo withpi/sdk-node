@@ -8,7 +8,7 @@ export class Prompt extends APIResource {
   /**
    * Checks on a prompt optimization job
    */
-  getStatus(jobId: string, options?: Core.RequestOptions): Core.APIPromise<PromptOptimizationStatus> {
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<PromptOptimizationStatus> {
     return this._client.get(`/prompt/optimize/${jobId}`, options);
   }
 
