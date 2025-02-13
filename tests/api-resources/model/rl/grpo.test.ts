@@ -8,9 +8,9 @@ const client = new PiClient({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource ppo', () => {
+describe('resource grpo', () => {
   test('retrieve', async () => {
-    const responsePromise = client.model.rl.ppo.retrieve('job_id');
+    const responsePromise = client.model.rl.grpo.retrieve('job_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -23,12 +23,12 @@ describe('resource ppo', () => {
   test('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.model.rl.ppo.retrieve('job_id', { path: '/_stainless_unknown_path' }),
+      client.model.rl.grpo.retrieve('job_id', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(PiClient.NotFoundError);
   });
 
   test('startJob: only required params', async () => {
-    const responsePromise = client.model.rl.ppo.startJob({
+    const responsePromise = client.model.rl.grpo.startJob({
       contract: {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Contract',
@@ -46,7 +46,7 @@ describe('resource ppo', () => {
   });
 
   test('startJob: required and optional params', async () => {
-    const response = await client.model.rl.ppo.startJob({
+    const response = await client.model.rl.grpo.startJob({
       contract: {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Contract',
@@ -106,7 +106,7 @@ describe('resource ppo', () => {
   });
 
   test('streamMessages', async () => {
-    const responsePromise = client.model.rl.ppo.streamMessages('job_id');
+    const responsePromise = client.model.rl.grpo.streamMessages('job_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -119,7 +119,7 @@ describe('resource ppo', () => {
   test('streamMessages: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.model.rl.ppo.streamMessages('job_id', { path: '/_stainless_unknown_path' }),
+      client.model.rl.grpo.streamMessages('job_id', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(PiClient.NotFoundError);
   });
 });
