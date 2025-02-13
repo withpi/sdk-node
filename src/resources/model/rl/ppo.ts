@@ -105,10 +105,9 @@ export interface PpoStartJobParams {
   examples: Array<PpoStartJobParams.Example>;
 
   /**
-   * The Huggingface model name to run RL on. Currently we only support the LLAMA
-   * model type and model size <= 8B parameters.
+   * The model to start the RL process
    */
-  model: string;
+  model: 'LLAMA_3.2_1B';
 
   /**
    * SFT learning rate
