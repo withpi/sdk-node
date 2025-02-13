@@ -34,7 +34,7 @@ describe('resource ppo', () => {
         name: 'Sample Contract',
       },
       examples: [{ llm_input: 'Tell me something different' }],
-      model: 'meta-llama/Llama-3.2-1B-Instruct',
+      model: 'LLAMA_3.2_1B',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -99,7 +99,7 @@ describe('resource ppo', () => {
         ],
       },
       examples: [{ llm_input: 'Tell me something different' }],
-      model: 'meta-llama/Llama-3.2-1B-Instruct',
+      model: 'LLAMA_3.2_1B',
       learning_rate: 0.0002,
       num_train_epochs: 10,
     });
