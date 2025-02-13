@@ -54,8 +54,8 @@ describe('resource generateFromSeeds', () => {
         'The lazy dog was jumped over by the quick brown fox',
       ],
       batch_size: 5,
+      exploration_mode: 'CONSERVATIVE',
       num_shots: 5,
-      similarity_threshold: 0.925,
     });
   });
 
