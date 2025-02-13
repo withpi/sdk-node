@@ -70,16 +70,15 @@ export interface GenerateFromSeedGenerateParams {
   batch_size?: number;
 
   /**
+   * The exloration mode for input generation. Defaults to `BALANCED`
+   */
+  exploration_mode?: 'CONSERVATIVE' | 'BALANCED' | 'CREATIVE' | 'ADVENTUROUS';
+
+  /**
    * Number of inputs to be included in the prompt for generation. Generally it could
    * be same as `batch_size`.
    */
   num_shots?: number;
-
-  /**
-   * If a generated input is similar to any of the existing ones with similarity >
-   * `similarity_threshold`, we reject it.
-   */
-  similarity_threshold?: number;
 }
 
 export declare namespace GenerateFromSeeds {
