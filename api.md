@@ -69,16 +69,18 @@ Methods:
 
 ### Ppo
 
+### Grpo
+
 Types:
 
-- <code><a href="./src/resources/model/rl/ppo.ts">RlPpoStatus</a></code>
-- <code><a href="./src/resources/model/rl/ppo.ts">PpoStreamMessagesResponse</a></code>
+- <code><a href="./src/resources/model/rl/grpo.ts">RlGrpoStatus</a></code>
+- <code><a href="./src/resources/model/rl/grpo.ts">GrpoStreamMessagesResponse</a></code>
 
 Methods:
 
-- <code title="get /model/rl/ppo/{job_id}">client.model.rl.ppo.<a href="./src/resources/model/rl/ppo.ts">retrieve</a>(jobId) -> RlPpoStatus</code>
-- <code title="post /model/rl/ppo">client.model.rl.ppo.<a href="./src/resources/model/rl/ppo.ts">startJob</a>({ ...params }) -> RlPpoStatus</code>
-- <code title="get /model/rl/ppo/{job_id}/messages">client.model.rl.ppo.<a href="./src/resources/model/rl/ppo.ts">streamMessages</a>(jobId) -> string</code>
+- <code title="get /model/rl/grpo/{job_id}">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">retrieve</a>(jobId) -> RlGrpoStatus</code>
+- <code title="post /model/rl/grpo">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">startJob</a>({ ...params }) -> RlGrpoStatus</code>
+- <code title="get /model/rl/grpo/{job_id}/messages">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">streamMessages</a>(jobId) -> string</code>
 
 # Contracts
 
