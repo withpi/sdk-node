@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.49 (2025-02-14)
+
+Full Changelog: [v0.1.0-alpha.48...v0.1.0-alpha.49](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.48...v0.1.0-alpha.49)
+
+### Bug Fixes
+
+* **client:** fix export map for index exports ([#235](https://github.com/withpi/sdk-node/issues/235)) ([0244075](https://github.com/withpi/sdk-node/commit/0244075386419125a6891a15dbebcae9f0e812dd))
+
 ## 0.1.0-alpha.48 (2025-02-13)
 
 Full Changelog: [v0.1.0-alpha.47...v0.1.0-alpha.48](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.47...v0.1.0-alpha.48)
