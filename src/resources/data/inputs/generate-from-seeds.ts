@@ -49,12 +49,12 @@ export type GenerateFromSeedStreamMessagesResponse = string;
 
 export interface GenerateFromSeedGenerateParams {
   /**
-   * The application description to generate contract for.
+   * The application description for which the inputs would be applicable.
    */
   application_description: string;
 
   /**
-   * The number of LLM inputs to generate
+   * The number of new LLM inputs to generate
    */
   num_inputs_to_generate: number;
 
