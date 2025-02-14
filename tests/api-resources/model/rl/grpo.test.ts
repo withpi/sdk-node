@@ -100,9 +100,9 @@ describe('resource grpo', () => {
       },
       examples: [{ llm_input: 'Tell me something different' }],
       model: 'LLAMA_3.2_1B',
-      system_prompt: 'system_prompt',
       learning_rate: 0.0002,
       num_train_epochs: 10,
+      system_prompt: 'system_prompt',
     });
   });
 
