@@ -110,7 +110,7 @@ export interface GrpoStartJobParams {
   model: 'LLAMA_3.2_1B';
 
   /**
-   * Query param: A custom prompt to use for prompting the RL model
+   * Query param: A custom system prompt to use during the RL tuning process
    */
   system_prompt?: string | null;
 
