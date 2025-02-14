@@ -88,14 +88,14 @@ export interface PromptOptimizeParams {
   tuning_algorithm: 'PI' | 'DSPY';
 
   /**
-   * The DSPY teleprompter/optimizer to use. This only applies for the DSPY otherwise
-   * leave it as None.
+   * The DSPY teleprompter/optimizer to use. This only applies for the DSPY. Leave it
+   * as None if tuning_algorithm != DSPY.
    */
   dspy_optimization_type?: 'BOOTSTRAP_FEW_SHOT' | 'COPRO' | 'MIPROv2' | null;
 
   /**
-   * Decides if to use chain of thought or not. This only applies for the DSPY
-   * otherwise leave it as False.
+   * Decides if to use chain of thought or not. This only applies for the DSPY. Leave
+   * it as None if tuning_algorithm != DSPY.
    */
   use_chain_of_thought?: boolean;
 }
