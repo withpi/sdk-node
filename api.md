@@ -67,8 +67,6 @@ Methods:
 
 ## Rl
 
-### Ppo
-
 ### Grpo
 
 Types:
