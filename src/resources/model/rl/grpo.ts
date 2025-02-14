@@ -125,7 +125,7 @@ export namespace GrpoStartJobParams {
    */
   export interface Example {
     /**
-     * The input to LLM
+     * The input prompt to LLM for the RL training process
      */
     llm_input: string;
   }
