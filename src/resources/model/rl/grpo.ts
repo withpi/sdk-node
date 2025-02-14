@@ -16,8 +16,9 @@ export class Grpo extends APIResource {
    * Initialize the Group Relative Policy Optimization (GRPO) reinforcement learning
    * job.
    */
-  startJob(body: GrpoStartJobParams, options?: Core.RequestOptions): Core.APIPromise<RlGrpoStatus> {
-    return this._client.post('/model/rl/grpo', { body, ...options });
+  startJob(params: GrpoStartJobParams, options?: Core.RequestOptions): Core.APIPromise<RlGrpoStatus> {
+    const { system_prompt, ...body } = params;
+    return this._client.post('/model/rl/grpo', { query: { system_prompt }, body, ...options });
   }
 
   /**
@@ -94,27 +95,32 @@ export type GrpoStreamMessagesResponse = string;
 
 export interface GrpoStartJobParams {
   /**
-   * The contract to use in the GRPO tuning process
+   * Body param: The contract to use in the GRPO tuning process
    */
   contract: Shared.Contract;
 
   /**
-   * Examples to use in the RL tuning process
+   * Body param: Examples to use in the RL tuning process
    */
   examples: Array<GrpoStartJobParams.Example>;
 
   /**
-   * The model to start the RL process
+   * Body param: The model to start the RL process
    */
   model: 'LLAMA_3.2_1B';
 
   /**
-   * SFT learning rate
+   * Query param: A custom prompt to use for prompting the RL model
+   */
+  system_prompt?: string | null;
+
+  /**
+   * Body param: SFT learning rate
    */
   learning_rate?: number;
 
   /**
-   * SFT number of train epochs
+   * Body param: SFT number of train epochs
    */
   num_train_epochs?: number;
 }
