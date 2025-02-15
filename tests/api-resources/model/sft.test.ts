@@ -27,6 +27,42 @@ describe('resource sft', () => {
     );
   });
 
+  test('check', async () => {
+    const responsePromise = client.model.sft.check('job_id');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('check: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(client.model.sft.check('job_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+      PiClient.NotFoundError,
+    );
+  });
+
+  test('load', async () => {
+    const responsePromise = client.model.sft.load('job_id');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('load: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(client.model.sft.load('job_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+      PiClient.NotFoundError,
+    );
+  });
+
   test('startJob: only required params', async () => {
     const responsePromise = client.model.sft.startJob({
       contract: {
