@@ -2,4 +2,11 @@
 
 export { Model } from './model';
 export { Rl } from './rl/index';
-export { Sft, type SftStatus, type SftStreamMessagesResponse, type SftStartJobParams } from './sft';
+export {
+  Sft,
+  type SftStatus,
+  type SftCheckResponse,
+  type SftLoadResponse,
+  type SftStreamMessagesResponse,
+  type SftStartJobParams,
+} from './sft';

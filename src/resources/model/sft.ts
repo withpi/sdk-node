@@ -13,6 +13,22 @@ export class Sft extends APIResource {
   }
 
   /**
+   * Check if the model is serving
+   */
+  check(jobId: string, options?: Core.RequestOptions): Core.APIPromise<SftCheckResponse> {
+    return this._client.get(`/model/sft/${jobId}/check`, options);
+  }
+
+  /**
+   * Load the SFT model into serving. This can support a very small amount of
+   * interactive traffic. Please reach out if you want to use this model in a
+   * production setting.
+   */
+  load(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+    return this._client.post(`/model/sft/${jobId}/load`, options);
+  }
+
+  /**
    * Initialize the supervised fine-tuning (SFT) job for the model. We implement
    * Low-Rank Adaptation (LoRA) for the fine-tuning process, with a fixed rank of 16.
    */
@@ -90,6 +106,10 @@ export namespace SftStatus {
   }
 }
 
+export type SftCheckResponse = boolean;
+
+export type SftLoadResponse = string;
+
 export type SftStreamMessagesResponse = string;
 
 export interface SftStartJobParams {
@@ -140,6 +160,8 @@ export namespace SftStartJobParams {
 export declare namespace Sft {
   export {
     type SftStatus as SftStatus,
+    type SftCheckResponse as SftCheckResponse,
+    type SftLoadResponse as SftLoadResponse,
     type SftStreamMessagesResponse as SftStreamMessagesResponse,
     type SftStartJobParams as SftStartJobParams,
   };
