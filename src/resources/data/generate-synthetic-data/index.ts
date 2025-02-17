@@ -1,15 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-export { Data, type DataGenerationStatus } from './data';
+export { Data, type DataListResponse } from './data';
 export {
   GenerateSyntheticData,
   type GenerateSyntheticDataCreateResponse,
   type GenerateSyntheticDataRetrieveResponse,
   type GenerateSyntheticDataCreateParams,
-} from './generate-synthetic-data/index';
-export {
-  Inputs,
-  type InputTopicCluster,
-  type InputClusterResponse,
-  type InputClusterParams,
-} from './inputs/index';
+} from './generate-synthetic-data';
+export { Messages, type MessageListResponse } from './messages';
