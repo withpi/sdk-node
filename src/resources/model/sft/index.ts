@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-export { Model } from './model';
-export { Rl } from './rl/index';
+export { ChatCompletions, type ChatCompletionListResponse } from './chat-completions';
+export { Completions, type CompletionListResponse } from './completions';
 export {
   Sft,
   type SftStatus,
@@ -9,4 +9,4 @@ export {
   type SftLoadResponse,
   type SftStreamMessagesResponse,
   type SftStartJobParams,
-} from './sft/index';
+} from './sft';
