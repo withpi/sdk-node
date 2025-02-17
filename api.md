@@ -37,6 +37,38 @@ Methods:
 - <code title="get /data/input/generate_from_seeds/{job_id}/data">client.data.inputs.generateFromSeeds.<a href="./src/resources/data/inputs/generate-from-seeds.ts">streamData</a>(jobId) -> string</code>
 - <code title="get /data/input/generate_from_seeds/{job_id}/messages">client.data.inputs.generateFromSeeds.<a href="./src/resources/data/inputs/generate-from-seeds.ts">streamMessages</a>(jobId) -> string</code>
 
+## GenerateSyntheticData
+
+Types:
+
+- <code><a href="./src/resources/data/generate-synthetic-data/generate-synthetic-data.ts">GenerateSyntheticDataCreateResponse</a></code>
+- <code><a href="./src/resources/data/generate-synthetic-data/generate-synthetic-data.ts">GenerateSyntheticDataRetrieveResponse</a></code>
+
+Methods:
+
+- <code title="post /data/generate_synthetic_data">client.data.generateSyntheticData.<a href="./src/resources/data/generate-synthetic-data/generate-synthetic-data.ts">create</a>({ ...params }) -> GenerateSyntheticDataCreateResponse</code>
+- <code title="get /data/generate_synthetic_data/{job_id}">client.data.generateSyntheticData.<a href="./src/resources/data/generate-synthetic-data/generate-synthetic-data.ts">retrieve</a>(jobId) -> GenerateSyntheticDataRetrieveResponse</code>
+
+### Data
+
+Types:
+
+- <code><a href="./src/resources/data/generate-synthetic-data/data.ts">DataListResponse</a></code>
+
+Methods:
+
+- <code title="get /data/generate_synthetic_data/{job_id}/data">client.data.generateSyntheticData.data.<a href="./src/resources/data/generate-synthetic-data/data.ts">list</a>(jobId) -> DataListResponse</code>
+
+### Messages
+
+Types:
+
+- <code><a href="./src/resources/data/generate-synthetic-data/messages.ts">MessageListResponse</a></code>
+
+Methods:
+
+- <code title="get /data/generate_synthetic_data/{job_id}/messages">client.data.generateSyntheticData.messages.<a href="./src/resources/data/generate-synthetic-data/messages.ts">list</a>(jobId) -> string</code>
+
 # Prompt
 
 Types:
