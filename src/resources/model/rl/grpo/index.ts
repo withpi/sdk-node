@@ -1,5 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+export { ChatCompletions, type ChatCompletionListResponse } from './chat-completions';
+export { Completions, type CompletionListResponse } from './completions';
 export {
   Grpo,
   type RlGrpoStatus,
@@ -7,5 +9,4 @@ export {
   type GrpoLoadResponse,
   type GrpoStreamMessagesResponse,
   type GrpoStartJobParams,
-} from './grpo/index';
-export { Rl } from './rl';
+} from './grpo';
