@@ -127,14 +127,38 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/model/rl/grpo.ts">RlGrpoStatus</a></code>
-- <code><a href="./src/resources/model/rl/grpo.ts">GrpoStreamMessagesResponse</a></code>
+- <code><a href="./src/resources/model/rl/grpo/grpo.ts">RlGrpoStatus</a></code>
+- <code><a href="./src/resources/model/rl/grpo/grpo.ts">GrpoCheckResponse</a></code>
+- <code><a href="./src/resources/model/rl/grpo/grpo.ts">GrpoLoadResponse</a></code>
+- <code><a href="./src/resources/model/rl/grpo/grpo.ts">GrpoStreamMessagesResponse</a></code>
 
 Methods:
 
-- <code title="get /model/rl/grpo/{job_id}">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">retrieve</a>(jobId) -> RlGrpoStatus</code>
-- <code title="post /model/rl/grpo">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">startJob</a>({ ...params }) -> RlGrpoStatus</code>
-- <code title="get /model/rl/grpo/{job_id}/messages">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">streamMessages</a>(jobId) -> string</code>
+- <code title="get /model/rl/grpo/{job_id}">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo/grpo.ts">retrieve</a>(jobId) -> RlGrpoStatus</code>
+- <code title="get /model/rl/grpo/{job_id}/check">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo/grpo.ts">check</a>(jobId) -> GrpoCheckResponse</code>
+- <code title="post /model/rl/grpo/{job_id}/load">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo/grpo.ts">load</a>(jobId) -> string</code>
+- <code title="post /model/rl/grpo">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo/grpo.ts">startJob</a>({ ...params }) -> RlGrpoStatus</code>
+- <code title="get /model/rl/grpo/{job_id}/messages">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo/grpo.ts">streamMessages</a>(jobId) -> string</code>
+
+#### ChatCompletions
+
+Types:
+
+- <code><a href="./src/resources/model/rl/grpo/chat-completions.ts">ChatCompletionListResponse</a></code>
+
+Methods:
+
+- <code title="get /model/rl/grpo/{job_id}/chat/completions">client.model.rl.grpo.chatCompletions.<a href="./src/resources/model/rl/grpo/chat-completions.ts">list</a>(jobId) -> unknown</code>
+
+#### Completions
+
+Types:
+
+- <code><a href="./src/resources/model/rl/grpo/completions.ts">CompletionListResponse</a></code>
+
+Methods:
+
+- <code title="get /model/rl/grpo/{job_id}/completions">client.model.rl.grpo.completions.<a href="./src/resources/model/rl/grpo/completions.ts">list</a>(jobId) -> unknown</code>
 
 # Contracts
 
@@ -169,3 +193,9 @@ Types:
 Methods:
 
 - <code title="post /queries/generate_fanouts">client.queries.<a href="./src/resources/queries.ts">generateFanouts</a>({ ...params }) -> QueryGenerateFanoutsResponse</code>
+
+# ModelRlGrpo
+
+Types:
+
+- <code><a href="./src/resources/model-rl-grpo.ts">RlGrpoStatus</a></code>
