@@ -5,6 +5,7 @@ import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
+import { ModelRlGrpo, RlGrpoStatus } from './resources/model-rl-grpo';
 import {
   Prompt,
   PromptOptimizationStatus,
@@ -139,6 +140,7 @@ export class PiClient extends Core.APIClient {
   model: API.Model = new API.Model(this);
   contracts: API.Contracts = new API.Contracts(this);
   queries: API.Queries = new API.Queries(this);
+  modelRlGrpo: API.ModelRlGrpo = new API.ModelRlGrpo(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -181,6 +183,7 @@ PiClient.Prompt = Prompt;
 PiClient.Model = Model;
 PiClient.Contracts = Contracts;
 PiClient.Queries = Queries;
+PiClient.ModelRlGrpo = ModelRlGrpo;
 export declare namespace PiClient {
   export type RequestOptions = Core.RequestOptions;
 
@@ -207,6 +210,8 @@ export declare namespace PiClient {
     type QueryGenerateFanoutsResponse as QueryGenerateFanoutsResponse,
     type QueryGenerateFanoutsParams as QueryGenerateFanoutsParams,
   };
+
+  export { ModelRlGrpo as ModelRlGrpo, type RlGrpoStatus as RlGrpoStatus };
 
   export type Contract = API.Contract;
   export type Dimension = API.Dimension;

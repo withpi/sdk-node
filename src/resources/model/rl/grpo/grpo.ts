@@ -1,22 +1,48 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../../resource';
-import * as Core from '../../../core';
-import * as Shared from '../../shared';
+import { APIResource } from '../../../../resource';
+import * as Core from '../../../../core';
+import * as ModelRlGrpoAPI from '../../../model-rl-grpo';
+import * as Shared from '../../../shared';
+import * as ChatCompletionsAPI from './chat-completions';
+import { ChatCompletionListResponse, ChatCompletions } from './chat-completions';
+import * as CompletionsAPI from './completions';
+import { CompletionListResponse, Completions } from './completions';
 
 export class Grpo extends APIResource {
+  chatCompletions: ChatCompletionsAPI.ChatCompletions = new ChatCompletionsAPI.ChatCompletions(this._client);
+  completions: CompletionsAPI.Completions = new CompletionsAPI.Completions(this._client);
+
   /**
    * Get the current status of the RL GRPO job
    */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<RlGrpoStatus> {
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<ModelRlGrpoAPI.RlGrpoStatus> {
     return this._client.get(`/model/rl/grpo/${jobId}`, options);
+  }
+
+  /**
+   * Check if the model is serving
+   */
+  check(jobId: string, options?: Core.RequestOptions): Core.APIPromise<GrpoCheckResponse> {
+    return this._client.get(`/model/rl/grpo/${jobId}/check`, options);
+  }
+
+  /**
+   * Load the model into serving. This can support a very small amount of interactive
+   * traffic. Please reach out if you want to use this model in a production setting.
+   */
+  load(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+    return this._client.post(`/model/rl/grpo/${jobId}/load`, options);
   }
 
   /**
    * Initialize the Group Relative Policy Optimization (GRPO) reinforcement learning
    * job.
    */
-  startJob(body: GrpoStartJobParams, options?: Core.RequestOptions): Core.APIPromise<RlGrpoStatus> {
+  startJob(
+    body: GrpoStartJobParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<ModelRlGrpoAPI.RlGrpoStatus> {
     return this._client.post('/model/rl/grpo', { body, ...options });
   }
 
@@ -90,6 +116,10 @@ export namespace RlGrpoStatus {
   }
 }
 
+export type GrpoCheckResponse = boolean;
+
+export type GrpoLoadResponse = string;
+
 export type GrpoStreamMessagesResponse = string;
 
 export interface GrpoStartJobParams {
@@ -136,10 +166,22 @@ export namespace GrpoStartJobParams {
   }
 }
 
+Grpo.ChatCompletions = ChatCompletions;
+Grpo.Completions = Completions;
+
 export declare namespace Grpo {
   export {
     type RlGrpoStatus as RlGrpoStatus,
+    type GrpoCheckResponse as GrpoCheckResponse,
+    type GrpoLoadResponse as GrpoLoadResponse,
     type GrpoStreamMessagesResponse as GrpoStreamMessagesResponse,
     type GrpoStartJobParams as GrpoStartJobParams,
   };
+
+  export {
+    ChatCompletions as ChatCompletions,
+    type ChatCompletionListResponse as ChatCompletionListResponse,
+  };
+
+  export { Completions as Completions, type CompletionListResponse as CompletionListResponse };
 }
