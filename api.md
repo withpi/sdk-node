@@ -4,6 +4,7 @@ Types:
 
 - <code><a href="./src/resources/shared.ts">Contract</a></code>
 - <code><a href="./src/resources/shared.ts">Dimension</a></code>
+- <code><a href="./src/resources/shared.ts">Example</a></code>
 - <code><a href="./src/resources/shared.ts">SubDimension</a></code>
 
 # Data

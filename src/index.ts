@@ -212,6 +212,7 @@ export declare namespace PiClient {
 
   export type Contract = API.Contract;
   export type Dimension = API.Dimension;
+  export type Example = API.Example;
   export type SubDimension = API.SubDimension;
 }
 

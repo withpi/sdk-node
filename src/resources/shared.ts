@@ -103,6 +103,21 @@ export namespace Dimension {
   }
 }
 
+/**
+ * An example for training or evaluation
+ */
+export interface Example {
+  /**
+   * The input to LLM
+   */
+  llm_input: string;
+
+  /**
+   * The output to evaluate
+   */
+  llm_output: string;
+}
+
 export interface SubDimension {
   /**
    * The description of the dimension
