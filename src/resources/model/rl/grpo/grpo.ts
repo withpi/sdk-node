@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../../../resource';
 import * as Core from '../../../../core';
-import * as ModelRlGrpoAPI from '../../../model-rl-grpo';
 import * as Shared from '../../../shared';
 import * as ChatCompletionsAPI from './chat-completions';
 import { ChatCompletionListResponse, ChatCompletions } from './chat-completions';
@@ -16,7 +15,7 @@ export class Grpo extends APIResource {
   /**
    * Get the current status of the RL GRPO job
    */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<ModelRlGrpoAPI.RlGrpoStatus> {
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<RlGrpoStatus> {
     return this._client.get(`/model/rl/grpo/${jobId}`, options);
   }
 
@@ -39,10 +38,7 @@ export class Grpo extends APIResource {
    * Initialize the Group Relative Policy Optimization (GRPO) reinforcement learning
    * job.
    */
-  startJob(
-    body: GrpoStartJobParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<ModelRlGrpoAPI.RlGrpoStatus> {
+  startJob(body: GrpoStartJobParams, options?: Core.RequestOptions): Core.APIPromise<RlGrpoStatus> {
     return this._client.post('/model/rl/grpo', { body, ...options });
   }
 

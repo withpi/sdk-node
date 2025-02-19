@@ -194,9 +194,3 @@ Types:
 Methods:
 
 - <code title="post /queries/generate_fanouts">client.queries.<a href="./src/resources/queries.ts">generateFanouts</a>({ ...params }) -> QueryGenerateFanoutsResponse</code>
-
-# ModelRlGrpo
-
-Types:
-
-- <code><a href="./src/resources/model-rl-grpo.ts">RlGrpoStatus</a></code>
