@@ -1,9 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../resource';
-import * as RlAPI from './rl/rl';
-import { Rl } from './rl/rl';
-import * as SftAPI from './sft/sft';
+import * as SftAPI from './sft';
 import {
   Sft,
   SftCheckResponse,
@@ -11,7 +9,9 @@ import {
   SftStartJobParams,
   SftStatus,
   SftStreamMessagesResponse,
-} from './sft/sft';
+} from './sft';
+import * as RlAPI from './rl/rl';
+import { Rl } from './rl/rl';
 
 export class Model extends APIResource {
   sft: SftAPI.Sft = new SftAPI.Sft(this._client);

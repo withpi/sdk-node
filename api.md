@@ -41,33 +41,17 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/data/generate-synthetic-data/generate-synthetic-data.ts">GenerateSyntheticDataCreateResponse</a></code>
-- <code><a href="./src/resources/data/generate-synthetic-data/generate-synthetic-data.ts">GenerateSyntheticDataRetrieveResponse</a></code>
+- <code><a href="./src/resources/data/generate-synthetic-data.ts">GenerateSyntheticDataCreateResponse</a></code>
+- <code><a href="./src/resources/data/generate-synthetic-data.ts">GenerateSyntheticDataRetrieveResponse</a></code>
+- <code><a href="./src/resources/data/generate-synthetic-data.ts">GenerateSyntheticDataStreamDataResponse</a></code>
+- <code><a href="./src/resources/data/generate-synthetic-data.ts">GenerateSyntheticDataStreamMessagesResponse</a></code>
 
 Methods:
 
-- <code title="post /data/generate_synthetic_data">client.data.generateSyntheticData.<a href="./src/resources/data/generate-synthetic-data/generate-synthetic-data.ts">create</a>({ ...params }) -> GenerateSyntheticDataCreateResponse</code>
-- <code title="get /data/generate_synthetic_data/{job_id}">client.data.generateSyntheticData.<a href="./src/resources/data/generate-synthetic-data/generate-synthetic-data.ts">retrieve</a>(jobId) -> GenerateSyntheticDataRetrieveResponse</code>
-
-### Data
-
-Types:
-
-- <code><a href="./src/resources/data/generate-synthetic-data/data.ts">DataListResponse</a></code>
-
-Methods:
-
-- <code title="get /data/generate_synthetic_data/{job_id}/data">client.data.generateSyntheticData.data.<a href="./src/resources/data/generate-synthetic-data/data.ts">list</a>(jobId) -> DataListResponse</code>
-
-### Messages
-
-Types:
-
-- <code><a href="./src/resources/data/generate-synthetic-data/messages.ts">MessageListResponse</a></code>
-
-Methods:
-
-- <code title="get /data/generate_synthetic_data/{job_id}/messages">client.data.generateSyntheticData.messages.<a href="./src/resources/data/generate-synthetic-data/messages.ts">list</a>(jobId) -> string</code>
+- <code title="post /data/generate_synthetic_data">client.data.generateSyntheticData.<a href="./src/resources/data/generate-synthetic-data.ts">create</a>({ ...params }) -> GenerateSyntheticDataCreateResponse</code>
+- <code title="get /data/generate_synthetic_data/{job_id}">client.data.generateSyntheticData.<a href="./src/resources/data/generate-synthetic-data.ts">retrieve</a>(jobId) -> GenerateSyntheticDataRetrieveResponse</code>
+- <code title="get /data/generate_synthetic_data/{job_id}/data">client.data.generateSyntheticData.<a href="./src/resources/data/generate-synthetic-data.ts">streamData</a>(jobId) -> GenerateSyntheticDataStreamDataResponse</code>
+- <code title="get /data/generate_synthetic_data/{job_id}/messages">client.data.generateSyntheticData.<a href="./src/resources/data/generate-synthetic-data.ts">streamMessages</a>(jobId) -> string</code>
 
 # Prompt
 
@@ -88,38 +72,18 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/model/sft/sft.ts">SftStatus</a></code>
-- <code><a href="./src/resources/model/sft/sft.ts">SftCheckResponse</a></code>
-- <code><a href="./src/resources/model/sft/sft.ts">SftLoadResponse</a></code>
-- <code><a href="./src/resources/model/sft/sft.ts">SftStreamMessagesResponse</a></code>
+- <code><a href="./src/resources/model/sft.ts">SftStatus</a></code>
+- <code><a href="./src/resources/model/sft.ts">SftCheckResponse</a></code>
+- <code><a href="./src/resources/model/sft.ts">SftLoadResponse</a></code>
+- <code><a href="./src/resources/model/sft.ts">SftStreamMessagesResponse</a></code>
 
 Methods:
 
-- <code title="get /model/sft/{job_id}">client.model.sft.<a href="./src/resources/model/sft/sft.ts">retrieve</a>(jobId) -> SftStatus</code>
-- <code title="get /model/sft/{job_id}/check">client.model.sft.<a href="./src/resources/model/sft/sft.ts">check</a>(jobId) -> SftCheckResponse</code>
-- <code title="post /model/sft/{job_id}/load">client.model.sft.<a href="./src/resources/model/sft/sft.ts">load</a>(jobId) -> string</code>
-- <code title="post /model/sft">client.model.sft.<a href="./src/resources/model/sft/sft.ts">startJob</a>({ ...params }) -> SftStatus</code>
-- <code title="get /model/sft/{job_id}/messages">client.model.sft.<a href="./src/resources/model/sft/sft.ts">streamMessages</a>(jobId) -> string</code>
-
-### ChatCompletions
-
-Types:
-
-- <code><a href="./src/resources/model/sft/chat-completions.ts">ChatCompletionListResponse</a></code>
-
-Methods:
-
-- <code title="get /model/sft/{job_id}/chat/completions">client.model.sft.chatCompletions.<a href="./src/resources/model/sft/chat-completions.ts">list</a>(jobId) -> unknown</code>
-
-### Completions
-
-Types:
-
-- <code><a href="./src/resources/model/sft/completions.ts">CompletionListResponse</a></code>
-
-Methods:
-
-- <code title="get /model/sft/{job_id}/completions">client.model.sft.completions.<a href="./src/resources/model/sft/completions.ts">list</a>(jobId) -> unknown</code>
+- <code title="get /model/sft/{job_id}">client.model.sft.<a href="./src/resources/model/sft.ts">retrieve</a>(jobId) -> SftStatus</code>
+- <code title="get /model/sft/{job_id}/check">client.model.sft.<a href="./src/resources/model/sft.ts">check</a>(jobId) -> SftCheckResponse</code>
+- <code title="post /model/sft/{job_id}/load">client.model.sft.<a href="./src/resources/model/sft.ts">load</a>(jobId) -> string</code>
+- <code title="post /model/sft">client.model.sft.<a href="./src/resources/model/sft.ts">startJob</a>({ ...params }) -> SftStatus</code>
+- <code title="get /model/sft/{job_id}/messages">client.model.sft.<a href="./src/resources/model/sft.ts">streamMessages</a>(jobId) -> string</code>
 
 ## Rl
 
@@ -127,38 +91,18 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/model/rl/grpo/grpo.ts">RlGrpoStatus</a></code>
-- <code><a href="./src/resources/model/rl/grpo/grpo.ts">GrpoCheckResponse</a></code>
-- <code><a href="./src/resources/model/rl/grpo/grpo.ts">GrpoLoadResponse</a></code>
-- <code><a href="./src/resources/model/rl/grpo/grpo.ts">GrpoStreamMessagesResponse</a></code>
+- <code><a href="./src/resources/model/rl/grpo.ts">RlGrpoStatus</a></code>
+- <code><a href="./src/resources/model/rl/grpo.ts">GrpoCheckResponse</a></code>
+- <code><a href="./src/resources/model/rl/grpo.ts">GrpoLoadResponse</a></code>
+- <code><a href="./src/resources/model/rl/grpo.ts">GrpoStreamMessagesResponse</a></code>
 
 Methods:
 
-- <code title="get /model/rl/grpo/{job_id}">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo/grpo.ts">retrieve</a>(jobId) -> RlGrpoStatus</code>
-- <code title="get /model/rl/grpo/{job_id}/check">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo/grpo.ts">check</a>(jobId) -> GrpoCheckResponse</code>
-- <code title="post /model/rl/grpo/{job_id}/load">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo/grpo.ts">load</a>(jobId) -> string</code>
-- <code title="post /model/rl/grpo">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo/grpo.ts">startJob</a>({ ...params }) -> RlGrpoStatus</code>
-- <code title="get /model/rl/grpo/{job_id}/messages">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo/grpo.ts">streamMessages</a>(jobId) -> string</code>
-
-#### ChatCompletions
-
-Types:
-
-- <code><a href="./src/resources/model/rl/grpo/chat-completions.ts">ChatCompletionListResponse</a></code>
-
-Methods:
-
-- <code title="get /model/rl/grpo/{job_id}/chat/completions">client.model.rl.grpo.chatCompletions.<a href="./src/resources/model/rl/grpo/chat-completions.ts">list</a>(jobId) -> unknown</code>
-
-#### Completions
-
-Types:
-
-- <code><a href="./src/resources/model/rl/grpo/completions.ts">CompletionListResponse</a></code>
-
-Methods:
-
-- <code title="get /model/rl/grpo/{job_id}/completions">client.model.rl.grpo.completions.<a href="./src/resources/model/rl/grpo/completions.ts">list</a>(jobId) -> unknown</code>
+- <code title="get /model/rl/grpo/{job_id}">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">retrieve</a>(jobId) -> RlGrpoStatus</code>
+- <code title="get /model/rl/grpo/{job_id}/check">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">check</a>(jobId) -> GrpoCheckResponse</code>
+- <code title="post /model/rl/grpo/{job_id}/load">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">load</a>(jobId) -> string</code>
+- <code title="post /model/rl/grpo">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">startJob</a>({ ...params }) -> RlGrpoStatus</code>
+- <code title="get /model/rl/grpo/{job_id}/messages">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">streamMessages</a>(jobId) -> string</code>
 
 # Contracts
 

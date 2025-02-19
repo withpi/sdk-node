@@ -1,17 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../../../resource';
-import * as Core from '../../../../core';
-import * as Shared from '../../../shared';
-import * as ChatCompletionsAPI from './chat-completions';
-import { ChatCompletionListResponse, ChatCompletions } from './chat-completions';
-import * as CompletionsAPI from './completions';
-import { CompletionListResponse, Completions } from './completions';
+import { APIResource } from '../../../resource';
+import * as Core from '../../../core';
+import * as Shared from '../../shared';
 
 export class Grpo extends APIResource {
-  chatCompletions: ChatCompletionsAPI.ChatCompletions = new ChatCompletionsAPI.ChatCompletions(this._client);
-  completions: CompletionsAPI.Completions = new CompletionsAPI.Completions(this._client);
-
   /**
    * Get the current status of the RL GRPO job
    */
@@ -162,9 +155,6 @@ export namespace GrpoStartJobParams {
   }
 }
 
-Grpo.ChatCompletions = ChatCompletions;
-Grpo.Completions = Completions;
-
 export declare namespace Grpo {
   export {
     type RlGrpoStatus as RlGrpoStatus,
@@ -173,11 +163,4 @@ export declare namespace Grpo {
     type GrpoStreamMessagesResponse as GrpoStreamMessagesResponse,
     type GrpoStartJobParams as GrpoStartJobParams,
   };
-
-  export {
-    ChatCompletions as ChatCompletions,
-    type ChatCompletionListResponse as ChatCompletionListResponse,
-  };
-
-  export { Completions as Completions, type CompletionListResponse as CompletionListResponse };
 }
