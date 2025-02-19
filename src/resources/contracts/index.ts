@@ -10,5 +10,6 @@ export {
   Contracts,
   type ContractsScoreMetrics,
   type ContractGenerateDimensionsParams,
+  type ContractReadFromHfParams,
   type ContractScoreParams,
 } from './contracts';
