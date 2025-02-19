@@ -10,7 +10,6 @@ export {
 } from './contracts/contracts';
 export { Data, type DataGenerationStatus } from './data/data';
 export { Model } from './model/model';
-export { ModelRlGrpo, type RlGrpoStatus } from './model-rl-grpo';
 export {
   Prompt,
   type PromptOptimizationStatus,
