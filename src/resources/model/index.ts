@@ -9,4 +9,4 @@ export {
   type SftLoadResponse,
   type SftStreamMessagesResponse,
   type SftStartJobParams,
-} from './sft/index';
+} from './sft';
