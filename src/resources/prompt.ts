@@ -70,7 +70,7 @@ export interface PromptOptimizeParams {
   /**
    * The examples to train and validate on
    */
-  examples: Array<PromptOptimizeParams.Example>;
+  examples: Array<Shared.Example>;
 
   /**
    * The initial system instruction
@@ -98,23 +98,6 @@ export interface PromptOptimizeParams {
    * it as None if tuning_algorithm != DSPY.
    */
   use_chain_of_thought?: boolean;
-}
-
-export namespace PromptOptimizeParams {
-  /**
-   * An example for training or evaluation
-   */
-  export interface Example {
-    /**
-     * The input to LLM
-     */
-    llm_input: string;
-
-    /**
-     * The output to evaluate
-     */
-    llm_output: string;
-  }
 }
 
 export declare namespace Prompt {
