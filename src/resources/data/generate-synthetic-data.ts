@@ -113,11 +113,6 @@ export type GenerateSyntheticDataStreamMessagesResponse = string;
 
 export interface GenerateSyntheticDataCreateParams {
   /**
-   * The application description for which the synthetic data would be applicable.
-   */
-  application_description: string;
-
-  /**
    * The number of new LLM examples to generate
    */
   num_examples_to_generate: number;
@@ -128,21 +123,30 @@ export interface GenerateSyntheticDataCreateParams {
   seeds: Array<Shared.Example>;
 
   /**
+   * The application description for which the synthetic data would be applicable.
+   */
+  application_description?: string | null;
+
+  /**
    * Number of examples to generate in one LLM call. Must be <=10. Generally it could
    * be same as `num_shots`.
    */
   batch_size?: number;
 
   /**
-   * The exloration mode for examples generation. Defaults to `BALANCED`
+   * The exploration mode for examples generation. Defaults to `BALANCED`
    */
   exploration_mode?: 'CONSERVATIVE' | 'BALANCED' | 'CREATIVE' | 'ADVENTUROUS';
 
   /**
-   * Number of examples to be included in the prompt for generation. Generally it
-   * could be same as `batch_size`.
+   * Number of examples to be included in the prompt for generation
    */
   num_shots?: number;
+
+  /**
+   * The system prompt to generate the responses for the application's inputs
+   */
+  system_prompt?: string | null;
 }
 
 export declare namespace GenerateSyntheticData {
