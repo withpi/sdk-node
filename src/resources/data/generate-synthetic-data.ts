@@ -2,6 +2,7 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
+import * as Shared from '../shared';
 
 export class GenerateSyntheticData extends APIResource {
   /**
@@ -68,24 +69,7 @@ export interface GenerateSyntheticDataCreateResponse {
    * The generated synthetic data. Can be present even if the state is not done/error
    * as it is streamed.
    */
-  data?: Array<GenerateSyntheticDataCreateResponse.Data> | null;
-}
-
-export namespace GenerateSyntheticDataCreateResponse {
-  /**
-   * An example for training or evaluation
-   */
-  export interface Data {
-    /**
-     * The input to LLM
-     */
-    llm_input: string;
-
-    /**
-     * The output to evaluate
-     */
-    llm_output: string;
-  }
+  data?: Array<Shared.Example> | null;
 }
 
 /**
@@ -111,24 +95,7 @@ export interface GenerateSyntheticDataRetrieveResponse {
    * The generated synthetic data. Can be present even if the state is not done/error
    * as it is streamed.
    */
-  data?: Array<GenerateSyntheticDataRetrieveResponse.Data> | null;
-}
-
-export namespace GenerateSyntheticDataRetrieveResponse {
-  /**
-   * An example for training or evaluation
-   */
-  export interface Data {
-    /**
-     * The input to LLM
-     */
-    llm_input: string;
-
-    /**
-     * The output to evaluate
-     */
-    llm_output: string;
-  }
+  data?: Array<Shared.Example> | null;
 }
 
 export type GenerateSyntheticDataStreamDataResponse =
@@ -158,7 +125,7 @@ export interface GenerateSyntheticDataCreateParams {
   /**
    * The list of LLM examples (inputs + outputs) to be used as seeds
    */
-  seeds: Array<GenerateSyntheticDataCreateParams.Seed>;
+  seeds: Array<Shared.Example>;
 
   /**
    * Number of examples to generate in one LLM call. Must be <=10. Generally it could
@@ -176,23 +143,6 @@ export interface GenerateSyntheticDataCreateParams {
    * could be same as `batch_size`.
    */
   num_shots?: number;
-}
-
-export namespace GenerateSyntheticDataCreateParams {
-  /**
-   * An example for training or evaluation
-   */
-  export interface Seed {
-    /**
-     * The input to LLM
-     */
-    llm_input: string;
-
-    /**
-     * The output to evaluate
-     */
-    llm_output: string;
-  }
 }
 
 export declare namespace GenerateSyntheticData {
