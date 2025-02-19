@@ -1,16 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../../resource';
-import * as Core from '../../../core';
-import * as DataAPI from './data';
-import { Data as DataAPIData, DataListResponse } from './data';
-import * as MessagesAPI from './messages';
-import { MessageListResponse, Messages } from './messages';
+import { APIResource } from '../../resource';
+import * as Core from '../../core';
 
 export class GenerateSyntheticData extends APIResource {
-  data: DataAPI.Data = new DataAPI.Data(this._client);
-  messages: MessagesAPI.Messages = new MessagesAPI.Messages(this._client);
-
   /**
    * Generates synthetic data from a list of seeds
    */
@@ -29,6 +22,26 @@ export class GenerateSyntheticData extends APIResource {
     options?: Core.RequestOptions,
   ): Core.APIPromise<GenerateSyntheticDataRetrieveResponse> {
     return this._client.get(`/data/generate_synthetic_data/${jobId}`, options);
+  }
+
+  /**
+   * Streams SDKExample objects from the synthetic data generation job
+   */
+  streamData(
+    jobId: string,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<GenerateSyntheticDataStreamDataResponse> {
+    return this._client.get(`/data/generate_synthetic_data/${jobId}/data`, options);
+  }
+
+  /**
+   * Streams messages from the synthetic data generation job
+   */
+  streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+    return this._client.get(`/data/generate_synthetic_data/${jobId}/messages`, {
+      ...options,
+      headers: { Accept: 'text/plain', ...options?.headers },
+    });
   }
 }
 
@@ -118,6 +131,19 @@ export namespace GenerateSyntheticDataRetrieveResponse {
   }
 }
 
+export type GenerateSyntheticDataStreamDataResponse =
+  Array<GenerateSyntheticDataStreamDataResponse.GenerateSyntheticDataStreamDataResponseItem>;
+
+export namespace GenerateSyntheticDataStreamDataResponse {
+  export interface GenerateSyntheticDataStreamDataResponseItem {
+    llm_input: string;
+
+    llm_output: string;
+  }
+}
+
+export type GenerateSyntheticDataStreamMessagesResponse = string;
+
 export interface GenerateSyntheticDataCreateParams {
   /**
    * The application description for which the synthetic data would be applicable.
@@ -169,17 +195,12 @@ export namespace GenerateSyntheticDataCreateParams {
   }
 }
 
-GenerateSyntheticData.Data = DataAPIData;
-GenerateSyntheticData.Messages = Messages;
-
 export declare namespace GenerateSyntheticData {
   export {
     type GenerateSyntheticDataCreateResponse as GenerateSyntheticDataCreateResponse,
     type GenerateSyntheticDataRetrieveResponse as GenerateSyntheticDataRetrieveResponse,
+    type GenerateSyntheticDataStreamDataResponse as GenerateSyntheticDataStreamDataResponse,
+    type GenerateSyntheticDataStreamMessagesResponse as GenerateSyntheticDataStreamMessagesResponse,
     type GenerateSyntheticDataCreateParams as GenerateSyntheticDataCreateParams,
   };
-
-  export { DataAPIData as Data, type DataListResponse as DataListResponse };
-
-  export { Messages as Messages, type MessageListResponse as MessageListResponse };
 }

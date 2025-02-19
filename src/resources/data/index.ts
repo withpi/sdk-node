@@ -5,8 +5,10 @@ export {
   GenerateSyntheticData,
   type GenerateSyntheticDataCreateResponse,
   type GenerateSyntheticDataRetrieveResponse,
+  type GenerateSyntheticDataStreamDataResponse,
+  type GenerateSyntheticDataStreamMessagesResponse,
   type GenerateSyntheticDataCreateParams,
-} from './generate-synthetic-data/index';
+} from './generate-synthetic-data';
 export {
   Inputs,
   type InputTopicCluster,

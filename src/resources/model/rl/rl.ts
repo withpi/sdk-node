@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../../resource';
-import * as GrpoAPI from './grpo/grpo';
+import * as GrpoAPI from './grpo';
 import {
   Grpo,
   GrpoCheckResponse,
@@ -9,7 +9,7 @@ import {
   GrpoStartJobParams,
   GrpoStreamMessagesResponse,
   RlGrpoStatus,
-} from './grpo/grpo';
+} from './grpo';
 
 export class Rl extends APIResource {
   grpo: GrpoAPI.Grpo = new GrpoAPI.Grpo(this._client);
