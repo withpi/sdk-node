@@ -28,6 +28,24 @@ describe('resource contracts', () => {
     });
   });
 
+  test('readFromHf: only required params', async () => {
+    const responsePromise = client.contracts.readFromHf({ hf_contract_name: 'withpi/tldr_contract' });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('readFromHf: required and optional params', async () => {
+    const response = await client.contracts.readFromHf({
+      hf_contract_name: 'withpi/tldr_contract',
+      hf_token: 'hf_token',
+    });
+  });
+
   test('score: only required params', async () => {
     const responsePromise = client.contracts.score({
       contract: {
