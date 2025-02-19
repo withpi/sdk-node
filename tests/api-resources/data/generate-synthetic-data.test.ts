@@ -11,16 +11,11 @@ const client = new PiClient({
 describe('resource generateSyntheticData', () => {
   test('create: only required params', async () => {
     const responsePromise = client.data.generateSyntheticData.create({
-      application_description: 'application_description',
       num_examples_to_generate: 50,
       seeds: [
         {
           llm_input: 'Tell me something different',
           llm_output: 'The lazy dog was jumped over by the quick brown fox',
-        },
-        {
-          llm_input: 'Write a short poem',
-          llm_output: "Moonlight dancing on waves,\nStars whisper ancient tales,\nNight's gentle embrace",
         },
       ],
     });
@@ -35,21 +30,18 @@ describe('resource generateSyntheticData', () => {
 
   test('create: required and optional params', async () => {
     const response = await client.data.generateSyntheticData.create({
-      application_description: 'application_description',
       num_examples_to_generate: 50,
       seeds: [
         {
           llm_input: 'Tell me something different',
           llm_output: 'The lazy dog was jumped over by the quick brown fox',
         },
-        {
-          llm_input: 'Write a short poem',
-          llm_output: "Moonlight dancing on waves,\nStars whisper ancient tales,\nNight's gentle embrace",
-        },
       ],
+      application_description: "AI application for writing a children's story given topics.",
       batch_size: 5,
       exploration_mode: 'CONSERVATIVE',
       num_shots: 5,
+      system_prompt: "Write a children's story given a topic from the user.",
     });
   });
 
