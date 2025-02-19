@@ -25,6 +25,16 @@ export class Contracts extends APIResource {
   }
 
   /**
+   * Read a contract from Huggingface dataset
+   */
+  readFromHf(
+    body: ContractReadFromHfParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Shared.Contract> {
+    return this._client.post('/contracts/read_from_hf', { body, ...options });
+  }
+
+  /**
    * Scores a contract based on the provided input and output
    */
   score(body: ContractScoreParams, options?: Core.RequestOptions): Core.APIPromise<ContractsScoreMetrics> {
@@ -65,6 +75,20 @@ export interface ContractGenerateDimensionsParams {
   contract_description: string;
 }
 
+export interface ContractReadFromHfParams {
+  /**
+   * Huggingface contract name e.g. withpi/my_contract. You need to provide the
+   * hf_token if the contract dataset is not public or not own by the withpi
+   * organization.
+   */
+  hf_contract_name: string;
+
+  /**
+   * Huggingface token to read the contract dataset
+   */
+  hf_token?: string | null;
+}
+
 export interface ContractScoreParams {
   /**
    * The contract to score
@@ -88,6 +112,7 @@ export declare namespace Contracts {
   export {
     type ContractsScoreMetrics as ContractsScoreMetrics,
     type ContractGenerateDimensionsParams as ContractGenerateDimensionsParams,
+    type ContractReadFromHfParams as ContractReadFromHfParams,
     type ContractScoreParams as ContractScoreParams,
   };
 

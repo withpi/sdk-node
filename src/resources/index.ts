@@ -5,6 +5,7 @@ export {
   Contracts,
   type ContractsScoreMetrics,
   type ContractGenerateDimensionsParams,
+  type ContractReadFromHfParams,
   type ContractScoreParams,
 } from './contracts/contracts';
 export { Data, type DataGenerationStatus } from './data/data';

@@ -15,6 +15,7 @@ import {
 import { Queries, QueryGenerateFanoutsParams, QueryGenerateFanoutsResponse } from './resources/queries';
 import {
   ContractGenerateDimensionsParams,
+  ContractReadFromHfParams,
   ContractScoreParams,
   Contracts,
   ContractsScoreMetrics,
@@ -202,6 +203,7 @@ export declare namespace PiClient {
     Contracts as Contracts,
     type ContractsScoreMetrics as ContractsScoreMetrics,
     type ContractGenerateDimensionsParams as ContractGenerateDimensionsParams,
+    type ContractReadFromHfParams as ContractReadFromHfParams,
     type ContractScoreParams as ContractScoreParams,
   };
 
