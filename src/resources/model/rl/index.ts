@@ -7,5 +7,5 @@ export {
   type GrpoLoadResponse,
   type GrpoStreamMessagesResponse,
   type GrpoStartJobParams,
-} from './grpo/index';
+} from './grpo';
 export { Rl } from './rl';

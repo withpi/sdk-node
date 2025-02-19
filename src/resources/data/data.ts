@@ -1,13 +1,15 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../resource';
-import * as GenerateSyntheticDataAPI from './generate-synthetic-data/generate-synthetic-data';
+import * as GenerateSyntheticDataAPI from './generate-synthetic-data';
 import {
   GenerateSyntheticData,
   GenerateSyntheticDataCreateParams,
   GenerateSyntheticDataCreateResponse,
   GenerateSyntheticDataRetrieveResponse,
-} from './generate-synthetic-data/generate-synthetic-data';
+  GenerateSyntheticDataStreamDataResponse,
+  GenerateSyntheticDataStreamMessagesResponse,
+} from './generate-synthetic-data';
 import * as InputsAPI from './inputs/inputs';
 import { InputClusterParams, InputClusterResponse, InputTopicCluster, Inputs } from './inputs/inputs';
 
@@ -60,6 +62,8 @@ export declare namespace Data {
     GenerateSyntheticData as GenerateSyntheticData,
     type GenerateSyntheticDataCreateResponse as GenerateSyntheticDataCreateResponse,
     type GenerateSyntheticDataRetrieveResponse as GenerateSyntheticDataRetrieveResponse,
+    type GenerateSyntheticDataStreamDataResponse as GenerateSyntheticDataStreamDataResponse,
+    type GenerateSyntheticDataStreamMessagesResponse as GenerateSyntheticDataStreamMessagesResponse,
     type GenerateSyntheticDataCreateParams as GenerateSyntheticDataCreateParams,
   };
 }
