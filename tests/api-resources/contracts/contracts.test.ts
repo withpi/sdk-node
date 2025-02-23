@@ -11,7 +11,7 @@ const client = new PiClient({
 describe('resource contracts', () => {
   test('generateDimensions: only required params', async () => {
     const responsePromise = client.contracts.generateDimensions({
-      contract_description: 'contract_description',
+      contract_description: "Write a children's story communicating a simple life lesson.",
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -24,7 +24,7 @@ describe('resource contracts', () => {
 
   test('generateDimensions: required and optional params', async () => {
     const response = await client.contracts.generateDimensions({
-      contract_description: 'contract_description',
+      contract_description: "Write a children's story communicating a simple life lesson.",
     });
   });
 
