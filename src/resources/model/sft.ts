@@ -13,18 +13,11 @@ export class Sft extends APIResource {
   }
 
   /**
-   * Check if the model is serving
-   */
-  check(jobId: string, options?: Core.RequestOptions): Core.APIPromise<SftCheckResponse> {
-    return this._client.get(`/model/sft/${jobId}/check`, options);
-  }
-
-  /**
    * Load the SFT model into serving. This can support a very small amount of
    * interactive traffic. Please reach out if you want to use this model in a
    * production setting.
    */
-  load(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+  load(jobId: string, options?: Core.RequestOptions): Core.APIPromise<SftStatus> {
     return this._client.post(`/model/sft/${jobId}/load`, options);
   }
 
@@ -95,20 +88,21 @@ export namespace SftStatus {
     firework_hosted_model_id: string;
 
     /**
+     * Whether the model is loaded in the serving system
+     */
+    is_loaded: boolean;
+
+    /**
+     * The serving id of the trained model within this Job
+     */
+    serving_id: number;
+
+    /**
      * The training step
      */
     step: number;
-
-    /**
-     * The SFT model weights in Huggingface
-     */
-    hf_model_name?: string | null;
   }
 }
-
-export type SftCheckResponse = boolean;
-
-export type SftLoadResponse = string;
 
 export type SftStreamMessagesResponse = string;
 
@@ -143,8 +137,6 @@ export interface SftStartJobParams {
 export declare namespace Sft {
   export {
     type SftStatus as SftStatus,
-    type SftCheckResponse as SftCheckResponse,
-    type SftLoadResponse as SftLoadResponse,
     type SftStreamMessagesResponse as SftStreamMessagesResponse,
     type SftStartJobParams as SftStartJobParams,
   };
