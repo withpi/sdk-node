@@ -13,17 +13,10 @@ export class Grpo extends APIResource {
   }
 
   /**
-   * Check if the model is serving
-   */
-  check(jobId: string, options?: Core.RequestOptions): Core.APIPromise<GrpoCheckResponse> {
-    return this._client.get(`/model/rl/grpo/${jobId}/check`, options);
-  }
-
-  /**
    * Load the model into serving. This can support a very small amount of interactive
    * traffic. Please reach out if you want to use this model in a production setting.
    */
-  load(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+  load(jobId: string, options?: Core.RequestOptions): Core.APIPromise<RlGrpoStatus> {
     return this._client.post(`/model/rl/grpo/${jobId}/load`, options);
   }
 
@@ -94,20 +87,21 @@ export namespace RlGrpoStatus {
     firework_hosted_model_id: string;
 
     /**
+     * Whether the model is loaded in the serving system
+     */
+    is_loaded: boolean;
+
+    /**
+     * The serving id of the trained model within this Job
+     */
+    serving_id: number;
+
+    /**
      * The training step
      */
     step: number;
-
-    /**
-     * The SFT model weights in Huggingface
-     */
-    hf_model_name?: string | null;
   }
 }
-
-export type GrpoCheckResponse = boolean;
-
-export type GrpoLoadResponse = string;
 
 export type GrpoStreamMessagesResponse = string;
 
@@ -158,8 +152,6 @@ export namespace GrpoStartJobParams {
 export declare namespace Grpo {
   export {
     type RlGrpoStatus as RlGrpoStatus,
-    type GrpoCheckResponse as GrpoCheckResponse,
-    type GrpoLoadResponse as GrpoLoadResponse,
     type GrpoStreamMessagesResponse as GrpoStreamMessagesResponse,
     type GrpoStartJobParams as GrpoStartJobParams,
   };
