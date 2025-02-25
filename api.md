@@ -133,5 +133,3 @@ Types:
 Methods:
 
 - <code title="post /queries/generate_fanouts">client.queries.<a href="./src/resources/queries.ts">generateFanouts</a>({ ...params }) -> QueryGenerateFanoutsResponse</code>
-
-# Dataset

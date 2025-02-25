@@ -5,7 +5,6 @@ import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
-import { Dataset } from './resources/dataset';
 import {
   Prompt,
   PromptOptimizationStatus,
@@ -141,7 +140,6 @@ export class PiClient extends Core.APIClient {
   model: API.Model = new API.Model(this);
   contracts: API.Contracts = new API.Contracts(this);
   queries: API.Queries = new API.Queries(this);
-  dataset: API.Dataset = new API.Dataset(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -184,7 +182,6 @@ PiClient.Prompt = Prompt;
 PiClient.Model = Model;
 PiClient.Contracts = Contracts;
 PiClient.Queries = Queries;
-PiClient.Dataset = Dataset;
 export declare namespace PiClient {
   export type RequestOptions = Core.RequestOptions;
 
@@ -212,8 +209,6 @@ export declare namespace PiClient {
     type QueryGenerateFanoutsResponse as QueryGenerateFanoutsResponse,
     type QueryGenerateFanoutsParams as QueryGenerateFanoutsParams,
   };
-
-  export { Dataset as Dataset };
 
   export type Contract = API.Contract;
   export type Dimension = API.Dimension;
