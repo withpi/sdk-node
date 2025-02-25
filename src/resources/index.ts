@@ -9,7 +9,6 @@ export {
   type ContractScoreParams,
 } from './contracts/contracts';
 export { Data, type DataGenerationStatus } from './data/data';
-export { Dataset } from './dataset';
 export { Model } from './model/model';
 export {
   Prompt,
