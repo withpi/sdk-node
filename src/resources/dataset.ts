@@ -8,9 +8,8 @@ export class Dataset extends APIResource {
    * Takes 100 uniform samples without replacement from a dataset on Hugging Face. If
    * the dataset does not have more than 100 rows, the entire dataset is returned.
    */
-  sample(params: DatasetSampleParams, options?: Core.RequestOptions): Core.APIPromise<DatasetSampleResponse> {
-    const { name, split, subset } = params;
-    return this._client.post('/dataset/sample_from_hf', { query: { name, split, subset }, ...options });
+  sample(body: DatasetSampleParams, options?: Core.RequestOptions): Core.APIPromise<DatasetSampleResponse> {
+    return this._client.post('/dataset/sample_from_hf', { body, ...options });
   }
 }
 
@@ -30,7 +29,7 @@ export interface DatasetSampleParams {
   /**
    * The subset to sample from.
    */
-  subset?: string | null;
+  subset: string | null;
 }
 
 export declare namespace Dataset {
