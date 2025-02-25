@@ -39,7 +39,7 @@ export type InputClusterResponse = Array<InputTopicCluster>;
 
 export interface InputClusterParams {
   /**
-   * The data to cluster.
+   * The data to create clusters from.
    */
   inputs: Array<InputClusterParams.Input>;
 
