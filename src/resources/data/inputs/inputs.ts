@@ -37,19 +37,33 @@ export interface InputTopicCluster {
 
 export type InputClusterResponse = Array<InputTopicCluster>;
 
-export type InputClusterParams = Array<InputClusterParams.Input>;
+export type InputClusterParams = InputClusterParams.Inputs;
 
 export namespace InputClusterParams {
-  export interface Input {
+  export interface Inputs {
     /**
-     * The identifier of the input
+     * The data to cluster.
      */
-    identifier: string;
+    inputs: Array<Inputs.Input>;
 
     /**
-     * The input to LLM
+     * The number of clusters to form.
      */
-    llm_input: string;
+    num_clusters?: number | null;
+  }
+
+  export namespace Inputs {
+    export interface Input {
+      /**
+       * The identifier of the input
+       */
+      identifier: string;
+
+      /**
+       * The input to LLM
+       */
+      llm_input: string;
+    }
   }
 }
 
