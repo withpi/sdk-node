@@ -10,7 +10,7 @@ const client = new PiClient({
 
 describe('resource dataset', () => {
   test('sample: only required params', async () => {
-    const responsePromise = client.dataset.sample({ name: 'name', split: 'split' });
+    const responsePromise = client.dataset.sample({ name: 'name', split: 'split', subset: 'subset' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
