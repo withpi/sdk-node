@@ -10,9 +10,9 @@ const client = new PiClient({
 
 describe('resource inputs', () => {
   test('cluster: only required params', async () => {
-    const responsePromise = client.data.inputs.cluster([
-      { identifier: 'identifier', llm_input: 'Tell me something different' },
-    ]);
+    const responsePromise = client.data.inputs.cluster({
+      inputs: [{ identifier: '12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }],
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -23,8 +23,9 @@ describe('resource inputs', () => {
   });
 
   test('cluster: required and optional params', async () => {
-    const response = await client.data.inputs.cluster([
-      { identifier: 'identifier', llm_input: 'Tell me something different' },
-    ]);
+    const response = await client.data.inputs.cluster({
+      inputs: [{ identifier: '12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }],
+      num_clusters: 5,
+    });
   });
 });
