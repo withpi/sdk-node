@@ -5,7 +5,7 @@ import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
-import { Dataset, DatasetSampleParams, DatasetSampleResponse } from './resources/dataset';
+import { Dataset } from './resources/dataset';
 import {
   Prompt,
   PromptOptimizationStatus,
@@ -213,11 +213,7 @@ export declare namespace PiClient {
     type QueryGenerateFanoutsParams as QueryGenerateFanoutsParams,
   };
 
-  export {
-    Dataset as Dataset,
-    type DatasetSampleResponse as DatasetSampleResponse,
-    type DatasetSampleParams as DatasetSampleParams,
-  };
+  export { Dataset as Dataset };
 
   export type Contract = API.Contract;
   export type Dimension = API.Dimension;
