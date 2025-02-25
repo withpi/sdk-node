@@ -44,7 +44,7 @@ export interface InputClusterParams {
   inputs: Array<InputClusterParams.Input>;
 
   /**
-   * The number of clusters to form.
+   * The number of clusters to form. If none, the api chooses a number automatically.
    */
   num_clusters?: number | null;
 }
