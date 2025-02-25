@@ -133,3 +133,13 @@ Types:
 Methods:
 
 - <code title="post /queries/generate_fanouts">client.queries.<a href="./src/resources/queries.ts">generateFanouts</a>({ ...params }) -> QueryGenerateFanoutsResponse</code>
+
+# Dataset
+
+Types:
+
+- <code><a href="./src/resources/dataset.ts">DatasetSampleResponse</a></code>
+
+Methods:
+
+- <code title="post /dataset/sample_from_hf">client.dataset.<a href="./src/resources/dataset.ts">sample</a>({ ...params }) -> DatasetSampleResponse</code>
