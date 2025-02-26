@@ -23,7 +23,7 @@ export class Sft extends APIResource {
 
   /**
    * Initialize the supervised fine-tuning (SFT) job for the model. We implement
-   * Low-Rank Adaptation (LoRA) for the fine-tuning process, with a fixed rank of 16.
+   * Low-Rank Adaptation (LoRA) for the fine-tuning process.
    */
   startJob(body: SftStartJobParams, options?: Core.RequestOptions): Core.APIPromise<SftStatus> {
     return this._client.post('/model/sft', { body, ...options });
@@ -129,9 +129,26 @@ export interface SftStartJobParams {
   learning_rate?: number;
 
   /**
+   * The LoRA configuration.
+   */
+  lora_config?: SftStartJobParams.LoraConfig;
+
+  /**
    * SFT number of train epochs
    */
   num_train_epochs?: number;
+}
+
+export namespace SftStartJobParams {
+  /**
+   * The LoRA configuration.
+   */
+  export interface LoraConfig {
+    /**
+     * The number of dimensions in the low-rank decomposition of the weight updates.
+     */
+    lora_rank?: 'R_16' | 'R_32' | 'R_64';
+  }
 }
 
 export declare namespace Sft {
