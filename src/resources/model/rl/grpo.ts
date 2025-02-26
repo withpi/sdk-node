@@ -117,14 +117,19 @@ export interface GrpoStartJobParams {
   examples: Array<GrpoStartJobParams.Example>;
 
   /**
-   * The model to start the RL process
+   * The base model to start the RL tunning process
    */
-  model: 'LLAMA_3.2_1B';
+  base_rl_model?: 'LLAMA_3.2_3B' | 'LLAMA_3.1_8B';
 
   /**
    * SFT learning rate
    */
   learning_rate?: number;
+
+  /**
+   * The LoRA configuration.
+   */
+  lora_config?: GrpoStartJobParams.LoraConfig;
 
   /**
    * SFT number of train epochs
@@ -146,6 +151,16 @@ export namespace GrpoStartJobParams {
      * The input prompt to LLM for the RL training process
      */
     llm_input: string;
+  }
+
+  /**
+   * The LoRA configuration.
+   */
+  export interface LoraConfig {
+    /**
+     * The number of dimensions in the low-rank decomposition of the weight updates.
+     */
+    lora_rank?: 'R_16' | 'R_32' | 'R_64';
   }
 }
 

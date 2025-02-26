@@ -52,7 +52,6 @@ describe('resource grpo', () => {
         name: 'Sample Contract',
       },
       examples: [{ llm_input: 'Tell me something different' }],
-      model: 'LLAMA_3.2_1B',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -114,8 +113,9 @@ describe('resource grpo', () => {
         ],
       },
       examples: [{ llm_input: 'Tell me something different' }],
-      model: 'LLAMA_3.2_1B',
+      base_rl_model: 'LLAMA_3.2_3B',
       learning_rate: 0.0002,
+      lora_config: { lora_rank: 'R_16' },
       num_train_epochs: 10,
       system_prompt: 'system_prompt',
     });
