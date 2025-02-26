@@ -76,7 +76,7 @@ export namespace Dimension {
     /**
      * The type of scoring performed for this dimension
      */
-    scoring_type: 'PI_SCORER' | 'HUGGINGFACE_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER';
+    scoring_type: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER';
 
     /**
      * If `action_on_low_score = True`, the node emits the real value if action
@@ -89,12 +89,6 @@ export namespace Dimension {
      * CUSTOM_MODEL_SCORER
      */
     custom_model_id?: string | null;
-
-    /**
-     * The URL of the HuggingFace model to use for scoring. Only relevant for
-     * scoring_type of HUGGINGFACE_SCORER
-     */
-    huggingface_url?: string | null;
 
     /**
      * The PYTHON code associated the PYTHON_CODE DimensionScoringType.
@@ -132,7 +126,7 @@ export interface SubDimension {
   /**
    * The type of scoring performed for this dimension
    */
-  scoring_type: 'PI_SCORER' | 'HUGGINGFACE_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER';
+  scoring_type: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER';
 
   /**
    * If `action_dimension` is set, this node is a part of short-circuit subtree. If
@@ -147,12 +141,6 @@ export interface SubDimension {
    * CUSTOM_MODEL_SCORER
    */
   custom_model_id?: string | null;
-
-  /**
-   * The URL of the HuggingFace model to use for scoring. Only relevant for
-   * scoring_type of HUGGINGFACE_SCORER
-   */
-  huggingface_url?: string | null;
 
   /**
    * The learned parameters for the scoring method. This represents piecewise linear
@@ -194,7 +182,7 @@ export namespace SubDimension {
     /**
      * The type of scoring performed for this dimension
      */
-    scoring_type: 'PI_SCORER' | 'HUGGINGFACE_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER';
+    scoring_type: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER';
 
     /**
      * If `action_on_low_score = True`, the node emits the real value if action
@@ -207,12 +195,6 @@ export namespace SubDimension {
      * CUSTOM_MODEL_SCORER
      */
     custom_model_id?: string | null;
-
-    /**
-     * The URL of the HuggingFace model to use for scoring. Only relevant for
-     * scoring_type of HUGGINGFACE_SCORER
-     */
-    huggingface_url?: string | null;
 
     /**
      * The PYTHON code associated the PYTHON_CODE DimensionScoringType.
