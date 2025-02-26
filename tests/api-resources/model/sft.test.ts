@@ -27,6 +27,21 @@ describe('resource sft', () => {
     );
   });
 
+  test('download: only required params', async () => {
+    const responsePromise = client.model.sft.download('job_id', { serving_id: 0 });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('download: required and optional params', async () => {
+    const response = await client.model.sft.download('job_id', { serving_id: 0 });
+  });
+
   test('load', async () => {
     const responsePromise = client.model.sft.load('job_id');
     const rawResponse = await responsePromise.asResponse();
