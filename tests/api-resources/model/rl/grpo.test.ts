@@ -27,6 +27,21 @@ describe('resource grpo', () => {
     ).rejects.toThrow(PiClient.NotFoundError);
   });
 
+  test('download: only required params', async () => {
+    const responsePromise = client.model.rl.grpo.download('job_id', { serving_id: 0 });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('download: required and optional params', async () => {
+    const response = await client.model.rl.grpo.download('job_id', { serving_id: 0 });
+  });
+
   test('load', async () => {
     const responsePromise = client.model.rl.grpo.load('job_id');
     const rawResponse = await responsePromise.asResponse();
@@ -52,7 +67,6 @@ describe('resource grpo', () => {
         name: 'Sample Contract',
       },
       examples: [{ llm_input: 'Tell me something different' }],
-      model: 'LLAMA_3.2_1B',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -114,8 +128,9 @@ describe('resource grpo', () => {
         ],
       },
       examples: [{ llm_input: 'Tell me something different' }],
-      model: 'LLAMA_3.2_1B',
+      base_rl_model: 'LLAMA_3.2_3B',
       learning_rate: 0.0002,
+      lora_config: { lora_rank: 'R_16' },
       num_train_epochs: 10,
       system_prompt: 'system_prompt',
     });

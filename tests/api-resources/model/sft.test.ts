@@ -27,6 +27,21 @@ describe('resource sft', () => {
     );
   });
 
+  test('download: only required params', async () => {
+    const responsePromise = client.model.sft.download('job_id', { serving_id: 0 });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('download: required and optional params', async () => {
+    const response = await client.model.sft.download('job_id', { serving_id: 0 });
+  });
+
   test('load', async () => {
     const responsePromise = client.model.sft.load('job_id');
     const rawResponse = await responsePromise.asResponse();
@@ -125,6 +140,7 @@ describe('resource sft', () => {
       ],
       base_sft_model: 'LLAMA_3.2_3B',
       learning_rate: 0.0002,
+      lora_config: { lora_rank: 'R_16' },
       num_train_epochs: 10,
     });
   });

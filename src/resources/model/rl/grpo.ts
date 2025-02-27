@@ -13,6 +13,19 @@ export class Grpo extends APIResource {
   }
 
   /**
+   * Generates a signed URL for downloading a model as a .tar.gz archive for self
+   * hosting.
+   */
+  download(
+    jobId: string,
+    params: GrpoDownloadParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<string> {
+    const { serving_id } = params;
+    return this._client.post(`/model/rl/grpo/${jobId}/download`, { query: { serving_id }, ...options });
+  }
+
+  /**
    * Load the model into serving. This can support a very small amount of interactive
    * traffic. Please reach out if you want to use this model in a production setting.
    */
@@ -82,11 +95,6 @@ export namespace RlGrpoStatus {
     eval_loss: number;
 
     /**
-     * Firework's hosted model id
-     */
-    firework_hosted_model_id: string;
-
-    /**
      * Whether the model is loaded in the serving system
      */
     is_loaded: boolean;
@@ -103,7 +111,13 @@ export namespace RlGrpoStatus {
   }
 }
 
+export type GrpoDownloadResponse = string;
+
 export type GrpoStreamMessagesResponse = string;
+
+export interface GrpoDownloadParams {
+  serving_id: number;
+}
 
 export interface GrpoStartJobParams {
   /**
@@ -117,14 +131,19 @@ export interface GrpoStartJobParams {
   examples: Array<GrpoStartJobParams.Example>;
 
   /**
-   * The model to start the RL process
+   * The base model to start the RL tunning process
    */
-  model: 'LLAMA_3.2_1B';
+  base_rl_model?: 'LLAMA_3.2_3B' | 'LLAMA_3.1_8B';
 
   /**
    * SFT learning rate
    */
   learning_rate?: number;
+
+  /**
+   * The LoRA configuration.
+   */
+  lora_config?: GrpoStartJobParams.LoraConfig;
 
   /**
    * SFT number of train epochs
@@ -147,12 +166,24 @@ export namespace GrpoStartJobParams {
      */
     llm_input: string;
   }
+
+  /**
+   * The LoRA configuration.
+   */
+  export interface LoraConfig {
+    /**
+     * The number of dimensions in the low-rank decomposition of the weight updates.
+     */
+    lora_rank?: 'R_16' | 'R_32' | 'R_64';
+  }
 }
 
 export declare namespace Grpo {
   export {
     type RlGrpoStatus as RlGrpoStatus,
+    type GrpoDownloadResponse as GrpoDownloadResponse,
     type GrpoStreamMessagesResponse as GrpoStreamMessagesResponse,
+    type GrpoDownloadParams as GrpoDownloadParams,
     type GrpoStartJobParams as GrpoStartJobParams,
   };
 }
