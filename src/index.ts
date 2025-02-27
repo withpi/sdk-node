@@ -11,7 +11,13 @@ import {
   PromptOptimizeParams,
   PromptStreamMessagesResponse,
 } from './resources/prompt';
-import { Queries, QueryGenerateFanoutsParams, QueryGenerateFanoutsResponse } from './resources/queries';
+import {
+  Queries,
+  QueryClassificationResponse,
+  QueryClassifyParams,
+  QueryGenerateFanoutsParams,
+  QueryGenerateFanoutsResponse,
+} from './resources/queries';
 import {
   ContractGenerateDimensionsParams,
   ContractReadFromHfParams,
@@ -206,7 +212,9 @@ export declare namespace PiClient {
 
   export {
     Queries as Queries,
+    type QueryClassificationResponse as QueryClassificationResponse,
     type QueryGenerateFanoutsResponse as QueryGenerateFanoutsResponse,
+    type QueryClassifyParams as QueryClassifyParams,
     type QueryGenerateFanoutsParams as QueryGenerateFanoutsParams,
   };
 
