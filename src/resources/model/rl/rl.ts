@@ -58,11 +58,6 @@ export namespace RlGrpoStatus {
     eval_loss: number;
 
     /**
-     * Firework's hosted model id
-     */
-    firework_hosted_model_id: string;
-
-    /**
      * Whether the model is loaded in the serving system
      */
     is_loaded: boolean;
