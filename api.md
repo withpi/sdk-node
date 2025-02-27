@@ -136,8 +136,10 @@ Methods:
 
 Types:
 
+- <code><a href="./src/resources/queries.ts">QueryClassificationResponse</a></code>
 - <code><a href="./src/resources/queries.ts">QueryGenerateFanoutsResponse</a></code>
 
 Methods:
 
+- <code title="post /queries/classify">client.queries.<a href="./src/resources/queries.ts">classify</a>({ ...params }) -> QueryClassificationResponse</code>
 - <code title="post /queries/generate_fanouts">client.queries.<a href="./src/resources/queries.ts">generateFanouts</a>({ ...params }) -> QueryGenerateFanoutsResponse</code>
