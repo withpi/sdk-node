@@ -3,8 +3,6 @@
 export { Data, type DataGenerationStatus } from './data';
 export {
   GenerateSyntheticData,
-  type GenerateSyntheticDataCreateResponse,
-  type GenerateSyntheticDataRetrieveResponse,
   type GenerateSyntheticDataStreamDataResponse,
   type GenerateSyntheticDataStreamMessagesResponse,
   type GenerateSyntheticDataCreateParams,

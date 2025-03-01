@@ -8,7 +8,7 @@ export class Prompt extends APIResource {
   /**
    * Checks on a prompt optimization job
    */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<PromptOptimizationStatus> {
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.PromptOptimizationStatus> {
     return this._client.get(`/prompt/optimize/${jobId}`, options);
   }
 
@@ -18,7 +18,7 @@ export class Prompt extends APIResource {
   optimize(
     body: PromptOptimizeParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<PromptOptimizationStatus> {
+  ): Core.APIPromise<Shared.PromptOptimizationStatus> {
     return this._client.post('/prompt/optimize', { body, ...options });
   }
 
@@ -56,7 +56,7 @@ export interface PromptOptimizationStatus {
   /**
    * Current state of the job
    */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
+  state: Shared.State;
 }
 
 export type PromptStreamMessagesResponse = string;

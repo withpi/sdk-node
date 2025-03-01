@@ -8,7 +8,7 @@ export class Sft extends APIResource {
   /**
    * Get the current status of a model SFT tuning job
    */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<SftStatus> {
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.SftStatus> {
     return this._client.get(`/model/sft/${jobId}`, options);
   }
 
@@ -26,7 +26,7 @@ export class Sft extends APIResource {
    * interactive traffic. Please reach out if you want to use this model in a
    * production setting.
    */
-  load(jobId: string, options?: Core.RequestOptions): Core.APIPromise<SftStatus> {
+  load(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.SftStatus> {
     return this._client.post(`/model/sft/${jobId}/load`, options);
   }
 
@@ -34,7 +34,7 @@ export class Sft extends APIResource {
    * Initialize the supervised fine-tuning (SFT) job for the model. We implement
    * Low-Rank Adaptation (LoRA) for the fine-tuning process.
    */
-  startJob(body: SftStartJobParams, options?: Core.RequestOptions): Core.APIPromise<SftStatus> {
+  startJob(body: SftStartJobParams, options?: Core.RequestOptions): Core.APIPromise<Shared.SftStatus> {
     return this._client.post('/model/sft', { body, ...options });
   }
 
@@ -66,46 +66,12 @@ export interface SftStatus {
   /**
    * Current state of the job
    */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
+  state: Shared.State;
 
   /**
    * A list of trained models selected based on the PI Contract score.
    */
-  trained_models?: Array<SftStatus.TrainedModel> | null;
-}
-
-export namespace SftStatus {
-  export interface TrainedModel {
-    /**
-     * The PI contract score of the eval set what isn't used in training
-     */
-    contract_score: number;
-
-    /**
-     * The training epoch
-     */
-    epoch: number;
-
-    /**
-     * The evaluation loss
-     */
-    eval_loss: number;
-
-    /**
-     * Whether the model is loaded in the serving system
-     */
-    is_loaded: boolean;
-
-    /**
-     * The serving id of the trained model within this Job
-     */
-    serving_id: number;
-
-    /**
-     * The training step
-     */
-    step: number;
-  }
+  trained_models?: Array<Shared.TrainedModel> | null;
 }
 
 export type SftDownloadResponse = string;
@@ -131,7 +97,7 @@ export interface SftStartJobParams {
   /**
    * The base model to start the SFT tuning process.
    */
-  base_sft_model?: 'LLAMA_3.2_3B' | 'LLAMA_3.1_8B';
+  base_sft_model?: Shared.FinetuningBaseModel;
 
   /**
    * SFT learning rate
@@ -141,24 +107,12 @@ export interface SftStartJobParams {
   /**
    * The LoRA configuration.
    */
-  lora_config?: SftStartJobParams.LoraConfig;
+  lora_config?: Shared.LoraConfig;
 
   /**
    * SFT number of train epochs
    */
   num_train_epochs?: number;
-}
-
-export namespace SftStartJobParams {
-  /**
-   * The LoRA configuration.
-   */
-  export interface LoraConfig {
-    /**
-     * The number of dimensions in the low-rank decomposition of the weight updates.
-     */
-    lora_rank?: 'R_16' | 'R_32' | 'R_64';
-  }
 }
 
 export declare namespace Sft {

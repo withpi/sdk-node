@@ -5,12 +5,7 @@ import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
-import {
-  Prompt,
-  PromptOptimizationStatus,
-  PromptOptimizeParams,
-  PromptStreamMessagesResponse,
-} from './resources/prompt';
+import { Prompt, PromptOptimizeParams, PromptStreamMessagesResponse } from './resources/prompt';
 import {
   Queries,
   QueryClassificationResponse,
@@ -25,7 +20,7 @@ import {
   Contracts,
   ContractsScoreMetrics,
 } from './resources/contracts/contracts';
-import { Data, DataGenerationStatus } from './resources/data/data';
+import { Data } from './resources/data/data';
 import { Model } from './resources/model/model';
 
 export interface ClientOptions {
@@ -219,9 +214,25 @@ export declare namespace PiClient {
   };
 
   export type Contract = API.Contract;
+  export type ContractCalibrationStatus = API.ContractCalibrationStatus;
+  export type DataGenerationStatus = API.DataGenerationStatus;
   export type Dimension = API.Dimension;
+  export type DimensionScoringType = API.DimensionScoringType;
   export type Example = API.Example;
+  export type FinetuningBaseModel = API.FinetuningBaseModel;
+  export type LoraConfig = API.LoraConfig;
+  export type PromptOptimizationStatus = API.PromptOptimizationStatus;
+  export type QueryFanoutExample = API.QueryFanoutExample;
+  export type RlGrpoStatus = API.RlGrpoStatus;
+  export type SDKActionDimension = API.SDKActionDimension;
+  export type SDKContract = API.SDKContract;
+  export type SDKExample = API.SDKExample;
+  export type SDKExplorationMode = API.SDKExplorationMode;
+  export type SftStatus = API.SftStatus;
+  export type State = API.State;
   export type SubDimension = API.SubDimension;
+  export type SyntheticDataStatus = API.SyntheticDataStatus;
+  export type TrainedModel = API.TrainedModel;
 }
 
 export { toFile, fileFromPath } from './uploads';

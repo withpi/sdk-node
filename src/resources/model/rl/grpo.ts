@@ -8,7 +8,7 @@ export class Grpo extends APIResource {
   /**
    * Get the current status of the RL GRPO job
    */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<RlGrpoStatus> {
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.RlGrpoStatus> {
     return this._client.get(`/model/rl/grpo/${jobId}`, options);
   }
 
@@ -29,7 +29,7 @@ export class Grpo extends APIResource {
    * Load the model into serving. This can support a very small amount of interactive
    * traffic. Please reach out if you want to use this model in a production setting.
    */
-  load(jobId: string, options?: Core.RequestOptions): Core.APIPromise<RlGrpoStatus> {
+  load(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.RlGrpoStatus> {
     return this._client.post(`/model/rl/grpo/${jobId}/load`, options);
   }
 
@@ -37,7 +37,7 @@ export class Grpo extends APIResource {
    * Initialize the Group Relative Policy Optimization (GRPO) reinforcement learning
    * job.
    */
-  startJob(body: GrpoStartJobParams, options?: Core.RequestOptions): Core.APIPromise<RlGrpoStatus> {
+  startJob(body: GrpoStartJobParams, options?: Core.RequestOptions): Core.APIPromise<Shared.RlGrpoStatus> {
     return this._client.post('/model/rl/grpo', { body, ...options });
   }
 
@@ -69,46 +69,12 @@ export interface RlGrpoStatus {
   /**
    * Current state of the job
    */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
+  state: Shared.State;
 
   /**
    * A list of trained models selected based on the PI Contract score.
    */
-  trained_models?: Array<RlGrpoStatus.TrainedModel> | null;
-}
-
-export namespace RlGrpoStatus {
-  export interface TrainedModel {
-    /**
-     * The PI contract score of the eval set what isn't used in training
-     */
-    contract_score: number;
-
-    /**
-     * The training epoch
-     */
-    epoch: number;
-
-    /**
-     * The evaluation loss
-     */
-    eval_loss: number;
-
-    /**
-     * Whether the model is loaded in the serving system
-     */
-    is_loaded: boolean;
-
-    /**
-     * The serving id of the trained model within this Job
-     */
-    serving_id: number;
-
-    /**
-     * The training step
-     */
-    step: number;
-  }
+  trained_models?: Array<Shared.TrainedModel> | null;
 }
 
 export type GrpoDownloadResponse = string;
@@ -133,7 +99,7 @@ export interface GrpoStartJobParams {
   /**
    * The base model to start the RL tunning process
    */
-  base_rl_model?: 'LLAMA_3.2_3B' | 'LLAMA_3.1_8B';
+  base_rl_model?: Shared.FinetuningBaseModel;
 
   /**
    * SFT learning rate
@@ -143,7 +109,7 @@ export interface GrpoStartJobParams {
   /**
    * The LoRA configuration.
    */
-  lora_config?: GrpoStartJobParams.LoraConfig;
+  lora_config?: Shared.LoraConfig;
 
   /**
    * SFT number of train epochs
@@ -165,16 +131,6 @@ export namespace GrpoStartJobParams {
      * The input prompt to LLM for the RL training process
      */
     llm_input: string;
-  }
-
-  /**
-   * The LoRA configuration.
-   */
-  export interface LoraConfig {
-    /**
-     * The number of dimensions in the low-rank decomposition of the weight updates.
-     */
-    lora_rank?: 'R_16' | 'R_32' | 'R_64';
   }
 }
 

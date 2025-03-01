@@ -11,17 +11,14 @@ export class GenerateSyntheticData extends APIResource {
   create(
     body: GenerateSyntheticDataCreateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<GenerateSyntheticDataCreateResponse> {
+  ): Core.APIPromise<Shared.SyntheticDataStatus> {
     return this._client.post('/data/generate_synthetic_data', { body, ...options });
   }
 
   /**
    * Gets the current status of a synthetic data generation job
    */
-  retrieve(
-    jobId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<GenerateSyntheticDataRetrieveResponse> {
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.SyntheticDataStatus> {
     return this._client.get(`/data/generate_synthetic_data/${jobId}`, options);
   }
 
@@ -44,58 +41,6 @@ export class GenerateSyntheticData extends APIResource {
       headers: { Accept: 'text/plain', ...options?.headers },
     });
   }
-}
-
-/**
- * SyntheticDataStatus is the result of a synthetic data generation job.
- */
-export interface GenerateSyntheticDataCreateResponse {
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
-
-  /**
-   * The job id
-   */
-  job_id: string;
-
-  /**
-   * Current state of the job
-   */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
-
-  /**
-   * The generated synthetic data. Can be present even if the state is not done/error
-   * as it is streamed.
-   */
-  data?: Array<Shared.Example> | null;
-}
-
-/**
- * SyntheticDataStatus is the result of a synthetic data generation job.
- */
-export interface GenerateSyntheticDataRetrieveResponse {
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
-
-  /**
-   * The job id
-   */
-  job_id: string;
-
-  /**
-   * Current state of the job
-   */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
-
-  /**
-   * The generated synthetic data. Can be present even if the state is not done/error
-   * as it is streamed.
-   */
-  data?: Array<Shared.Example> | null;
 }
 
 export type GenerateSyntheticDataStreamDataResponse =
@@ -136,7 +81,7 @@ export interface GenerateSyntheticDataCreateParams {
   /**
    * The exploration mode for examples generation. Defaults to `BALANCED`
    */
-  exploration_mode?: 'CONSERVATIVE' | 'BALANCED' | 'CREATIVE' | 'ADVENTUROUS';
+  exploration_mode?: Shared.SDKExplorationMode;
 
   /**
    * Number of examples to be included in the prompt for generation
@@ -151,8 +96,6 @@ export interface GenerateSyntheticDataCreateParams {
 
 export declare namespace GenerateSyntheticData {
   export {
-    type GenerateSyntheticDataCreateResponse as GenerateSyntheticDataCreateResponse,
-    type GenerateSyntheticDataRetrieveResponse as GenerateSyntheticDataRetrieveResponse,
     type GenerateSyntheticDataStreamDataResponse as GenerateSyntheticDataStreamDataResponse,
     type GenerateSyntheticDataStreamMessagesResponse as GenerateSyntheticDataStreamMessagesResponse,
     type GenerateSyntheticDataCreateParams as GenerateSyntheticDataCreateParams,
