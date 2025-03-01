@@ -2,6 +2,7 @@
 
 import { APIResource } from '../resource';
 import * as Core from '../core';
+import * as Shared from './shared';
 
 export class Queries extends APIResource {
   /**
@@ -47,25 +48,7 @@ export namespace QueryClassificationResponse {
   }
 }
 
-export type QueryGenerateFanoutsResponse =
-  Array<QueryGenerateFanoutsResponse.QueryGenerateFanoutsResponseItem>;
-
-export namespace QueryGenerateFanoutsResponse {
-  /**
-   * An input query and its associated fanout queries
-   */
-  export interface QueryGenerateFanoutsResponseItem {
-    /**
-     * The list of fanout queries associated with the input
-     */
-    fanout_queries: Array<string>;
-
-    /**
-     * The input query that the fanout queries are based on.
-     */
-    query: string;
-  }
-}
+export type QueryGenerateFanoutsResponse = Array<Shared.QueryFanoutExample>;
 
 export interface QueryClassifyParams {
   /**
@@ -119,29 +102,12 @@ export interface QueryGenerateFanoutsParams {
   /**
    * The list of queries to use as few-shot examples for the fanout generation
    */
-  example_fanout_queries?: Array<QueryGenerateFanoutsParams.ExampleFanoutQuery>;
+  example_fanout_queries?: Array<Shared.QueryFanoutExample>;
 
   /**
    * The number of fanout queries to generate for each input query
    */
   num_fanout_queries?: number;
-}
-
-export namespace QueryGenerateFanoutsParams {
-  /**
-   * An input query and its associated fanout queries
-   */
-  export interface ExampleFanoutQuery {
-    /**
-     * The list of fanout queries associated with the input
-     */
-    fanout_queries: Array<string>;
-
-    /**
-     * The input query that the fanout queries are based on.
-     */
-    query: string;
-  }
 }
 
 export declare namespace Queries {

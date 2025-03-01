@@ -2,6 +2,7 @@
 
 import { APIResource } from '../../../resource';
 import * as Core from '../../../core';
+import * as Shared from '../../shared';
 import * as DataAPI from '../data';
 
 export class GenerateFromSeeds extends APIResource {
@@ -72,7 +73,7 @@ export interface GenerateFromSeedGenerateParams {
   /**
    * The exloration mode for input generation. Defaults to `BALANCED`
    */
-  exploration_mode?: 'CONSERVATIVE' | 'BALANCED' | 'CREATIVE' | 'ADVENTUROUS';
+  exploration_mode?: Shared.SDKExplorationMode;
 
   /**
    * Number of inputs to be included in the prompt for generation. Generally it could

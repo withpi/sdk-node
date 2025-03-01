@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../../resource';
+import * as Shared from '../../shared';
 import * as GrpoAPI from './grpo';
 import {
   Grpo,
@@ -32,46 +33,12 @@ export interface RlGrpoStatus {
   /**
    * Current state of the job
    */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
+  state: Shared.State;
 
   /**
    * A list of trained models selected based on the PI Contract score.
    */
-  trained_models?: Array<RlGrpoStatus.TrainedModel> | null;
-}
-
-export namespace RlGrpoStatus {
-  export interface TrainedModel {
-    /**
-     * The PI contract score of the eval set what isn't used in training
-     */
-    contract_score: number;
-
-    /**
-     * The training epoch
-     */
-    epoch: number;
-
-    /**
-     * The evaluation loss
-     */
-    eval_loss: number;
-
-    /**
-     * Whether the model is loaded in the serving system
-     */
-    is_loaded: boolean;
-
-    /**
-     * The serving id of the trained model within this Job
-     */
-    serving_id: number;
-
-    /**
-     * The training step
-     */
-    step: number;
-  }
+  trained_models?: Array<Shared.TrainedModel> | null;
 }
 
 Rl.Grpo = Grpo;
