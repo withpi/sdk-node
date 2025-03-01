@@ -8,7 +8,7 @@ export class Calibrate extends APIResource {
   /**
    * Checks on a contract calibration job
    */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<ContractCalibrationStatus> {
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.ContractCalibrationStatus> {
     return this._client.get(`/contracts/calibrate/${jobId}`, options);
   }
 
@@ -18,7 +18,7 @@ export class Calibrate extends APIResource {
   startJob(
     body: CalibrateStartJobParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<ContractCalibrationStatus> {
+  ): Core.APIPromise<Shared.ContractCalibrationStatus> {
     return this._client.post('/contracts/calibrate', { body, ...options });
   }
 
@@ -52,7 +52,7 @@ export interface ContractCalibrationStatus {
   /**
    * Current state of the job
    */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
+  state: Shared.State;
 }
 
 export type CalibrateStreamMessagesResponse = string;

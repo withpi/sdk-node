@@ -1,12 +1,11 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../resource';
+import * as Shared from '../shared';
 import * as GenerateSyntheticDataAPI from './generate-synthetic-data';
 import {
   GenerateSyntheticData,
   GenerateSyntheticDataCreateParams,
-  GenerateSyntheticDataCreateResponse,
-  GenerateSyntheticDataRetrieveResponse,
   GenerateSyntheticDataStreamDataResponse,
   GenerateSyntheticDataStreamMessagesResponse,
 } from './generate-synthetic-data';
@@ -36,7 +35,7 @@ export interface DataGenerationStatus {
   /**
    * Current state of the job
    */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
+  state: Shared.State;
 
   /**
    * The generated data. Can be present even if the state is not done/error as it is
@@ -60,8 +59,6 @@ export declare namespace Data {
 
   export {
     GenerateSyntheticData as GenerateSyntheticData,
-    type GenerateSyntheticDataCreateResponse as GenerateSyntheticDataCreateResponse,
-    type GenerateSyntheticDataRetrieveResponse as GenerateSyntheticDataRetrieveResponse,
     type GenerateSyntheticDataStreamDataResponse as GenerateSyntheticDataStreamDataResponse,
     type GenerateSyntheticDataStreamMessagesResponse as GenerateSyntheticDataStreamMessagesResponse,
     type GenerateSyntheticDataCreateParams as GenerateSyntheticDataCreateParams,

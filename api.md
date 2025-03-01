@@ -3,9 +3,25 @@
 Types:
 
 - <code><a href="./src/resources/shared.ts">Contract</a></code>
+- <code><a href="./src/resources/shared.ts">ContractCalibrationStatus</a></code>
+- <code><a href="./src/resources/shared.ts">DataGenerationStatus</a></code>
 - <code><a href="./src/resources/shared.ts">Dimension</a></code>
+- <code><a href="./src/resources/shared.ts">DimensionScoringType</a></code>
 - <code><a href="./src/resources/shared.ts">Example</a></code>
+- <code><a href="./src/resources/shared.ts">FinetuningBaseModel</a></code>
+- <code><a href="./src/resources/shared.ts">LoraConfig</a></code>
+- <code><a href="./src/resources/shared.ts">PromptOptimizationStatus</a></code>
+- <code><a href="./src/resources/shared.ts">QueryFanoutExample</a></code>
+- <code><a href="./src/resources/shared.ts">RlGrpoStatus</a></code>
+- <code><a href="./src/resources/shared.ts">SDKActionDimension</a></code>
+- <code><a href="./src/resources/shared.ts">SDKContract</a></code>
+- <code><a href="./src/resources/shared.ts">SDKExample</a></code>
+- <code><a href="./src/resources/shared.ts">SDKExplorationMode</a></code>
+- <code><a href="./src/resources/shared.ts">SftStatus</a></code>
+- <code><a href="./src/resources/shared.ts">State</a></code>
 - <code><a href="./src/resources/shared.ts">SubDimension</a></code>
+- <code><a href="./src/resources/shared.ts">SyntheticDataStatus</a></code>
+- <code><a href="./src/resources/shared.ts">TrainedModel</a></code>
 
 # Data
 
@@ -42,15 +58,13 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/data/generate-synthetic-data.ts">GenerateSyntheticDataCreateResponse</a></code>
-- <code><a href="./src/resources/data/generate-synthetic-data.ts">GenerateSyntheticDataRetrieveResponse</a></code>
 - <code><a href="./src/resources/data/generate-synthetic-data.ts">GenerateSyntheticDataStreamDataResponse</a></code>
 - <code><a href="./src/resources/data/generate-synthetic-data.ts">GenerateSyntheticDataStreamMessagesResponse</a></code>
 
 Methods:
 
-- <code title="post /data/generate_synthetic_data">client.data.generateSyntheticData.<a href="./src/resources/data/generate-synthetic-data.ts">create</a>({ ...params }) -> GenerateSyntheticDataCreateResponse</code>
-- <code title="get /data/generate_synthetic_data/{job_id}">client.data.generateSyntheticData.<a href="./src/resources/data/generate-synthetic-data.ts">retrieve</a>(jobId) -> GenerateSyntheticDataRetrieveResponse</code>
+- <code title="post /data/generate_synthetic_data">client.data.generateSyntheticData.<a href="./src/resources/data/generate-synthetic-data.ts">create</a>({ ...params }) -> SyntheticDataStatus</code>
+- <code title="get /data/generate_synthetic_data/{job_id}">client.data.generateSyntheticData.<a href="./src/resources/data/generate-synthetic-data.ts">retrieve</a>(jobId) -> SyntheticDataStatus</code>
 - <code title="get /data/generate_synthetic_data/{job_id}/data">client.data.generateSyntheticData.<a href="./src/resources/data/generate-synthetic-data.ts">streamData</a>(jobId) -> GenerateSyntheticDataStreamDataResponse</code>
 - <code title="get /data/generate_synthetic_data/{job_id}/messages">client.data.generateSyntheticData.<a href="./src/resources/data/generate-synthetic-data.ts">streamMessages</a>(jobId) -> string</code>
 
