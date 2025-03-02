@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.1.0-alpha.79 (2025-03-02)
+
+Full Changelog: [v0.1.0-alpha.78...v0.1.0-alpha.79](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.78...v0.1.0-alpha.79)
+
+### Features
+
+* **api:** api update ([#323](https://github.com/withpi/sdk-node/issues/323)) ([69ddc5e](https://github.com/withpi/sdk-node/commit/69ddc5ec800adf94fb7af449c70f230932380e6f))
+* **api:** api update ([#324](https://github.com/withpi/sdk-node/issues/324)) ([b39d9d5](https://github.com/withpi/sdk-node/commit/b39d9d5c7a7ebf62162ca7c70a5796e32eff8e52))
+* **api:** api update ([#326](https://github.com/withpi/sdk-node/issues/326)) ([842be20](https://github.com/withpi/sdk-node/commit/842be202f566ed705a95a268db359f6ecac62ac2))
+* **api:** api update ([#327](https://github.com/withpi/sdk-node/issues/327)) ([993df29](https://github.com/withpi/sdk-node/commit/993df29335c0bc5c5b1612f3e4be1b03bc30be90))
+* **api:** api update ([#329](https://github.com/withpi/sdk-node/issues/329)) ([df5443c](https://github.com/withpi/sdk-node/commit/df5443ced5a527cdb19c55cfe3112d3f39d1e89d))
+* **api:** api update ([#330](https://github.com/withpi/sdk-node/issues/330)) ([36aaf44](https://github.com/withpi/sdk-node/commit/36aaf44f039f85225793d54853e26ce6e370430e))
+
+
+### Documentation
+
+* update URLs from stainlessapi.com to stainless.com ([#328](https://github.com/withpi/sdk-node/issues/328)) ([0049cb0](https://github.com/withpi/sdk-node/commit/0049cb0c9ea01b6c882f23c7a35eacae9235a7a8))
+
 ## 0.1.0-alpha.78 (2025-02-26)
 
 Full Changelog: [v0.1.0-alpha.77...v0.1.0-alpha.78](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.77...v0.1.0-alpha.78)
