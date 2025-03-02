@@ -43,7 +43,7 @@ export class Prompt extends APIResource {
   }
 
   /**
-   * Opens a message stream about a prompt optimization job
+   * Opens a message stream about a Prompt Optimization job
    */
   streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.get(`/prompt/optimize/${jobId}/messages`, {

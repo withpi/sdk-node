@@ -39,7 +39,7 @@ export class Calibrate extends APIResource {
   }
 
   /**
-   * Opens a message stream about a contract calibration job
+   * Opens a message stream about a Contract Calibration job
    */
   streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.get(`/contracts/calibrate/${jobId}/messages`, {
