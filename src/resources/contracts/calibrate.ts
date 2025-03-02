@@ -7,7 +7,7 @@ import * as Shared from '../shared';
 
 export class Calibrate extends APIResource {
   /**
-   * Checks on a contract calibration job
+   * Checks the status of a Contract Calibration job
    */
   retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.ContractCalibrationStatus> {
     return this._client.get(`/contracts/calibrate/${jobId}`, options);

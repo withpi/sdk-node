@@ -8,7 +8,7 @@ import * as CalibrateAPI from '../../contracts/calibrate';
 
 export class Grpo extends APIResource {
   /**
-   * Get the current status of the RL GRPO job
+   * Checks the status of a RL GRPO job
    */
   retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.RlGrpoStatus> {
     return this._client.get(`/model/rl/grpo/${jobId}`, options);

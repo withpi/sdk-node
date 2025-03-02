@@ -9,7 +9,7 @@ import * as DataAPI from '../data';
 
 export class GenerateFromSeeds extends APIResource {
   /**
-   * Gets the current status of a data generation job
+   * Checks the status of a Data Generation job
    */
   retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<DataAPI.DataGenerationStatus> {
     return this._client.get(`/data/input/generate_from_seeds/${jobId}`, options);

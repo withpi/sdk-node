@@ -18,7 +18,7 @@ export class GenerateSyntheticData extends APIResource {
   }
 
   /**
-   * Gets the current status of a synthetic data generation job
+   * Checks the status of a Synthetic Data Generation job
    */
   retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.SyntheticDataStatus> {
     return this._client.get(`/data/generate_synthetic_data/${jobId}`, options);
