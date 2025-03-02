@@ -113,6 +113,11 @@ export interface GrpoDownloadParams {
 
 export interface GrpoStartJobParams {
   /**
+   * The base model to start the RL tunning process
+   */
+  base_rl_model: Shared.FinetuningBaseModel;
+
+  /**
    * The contract to use in the GRPO tuning process
    */
   contract: Shared.Contract;
@@ -123,29 +128,24 @@ export interface GrpoStartJobParams {
   examples: Array<GrpoStartJobParams.Example>;
 
   /**
-   * The base model to start the RL tunning process
-   */
-  base_rl_model?: Shared.FinetuningBaseModel;
-
-  /**
    * SFT learning rate
    */
-  learning_rate?: number;
+  learning_rate: number;
 
   /**
    * The LoRA configuration.
    */
-  lora_config?: Shared.LoraConfig;
+  lora_config: Shared.LoraConfig;
 
   /**
    * SFT number of train epochs
    */
-  num_train_epochs?: number;
+  num_train_epochs: number;
 
   /**
    * A custom system prompt to use during the RL tuning process
    */
-  system_prompt?: string | null;
+  system_prompt: string | null;
 }
 
 export namespace GrpoStartJobParams {

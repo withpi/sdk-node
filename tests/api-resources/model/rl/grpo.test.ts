@@ -87,11 +87,16 @@ describe('resource grpo', () => {
 
   test('startJob: only required params', async () => {
     const responsePromise = client.model.rl.grpo.startJob({
+      base_rl_model: 'LLAMA_3.2_3B',
       contract: {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Contract',
       },
       examples: [{ llm_input: 'Tell me something different' }],
+      learning_rate: 0.000005,
+      lora_config: {},
+      num_train_epochs: 10,
+      system_prompt: 'system_prompt',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -104,6 +109,7 @@ describe('resource grpo', () => {
 
   test('startJob: required and optional params', async () => {
     const response = await client.model.rl.grpo.startJob({
+      base_rl_model: 'LLAMA_3.2_3B',
       contract: {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Contract',
@@ -153,8 +159,7 @@ describe('resource grpo', () => {
         ],
       },
       examples: [{ llm_input: 'Tell me something different' }],
-      base_rl_model: 'LLAMA_3.2_3B',
-      learning_rate: 0.0002,
+      learning_rate: 0.000005,
       lora_config: { lora_rank: 'R_16' },
       num_train_epochs: 10,
       system_prompt: 'system_prompt',
