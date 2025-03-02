@@ -96,7 +96,7 @@ describe('resource grpo', () => {
       learning_rate: 0.000005,
       lora_config: {},
       num_train_epochs: 10,
-      system_prompt: 'system_prompt',
+      system_prompt: 'An optional system prompt.',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -162,7 +162,7 @@ describe('resource grpo', () => {
       learning_rate: 0.000005,
       lora_config: { lora_rank: 'R_16' },
       num_train_epochs: 10,
-      system_prompt: 'system_prompt',
+      system_prompt: 'An optional system prompt.',
     });
   });
 
