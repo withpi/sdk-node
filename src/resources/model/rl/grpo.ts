@@ -59,7 +59,7 @@ export class Grpo extends APIResource {
   }
 
   /**
-   * Streams messages from the RL GRPO job
+   * Opens a message stream about a RL GRPO job
    */
   streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.get(`/model/rl/grpo/${jobId}/messages`, {
