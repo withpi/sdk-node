@@ -5,8 +5,10 @@ export { Rl, type RlGrpoStatus } from './rl/index';
 export {
   Sft,
   type SftStatus,
+  type SftListResponse,
   type SftDownloadResponse,
   type SftStreamMessagesResponse,
+  type SftListParams,
   type SftDownloadParams,
   type SftStartJobParams,
 } from './sft';

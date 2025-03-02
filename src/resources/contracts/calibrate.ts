@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../resource';
+import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as Shared from '../shared';
 
@@ -10,6 +11,21 @@ export class Calibrate extends APIResource {
    */
   retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.ContractCalibrationStatus> {
     return this._client.get(`/contracts/calibrate/${jobId}`, options);
+  }
+
+  /**
+   * Returns a list of contract calibration jobs, optionally filtered by state
+   */
+  list(query?: CalibrateListParams, options?: Core.RequestOptions): Core.APIPromise<CalibrateListResponse>;
+  list(options?: Core.RequestOptions): Core.APIPromise<CalibrateListResponse>;
+  list(
+    query: CalibrateListParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<CalibrateListResponse> {
+    if (isRequestOptions(query)) {
+      return this.list({}, query);
+    }
+    return this._client.get('/contracts/calibrate', { query, ...options });
   }
 
   /**
@@ -52,10 +68,21 @@ export interface ContractCalibrationStatus {
   /**
    * Current state of the job
    */
-  state: Shared.State;
+  state: State;
 }
 
+export type State = 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
+
+export type CalibrateListResponse = Array<Shared.ContractCalibrationStatus>;
+
 export type CalibrateStreamMessagesResponse = string;
+
+export interface CalibrateListParams {
+  /**
+   * Filter jobs by state
+   */
+  state?: State | null;
+}
 
 export interface CalibrateStartJobParams {
   /**
@@ -127,7 +154,10 @@ export namespace CalibrateStartJobParams {
 export declare namespace Calibrate {
   export {
     type ContractCalibrationStatus as ContractCalibrationStatus,
+    type State as State,
+    type CalibrateListResponse as CalibrateListResponse,
     type CalibrateStreamMessagesResponse as CalibrateStreamMessagesResponse,
+    type CalibrateListParams as CalibrateListParams,
     type CalibrateStartJobParams as CalibrateStartJobParams,
   };
 }

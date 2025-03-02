@@ -1,8 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../resource';
+import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as Shared from '../shared';
+import * as CalibrateAPI from '../contracts/calibrate';
 
 export class Sft extends APIResource {
   /**
@@ -10,6 +12,21 @@ export class Sft extends APIResource {
    */
   retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.SftStatus> {
     return this._client.get(`/model/sft/${jobId}`, options);
+  }
+
+  /**
+   * Returns a list of SFT jobs, optionally filtered by state
+   */
+  list(query?: SftListParams, options?: Core.RequestOptions): Core.APIPromise<SftListResponse>;
+  list(options?: Core.RequestOptions): Core.APIPromise<SftListResponse>;
+  list(
+    query: SftListParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<SftListResponse> {
+    if (isRequestOptions(query)) {
+      return this.list({}, query);
+    }
+    return this._client.get('/model/sft', { query, ...options });
   }
 
   /**
@@ -66,7 +83,7 @@ export interface SftStatus {
   /**
    * Current state of the job
    */
-  state: Shared.State;
+  state: CalibrateAPI.State;
 
   /**
    * A list of trained models selected based on the PI Contract score.
@@ -74,9 +91,18 @@ export interface SftStatus {
   trained_models?: Array<Shared.TrainedModel> | null;
 }
 
+export type SftListResponse = Array<Shared.SftStatus>;
+
 export type SftDownloadResponse = string;
 
 export type SftStreamMessagesResponse = string;
+
+export interface SftListParams {
+  /**
+   * Filter jobs by state
+   */
+  state?: CalibrateAPI.State | null;
+}
 
 export interface SftDownloadParams {
   serving_id: number;
@@ -118,8 +144,10 @@ export interface SftStartJobParams {
 export declare namespace Sft {
   export {
     type SftStatus as SftStatus,
+    type SftListResponse as SftListResponse,
     type SftDownloadResponse as SftDownloadResponse,
     type SftStreamMessagesResponse as SftStreamMessagesResponse,
+    type SftListParams as SftListParams,
     type SftDownloadParams as SftDownloadParams,
     type SftStartJobParams as SftStartJobParams,
   };
