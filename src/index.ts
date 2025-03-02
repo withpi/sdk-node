@@ -5,7 +5,13 @@ import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
-import { Prompt, PromptOptimizeParams, PromptStreamMessagesResponse } from './resources/prompt';
+import {
+  Prompt,
+  PromptListOptimizationJobsParams,
+  PromptListOptimizationJobsResponse,
+  PromptOptimizeParams,
+  PromptStreamMessagesResponse,
+} from './resources/prompt';
 import {
   Queries,
   QueryClassificationResponse,
@@ -20,7 +26,11 @@ import {
   Contracts,
   ContractsScoreMetrics,
 } from './resources/contracts/contracts';
-import { Data } from './resources/data/data';
+import {
+  Data,
+  DataListQuestionAnswerJobsParams,
+  DataListQuestionAnswerJobsResponse,
+} from './resources/data/data';
 import { Model } from './resources/model/model';
 
 export interface ClientOptions {
@@ -186,12 +196,19 @@ PiClient.Queries = Queries;
 export declare namespace PiClient {
   export type RequestOptions = Core.RequestOptions;
 
-  export { Data as Data, type DataGenerationStatus as DataGenerationStatus };
+  export {
+    Data as Data,
+    type DataGenerationStatus as DataGenerationStatus,
+    type DataListQuestionAnswerJobsResponse as DataListQuestionAnswerJobsResponse,
+    type DataListQuestionAnswerJobsParams as DataListQuestionAnswerJobsParams,
+  };
 
   export {
     Prompt as Prompt,
     type PromptOptimizationStatus as PromptOptimizationStatus,
+    type PromptListOptimizationJobsResponse as PromptListOptimizationJobsResponse,
     type PromptStreamMessagesResponse as PromptStreamMessagesResponse,
+    type PromptListOptimizationJobsParams as PromptListOptimizationJobsParams,
     type PromptOptimizeParams as PromptOptimizeParams,
   };
 

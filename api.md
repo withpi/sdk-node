@@ -28,6 +28,11 @@ Types:
 Types:
 
 - <code><a href="./src/resources/data/data.ts">DataGenerationStatus</a></code>
+- <code><a href="./src/resources/data/data.ts">DataListQuestionAnswerJobsResponse</a></code>
+
+Methods:
+
+- <code title="get /data/generate_question_answers">client.data.<a href="./src/resources/data/data.ts">listQuestionAnswerJobs</a>({ ...params }) -> DataListQuestionAnswerJobsResponse</code>
 
 ## Inputs
 
@@ -44,6 +49,7 @@ Methods:
 
 Types:
 
+- <code><a href="./src/resources/data/inputs/generate-from-seeds.ts">GenerateFromSeedListJobsResponse</a></code>
 - <code><a href="./src/resources/data/inputs/generate-from-seeds.ts">GenerateFromSeedStreamDataResponse</a></code>
 - <code><a href="./src/resources/data/inputs/generate-from-seeds.ts">GenerateFromSeedStreamMessagesResponse</a></code>
 
@@ -51,6 +57,7 @@ Methods:
 
 - <code title="get /data/input/generate_from_seeds/{job_id}">client.data.inputs.generateFromSeeds.<a href="./src/resources/data/inputs/generate-from-seeds.ts">retrieve</a>(jobId) -> DataGenerationStatus</code>
 - <code title="post /data/input/generate_from_seeds">client.data.inputs.generateFromSeeds.<a href="./src/resources/data/inputs/generate-from-seeds.ts">generate</a>({ ...params }) -> DataGenerationStatus</code>
+- <code title="get /data/input/generate_from_seeds">client.data.inputs.generateFromSeeds.<a href="./src/resources/data/inputs/generate-from-seeds.ts">listJobs</a>({ ...params }) -> GenerateFromSeedListJobsResponse</code>
 - <code title="get /data/input/generate_from_seeds/{job_id}/data">client.data.inputs.generateFromSeeds.<a href="./src/resources/data/inputs/generate-from-seeds.ts">streamData</a>(jobId) -> string</code>
 - <code title="get /data/input/generate_from_seeds/{job_id}/messages">client.data.inputs.generateFromSeeds.<a href="./src/resources/data/inputs/generate-from-seeds.ts">streamMessages</a>(jobId) -> string</code>
 
@@ -58,6 +65,7 @@ Methods:
 
 Types:
 
+- <code><a href="./src/resources/data/generate-synthetic-data.ts">GenerateSyntheticDataListJobsResponse</a></code>
 - <code><a href="./src/resources/data/generate-synthetic-data.ts">GenerateSyntheticDataStreamDataResponse</a></code>
 - <code><a href="./src/resources/data/generate-synthetic-data.ts">GenerateSyntheticDataStreamMessagesResponse</a></code>
 
@@ -65,6 +73,7 @@ Methods:
 
 - <code title="post /data/generate_synthetic_data">client.data.generateSyntheticData.<a href="./src/resources/data/generate-synthetic-data.ts">create</a>({ ...params }) -> SyntheticDataStatus</code>
 - <code title="get /data/generate_synthetic_data/{job_id}">client.data.generateSyntheticData.<a href="./src/resources/data/generate-synthetic-data.ts">retrieve</a>(jobId) -> SyntheticDataStatus</code>
+- <code title="get /data/generate_synthetic_data">client.data.generateSyntheticData.<a href="./src/resources/data/generate-synthetic-data.ts">listJobs</a>({ ...params }) -> GenerateSyntheticDataListJobsResponse</code>
 - <code title="get /data/generate_synthetic_data/{job_id}/data">client.data.generateSyntheticData.<a href="./src/resources/data/generate-synthetic-data.ts">streamData</a>(jobId) -> GenerateSyntheticDataStreamDataResponse</code>
 - <code title="get /data/generate_synthetic_data/{job_id}/messages">client.data.generateSyntheticData.<a href="./src/resources/data/generate-synthetic-data.ts">streamMessages</a>(jobId) -> string</code>
 
@@ -73,11 +82,13 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/prompt.ts">PromptOptimizationStatus</a></code>
+- <code><a href="./src/resources/prompt.ts">PromptListOptimizationJobsResponse</a></code>
 - <code><a href="./src/resources/prompt.ts">PromptStreamMessagesResponse</a></code>
 
 Methods:
 
 - <code title="get /prompt/optimize/{job_id}">client.prompt.<a href="./src/resources/prompt.ts">retrieve</a>(jobId) -> PromptOptimizationStatus</code>
+- <code title="get /prompt/optimize">client.prompt.<a href="./src/resources/prompt.ts">listOptimizationJobs</a>({ ...params }) -> PromptListOptimizationJobsResponse</code>
 - <code title="post /prompt/optimize">client.prompt.<a href="./src/resources/prompt.ts">optimize</a>({ ...params }) -> PromptOptimizationStatus</code>
 - <code title="get /prompt/optimize/{job_id}/messages">client.prompt.<a href="./src/resources/prompt.ts">streamMessages</a>(jobId) -> string</code>
 
@@ -88,12 +99,14 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/model/sft.ts">SftStatus</a></code>
+- <code><a href="./src/resources/model/sft.ts">SftListResponse</a></code>
 - <code><a href="./src/resources/model/sft.ts">SftDownloadResponse</a></code>
 - <code><a href="./src/resources/model/sft.ts">SftStreamMessagesResponse</a></code>
 
 Methods:
 
 - <code title="get /model/sft/{job_id}">client.model.sft.<a href="./src/resources/model/sft.ts">retrieve</a>(jobId) -> SftStatus</code>
+- <code title="get /model/sft">client.model.sft.<a href="./src/resources/model/sft.ts">list</a>({ ...params }) -> SftListResponse</code>
 - <code title="post /model/sft/{job_id}/download">client.model.sft.<a href="./src/resources/model/sft.ts">download</a>(jobId, { ...params }) -> string</code>
 - <code title="post /model/sft/{job_id}/load">client.model.sft.<a href="./src/resources/model/sft.ts">load</a>(jobId) -> SftStatus</code>
 - <code title="post /model/sft">client.model.sft.<a href="./src/resources/model/sft.ts">startJob</a>({ ...params }) -> SftStatus</code>
@@ -110,12 +123,14 @@ Types:
 Types:
 
 - <code><a href="./src/resources/model/rl/grpo.ts">RlGrpoStatus</a></code>
+- <code><a href="./src/resources/model/rl/grpo.ts">GrpoListResponse</a></code>
 - <code><a href="./src/resources/model/rl/grpo.ts">GrpoDownloadResponse</a></code>
 - <code><a href="./src/resources/model/rl/grpo.ts">GrpoStreamMessagesResponse</a></code>
 
 Methods:
 
 - <code title="get /model/rl/grpo/{job_id}">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">retrieve</a>(jobId) -> RlGrpoStatus</code>
+- <code title="get /model/rl/grpo">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">list</a>({ ...params }) -> GrpoListResponse</code>
 - <code title="post /model/rl/grpo/{job_id}/download">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">download</a>(jobId, { ...params }) -> string</code>
 - <code title="post /model/rl/grpo/{job_id}/load">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">load</a>(jobId) -> RlGrpoStatus</code>
 - <code title="post /model/rl/grpo">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">startJob</a>({ ...params }) -> RlGrpoStatus</code>
@@ -138,11 +153,14 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/contracts/calibrate.ts">ContractCalibrationStatus</a></code>
+- <code><a href="./src/resources/contracts/calibrate.ts">State</a></code>
+- <code><a href="./src/resources/contracts/calibrate.ts">CalibrateListResponse</a></code>
 - <code><a href="./src/resources/contracts/calibrate.ts">CalibrateStreamMessagesResponse</a></code>
 
 Methods:
 
 - <code title="get /contracts/calibrate/{job_id}">client.contracts.calibrate.<a href="./src/resources/contracts/calibrate.ts">retrieve</a>(jobId) -> ContractCalibrationStatus</code>
+- <code title="get /contracts/calibrate">client.contracts.calibrate.<a href="./src/resources/contracts/calibrate.ts">list</a>({ ...params }) -> CalibrateListResponse</code>
 - <code title="post /contracts/calibrate">client.contracts.calibrate.<a href="./src/resources/contracts/calibrate.ts">startJob</a>({ ...params }) -> ContractCalibrationStatus</code>
 - <code title="get /contracts/calibrate/{job_id}/messages">client.contracts.calibrate.<a href="./src/resources/contracts/calibrate.ts">streamMessages</a>(jobId) -> string</code>
 

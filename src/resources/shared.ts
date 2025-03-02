@@ -1,5 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+import * as CalibrateAPI from './contracts/calibrate';
+
 export interface Contract {
   /**
    * The description of the contract
@@ -36,7 +38,7 @@ export interface ContractCalibrationStatus {
   /**
    * Current state of the job
    */
-  state: State;
+  state: CalibrateAPI.State;
 }
 
 /**
@@ -56,7 +58,7 @@ export interface DataGenerationStatus {
   /**
    * Current state of the job
    */
-  state: State;
+  state: CalibrateAPI.State;
 
   /**
    * The generated data. Can be present even if the state is not done/error as it is
@@ -152,7 +154,7 @@ export interface PromptOptimizationStatus {
   /**
    * Current state of the job
    */
-  state: State;
+  state: CalibrateAPI.State;
 }
 
 /**
@@ -187,7 +189,7 @@ export interface RlGrpoStatus {
   /**
    * Current state of the job
    */
-  state: State;
+  state: CalibrateAPI.State;
 
   /**
    * A list of trained models selected based on the PI Contract score.
@@ -280,7 +282,7 @@ export interface SftStatus {
   /**
    * Current state of the job
    */
-  state: State;
+  state: CalibrateAPI.State;
 
   /**
    * A list of trained models selected based on the PI Contract score.
@@ -356,7 +358,7 @@ export interface SyntheticDataStatus {
   /**
    * Current state of the job
    */
-  state: State;
+  state: CalibrateAPI.State;
 
   /**
    * The generated synthetic data. Can be present even if the state is not done/error

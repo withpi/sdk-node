@@ -1,8 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../../resource';
+import { isRequestOptions } from '../../../core';
 import * as Core from '../../../core';
 import * as Shared from '../../shared';
+import * as CalibrateAPI from '../../contracts/calibrate';
 
 export class Grpo extends APIResource {
   /**
@@ -10,6 +12,21 @@ export class Grpo extends APIResource {
    */
   retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.RlGrpoStatus> {
     return this._client.get(`/model/rl/grpo/${jobId}`, options);
+  }
+
+  /**
+   * Returns a list of GRPO jobs, optionally filtered by state
+   */
+  list(query?: GrpoListParams, options?: Core.RequestOptions): Core.APIPromise<GrpoListResponse>;
+  list(options?: Core.RequestOptions): Core.APIPromise<GrpoListResponse>;
+  list(
+    query: GrpoListParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<GrpoListResponse> {
+    if (isRequestOptions(query)) {
+      return this.list({}, query);
+    }
+    return this._client.get('/model/rl/grpo', { query, ...options });
   }
 
   /**
@@ -69,7 +86,7 @@ export interface RlGrpoStatus {
   /**
    * Current state of the job
    */
-  state: Shared.State;
+  state: CalibrateAPI.State;
 
   /**
    * A list of trained models selected based on the PI Contract score.
@@ -77,9 +94,18 @@ export interface RlGrpoStatus {
   trained_models?: Array<Shared.TrainedModel> | null;
 }
 
+export type GrpoListResponse = Array<Shared.RlGrpoStatus>;
+
 export type GrpoDownloadResponse = string;
 
 export type GrpoStreamMessagesResponse = string;
+
+export interface GrpoListParams {
+  /**
+   * Filter jobs by state
+   */
+  state?: CalibrateAPI.State | null;
+}
 
 export interface GrpoDownloadParams {
   serving_id: number;
@@ -137,8 +163,10 @@ export namespace GrpoStartJobParams {
 export declare namespace Grpo {
   export {
     type RlGrpoStatus as RlGrpoStatus,
+    type GrpoListResponse as GrpoListResponse,
     type GrpoDownloadResponse as GrpoDownloadResponse,
     type GrpoStreamMessagesResponse as GrpoStreamMessagesResponse,
+    type GrpoListParams as GrpoListParams,
     type GrpoDownloadParams as GrpoDownloadParams,
     type GrpoStartJobParams as GrpoStartJobParams,
   };
