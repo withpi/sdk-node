@@ -128,7 +128,7 @@ export interface GrpoStartJobParams {
   examples: Array<GrpoStartJobParams.Example>;
 
   /**
-   * SFT learning rate
+   * GRPO learning rate
    */
   learning_rate: number;
 
@@ -138,7 +138,7 @@ export interface GrpoStartJobParams {
   lora_config: Shared.LoraConfig;
 
   /**
-   * SFT number of train epochs
+   * GRPO number of train epochs
    */
   num_train_epochs: number;
 
