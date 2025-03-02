@@ -8,7 +8,7 @@ import * as CalibrateAPI from './contracts/calibrate';
 
 export class Prompt extends APIResource {
   /**
-   * Checks on a prompt optimization job
+   * Checks the status of a Prompt Optimization job
    */
   retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.PromptOptimizationStatus> {
     return this._client.get(`/prompt/optimize/${jobId}`, options);

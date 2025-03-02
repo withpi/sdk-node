@@ -8,7 +8,7 @@ import * as CalibrateAPI from '../contracts/calibrate';
 
 export class Sft extends APIResource {
   /**
-   * Get the current status of a model SFT tuning job
+   * Checks the status of a SFT job
    */
   retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.SftStatus> {
     return this._client.get(`/model/sft/${jobId}`, options);
