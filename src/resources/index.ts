@@ -8,12 +8,25 @@ export {
   type ContractReadFromHfParams,
   type ContractScoreParams,
 } from './contracts/contracts';
-export { Data, type DataGenerationStatus } from './data/data';
+export {
+  Data,
+  type DataGenerationStatus,
+  type DataListQuestionAnswerJobsResponse,
+  type DataListQuestionAnswerJobsParams,
+} from './data/data';
 export { Model } from './model/model';
 export {
   Prompt,
   type PromptOptimizationStatus,
+  type PromptListOptimizationJobsResponse,
   type PromptStreamMessagesResponse,
+  type PromptListOptimizationJobsParams,
   type PromptOptimizeParams,
 } from './prompt';
-export { Queries, type QueryGenerateFanoutsResponse, type QueryGenerateFanoutsParams } from './queries';
+export {
+  Queries,
+  type QueryClassificationResponse,
+  type QueryGenerateFanoutsResponse,
+  type QueryClassifyParams,
+  type QueryGenerateFanoutsParams,
+} from './queries';

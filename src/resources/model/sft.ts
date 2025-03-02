@@ -1,15 +1,41 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../resource';
+import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as Shared from '../shared';
+import * as CalibrateAPI from '../contracts/calibrate';
 
 export class Sft extends APIResource {
   /**
    * Get the current status of a model SFT tuning job
    */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<SftStatus> {
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.SftStatus> {
     return this._client.get(`/model/sft/${jobId}`, options);
+  }
+
+  /**
+   * Returns a list of SFT jobs, optionally filtered by state
+   */
+  list(query?: SftListParams, options?: Core.RequestOptions): Core.APIPromise<SftListResponse>;
+  list(options?: Core.RequestOptions): Core.APIPromise<SftListResponse>;
+  list(
+    query: SftListParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<SftListResponse> {
+    if (isRequestOptions(query)) {
+      return this.list({}, query);
+    }
+    return this._client.get('/model/sft', { query, ...options });
+  }
+
+  /**
+   * Generates a signed URL for downloading a model as a .tar.gz archive for self
+   * hosting.
+   */
+  download(jobId: string, params: SftDownloadParams, options?: Core.RequestOptions): Core.APIPromise<string> {
+    const { serving_id } = params;
+    return this._client.post(`/model/sft/${jobId}/download`, { query: { serving_id }, ...options });
   }
 
   /**
@@ -17,15 +43,15 @@ export class Sft extends APIResource {
    * interactive traffic. Please reach out if you want to use this model in a
    * production setting.
    */
-  load(jobId: string, options?: Core.RequestOptions): Core.APIPromise<SftStatus> {
+  load(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.SftStatus> {
     return this._client.post(`/model/sft/${jobId}/load`, options);
   }
 
   /**
    * Initialize the supervised fine-tuning (SFT) job for the model. We implement
-   * Low-Rank Adaptation (LoRA) for the fine-tuning process, with a fixed rank of 16.
+   * Low-Rank Adaptation (LoRA) for the fine-tuning process.
    */
-  startJob(body: SftStartJobParams, options?: Core.RequestOptions): Core.APIPromise<SftStatus> {
+  startJob(body: SftStartJobParams, options?: Core.RequestOptions): Core.APIPromise<Shared.SftStatus> {
     return this._client.post('/model/sft', { body, ...options });
   }
 
@@ -57,54 +83,30 @@ export interface SftStatus {
   /**
    * Current state of the job
    */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
+  state: CalibrateAPI.State;
 
   /**
    * A list of trained models selected based on the PI Contract score.
    */
-  trained_models?: Array<SftStatus.TrainedModel> | null;
+  trained_models?: Array<Shared.TrainedModel> | null;
 }
 
-export namespace SftStatus {
-  export interface TrainedModel {
-    /**
-     * The PI contract score of the eval set what isn't used in training
-     */
-    contract_score: number;
+export type SftListResponse = Array<Shared.SftStatus>;
 
-    /**
-     * The training epoch
-     */
-    epoch: number;
-
-    /**
-     * The evaluation loss
-     */
-    eval_loss: number;
-
-    /**
-     * Firework's hosted model id
-     */
-    firework_hosted_model_id: string;
-
-    /**
-     * Whether the model is loaded in the serving system
-     */
-    is_loaded: boolean;
-
-    /**
-     * The serving id of the trained model within this Job
-     */
-    serving_id: number;
-
-    /**
-     * The training step
-     */
-    step: number;
-  }
-}
+export type SftDownloadResponse = string;
 
 export type SftStreamMessagesResponse = string;
+
+export interface SftListParams {
+  /**
+   * Filter jobs by state
+   */
+  state?: CalibrateAPI.State | null;
+}
+
+export interface SftDownloadParams {
+  serving_id: number;
+}
 
 export interface SftStartJobParams {
   /**
@@ -121,12 +123,17 @@ export interface SftStartJobParams {
   /**
    * The base model to start the SFT tuning process.
    */
-  base_sft_model?: 'LLAMA_3.2_3B' | 'LLAMA_3.1_8B';
+  base_sft_model?: Shared.FinetuningBaseModel;
 
   /**
    * SFT learning rate
    */
   learning_rate?: number;
+
+  /**
+   * The LoRA configuration.
+   */
+  lora_config?: Shared.LoraConfig;
 
   /**
    * SFT number of train epochs
@@ -137,7 +144,11 @@ export interface SftStartJobParams {
 export declare namespace Sft {
   export {
     type SftStatus as SftStatus,
+    type SftListResponse as SftListResponse,
+    type SftDownloadResponse as SftDownloadResponse,
     type SftStreamMessagesResponse as SftStreamMessagesResponse,
+    type SftListParams as SftListParams,
+    type SftDownloadParams as SftDownloadParams,
     type SftStartJobParams as SftStartJobParams,
   };
 }

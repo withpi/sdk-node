@@ -1,15 +1,35 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../resource';
+import { isRequestOptions } from '../core';
 import * as Core from '../core';
 import * as Shared from './shared';
+import * as CalibrateAPI from './contracts/calibrate';
 
 export class Prompt extends APIResource {
   /**
    * Checks on a prompt optimization job
    */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<PromptOptimizationStatus> {
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.PromptOptimizationStatus> {
     return this._client.get(`/prompt/optimize/${jobId}`, options);
+  }
+
+  /**
+   * Returns a list of prompt optimization jobs, optionally filtered by state
+   */
+  listOptimizationJobs(
+    query?: PromptListOptimizationJobsParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<PromptListOptimizationJobsResponse>;
+  listOptimizationJobs(options?: Core.RequestOptions): Core.APIPromise<PromptListOptimizationJobsResponse>;
+  listOptimizationJobs(
+    query: PromptListOptimizationJobsParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<PromptListOptimizationJobsResponse> {
+    if (isRequestOptions(query)) {
+      return this.listOptimizationJobs({}, query);
+    }
+    return this._client.get('/prompt/optimize', { query, ...options });
   }
 
   /**
@@ -18,7 +38,7 @@ export class Prompt extends APIResource {
   optimize(
     body: PromptOptimizeParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<PromptOptimizationStatus> {
+  ): Core.APIPromise<Shared.PromptOptimizationStatus> {
     return this._client.post('/prompt/optimize', { body, ...options });
   }
 
@@ -56,10 +76,19 @@ export interface PromptOptimizationStatus {
   /**
    * Current state of the job
    */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
+  state: CalibrateAPI.State;
 }
 
+export type PromptListOptimizationJobsResponse = Array<Shared.PromptOptimizationStatus>;
+
 export type PromptStreamMessagesResponse = string;
+
+export interface PromptListOptimizationJobsParams {
+  /**
+   * Filter jobs by state
+   */
+  state?: CalibrateAPI.State | null;
+}
 
 export interface PromptOptimizeParams {
   /**
@@ -103,7 +132,9 @@ export interface PromptOptimizeParams {
 export declare namespace Prompt {
   export {
     type PromptOptimizationStatus as PromptOptimizationStatus,
+    type PromptListOptimizationJobsResponse as PromptListOptimizationJobsResponse,
     type PromptStreamMessagesResponse as PromptStreamMessagesResponse,
+    type PromptListOptimizationJobsParams as PromptListOptimizationJobsParams,
     type PromptOptimizeParams as PromptOptimizeParams,
   };
 }

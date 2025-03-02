@@ -1,22 +1,52 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../../resource';
+import { isRequestOptions } from '../../../core';
 import * as Core from '../../../core';
 import * as Shared from '../../shared';
+import * as CalibrateAPI from '../../contracts/calibrate';
 
 export class Grpo extends APIResource {
   /**
    * Get the current status of the RL GRPO job
    */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<RlGrpoStatus> {
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.RlGrpoStatus> {
     return this._client.get(`/model/rl/grpo/${jobId}`, options);
+  }
+
+  /**
+   * Returns a list of GRPO jobs, optionally filtered by state
+   */
+  list(query?: GrpoListParams, options?: Core.RequestOptions): Core.APIPromise<GrpoListResponse>;
+  list(options?: Core.RequestOptions): Core.APIPromise<GrpoListResponse>;
+  list(
+    query: GrpoListParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<GrpoListResponse> {
+    if (isRequestOptions(query)) {
+      return this.list({}, query);
+    }
+    return this._client.get('/model/rl/grpo', { query, ...options });
+  }
+
+  /**
+   * Generates a signed URL for downloading a model as a .tar.gz archive for self
+   * hosting.
+   */
+  download(
+    jobId: string,
+    params: GrpoDownloadParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<string> {
+    const { serving_id } = params;
+    return this._client.post(`/model/rl/grpo/${jobId}/download`, { query: { serving_id }, ...options });
   }
 
   /**
    * Load the model into serving. This can support a very small amount of interactive
    * traffic. Please reach out if you want to use this model in a production setting.
    */
-  load(jobId: string, options?: Core.RequestOptions): Core.APIPromise<RlGrpoStatus> {
+  load(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.RlGrpoStatus> {
     return this._client.post(`/model/rl/grpo/${jobId}/load`, options);
   }
 
@@ -24,7 +54,7 @@ export class Grpo extends APIResource {
    * Initialize the Group Relative Policy Optimization (GRPO) reinforcement learning
    * job.
    */
-  startJob(body: GrpoStartJobParams, options?: Core.RequestOptions): Core.APIPromise<RlGrpoStatus> {
+  startJob(body: GrpoStartJobParams, options?: Core.RequestOptions): Core.APIPromise<Shared.RlGrpoStatus> {
     return this._client.post('/model/rl/grpo', { body, ...options });
   }
 
@@ -56,54 +86,30 @@ export interface RlGrpoStatus {
   /**
    * Current state of the job
    */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
+  state: CalibrateAPI.State;
 
   /**
    * A list of trained models selected based on the PI Contract score.
    */
-  trained_models?: Array<RlGrpoStatus.TrainedModel> | null;
+  trained_models?: Array<Shared.TrainedModel> | null;
 }
 
-export namespace RlGrpoStatus {
-  export interface TrainedModel {
-    /**
-     * The PI contract score of the eval set what isn't used in training
-     */
-    contract_score: number;
+export type GrpoListResponse = Array<Shared.RlGrpoStatus>;
 
-    /**
-     * The training epoch
-     */
-    epoch: number;
-
-    /**
-     * The evaluation loss
-     */
-    eval_loss: number;
-
-    /**
-     * Firework's hosted model id
-     */
-    firework_hosted_model_id: string;
-
-    /**
-     * Whether the model is loaded in the serving system
-     */
-    is_loaded: boolean;
-
-    /**
-     * The serving id of the trained model within this Job
-     */
-    serving_id: number;
-
-    /**
-     * The training step
-     */
-    step: number;
-  }
-}
+export type GrpoDownloadResponse = string;
 
 export type GrpoStreamMessagesResponse = string;
+
+export interface GrpoListParams {
+  /**
+   * Filter jobs by state
+   */
+  state?: CalibrateAPI.State | null;
+}
+
+export interface GrpoDownloadParams {
+  serving_id: number;
+}
 
 export interface GrpoStartJobParams {
   /**
@@ -117,14 +123,19 @@ export interface GrpoStartJobParams {
   examples: Array<GrpoStartJobParams.Example>;
 
   /**
-   * The model to start the RL process
+   * The base model to start the RL tunning process
    */
-  model: 'LLAMA_3.2_1B';
+  base_rl_model?: Shared.FinetuningBaseModel;
 
   /**
    * SFT learning rate
    */
   learning_rate?: number;
+
+  /**
+   * The LoRA configuration.
+   */
+  lora_config?: Shared.LoraConfig;
 
   /**
    * SFT number of train epochs
@@ -152,7 +163,11 @@ export namespace GrpoStartJobParams {
 export declare namespace Grpo {
   export {
     type RlGrpoStatus as RlGrpoStatus,
+    type GrpoListResponse as GrpoListResponse,
+    type GrpoDownloadResponse as GrpoDownloadResponse,
     type GrpoStreamMessagesResponse as GrpoStreamMessagesResponse,
+    type GrpoListParams as GrpoListParams,
+    type GrpoDownloadParams as GrpoDownloadParams,
     type GrpoStartJobParams as GrpoStartJobParams,
   };
 }
