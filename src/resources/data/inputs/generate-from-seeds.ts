@@ -1,8 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../../resource';
+import { isRequestOptions } from '../../../core';
 import * as Core from '../../../core';
 import * as Shared from '../../shared';
+import * as CalibrateAPI from '../../contracts/calibrate';
 import * as DataAPI from '../data';
 
 export class GenerateFromSeeds extends APIResource {
@@ -21,6 +23,24 @@ export class GenerateFromSeeds extends APIResource {
     options?: Core.RequestOptions,
   ): Core.APIPromise<DataAPI.DataGenerationStatus> {
     return this._client.post('/data/input/generate_from_seeds', { body, ...options });
+  }
+
+  /**
+   * Returns a list of input generation jobs, optionally filtered by state
+   */
+  listJobs(
+    query?: GenerateFromSeedListJobsParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<GenerateFromSeedListJobsResponse>;
+  listJobs(options?: Core.RequestOptions): Core.APIPromise<GenerateFromSeedListJobsResponse>;
+  listJobs(
+    query: GenerateFromSeedListJobsParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<GenerateFromSeedListJobsResponse> {
+    if (isRequestOptions(query)) {
+      return this.listJobs({}, query);
+    }
+    return this._client.get('/data/input/generate_from_seeds', { query, ...options });
   }
 
   /**
@@ -43,6 +63,8 @@ export class GenerateFromSeeds extends APIResource {
     });
   }
 }
+
+export type GenerateFromSeedListJobsResponse = Array<DataAPI.DataGenerationStatus>;
 
 export type GenerateFromSeedStreamDataResponse = string;
 
@@ -82,10 +104,19 @@ export interface GenerateFromSeedGenerateParams {
   num_shots?: number;
 }
 
+export interface GenerateFromSeedListJobsParams {
+  /**
+   * Filter jobs by state
+   */
+  state?: CalibrateAPI.State | null;
+}
+
 export declare namespace GenerateFromSeeds {
   export {
+    type GenerateFromSeedListJobsResponse as GenerateFromSeedListJobsResponse,
     type GenerateFromSeedStreamDataResponse as GenerateFromSeedStreamDataResponse,
     type GenerateFromSeedStreamMessagesResponse as GenerateFromSeedStreamMessagesResponse,
     type GenerateFromSeedGenerateParams as GenerateFromSeedGenerateParams,
+    type GenerateFromSeedListJobsParams as GenerateFromSeedListJobsParams,
   };
 }

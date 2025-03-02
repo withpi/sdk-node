@@ -1,8 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../resource';
+import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as Shared from '../shared';
+import * as CalibrateAPI from '../contracts/calibrate';
 
 export class GenerateSyntheticData extends APIResource {
   /**
@@ -20,6 +22,24 @@ export class GenerateSyntheticData extends APIResource {
    */
   retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.SyntheticDataStatus> {
     return this._client.get(`/data/generate_synthetic_data/${jobId}`, options);
+  }
+
+  /**
+   * Returns a list of synthetic datajobs, optionally filtered by state
+   */
+  listJobs(
+    query?: GenerateSyntheticDataListJobsParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<GenerateSyntheticDataListJobsResponse>;
+  listJobs(options?: Core.RequestOptions): Core.APIPromise<GenerateSyntheticDataListJobsResponse>;
+  listJobs(
+    query: GenerateSyntheticDataListJobsParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<GenerateSyntheticDataListJobsResponse> {
+    if (isRequestOptions(query)) {
+      return this.listJobs({}, query);
+    }
+    return this._client.get('/data/generate_synthetic_data', { query, ...options });
   }
 
   /**
@@ -42,6 +62,8 @@ export class GenerateSyntheticData extends APIResource {
     });
   }
 }
+
+export type GenerateSyntheticDataListJobsResponse = Array<Shared.SyntheticDataStatus>;
 
 export type GenerateSyntheticDataStreamDataResponse =
   Array<GenerateSyntheticDataStreamDataResponse.GenerateSyntheticDataStreamDataResponseItem>;
@@ -94,10 +116,19 @@ export interface GenerateSyntheticDataCreateParams {
   system_prompt?: string | null;
 }
 
+export interface GenerateSyntheticDataListJobsParams {
+  /**
+   * Filter jobs by state
+   */
+  state?: CalibrateAPI.State | null;
+}
+
 export declare namespace GenerateSyntheticData {
   export {
+    type GenerateSyntheticDataListJobsResponse as GenerateSyntheticDataListJobsResponse,
     type GenerateSyntheticDataStreamDataResponse as GenerateSyntheticDataStreamDataResponse,
     type GenerateSyntheticDataStreamMessagesResponse as GenerateSyntheticDataStreamMessagesResponse,
     type GenerateSyntheticDataCreateParams as GenerateSyntheticDataCreateParams,
+    type GenerateSyntheticDataListJobsParams as GenerateSyntheticDataListJobsParams,
   };
 }

@@ -2,11 +2,14 @@
 
 import { APIResource } from '../../../resource';
 import * as Shared from '../../shared';
+import * as CalibrateAPI from '../../contracts/calibrate';
 import * as GrpoAPI from './grpo';
 import {
   Grpo,
   GrpoDownloadParams,
   GrpoDownloadResponse,
+  GrpoListParams,
+  GrpoListResponse,
   GrpoStartJobParams,
   GrpoStreamMessagesResponse,
   RlGrpoStatus as GrpoAPIRlGrpoStatus,
@@ -33,7 +36,7 @@ export interface RlGrpoStatus {
   /**
    * Current state of the job
    */
-  state: Shared.State;
+  state: CalibrateAPI.State;
 
   /**
    * A list of trained models selected based on the PI Contract score.
@@ -49,8 +52,10 @@ export declare namespace Rl {
   export {
     Grpo as Grpo,
     type GrpoAPIRlGrpoStatus as RlGrpoStatus,
+    type GrpoListResponse as GrpoListResponse,
     type GrpoDownloadResponse as GrpoDownloadResponse,
     type GrpoStreamMessagesResponse as GrpoStreamMessagesResponse,
+    type GrpoListParams as GrpoListParams,
     type GrpoDownloadParams as GrpoDownloadParams,
     type GrpoStartJobParams as GrpoStartJobParams,
   };

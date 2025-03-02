@@ -27,6 +27,31 @@ describe('resource prompt', () => {
     );
   });
 
+  test('listOptimizationJobs', async () => {
+    const responsePromise = client.prompt.listOptimizationJobs();
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('listOptimizationJobs: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(client.prompt.listOptimizationJobs({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+      PiClient.NotFoundError,
+    );
+  });
+
+  test('listOptimizationJobs: request options and params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.prompt.listOptimizationJobs({ state: 'QUEUED' }, { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(PiClient.NotFoundError);
+  });
+
   test('optimize: only required params', async () => {
     const responsePromise = client.prompt.optimize({
       contract: {
