@@ -56,7 +56,7 @@ export class Sft extends APIResource {
   }
 
   /**
-   * Streams messages from a model SFT tuning job
+   * Opens a message stream about a SFT job
    */
   streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.get(`/model/sft/${jobId}/messages`, {

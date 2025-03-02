@@ -54,7 +54,7 @@ export class GenerateFromSeeds extends APIResource {
   }
 
   /**
-   * Streams messages from the data generation job
+   * Opens a message stream about a Data Generation job
    */
   streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.get(`/data/input/generate_from_seeds/${jobId}/messages`, {

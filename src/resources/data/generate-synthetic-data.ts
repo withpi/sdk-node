@@ -53,7 +53,7 @@ export class GenerateSyntheticData extends APIResource {
   }
 
   /**
-   * Streams messages from the synthetic data generation job
+   * Opens a message stream about a Synthetic Data Generation job
    */
   streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.get(`/data/generate_synthetic_data/${jobId}/messages`, {
