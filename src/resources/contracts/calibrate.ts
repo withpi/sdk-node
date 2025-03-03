@@ -51,11 +51,6 @@ export class Calibrate extends APIResource {
 
 export interface ContractCalibrationStatus {
   /**
-   * The calibrated contract
-   */
-  calibrated_contract: Shared.Contract | null;
-
-  /**
    * Detailed status of the job
    */
   detailed_status: Array<string>;
@@ -69,6 +64,11 @@ export interface ContractCalibrationStatus {
    * Current state of the job
    */
   state: State;
+
+  /**
+   * The calibrated contract
+   */
+  calibrated_contract?: Shared.Contract | null;
 }
 
 export type State = 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
