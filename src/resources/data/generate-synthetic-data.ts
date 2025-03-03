@@ -8,7 +8,7 @@ import * as CalibrateAPI from '../contracts/calibrate';
 
 export class GenerateSyntheticData extends APIResource {
   /**
-   * Generates synthetic data from a list of seeds
+   * Launches a Synthetic Data Generation job
    */
   create(
     body: GenerateSyntheticDataCreateParams,

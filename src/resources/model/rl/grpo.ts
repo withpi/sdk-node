@@ -49,8 +49,7 @@ export class Grpo extends APIResource {
   }
 
   /**
-   * Initialize the Group Relative Policy Optimization (GRPO) reinforcement learning
-   * job.
+   * Launches a RL GRPO job
    */
   startJob(body: GrpoStartJobParams, options?: Core.RequestOptions): Core.APIPromise<Shared.RlGrpoStatus> {
     return this._client.post('/model/rl/grpo', { body, ...options });

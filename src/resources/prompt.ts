@@ -33,7 +33,7 @@ export class Prompt extends APIResource {
   }
 
   /**
-   * Start a prompt optimization job
+   * Launches a Prompt Optimization job
    */
   optimize(
     body: PromptOptimizeParams,
