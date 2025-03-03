@@ -18,7 +18,7 @@ export class GenerateFromSeeds extends APIResource {
   /**
    * Cancels a Data Generation job
    */
-  cancel(jobId: string, options?: Core.RequestOptions): Core.APIPromise<unknown> {
+  cancel(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.delete(`/data/input/generate_from_seeds/${jobId}`, options);
   }
 
@@ -71,7 +71,7 @@ export class GenerateFromSeeds extends APIResource {
   }
 }
 
-export type GenerateFromSeedCancelResponse = unknown;
+export type GenerateFromSeedCancelResponse = string;
 
 export type GenerateFromSeedListJobsResponse = Array<DataAPI.DataGenerationStatus>;
 
