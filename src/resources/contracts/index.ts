@@ -5,6 +5,7 @@ export {
   type ContractCalibrationStatus,
   type State,
   type CalibrateListResponse,
+  type CalibrateCancelResponse,
   type CalibrateStreamMessagesResponse,
   type CalibrateListParams,
   type CalibrateStartJobParams,

@@ -30,6 +30,13 @@ export class Grpo extends APIResource {
   }
 
   /**
+   * Cancels a RL GRPO job
+   */
+  cancel(jobId: string, options?: Core.RequestOptions): Core.APIPromise<unknown> {
+    return this._client.delete(`/model/rl/grpo/${jobId}`, options);
+  }
+
+  /**
    * Allows downloading a RL GRPO job
    */
   download(
@@ -92,6 +99,8 @@ export interface RlGrpoStatus {
 }
 
 export type GrpoListResponse = Array<Shared.RlGrpoStatus>;
+
+export type GrpoCancelResponse = unknown;
 
 export type GrpoDownloadResponse = string;
 
@@ -161,6 +170,7 @@ export declare namespace Grpo {
   export {
     type RlGrpoStatus as RlGrpoStatus,
     type GrpoListResponse as GrpoListResponse,
+    type GrpoCancelResponse as GrpoCancelResponse,
     type GrpoDownloadResponse as GrpoDownloadResponse,
     type GrpoStreamMessagesResponse as GrpoStreamMessagesResponse,
     type GrpoListParams as GrpoListParams,

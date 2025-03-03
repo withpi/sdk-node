@@ -290,7 +290,7 @@ export interface SftStatus {
   trained_models?: Array<TrainedModel> | null;
 }
 
-export type State = 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
+export type State = 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
 
 export interface SubDimension {
   /**

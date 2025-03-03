@@ -6,6 +6,7 @@ export {
   Sft,
   type SftStatus,
   type SftListResponse,
+  type SftCancelResponse,
   type SftDownloadResponse,
   type SftStreamMessagesResponse,
   type SftListParams,

@@ -2,6 +2,7 @@
 
 export {
   GenerateFromSeeds,
+  type GenerateFromSeedCancelResponse,
   type GenerateFromSeedListJobsResponse,
   type GenerateFromSeedStreamDataResponse,
   type GenerateFromSeedStreamMessagesResponse,

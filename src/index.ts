@@ -7,6 +7,7 @@ import * as Uploads from './uploads';
 import * as API from './resources/index';
 import {
   Prompt,
+  PromptCancelOptimizationJobResponse,
   PromptListOptimizationJobsParams,
   PromptListOptimizationJobsResponse,
   PromptOptimizeParams,
@@ -197,6 +198,7 @@ export declare namespace PiClient {
   export {
     Prompt as Prompt,
     type PromptOptimizationStatus as PromptOptimizationStatus,
+    type PromptCancelOptimizationJobResponse as PromptCancelOptimizationJobResponse,
     type PromptListOptimizationJobsResponse as PromptListOptimizationJobsResponse,
     type PromptStreamMessagesResponse as PromptStreamMessagesResponse,
     type PromptListOptimizationJobsParams as PromptListOptimizationJobsParams,
