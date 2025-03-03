@@ -44,7 +44,7 @@ export class GenerateFromSeeds extends APIResource {
   }
 
   /**
-   * Streams Data from the data generation job
+   * Streams data from the Data Generation job
    */
   streamData(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.get(`/data/input/generate_from_seeds/${jobId}/data`, {
