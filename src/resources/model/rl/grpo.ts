@@ -15,7 +15,7 @@ export class Grpo extends APIResource {
   }
 
   /**
-   * Returns a list of GRPO jobs, optionally filtered by state
+   * Lists the RL GRPO Jobs owned by a user
    */
   list(query?: GrpoListParams, options?: Core.RequestOptions): Core.APIPromise<GrpoListResponse>;
   list(options?: Core.RequestOptions): Core.APIPromise<GrpoListResponse>;

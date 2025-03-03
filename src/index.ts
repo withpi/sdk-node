@@ -26,11 +26,7 @@ import {
   Contracts,
   ContractsScoreMetrics,
 } from './resources/contracts/contracts';
-import {
-  Data,
-  DataListQuestionAnswerJobsParams,
-  DataListQuestionAnswerJobsResponse,
-} from './resources/data/data';
+import { Data } from './resources/data/data';
 import { Model } from './resources/model/model';
 
 export interface ClientOptions {
@@ -196,12 +192,7 @@ PiClient.Queries = Queries;
 export declare namespace PiClient {
   export type RequestOptions = Core.RequestOptions;
 
-  export {
-    Data as Data,
-    type DataGenerationStatus as DataGenerationStatus,
-    type DataListQuestionAnswerJobsResponse as DataListQuestionAnswerJobsResponse,
-    type DataListQuestionAnswerJobsParams as DataListQuestionAnswerJobsParams,
-  };
+  export { Data as Data, type DataGenerationStatus as DataGenerationStatus };
 
   export {
     Prompt as Prompt,

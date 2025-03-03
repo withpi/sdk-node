@@ -1,11 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-export {
-  Data,
-  type DataGenerationStatus,
-  type DataListQuestionAnswerJobsResponse,
-  type DataListQuestionAnswerJobsParams,
-} from './data';
+export { Data, type DataGenerationStatus } from './data';
 export {
   GenerateSyntheticData,
   type GenerateSyntheticDataListJobsResponse,
