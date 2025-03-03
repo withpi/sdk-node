@@ -25,6 +25,13 @@ export class GenerateSyntheticData extends APIResource {
   }
 
   /**
+   * Cancels a Synthetic Data Generation job
+   */
+  cancel(jobId: string, options?: Core.RequestOptions): Core.APIPromise<unknown> {
+    return this._client.delete(`/data/generate_synthetic_data/${jobId}`, options);
+  }
+
+  /**
    * Lists the Synthetic Data Generation Jobs owned by a user
    */
   listJobs(
@@ -62,6 +69,8 @@ export class GenerateSyntheticData extends APIResource {
     });
   }
 }
+
+export type GenerateSyntheticDataCancelResponse = unknown;
 
 export type GenerateSyntheticDataListJobsResponse = Array<Shared.SyntheticDataStatus>;
 
@@ -125,6 +134,7 @@ export interface GenerateSyntheticDataListJobsParams {
 
 export declare namespace GenerateSyntheticData {
   export {
+    type GenerateSyntheticDataCancelResponse as GenerateSyntheticDataCancelResponse,
     type GenerateSyntheticDataListJobsResponse as GenerateSyntheticDataListJobsResponse,
     type GenerateSyntheticDataStreamDataResponse as GenerateSyntheticDataStreamDataResponse,
     type GenerateSyntheticDataStreamMessagesResponse as GenerateSyntheticDataStreamMessagesResponse,

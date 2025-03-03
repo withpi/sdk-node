@@ -5,6 +5,7 @@ import * as CalibrateAPI from '../contracts/calibrate';
 import * as GenerateSyntheticDataAPI from './generate-synthetic-data';
 import {
   GenerateSyntheticData,
+  GenerateSyntheticDataCancelResponse,
   GenerateSyntheticDataCreateParams,
   GenerateSyntheticDataListJobsParams,
   GenerateSyntheticDataListJobsResponse,
@@ -61,6 +62,7 @@ export declare namespace Data {
 
   export {
     GenerateSyntheticData as GenerateSyntheticData,
+    type GenerateSyntheticDataCancelResponse as GenerateSyntheticDataCancelResponse,
     type GenerateSyntheticDataListJobsResponse as GenerateSyntheticDataListJobsResponse,
     type GenerateSyntheticDataStreamDataResponse as GenerateSyntheticDataStreamDataResponse,
     type GenerateSyntheticDataStreamMessagesResponse as GenerateSyntheticDataStreamMessagesResponse,

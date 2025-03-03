@@ -6,6 +6,7 @@ import * as Shared from '../shared';
 import * as CalibrateAPI from './calibrate';
 import {
   Calibrate,
+  CalibrateCancelResponse,
   CalibrateListParams,
   CalibrateListResponse,
   CalibrateStartJobParams,
@@ -124,6 +125,7 @@ export declare namespace Contracts {
     type ContractCalibrationStatus as ContractCalibrationStatus,
     type State as State,
     type CalibrateListResponse as CalibrateListResponse,
+    type CalibrateCancelResponse as CalibrateCancelResponse,
     type CalibrateStreamMessagesResponse as CalibrateStreamMessagesResponse,
     type CalibrateListParams as CalibrateListParams,
     type CalibrateStartJobParams as CalibrateStartJobParams,

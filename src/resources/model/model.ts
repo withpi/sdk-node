@@ -4,6 +4,7 @@ import { APIResource } from '../../resource';
 import * as SftAPI from './sft';
 import {
   Sft,
+  SftCancelResponse,
   SftDownloadParams,
   SftDownloadResponse,
   SftListParams,
@@ -28,6 +29,7 @@ export declare namespace Model {
     Sft as Sft,
     type SftStatus as SftStatus,
     type SftListResponse as SftListResponse,
+    type SftCancelResponse as SftCancelResponse,
     type SftDownloadResponse as SftDownloadResponse,
     type SftStreamMessagesResponse as SftStreamMessagesResponse,
     type SftListParams as SftListParams,
