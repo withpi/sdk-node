@@ -16,6 +16,13 @@ export class GenerateFromSeeds extends APIResource {
   }
 
   /**
+   * Cancels a Data Generation job
+   */
+  cancel(jobId: string, options?: Core.RequestOptions): Core.APIPromise<unknown> {
+    return this._client.delete(`/data/input/generate_from_seeds/${jobId}`, options);
+  }
+
+  /**
    * Launches a Data Generation job
    */
   generate(
@@ -63,6 +70,8 @@ export class GenerateFromSeeds extends APIResource {
     });
   }
 }
+
+export type GenerateFromSeedCancelResponse = unknown;
 
 export type GenerateFromSeedListJobsResponse = Array<DataAPI.DataGenerationStatus>;
 
@@ -113,6 +122,7 @@ export interface GenerateFromSeedListJobsParams {
 
 export declare namespace GenerateFromSeeds {
   export {
+    type GenerateFromSeedCancelResponse as GenerateFromSeedCancelResponse,
     type GenerateFromSeedListJobsResponse as GenerateFromSeedListJobsResponse,
     type GenerateFromSeedStreamDataResponse as GenerateFromSeedStreamDataResponse,
     type GenerateFromSeedStreamMessagesResponse as GenerateFromSeedStreamMessagesResponse,

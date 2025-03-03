@@ -13,6 +13,7 @@ export { Model } from './model/model';
 export {
   Prompt,
   type PromptOptimizationStatus,
+  type PromptCancelOptimizationJobResponse,
   type PromptListOptimizationJobsResponse,
   type PromptStreamMessagesResponse,
   type PromptListOptimizationJobsParams,

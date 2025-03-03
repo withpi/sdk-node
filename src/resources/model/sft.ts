@@ -30,6 +30,13 @@ export class Sft extends APIResource {
   }
 
   /**
+   * Cancels a SFT job
+   */
+  cancel(jobId: string, options?: Core.RequestOptions): Core.APIPromise<unknown> {
+    return this._client.delete(`/model/sft/${jobId}`, options);
+  }
+
+  /**
    * Allows downloading a SFT job
    */
   download(jobId: string, params: SftDownloadParams, options?: Core.RequestOptions): Core.APIPromise<string> {
@@ -89,6 +96,8 @@ export interface SftStatus {
 
 export type SftListResponse = Array<Shared.SftStatus>;
 
+export type SftCancelResponse = unknown;
+
 export type SftDownloadResponse = string;
 
 export type SftStreamMessagesResponse = string;
@@ -141,6 +150,7 @@ export declare namespace Sft {
   export {
     type SftStatus as SftStatus,
     type SftListResponse as SftListResponse,
+    type SftCancelResponse as SftCancelResponse,
     type SftDownloadResponse as SftDownloadResponse,
     type SftStreamMessagesResponse as SftStreamMessagesResponse,
     type SftListParams as SftListParams,

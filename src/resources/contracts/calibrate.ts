@@ -29,6 +29,13 @@ export class Calibrate extends APIResource {
   }
 
   /**
+   * Cancels a Contract Calibration job
+   */
+  cancel(jobId: string, options?: Core.RequestOptions): Core.APIPromise<unknown> {
+    return this._client.delete(`/contracts/calibrate/${jobId}`, options);
+  }
+
+  /**
    * Launches a Contract Calibration job
    */
   startJob(
@@ -71,9 +78,11 @@ export interface ContractCalibrationStatus {
   calibrated_contract?: Shared.Contract | null;
 }
 
-export type State = 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
+export type State = 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
 
 export type CalibrateListResponse = Array<Shared.ContractCalibrationStatus>;
+
+export type CalibrateCancelResponse = unknown;
 
 export type CalibrateStreamMessagesResponse = string;
 
@@ -156,6 +165,7 @@ export declare namespace Calibrate {
     type ContractCalibrationStatus as ContractCalibrationStatus,
     type State as State,
     type CalibrateListResponse as CalibrateListResponse,
+    type CalibrateCancelResponse as CalibrateCancelResponse,
     type CalibrateStreamMessagesResponse as CalibrateStreamMessagesResponse,
     type CalibrateListParams as CalibrateListParams,
     type CalibrateStartJobParams as CalibrateStartJobParams,

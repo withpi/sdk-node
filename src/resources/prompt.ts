@@ -15,6 +15,13 @@ export class Prompt extends APIResource {
   }
 
   /**
+   * Cancels a Prompt Optimization job
+   */
+  cancelOptimizationJob(jobId: string, options?: Core.RequestOptions): Core.APIPromise<unknown> {
+    return this._client.delete(`/prompt/optimize/${jobId}`, options);
+  }
+
+  /**
    * Lists the Prompt Optimization Jobs owned by a user
    */
   listOptimizationJobs(
@@ -79,6 +86,8 @@ export interface PromptOptimizationStatus {
   optimized_prompt_messages?: Array<Record<string, string>>;
 }
 
+export type PromptCancelOptimizationJobResponse = unknown;
+
 export type PromptListOptimizationJobsResponse = Array<Shared.PromptOptimizationStatus>;
 
 export type PromptStreamMessagesResponse = string;
@@ -132,6 +141,7 @@ export interface PromptOptimizeParams {
 export declare namespace Prompt {
   export {
     type PromptOptimizationStatus as PromptOptimizationStatus,
+    type PromptCancelOptimizationJobResponse as PromptCancelOptimizationJobResponse,
     type PromptListOptimizationJobsResponse as PromptListOptimizationJobsResponse,
     type PromptStreamMessagesResponse as PromptStreamMessagesResponse,
     type PromptListOptimizationJobsParams as PromptListOptimizationJobsParams,

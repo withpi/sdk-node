@@ -3,6 +3,7 @@
 export { Data, type DataGenerationStatus } from './data';
 export {
   GenerateSyntheticData,
+  type GenerateSyntheticDataCancelResponse,
   type GenerateSyntheticDataListJobsResponse,
   type GenerateSyntheticDataStreamDataResponse,
   type GenerateSyntheticDataStreamMessagesResponse,

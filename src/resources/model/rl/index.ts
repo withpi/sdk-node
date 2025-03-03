@@ -4,6 +4,7 @@ export {
   Grpo,
   type RlGrpoStatus,
   type GrpoListResponse,
+  type GrpoCancelResponse,
   type GrpoDownloadResponse,
   type GrpoStreamMessagesResponse,
   type GrpoListParams,

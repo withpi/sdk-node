@@ -6,6 +6,7 @@ import * as CalibrateAPI from '../../contracts/calibrate';
 import * as GrpoAPI from './grpo';
 import {
   Grpo,
+  GrpoCancelResponse,
   GrpoDownloadParams,
   GrpoDownloadResponse,
   GrpoListParams,
@@ -53,6 +54,7 @@ export declare namespace Rl {
     Grpo as Grpo,
     type GrpoAPIRlGrpoStatus as RlGrpoStatus,
     type GrpoListResponse as GrpoListResponse,
+    type GrpoCancelResponse as GrpoCancelResponse,
     type GrpoDownloadResponse as GrpoDownloadResponse,
     type GrpoStreamMessagesResponse as GrpoStreamMessagesResponse,
     type GrpoListParams as GrpoListParams,
