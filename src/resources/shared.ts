@@ -21,11 +21,6 @@ export interface Contract {
 
 export interface ContractCalibrationStatus {
   /**
-   * The calibrated contract
-   */
-  calibrated_contract: Contract | null;
-
-  /**
    * Detailed status of the job
    */
   detailed_status: Array<string>;
@@ -39,6 +34,11 @@ export interface ContractCalibrationStatus {
    * Current state of the job
    */
   state: CalibrateAPI.State;
+
+  /**
+   * The calibrated contract
+   */
+  calibrated_contract?: Contract | null;
 }
 
 /**
@@ -146,15 +146,15 @@ export interface PromptOptimizationStatus {
   job_id: string;
 
   /**
-   * The optimized prompt messages in the OpenAI message format with the jinja
-   * {{ input }} variable for the next user prompt
-   */
-  optimized_prompt_messages: Array<Record<string, string>>;
-
-  /**
    * Current state of the job
    */
   state: CalibrateAPI.State;
+
+  /**
+   * The optimized prompt messages in the OpenAI message format with the jinja
+   * {{ input }} variable for the next user prompt
+   */
+  optimized_prompt_messages?: Array<Record<string, string>>;
 }
 
 /**

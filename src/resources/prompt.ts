@@ -68,15 +68,15 @@ export interface PromptOptimizationStatus {
   job_id: string;
 
   /**
-   * The optimized prompt messages in the OpenAI message format with the jinja
-   * {{ input }} variable for the next user prompt
-   */
-  optimized_prompt_messages: Array<Record<string, string>>;
-
-  /**
    * Current state of the job
    */
   state: CalibrateAPI.State;
+
+  /**
+   * The optimized prompt messages in the OpenAI message format with the jinja
+   * {{ input }} variable for the next user prompt
+   */
+  optimized_prompt_messages?: Array<Record<string, string>>;
 }
 
 export type PromptListOptimizationJobsResponse = Array<Shared.PromptOptimizationStatus>;
