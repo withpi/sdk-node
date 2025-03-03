@@ -30,8 +30,7 @@ export class Grpo extends APIResource {
   }
 
   /**
-   * Generates a signed URL for downloading a model as a .tar.gz archive for self
-   * hosting.
+   * Allows downloading a RL GRPO job
    */
   download(
     jobId: string,
@@ -43,8 +42,7 @@ export class Grpo extends APIResource {
   }
 
   /**
-   * Load the model into serving. This can support a very small amount of interactive
-   * traffic. Please reach out if you want to use this model in a production setting.
+   * Loads a RL GRPO model into serving for a limited period of time
    */
   load(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.RlGrpoStatus> {
     return this._client.post(`/model/rl/grpo/${jobId}/load`, options);
