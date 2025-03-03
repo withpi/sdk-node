@@ -29,7 +29,7 @@ export class Calibrate extends APIResource {
   }
 
   /**
-   * Start a contract calibration job
+   * Launches a Contract Calibration job
    */
   startJob(
     body: CalibrateStartJobParams,
