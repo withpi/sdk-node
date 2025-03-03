@@ -16,7 +16,7 @@ export class GenerateFromSeeds extends APIResource {
   }
 
   /**
-   * Generates input data from a list of seeds
+   * Launches a Data Generation job
    */
   generate(
     body: GenerateFromSeedGenerateParams,
