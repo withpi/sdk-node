@@ -15,7 +15,7 @@ export class Sft extends APIResource {
   }
 
   /**
-   * Returns a list of SFT jobs, optionally filtered by state
+   * Lists the SFT Jobs owned by a user
    */
   list(query?: SftListParams, options?: Core.RequestOptions): Core.APIPromise<SftListResponse>;
   list(options?: Core.RequestOptions): Core.APIPromise<SftListResponse>;

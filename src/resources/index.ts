@@ -8,12 +8,7 @@ export {
   type ContractReadFromHfParams,
   type ContractScoreParams,
 } from './contracts/contracts';
-export {
-  Data,
-  type DataGenerationStatus,
-  type DataListQuestionAnswerJobsResponse,
-  type DataListQuestionAnswerJobsParams,
-} from './data/data';
+export { Data, type DataGenerationStatus } from './data/data';
 export { Model } from './model/model';
 export {
   Prompt,

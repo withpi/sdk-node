@@ -26,7 +26,7 @@ export class GenerateFromSeeds extends APIResource {
   }
 
   /**
-   * Returns a list of input generation jobs, optionally filtered by state
+   * Lists the Data Generation Jobs owned by a user
    */
   listJobs(
     query?: GenerateFromSeedListJobsParams,
