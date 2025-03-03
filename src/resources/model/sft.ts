@@ -30,8 +30,7 @@ export class Sft extends APIResource {
   }
 
   /**
-   * Generates a signed URL for downloading a model as a .tar.gz archive for self
-   * hosting.
+   * Allows downloading a SFT job
    */
   download(jobId: string, params: SftDownloadParams, options?: Core.RequestOptions): Core.APIPromise<string> {
     const { serving_id } = params;
@@ -39,9 +38,7 @@ export class Sft extends APIResource {
   }
 
   /**
-   * Load the SFT model into serving. This can support a very small amount of
-   * interactive traffic. Please reach out if you want to use this model in a
-   * production setting.
+   * Loads a SFT model into serving for a limited period of time
    */
   load(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.SftStatus> {
     return this._client.post(`/model/sft/${jobId}/load`, options);
