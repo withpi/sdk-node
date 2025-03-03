@@ -28,11 +28,6 @@ Types:
 Types:
 
 - <code><a href="./src/resources/data/data.ts">DataGenerationStatus</a></code>
-- <code><a href="./src/resources/data/data.ts">DataListQuestionAnswerJobsResponse</a></code>
-
-Methods:
-
-- <code title="get /data/generate_question_answers">client.data.<a href="./src/resources/data/data.ts">listQuestionAnswerJobs</a>({ ...params }) -> DataListQuestionAnswerJobsResponse</code>
 
 ## Inputs
 

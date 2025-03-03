@@ -14,7 +14,7 @@ export class Calibrate extends APIResource {
   }
 
   /**
-   * Returns a list of contract calibration jobs, optionally filtered by state
+   * Lists the Contract Calibration Jobs owned by a user
    */
   list(query?: CalibrateListParams, options?: Core.RequestOptions): Core.APIPromise<CalibrateListResponse>;
   list(options?: Core.RequestOptions): Core.APIPromise<CalibrateListResponse>;

@@ -15,7 +15,7 @@ export class Prompt extends APIResource {
   }
 
   /**
-   * Returns a list of prompt optimization jobs, optionally filtered by state
+   * Lists the Prompt Optimization Jobs owned by a user
    */
   listOptimizationJobs(
     query?: PromptListOptimizationJobsParams,

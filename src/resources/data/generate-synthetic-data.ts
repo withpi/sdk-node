@@ -25,7 +25,7 @@ export class GenerateSyntheticData extends APIResource {
   }
 
   /**
-   * Returns a list of synthetic datajobs, optionally filtered by state
+   * Lists the Synthetic Data Generation Jobs owned by a user
    */
   listJobs(
     query?: GenerateSyntheticDataListJobsParams,
