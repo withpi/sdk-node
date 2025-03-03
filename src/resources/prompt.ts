@@ -17,7 +17,7 @@ export class Prompt extends APIResource {
   /**
    * Cancels a Prompt Optimization job
    */
-  cancelOptimizationJob(jobId: string, options?: Core.RequestOptions): Core.APIPromise<unknown> {
+  cancelOptimizationJob(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.delete(`/prompt/optimize/${jobId}`, options);
   }
 
@@ -86,7 +86,7 @@ export interface PromptOptimizationStatus {
   optimized_prompt_messages?: Array<Record<string, string>>;
 }
 
-export type PromptCancelOptimizationJobResponse = unknown;
+export type PromptCancelOptimizationJobResponse = string;
 
 export type PromptListOptimizationJobsResponse = Array<Shared.PromptOptimizationStatus>;
 

@@ -27,7 +27,7 @@ export class GenerateSyntheticData extends APIResource {
   /**
    * Cancels a Synthetic Data Generation job
    */
-  cancel(jobId: string, options?: Core.RequestOptions): Core.APIPromise<unknown> {
+  cancel(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.delete(`/data/generate_synthetic_data/${jobId}`, options);
   }
 
@@ -70,7 +70,7 @@ export class GenerateSyntheticData extends APIResource {
   }
 }
 
-export type GenerateSyntheticDataCancelResponse = unknown;
+export type GenerateSyntheticDataCancelResponse = string;
 
 export type GenerateSyntheticDataListJobsResponse = Array<Shared.SyntheticDataStatus>;
 
