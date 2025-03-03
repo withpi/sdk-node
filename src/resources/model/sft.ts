@@ -32,7 +32,7 @@ export class Sft extends APIResource {
   /**
    * Cancels a SFT job
    */
-  cancel(jobId: string, options?: Core.RequestOptions): Core.APIPromise<unknown> {
+  cancel(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.delete(`/model/sft/${jobId}`, options);
   }
 
@@ -96,7 +96,7 @@ export interface SftStatus {
 
 export type SftListResponse = Array<Shared.SftStatus>;
 
-export type SftCancelResponse = unknown;
+export type SftCancelResponse = string;
 
 export type SftDownloadResponse = string;
 

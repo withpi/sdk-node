@@ -31,7 +31,7 @@ export class Calibrate extends APIResource {
   /**
    * Cancels a Contract Calibration job
    */
-  cancel(jobId: string, options?: Core.RequestOptions): Core.APIPromise<unknown> {
+  cancel(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.delete(`/contracts/calibrate/${jobId}`, options);
   }
 
@@ -82,7 +82,7 @@ export type State = 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
 
 export type CalibrateListResponse = Array<Shared.ContractCalibrationStatus>;
 
-export type CalibrateCancelResponse = unknown;
+export type CalibrateCancelResponse = string;
 
 export type CalibrateStreamMessagesResponse = string;
 
