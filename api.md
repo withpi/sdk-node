@@ -16,6 +16,10 @@ Types:
 - <code><a href="./src/resources/shared.ts">QueryClassificationResponse</a></code>
 - <code><a href="./src/resources/shared.ts">QueryFanoutExample</a></code>
 - <code><a href="./src/resources/shared.ts">RlGrpoStatus</a></code>
+- <code><a href="./src/resources/shared.ts">SDKActionDimension</a></code>
+- <code><a href="./src/resources/shared.ts">SDKContract</a></code>
+- <code><a href="./src/resources/shared.ts">SDKExample</a></code>
+- <code><a href="./src/resources/shared.ts">SDKExplorationMode</a></code>
 - <code><a href="./src/resources/shared.ts">SftStatus</a></code>
 - <code><a href="./src/resources/shared.ts">State</a></code>
 - <code><a href="./src/resources/shared.ts">SubDimension</a></code>

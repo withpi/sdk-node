@@ -253,6 +253,74 @@ export interface RlGrpoStatus {
   trained_models?: Array<TrainedModel> | null;
 }
 
+export interface SDKActionDimension {
+  /**
+   * The description of the dimension
+   */
+  description: string;
+
+  /**
+   * The label of the dimension
+   */
+  label: string;
+
+  /**
+   * The type of scoring performed for this dimension
+   */
+  scoring_type: DimensionScoringType;
+
+  /**
+   * If `action_on_low_score = True`, the node emits the real value if action
+   * dimension score is <= 0.5 and it returns -1 otherwise.
+   */
+  action_on_low_score?: boolean | null;
+
+  /**
+   * The ID of the custom model to use for scoring. Only relevant for scoring_type of
+   * CUSTOM_MODEL_SCORER
+   */
+  custom_model_id?: string | null;
+
+  /**
+   * The PYTHON code associated the PYTHON_CODE DimensionScoringType.
+   */
+  python_code?: string | null;
+}
+
+export interface SDKContract {
+  /**
+   * The description of the contract
+   */
+  description: string;
+
+  /**
+   * The name of the contract
+   */
+  name: string;
+
+  /**
+   * The dimensions of the contract
+   */
+  dimensions?: Array<Dimension>;
+}
+
+/**
+ * An example for training or evaluation
+ */
+export interface SDKExample {
+  /**
+   * The input to LLM
+   */
+  llm_input: string;
+
+  /**
+   * The output to evaluate
+   */
+  llm_output: string;
+}
+
+export type SDKExplorationMode = 'CONSERVATIVE' | 'BALANCED' | 'CREATIVE' | 'ADVENTUROUS';
+
 /**
  * SftStatus is the status of a SFT job.
  */
