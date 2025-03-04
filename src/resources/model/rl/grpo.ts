@@ -4,7 +4,6 @@ import { APIResource } from '../../../resource';
 import { isRequestOptions } from '../../../core';
 import * as Core from '../../../core';
 import * as Shared from '../../shared';
-import * as CalibrateAPI from '../../contracts/calibrate';
 
 export class Grpo extends APIResource {
   /**
@@ -73,31 +72,6 @@ export class Grpo extends APIResource {
   }
 }
 
-/**
- * RlGrpoStatus is the status of a RL PPO job.
- */
-export interface RlGrpoStatus {
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
-
-  /**
-   * The job id
-   */
-  job_id: string;
-
-  /**
-   * Current state of the job
-   */
-  state: CalibrateAPI.State;
-
-  /**
-   * A list of trained models selected based on the PI Contract score.
-   */
-  trained_models?: Array<Shared.TrainedModel> | null;
-}
-
 export type GrpoListResponse = Array<Shared.RlGrpoStatus>;
 
 export type GrpoCancelResponse = string;
@@ -110,7 +84,7 @@ export interface GrpoListParams {
   /**
    * Filter jobs by state
    */
-  state?: CalibrateAPI.State | null;
+  state?: Shared.State | null;
 }
 
 export interface GrpoDownloadParams {
@@ -168,7 +142,6 @@ export namespace GrpoStartJobParams {
 
 export declare namespace Grpo {
   export {
-    type RlGrpoStatus as RlGrpoStatus,
     type GrpoListResponse as GrpoListResponse,
     type GrpoCancelResponse as GrpoCancelResponse,
     type GrpoDownloadResponse as GrpoDownloadResponse,

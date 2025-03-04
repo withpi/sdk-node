@@ -11,8 +11,6 @@ import {
   CalibrateListResponse,
   CalibrateStartJobParams,
   CalibrateStreamMessagesResponse,
-  ContractCalibrationStatus,
-  State,
 } from './calibrate';
 
 export class Contracts extends APIResource {
@@ -122,8 +120,6 @@ export declare namespace Contracts {
 
   export {
     Calibrate as Calibrate,
-    type ContractCalibrationStatus as ContractCalibrationStatus,
-    type State as State,
     type CalibrateListResponse as CalibrateListResponse,
     type CalibrateCancelResponse as CalibrateCancelResponse,
     type CalibrateStreamMessagesResponse as CalibrateStreamMessagesResponse,

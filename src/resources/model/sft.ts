@@ -4,7 +4,6 @@ import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as Shared from '../shared';
-import * as CalibrateAPI from '../contracts/calibrate';
 
 export class Sft extends APIResource {
   /**
@@ -69,31 +68,6 @@ export class Sft extends APIResource {
   }
 }
 
-/**
- * SftStatus is the status of a SFT job.
- */
-export interface SftStatus {
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
-
-  /**
-   * The job id
-   */
-  job_id: string;
-
-  /**
-   * Current state of the job
-   */
-  state: CalibrateAPI.State;
-
-  /**
-   * A list of trained models selected based on the PI Contract score.
-   */
-  trained_models?: Array<Shared.TrainedModel> | null;
-}
-
 export type SftListResponse = Array<Shared.SftStatus>;
 
 export type SftCancelResponse = string;
@@ -106,7 +80,7 @@ export interface SftListParams {
   /**
    * Filter jobs by state
    */
-  state?: CalibrateAPI.State | null;
+  state?: Shared.State | null;
 }
 
 export interface SftDownloadParams {
@@ -153,7 +127,6 @@ export interface SftStartJobParams {
 
 export declare namespace Sft {
   export {
-    type SftStatus as SftStatus,
     type SftListResponse as SftListResponse,
     type SftCancelResponse as SftCancelResponse,
     type SftDownloadResponse as SftDownloadResponse,

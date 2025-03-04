@@ -2,21 +2,20 @@
 
 Types:
 
+- <code><a href="./src/resources/shared.ts">ActionDimension</a></code>
 - <code><a href="./src/resources/shared.ts">Contract</a></code>
 - <code><a href="./src/resources/shared.ts">ContractCalibrationStatus</a></code>
 - <code><a href="./src/resources/shared.ts">DataGenerationStatus</a></code>
 - <code><a href="./src/resources/shared.ts">Dimension</a></code>
 - <code><a href="./src/resources/shared.ts">DimensionScoringType</a></code>
 - <code><a href="./src/resources/shared.ts">Example</a></code>
+- <code><a href="./src/resources/shared.ts">ExplorationMode</a></code>
 - <code><a href="./src/resources/shared.ts">FinetuningBaseModel</a></code>
 - <code><a href="./src/resources/shared.ts">LoraConfig</a></code>
 - <code><a href="./src/resources/shared.ts">PromptOptimizationStatus</a></code>
+- <code><a href="./src/resources/shared.ts">QueryClassificationResponse</a></code>
 - <code><a href="./src/resources/shared.ts">QueryFanoutExample</a></code>
 - <code><a href="./src/resources/shared.ts">RlGrpoStatus</a></code>
-- <code><a href="./src/resources/shared.ts">SDKActionDimension</a></code>
-- <code><a href="./src/resources/shared.ts">SDKContract</a></code>
-- <code><a href="./src/resources/shared.ts">SDKExample</a></code>
-- <code><a href="./src/resources/shared.ts">SDKExplorationMode</a></code>
 - <code><a href="./src/resources/shared.ts">SftStatus</a></code>
 - <code><a href="./src/resources/shared.ts">State</a></code>
 - <code><a href="./src/resources/shared.ts">SubDimension</a></code>
@@ -24,10 +23,6 @@ Types:
 - <code><a href="./src/resources/shared.ts">TrainedModel</a></code>
 
 # Data
-
-Types:
-
-- <code><a href="./src/resources/data/data.ts">DataGenerationStatus</a></code>
 
 ## Inputs
 
@@ -80,7 +75,6 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/prompt.ts">PromptOptimizationStatus</a></code>
 - <code><a href="./src/resources/prompt.ts">PromptCancelOptimizationJobResponse</a></code>
 - <code><a href="./src/resources/prompt.ts">PromptListOptimizationJobsResponse</a></code>
 - <code><a href="./src/resources/prompt.ts">PromptStreamMessagesResponse</a></code>
@@ -99,7 +93,6 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/model/sft.ts">SftStatus</a></code>
 - <code><a href="./src/resources/model/sft.ts">SftListResponse</a></code>
 - <code><a href="./src/resources/model/sft.ts">SftCancelResponse</a></code>
 - <code><a href="./src/resources/model/sft.ts">SftDownloadResponse</a></code>
@@ -117,15 +110,10 @@ Methods:
 
 ## Rl
 
-Types:
-
-- <code><a href="./src/resources/model/rl/rl.ts">RlGrpoStatus</a></code>
-
 ### Grpo
 
 Types:
 
-- <code><a href="./src/resources/model/rl/grpo.ts">RlGrpoStatus</a></code>
 - <code><a href="./src/resources/model/rl/grpo.ts">GrpoListResponse</a></code>
 - <code><a href="./src/resources/model/rl/grpo.ts">GrpoCancelResponse</a></code>
 - <code><a href="./src/resources/model/rl/grpo.ts">GrpoDownloadResponse</a></code>
@@ -157,8 +145,6 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/contracts/calibrate.ts">ContractCalibrationStatus</a></code>
-- <code><a href="./src/resources/contracts/calibrate.ts">State</a></code>
 - <code><a href="./src/resources/contracts/calibrate.ts">CalibrateListResponse</a></code>
 - <code><a href="./src/resources/contracts/calibrate.ts">CalibrateCancelResponse</a></code>
 - <code><a href="./src/resources/contracts/calibrate.ts">CalibrateStreamMessagesResponse</a></code>
@@ -175,7 +161,6 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/queries.ts">QueryClassificationResponse</a></code>
 - <code><a href="./src/resources/queries.ts">QueryGenerateFanoutsResponse</a></code>
 
 Methods:
