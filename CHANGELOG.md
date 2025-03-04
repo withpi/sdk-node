@@ -1,5 +1,37 @@
 # Changelog
 
+## 0.1.0-alpha.79 (2025-03-04)
+
+Full Changelog: [v0.1.0-alpha.78...v0.1.0-alpha.79](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.78...v0.1.0-alpha.79)
+
+### Features
+
+* **api:** api update ([#323](https://github.com/withpi/sdk-node/issues/323)) ([69ddc5e](https://github.com/withpi/sdk-node/commit/69ddc5ec800adf94fb7af449c70f230932380e6f))
+* **api:** api update ([#324](https://github.com/withpi/sdk-node/issues/324)) ([b39d9d5](https://github.com/withpi/sdk-node/commit/b39d9d5c7a7ebf62162ca7c70a5796e32eff8e52))
+* **api:** api update ([#326](https://github.com/withpi/sdk-node/issues/326)) ([842be20](https://github.com/withpi/sdk-node/commit/842be202f566ed705a95a268db359f6ecac62ac2))
+* **api:** api update ([#327](https://github.com/withpi/sdk-node/issues/327)) ([993df29](https://github.com/withpi/sdk-node/commit/993df29335c0bc5c5b1612f3e4be1b03bc30be90))
+* **api:** api update ([#329](https://github.com/withpi/sdk-node/issues/329)) ([df5443c](https://github.com/withpi/sdk-node/commit/df5443ced5a527cdb19c55cfe3112d3f39d1e89d))
+* **api:** api update ([#330](https://github.com/withpi/sdk-node/issues/330)) ([36aaf44](https://github.com/withpi/sdk-node/commit/36aaf44f039f85225793d54853e26ce6e370430e))
+* **api:** api update ([#331](https://github.com/withpi/sdk-node/issues/331)) ([0b35077](https://github.com/withpi/sdk-node/commit/0b35077fe319ae16eac652504b2d1555751bf5b7))
+* **api:** api update ([#332](https://github.com/withpi/sdk-node/issues/332)) ([02b18ce](https://github.com/withpi/sdk-node/commit/02b18ce58d306fe9144c2b1ec6c485b55b08e51c))
+* **api:** api update ([#333](https://github.com/withpi/sdk-node/issues/333)) ([900da4d](https://github.com/withpi/sdk-node/commit/900da4d3e4c3c598c94a0aa4a04d885ae29c8e75))
+* **api:** api update ([#334](https://github.com/withpi/sdk-node/issues/334)) ([0f4344a](https://github.com/withpi/sdk-node/commit/0f4344a6d5ceebce0eb441a11500d5e9e1a73efb))
+* **api:** api update ([#335](https://github.com/withpi/sdk-node/issues/335)) ([dbf0716](https://github.com/withpi/sdk-node/commit/dbf071671bc5969a8016279a7d9060618e7e0005))
+* **api:** api update ([#336](https://github.com/withpi/sdk-node/issues/336)) ([f7399ae](https://github.com/withpi/sdk-node/commit/f7399ae4da6bb8a4ab9b4571459c08546c8cbdf6))
+* **api:** api update ([#337](https://github.com/withpi/sdk-node/issues/337)) ([aa51332](https://github.com/withpi/sdk-node/commit/aa5133210b78c89c1de77b05db94cb352b1c10cb))
+* **api:** api update ([#338](https://github.com/withpi/sdk-node/issues/338)) ([e519a03](https://github.com/withpi/sdk-node/commit/e519a03fdf1f47ec4172c7f4b69e1bdeb94e83b0))
+* **api:** api update ([#339](https://github.com/withpi/sdk-node/issues/339)) ([7b4d74b](https://github.com/withpi/sdk-node/commit/7b4d74b5abc10be982c0f454046c814d048e635f))
+* **api:** api update ([#340](https://github.com/withpi/sdk-node/issues/340)) ([cacdbed](https://github.com/withpi/sdk-node/commit/cacdbed77e9b431206b7da2ffd6cf7f825c0d95f))
+* **api:** api update ([#341](https://github.com/withpi/sdk-node/issues/341)) ([853056d](https://github.com/withpi/sdk-node/commit/853056ddacdcce826a0be23d30bfa12ee345806b))
+* **api:** api update ([#342](https://github.com/withpi/sdk-node/issues/342)) ([0b66b46](https://github.com/withpi/sdk-node/commit/0b66b4627531b4880525fcfe0ca052cba53d74d6))
+* **api:** api update ([#343](https://github.com/withpi/sdk-node/issues/343)) ([266e4ed](https://github.com/withpi/sdk-node/commit/266e4edc56a62c3cb03ae8d4b1c947a51d9cd774))
+* **api:** manual updates ([#344](https://github.com/withpi/sdk-node/issues/344)) ([8d85635](https://github.com/withpi/sdk-node/commit/8d856355eb2cdb6956b6f2dd9a28a80732f94f21))
+
+
+### Documentation
+
+* update URLs from stainlessapi.com to stainless.com ([#328](https://github.com/withpi/sdk-node/issues/328)) ([0049cb0](https://github.com/withpi/sdk-node/commit/0049cb0c9ea01b6c882f23c7a35eacae9235a7a8))
+
 ## 0.1.0-alpha.78 (2025-02-26)
 
 Full Changelog: [v0.1.0-alpha.77...v0.1.0-alpha.78](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.77...v0.1.0-alpha.78)
