@@ -7,11 +7,18 @@ import * as Uploads from './uploads';
 import * as API from './resources/index';
 import {
   Prompt,
-  PromptOptimizationStatus,
+  PromptCancelOptimizationJobResponse,
+  PromptListOptimizationJobsParams,
+  PromptListOptimizationJobsResponse,
   PromptOptimizeParams,
   PromptStreamMessagesResponse,
 } from './resources/prompt';
-import { Queries, QueryGenerateFanoutsParams, QueryGenerateFanoutsResponse } from './resources/queries';
+import {
+  Queries,
+  QueryClassifyParams,
+  QueryGenerateFanoutsParams,
+  QueryGenerateFanoutsResponse,
+} from './resources/queries';
 import {
   ContractGenerateDimensionsParams,
   ContractReadFromHfParams,
@@ -19,7 +26,7 @@ import {
   Contracts,
   ContractsScoreMetrics,
 } from './resources/contracts/contracts';
-import { Data, DataGenerationStatus } from './resources/data/data';
+import { Data } from './resources/data/data';
 import { Model } from './resources/model/model';
 
 export interface ClientOptions {
@@ -185,12 +192,14 @@ PiClient.Queries = Queries;
 export declare namespace PiClient {
   export type RequestOptions = Core.RequestOptions;
 
-  export { Data as Data, type DataGenerationStatus as DataGenerationStatus };
+  export { Data as Data };
 
   export {
     Prompt as Prompt,
-    type PromptOptimizationStatus as PromptOptimizationStatus,
+    type PromptCancelOptimizationJobResponse as PromptCancelOptimizationJobResponse,
+    type PromptListOptimizationJobsResponse as PromptListOptimizationJobsResponse,
     type PromptStreamMessagesResponse as PromptStreamMessagesResponse,
+    type PromptListOptimizationJobsParams as PromptListOptimizationJobsParams,
     type PromptOptimizeParams as PromptOptimizeParams,
   };
 
@@ -207,13 +216,29 @@ export declare namespace PiClient {
   export {
     Queries as Queries,
     type QueryGenerateFanoutsResponse as QueryGenerateFanoutsResponse,
+    type QueryClassifyParams as QueryClassifyParams,
     type QueryGenerateFanoutsParams as QueryGenerateFanoutsParams,
   };
 
+  export type ActionDimension = API.ActionDimension;
   export type Contract = API.Contract;
+  export type ContractCalibrationStatus = API.ContractCalibrationStatus;
+  export type DataGenerationStatus = API.DataGenerationStatus;
   export type Dimension = API.Dimension;
+  export type DimensionScoringType = API.DimensionScoringType;
   export type Example = API.Example;
+  export type ExplorationMode = API.ExplorationMode;
+  export type FinetuningBaseModel = API.FinetuningBaseModel;
+  export type LoraConfig = API.LoraConfig;
+  export type PromptOptimizationStatus = API.PromptOptimizationStatus;
+  export type QueryClassificationResponse = API.QueryClassificationResponse;
+  export type QueryFanoutExample = API.QueryFanoutExample;
+  export type RlGrpoStatus = API.RlGrpoStatus;
+  export type SftStatus = API.SftStatus;
+  export type State = API.State;
   export type SubDimension = API.SubDimension;
+  export type SyntheticDataStatus = API.SyntheticDataStatus;
+  export type TrainedModel = API.TrainedModel;
 }
 
 export { toFile, fileFromPath } from './uploads';

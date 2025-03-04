@@ -6,9 +6,11 @@ import * as Shared from '../shared';
 import * as CalibrateAPI from './calibrate';
 import {
   Calibrate,
+  CalibrateCancelResponse,
+  CalibrateListParams,
+  CalibrateListResponse,
   CalibrateStartJobParams,
   CalibrateStreamMessagesResponse,
-  ContractCalibrationStatus,
 } from './calibrate';
 
 export class Contracts extends APIResource {
@@ -118,8 +120,10 @@ export declare namespace Contracts {
 
   export {
     Calibrate as Calibrate,
-    type ContractCalibrationStatus as ContractCalibrationStatus,
+    type CalibrateListResponse as CalibrateListResponse,
+    type CalibrateCancelResponse as CalibrateCancelResponse,
     type CalibrateStreamMessagesResponse as CalibrateStreamMessagesResponse,
+    type CalibrateListParams as CalibrateListParams,
     type CalibrateStartJobParams as CalibrateStartJobParams,
   };
 }

@@ -27,6 +27,64 @@ describe('resource sft', () => {
     );
   });
 
+  test('list', async () => {
+    const responsePromise = client.model.sft.list();
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('list: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(client.model.sft.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+      PiClient.NotFoundError,
+    );
+  });
+
+  test('list: request options and params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.model.sft.list({ state: 'QUEUED' }, { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(PiClient.NotFoundError);
+  });
+
+  test('cancel', async () => {
+    const responsePromise = client.model.sft.cancel('job_id');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('cancel: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(client.model.sft.cancel('job_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+      PiClient.NotFoundError,
+    );
+  });
+
+  test('download: only required params', async () => {
+    const responsePromise = client.model.sft.download('job_id', { serving_id: 0 });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('download: required and optional params', async () => {
+    const response = await client.model.sft.download('job_id', { serving_id: 0 });
+  });
+
   test('load', async () => {
     const responsePromise = client.model.sft.load('job_id');
     const rawResponse = await responsePromise.asResponse();
@@ -125,7 +183,9 @@ describe('resource sft', () => {
       ],
       base_sft_model: 'LLAMA_3.2_3B',
       learning_rate: 0.0002,
+      lora_config: { lora_rank: 'R_16' },
       num_train_epochs: 10,
+      system_prompt: 'An optional system prompt.',
     });
   });
 

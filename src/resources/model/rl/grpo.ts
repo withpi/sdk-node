@@ -1,35 +1,68 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../../resource';
+import { isRequestOptions } from '../../../core';
 import * as Core from '../../../core';
 import * as Shared from '../../shared';
 
 export class Grpo extends APIResource {
   /**
-   * Get the current status of the RL GRPO job
+   * Checks the status of a RL GRPO job
    */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<RlGrpoStatus> {
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.RlGrpoStatus> {
     return this._client.get(`/model/rl/grpo/${jobId}`, options);
   }
 
   /**
-   * Load the model into serving. This can support a very small amount of interactive
-   * traffic. Please reach out if you want to use this model in a production setting.
+   * Lists the RL GRPO Jobs owned by a user
    */
-  load(jobId: string, options?: Core.RequestOptions): Core.APIPromise<RlGrpoStatus> {
+  list(query?: GrpoListParams, options?: Core.RequestOptions): Core.APIPromise<GrpoListResponse>;
+  list(options?: Core.RequestOptions): Core.APIPromise<GrpoListResponse>;
+  list(
+    query: GrpoListParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<GrpoListResponse> {
+    if (isRequestOptions(query)) {
+      return this.list({}, query);
+    }
+    return this._client.get('/model/rl/grpo', { query, ...options });
+  }
+
+  /**
+   * Cancels a RL GRPO job
+   */
+  cancel(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+    return this._client.delete(`/model/rl/grpo/${jobId}`, options);
+  }
+
+  /**
+   * Allows downloading a RL GRPO job
+   */
+  download(
+    jobId: string,
+    params: GrpoDownloadParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<string> {
+    const { serving_id } = params;
+    return this._client.post(`/model/rl/grpo/${jobId}/download`, { query: { serving_id }, ...options });
+  }
+
+  /**
+   * Loads a RL GRPO model into serving for a limited period of time
+   */
+  load(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.RlGrpoStatus> {
     return this._client.post(`/model/rl/grpo/${jobId}/load`, options);
   }
 
   /**
-   * Initialize the Group Relative Policy Optimization (GRPO) reinforcement learning
-   * job.
+   * Launches a RL GRPO job
    */
-  startJob(body: GrpoStartJobParams, options?: Core.RequestOptions): Core.APIPromise<RlGrpoStatus> {
+  startJob(body: GrpoStartJobParams, options?: Core.RequestOptions): Core.APIPromise<Shared.RlGrpoStatus> {
     return this._client.post('/model/rl/grpo', { body, ...options });
   }
 
   /**
-   * Streams messages from the RL GRPO job
+   * Opens a message stream about a RL GRPO job
    */
   streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.get(`/model/rl/grpo/${jobId}/messages`, {
@@ -39,73 +72,31 @@ export class Grpo extends APIResource {
   }
 }
 
-/**
- * RlGrpoStatus is the status of a RL PPO job.
- */
-export interface RlGrpoStatus {
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
+export type GrpoListResponse = Array<Shared.RlGrpoStatus>;
 
-  /**
-   * The job id
-   */
-  job_id: string;
+export type GrpoCancelResponse = string;
 
-  /**
-   * Current state of the job
-   */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
-
-  /**
-   * A list of trained models selected based on the PI Contract score.
-   */
-  trained_models?: Array<RlGrpoStatus.TrainedModel> | null;
-}
-
-export namespace RlGrpoStatus {
-  export interface TrainedModel {
-    /**
-     * The PI contract score of the eval set what isn't used in training
-     */
-    contract_score: number;
-
-    /**
-     * The training epoch
-     */
-    epoch: number;
-
-    /**
-     * The evaluation loss
-     */
-    eval_loss: number;
-
-    /**
-     * Firework's hosted model id
-     */
-    firework_hosted_model_id: string;
-
-    /**
-     * Whether the model is loaded in the serving system
-     */
-    is_loaded: boolean;
-
-    /**
-     * The serving id of the trained model within this Job
-     */
-    serving_id: number;
-
-    /**
-     * The training step
-     */
-    step: number;
-  }
-}
+export type GrpoDownloadResponse = string;
 
 export type GrpoStreamMessagesResponse = string;
 
+export interface GrpoListParams {
+  /**
+   * Filter jobs by state
+   */
+  state?: Shared.State | null;
+}
+
+export interface GrpoDownloadParams {
+  serving_id: number;
+}
+
 export interface GrpoStartJobParams {
+  /**
+   * The base model to start the RL tunning process
+   */
+  base_rl_model: Shared.FinetuningBaseModel;
+
   /**
    * The contract to use in the GRPO tuning process
    */
@@ -117,24 +108,24 @@ export interface GrpoStartJobParams {
   examples: Array<GrpoStartJobParams.Example>;
 
   /**
-   * The model to start the RL process
+   * GRPO learning rate
    */
-  model: 'LLAMA_3.2_1B';
+  learning_rate: number;
 
   /**
-   * SFT learning rate
+   * The LoRA configuration.
    */
-  learning_rate?: number;
+  lora_config: Shared.LoraConfig;
 
   /**
-   * SFT number of train epochs
+   * GRPO number of train epochs
    */
-  num_train_epochs?: number;
+  num_train_epochs: number;
 
   /**
    * A custom system prompt to use during the RL tuning process
    */
-  system_prompt?: string | null;
+  system_prompt: string | null;
 }
 
 export namespace GrpoStartJobParams {
@@ -151,8 +142,12 @@ export namespace GrpoStartJobParams {
 
 export declare namespace Grpo {
   export {
-    type RlGrpoStatus as RlGrpoStatus,
+    type GrpoListResponse as GrpoListResponse,
+    type GrpoCancelResponse as GrpoCancelResponse,
+    type GrpoDownloadResponse as GrpoDownloadResponse,
     type GrpoStreamMessagesResponse as GrpoStreamMessagesResponse,
+    type GrpoListParams as GrpoListParams,
+    type GrpoDownloadParams as GrpoDownloadParams,
     type GrpoStartJobParams as GrpoStartJobParams,
   };
 }

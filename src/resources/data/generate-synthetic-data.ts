@@ -1,32 +1,55 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../resource';
+import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as Shared from '../shared';
 
 export class GenerateSyntheticData extends APIResource {
   /**
-   * Generates synthetic data from a list of seeds
+   * Launches a Synthetic Data Generation job
    */
   create(
     body: GenerateSyntheticDataCreateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<GenerateSyntheticDataCreateResponse> {
+  ): Core.APIPromise<Shared.SyntheticDataStatus> {
     return this._client.post('/data/generate_synthetic_data', { body, ...options });
   }
 
   /**
-   * Gets the current status of a synthetic data generation job
+   * Checks the status of a Synthetic Data Generation job
    */
-  retrieve(
-    jobId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<GenerateSyntheticDataRetrieveResponse> {
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.SyntheticDataStatus> {
     return this._client.get(`/data/generate_synthetic_data/${jobId}`, options);
   }
 
   /**
-   * Streams SDKExample objects from the synthetic data generation job
+   * Cancels a Synthetic Data Generation job
+   */
+  cancel(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+    return this._client.delete(`/data/generate_synthetic_data/${jobId}`, options);
+  }
+
+  /**
+   * Lists the Synthetic Data Generation Jobs owned by a user
+   */
+  listJobs(
+    query?: GenerateSyntheticDataListJobsParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<GenerateSyntheticDataListJobsResponse>;
+  listJobs(options?: Core.RequestOptions): Core.APIPromise<GenerateSyntheticDataListJobsResponse>;
+  listJobs(
+    query: GenerateSyntheticDataListJobsParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<GenerateSyntheticDataListJobsResponse> {
+    if (isRequestOptions(query)) {
+      return this.listJobs({}, query);
+    }
+    return this._client.get('/data/generate_synthetic_data', { query, ...options });
+  }
+
+  /**
+   * Streams data from the Synthetic Data Generation job
    */
   streamData(
     jobId: string,
@@ -36,7 +59,7 @@ export class GenerateSyntheticData extends APIResource {
   }
 
   /**
-   * Streams messages from the synthetic data generation job
+   * Opens a message stream about a Synthetic Data Generation job
    */
   streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.get(`/data/generate_synthetic_data/${jobId}/messages`, {
@@ -46,57 +69,9 @@ export class GenerateSyntheticData extends APIResource {
   }
 }
 
-/**
- * SyntheticDataStatus is the result of a synthetic data generation job.
- */
-export interface GenerateSyntheticDataCreateResponse {
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
+export type GenerateSyntheticDataCancelResponse = string;
 
-  /**
-   * The job id
-   */
-  job_id: string;
-
-  /**
-   * Current state of the job
-   */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
-
-  /**
-   * The generated synthetic data. Can be present even if the state is not done/error
-   * as it is streamed.
-   */
-  data?: Array<Shared.Example> | null;
-}
-
-/**
- * SyntheticDataStatus is the result of a synthetic data generation job.
- */
-export interface GenerateSyntheticDataRetrieveResponse {
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
-
-  /**
-   * The job id
-   */
-  job_id: string;
-
-  /**
-   * Current state of the job
-   */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
-
-  /**
-   * The generated synthetic data. Can be present even if the state is not done/error
-   * as it is streamed.
-   */
-  data?: Array<Shared.Example> | null;
-}
+export type GenerateSyntheticDataListJobsResponse = Array<Shared.SyntheticDataStatus>;
 
 export type GenerateSyntheticDataStreamDataResponse =
   Array<GenerateSyntheticDataStreamDataResponse.GenerateSyntheticDataStreamDataResponseItem>;
@@ -136,7 +111,7 @@ export interface GenerateSyntheticDataCreateParams {
   /**
    * The exploration mode for examples generation. Defaults to `BALANCED`
    */
-  exploration_mode?: 'CONSERVATIVE' | 'BALANCED' | 'CREATIVE' | 'ADVENTUROUS';
+  exploration_mode?: Shared.ExplorationMode;
 
   /**
    * Number of examples to be included in the prompt for generation
@@ -149,12 +124,20 @@ export interface GenerateSyntheticDataCreateParams {
   system_prompt?: string | null;
 }
 
+export interface GenerateSyntheticDataListJobsParams {
+  /**
+   * Filter jobs by state
+   */
+  state?: Shared.State | null;
+}
+
 export declare namespace GenerateSyntheticData {
   export {
-    type GenerateSyntheticDataCreateResponse as GenerateSyntheticDataCreateResponse,
-    type GenerateSyntheticDataRetrieveResponse as GenerateSyntheticDataRetrieveResponse,
+    type GenerateSyntheticDataCancelResponse as GenerateSyntheticDataCancelResponse,
+    type GenerateSyntheticDataListJobsResponse as GenerateSyntheticDataListJobsResponse,
     type GenerateSyntheticDataStreamDataResponse as GenerateSyntheticDataStreamDataResponse,
     type GenerateSyntheticDataStreamMessagesResponse as GenerateSyntheticDataStreamMessagesResponse,
     type GenerateSyntheticDataCreateParams as GenerateSyntheticDataCreateParams,
+    type GenerateSyntheticDataListJobsParams as GenerateSyntheticDataListJobsParams,
   };
 }

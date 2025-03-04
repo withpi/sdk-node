@@ -4,9 +4,10 @@ import { APIResource } from '../../resource';
 import * as GenerateSyntheticDataAPI from './generate-synthetic-data';
 import {
   GenerateSyntheticData,
+  GenerateSyntheticDataCancelResponse,
   GenerateSyntheticDataCreateParams,
-  GenerateSyntheticDataCreateResponse,
-  GenerateSyntheticDataRetrieveResponse,
+  GenerateSyntheticDataListJobsParams,
+  GenerateSyntheticDataListJobsResponse,
   GenerateSyntheticDataStreamDataResponse,
   GenerateSyntheticDataStreamMessagesResponse,
 } from './generate-synthetic-data';
@@ -19,38 +20,10 @@ export class Data extends APIResource {
     new GenerateSyntheticDataAPI.GenerateSyntheticData(this._client);
 }
 
-/**
- * DataGenerationStatus is the result of a data generation job.
- */
-export interface DataGenerationStatus {
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
-
-  /**
-   * The job id
-   */
-  job_id: string;
-
-  /**
-   * Current state of the job
-   */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
-
-  /**
-   * The generated data. Can be present even if the state is not done/error as it is
-   * streamed.
-   */
-  data?: Array<string> | null;
-}
-
 Data.Inputs = Inputs;
 Data.GenerateSyntheticData = GenerateSyntheticData;
 
 export declare namespace Data {
-  export { type DataGenerationStatus as DataGenerationStatus };
-
   export {
     Inputs as Inputs,
     type InputTopicCluster as InputTopicCluster,
@@ -60,10 +33,11 @@ export declare namespace Data {
 
   export {
     GenerateSyntheticData as GenerateSyntheticData,
-    type GenerateSyntheticDataCreateResponse as GenerateSyntheticDataCreateResponse,
-    type GenerateSyntheticDataRetrieveResponse as GenerateSyntheticDataRetrieveResponse,
+    type GenerateSyntheticDataCancelResponse as GenerateSyntheticDataCancelResponse,
+    type GenerateSyntheticDataListJobsResponse as GenerateSyntheticDataListJobsResponse,
     type GenerateSyntheticDataStreamDataResponse as GenerateSyntheticDataStreamDataResponse,
     type GenerateSyntheticDataStreamMessagesResponse as GenerateSyntheticDataStreamMessagesResponse,
     type GenerateSyntheticDataCreateParams as GenerateSyntheticDataCreateParams,
+    type GenerateSyntheticDataListJobsParams as GenerateSyntheticDataListJobsParams,
   };
 }

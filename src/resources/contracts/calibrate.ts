@@ -1,29 +1,52 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../resource';
+import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as Shared from '../shared';
 
 export class Calibrate extends APIResource {
   /**
-   * Checks on a contract calibration job
+   * Checks the status of a Contract Calibration job
    */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<ContractCalibrationStatus> {
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.ContractCalibrationStatus> {
     return this._client.get(`/contracts/calibrate/${jobId}`, options);
   }
 
   /**
-   * Start a contract calibration job
+   * Lists the Contract Calibration Jobs owned by a user
+   */
+  list(query?: CalibrateListParams, options?: Core.RequestOptions): Core.APIPromise<CalibrateListResponse>;
+  list(options?: Core.RequestOptions): Core.APIPromise<CalibrateListResponse>;
+  list(
+    query: CalibrateListParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<CalibrateListResponse> {
+    if (isRequestOptions(query)) {
+      return this.list({}, query);
+    }
+    return this._client.get('/contracts/calibrate', { query, ...options });
+  }
+
+  /**
+   * Cancels a Contract Calibration job
+   */
+  cancel(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+    return this._client.delete(`/contracts/calibrate/${jobId}`, options);
+  }
+
+  /**
+   * Launches a Contract Calibration job
    */
   startJob(
     body: CalibrateStartJobParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<ContractCalibrationStatus> {
+  ): Core.APIPromise<Shared.ContractCalibrationStatus> {
     return this._client.post('/contracts/calibrate', { body, ...options });
   }
 
   /**
-   * Opens a message stream about a contract calibration job
+   * Opens a message stream about a Contract Calibration job
    */
   streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.get(`/contracts/calibrate/${jobId}/messages`, {
@@ -33,29 +56,18 @@ export class Calibrate extends APIResource {
   }
 }
 
-export interface ContractCalibrationStatus {
-  /**
-   * The calibrated contract
-   */
-  calibrated_contract: Shared.Contract | null;
+export type CalibrateListResponse = Array<Shared.ContractCalibrationStatus>;
 
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
-
-  /**
-   * The job id
-   */
-  job_id: string;
-
-  /**
-   * Current state of the job
-   */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR';
-}
+export type CalibrateCancelResponse = string;
 
 export type CalibrateStreamMessagesResponse = string;
+
+export interface CalibrateListParams {
+  /**
+   * Filter jobs by state
+   */
+  state?: Shared.State | null;
+}
 
 export interface CalibrateStartJobParams {
   /**
@@ -126,8 +138,10 @@ export namespace CalibrateStartJobParams {
 
 export declare namespace Calibrate {
   export {
-    type ContractCalibrationStatus as ContractCalibrationStatus,
+    type CalibrateListResponse as CalibrateListResponse,
+    type CalibrateCancelResponse as CalibrateCancelResponse,
     type CalibrateStreamMessagesResponse as CalibrateStreamMessagesResponse,
+    type CalibrateListParams as CalibrateListParams,
     type CalibrateStartJobParams as CalibrateStartJobParams,
   };
 }

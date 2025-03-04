@@ -1,5 +1,39 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+export interface ActionDimension {
+  /**
+   * The description of the dimension
+   */
+  description: string;
+
+  /**
+   * The label of the dimension
+   */
+  label: string;
+
+  /**
+   * The type of scoring performed for this dimension
+   */
+  scoring_type: DimensionScoringType;
+
+  /**
+   * If `action_on_low_score = True`, the node emits the real value if action
+   * dimension score is <= 0.5 and it returns -1 otherwise.
+   */
+  action_on_low_score?: boolean | null;
+
+  /**
+   * The ID of the custom model to use for scoring. Only relevant for scoring_type of
+   * CUSTOM_MODEL_SCORER
+   */
+  custom_model_id?: string | null;
+
+  /**
+   * The PYTHON code associated the PYTHON_CODE DimensionScoringType.
+   */
+  python_code?: string | null;
+}
+
 export interface Contract {
   /**
    * The description of the contract
@@ -15,6 +49,54 @@ export interface Contract {
    * The dimensions of the contract
    */
   dimensions?: Array<Dimension>;
+}
+
+export interface ContractCalibrationStatus {
+  /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
+
+  /**
+   * The job id
+   */
+  job_id: string;
+
+  /**
+   * Current state of the job
+   */
+  state: State;
+
+  /**
+   * The calibrated contract
+   */
+  calibrated_contract?: Contract | null;
+}
+
+/**
+ * DataGenerationStatus is the result of a data generation job.
+ */
+export interface DataGenerationStatus {
+  /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
+
+  /**
+   * The job id
+   */
+  job_id: string;
+
+  /**
+   * Current state of the job
+   */
+  state: State;
+
+  /**
+   * The generated data. Can be present even if the state is not done/error as it is
+   * streamed.
+   */
+  data?: Array<string> | null;
 }
 
 export interface Dimension {
@@ -39,7 +121,7 @@ export interface Dimension {
    * the actual score. If it is <= 0.5 return -1. The higher level node will ignore
    * the -1 scores and thus we achieve the short-circuit behavior.
    */
-  action_dimension?: Dimension.ActionDimension | null;
+  action_dimension?: ActionDimension | null;
 
   /**
    * The learned parameters for the scoring method. This represents piecewise linear
@@ -55,47 +137,7 @@ export interface Dimension {
   weight?: number | null;
 }
 
-export namespace Dimension {
-  /**
-   * If `action_dimension` is set, this node is a part of short-circuit subtree. If
-   * the score of the action_dimension is > 0.5, then evaluate the node and return
-   * the actual score. If it is <= 0.5 return -1. The higher level node will ignore
-   * the -1 scores and thus we achieve the short-circuit behavior.
-   */
-  export interface ActionDimension {
-    /**
-     * The description of the dimension
-     */
-    description: string;
-
-    /**
-     * The label of the dimension
-     */
-    label: string;
-
-    /**
-     * The type of scoring performed for this dimension
-     */
-    scoring_type: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER';
-
-    /**
-     * If `action_on_low_score = True`, the node emits the real value if action
-     * dimension score is <= 0.5 and it returns -1 otherwise.
-     */
-    action_on_low_score?: boolean | null;
-
-    /**
-     * The ID of the custom model to use for scoring. Only relevant for scoring_type of
-     * CUSTOM_MODEL_SCORER
-     */
-    custom_model_id?: string | null;
-
-    /**
-     * The PYTHON code associated the PYTHON_CODE DimensionScoringType.
-     */
-    python_code?: string | null;
-  }
-}
+export type DimensionScoringType = 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER';
 
 /**
  * An example for training or evaluation
@@ -112,6 +154,132 @@ export interface Example {
   llm_output: string;
 }
 
+export type ExplorationMode = 'CONSERVATIVE' | 'BALANCED' | 'CREATIVE' | 'ADVENTUROUS';
+
+export type FinetuningBaseModel = 'LLAMA_3.2_3B' | 'LLAMA_3.1_8B';
+
+export interface LoraConfig {
+  /**
+   * The number of dimensions in the low-rank decomposition of the weight updates.
+   */
+  lora_rank?: 'R_16' | 'R_32' | 'R_64';
+}
+
+/**
+ * The optimized_prompt_messages field is an empty list unless the state is done.
+ */
+export interface PromptOptimizationStatus {
+  /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
+
+  /**
+   * The job id
+   */
+  job_id: string;
+
+  /**
+   * Current state of the job
+   */
+  state: State;
+
+  /**
+   * The optimized prompt messages in the OpenAI message format with the jinja
+   * {{ input }} variable for the next user prompt
+   */
+  optimized_prompt_messages?: Array<Record<string, string>>;
+}
+
+export interface QueryClassificationResponse {
+  results: Array<QueryClassificationResponse.Result>;
+}
+
+export namespace QueryClassificationResponse {
+  export interface Result {
+    prediction: string;
+
+    probabilities: Array<Result.Probability>;
+
+    query: string;
+  }
+
+  export namespace Result {
+    export interface Probability {
+      label: string;
+
+      score: number;
+    }
+  }
+}
+
+/**
+ * An input query and its associated fanout queries
+ */
+export interface QueryFanoutExample {
+  /**
+   * The list of fanout queries associated with the input
+   */
+  fanout_queries: Array<string>;
+
+  /**
+   * The input query that the fanout queries are based on.
+   */
+  query: string;
+}
+
+/**
+ * RlGrpoStatus is the status of a RL PPO job.
+ */
+export interface RlGrpoStatus {
+  /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
+
+  /**
+   * The job id
+   */
+  job_id: string;
+
+  /**
+   * Current state of the job
+   */
+  state: State;
+
+  /**
+   * A list of trained models selected based on the PI Contract score.
+   */
+  trained_models?: Array<TrainedModel> | null;
+}
+
+/**
+ * SftStatus is the status of a SFT job.
+ */
+export interface SftStatus {
+  /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
+
+  /**
+   * The job id
+   */
+  job_id: string;
+
+  /**
+   * Current state of the job
+   */
+  state: State;
+
+  /**
+   * A list of trained models selected based on the PI Contract score.
+   */
+  trained_models?: Array<TrainedModel> | null;
+}
+
+export type State = 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
+
 export interface SubDimension {
   /**
    * The description of the dimension
@@ -126,7 +294,7 @@ export interface SubDimension {
   /**
    * The type of scoring performed for this dimension
    */
-  scoring_type: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER';
+  scoring_type: DimensionScoringType;
 
   /**
    * If `action_dimension` is set, this node is a part of short-circuit subtree. If
@@ -134,7 +302,7 @@ export interface SubDimension {
    * the actual score. If it is <= 0.5 return -1. The higher level node will ignore
    * the -1 scores and thus we achieve the short-circuit behavior.
    */
-  action_dimension?: SubDimension.ActionDimension | null;
+  action_dimension?: ActionDimension | null;
 
   /**
    * The ID of the custom model to use for scoring. Only relevant for scoring_type of
@@ -161,44 +329,60 @@ export interface SubDimension {
   weight?: number | null;
 }
 
-export namespace SubDimension {
+/**
+ * SyntheticDataStatus is the result of a synthetic data generation job.
+ */
+export interface SyntheticDataStatus {
   /**
-   * If `action_dimension` is set, this node is a part of short-circuit subtree. If
-   * the score of the action_dimension is > 0.5, then evaluate the node and return
-   * the actual score. If it is <= 0.5 return -1. The higher level node will ignore
-   * the -1 scores and thus we achieve the short-circuit behavior.
+   * Detailed status of the job
    */
-  export interface ActionDimension {
-    /**
-     * The description of the dimension
-     */
-    description: string;
+  detailed_status: Array<string>;
 
-    /**
-     * The label of the dimension
-     */
-    label: string;
+  /**
+   * The job id
+   */
+  job_id: string;
 
-    /**
-     * The type of scoring performed for this dimension
-     */
-    scoring_type: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER';
+  /**
+   * Current state of the job
+   */
+  state: State;
 
-    /**
-     * If `action_on_low_score = True`, the node emits the real value if action
-     * dimension score is <= 0.5 and it returns -1 otherwise.
-     */
-    action_on_low_score?: boolean | null;
+  /**
+   * The generated synthetic data. Can be present even if the state is not done/error
+   * as it is streamed.
+   */
+  data?: Array<Example> | null;
+}
 
-    /**
-     * The ID of the custom model to use for scoring. Only relevant for scoring_type of
-     * CUSTOM_MODEL_SCORER
-     */
-    custom_model_id?: string | null;
+export interface TrainedModel {
+  /**
+   * The PI contract score of the eval set what isn't used in training
+   */
+  contract_score: number;
 
-    /**
-     * The PYTHON code associated the PYTHON_CODE DimensionScoringType.
-     */
-    python_code?: string | null;
-  }
+  /**
+   * The training epoch
+   */
+  epoch: number;
+
+  /**
+   * The evaluation loss
+   */
+  eval_loss: number;
+
+  /**
+   * Whether the model is loaded in the serving system
+   */
+  is_loaded: boolean;
+
+  /**
+   * The serving id of the trained model within this Job
+   */
+  serving_id: number;
+
+  /**
+   * The training step
+   */
+  step: number;
 }

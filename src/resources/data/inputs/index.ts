@@ -2,8 +2,11 @@
 
 export {
   GenerateFromSeeds,
+  type GenerateFromSeedCancelResponse,
+  type GenerateFromSeedListJobsResponse,
   type GenerateFromSeedStreamDataResponse,
   type GenerateFromSeedStreamMessagesResponse,
   type GenerateFromSeedGenerateParams,
+  type GenerateFromSeedListJobsParams,
 } from './generate-from-seeds';
 export { Inputs, type InputTopicCluster, type InputClusterResponse, type InputClusterParams } from './inputs';

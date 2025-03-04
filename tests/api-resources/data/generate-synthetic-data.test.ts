@@ -63,6 +63,49 @@ describe('resource generateSyntheticData', () => {
     ).rejects.toThrow(PiClient.NotFoundError);
   });
 
+  test('cancel', async () => {
+    const responsePromise = client.data.generateSyntheticData.cancel('job_id');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('cancel: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.data.generateSyntheticData.cancel('job_id', { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(PiClient.NotFoundError);
+  });
+
+  test('listJobs', async () => {
+    const responsePromise = client.data.generateSyntheticData.listJobs();
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('listJobs: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.data.generateSyntheticData.listJobs({ path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(PiClient.NotFoundError);
+  });
+
+  test('listJobs: request options and params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.data.generateSyntheticData.listJobs({ state: 'QUEUED' }, { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(PiClient.NotFoundError);
+  });
+
   test('streamData', async () => {
     const responsePromise = client.data.generateSyntheticData.streamData('job_id');
     const rawResponse = await responsePromise.asResponse();

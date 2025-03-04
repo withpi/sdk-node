@@ -4,7 +4,10 @@ import { APIResource } from '../../../resource';
 import * as Core from '../../../core';
 import * as GenerateFromSeedsAPI from './generate-from-seeds';
 import {
+  GenerateFromSeedCancelResponse,
   GenerateFromSeedGenerateParams,
+  GenerateFromSeedListJobsParams,
+  GenerateFromSeedListJobsResponse,
   GenerateFromSeedStreamDataResponse,
   GenerateFromSeedStreamMessagesResponse,
   GenerateFromSeeds,
@@ -74,8 +77,11 @@ export declare namespace Inputs {
 
   export {
     GenerateFromSeeds as GenerateFromSeeds,
+    type GenerateFromSeedCancelResponse as GenerateFromSeedCancelResponse,
+    type GenerateFromSeedListJobsResponse as GenerateFromSeedListJobsResponse,
     type GenerateFromSeedStreamDataResponse as GenerateFromSeedStreamDataResponse,
     type GenerateFromSeedStreamMessagesResponse as GenerateFromSeedStreamMessagesResponse,
     type GenerateFromSeedGenerateParams as GenerateFromSeedGenerateParams,
+    type GenerateFromSeedListJobsParams as GenerateFromSeedListJobsParams,
   };
 }
