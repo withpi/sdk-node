@@ -144,6 +144,11 @@ export interface SftStartJobParams {
    * SFT number of train epochs
    */
   num_train_epochs?: number;
+
+  /**
+   * A custom system prompt to use during the RL tuning process
+   */
+  system_prompt?: string | null;
 }
 
 export declare namespace Sft {
