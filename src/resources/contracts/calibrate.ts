@@ -56,30 +56,6 @@ export class Calibrate extends APIResource {
   }
 }
 
-export interface ContractCalibrationStatus {
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
-
-  /**
-   * The job id
-   */
-  job_id: string;
-
-  /**
-   * Current state of the job
-   */
-  state: State;
-
-  /**
-   * The calibrated contract
-   */
-  calibrated_contract?: Shared.Contract | null;
-}
-
-export type State = 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
-
 export type CalibrateListResponse = Array<Shared.ContractCalibrationStatus>;
 
 export type CalibrateCancelResponse = string;
@@ -90,7 +66,7 @@ export interface CalibrateListParams {
   /**
    * Filter jobs by state
    */
-  state?: State | null;
+  state?: Shared.State | null;
 }
 
 export interface CalibrateStartJobParams {
@@ -162,8 +138,6 @@ export namespace CalibrateStartJobParams {
 
 export declare namespace Calibrate {
   export {
-    type ContractCalibrationStatus as ContractCalibrationStatus,
-    type State as State,
     type CalibrateListResponse as CalibrateListResponse,
     type CalibrateCancelResponse as CalibrateCancelResponse,
     type CalibrateStreamMessagesResponse as CalibrateStreamMessagesResponse,

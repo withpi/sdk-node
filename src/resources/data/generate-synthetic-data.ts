@@ -4,7 +4,6 @@ import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as Shared from '../shared';
-import * as CalibrateAPI from '../contracts/calibrate';
 
 export class GenerateSyntheticData extends APIResource {
   /**
@@ -112,7 +111,7 @@ export interface GenerateSyntheticDataCreateParams {
   /**
    * The exploration mode for examples generation. Defaults to `BALANCED`
    */
-  exploration_mode?: Shared.SDKExplorationMode;
+  exploration_mode?: Shared.ExplorationMode;
 
   /**
    * Number of examples to be included in the prompt for generation
@@ -129,7 +128,7 @@ export interface GenerateSyntheticDataListJobsParams {
   /**
    * Filter jobs by state
    */
-  state?: CalibrateAPI.State | null;
+  state?: Shared.State | null;
 }
 
 export declare namespace GenerateSyntheticData {

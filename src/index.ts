@@ -15,7 +15,6 @@ import {
 } from './resources/prompt';
 import {
   Queries,
-  QueryClassificationResponse,
   QueryClassifyParams,
   QueryGenerateFanoutsParams,
   QueryGenerateFanoutsResponse,
@@ -193,11 +192,10 @@ PiClient.Queries = Queries;
 export declare namespace PiClient {
   export type RequestOptions = Core.RequestOptions;
 
-  export { Data as Data, type DataGenerationStatus as DataGenerationStatus };
+  export { Data as Data };
 
   export {
     Prompt as Prompt,
-    type PromptOptimizationStatus as PromptOptimizationStatus,
     type PromptCancelOptimizationJobResponse as PromptCancelOptimizationJobResponse,
     type PromptListOptimizationJobsResponse as PromptListOptimizationJobsResponse,
     type PromptStreamMessagesResponse as PromptStreamMessagesResponse,
@@ -217,27 +215,25 @@ export declare namespace PiClient {
 
   export {
     Queries as Queries,
-    type QueryClassificationResponse as QueryClassificationResponse,
     type QueryGenerateFanoutsResponse as QueryGenerateFanoutsResponse,
     type QueryClassifyParams as QueryClassifyParams,
     type QueryGenerateFanoutsParams as QueryGenerateFanoutsParams,
   };
 
+  export type ActionDimension = API.ActionDimension;
   export type Contract = API.Contract;
   export type ContractCalibrationStatus = API.ContractCalibrationStatus;
   export type DataGenerationStatus = API.DataGenerationStatus;
   export type Dimension = API.Dimension;
   export type DimensionScoringType = API.DimensionScoringType;
   export type Example = API.Example;
+  export type ExplorationMode = API.ExplorationMode;
   export type FinetuningBaseModel = API.FinetuningBaseModel;
   export type LoraConfig = API.LoraConfig;
   export type PromptOptimizationStatus = API.PromptOptimizationStatus;
+  export type QueryClassificationResponse = API.QueryClassificationResponse;
   export type QueryFanoutExample = API.QueryFanoutExample;
   export type RlGrpoStatus = API.RlGrpoStatus;
-  export type SDKActionDimension = API.SDKActionDimension;
-  export type SDKContract = API.SDKContract;
-  export type SDKExample = API.SDKExample;
-  export type SDKExplorationMode = API.SDKExplorationMode;
   export type SftStatus = API.SftStatus;
   export type State = API.State;
   export type SubDimension = API.SubDimension;

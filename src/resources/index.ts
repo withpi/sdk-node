@@ -8,11 +8,10 @@ export {
   type ContractReadFromHfParams,
   type ContractScoreParams,
 } from './contracts/contracts';
-export { Data, type DataGenerationStatus } from './data/data';
+export { Data } from './data/data';
 export { Model } from './model/model';
 export {
   Prompt,
-  type PromptOptimizationStatus,
   type PromptCancelOptimizationJobResponse,
   type PromptListOptimizationJobsResponse,
   type PromptStreamMessagesResponse,
@@ -21,7 +20,6 @@ export {
 } from './prompt';
 export {
   Queries,
-  type QueryClassificationResponse,
   type QueryGenerateFanoutsResponse,
   type QueryClassifyParams,
   type QueryGenerateFanoutsParams,

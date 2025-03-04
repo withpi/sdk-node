@@ -2,7 +2,6 @@
 
 export {
   Grpo,
-  type RlGrpoStatus,
   type GrpoListResponse,
   type GrpoCancelResponse,
   type GrpoDownloadResponse,
@@ -11,4 +10,4 @@ export {
   type GrpoDownloadParams,
   type GrpoStartJobParams,
 } from './grpo';
-export { Rl, type RlGrpoStatus } from './rl';
+export { Rl } from './rl';
