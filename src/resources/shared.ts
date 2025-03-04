@@ -1,6 +1,38 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as CalibrateAPI from './contracts/calibrate';
+export interface ActionDimension {
+  /**
+   * The description of the dimension
+   */
+  description: string;
+
+  /**
+   * The label of the dimension
+   */
+  label: string;
+
+  /**
+   * The type of scoring performed for this dimension
+   */
+  scoring_type: DimensionScoringType;
+
+  /**
+   * If `action_on_low_score = True`, the node emits the real value if action
+   * dimension score is <= 0.5 and it returns -1 otherwise.
+   */
+  action_on_low_score?: boolean | null;
+
+  /**
+   * The ID of the custom model to use for scoring. Only relevant for scoring_type of
+   * CUSTOM_MODEL_SCORER
+   */
+  custom_model_id?: string | null;
+
+  /**
+   * The PYTHON code associated the PYTHON_CODE DimensionScoringType.
+   */
+  python_code?: string | null;
+}
 
 export interface Contract {
   /**
@@ -33,7 +65,7 @@ export interface ContractCalibrationStatus {
   /**
    * Current state of the job
    */
-  state: CalibrateAPI.State;
+  state: State;
 
   /**
    * The calibrated contract
@@ -58,7 +90,7 @@ export interface DataGenerationStatus {
   /**
    * Current state of the job
    */
-  state: CalibrateAPI.State;
+  state: State;
 
   /**
    * The generated data. Can be present even if the state is not done/error as it is
@@ -89,7 +121,7 @@ export interface Dimension {
    * the actual score. If it is <= 0.5 return -1. The higher level node will ignore
    * the -1 scores and thus we achieve the short-circuit behavior.
    */
-  action_dimension?: SDKActionDimension | null;
+  action_dimension?: ActionDimension | null;
 
   /**
    * The learned parameters for the scoring method. This represents piecewise linear
@@ -122,6 +154,8 @@ export interface Example {
   llm_output: string;
 }
 
+export type ExplorationMode = 'CONSERVATIVE' | 'BALANCED' | 'CREATIVE' | 'ADVENTUROUS';
+
 export type FinetuningBaseModel = 'LLAMA_3.2_3B' | 'LLAMA_3.1_8B';
 
 export interface LoraConfig {
@@ -148,13 +182,35 @@ export interface PromptOptimizationStatus {
   /**
    * Current state of the job
    */
-  state: CalibrateAPI.State;
+  state: State;
 
   /**
    * The optimized prompt messages in the OpenAI message format with the jinja
    * {{ input }} variable for the next user prompt
    */
   optimized_prompt_messages?: Array<Record<string, string>>;
+}
+
+export interface QueryClassificationResponse {
+  results: Array<QueryClassificationResponse.Result>;
+}
+
+export namespace QueryClassificationResponse {
+  export interface Result {
+    prediction: string;
+
+    probabilities: Array<Result.Probability>;
+
+    query: string;
+  }
+
+  export namespace Result {
+    export interface Probability {
+      label: string;
+
+      score: number;
+    }
+  }
 }
 
 /**
@@ -189,81 +245,13 @@ export interface RlGrpoStatus {
   /**
    * Current state of the job
    */
-  state: CalibrateAPI.State;
+  state: State;
 
   /**
    * A list of trained models selected based on the PI Contract score.
    */
   trained_models?: Array<TrainedModel> | null;
 }
-
-export interface SDKActionDimension {
-  /**
-   * The description of the dimension
-   */
-  description: string;
-
-  /**
-   * The label of the dimension
-   */
-  label: string;
-
-  /**
-   * The type of scoring performed for this dimension
-   */
-  scoring_type: DimensionScoringType;
-
-  /**
-   * If `action_on_low_score = True`, the node emits the real value if action
-   * dimension score is <= 0.5 and it returns -1 otherwise.
-   */
-  action_on_low_score?: boolean | null;
-
-  /**
-   * The ID of the custom model to use for scoring. Only relevant for scoring_type of
-   * CUSTOM_MODEL_SCORER
-   */
-  custom_model_id?: string | null;
-
-  /**
-   * The PYTHON code associated the PYTHON_CODE DimensionScoringType.
-   */
-  python_code?: string | null;
-}
-
-export interface SDKContract {
-  /**
-   * The description of the contract
-   */
-  description: string;
-
-  /**
-   * The name of the contract
-   */
-  name: string;
-
-  /**
-   * The dimensions of the contract
-   */
-  dimensions?: Array<Dimension>;
-}
-
-/**
- * An example for training or evaluation
- */
-export interface SDKExample {
-  /**
-   * The input to LLM
-   */
-  llm_input: string;
-
-  /**
-   * The output to evaluate
-   */
-  llm_output: string;
-}
-
-export type SDKExplorationMode = 'CONSERVATIVE' | 'BALANCED' | 'CREATIVE' | 'ADVENTUROUS';
 
 /**
  * SftStatus is the status of a SFT job.
@@ -282,7 +270,7 @@ export interface SftStatus {
   /**
    * Current state of the job
    */
-  state: CalibrateAPI.State;
+  state: State;
 
   /**
    * A list of trained models selected based on the PI Contract score.
@@ -314,7 +302,7 @@ export interface SubDimension {
    * the actual score. If it is <= 0.5 return -1. The higher level node will ignore
    * the -1 scores and thus we achieve the short-circuit behavior.
    */
-  action_dimension?: SDKActionDimension | null;
+  action_dimension?: ActionDimension | null;
 
   /**
    * The ID of the custom model to use for scoring. Only relevant for scoring_type of
@@ -358,7 +346,7 @@ export interface SyntheticDataStatus {
   /**
    * Current state of the job
    */
-  state: CalibrateAPI.State;
+  state: State;
 
   /**
    * The generated synthetic data. Can be present even if the state is not done/error

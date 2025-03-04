@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../resource';
-import * as CalibrateAPI from '../contracts/calibrate';
 import * as GenerateSyntheticDataAPI from './generate-synthetic-data';
 import {
   GenerateSyntheticData,
@@ -21,38 +20,10 @@ export class Data extends APIResource {
     new GenerateSyntheticDataAPI.GenerateSyntheticData(this._client);
 }
 
-/**
- * DataGenerationStatus is the result of a data generation job.
- */
-export interface DataGenerationStatus {
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
-
-  /**
-   * The job id
-   */
-  job_id: string;
-
-  /**
-   * Current state of the job
-   */
-  state: CalibrateAPI.State;
-
-  /**
-   * The generated data. Can be present even if the state is not done/error as it is
-   * streamed.
-   */
-  data?: Array<string> | null;
-}
-
 Data.Inputs = Inputs;
 Data.GenerateSyntheticData = GenerateSyntheticData;
 
 export declare namespace Data {
-  export { type DataGenerationStatus as DataGenerationStatus };
-
   export {
     Inputs as Inputs,
     type InputTopicCluster as InputTopicCluster,

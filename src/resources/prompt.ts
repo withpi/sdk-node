@@ -4,7 +4,6 @@ import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
 import * as Shared from './shared';
-import * as CalibrateAPI from './contracts/calibrate';
 
 export class Prompt extends APIResource {
   /**
@@ -60,32 +59,6 @@ export class Prompt extends APIResource {
   }
 }
 
-/**
- * The optimized_prompt_messages field is an empty list unless the state is done.
- */
-export interface PromptOptimizationStatus {
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
-
-  /**
-   * The job id
-   */
-  job_id: string;
-
-  /**
-   * Current state of the job
-   */
-  state: CalibrateAPI.State;
-
-  /**
-   * The optimized prompt messages in the OpenAI message format with the jinja
-   * {{ input }} variable for the next user prompt
-   */
-  optimized_prompt_messages?: Array<Record<string, string>>;
-}
-
 export type PromptCancelOptimizationJobResponse = string;
 
 export type PromptListOptimizationJobsResponse = Array<Shared.PromptOptimizationStatus>;
@@ -96,7 +69,7 @@ export interface PromptListOptimizationJobsParams {
   /**
    * Filter jobs by state
    */
-  state?: CalibrateAPI.State | null;
+  state?: Shared.State | null;
 }
 
 export interface PromptOptimizeParams {
@@ -140,7 +113,6 @@ export interface PromptOptimizeParams {
 
 export declare namespace Prompt {
   export {
-    type PromptOptimizationStatus as PromptOptimizationStatus,
     type PromptCancelOptimizationJobResponse as PromptCancelOptimizationJobResponse,
     type PromptListOptimizationJobsResponse as PromptListOptimizationJobsResponse,
     type PromptStreamMessagesResponse as PromptStreamMessagesResponse,

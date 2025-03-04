@@ -2,8 +2,6 @@
 
 export {
   Calibrate,
-  type ContractCalibrationStatus,
-  type State,
   type CalibrateListResponse,
   type CalibrateCancelResponse,
   type CalibrateStreamMessagesResponse,

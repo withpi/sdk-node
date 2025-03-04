@@ -10,11 +10,10 @@ import {
   SftListParams,
   SftListResponse,
   SftStartJobParams,
-  SftStatus,
   SftStreamMessagesResponse,
 } from './sft';
 import * as RlAPI from './rl/rl';
-import { Rl, RlGrpoStatus } from './rl/rl';
+import { Rl } from './rl/rl';
 
 export class Model extends APIResource {
   sft: SftAPI.Sft = new SftAPI.Sft(this._client);
@@ -27,7 +26,6 @@ Model.Rl = Rl;
 export declare namespace Model {
   export {
     Sft as Sft,
-    type SftStatus as SftStatus,
     type SftListResponse as SftListResponse,
     type SftCancelResponse as SftCancelResponse,
     type SftDownloadResponse as SftDownloadResponse,
@@ -37,5 +35,5 @@ export declare namespace Model {
     type SftStartJobParams as SftStartJobParams,
   };
 
-  export { Rl as Rl, type RlGrpoStatus as RlGrpoStatus };
+  export { Rl as Rl };
 }

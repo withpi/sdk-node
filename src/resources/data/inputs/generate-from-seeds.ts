@@ -4,14 +4,12 @@ import { APIResource } from '../../../resource';
 import { isRequestOptions } from '../../../core';
 import * as Core from '../../../core';
 import * as Shared from '../../shared';
-import * as CalibrateAPI from '../../contracts/calibrate';
-import * as DataAPI from '../data';
 
 export class GenerateFromSeeds extends APIResource {
   /**
    * Checks the status of a Data Generation job
    */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<DataAPI.DataGenerationStatus> {
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.DataGenerationStatus> {
     return this._client.get(`/data/input/generate_from_seeds/${jobId}`, options);
   }
 
@@ -28,7 +26,7 @@ export class GenerateFromSeeds extends APIResource {
   generate(
     body: GenerateFromSeedGenerateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<DataAPI.DataGenerationStatus> {
+  ): Core.APIPromise<Shared.DataGenerationStatus> {
     return this._client.post('/data/input/generate_from_seeds', { body, ...options });
   }
 
@@ -73,7 +71,7 @@ export class GenerateFromSeeds extends APIResource {
 
 export type GenerateFromSeedCancelResponse = string;
 
-export type GenerateFromSeedListJobsResponse = Array<DataAPI.DataGenerationStatus>;
+export type GenerateFromSeedListJobsResponse = Array<Shared.DataGenerationStatus>;
 
 export type GenerateFromSeedStreamDataResponse = string;
 
@@ -104,7 +102,7 @@ export interface GenerateFromSeedGenerateParams {
   /**
    * The exloration mode for input generation. Defaults to `BALANCED`
    */
-  exploration_mode?: Shared.SDKExplorationMode;
+  exploration_mode?: Shared.ExplorationMode;
 
   /**
    * Number of inputs to be included in the prompt for generation. Generally it could
@@ -117,7 +115,7 @@ export interface GenerateFromSeedListJobsParams {
   /**
    * Filter jobs by state
    */
-  state?: CalibrateAPI.State | null;
+  state?: Shared.State | null;
 }
 
 export declare namespace GenerateFromSeeds {
