@@ -25,6 +25,7 @@ describe('resource contracts', () => {
   test('generateDimensions: required and optional params', async () => {
     const response = await client.contracts.generateDimensions({
       contract_description: "Write a children's story communicating a simple life lesson.",
+      try_auto_generating_python_code: false,
     });
   });
 

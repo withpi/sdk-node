@@ -75,6 +75,12 @@ export interface ContractGenerateDimensionsParams {
    * The application description to generate contract for.
    */
   contract_description: string;
+
+  /**
+   * If true, try to generate python code for sub-dimensions with structured
+   * evaluation
+   */
+  try_auto_generating_python_code?: boolean;
 }
 
 export interface ContractReadFromHfParams {
