@@ -185,6 +185,7 @@ describe('resource sft', () => {
       learning_rate: 0.0002,
       lora_config: { lora_rank: 'R_16' },
       num_train_epochs: 10,
+      system_prompt: 'An optional system prompt.',
     });
   });
 
