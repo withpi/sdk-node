@@ -115,7 +115,7 @@ export interface SftStartJobParams {
   lora_config?: Shared.LoraConfig;
 
   /**
-   * SFT number of train epochs
+   * SFT number of train epochs: <= 10.
    */
   num_train_epochs?: number;
 
