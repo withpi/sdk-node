@@ -234,10 +234,6 @@ export declare namespace PiClient {
   export type QueryClassificationResponse = API.QueryClassificationResponse;
   export type QueryFanoutExample = API.QueryFanoutExample;
   export type RlGrpoStatus = API.RlGrpoStatus;
-  export type SDKActionDimension = API.SDKActionDimension;
-  export type SDKContract = API.SDKContract;
-  export type SDKExample = API.SDKExample;
-  export type SDKExplorationMode = API.SDKExplorationMode;
   export type SftStatus = API.SftStatus;
   export type State = API.State;
   export type SubDimension = API.SubDimension;
