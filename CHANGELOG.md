@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.82 (2025-03-05)
+
+Full Changelog: [v0.1.0-alpha.81...v0.1.0-alpha.82](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.81...v0.1.0-alpha.82)
+
+### Bug Fixes
+
+* revert autoguesser changes ([#352](https://github.com/withpi/sdk-node/issues/352)) ([a4b7bdb](https://github.com/withpi/sdk-node/commit/a4b7bdbe0613d539ba55d1574018b84833eaf1dc))
+
 ## 0.1.0-alpha.81 (2025-03-04)
 
 Full Changelog: [v0.1.0-alpha.80...v0.1.0-alpha.81](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.80...v0.1.0-alpha.81)
