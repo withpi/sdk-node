@@ -2,7 +2,6 @@
 
 Types:
 
-- <code><a href="./src/resources/shared.ts">ActionDimension</a></code>
 - <code><a href="./src/resources/shared.ts">Contract</a></code>
 - <code><a href="./src/resources/shared.ts">ContractCalibrationStatus</a></code>
 - <code><a href="./src/resources/shared.ts">DataGenerationStatus</a></code>
