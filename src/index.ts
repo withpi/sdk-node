@@ -220,7 +220,6 @@ export declare namespace PiClient {
     type QueryGenerateFanoutsParams as QueryGenerateFanoutsParams,
   };
 
-  export type ActionDimension = API.ActionDimension;
   export type Contract = API.Contract;
   export type ContractCalibrationStatus = API.ContractCalibrationStatus;
   export type DataGenerationStatus = API.DataGenerationStatus;
