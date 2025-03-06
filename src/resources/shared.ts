@@ -15,6 +15,7 @@ export interface Contract {
    * The dimensions of the contract
    */
   dimensions?: Array<Dimension>;
+  [k: string]: unknown;
 }
 
 export interface ContractCalibrationStatus {
@@ -93,6 +94,7 @@ export interface Dimension {
    * is aggregated into the final score.
    */
   weight?: number | null;
+  [k: string]: unknown;
 }
 
 export type DimensionScoringType = 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER';
@@ -277,6 +279,7 @@ export interface SubDimension {
    * this subdimension into the parent dimension.
    */
   weight?: number | null;
+  [k: string]: unknown;
 }
 
 /**
