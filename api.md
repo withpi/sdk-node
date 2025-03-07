@@ -9,7 +9,6 @@ Types:
 - <code><a href="./src/resources/shared.ts">DimensionScoringType</a></code>
 - <code><a href="./src/resources/shared.ts">Example</a></code>
 - <code><a href="./src/resources/shared.ts">ExplorationMode</a></code>
-- <code><a href="./src/resources/shared.ts">FinetuningBaseModel</a></code>
 - <code><a href="./src/resources/shared.ts">LoraConfig</a></code>
 - <code><a href="./src/resources/shared.ts">PromptOptimizationStatus</a></code>
 - <code><a href="./src/resources/shared.ts">QueryClassificationResponse</a></code>

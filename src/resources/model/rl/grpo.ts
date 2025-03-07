@@ -95,7 +95,7 @@ export interface GrpoStartJobParams {
   /**
    * The base model to start the RL tunning process
    */
-  base_rl_model: Shared.FinetuningBaseModel;
+  base_rl_model: 'LLAMA_3.2_3B' | 'LLAMA_3.1_8B';
 
   /**
    * The contract to use in the GRPO tuning process
