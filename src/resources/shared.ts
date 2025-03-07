@@ -323,14 +323,14 @@ export interface TrainedModel {
   eval_loss: number;
 
   /**
-   * Whether the model is loaded in the serving system
-   */
-  is_loaded: boolean;
-
-  /**
    * The serving id of the trained model within this Job
    */
   serving_id: number;
+
+  /**
+   * State of the model in the serving system
+   */
+  serving_state: 'UNLOADED' | 'LOADING' | 'SERVING';
 
   /**
    * The training step
