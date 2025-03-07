@@ -227,7 +227,6 @@ export declare namespace PiClient {
   export type DimensionScoringType = API.DimensionScoringType;
   export type Example = API.Example;
   export type ExplorationMode = API.ExplorationMode;
-  export type FinetuningBaseModel = API.FinetuningBaseModel;
   export type LoraConfig = API.LoraConfig;
   export type PromptOptimizationStatus = API.PromptOptimizationStatus;
   export type QueryClassificationResponse = API.QueryClassificationResponse;
