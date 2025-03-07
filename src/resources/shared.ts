@@ -116,8 +116,6 @@ export interface Example {
 
 export type ExplorationMode = 'CONSERVATIVE' | 'BALANCED' | 'CREATIVE' | 'ADVENTUROUS';
 
-export type FinetuningBaseModel = 'LLAMA_3.2_3B' | 'LLAMA_3.1_8B';
-
 export interface LoraConfig {
   /**
    * The number of dimensions in the low-rank decomposition of the weight updates.
