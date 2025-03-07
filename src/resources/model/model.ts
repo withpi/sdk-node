@@ -1,6 +1,19 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../resource';
+import * as ClassifierAPI from './classifier';
+import {
+  Classifier,
+  ClassifierCancelResponse,
+  ClassifierCreateParams,
+  ClassifierCreateResponse,
+  ClassifierDownloadParams,
+  ClassifierDownloadResponse,
+  ClassifierListParams,
+  ClassifierListResponse,
+  ClassifierMessagesResponse,
+  ClassifierRetrieveResponse,
+} from './classifier';
 import * as SftAPI from './sft';
 import {
   Sft,
@@ -18,10 +31,12 @@ import { Rl } from './rl/rl';
 export class Model extends APIResource {
   sft: SftAPI.Sft = new SftAPI.Sft(this._client);
   rl: RlAPI.Rl = new RlAPI.Rl(this._client);
+  classifier: ClassifierAPI.Classifier = new ClassifierAPI.Classifier(this._client);
 }
 
 Model.Sft = Sft;
 Model.Rl = Rl;
+Model.Classifier = Classifier;
 
 export declare namespace Model {
   export {
@@ -36,4 +51,17 @@ export declare namespace Model {
   };
 
   export { Rl as Rl };
+
+  export {
+    Classifier as Classifier,
+    type ClassifierCreateResponse as ClassifierCreateResponse,
+    type ClassifierRetrieveResponse as ClassifierRetrieveResponse,
+    type ClassifierListResponse as ClassifierListResponse,
+    type ClassifierCancelResponse as ClassifierCancelResponse,
+    type ClassifierDownloadResponse as ClassifierDownloadResponse,
+    type ClassifierMessagesResponse as ClassifierMessagesResponse,
+    type ClassifierCreateParams as ClassifierCreateParams,
+    type ClassifierListParams as ClassifierListParams,
+    type ClassifierDownloadParams as ClassifierDownloadParams,
+  };
 }

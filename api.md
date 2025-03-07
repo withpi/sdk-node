@@ -127,6 +127,26 @@ Methods:
 - <code title="post /model/rl/grpo">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">startJob</a>({ ...params }) -> RlGrpoStatus</code>
 - <code title="get /model/rl/grpo/{job_id}/messages">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">streamMessages</a>(jobId) -> string</code>
 
+## Classifier
+
+Types:
+
+- <code><a href="./src/resources/model/classifier.ts">ClassifierCreateResponse</a></code>
+- <code><a href="./src/resources/model/classifier.ts">ClassifierRetrieveResponse</a></code>
+- <code><a href="./src/resources/model/classifier.ts">ClassifierListResponse</a></code>
+- <code><a href="./src/resources/model/classifier.ts">ClassifierCancelResponse</a></code>
+- <code><a href="./src/resources/model/classifier.ts">ClassifierDownloadResponse</a></code>
+- <code><a href="./src/resources/model/classifier.ts">ClassifierMessagesResponse</a></code>
+
+Methods:
+
+- <code title="post /model/classifier">client.model.classifier.<a href="./src/resources/model/classifier.ts">create</a>({ ...params }) -> ClassifierCreateResponse</code>
+- <code title="get /model/classifier/{job_id}">client.model.classifier.<a href="./src/resources/model/classifier.ts">retrieve</a>(jobId) -> ClassifierRetrieveResponse</code>
+- <code title="get /model/classifier">client.model.classifier.<a href="./src/resources/model/classifier.ts">list</a>({ ...params }) -> ClassifierListResponse</code>
+- <code title="delete /model/classifier/{job_id}">client.model.classifier.<a href="./src/resources/model/classifier.ts">cancel</a>(jobId) -> string</code>
+- <code title="post /model/classifier/{job_id}/download">client.model.classifier.<a href="./src/resources/model/classifier.ts">download</a>(jobId, { ...params }) -> string</code>
+- <code title="get /model/classifier/{job_id}/messages">client.model.classifier.<a href="./src/resources/model/classifier.ts">messages</a>(jobId) -> string</code>
+
 # Contracts
 
 Types:
