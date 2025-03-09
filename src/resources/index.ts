@@ -1,9 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+export * from './shared';
 export {
   Contracts,
-  type ScoringSystemMetrics,
-  type SDKContract,
   type SDKDimension,
   type ContractGenerateDimensionsParams,
   type ContractReadFromHfParams,
@@ -13,7 +12,6 @@ export { Data } from './data/data';
 export { Model } from './model/model';
 export {
   PiScoringSystem,
-  type ScoringSystem,
   type PiScoringSystemGenerateDimensionsParams,
   type PiScoringSystemReadFromHfParams,
   type PiScoringSystemScoreParams,

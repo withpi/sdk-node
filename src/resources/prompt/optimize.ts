@@ -3,8 +3,8 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
+import * as Shared from '../shared';
 import * as CalibrateAPI from '../contracts/calibrate';
-import * as ContractsAPI from '../contracts/contracts';
 import * as GenerateSyntheticDataAPI from '../data/generate-synthetic-data';
 
 export class Optimize extends APIResource {
@@ -101,7 +101,7 @@ export interface OptimizeStartJobParams {
   /**
    * The contract to optimize
    */
-  contract: ContractsAPI.SDKContract;
+  contract: Shared.SDKContract;
 
   /**
    * The examples to train and validate on
