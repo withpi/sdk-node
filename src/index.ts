@@ -6,16 +6,10 @@ import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
 import {
-  Prompt,
-  PromptCancelOptimizationJobResponse,
-  PromptListOptimizationJobsParams,
-  PromptListOptimizationJobsResponse,
-  PromptOptimizeParams,
-  PromptStreamMessagesResponse,
-} from './resources/prompt';
-import {
   Queries,
   QueryClassifyParams,
+  QueryClassifyResponse,
+  QueryFanoutExample,
   QueryGenerateFanoutsParams,
   QueryGenerateFanoutsResponse,
 } from './resources/queries';
@@ -25,20 +19,22 @@ import {
   ContractScoreParams,
   ContractScoreResponse,
   Contracts,
+  SDKContract,
 } from './resources/contracts/contracts';
 import { Data } from './resources/data/data';
 import { Model } from './resources/model/model';
+import { Prompt } from './resources/prompt/prompt';
 
 export interface ClientOptions {
   /**
-   * The API key required for authentication
+   * Defaults to process.env['WITHPI_API_KEY'].
    */
   apiKey?: string | undefined;
 
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
-   * Defaults to process.env['PI_CLIENT_BASE_URL'].
+   * Defaults to process.env['WITHPI_BASE_URL'].
    */
   baseURL?: string | null | undefined;
 
@@ -93,18 +89,18 @@ export interface ClientOptions {
 }
 
 /**
- * API Client for interfacing with the Pi Client API.
+ * API Client for interfacing with the Withpi API.
  */
-export class PiClient extends Core.APIClient {
+export class Withpi extends Core.APIClient {
   apiKey: string;
 
   private _options: ClientOptions;
 
   /**
-   * API Client for interfacing with the Pi Client API.
+   * API Client for interfacing with the Withpi API.
    *
    * @param {string | undefined} [opts.apiKey=process.env['WITHPI_API_KEY'] ?? undefined]
-   * @param {string} [opts.baseURL=process.env['PI_CLIENT_BASE_URL'] ?? https://api.withpi.ai/v1] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['WITHPI_BASE_URL'] ?? https://api.withpi.ai/v1] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
    * @param {Core.Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -113,13 +109,13 @@ export class PiClient extends Core.APIClient {
    * @param {Core.DefaultQuery} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
   constructor({
-    baseURL = Core.readEnv('PI_CLIENT_BASE_URL'),
+    baseURL = Core.readEnv('WITHPI_BASE_URL'),
     apiKey = Core.readEnv('WITHPI_API_KEY'),
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
-      throw new Errors.PiClientError(
-        "The WITHPI_API_KEY environment variable is missing or empty; either provide it, or instantiate the PiClient client with an apiKey option, like new PiClient({ apiKey: 'My API Key' }).",
+      throw new Errors.WithpiError(
+        "The WITHPI_API_KEY environment variable is missing or empty; either provide it, or instantiate the Withpi client with an apiKey option, like new Withpi({ apiKey: 'My API Key' }).",
       );
     }
 
@@ -142,10 +138,10 @@ export class PiClient extends Core.APIClient {
     this.apiKey = apiKey;
   }
 
-  data: API.Data = new API.Data(this);
-  prompt: API.Prompt = new API.Prompt(this);
-  model: API.Model = new API.Model(this);
   contracts: API.Contracts = new API.Contracts(this);
+  data: API.Data = new API.Data(this);
+  model: API.Model = new API.Model(this);
+  prompt: API.Prompt = new API.Prompt(this);
   queries: API.Queries = new API.Queries(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
@@ -163,10 +159,10 @@ export class PiClient extends Core.APIClient {
     return { 'x-api-key': this.apiKey };
   }
 
-  static PiClient = this;
+  static Withpi = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
-  static PiClientError = Errors.PiClientError;
+  static WithpiError = Errors.WithpiError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -184,64 +180,42 @@ export class PiClient extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-PiClient.Data = Data;
-PiClient.Prompt = Prompt;
-PiClient.Model = Model;
-PiClient.Contracts = Contracts;
-PiClient.Queries = Queries;
-export declare namespace PiClient {
+Withpi.Contracts = Contracts;
+Withpi.Data = Data;
+Withpi.Model = Model;
+Withpi.Prompt = Prompt;
+Withpi.Queries = Queries;
+export declare namespace Withpi {
   export type RequestOptions = Core.RequestOptions;
-
-  export { Data as Data };
-
-  export {
-    Prompt as Prompt,
-    type PromptCancelOptimizationJobResponse as PromptCancelOptimizationJobResponse,
-    type PromptListOptimizationJobsResponse as PromptListOptimizationJobsResponse,
-    type PromptStreamMessagesResponse as PromptStreamMessagesResponse,
-    type PromptListOptimizationJobsParams as PromptListOptimizationJobsParams,
-    type PromptOptimizeParams as PromptOptimizeParams,
-  };
-
-  export { Model as Model };
 
   export {
     Contracts as Contracts,
+    type SDKContract as SDKContract,
     type ContractScoreResponse as ContractScoreResponse,
     type ContractGenerateDimensionsParams as ContractGenerateDimensionsParams,
     type ContractReadFromHfParams as ContractReadFromHfParams,
     type ContractScoreParams as ContractScoreParams,
   };
 
+  export { Data as Data };
+
+  export { Model as Model };
+
+  export { Prompt as Prompt };
+
   export {
     Queries as Queries,
+    type QueryFanoutExample as QueryFanoutExample,
+    type QueryClassifyResponse as QueryClassifyResponse,
     type QueryGenerateFanoutsResponse as QueryGenerateFanoutsResponse,
     type QueryClassifyParams as QueryClassifyParams,
     type QueryGenerateFanoutsParams as QueryGenerateFanoutsParams,
   };
-
-  export type Contract = API.Contract;
-  export type ContractCalibrationStatus = API.ContractCalibrationStatus;
-  export type DataGenerationStatus = API.DataGenerationStatus;
-  export type Dimension = API.Dimension;
-  export type DimensionScoringType = API.DimensionScoringType;
-  export type Example = API.Example;
-  export type ExplorationMode = API.ExplorationMode;
-  export type LoraConfig = API.LoraConfig;
-  export type PromptOptimizationStatus = API.PromptOptimizationStatus;
-  export type QueryClassificationResponse = API.QueryClassificationResponse;
-  export type QueryFanoutExample = API.QueryFanoutExample;
-  export type RlGrpoStatus = API.RlGrpoStatus;
-  export type SftStatus = API.SftStatus;
-  export type State = API.State;
-  export type SubDimension = API.SubDimension;
-  export type SyntheticDataStatus = API.SyntheticDataStatus;
-  export type TrainedModel = API.TrainedModel;
 }
 
 export { toFile, fileFromPath } from './uploads';
 export {
-  PiClientError,
+  WithpiError,
   APIError,
   APIConnectionError,
   APIConnectionTimeoutError,
@@ -256,4 +230,4 @@ export {
   UnprocessableEntityError,
 } from './error';
 
-export default PiClient;
+export default Withpi;

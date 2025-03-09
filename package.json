@@ -1,12 +1,12 @@
 {
   "name": "withpi",
   "version": "0.1.0-alpha.91",
-  "description": "The official TypeScript library for the Pi Client API",
-  "author": "Pi Client <support@withpi.ai>",
+  "description": "The official TypeScript library for the Withpi API",
+  "author": "Withpi <support@withpi.ai>",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "type": "commonjs",
-  "repository": "github:withpi/sdk-node",
+  "repository": "github:stainless-sdks/withpi-node",
   "license": "Apache-2.0",
   "packageManager": "yarn@1.22.22",
   "files": [

@@ -3,16 +3,9 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as Shared from '../shared';
+import * as ContractsAPI from './contracts';
 
 export class Calibrate extends APIResource {
-  /**
-   * Checks the status of a Contract Calibration job
-   */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.ContractCalibrationStatus> {
-    return this._client.get(`/contracts/calibrate/${jobId}`, options);
-  }
-
   /**
    * Lists the Contract Calibration Jobs owned by a user
    */
@@ -38,54 +31,85 @@ export class Calibrate extends APIResource {
   /**
    * Launches a Contract Calibration job
    */
-  startJob(
-    body: CalibrateStartJobParams,
+  launch(
+    body: CalibrateLaunchParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ContractCalibrationStatus> {
+  ): Core.APIPromise<ContractCalibrationStatus> {
     return this._client.post('/contracts/calibrate', { body, ...options });
   }
 
   /**
    * Opens a message stream about a Contract Calibration job
    */
-  streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+  messages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.get(`/contracts/calibrate/${jobId}/messages`, {
       ...options,
       headers: { Accept: 'text/plain', ...options?.headers },
     });
   }
+
+  /**
+   * Checks the status of a Contract Calibration job
+   */
+  status(jobId: string, options?: Core.RequestOptions): Core.APIPromise<ContractCalibrationStatus> {
+    return this._client.get(`/contracts/calibrate/${jobId}`, options);
+  }
 }
 
-export type CalibrateListResponse = Array<Shared.ContractCalibrationStatus>;
+export interface ContractCalibrationStatus {
+  /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
+
+  /**
+   * The job id
+   */
+  job_id: string;
+
+  /**
+   * Current state of the job
+   */
+  state: State;
+
+  /**
+   * The calibrated contract
+   */
+  calibrated_contract?: ContractsAPI.SDKContract | null;
+}
+
+export type State = 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
+
+export type CalibrateListResponse = Array<ContractCalibrationStatus>;
 
 export type CalibrateCancelResponse = string;
 
-export type CalibrateStreamMessagesResponse = string;
+export type CalibrateMessagesResponse = string;
 
 export interface CalibrateListParams {
   /**
    * Filter jobs by state
    */
-  state?: Shared.State | null;
+  state?: State | null;
 }
 
-export interface CalibrateStartJobParams {
+export interface CalibrateLaunchParams {
   /**
    * The scoring system to calibrate
    */
-  scoring_system: Shared.Contract;
+  scoring_system: ContractsAPI.SDKContract;
 
   /**
    * Rated examples to use when calibrating the scoring system. Must specify either
    * the examples or the preference examples
    */
-  examples?: Array<CalibrateStartJobParams.Example> | null;
+  examples?: Array<CalibrateLaunchParams.Example> | null;
 
   /**
    * Preference examples to use when calibrating the scoring system. Must specify
    * either the examples or preference examples
    */
-  preference_examples?: Array<CalibrateStartJobParams.PreferenceExample> | null;
+  preference_examples?: Array<CalibrateLaunchParams.PreferenceExample> | null;
 
   /**
    * The strategy to use to calibrate the scoring system. FULL would take longer than
@@ -94,7 +118,7 @@ export interface CalibrateStartJobParams {
   strategy?: 'LITE' | 'FULL';
 }
 
-export namespace CalibrateStartJobParams {
+export namespace CalibrateLaunchParams {
   /**
    * An labeled example for training or evaluation
    */
@@ -138,10 +162,12 @@ export namespace CalibrateStartJobParams {
 
 export declare namespace Calibrate {
   export {
+    type ContractCalibrationStatus as ContractCalibrationStatus,
+    type State as State,
     type CalibrateListResponse as CalibrateListResponse,
     type CalibrateCancelResponse as CalibrateCancelResponse,
-    type CalibrateStreamMessagesResponse as CalibrateStreamMessagesResponse,
+    type CalibrateMessagesResponse as CalibrateMessagesResponse,
     type CalibrateListParams as CalibrateListParams,
-    type CalibrateStartJobParams as CalibrateStartJobParams,
+    type CalibrateLaunchParams as CalibrateLaunchParams,
   };
 }

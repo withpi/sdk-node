@@ -3,16 +3,14 @@
 export { Data } from './data';
 export {
   GenerateSyntheticData,
+  type SDKExample,
+  type SDKExplorationMode,
+  type SyntheticDataStatus,
+  type GenerateSyntheticDataListResponse,
   type GenerateSyntheticDataCancelResponse,
-  type GenerateSyntheticDataListJobsResponse,
   type GenerateSyntheticDataStreamDataResponse,
   type GenerateSyntheticDataStreamMessagesResponse,
   type GenerateSyntheticDataCreateParams,
-  type GenerateSyntheticDataListJobsParams,
+  type GenerateSyntheticDataListParams,
 } from './generate-synthetic-data';
-export {
-  Inputs,
-  type InputTopicCluster,
-  type InputClusterResponse,
-  type InputClusterParams,
-} from './inputs/index';
+export { Input, type InputClusterResponse, type InputClusterParams } from './input/index';

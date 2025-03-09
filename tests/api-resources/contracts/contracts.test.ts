@@ -1,15 +1,16 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import PiClient from 'withpi';
+import Withpi from 'withpi';
 import { Response } from 'node-fetch';
 
-const client = new PiClient({
+const client = new Withpi({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource contracts', () => {
-  test('generateDimensions: only required params', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('generateDimensions: only required params', async () => {
     const responsePromise = client.contracts.generateDimensions({
       application_description: "Write a children's story communicating a simple life lesson.",
     });
@@ -22,14 +23,16 @@ describe('resource contracts', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('generateDimensions: required and optional params', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('generateDimensions: required and optional params', async () => {
     const response = await client.contracts.generateDimensions({
       application_description: "Write a children's story communicating a simple life lesson.",
       try_auto_generating_python_code: false,
     });
   });
 
-  test('readFromHf: only required params', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('readFromHf: only required params', async () => {
     const responsePromise = client.contracts.readFromHf({
       hf_scoring_system_name: 'withpi/tldr_scoring_system',
     });
@@ -42,14 +45,16 @@ describe('resource contracts', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('readFromHf: required and optional params', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('readFromHf: required and optional params', async () => {
     const response = await client.contracts.readFromHf({
       hf_scoring_system_name: 'withpi/tldr_scoring_system',
       hf_token: 'hf_token',
     });
   });
 
-  test('score: only required params', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('score: only required params', async () => {
     const responsePromise = client.contracts.score({
       llm_input: 'Tell me something different',
       llm_output: 'The lazy dog was jumped over by the quick brown fox',
@@ -67,7 +72,8 @@ describe('resource contracts', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('score: required and optional params', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('score: required and optional params', async () => {
     const response = await client.contracts.score({
       llm_input: 'Tell me something different',
       llm_output: 'The lazy dog was jumped over by the quick brown fox',

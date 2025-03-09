@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { PiClient } from 'withpi';
+import { Withpi } from 'withpi';
 
-const { stringifyQuery } = PiClient.prototype as any;
+const { stringifyQuery } = Withpi.prototype as any;
 
 describe(stringifyQuery, () => {
   for (const [input, expected] of [
