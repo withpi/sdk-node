@@ -11,7 +11,7 @@ const client = new PiClient({
 describe('resource contracts', () => {
   test('generateDimensions: only required params', async () => {
     const responsePromise = client.contracts.generateDimensions({
-      contract_description: "Write a children's story communicating a simple life lesson.",
+      application_description: "Write a children's story communicating a simple life lesson.",
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -24,13 +24,15 @@ describe('resource contracts', () => {
 
   test('generateDimensions: required and optional params', async () => {
     const response = await client.contracts.generateDimensions({
-      contract_description: "Write a children's story communicating a simple life lesson.",
+      application_description: "Write a children's story communicating a simple life lesson.",
       try_auto_generating_python_code: false,
     });
   });
 
   test('readFromHf: only required params', async () => {
-    const responsePromise = client.contracts.readFromHf({ hf_contract_name: 'withpi/tldr_contract' });
+    const responsePromise = client.contracts.readFromHf({
+      hf_scoring_system_name: 'withpi/tldr_scoring_system',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -42,19 +44,19 @@ describe('resource contracts', () => {
 
   test('readFromHf: required and optional params', async () => {
     const response = await client.contracts.readFromHf({
-      hf_contract_name: 'withpi/tldr_contract',
+      hf_scoring_system_name: 'withpi/tldr_scoring_system',
       hf_token: 'hf_token',
     });
   });
 
   test('score: only required params', async () => {
     const responsePromise = client.contracts.score({
-      contract: {
+      llm_input: 'Tell me something different',
+      llm_output: 'The lazy dog was jumped over by the quick brown fox',
+      scoring_system: {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Contract',
       },
-      llm_input: 'Tell me something different',
-      llm_output: 'The lazy dog was jumped over by the quick brown fox',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -67,7 +69,9 @@ describe('resource contracts', () => {
 
   test('score: required and optional params', async () => {
     const response = await client.contracts.score({
-      contract: {
+      llm_input: 'Tell me something different',
+      llm_output: 'The lazy dog was jumped over by the quick brown fox',
+      scoring_system: {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Contract',
         dimensions: [
@@ -97,8 +101,6 @@ describe('resource contracts', () => {
           },
         ],
       },
-      llm_input: 'Tell me something different',
-      llm_output: 'The lazy dog was jumped over by the quick brown fox',
     });
   });
 });
