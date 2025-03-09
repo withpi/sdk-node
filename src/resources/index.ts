@@ -4,6 +4,7 @@ export {
   Contracts,
   type ScoringSystemMetrics,
   type SDKContract,
+  type SDKDimension,
   type ContractGenerateDimensionsParams,
   type ContractReadFromHfParams,
   type ContractScoreParams,
@@ -26,4 +27,3 @@ export {
   type QueryClassifyParams,
   type QueryGenerateFanoutsParams,
 } from './queries';
-export { ScoringSystemResource, type ScoringSystem } from './scoring-system/scoring-system';

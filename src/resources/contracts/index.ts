@@ -17,6 +17,7 @@ export {
   Contracts,
   type ScoringSystemMetrics,
   type SDKContract,
+  type SDKDimension,
   type ContractGenerateDimensionsParams,
   type ContractReadFromHfParams,
   type ContractScoreParams,

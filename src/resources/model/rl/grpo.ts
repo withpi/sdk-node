@@ -16,13 +16,6 @@ export class Grpo extends APIResource {
   }
 
   /**
-   * Checks the status of a RL GRPO job
-   */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<RlGrpoStatus> {
-    return this._client.get(`/model/rl/grpo/${jobId}`, options);
-  }
-
-  /**
    * Lists the RL GRPO Jobs owned by a user
    */
   list(query?: GrpoListParams, options?: Core.RequestOptions): Core.APIPromise<GrpoListResponse>;
@@ -71,6 +64,13 @@ export class Grpo extends APIResource {
       ...options,
       headers: { Accept: 'text/plain', ...options?.headers },
     });
+  }
+
+  /**
+   * Checks the status of a RL GRPO job
+   */
+  status(jobId: string, options?: Core.RequestOptions): Core.APIPromise<RlGrpoStatus> {
+    return this._client.get(`/model/rl/grpo/${jobId}`, options);
   }
 }
 

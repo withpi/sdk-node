@@ -18,13 +18,6 @@ export class GenerateFromSeeds extends APIResource {
   }
 
   /**
-   * Checks the status of a Data Generation job
-   */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<DataGenerationStatus> {
-    return this._client.get(`/data/input/generate_from_seeds/${jobId}`, options);
-  }
-
-  /**
    * Lists the Data Generation Jobs owned by a user
    */
   list(
@@ -47,6 +40,13 @@ export class GenerateFromSeeds extends APIResource {
    */
   cancel(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.delete(`/data/input/generate_from_seeds/${jobId}`, options);
+  }
+
+  /**
+   * Checks the status of a Data Generation job
+   */
+  retrieveStatus(jobId: string, options?: Core.RequestOptions): Core.APIPromise<DataGenerationStatus> {
+    return this._client.get(`/data/input/generate_from_seeds/${jobId}`, options);
   }
 
   /**

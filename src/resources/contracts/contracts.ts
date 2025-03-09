@@ -85,12 +85,43 @@ export interface SDKContract {
   /**
    * The dimensions of the contract
    */
-  dimensions?: Array<SDKContract.Dimension>;
+  dimensions?: Array<SDKDimension>;
   [k: string]: unknown;
 }
 
-export namespace SDKContract {
-  export interface Dimension {
+export interface SDKDimension {
+  /**
+   * The description of the dimension
+   */
+  description: string;
+
+  /**
+   * The label of the dimension
+   */
+  label: string;
+
+  /**
+   * The sub dimensions of the dimension
+   */
+  sub_dimensions: Array<SDKDimension.SubDimension>;
+
+  /**
+   * The learned parameters for the scoring method. This represents piecewise linear
+   * interpolation between [0, 1].
+   */
+  parameters?: Array<number> | null;
+
+  /**
+   * The weight of the dimension The sum of dimension weights will be normalized to
+   * one internally. A higher weight counts for more when aggregating this dimension
+   * is aggregated into the final score.
+   */
+  weight?: number | null;
+  [k: string]: unknown;
+}
+
+export namespace SDKDimension {
+  export interface SubDimension {
     /**
      * The description of the dimension
      */
@@ -102,9 +133,15 @@ export namespace SDKContract {
     label: string;
 
     /**
-     * The sub dimensions of the dimension
+     * The type of scoring performed for this dimension
      */
-    sub_dimensions: Array<Dimension.SubDimension>;
+    scoring_type: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER';
+
+    /**
+     * The ID of the custom model to use for scoring. Only relevant for scoring_type of
+     * CUSTOM_MODEL_SCORER
+     */
+    custom_model_id?: string | null;
 
     /**
      * The learned parameters for the scoring method. This represents piecewise linear
@@ -113,56 +150,17 @@ export namespace SDKContract {
     parameters?: Array<number> | null;
 
     /**
-     * The weight of the dimension The sum of dimension weights will be normalized to
-     * one internally. A higher weight counts for more when aggregating this dimension
-     * is aggregated into the final score.
+     * The PYTHON code associated the PYTHON_CODE DimensionScoringType.
+     */
+    python_code?: string | null;
+
+    /**
+     * The weight of the subdimension. The sum of subdimension weights will be
+     * normalized to one internally. A higher weight counts for more when aggregating
+     * this subdimension into the parent dimension.
      */
     weight?: number | null;
     [k: string]: unknown;
-  }
-
-  export namespace Dimension {
-    export interface SubDimension {
-      /**
-       * The description of the dimension
-       */
-      description: string;
-
-      /**
-       * The label of the dimension
-       */
-      label: string;
-
-      /**
-       * The type of scoring performed for this dimension
-       */
-      scoring_type: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER';
-
-      /**
-       * The ID of the custom model to use for scoring. Only relevant for scoring_type of
-       * CUSTOM_MODEL_SCORER
-       */
-      custom_model_id?: string | null;
-
-      /**
-       * The learned parameters for the scoring method. This represents piecewise linear
-       * interpolation between [0, 1].
-       */
-      parameters?: Array<number> | null;
-
-      /**
-       * The PYTHON code associated the PYTHON_CODE DimensionScoringType.
-       */
-      python_code?: string | null;
-
-      /**
-       * The weight of the subdimension. The sum of subdimension weights will be
-       * normalized to one internally. A higher weight counts for more when aggregating
-       * this subdimension into the parent dimension.
-       */
-      weight?: number | null;
-      [k: string]: unknown;
-    }
   }
 }
 
@@ -216,6 +214,7 @@ export declare namespace Contracts {
   export {
     type ScoringSystemMetrics as ScoringSystemMetrics,
     type SDKContract as SDKContract,
+    type SDKDimension as SDKDimension,
     type ContractGenerateDimensionsParams as ContractGenerateDimensionsParams,
     type ContractReadFromHfParams as ContractReadFromHfParams,
     type ContractScoreParams as ContractScoreParams,

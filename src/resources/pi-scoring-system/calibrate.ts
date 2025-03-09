@@ -5,7 +5,6 @@ import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as CalibrateAPI from '../contracts/calibrate';
 import * as PiScoringSystemAPI from './pi-scoring-system';
-import * as ScoringSystemCalibrateAPI from '../scoring-system/calibrate';
 
 export class Calibrate extends APIResource {
   /**
@@ -14,17 +13,14 @@ export class Calibrate extends APIResource {
   create(
     body: CalibrateCreateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<ScoringSystemCalibrateAPI.CalibrationStatus> {
+  ): Core.APIPromise<ScoringSystemCalibrationStatus> {
     return this._client.post('/pi_scoring_system/calibrate', { body, ...options });
   }
 
   /**
    * Checks the status of a Scoring System Calibration job
    */
-  retrieve(
-    jobId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<ScoringSystemCalibrateAPI.CalibrationStatus> {
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<ScoringSystemCalibrationStatus> {
     return this._client.get(`/pi_scoring_system/calibrate/${jobId}`, options);
   }
 
@@ -61,7 +57,29 @@ export class Calibrate extends APIResource {
   }
 }
 
-export type CalibrateListResponse = Array<ScoringSystemCalibrateAPI.CalibrationStatus>;
+export interface ScoringSystemCalibrationStatus {
+  /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
+
+  /**
+   * The job id
+   */
+  job_id: string;
+
+  /**
+   * Current state of the job
+   */
+  state: CalibrateAPI.State;
+
+  /**
+   * The calibrated scoring system
+   */
+  calibrated_scoring_system?: PiScoringSystemAPI.ScoringSystem | null;
+}
+
+export type CalibrateListResponse = Array<ScoringSystemCalibrationStatus>;
 
 export type CalibrateCancelResponse = string;
 
@@ -101,6 +119,7 @@ export interface CalibrateListParams {
 
 export declare namespace Calibrate {
   export {
+    type ScoringSystemCalibrationStatus as ScoringSystemCalibrationStatus,
     type CalibrateListResponse as CalibrateListResponse,
     type CalibrateCancelResponse as CalibrateCancelResponse,
     type CalibrateMessagesResponse as CalibrateMessagesResponse,

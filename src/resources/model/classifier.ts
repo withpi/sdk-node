@@ -15,13 +15,6 @@ export class Classifier extends APIResource {
   }
 
   /**
-   * Checks the status of a Classifier job
-   */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<ClassificationStatus> {
-    return this._client.get(`/model/classifier/${jobId}`, options);
-  }
-
-  /**
    * Lists the Classifier Jobs owned by a user
    */
   list(query?: ClassifierListParams, options?: Core.RequestOptions): Core.APIPromise<ClassifierListResponse>;
@@ -63,6 +56,13 @@ export class Classifier extends APIResource {
       ...options,
       headers: { Accept: 'text/plain', ...options?.headers },
     });
+  }
+
+  /**
+   * Checks the status of a Classifier job
+   */
+  status(jobId: string, options?: Core.RequestOptions): Core.APIPromise<ClassificationStatus> {
+    return this._client.get(`/model/classifier/${jobId}`, options);
   }
 }
 
