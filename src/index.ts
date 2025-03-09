@@ -23,8 +23,8 @@ import {
   ContractGenerateDimensionsParams,
   ContractReadFromHfParams,
   ContractScoreParams,
+  ContractScoreResponse,
   Contracts,
-  ContractsScoreMetrics,
 } from './resources/contracts/contracts';
 import { Data } from './resources/data/data';
 import { Model } from './resources/model/model';
@@ -207,7 +207,7 @@ export declare namespace PiClient {
 
   export {
     Contracts as Contracts,
-    type ContractsScoreMetrics as ContractsScoreMetrics,
+    type ContractScoreResponse as ContractScoreResponse,
     type ContractGenerateDimensionsParams as ContractGenerateDimensionsParams,
     type ContractReadFromHfParams as ContractReadFromHfParams,
     type ContractScoreParams as ContractScoreParams,

@@ -27,7 +27,7 @@ const client = new PiClient({
 });
 
 async function main() {
-  const contractsScoreMetrics = await client.contracts.score({
+  const response = await client.contracts.score({
     llm_input: 'Help me with my problem',
     llm_output: 'Of course I can help with that',
     scoring_system: {
@@ -36,7 +36,7 @@ async function main() {
     },
   });
 
-  console.log(contractsScoreMetrics.scores);
+  console.log(response.scores);
 }
 
 main();
@@ -63,7 +63,7 @@ async function main() {
       name: 'Sample Contract',
     },
   };
-  const contractsScoreMetrics: PiClient.ContractsScoreMetrics = await client.contracts.score(params);
+  const response: PiClient.ContractScoreResponse = await client.contracts.score(params);
 }
 
 main();
@@ -80,7 +80,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const contractsScoreMetrics = await client.contracts
+  const response = await client.contracts
     .score({
       llm_input: 'Help me with my problem',
       llm_output: 'Of course I can help with that',
@@ -183,7 +183,7 @@ const response = await client.contracts
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: contractsScoreMetrics, response: raw } = await client.contracts
+const { data: response, response: raw } = await client.contracts
   .score({
     llm_input: 'Help me with my problem',
     llm_output: 'Of course I can help with that',
@@ -194,7 +194,7 @@ const { data: contractsScoreMetrics, response: raw } = await client.contracts
   })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(contractsScoreMetrics.dimension_scores);
+console.log(response.dimension_scores);
 ```
 
 ### Making custom/undocumented requests
