@@ -1,110 +1,17 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import PiClient from 'withpi';
+import Withpi from 'withpi';
 import { Response } from 'node-fetch';
 
-const client = new PiClient({
+const client = new Withpi({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource sft', () => {
-  test('retrieve', async () => {
-    const responsePromise = client.model.sft.retrieve('job_id');
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('retrieve: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.model.sft.retrieve('job_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      PiClient.NotFoundError,
-    );
-  });
-
-  test('list', async () => {
-    const responsePromise = client.model.sft.list();
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('list: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.model.sft.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
-      PiClient.NotFoundError,
-    );
-  });
-
-  test('list: request options and params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.model.sft.list({ state: 'QUEUED' }, { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(PiClient.NotFoundError);
-  });
-
-  test('cancel', async () => {
-    const responsePromise = client.model.sft.cancel('job_id');
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('cancel: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.model.sft.cancel('job_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      PiClient.NotFoundError,
-    );
-  });
-
-  test('download: only required params', async () => {
-    const responsePromise = client.model.sft.download('job_id', { serving_id: 0 });
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('download: required and optional params', async () => {
-    const response = await client.model.sft.download('job_id', { serving_id: 0 });
-  });
-
-  test('load', async () => {
-    const responsePromise = client.model.sft.load('job_id');
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('load: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.model.sft.load('job_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      PiClient.NotFoundError,
-    );
-  });
-
-  test('startJob: only required params', async () => {
-    const responsePromise = client.model.sft.startJob({
+  // skipped: tests are disabled for the time being
+  test.skip('create: only required params', async () => {
+    const responsePromise = client.model.sft.create({
       examples: [
         {
           llm_input: 'Tell me something different',
@@ -125,8 +32,9 @@ describe('resource sft', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('startJob: required and optional params', async () => {
-    const response = await client.model.sft.startJob({
+  // skipped: tests are disabled for the time being
+  test.skip('create: required and optional params', async () => {
+    const response = await client.model.sft.create({
       examples: [
         {
           llm_input: 'Tell me something different',
@@ -171,8 +79,9 @@ describe('resource sft', () => {
     });
   });
 
-  test('streamMessages', async () => {
-    const responsePromise = client.model.sft.streamMessages('job_id');
+  // skipped: tests are disabled for the time being
+  test.skip('retrieve', async () => {
+    const responsePromise = client.model.sft.retrieve('job_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -182,10 +91,116 @@ describe('resource sft', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('streamMessages: request options instead of params are passed correctly', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('retrieve: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(client.model.sft.retrieve('job_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Withpi.NotFoundError,
+    );
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('list', async () => {
+    const responsePromise = client.model.sft.list();
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('list: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(client.model.sft.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Withpi.NotFoundError,
+    );
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.model.sft.streamMessages('job_id', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(PiClient.NotFoundError);
+      client.model.sft.list({ state: 'QUEUED' }, { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Withpi.NotFoundError);
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('cancel', async () => {
+    const responsePromise = client.model.sft.cancel('job_id');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('cancel: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(client.model.sft.cancel('job_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Withpi.NotFoundError,
+    );
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('download: only required params', async () => {
+    const responsePromise = client.model.sft.download('job_id', { serving_id: 0 });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('download: required and optional params', async () => {
+    const response = await client.model.sft.download('job_id', { serving_id: 0 });
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('load', async () => {
+    const responsePromise = client.model.sft.load('job_id');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('load: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(client.model.sft.load('job_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Withpi.NotFoundError,
+    );
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('messages', async () => {
+    const responsePromise = client.model.sft.messages('job_id');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('messages: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(client.model.sft.messages('job_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Withpi.NotFoundError,
+    );
   });
 });

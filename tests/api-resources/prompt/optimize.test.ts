@@ -8,62 +8,23 @@ const client = new Withpi({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource calibrate', () => {
+describe('resource optimize', () => {
   // skipped: tests are disabled for the time being
-  test.skip('list', async () => {
-    const responsePromise = client.contracts.calibrate.list();
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('list: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.contracts.calibrate.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Withpi.NotFoundError,
-    );
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('list: request options and params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.contracts.calibrate.list({ state: 'QUEUED' }, { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Withpi.NotFoundError);
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('cancel', async () => {
-    const responsePromise = client.contracts.calibrate.cancel('job_id');
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('cancel: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.contracts.calibrate.cancel('job_id', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Withpi.NotFoundError);
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('launch: only required params', async () => {
-    const responsePromise = client.contracts.calibrate.launch({
-      scoring_system: {
+  test.skip('create: only required params', async () => {
+    const responsePromise = client.prompt.optimize.create({
+      contract: {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Contract',
       },
+      examples: [
+        {
+          llm_input: 'Tell me something different',
+          llm_output: 'The lazy dog was jumped over by the quick brown fox',
+        },
+      ],
+      initial_system_instruction: 'Write a great story around the given topic.',
+      model_id: 'gpt-4o-mini',
+      tuning_algorithm: 'PI',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -75,9 +36,9 @@ describe('resource calibrate', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('launch: required and optional params', async () => {
-    const response = await client.contracts.calibrate.launch({
-      scoring_system: {
+  test.skip('create: required and optional params', async () => {
+    const response = await client.prompt.optimize.create({
+      contract: {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Contract',
         dimensions: [
@@ -111,23 +72,87 @@ describe('resource calibrate', () => {
         {
           llm_input: 'Tell me something different',
           llm_output: 'The lazy dog was jumped over by the quick brown fox',
-          rating: 'Strongly Agree',
         },
       ],
-      preference_examples: [
-        {
-          chosen: 'The lazy dog was jumped over by the quick brown fox',
-          llm_input: 'Tell me something different',
-          rejected: 'The lazy dog was flied over by the quick brown fox',
-        },
-      ],
-      strategy: 'LITE',
+      initial_system_instruction: 'Write a great story around the given topic.',
+      model_id: 'gpt-4o-mini',
+      tuning_algorithm: 'PI',
+      dspy_optimization_type: 'BOOTSTRAP_FEW_SHOT',
+      use_chain_of_thought: false,
     });
   });
 
   // skipped: tests are disabled for the time being
+  test.skip('retrieve', async () => {
+    const responsePromise = client.prompt.optimize.retrieve('job_id');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('retrieve: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.prompt.optimize.retrieve('job_id', { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Withpi.NotFoundError);
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('list', async () => {
+    const responsePromise = client.prompt.optimize.list();
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('list: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(client.prompt.optimize.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Withpi.NotFoundError,
+    );
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('list: request options and params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.prompt.optimize.list({ state: 'QUEUED' }, { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Withpi.NotFoundError);
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('cancel', async () => {
+    const responsePromise = client.prompt.optimize.cancel('job_id');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('cancel: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.prompt.optimize.cancel('job_id', { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Withpi.NotFoundError);
+  });
+
+  // skipped: tests are disabled for the time being
   test.skip('messages', async () => {
-    const responsePromise = client.contracts.calibrate.messages('job_id');
+    const responsePromise = client.prompt.optimize.messages('job_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -141,27 +166,7 @@ describe('resource calibrate', () => {
   test.skip('messages: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.contracts.calibrate.messages('job_id', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Withpi.NotFoundError);
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('status', async () => {
-    const responsePromise = client.contracts.calibrate.status('job_id');
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('status: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.contracts.calibrate.status('job_id', { path: '/_stainless_unknown_path' }),
+      client.prompt.optimize.messages('job_id', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Withpi.NotFoundError);
   });
 });

@@ -2,16 +2,12 @@
 
 import { APIResource } from '../resource';
 import * as Core from '../core';
-import * as Shared from './shared';
 
 export class Queries extends APIResource {
   /**
    * Classifies queries into provided classes based on a custom taxonomy.
    */
-  classify(
-    body: QueryClassifyParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.QueryClassificationResponse> {
+  classify(body: QueryClassifyParams, options?: Core.RequestOptions): Core.APIPromise<QueryClassifyResponse> {
     return this._client.post('/queries/classify', { body, ...options });
   }
 
@@ -26,7 +22,44 @@ export class Queries extends APIResource {
   }
 }
 
-export type QueryGenerateFanoutsResponse = Array<Shared.QueryFanoutExample>;
+/**
+ * An input query and its associated fanout queries
+ */
+export interface QueryFanoutExample {
+  /**
+   * The list of fanout queries associated with the input
+   */
+  fanout_queries: Array<string>;
+
+  /**
+   * The input query that the fanout queries are based on.
+   */
+  query: string;
+}
+
+export interface QueryClassifyResponse {
+  results: Array<QueryClassifyResponse.Result>;
+}
+
+export namespace QueryClassifyResponse {
+  export interface Result {
+    prediction: string;
+
+    probabilities: Array<Result.Probability>;
+
+    query: string;
+  }
+
+  export namespace Result {
+    export interface Probability {
+      label: string;
+
+      score: number;
+    }
+  }
+}
+
+export type QueryGenerateFanoutsResponse = Array<QueryFanoutExample>;
 
 export interface QueryClassifyParams {
   /**
@@ -80,7 +113,7 @@ export interface QueryGenerateFanoutsParams {
   /**
    * The list of queries to use as few-shot examples for the fanout generation
    */
-  example_fanout_queries?: Array<Shared.QueryFanoutExample>;
+  example_fanout_queries?: Array<QueryFanoutExample>;
 
   /**
    * The number of fanout queries to generate for each input query
@@ -90,6 +123,8 @@ export interface QueryGenerateFanoutsParams {
 
 export declare namespace Queries {
   export {
+    type QueryFanoutExample as QueryFanoutExample,
+    type QueryClassifyResponse as QueryClassifyResponse,
     type QueryGenerateFanoutsResponse as QueryGenerateFanoutsResponse,
     type QueryClassifyParams as QueryClassifyParams,
     type QueryGenerateFanoutsParams as QueryGenerateFanoutsParams,

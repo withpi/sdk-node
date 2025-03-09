@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import type { PiClient } from './index';
+import type { Withpi } from './index';
 
 export class APIResource {
-  protected _client: PiClient;
+  protected _client: Withpi;
 
-  constructor(client: PiClient) {
+  constructor(client: Withpi) {
     this._client = client;
   }
 }

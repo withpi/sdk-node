@@ -2,8 +2,8 @@
 
 export {
   Classifier,
-  type ClassifierCreateResponse,
-  type ClassifierRetrieveResponse,
+  type ClassificationStatus,
+  type TrainedModel,
   type ClassifierListResponse,
   type ClassifierCancelResponse,
   type ClassifierDownloadResponse,
@@ -16,11 +16,12 @@ export { Model } from './model';
 export { Rl } from './rl/index';
 export {
   Sft,
+  type SftStatus,
   type SftListResponse,
   type SftCancelResponse,
   type SftDownloadResponse,
-  type SftStreamMessagesResponse,
+  type SftMessagesResponse,
+  type SftCreateParams,
   type SftListParams,
   type SftDownloadParams,
-  type SftStartJobParams,
 } from './sft';

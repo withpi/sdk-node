@@ -3,13 +3,24 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as Shared from '../shared';
+import * as CalibrateAPI from '../contracts/calibrate';
+import * as ContractsAPI from '../contracts/contracts';
+import * as GenerateSyntheticDataAPI from '../data/generate-synthetic-data';
+import * as ClassifierAPI from './classifier';
+import * as GrpoAPI from './rl/grpo';
 
 export class Sft extends APIResource {
   /**
+   * Launches a SFT job
+   */
+  create(body: SftCreateParams, options?: Core.RequestOptions): Core.APIPromise<SftStatus> {
+    return this._client.post('/model/sft', { body, ...options });
+  }
+
+  /**
    * Checks the status of a SFT job
    */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.SftStatus> {
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<SftStatus> {
     return this._client.get(`/model/sft/${jobId}`, options);
   }
 
@@ -46,21 +57,14 @@ export class Sft extends APIResource {
   /**
    * Loads a SFT model into serving for a limited period of time
    */
-  load(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.SftStatus> {
+  load(jobId: string, options?: Core.RequestOptions): Core.APIPromise<SftStatus> {
     return this._client.post(`/model/sft/${jobId}/load`, options);
-  }
-
-  /**
-   * Launches a SFT job
-   */
-  startJob(body: SftStartJobParams, options?: Core.RequestOptions): Core.APIPromise<Shared.SftStatus> {
-    return this._client.post('/model/sft', { body, ...options });
   }
 
   /**
    * Opens a message stream about a SFT job
    */
-  streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+  messages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.get(`/model/sft/${jobId}/messages`, {
       ...options,
       headers: { Accept: 'text/plain', ...options?.headers },
@@ -68,41 +72,55 @@ export class Sft extends APIResource {
   }
 }
 
-export type SftListResponse = Array<Shared.SftStatus>;
+/**
+ * SftStatus is the status of a SFT job.
+ */
+export interface SftStatus {
+  /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
+
+  /**
+   * The job id
+   */
+  job_id: string;
+
+  /**
+   * Current state of the job
+   */
+  state: CalibrateAPI.State;
+
+  /**
+   * A list of trained models selected based on the PI Contract score.
+   */
+  trained_models?: Array<ClassifierAPI.TrainedModel> | null;
+}
+
+export type SftListResponse = Array<SftStatus>;
 
 export type SftCancelResponse = string;
 
 export type SftDownloadResponse = string;
 
-export type SftStreamMessagesResponse = string;
+export type SftMessagesResponse = string;
 
-export interface SftListParams {
-  /**
-   * Filter jobs by state
-   */
-  state?: Shared.State | null;
-}
-
-export interface SftDownloadParams {
-  serving_id: number;
-}
-
-export interface SftStartJobParams {
+export interface SftCreateParams {
   /**
    * Examples to use in the SFT tuning process. We split this data into train/eval
    * 90/10.
    */
-  examples: Array<Shared.Example>;
+  examples: Array<GenerateSyntheticDataAPI.SDKExample>;
 
   /**
    * The scoring system to use in the SFT tuning process
    */
-  scoring_system: Shared.Contract;
+  scoring_system: ContractsAPI.SDKContract;
 
   /**
    * The base model to start the SFT tuning process.
    */
-  base_sft_model?: 'LLAMA_3.2_3B' | 'LLAMA_3.1_8B';
+  base_sft_model?: GrpoAPI.TextGenerationBaseModel;
 
   /**
    * SFT learning rate
@@ -112,7 +130,7 @@ export interface SftStartJobParams {
   /**
    * The LoRA configuration.
    */
-  lora_config?: Shared.LoraConfig;
+  lora_config?: GrpoAPI.LoraConfig;
 
   /**
    * SFT number of train epochs: <= 10.
@@ -125,14 +143,26 @@ export interface SftStartJobParams {
   system_prompt?: string | null;
 }
 
+export interface SftListParams {
+  /**
+   * Filter jobs by state
+   */
+  state?: CalibrateAPI.State | null;
+}
+
+export interface SftDownloadParams {
+  serving_id: number;
+}
+
 export declare namespace Sft {
   export {
+    type SftStatus as SftStatus,
     type SftListResponse as SftListResponse,
     type SftCancelResponse as SftCancelResponse,
     type SftDownloadResponse as SftDownloadResponse,
-    type SftStreamMessagesResponse as SftStreamMessagesResponse,
+    type SftMessagesResponse as SftMessagesResponse,
+    type SftCreateParams as SftCreateParams,
     type SftListParams as SftListParams,
     type SftDownloadParams as SftDownloadParams,
-    type SftStartJobParams as SftStartJobParams,
   };
 }

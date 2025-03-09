@@ -1,0 +1,148 @@
+// File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+import { APIResource } from '../../resource';
+import { isRequestOptions } from '../../core';
+import * as Core from '../../core';
+import * as CalibrateAPI from '../contracts/calibrate';
+import * as ContractsAPI from '../contracts/contracts';
+import * as GenerateSyntheticDataAPI from '../data/generate-synthetic-data';
+
+export class Optimize extends APIResource {
+  /**
+   * Launches a Prompt Optimization job
+   */
+  create(
+    body: OptimizeCreateParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<PromptOptimizationStatus> {
+    return this._client.post('/prompt/optimize', { body, ...options });
+  }
+
+  /**
+   * Checks the status of a Prompt Optimization job
+   */
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<PromptOptimizationStatus> {
+    return this._client.get(`/prompt/optimize/${jobId}`, options);
+  }
+
+  /**
+   * Lists the Prompt Optimization Jobs owned by a user
+   */
+  list(query?: OptimizeListParams, options?: Core.RequestOptions): Core.APIPromise<OptimizeListResponse>;
+  list(options?: Core.RequestOptions): Core.APIPromise<OptimizeListResponse>;
+  list(
+    query: OptimizeListParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<OptimizeListResponse> {
+    if (isRequestOptions(query)) {
+      return this.list({}, query);
+    }
+    return this._client.get('/prompt/optimize', { query, ...options });
+  }
+
+  /**
+   * Cancels a Prompt Optimization job
+   */
+  cancel(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+    return this._client.delete(`/prompt/optimize/${jobId}`, options);
+  }
+
+  /**
+   * Opens a message stream about a Prompt Optimization job
+   */
+  messages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+    return this._client.get(`/prompt/optimize/${jobId}/messages`, {
+      ...options,
+      headers: { Accept: 'text/plain', ...options?.headers },
+    });
+  }
+}
+
+/**
+ * The optimized_prompt_messages field is an empty list unless the state is done.
+ */
+export interface PromptOptimizationStatus {
+  /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
+
+  /**
+   * The job id
+   */
+  job_id: string;
+
+  /**
+   * Current state of the job
+   */
+  state: CalibrateAPI.State;
+
+  /**
+   * The optimized prompt messages in the OpenAI message format with the jinja
+   * {{ input }} variable for the next user prompt
+   */
+  optimized_prompt_messages?: Array<Record<string, string>>;
+}
+
+export type OptimizeListResponse = Array<PromptOptimizationStatus>;
+
+export type OptimizeCancelResponse = string;
+
+export type OptimizeMessagesResponse = string;
+
+export interface OptimizeCreateParams {
+  /**
+   * The contract to optimize
+   */
+  contract: ContractsAPI.SDKContract;
+
+  /**
+   * The examples to train and validate on
+   */
+  examples: Array<GenerateSyntheticDataAPI.SDKExample>;
+
+  /**
+   * The initial system instruction
+   */
+  initial_system_instruction: string;
+
+  /**
+   * The model to use for generating responses
+   */
+  model_id: 'gpt-4o-mini' | 'llama-3.1-8b' | 'mock-llm';
+
+  /**
+   * The tuning algorithm to use
+   */
+  tuning_algorithm: 'PI' | 'DSPY';
+
+  /**
+   * The DSPY teleprompter/optimizer to use. This only applies for the DSPY. Leave it
+   * as None if tuning_algorithm != DSPY.
+   */
+  dspy_optimization_type?: 'BOOTSTRAP_FEW_SHOT' | 'COPRO' | 'MIPROv2' | null;
+
+  /**
+   * Decides if to use chain of thought or not. This only applies for the DSPY. Leave
+   * it as None if tuning_algorithm != DSPY.
+   */
+  use_chain_of_thought?: boolean;
+}
+
+export interface OptimizeListParams {
+  /**
+   * Filter jobs by state
+   */
+  state?: CalibrateAPI.State | null;
+}
+
+export declare namespace Optimize {
+  export {
+    type PromptOptimizationStatus as PromptOptimizationStatus,
+    type OptimizeListResponse as OptimizeListResponse,
+    type OptimizeCancelResponse as OptimizeCancelResponse,
+    type OptimizeMessagesResponse as OptimizeMessagesResponse,
+    type OptimizeCreateParams as OptimizeCreateParams,
+    type OptimizeListParams as OptimizeListParams,
+  };
+}
