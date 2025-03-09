@@ -19,3 +19,12 @@ export {
   type QueryClassifyParams,
   type QueryGenerateFanoutsParams,
 } from './queries';
+export {
+  ScoringSystem,
+  type ScoringSystemGenerateDimensionsResponse,
+  type ScoringSystemReadFromHfResponse,
+  type ScoringSystemScoreResponse,
+  type ScoringSystemGenerateDimensionsParams,
+  type ScoringSystemReadFromHfParams,
+  type ScoringSystemScoreParams,
+} from './scoring-system/scoring-system';

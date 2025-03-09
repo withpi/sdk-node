@@ -24,6 +24,15 @@ import {
 import { Data } from './resources/data/data';
 import { Model } from './resources/model/model';
 import { Prompt } from './resources/prompt/prompt';
+import {
+  ScoringSystem,
+  ScoringSystemGenerateDimensionsParams,
+  ScoringSystemGenerateDimensionsResponse,
+  ScoringSystemReadFromHfParams,
+  ScoringSystemReadFromHfResponse,
+  ScoringSystemScoreParams,
+  ScoringSystemScoreResponse,
+} from './resources/scoring-system/scoring-system';
 
 export interface ClientOptions {
   /**
@@ -143,6 +152,7 @@ export class Withpi extends Core.APIClient {
   model: API.Model = new API.Model(this);
   prompt: API.Prompt = new API.Prompt(this);
   queries: API.Queries = new API.Queries(this);
+  scoringSystem: API.ScoringSystem = new API.ScoringSystem(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -185,6 +195,7 @@ Withpi.Data = Data;
 Withpi.Model = Model;
 Withpi.Prompt = Prompt;
 Withpi.Queries = Queries;
+Withpi.ScoringSystem = ScoringSystem;
 export declare namespace Withpi {
   export type RequestOptions = Core.RequestOptions;
 
@@ -210,6 +221,16 @@ export declare namespace Withpi {
     type QueryGenerateFanoutsResponse as QueryGenerateFanoutsResponse,
     type QueryClassifyParams as QueryClassifyParams,
     type QueryGenerateFanoutsParams as QueryGenerateFanoutsParams,
+  };
+
+  export {
+    ScoringSystem as ScoringSystem,
+    type ScoringSystemGenerateDimensionsResponse as ScoringSystemGenerateDimensionsResponse,
+    type ScoringSystemReadFromHfResponse as ScoringSystemReadFromHfResponse,
+    type ScoringSystemScoreResponse as ScoringSystemScoreResponse,
+    type ScoringSystemGenerateDimensionsParams as ScoringSystemGenerateDimensionsParams,
+    type ScoringSystemReadFromHfParams as ScoringSystemReadFromHfParams,
+    type ScoringSystemScoreParams as ScoringSystemScoreParams,
   };
 }
 
