@@ -2,7 +2,7 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as ContractsAPI from '../contracts/contracts';
+import * as Shared from '../shared';
 import * as CalibrateAPI from './calibrate';
 import {
   Calibrate,
@@ -23,7 +23,7 @@ export class PiScoringSystem extends APIResource {
   generateDimensions(
     body: PiScoringSystemGenerateDimensionsParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<ScoringSystem> {
+  ): Core.APIPromise<Shared.ScoringSystem> {
     return this._client.post('/pi_scoring_system/generate_dimensions', { body, ...options });
   }
 
@@ -33,7 +33,7 @@ export class PiScoringSystem extends APIResource {
   readFromHf(
     body: PiScoringSystemReadFromHfParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<ScoringSystem> {
+  ): Core.APIPromise<Shared.ScoringSystem> {
     return this._client.post('/pi_scoring_system/read_from_hf', { body, ...options });
   }
 
@@ -43,27 +43,9 @@ export class PiScoringSystem extends APIResource {
   score(
     body: PiScoringSystemScoreParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<ContractsAPI.ScoringSystemMetrics> {
+  ): Core.APIPromise<Shared.ScoringSystemMetrics> {
     return this._client.post('/pi_scoring_system/score', { body, ...options });
   }
-}
-
-export interface ScoringSystem {
-  /**
-   * The application description
-   */
-  description: string;
-
-  /**
-   * The name of the scoring system
-   */
-  name: string;
-
-  /**
-   * The dimensions of the scoring system
-   */
-  dimensions?: Array<ContractsAPI.SDKDimension>;
-  [k: string]: unknown;
 }
 
 export interface PiScoringSystemGenerateDimensionsParams {
@@ -107,14 +89,13 @@ export interface PiScoringSystemScoreParams {
   /**
    * The scoring system to score
    */
-  scoring_system: ScoringSystem;
+  scoring_system: Shared.ScoringSystem;
 }
 
 PiScoringSystem.Calibrate = Calibrate;
 
 export declare namespace PiScoringSystem {
   export {
-    type ScoringSystem as ScoringSystem,
     type PiScoringSystemGenerateDimensionsParams as PiScoringSystemGenerateDimensionsParams,
     type PiScoringSystemReadFromHfParams as PiScoringSystemReadFromHfParams,
     type PiScoringSystemScoreParams as PiScoringSystemScoreParams,

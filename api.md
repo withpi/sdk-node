@@ -1,9 +1,15 @@
+# Shared
+
+Types:
+
+- <code><a href="./src/resources/shared.ts">ScoringSystem</a></code>
+- <code><a href="./src/resources/shared.ts">ScoringSystemMetrics</a></code>
+- <code><a href="./src/resources/shared.ts">SDKContract</a></code>
+
 # Contracts
 
 Types:
 
-- <code><a href="./src/resources/contracts/contracts.ts">ScoringSystemMetrics</a></code>
-- <code><a href="./src/resources/contracts/contracts.ts">SDKContract</a></code>
 - <code><a href="./src/resources/contracts/contracts.ts">SDKDimension</a></code>
 
 Methods:
@@ -152,10 +158,6 @@ Methods:
 - <code title="get /model/sft/{job_id}/messages">client.model.sft.<a href="./src/resources/model/sft.ts">streamMessages</a>(jobId) -> string</code>
 
 # PiScoringSystem
-
-Types:
-
-- <code><a href="./src/resources/pi-scoring-system/pi-scoring-system.ts">ScoringSystem</a></code>
 
 Methods:
 
