@@ -9,9 +9,9 @@ export {
   type State,
   type CalibrateListResponse,
   type CalibrateCancelResponse,
-  type CalibrateMessagesResponse,
+  type CalibrateStreamMessagesResponse,
   type CalibrateListParams,
-  type CalibrateLaunchParams,
+  type CalibrateStartJobParams,
 } from './calibrate';
 export {
   Contracts,

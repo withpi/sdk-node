@@ -10,6 +10,26 @@ const client = new Withpi({
 
 describe('resource calibrate', () => {
   // skipped: tests are disabled for the time being
+  test.skip('retrieve', async () => {
+    const responsePromise = client.contracts.calibrate.retrieve('job_id');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('retrieve: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.contracts.calibrate.retrieve('job_id', { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Withpi.NotFoundError);
+  });
+
+  // skipped: tests are disabled for the time being
   test.skip('list', async () => {
     const responsePromise = client.contracts.calibrate.list();
     const rawResponse = await responsePromise.asResponse();
@@ -58,8 +78,8 @@ describe('resource calibrate', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('launch: only required params', async () => {
-    const responsePromise = client.contracts.calibrate.launch({
+  test.skip('startJob: only required params', async () => {
+    const responsePromise = client.contracts.calibrate.startJob({
       scoring_system: {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Contract',
@@ -75,8 +95,8 @@ describe('resource calibrate', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('launch: required and optional params', async () => {
-    const response = await client.contracts.calibrate.launch({
+  test.skip('startJob: required and optional params', async () => {
+    const response = await client.contracts.calibrate.startJob({
       scoring_system: {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Contract',
@@ -126,8 +146,8 @@ describe('resource calibrate', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('messages', async () => {
-    const responsePromise = client.contracts.calibrate.messages('job_id');
+  test.skip('streamMessages', async () => {
+    const responsePromise = client.contracts.calibrate.streamMessages('job_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -138,30 +158,10 @@ describe('resource calibrate', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('messages: request options instead of params are passed correctly', async () => {
+  test.skip('streamMessages: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.contracts.calibrate.messages('job_id', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Withpi.NotFoundError);
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('status', async () => {
-    const responsePromise = client.contracts.calibrate.status('job_id');
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('status: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.contracts.calibrate.status('job_id', { path: '/_stainless_unknown_path' }),
+      client.contracts.calibrate.streamMessages('job_id', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Withpi.NotFoundError);
   });
 });

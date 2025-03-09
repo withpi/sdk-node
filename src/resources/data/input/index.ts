@@ -7,7 +7,7 @@ export {
   type GenerateFromSeedCancelResponse,
   type GenerateFromSeedStreamDataResponse,
   type GenerateFromSeedStreamMessagesResponse,
-  type GenerateFromSeedCreateParams,
   type GenerateFromSeedListParams,
+  type GenerateFromSeedStartJobParams,
 } from './generate-from-seeds';
 export { Input, type InputClusterResponse, type InputClusterParams } from './input';

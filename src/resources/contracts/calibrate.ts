@@ -7,6 +7,13 @@ import * as ContractsAPI from './contracts';
 
 export class Calibrate extends APIResource {
   /**
+   * Checks the status of a Contract Calibration job
+   */
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<ContractCalibrationStatus> {
+    return this._client.get(`/contracts/calibrate/${jobId}`, options);
+  }
+
+  /**
    * Lists the Contract Calibration Jobs owned by a user
    */
   list(query?: CalibrateListParams, options?: Core.RequestOptions): Core.APIPromise<CalibrateListResponse>;
@@ -31,8 +38,8 @@ export class Calibrate extends APIResource {
   /**
    * Launches a Contract Calibration job
    */
-  launch(
-    body: CalibrateLaunchParams,
+  startJob(
+    body: CalibrateStartJobParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<ContractCalibrationStatus> {
     return this._client.post('/contracts/calibrate', { body, ...options });
@@ -41,18 +48,11 @@ export class Calibrate extends APIResource {
   /**
    * Opens a message stream about a Contract Calibration job
    */
-  messages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+  streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.get(`/contracts/calibrate/${jobId}/messages`, {
       ...options,
       headers: { Accept: 'text/plain', ...options?.headers },
     });
-  }
-
-  /**
-   * Checks the status of a Contract Calibration job
-   */
-  status(jobId: string, options?: Core.RequestOptions): Core.APIPromise<ContractCalibrationStatus> {
-    return this._client.get(`/contracts/calibrate/${jobId}`, options);
   }
 }
 
@@ -126,7 +126,7 @@ export type CalibrateListResponse = Array<ContractCalibrationStatus>;
 
 export type CalibrateCancelResponse = string;
 
-export type CalibrateMessagesResponse = string;
+export type CalibrateStreamMessagesResponse = string;
 
 export interface CalibrateListParams {
   /**
@@ -135,7 +135,7 @@ export interface CalibrateListParams {
   state?: State | null;
 }
 
-export interface CalibrateLaunchParams {
+export interface CalibrateStartJobParams {
   /**
    * The scoring system to calibrate
    */
@@ -169,8 +169,8 @@ export declare namespace Calibrate {
     type State as State,
     type CalibrateListResponse as CalibrateListResponse,
     type CalibrateCancelResponse as CalibrateCancelResponse,
-    type CalibrateMessagesResponse as CalibrateMessagesResponse,
+    type CalibrateStreamMessagesResponse as CalibrateStreamMessagesResponse,
     type CalibrateListParams as CalibrateListParams,
-    type CalibrateLaunchParams as CalibrateLaunchParams,
+    type CalibrateStartJobParams as CalibrateStartJobParams,
   };
 }

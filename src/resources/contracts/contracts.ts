@@ -6,10 +6,10 @@ import * as CalibrateAPI from './calibrate';
 import {
   Calibrate,
   CalibrateCancelResponse,
-  CalibrateLaunchParams,
   CalibrateListParams,
   CalibrateListResponse,
-  CalibrateMessagesResponse,
+  CalibrateStartJobParams,
+  CalibrateStreamMessagesResponse,
   CalibrationStrategy,
   ContractCalibrationStatus,
   SDKLabeledExample,
@@ -229,8 +229,8 @@ export declare namespace Contracts {
     type State as State,
     type CalibrateListResponse as CalibrateListResponse,
     type CalibrateCancelResponse as CalibrateCancelResponse,
-    type CalibrateMessagesResponse as CalibrateMessagesResponse,
+    type CalibrateStreamMessagesResponse as CalibrateStreamMessagesResponse,
     type CalibrateListParams as CalibrateListParams,
-    type CalibrateLaunchParams as CalibrateLaunchParams,
+    type CalibrateStartJobParams as CalibrateStartJobParams,
   };
 }

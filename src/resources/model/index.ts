@@ -7,10 +7,10 @@ export {
   type ClassifierListResponse,
   type ClassifierCancelResponse,
   type ClassifierDownloadResponse,
-  type ClassifierMessagesResponse,
-  type ClassifierCreateParams,
+  type ClassifierStreamMessagesResponse,
   type ClassifierListParams,
   type ClassifierDownloadParams,
+  type ClassifierStartJobParams,
 } from './classifier';
 export { Model } from './model';
 export { Rl } from './rl/index';
@@ -20,8 +20,8 @@ export {
   type SftListResponse,
   type SftCancelResponse,
   type SftDownloadResponse,
-  type SftMessagesResponse,
-  type SftCreateParams,
+  type SftStreamMessagesResponse,
   type SftListParams,
   type SftDownloadParams,
+  type SftStartJobParams,
 } from './sft';

@@ -6,9 +6,9 @@ import * as GenerateFromSeedsAPI from './generate-from-seeds';
 import {
   DataGenerationStatus,
   GenerateFromSeedCancelResponse,
-  GenerateFromSeedCreateParams,
   GenerateFromSeedListParams,
   GenerateFromSeedListResponse,
+  GenerateFromSeedStartJobParams,
   GenerateFromSeedStreamDataResponse,
   GenerateFromSeedStreamMessagesResponse,
   GenerateFromSeeds,
@@ -81,7 +81,7 @@ export declare namespace Input {
     type GenerateFromSeedCancelResponse as GenerateFromSeedCancelResponse,
     type GenerateFromSeedStreamDataResponse as GenerateFromSeedStreamDataResponse,
     type GenerateFromSeedStreamMessagesResponse as GenerateFromSeedStreamMessagesResponse,
-    type GenerateFromSeedCreateParams as GenerateFromSeedCreateParams,
     type GenerateFromSeedListParams as GenerateFromSeedListParams,
+    type GenerateFromSeedStartJobParams as GenerateFromSeedStartJobParams,
   };
 }

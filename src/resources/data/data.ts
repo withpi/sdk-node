@@ -5,9 +5,9 @@ import * as GenerateSyntheticDataAPI from './generate-synthetic-data';
 import {
   GenerateSyntheticData,
   GenerateSyntheticDataCancelResponse,
-  GenerateSyntheticDataCreateParams,
   GenerateSyntheticDataListParams,
   GenerateSyntheticDataListResponse,
+  GenerateSyntheticDataStartJobParams,
   GenerateSyntheticDataStreamDataResponse,
   GenerateSyntheticDataStreamMessagesResponse,
   SDKExample,
@@ -36,8 +36,8 @@ export declare namespace Data {
     type GenerateSyntheticDataCancelResponse as GenerateSyntheticDataCancelResponse,
     type GenerateSyntheticDataStreamDataResponse as GenerateSyntheticDataStreamDataResponse,
     type GenerateSyntheticDataStreamMessagesResponse as GenerateSyntheticDataStreamMessagesResponse,
-    type GenerateSyntheticDataCreateParams as GenerateSyntheticDataCreateParams,
     type GenerateSyntheticDataListParams as GenerateSyntheticDataListParams,
+    type GenerateSyntheticDataStartJobParams as GenerateSyntheticDataStartJobParams,
   };
 
   export {

@@ -10,7 +10,7 @@ export {
   type GenerateSyntheticDataCancelResponse,
   type GenerateSyntheticDataStreamDataResponse,
   type GenerateSyntheticDataStreamMessagesResponse,
-  type GenerateSyntheticDataCreateParams,
   type GenerateSyntheticDataListParams,
+  type GenerateSyntheticDataStartJobParams,
 } from './generate-synthetic-data';
 export { Input, type InputClusterResponse, type InputClusterParams } from './input/index';
