@@ -10,6 +10,7 @@ export {
 } from './calibrate';
 export {
   PiScoringSystem,
+  type ScoringSystem,
   type PiScoringSystemGenerateDimensionsParams,
   type PiScoringSystemReadFromHfParams,
   type PiScoringSystemScoreParams,

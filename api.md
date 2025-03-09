@@ -1,12 +1,9 @@
-# Shared
+# Contracts
 
 Types:
 
-- <code><a href="./src/resources/shared.ts">ScoringSystem</a></code>
-- <code><a href="./src/resources/shared.ts">ScoringSystemMetrics</a></code>
-- <code><a href="./src/resources/shared.ts">SDKContract</a></code>
-
-# Contracts
+- <code><a href="./src/resources/contracts/contracts.ts">ScoringSystemMetrics</a></code>
+- <code><a href="./src/resources/contracts/contracts.ts">SDKContract</a></code>
 
 Methods:
 
@@ -198,6 +195,10 @@ Types:
 - <code><a href="./src/resources/scoring-system/calibrate.ts">CalibrationStatus</a></code>
 
 # PiScoringSystem
+
+Types:
+
+- <code><a href="./src/resources/pi-scoring-system/pi-scoring-system.ts">ScoringSystem</a></code>
 
 Methods:
 

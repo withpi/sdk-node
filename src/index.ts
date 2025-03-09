@@ -18,6 +18,8 @@ import {
   ContractReadFromHfParams,
   ContractScoreParams,
   Contracts,
+  SDKContract,
+  ScoringSystemMetrics,
 } from './resources/contracts/contracts';
 import { Data } from './resources/data/data';
 import { Model } from './resources/model/model';
@@ -26,9 +28,13 @@ import {
   PiScoringSystemGenerateDimensionsParams,
   PiScoringSystemReadFromHfParams,
   PiScoringSystemScoreParams,
+  ScoringSystem,
 } from './resources/pi-scoring-system/pi-scoring-system';
 import { Prompt } from './resources/prompt/prompt';
-import { ScoringSystemResource } from './resources/scoring-system/scoring-system';
+import {
+  ScoringSystem as ScoringSystemAPIScoringSystem,
+  ScoringSystemResource,
+} from './resources/scoring-system/scoring-system';
 
 export interface ClientOptions {
   /**
@@ -199,6 +205,8 @@ export declare namespace Withpi {
 
   export {
     Contracts as Contracts,
+    type ScoringSystemMetrics as ScoringSystemMetrics,
+    type SDKContract as SDKContract,
     type ContractGenerateDimensionsParams as ContractGenerateDimensionsParams,
     type ContractReadFromHfParams as ContractReadFromHfParams,
     type ContractScoreParams as ContractScoreParams,
@@ -219,18 +227,18 @@ export declare namespace Withpi {
     type QueryGenerateFanoutsParams as QueryGenerateFanoutsParams,
   };
 
-  export { ScoringSystemResource as ScoringSystemResource, type ScoringSystem as ScoringSystem };
+  export {
+    ScoringSystemResource as ScoringSystemResource,
+    type ScoringSystemAPIScoringSystem as ScoringSystem,
+  };
 
   export {
     PiScoringSystem as PiScoringSystem,
+    type ScoringSystem as ScoringSystem,
     type PiScoringSystemGenerateDimensionsParams as PiScoringSystemGenerateDimensionsParams,
     type PiScoringSystemReadFromHfParams as PiScoringSystemReadFromHfParams,
     type PiScoringSystemScoreParams as PiScoringSystemScoreParams,
   };
-
-  export type ScoringSystem = API.ScoringSystem;
-  export type ScoringSystemMetrics = API.ScoringSystemMetrics;
-  export type SDKContract = API.SDKContract;
 }
 
 export { toFile, fileFromPath } from './uploads';

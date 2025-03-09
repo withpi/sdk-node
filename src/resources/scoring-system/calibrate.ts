@@ -2,7 +2,7 @@
 
 import { APIResource } from '../../resource';
 import * as CalibrateAPI from '../contracts/calibrate';
-import * as ScoringSystemAPI from './scoring-system';
+import * as PiScoringSystemAPI from '../pi-scoring-system/pi-scoring-system';
 
 export class Calibrate extends APIResource {}
 
@@ -25,7 +25,7 @@ export interface CalibrationStatus {
   /**
    * The calibrated scoring system
    */
-  calibrated_scoring_system?: ScoringSystemAPI.ScoringSystem | null;
+  calibrated_scoring_system?: PiScoringSystemAPI.ScoringSystem | null;
 }
 
 export declare namespace Calibrate {
