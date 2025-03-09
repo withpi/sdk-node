@@ -2,12 +2,15 @@
 
 export {
   Grpo,
+  type LoraConfig,
+  type RlGrpoStatus,
+  type TextGenerationBaseModel,
   type GrpoListResponse,
   type GrpoCancelResponse,
   type GrpoDownloadResponse,
-  type GrpoStreamMessagesResponse,
+  type GrpoMessagesResponse,
+  type GrpoCreateParams,
   type GrpoListParams,
   type GrpoDownloadParams,
-  type GrpoStartJobParams,
 } from './grpo';
 export { Rl } from './rl';

@@ -4,16 +4,17 @@ import { APIResource } from '../../../resource';
 import * as Core from '../../../core';
 import * as GenerateFromSeedsAPI from './generate-from-seeds';
 import {
+  DataGenerationStatus,
   GenerateFromSeedCancelResponse,
-  GenerateFromSeedGenerateParams,
-  GenerateFromSeedListJobsParams,
-  GenerateFromSeedListJobsResponse,
+  GenerateFromSeedCreateParams,
+  GenerateFromSeedListParams,
+  GenerateFromSeedListResponse,
   GenerateFromSeedStreamDataResponse,
   GenerateFromSeedStreamMessagesResponse,
   GenerateFromSeeds,
 } from './generate-from-seeds';
 
-export class Inputs extends APIResource {
+export class Input extends APIResource {
   generateFromSeeds: GenerateFromSeedsAPI.GenerateFromSeeds = new GenerateFromSeedsAPI.GenerateFromSeeds(
     this._client,
   );
@@ -26,19 +27,21 @@ export class Inputs extends APIResource {
   }
 }
 
-export interface InputTopicCluster {
-  /**
-   * The input IDs assigned to this topic
-   */
-  inputs: Array<string>;
+export type InputClusterResponse = Array<InputClusterResponse.InputClusterResponseItem>;
 
-  /**
-   * The topic of the input in this cluster
-   */
-  topic: string;
+export namespace InputClusterResponse {
+  export interface InputClusterResponseItem {
+    /**
+     * The input IDs assigned to this topic
+     */
+    inputs: Array<string>;
+
+    /**
+     * The topic of the input in this cluster
+     */
+    topic: string;
+  }
 }
-
-export type InputClusterResponse = Array<InputTopicCluster>;
 
 export interface InputClusterParams {
   /**
@@ -66,22 +69,19 @@ export namespace InputClusterParams {
   }
 }
 
-Inputs.GenerateFromSeeds = GenerateFromSeeds;
+Input.GenerateFromSeeds = GenerateFromSeeds;
 
-export declare namespace Inputs {
-  export {
-    type InputTopicCluster as InputTopicCluster,
-    type InputClusterResponse as InputClusterResponse,
-    type InputClusterParams as InputClusterParams,
-  };
+export declare namespace Input {
+  export { type InputClusterResponse as InputClusterResponse, type InputClusterParams as InputClusterParams };
 
   export {
     GenerateFromSeeds as GenerateFromSeeds,
+    type DataGenerationStatus as DataGenerationStatus,
+    type GenerateFromSeedListResponse as GenerateFromSeedListResponse,
     type GenerateFromSeedCancelResponse as GenerateFromSeedCancelResponse,
-    type GenerateFromSeedListJobsResponse as GenerateFromSeedListJobsResponse,
     type GenerateFromSeedStreamDataResponse as GenerateFromSeedStreamDataResponse,
     type GenerateFromSeedStreamMessagesResponse as GenerateFromSeedStreamMessagesResponse,
-    type GenerateFromSeedGenerateParams as GenerateFromSeedGenerateParams,
-    type GenerateFromSeedListJobsParams as GenerateFromSeedListJobsParams,
+    type GenerateFromSeedCreateParams as GenerateFromSeedCreateParams,
+    type GenerateFromSeedListParams as GenerateFromSeedListParams,
   };
 }

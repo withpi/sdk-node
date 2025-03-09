@@ -3,23 +3,21 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as Shared from '../shared';
+import * as CalibrateAPI from '../contracts/calibrate';
+import * as GenerateSyntheticDataAPI from '../data/generate-synthetic-data';
 
 export class Classifier extends APIResource {
   /**
    * Launches a Classifier job
    */
-  create(
-    body: ClassifierCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<ClassifierCreateResponse> {
+  create(body: ClassifierCreateParams, options?: Core.RequestOptions): Core.APIPromise<ClassificationStatus> {
     return this._client.post('/model/classifier', { body, ...options });
   }
 
   /**
    * Checks the status of a Classifier job
    */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<ClassifierRetrieveResponse> {
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<ClassificationStatus> {
     return this._client.get(`/model/classifier/${jobId}`, options);
   }
 
@@ -71,7 +69,7 @@ export class Classifier extends APIResource {
 /**
  * ClassificationStatus is the status of a classification job.
  */
-export interface ClassifierCreateResponse {
+export interface ClassificationStatus {
   /**
    * Detailed status of the job
    */
@@ -85,67 +83,47 @@ export interface ClassifierCreateResponse {
   /**
    * Current state of the job
    */
-  state: Shared.State;
+  state: CalibrateAPI.State;
 
   /**
    * A list of trained classification models.
    */
-  trained_models?: Array<Shared.TrainedModel> | null;
+  trained_models?: Array<TrainedModel> | null;
 }
 
-/**
- * ClassificationStatus is the status of a classification job.
- */
-export interface ClassifierRetrieveResponse {
+export interface TrainedModel {
   /**
-   * Detailed status of the job
+   * The PI contract score of the eval set what isn't used in training
    */
-  detailed_status: Array<string>;
+  contract_score: number;
 
   /**
-   * The job id
+   * The training epoch
    */
-  job_id: string;
+  epoch: number;
 
   /**
-   * Current state of the job
+   * The evaluation loss
    */
-  state: Shared.State;
+  eval_loss: number;
 
   /**
-   * A list of trained classification models.
+   * The serving id of the trained model within this Job
    */
-  trained_models?: Array<Shared.TrainedModel> | null;
+  serving_id: number;
+
+  /**
+   * State of the model in the serving system
+   */
+  serving_state: 'UNLOADED' | 'LOADING' | 'SERVING';
+
+  /**
+   * The training step
+   */
+  step: number;
 }
 
-export type ClassifierListResponse = Array<ClassifierListResponse.ClassifierListResponseItem>;
-
-export namespace ClassifierListResponse {
-  /**
-   * ClassificationStatus is the status of a classification job.
-   */
-  export interface ClassifierListResponseItem {
-    /**
-     * Detailed status of the job
-     */
-    detailed_status: Array<string>;
-
-    /**
-     * The job id
-     */
-    job_id: string;
-
-    /**
-     * Current state of the job
-     */
-    state: Shared.State;
-
-    /**
-     * A list of trained classification models.
-     */
-    trained_models?: Array<Shared.TrainedModel> | null;
-  }
-}
+export type ClassifierListResponse = Array<ClassificationStatus>;
 
 export type ClassifierCancelResponse = string;
 
@@ -162,7 +140,7 @@ export interface ClassifierCreateParams {
   /**
    * Examples to use in the classification tuning process
    */
-  examples: Array<Shared.Example>;
+  examples: Array<GenerateSyntheticDataAPI.SDKExample>;
 
   /**
    * Classification learning rate
@@ -179,7 +157,7 @@ export interface ClassifierListParams {
   /**
    * Filter jobs by state
    */
-  state?: Shared.State | null;
+  state?: CalibrateAPI.State | null;
 }
 
 export interface ClassifierDownloadParams {
@@ -188,8 +166,8 @@ export interface ClassifierDownloadParams {
 
 export declare namespace Classifier {
   export {
-    type ClassifierCreateResponse as ClassifierCreateResponse,
-    type ClassifierRetrieveResponse as ClassifierRetrieveResponse,
+    type ClassificationStatus as ClassificationStatus,
+    type TrainedModel as TrainedModel,
     type ClassifierListResponse as ClassifierListResponse,
     type ClassifierCancelResponse as ClassifierCancelResponse,
     type ClassifierDownloadResponse as ClassifierDownloadResponse,

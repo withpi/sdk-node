@@ -3,14 +3,43 @@
 import { APIResource } from '../../../resource';
 import { isRequestOptions } from '../../../core';
 import * as Core from '../../../core';
-import * as Shared from '../../shared';
+import * as CalibrateAPI from '../../contracts/calibrate';
+import * as GenerateSyntheticDataAPI from '../generate-synthetic-data';
 
 export class GenerateFromSeeds extends APIResource {
   /**
+   * Launches a Data Generation job
+   */
+  create(
+    body: GenerateFromSeedCreateParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<DataGenerationStatus> {
+    return this._client.post('/data/input/generate_from_seeds', { body, ...options });
+  }
+
+  /**
    * Checks the status of a Data Generation job
    */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.DataGenerationStatus> {
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<DataGenerationStatus> {
     return this._client.get(`/data/input/generate_from_seeds/${jobId}`, options);
+  }
+
+  /**
+   * Lists the Data Generation Jobs owned by a user
+   */
+  list(
+    query?: GenerateFromSeedListParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<GenerateFromSeedListResponse>;
+  list(options?: Core.RequestOptions): Core.APIPromise<GenerateFromSeedListResponse>;
+  list(
+    query: GenerateFromSeedListParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<GenerateFromSeedListResponse> {
+    if (isRequestOptions(query)) {
+      return this.list({}, query);
+    }
+    return this._client.get('/data/input/generate_from_seeds', { query, ...options });
   }
 
   /**
@@ -18,34 +47,6 @@ export class GenerateFromSeeds extends APIResource {
    */
   cancel(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.delete(`/data/input/generate_from_seeds/${jobId}`, options);
-  }
-
-  /**
-   * Launches a Data Generation job
-   */
-  generate(
-    body: GenerateFromSeedGenerateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.DataGenerationStatus> {
-    return this._client.post('/data/input/generate_from_seeds', { body, ...options });
-  }
-
-  /**
-   * Lists the Data Generation Jobs owned by a user
-   */
-  listJobs(
-    query?: GenerateFromSeedListJobsParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<GenerateFromSeedListJobsResponse>;
-  listJobs(options?: Core.RequestOptions): Core.APIPromise<GenerateFromSeedListJobsResponse>;
-  listJobs(
-    query: GenerateFromSeedListJobsParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<GenerateFromSeedListJobsResponse> {
-    if (isRequestOptions(query)) {
-      return this.listJobs({}, query);
-    }
-    return this._client.get('/data/input/generate_from_seeds', { query, ...options });
   }
 
   /**
@@ -69,15 +70,41 @@ export class GenerateFromSeeds extends APIResource {
   }
 }
 
-export type GenerateFromSeedCancelResponse = string;
+/**
+ * DataGenerationStatus is the result of a data generation job.
+ */
+export interface DataGenerationStatus {
+  /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
 
-export type GenerateFromSeedListJobsResponse = Array<Shared.DataGenerationStatus>;
+  /**
+   * The job id
+   */
+  job_id: string;
+
+  /**
+   * Current state of the job
+   */
+  state: CalibrateAPI.State;
+
+  /**
+   * The generated data. Can be present even if the state is not done/error as it is
+   * streamed.
+   */
+  data?: Array<string> | null;
+}
+
+export type GenerateFromSeedListResponse = Array<DataGenerationStatus>;
+
+export type GenerateFromSeedCancelResponse = string;
 
 export type GenerateFromSeedStreamDataResponse = string;
 
 export type GenerateFromSeedStreamMessagesResponse = string;
 
-export interface GenerateFromSeedGenerateParams {
+export interface GenerateFromSeedCreateParams {
   /**
    * The application description for which the inputs would be applicable.
    */
@@ -102,7 +129,7 @@ export interface GenerateFromSeedGenerateParams {
   /**
    * The exloration mode for input generation. Defaults to `BALANCED`
    */
-  exploration_mode?: Shared.ExplorationMode;
+  exploration_mode?: GenerateSyntheticDataAPI.SDKExplorationMode;
 
   /**
    * Number of inputs to be included in the prompt for generation. Generally it could
@@ -111,20 +138,21 @@ export interface GenerateFromSeedGenerateParams {
   num_shots?: number;
 }
 
-export interface GenerateFromSeedListJobsParams {
+export interface GenerateFromSeedListParams {
   /**
    * Filter jobs by state
    */
-  state?: Shared.State | null;
+  state?: CalibrateAPI.State | null;
 }
 
 export declare namespace GenerateFromSeeds {
   export {
+    type DataGenerationStatus as DataGenerationStatus,
+    type GenerateFromSeedListResponse as GenerateFromSeedListResponse,
     type GenerateFromSeedCancelResponse as GenerateFromSeedCancelResponse,
-    type GenerateFromSeedListJobsResponse as GenerateFromSeedListJobsResponse,
     type GenerateFromSeedStreamDataResponse as GenerateFromSeedStreamDataResponse,
     type GenerateFromSeedStreamMessagesResponse as GenerateFromSeedStreamMessagesResponse,
-    type GenerateFromSeedGenerateParams as GenerateFromSeedGenerateParams,
-    type GenerateFromSeedListJobsParams as GenerateFromSeedListJobsParams,
+    type GenerateFromSeedCreateParams as GenerateFromSeedCreateParams,
+    type GenerateFromSeedListParams as GenerateFromSeedListParams,
   };
 }

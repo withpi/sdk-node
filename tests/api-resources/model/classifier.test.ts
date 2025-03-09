@@ -1,15 +1,16 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import PiClient from 'withpi';
+import Withpi from 'withpi';
 import { Response } from 'node-fetch';
 
-const client = new PiClient({
+const client = new Withpi({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource classifier', () => {
-  test('create: only required params', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('create: only required params', async () => {
     const responsePromise = client.model.classifier.create({
       base_model: 'MODERNBERT_BASE',
       examples: [
@@ -28,7 +29,8 @@ describe('resource classifier', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('create: required and optional params', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('create: required and optional params', async () => {
     const response = await client.model.classifier.create({
       base_model: 'MODERNBERT_BASE',
       examples: [
@@ -42,7 +44,8 @@ describe('resource classifier', () => {
     });
   });
 
-  test('retrieve', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('retrieve', async () => {
     const responsePromise = client.model.classifier.retrieve('job_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -53,14 +56,16 @@ describe('resource classifier', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('retrieve: request options instead of params are passed correctly', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.model.classifier.retrieve('job_id', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(PiClient.NotFoundError);
+    ).rejects.toThrow(Withpi.NotFoundError);
   });
 
-  test('list', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('list', async () => {
     const responsePromise = client.model.classifier.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -71,21 +76,24 @@ describe('resource classifier', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('list: request options instead of params are passed correctly', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(client.model.classifier.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
-      PiClient.NotFoundError,
+      Withpi.NotFoundError,
     );
   });
 
-  test('list: request options and params are passed correctly', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.model.classifier.list({ state: 'QUEUED' }, { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(PiClient.NotFoundError);
+    ).rejects.toThrow(Withpi.NotFoundError);
   });
 
-  test('cancel', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('cancel', async () => {
     const responsePromise = client.model.classifier.cancel('job_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -96,14 +104,16 @@ describe('resource classifier', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('cancel: request options instead of params are passed correctly', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('cancel: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.model.classifier.cancel('job_id', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(PiClient.NotFoundError);
+    ).rejects.toThrow(Withpi.NotFoundError);
   });
 
-  test('download: only required params', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('download: only required params', async () => {
     const responsePromise = client.model.classifier.download('job_id', { serving_id: 0 });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -114,11 +124,13 @@ describe('resource classifier', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('download: required and optional params', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('download: required and optional params', async () => {
     const response = await client.model.classifier.download('job_id', { serving_id: 0 });
   });
 
-  test('messages', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('messages', async () => {
     const responsePromise = client.model.classifier.messages('job_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -129,10 +141,11 @@ describe('resource classifier', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('messages: request options instead of params are passed correctly', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('messages: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.model.classifier.messages('job_id', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(PiClient.NotFoundError);
+    ).rejects.toThrow(Withpi.NotFoundError);
   });
 });

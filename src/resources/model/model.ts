@@ -3,59 +3,47 @@
 import { APIResource } from '../../resource';
 import * as ClassifierAPI from './classifier';
 import {
+  ClassificationStatus,
   Classifier,
   ClassifierCancelResponse,
   ClassifierCreateParams,
-  ClassifierCreateResponse,
   ClassifierDownloadParams,
   ClassifierDownloadResponse,
   ClassifierListParams,
   ClassifierListResponse,
   ClassifierMessagesResponse,
-  ClassifierRetrieveResponse,
+  TrainedModel,
 } from './classifier';
 import * as SftAPI from './sft';
 import {
   Sft,
   SftCancelResponse,
+  SftCreateParams,
   SftDownloadParams,
   SftDownloadResponse,
   SftListParams,
   SftListResponse,
-  SftStartJobParams,
-  SftStreamMessagesResponse,
+  SftMessagesResponse,
+  SftStatus,
 } from './sft';
 import * as RlAPI from './rl/rl';
 import { Rl } from './rl/rl';
 
 export class Model extends APIResource {
-  sft: SftAPI.Sft = new SftAPI.Sft(this._client);
-  rl: RlAPI.Rl = new RlAPI.Rl(this._client);
   classifier: ClassifierAPI.Classifier = new ClassifierAPI.Classifier(this._client);
+  rl: RlAPI.Rl = new RlAPI.Rl(this._client);
+  sft: SftAPI.Sft = new SftAPI.Sft(this._client);
 }
 
-Model.Sft = Sft;
-Model.Rl = Rl;
 Model.Classifier = Classifier;
+Model.Rl = Rl;
+Model.Sft = Sft;
 
 export declare namespace Model {
   export {
-    Sft as Sft,
-    type SftListResponse as SftListResponse,
-    type SftCancelResponse as SftCancelResponse,
-    type SftDownloadResponse as SftDownloadResponse,
-    type SftStreamMessagesResponse as SftStreamMessagesResponse,
-    type SftListParams as SftListParams,
-    type SftDownloadParams as SftDownloadParams,
-    type SftStartJobParams as SftStartJobParams,
-  };
-
-  export { Rl as Rl };
-
-  export {
     Classifier as Classifier,
-    type ClassifierCreateResponse as ClassifierCreateResponse,
-    type ClassifierRetrieveResponse as ClassifierRetrieveResponse,
+    type ClassificationStatus as ClassificationStatus,
+    type TrainedModel as TrainedModel,
     type ClassifierListResponse as ClassifierListResponse,
     type ClassifierCancelResponse as ClassifierCancelResponse,
     type ClassifierDownloadResponse as ClassifierDownloadResponse,
@@ -63,5 +51,19 @@ export declare namespace Model {
     type ClassifierCreateParams as ClassifierCreateParams,
     type ClassifierListParams as ClassifierListParams,
     type ClassifierDownloadParams as ClassifierDownloadParams,
+  };
+
+  export { Rl as Rl };
+
+  export {
+    Sft as Sft,
+    type SftStatus as SftStatus,
+    type SftListResponse as SftListResponse,
+    type SftCancelResponse as SftCancelResponse,
+    type SftDownloadResponse as SftDownloadResponse,
+    type SftMessagesResponse as SftMessagesResponse,
+    type SftCreateParams as SftCreateParams,
+    type SftListParams as SftListParams,
+    type SftDownloadParams as SftDownloadParams,
   };
 }

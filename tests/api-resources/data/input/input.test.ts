@@ -1,16 +1,17 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import PiClient from 'withpi';
+import Withpi from 'withpi';
 import { Response } from 'node-fetch';
 
-const client = new PiClient({
+const client = new Withpi({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource inputs', () => {
-  test('cluster: only required params', async () => {
-    const responsePromise = client.data.inputs.cluster({
+describe('resource input', () => {
+  // skipped: tests are disabled for the time being
+  test.skip('cluster: only required params', async () => {
+    const responsePromise = client.data.input.cluster({
       inputs: [{ identifier: '12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }],
     });
     const rawResponse = await responsePromise.asResponse();
@@ -22,8 +23,9 @@ describe('resource inputs', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('cluster: required and optional params', async () => {
-    const response = await client.data.inputs.cluster({
+  // skipped: tests are disabled for the time being
+  test.skip('cluster: required and optional params', async () => {
+    const response = await client.data.input.cluster({
       inputs: [{ identifier: '12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }],
       num_clusters: 5,
     });

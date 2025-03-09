@@ -6,38 +6,43 @@ import {
   GenerateSyntheticData,
   GenerateSyntheticDataCancelResponse,
   GenerateSyntheticDataCreateParams,
-  GenerateSyntheticDataListJobsParams,
-  GenerateSyntheticDataListJobsResponse,
+  GenerateSyntheticDataListParams,
+  GenerateSyntheticDataListResponse,
   GenerateSyntheticDataStreamDataResponse,
   GenerateSyntheticDataStreamMessagesResponse,
+  SDKExample,
+  SDKExplorationMode,
+  SyntheticDataStatus,
 } from './generate-synthetic-data';
-import * as InputsAPI from './inputs/inputs';
-import { InputClusterParams, InputClusterResponse, InputTopicCluster, Inputs } from './inputs/inputs';
+import * as InputAPI from './input/input';
+import { Input, InputClusterParams, InputClusterResponse } from './input/input';
 
 export class Data extends APIResource {
-  inputs: InputsAPI.Inputs = new InputsAPI.Inputs(this._client);
   generateSyntheticData: GenerateSyntheticDataAPI.GenerateSyntheticData =
     new GenerateSyntheticDataAPI.GenerateSyntheticData(this._client);
+  input: InputAPI.Input = new InputAPI.Input(this._client);
 }
 
-Data.Inputs = Inputs;
 Data.GenerateSyntheticData = GenerateSyntheticData;
+Data.Input = Input;
 
 export declare namespace Data {
   export {
-    Inputs as Inputs,
-    type InputTopicCluster as InputTopicCluster,
-    type InputClusterResponse as InputClusterResponse,
-    type InputClusterParams as InputClusterParams,
-  };
-
-  export {
     GenerateSyntheticData as GenerateSyntheticData,
+    type SDKExample as SDKExample,
+    type SDKExplorationMode as SDKExplorationMode,
+    type SyntheticDataStatus as SyntheticDataStatus,
+    type GenerateSyntheticDataListResponse as GenerateSyntheticDataListResponse,
     type GenerateSyntheticDataCancelResponse as GenerateSyntheticDataCancelResponse,
-    type GenerateSyntheticDataListJobsResponse as GenerateSyntheticDataListJobsResponse,
     type GenerateSyntheticDataStreamDataResponse as GenerateSyntheticDataStreamDataResponse,
     type GenerateSyntheticDataStreamMessagesResponse as GenerateSyntheticDataStreamMessagesResponse,
     type GenerateSyntheticDataCreateParams as GenerateSyntheticDataCreateParams,
-    type GenerateSyntheticDataListJobsParams as GenerateSyntheticDataListJobsParams,
+    type GenerateSyntheticDataListParams as GenerateSyntheticDataListParams,
+  };
+
+  export {
+    Input as Input,
+    type InputClusterResponse as InputClusterResponse,
+    type InputClusterParams as InputClusterParams,
   };
 }

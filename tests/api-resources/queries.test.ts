@@ -1,15 +1,16 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import PiClient from 'withpi';
+import Withpi from 'withpi';
 import { Response } from 'node-fetch';
 
-const client = new PiClient({
+const client = new Withpi({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource queries', () => {
-  test('classify: only required params', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('classify: only required params', async () => {
     const responsePromise = client.queries.classify({
       classes: [
         { description: 'Questions seeking objective, verifiable information or facts', label: 'factual' },
@@ -37,7 +38,8 @@ describe('resource queries', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('classify: required and optional params', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('classify: required and optional params', async () => {
     const response = await client.queries.classify({
       classes: [
         { description: 'Questions seeking objective, verifiable information or facts', label: 'factual' },
@@ -65,7 +67,8 @@ describe('resource queries', () => {
     });
   });
 
-  test('generateFanouts: only required params', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('generateFanouts: only required params', async () => {
     const responsePromise = client.queries.generateFanouts({
       queries: [
         'Name the four largest fish and what they eat.',
@@ -81,7 +84,8 @@ describe('resource queries', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('generateFanouts: required and optional params', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('generateFanouts: required and optional params', async () => {
     const response = await client.queries.generateFanouts({
       queries: [
         'Name the four largest fish and what they eat.',

@@ -1,18 +1,21 @@
-# Pi Client Node API Library
+# Withpi Node API Library
 
 [![NPM version](https://img.shields.io/npm/v/withpi.svg)](https://npmjs.org/package/withpi) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/withpi)
 
-This library provides convenient access to the Pi Client REST API from server-side TypeScript or JavaScript.
+This library provides convenient access to the Withpi REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found on [docs.withpi.ai](https://docs.withpi.ai). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [docs.withpi.com](https://docs.withpi.com). The full API of this library can be found in [api.md](api.md).
 
 It is generated with [Stainless](https://www.stainless.com/).
 
 ## Installation
 
 ```sh
-npm install withpi
+npm install git+ssh://git@github.com:withpi/sdk-node.git
 ```
+
+> [!NOTE]
+> Once this package is [published to npm](https://app.stainless.com/docs/guides/publish), this will become: `npm install withpi`
 
 ## Usage
 
@@ -20,23 +23,14 @@ The full API of this library can be found in [api.md](api.md).
 
 <!-- prettier-ignore -->
 ```js
-import PiClient from 'withpi';
+import Withpi from 'withpi';
 
-const client = new PiClient({
+const client = new Withpi({
   apiKey: process.env['WITHPI_API_KEY'], // This is the default and can be omitted
 });
 
 async function main() {
-  const response = await client.contracts.score({
-    llm_input: 'Help me with my problem',
-    llm_output: 'Of course I can help with that',
-    scoring_system: {
-      description: "Write a children's story communicating a simple life lesson.",
-      name: 'Sample Contract',
-    },
-  });
-
-  console.log(response.scores);
+  const contractCalibrationStatuses = await client.contracts.calibrate.list();
 }
 
 main();
@@ -48,22 +42,15 @@ This library includes TypeScript definitions for all request params and response
 
 <!-- prettier-ignore -->
 ```ts
-import PiClient from 'withpi';
+import Withpi from 'withpi';
 
-const client = new PiClient({
+const client = new Withpi({
   apiKey: process.env['WITHPI_API_KEY'], // This is the default and can be omitted
 });
 
 async function main() {
-  const params: PiClient.ContractScoreParams = {
-    llm_input: 'Help me with my problem',
-    llm_output: 'Of course I can help with that',
-    scoring_system: {
-      description: "Write a children's story communicating a simple life lesson.",
-      name: 'Sample Contract',
-    },
-  };
-  const response: PiClient.ContractScoreResponse = await client.contracts.score(params);
+  const contractCalibrationStatuses: Withpi.Contracts.CalibrateListResponse =
+    await client.contracts.calibrate.list();
 }
 
 main();
@@ -80,24 +67,15 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const response = await client.contracts
-    .score({
-      llm_input: 'Help me with my problem',
-      llm_output: 'Of course I can help with that',
-      scoring_system: {
-        description: "Write a children's story communicating a simple life lesson.",
-        name: 'Sample Contract',
-      },
-    })
-    .catch(async (err) => {
-      if (err instanceof PiClient.APIError) {
-        console.log(err.status); // 400
-        console.log(err.name); // BadRequestError
-        console.log(err.headers); // {server: 'nginx', ...}
-      } else {
-        throw err;
-      }
-    });
+  const contractCalibrationStatuses = await client.contracts.calibrate.list().catch(async (err) => {
+    if (err instanceof Withpi.APIError) {
+      console.log(err.status); // 400
+      console.log(err.name); // BadRequestError
+      console.log(err.headers); // {server: 'nginx', ...}
+    } else {
+      throw err;
+    }
+  });
 }
 
 main();
@@ -127,12 +105,12 @@ You can use the `maxRetries` option to configure or disable this:
 <!-- prettier-ignore -->
 ```js
 // Configure the default for all requests:
-const client = new PiClient({
+const client = new Withpi({
   maxRetries: 0, // default is 2
 });
 
 // Or, configure per-request:
-await client.contracts.score({ llm_input: 'Help me with my problem', llm_output: 'Of course I can help with that', scoring_system: { description: 'Write a children\'s story communicating a simple life lesson.', name: 'Sample Contract' } }, {
+await client.contracts.calibrate.list({
   maxRetries: 5,
 });
 ```
@@ -144,12 +122,12 @@ Requests time out after 1 minute by default. You can configure this with a `time
 <!-- prettier-ignore -->
 ```ts
 // Configure the default for all requests:
-const client = new PiClient({
+const client = new Withpi({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
 });
 
 // Override per-request:
-await client.contracts.score({ llm_input: 'Help me with my problem', llm_output: 'Of course I can help with that', scoring_system: { description: 'Write a children\'s story communicating a simple life lesson.', name: 'Sample Contract' } }, {
+await client.contracts.calibrate.list({
   timeout: 5 * 1000,
 });
 ```
@@ -168,33 +146,17 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 
 <!-- prettier-ignore -->
 ```ts
-const client = new PiClient();
+const client = new Withpi();
 
-const response = await client.contracts
-  .score({
-    llm_input: 'Help me with my problem',
-    llm_output: 'Of course I can help with that',
-    scoring_system: {
-      description: "Write a children's story communicating a simple life lesson.",
-      name: 'Sample Contract',
-    },
-  })
-  .asResponse();
+const response = await client.contracts.calibrate.list().asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: response, response: raw } = await client.contracts
-  .score({
-    llm_input: 'Help me with my problem',
-    llm_output: 'Of course I can help with that',
-    scoring_system: {
-      description: "Write a children's story communicating a simple life lesson.",
-      name: 'Sample Contract',
-    },
-  })
+const { data: contractCalibrationStatuses, response: raw } = await client.contracts.calibrate
+  .list()
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(response.dimension_scores);
+console.log(contractCalibrationStatuses);
 ```
 
 ### Making custom/undocumented requests
@@ -247,13 +209,13 @@ By default, this library uses `node-fetch` in Node, and expects a global `fetch`
 
 If you would prefer to use a global, web-standards-compliant `fetch` function even in a Node environment,
 (for example, if you are running Node with `--experimental-fetch` or using NextJS which polyfills with `undici`),
-add the following import before your first import `from "PiClient"`:
+add the following import before your first import `from "Withpi"`:
 
 ```ts
 // Tell TypeScript and the package to use the global web fetch instead of node-fetch.
 // Note, despite the name, this does not add any polyfills, but expects them to be provided if needed.
 import 'withpi/shims/web';
-import PiClient from 'withpi';
+import Withpi from 'withpi';
 ```
 
 To do the inverse, add `import "withpi/shims/node"` (which does import polyfills).
@@ -266,9 +228,9 @@ which can be used to inspect or alter the `Request` or `Response` before/after e
 
 ```ts
 import { fetch } from 'undici'; // as one example
-import PiClient from 'withpi';
+import Withpi from 'withpi';
 
-const client = new PiClient({
+const client = new Withpi({
   fetch: async (url: RequestInfo, init?: RequestInit): Promise<Response> => {
     console.log('About to make a request', url, init);
     const response = await fetch(url, init);
@@ -293,24 +255,14 @@ import http from 'http';
 import { HttpsProxyAgent } from 'https-proxy-agent';
 
 // Configure the default for all requests:
-const client = new PiClient({
+const client = new Withpi({
   httpAgent: new HttpsProxyAgent(process.env.PROXY_URL),
 });
 
 // Override per-request:
-await client.contracts.score(
-  {
-    llm_input: 'Help me with my problem',
-    llm_output: 'Of course I can help with that',
-    scoring_system: {
-      description: "Write a children's story communicating a simple life lesson.",
-      name: 'Sample Contract',
-    },
-  },
-  {
-    httpAgent: new http.Agent({ keepAlive: false }),
-  },
-);
+await client.contracts.calibrate.list({
+  httpAgent: new http.Agent({ keepAlive: false }),
+});
 ```
 
 ## Semantic versioning
