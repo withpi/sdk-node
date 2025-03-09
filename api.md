@@ -1,10 +1,12 @@
-# Contracts
+# Shared
 
 Types:
 
-- <code><a href="./src/resources/contracts/contracts.ts">ScoringSystemMetrics</a></code>
-- <code><a href="./src/resources/contracts/contracts.ts">SDKContract</a></code>
-- <code><a href="./src/resources/contracts/contracts.ts">SDKDimension</a></code>
+- <code><a href="./src/resources/shared.ts">ScoringSystem</a></code>
+- <code><a href="./src/resources/shared.ts">ScoringSystemMetrics</a></code>
+- <code><a href="./src/resources/shared.ts">SDKContract</a></code>
+
+# Contracts
 
 Methods:
 

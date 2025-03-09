@@ -3,8 +3,8 @@
 import { APIResource } from '../../../resource';
 import { isRequestOptions } from '../../../core';
 import * as Core from '../../../core';
+import * as Shared from '../../shared';
 import * as CalibrateAPI from '../../contracts/calibrate';
-import * as ContractsAPI from '../../contracts/contracts';
 import * as ClassifierAPI from '../classifier';
 
 export class Grpo extends APIResource {
@@ -145,7 +145,7 @@ export interface GrpoCreateParams {
   /**
    * The scoring system to use in the GRPO tuning process
    */
-  scoring_system: ContractsAPI.SDKContract;
+  scoring_system: Shared.SDKContract;
 
   /**
    * A custom system prompt to use during the RL tuning process
