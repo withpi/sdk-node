@@ -106,14 +106,14 @@ describe('resource grpo', () => {
   test('startJob: only required params', async () => {
     const responsePromise = client.model.rl.grpo.startJob({
       base_rl_model: 'LLAMA_3.2_3B',
-      contract: {
-        description: "Write a children's story communicating a simple life lesson.",
-        name: 'Sample Contract',
-      },
       examples: [{ llm_input: 'Tell me something different' }],
       learning_rate: 0.000005,
       lora_config: {},
       num_train_epochs: 10,
+      scoring_system: {
+        description: "Write a children's story communicating a simple life lesson.",
+        name: 'Sample Contract',
+      },
       system_prompt: 'An optional system prompt.',
     });
     const rawResponse = await responsePromise.asResponse();
@@ -128,7 +128,11 @@ describe('resource grpo', () => {
   test('startJob: required and optional params', async () => {
     const response = await client.model.rl.grpo.startJob({
       base_rl_model: 'LLAMA_3.2_3B',
-      contract: {
+      examples: [{ llm_input: 'Tell me something different' }],
+      learning_rate: 0.000005,
+      lora_config: { lora_rank: 'R_16' },
+      num_train_epochs: 10,
+      scoring_system: {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Contract',
         dimensions: [
@@ -158,10 +162,6 @@ describe('resource grpo', () => {
           },
         ],
       },
-      examples: [{ llm_input: 'Tell me something different' }],
-      learning_rate: 0.000005,
-      lora_config: { lora_rank: 'R_16' },
-      num_train_epochs: 10,
       system_prompt: 'An optional system prompt.',
     });
   });
