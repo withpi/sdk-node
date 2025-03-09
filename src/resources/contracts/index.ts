@@ -10,7 +10,7 @@ export {
 } from './calibrate';
 export {
   Contracts,
-  type ContractsScoreMetrics,
+  type ContractScoreResponse,
   type ContractGenerateDimensionsParams,
   type ContractReadFromHfParams,
   type ContractScoreParams,
