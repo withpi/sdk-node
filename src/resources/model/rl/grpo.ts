@@ -9,10 +9,10 @@ import * as ClassifierAPI from '../classifier';
 
 export class Grpo extends APIResource {
   /**
-   * Launches a RL GRPO job
+   * Checks the status of a RL GRPO job
    */
-  create(body: GrpoCreateParams, options?: Core.RequestOptions): Core.APIPromise<RlGrpoStatus> {
-    return this._client.post('/model/rl/grpo', { body, ...options });
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<RlGrpoStatus> {
+    return this._client.get(`/model/rl/grpo/${jobId}`, options);
   }
 
   /**
@@ -57,20 +57,20 @@ export class Grpo extends APIResource {
   }
 
   /**
+   * Launches a RL GRPO job
+   */
+  startJob(body: GrpoStartJobParams, options?: Core.RequestOptions): Core.APIPromise<RlGrpoStatus> {
+    return this._client.post('/model/rl/grpo', { body, ...options });
+  }
+
+  /**
    * Opens a message stream about a RL GRPO job
    */
-  messages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+  streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.get(`/model/rl/grpo/${jobId}/messages`, {
       ...options,
       headers: { Accept: 'text/plain', ...options?.headers },
     });
-  }
-
-  /**
-   * Checks the status of a RL GRPO job
-   */
-  status(jobId: string, options?: Core.RequestOptions): Core.APIPromise<RlGrpoStatus> {
-    return this._client.get(`/model/rl/grpo/${jobId}`, options);
   }
 }
 
@@ -114,9 +114,20 @@ export type GrpoCancelResponse = string;
 
 export type GrpoDownloadResponse = string;
 
-export type GrpoMessagesResponse = string;
+export type GrpoStreamMessagesResponse = string;
 
-export interface GrpoCreateParams {
+export interface GrpoListParams {
+  /**
+   * Filter jobs by state
+   */
+  state?: CalibrateAPI.State | null;
+}
+
+export interface GrpoDownloadParams {
+  serving_id: number;
+}
+
+export interface GrpoStartJobParams {
   /**
    * The base model to start the RL tunning process
    */
@@ -125,7 +136,7 @@ export interface GrpoCreateParams {
   /**
    * Examples to use in the RL tuning process
    */
-  examples: Array<GrpoCreateParams.Example>;
+  examples: Array<GrpoStartJobParams.Example>;
 
   /**
    * GRPO learning rate
@@ -153,7 +164,7 @@ export interface GrpoCreateParams {
   system_prompt: string | null;
 }
 
-export namespace GrpoCreateParams {
+export namespace GrpoStartJobParams {
   /**
    * An example for RL training
    */
@@ -165,17 +176,6 @@ export namespace GrpoCreateParams {
   }
 }
 
-export interface GrpoListParams {
-  /**
-   * Filter jobs by state
-   */
-  state?: CalibrateAPI.State | null;
-}
-
-export interface GrpoDownloadParams {
-  serving_id: number;
-}
-
 export declare namespace Grpo {
   export {
     type LoraConfig as LoraConfig,
@@ -184,9 +184,9 @@ export declare namespace Grpo {
     type GrpoListResponse as GrpoListResponse,
     type GrpoCancelResponse as GrpoCancelResponse,
     type GrpoDownloadResponse as GrpoDownloadResponse,
-    type GrpoMessagesResponse as GrpoMessagesResponse,
-    type GrpoCreateParams as GrpoCreateParams,
+    type GrpoStreamMessagesResponse as GrpoStreamMessagesResponse,
     type GrpoListParams as GrpoListParams,
     type GrpoDownloadParams as GrpoDownloadParams,
+    type GrpoStartJobParams as GrpoStartJobParams,
   };
 }

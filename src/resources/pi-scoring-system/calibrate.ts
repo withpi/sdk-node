@@ -8,16 +8,6 @@ import * as PiScoringSystemAPI from './pi-scoring-system';
 
 export class Calibrate extends APIResource {
   /**
-   * Launches a Scoring System Calibration job
-   */
-  create(
-    body: CalibrateCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<ScoringSystemCalibrationStatus> {
-    return this._client.post('/pi_scoring_system/calibrate', { body, ...options });
-  }
-
-  /**
    * Checks the status of a Scoring System Calibration job
    */
   retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<ScoringSystemCalibrationStatus> {
@@ -47,9 +37,19 @@ export class Calibrate extends APIResource {
   }
 
   /**
+   * Launches a Scoring System Calibration job
+   */
+  startJob(
+    body: CalibrateStartJobParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<ScoringSystemCalibrationStatus> {
+    return this._client.post('/pi_scoring_system/calibrate', { body, ...options });
+  }
+
+  /**
    * Opens a message stream about a Scoring System Calibration job
    */
-  messages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+  streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.get(`/pi_scoring_system/calibrate/${jobId}/messages`, {
       ...options,
       headers: { Accept: 'text/plain', ...options?.headers },
@@ -83,9 +83,16 @@ export type CalibrateListResponse = Array<ScoringSystemCalibrationStatus>;
 
 export type CalibrateCancelResponse = string;
 
-export type CalibrateMessagesResponse = string;
+export type CalibrateStreamMessagesResponse = string;
 
-export interface CalibrateCreateParams {
+export interface CalibrateListParams {
+  /**
+   * Filter jobs by state
+   */
+  state?: CalibrateAPI.State | null;
+}
+
+export interface CalibrateStartJobParams {
   /**
    * The scoring system to calibrate
    */
@@ -110,20 +117,13 @@ export interface CalibrateCreateParams {
   strategy?: CalibrateAPI.CalibrationStrategy;
 }
 
-export interface CalibrateListParams {
-  /**
-   * Filter jobs by state
-   */
-  state?: CalibrateAPI.State | null;
-}
-
 export declare namespace Calibrate {
   export {
     type ScoringSystemCalibrationStatus as ScoringSystemCalibrationStatus,
     type CalibrateListResponse as CalibrateListResponse,
     type CalibrateCancelResponse as CalibrateCancelResponse,
-    type CalibrateMessagesResponse as CalibrateMessagesResponse,
-    type CalibrateCreateParams as CalibrateCreateParams,
+    type CalibrateStreamMessagesResponse as CalibrateStreamMessagesResponse,
     type CalibrateListParams as CalibrateListParams,
+    type CalibrateStartJobParams as CalibrateStartJobParams,
   };
 }

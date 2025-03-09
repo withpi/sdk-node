@@ -5,9 +5,9 @@ export {
   type ScoringSystemCalibrationStatus,
   type CalibrateListResponse,
   type CalibrateCancelResponse,
-  type CalibrateMessagesResponse,
-  type CalibrateCreateParams,
+  type CalibrateStreamMessagesResponse,
   type CalibrateListParams,
+  type CalibrateStartJobParams,
 } from './calibrate';
 export {
   PiScoringSystem,

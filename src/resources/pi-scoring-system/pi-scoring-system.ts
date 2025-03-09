@@ -7,10 +7,10 @@ import * as CalibrateAPI from './calibrate';
 import {
   Calibrate,
   CalibrateCancelResponse,
-  CalibrateCreateParams,
   CalibrateListParams,
   CalibrateListResponse,
-  CalibrateMessagesResponse,
+  CalibrateStartJobParams,
+  CalibrateStreamMessagesResponse,
   ScoringSystemCalibrationStatus,
 } from './calibrate';
 
@@ -125,8 +125,8 @@ export declare namespace PiScoringSystem {
     type ScoringSystemCalibrationStatus as ScoringSystemCalibrationStatus,
     type CalibrateListResponse as CalibrateListResponse,
     type CalibrateCancelResponse as CalibrateCancelResponse,
-    type CalibrateMessagesResponse as CalibrateMessagesResponse,
-    type CalibrateCreateParams as CalibrateCreateParams,
+    type CalibrateStreamMessagesResponse as CalibrateStreamMessagesResponse,
     type CalibrateListParams as CalibrateListParams,
+    type CalibrateStartJobParams as CalibrateStartJobParams,
   };
 }

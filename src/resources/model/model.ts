@@ -6,25 +6,25 @@ import {
   ClassificationStatus,
   Classifier,
   ClassifierCancelResponse,
-  ClassifierCreateParams,
   ClassifierDownloadParams,
   ClassifierDownloadResponse,
   ClassifierListParams,
   ClassifierListResponse,
-  ClassifierMessagesResponse,
+  ClassifierStartJobParams,
+  ClassifierStreamMessagesResponse,
   TrainedModel,
 } from './classifier';
 import * as SftAPI from './sft';
 import {
   Sft,
   SftCancelResponse,
-  SftCreateParams,
   SftDownloadParams,
   SftDownloadResponse,
   SftListParams,
   SftListResponse,
-  SftMessagesResponse,
+  SftStartJobParams,
   SftStatus,
+  SftStreamMessagesResponse,
 } from './sft';
 import * as RlAPI from './rl/rl';
 import { Rl } from './rl/rl';
@@ -47,10 +47,10 @@ export declare namespace Model {
     type ClassifierListResponse as ClassifierListResponse,
     type ClassifierCancelResponse as ClassifierCancelResponse,
     type ClassifierDownloadResponse as ClassifierDownloadResponse,
-    type ClassifierMessagesResponse as ClassifierMessagesResponse,
-    type ClassifierCreateParams as ClassifierCreateParams,
+    type ClassifierStreamMessagesResponse as ClassifierStreamMessagesResponse,
     type ClassifierListParams as ClassifierListParams,
     type ClassifierDownloadParams as ClassifierDownloadParams,
+    type ClassifierStartJobParams as ClassifierStartJobParams,
   };
 
   export { Rl as Rl };
@@ -61,9 +61,9 @@ export declare namespace Model {
     type SftListResponse as SftListResponse,
     type SftCancelResponse as SftCancelResponse,
     type SftDownloadResponse as SftDownloadResponse,
-    type SftMessagesResponse as SftMessagesResponse,
-    type SftCreateParams as SftCreateParams,
+    type SftStreamMessagesResponse as SftStreamMessagesResponse,
     type SftListParams as SftListParams,
     type SftDownloadParams as SftDownloadParams,
+    type SftStartJobParams as SftStartJobParams,
   };
 }

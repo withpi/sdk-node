@@ -9,16 +9,6 @@ import * as GenerateSyntheticDataAPI from '../data/generate-synthetic-data';
 
 export class Optimize extends APIResource {
   /**
-   * Launches a Prompt Optimization job
-   */
-  create(
-    body: OptimizeCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<PromptOptimizationStatus> {
-    return this._client.post('/prompt/optimize', { body, ...options });
-  }
-
-  /**
    * Checks the status of a Prompt Optimization job
    */
   retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<PromptOptimizationStatus> {
@@ -48,9 +38,19 @@ export class Optimize extends APIResource {
   }
 
   /**
+   * Launches a Prompt Optimization job
+   */
+  startJob(
+    body: OptimizeStartJobParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<PromptOptimizationStatus> {
+    return this._client.post('/prompt/optimize', { body, ...options });
+  }
+
+  /**
    * Opens a message stream about a Prompt Optimization job
    */
-  messages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+  streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.get(`/prompt/optimize/${jobId}/messages`, {
       ...options,
       headers: { Accept: 'text/plain', ...options?.headers },
@@ -88,9 +88,16 @@ export type OptimizeListResponse = Array<PromptOptimizationStatus>;
 
 export type OptimizeCancelResponse = string;
 
-export type OptimizeMessagesResponse = string;
+export type OptimizeStreamMessagesResponse = string;
 
-export interface OptimizeCreateParams {
+export interface OptimizeListParams {
+  /**
+   * Filter jobs by state
+   */
+  state?: CalibrateAPI.State | null;
+}
+
+export interface OptimizeStartJobParams {
   /**
    * The contract to optimize
    */
@@ -129,20 +136,13 @@ export interface OptimizeCreateParams {
   use_chain_of_thought?: boolean;
 }
 
-export interface OptimizeListParams {
-  /**
-   * Filter jobs by state
-   */
-  state?: CalibrateAPI.State | null;
-}
-
 export declare namespace Optimize {
   export {
     type PromptOptimizationStatus as PromptOptimizationStatus,
     type OptimizeListResponse as OptimizeListResponse,
     type OptimizeCancelResponse as OptimizeCancelResponse,
-    type OptimizeMessagesResponse as OptimizeMessagesResponse,
-    type OptimizeCreateParams as OptimizeCreateParams,
+    type OptimizeStreamMessagesResponse as OptimizeStreamMessagesResponse,
     type OptimizeListParams as OptimizeListParams,
+    type OptimizeStartJobParams as OptimizeStartJobParams,
   };
 }

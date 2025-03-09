@@ -8,9 +8,9 @@ export {
   type GrpoListResponse,
   type GrpoCancelResponse,
   type GrpoDownloadResponse,
-  type GrpoMessagesResponse,
-  type GrpoCreateParams,
+  type GrpoStreamMessagesResponse,
   type GrpoListParams,
   type GrpoDownloadParams,
+  type GrpoStartJobParams,
 } from './grpo';
 export { Rl } from './rl';

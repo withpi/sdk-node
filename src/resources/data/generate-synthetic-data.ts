@@ -7,13 +7,10 @@ import * as CalibrateAPI from '../contracts/calibrate';
 
 export class GenerateSyntheticData extends APIResource {
   /**
-   * Launches a Synthetic Data Generation job
+   * Checks the status of a Synthetic Data Generation job
    */
-  create(
-    body: GenerateSyntheticDataCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<SyntheticDataStatus> {
-    return this._client.post('/data/generate_synthetic_data', { body, ...options });
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<SyntheticDataStatus> {
+    return this._client.get(`/data/generate_synthetic_data/${jobId}`, options);
   }
 
   /**
@@ -42,10 +39,13 @@ export class GenerateSyntheticData extends APIResource {
   }
 
   /**
-   * Checks the status of a Synthetic Data Generation job
+   * Launches a Synthetic Data Generation job
    */
-  retrieveStatus(jobId: string, options?: Core.RequestOptions): Core.APIPromise<SyntheticDataStatus> {
-    return this._client.get(`/data/generate_synthetic_data/${jobId}`, options);
+  startJob(
+    body: GenerateSyntheticDataStartJobParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<SyntheticDataStatus> {
+    return this._client.post('/data/generate_synthetic_data', { body, ...options });
   }
 
   /**
@@ -129,7 +129,14 @@ export namespace GenerateSyntheticDataStreamDataResponse {
 
 export type GenerateSyntheticDataStreamMessagesResponse = string;
 
-export interface GenerateSyntheticDataCreateParams {
+export interface GenerateSyntheticDataListParams {
+  /**
+   * Filter jobs by state
+   */
+  state?: CalibrateAPI.State | null;
+}
+
+export interface GenerateSyntheticDataStartJobParams {
   /**
    * The number of new LLM examples to generate
    */
@@ -167,13 +174,6 @@ export interface GenerateSyntheticDataCreateParams {
   system_prompt?: string | null;
 }
 
-export interface GenerateSyntheticDataListParams {
-  /**
-   * Filter jobs by state
-   */
-  state?: CalibrateAPI.State | null;
-}
-
 export declare namespace GenerateSyntheticData {
   export {
     type SDKExample as SDKExample,
@@ -183,7 +183,7 @@ export declare namespace GenerateSyntheticData {
     type GenerateSyntheticDataCancelResponse as GenerateSyntheticDataCancelResponse,
     type GenerateSyntheticDataStreamDataResponse as GenerateSyntheticDataStreamDataResponse,
     type GenerateSyntheticDataStreamMessagesResponse as GenerateSyntheticDataStreamMessagesResponse,
-    type GenerateSyntheticDataCreateParams as GenerateSyntheticDataCreateParams,
     type GenerateSyntheticDataListParams as GenerateSyntheticDataListParams,
+    type GenerateSyntheticDataStartJobParams as GenerateSyntheticDataStartJobParams,
   };
 }

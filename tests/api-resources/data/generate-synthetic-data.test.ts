@@ -10,16 +10,8 @@ const client = new Withpi({
 
 describe('resource generateSyntheticData', () => {
   // skipped: tests are disabled for the time being
-  test.skip('create: only required params', async () => {
-    const responsePromise = client.data.generateSyntheticData.create({
-      num_examples_to_generate: 50,
-      seeds: [
-        {
-          llm_input: 'Tell me something different',
-          llm_output: 'The lazy dog was jumped over by the quick brown fox',
-        },
-      ],
-    });
+  test.skip('retrieve', async () => {
+    const responsePromise = client.data.generateSyntheticData.retrieve('job_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -30,21 +22,11 @@ describe('resource generateSyntheticData', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('create: required and optional params', async () => {
-    const response = await client.data.generateSyntheticData.create({
-      num_examples_to_generate: 50,
-      seeds: [
-        {
-          llm_input: 'Tell me something different',
-          llm_output: 'The lazy dog was jumped over by the quick brown fox',
-        },
-      ],
-      application_description: "AI application for writing a children's story given topics.",
-      batch_size: 5,
-      exploration_mode: 'CONSERVATIVE',
-      num_shots: 5,
-      system_prompt: "Write a children's story given a topic from the user.",
-    });
+  test.skip('retrieve: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.data.generateSyntheticData.retrieve('job_id', { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Withpi.NotFoundError);
   });
 
   // skipped: tests are disabled for the time being
@@ -96,8 +78,16 @@ describe('resource generateSyntheticData', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('retrieveStatus', async () => {
-    const responsePromise = client.data.generateSyntheticData.retrieveStatus('job_id');
+  test.skip('startJob: only required params', async () => {
+    const responsePromise = client.data.generateSyntheticData.startJob({
+      num_examples_to_generate: 50,
+      seeds: [
+        {
+          llm_input: 'Tell me something different',
+          llm_output: 'The lazy dog was jumped over by the quick brown fox',
+        },
+      ],
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -108,11 +98,21 @@ describe('resource generateSyntheticData', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('retrieveStatus: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.data.generateSyntheticData.retrieveStatus('job_id', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Withpi.NotFoundError);
+  test.skip('startJob: required and optional params', async () => {
+    const response = await client.data.generateSyntheticData.startJob({
+      num_examples_to_generate: 50,
+      seeds: [
+        {
+          llm_input: 'Tell me something different',
+          llm_output: 'The lazy dog was jumped over by the quick brown fox',
+        },
+      ],
+      application_description: "AI application for writing a children's story given topics.",
+      batch_size: 5,
+      exploration_mode: 'CONSERVATIVE',
+      num_shots: 5,
+      system_prompt: "Write a children's story given a topic from the user.",
+    });
   });
 
   // skipped: tests are disabled for the time being

@@ -5,8 +5,8 @@ export {
   type PromptOptimizationStatus,
   type OptimizeListResponse,
   type OptimizeCancelResponse,
-  type OptimizeMessagesResponse,
-  type OptimizeCreateParams,
+  type OptimizeStreamMessagesResponse,
   type OptimizeListParams,
+  type OptimizeStartJobParams,
 } from './optimize';
 export { Prompt } from './prompt';
