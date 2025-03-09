@@ -27,7 +27,7 @@ export class Contracts extends APIResource {
   }
 
   /**
-   * Read a contract from Huggingface dataset
+   * Read a scoring system from Huggingface dataset
    */
   readFromHf(
     body: ContractReadFromHfParams,
@@ -72,9 +72,9 @@ export namespace ContractsScoreMetrics {
 
 export interface ContractGenerateDimensionsParams {
   /**
-   * The application description to generate contract for.
+   * The application description to generate a scoring system for.
    */
-  contract_description: string;
+  application_description: string;
 
   /**
    * If true, try to generate python code for sub-dimensions with structured
@@ -85,24 +85,19 @@ export interface ContractGenerateDimensionsParams {
 
 export interface ContractReadFromHfParams {
   /**
-   * Huggingface contract name e.g. withpi/my_contract. You need to provide the
-   * hf_token if the contract dataset is not public or not own by the withpi
-   * organization.
+   * Huggingface scoring system name e.g. withpi/my_scoring_system. You need to
+   * provide the hf_token if the scoring system dataset is not public or not own by
+   * the withpi organization.
    */
-  hf_contract_name: string;
+  hf_scoring_system_name: string;
 
   /**
-   * Huggingface token to read the contract dataset
+   * Huggingface token to use if you want to read to your own HF organization
    */
   hf_token?: string | null;
 }
 
 export interface ContractScoreParams {
-  /**
-   * The contract to score
-   */
-  contract: Shared.Contract;
-
   /**
    * The input to score
    */
@@ -112,6 +107,11 @@ export interface ContractScoreParams {
    * The output to score
    */
   llm_output: string;
+
+  /**
+   * The scoring system to score
+   */
+  scoring_system: Shared.Contract;
 }
 
 Contracts.Calibrate = Calibrate;
