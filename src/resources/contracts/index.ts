@@ -2,7 +2,10 @@
 
 export {
   Calibrate,
+  type CalibrationStrategy,
   type ContractCalibrationStatus,
+  type SDKLabeledExample,
+  type SDKPreferenceExample,
   type State,
   type CalibrateListResponse,
   type CalibrateCancelResponse,
@@ -12,8 +15,9 @@ export {
 } from './calibrate';
 export {
   Contracts,
+  type ScoringSystemMetrics,
   type SDKContract,
-  type ContractScoreResponse,
+  type SDKDimension,
   type ContractGenerateDimensionsParams,
   type ContractReadFromHfParams,
   type ContractScoreParams,
