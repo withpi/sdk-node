@@ -18,13 +18,6 @@ export class Sft extends APIResource {
   }
 
   /**
-   * Checks the status of a SFT job
-   */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<SftStatus> {
-    return this._client.get(`/model/sft/${jobId}`, options);
-  }
-
-  /**
    * Lists the SFT Jobs owned by a user
    */
   list(query?: SftListParams, options?: Core.RequestOptions): Core.APIPromise<SftListResponse>;
@@ -69,6 +62,13 @@ export class Sft extends APIResource {
       ...options,
       headers: { Accept: 'text/plain', ...options?.headers },
     });
+  }
+
+  /**
+   * Checks the status of a SFT job
+   */
+  status(jobId: string, options?: Core.RequestOptions): Core.APIPromise<SftStatus> {
+    return this._client.get(`/model/sft/${jobId}`, options);
   }
 }
 

@@ -4,6 +4,7 @@ Types:
 
 - <code><a href="./src/resources/contracts/contracts.ts">ScoringSystemMetrics</a></code>
 - <code><a href="./src/resources/contracts/contracts.ts">SDKContract</a></code>
+- <code><a href="./src/resources/contracts/contracts.ts">SDKDimension</a></code>
 
 Methods:
 
@@ -49,9 +50,9 @@ Types:
 Methods:
 
 - <code title="post /data/generate_synthetic_data">client.data.generateSyntheticData.<a href="./src/resources/data/generate-synthetic-data.ts">create</a>({ ...params }) -> SyntheticDataStatus</code>
-- <code title="get /data/generate_synthetic_data/{job_id}">client.data.generateSyntheticData.<a href="./src/resources/data/generate-synthetic-data.ts">retrieve</a>(jobId) -> SyntheticDataStatus</code>
 - <code title="get /data/generate_synthetic_data">client.data.generateSyntheticData.<a href="./src/resources/data/generate-synthetic-data.ts">list</a>({ ...params }) -> GenerateSyntheticDataListResponse</code>
 - <code title="delete /data/generate_synthetic_data/{job_id}">client.data.generateSyntheticData.<a href="./src/resources/data/generate-synthetic-data.ts">cancel</a>(jobId) -> string</code>
+- <code title="get /data/generate_synthetic_data/{job_id}">client.data.generateSyntheticData.<a href="./src/resources/data/generate-synthetic-data.ts">retrieveStatus</a>(jobId) -> SyntheticDataStatus</code>
 - <code title="get /data/generate_synthetic_data/{job_id}/data">client.data.generateSyntheticData.<a href="./src/resources/data/generate-synthetic-data.ts">streamData</a>(jobId) -> GenerateSyntheticDataStreamDataResponse</code>
 - <code title="get /data/generate_synthetic_data/{job_id}/messages">client.data.generateSyntheticData.<a href="./src/resources/data/generate-synthetic-data.ts">streamMessages</a>(jobId) -> string</code>
 
@@ -78,9 +79,9 @@ Types:
 Methods:
 
 - <code title="post /data/input/generate_from_seeds">client.data.input.generateFromSeeds.<a href="./src/resources/data/input/generate-from-seeds.ts">create</a>({ ...params }) -> DataGenerationStatus</code>
-- <code title="get /data/input/generate_from_seeds/{job_id}">client.data.input.generateFromSeeds.<a href="./src/resources/data/input/generate-from-seeds.ts">retrieve</a>(jobId) -> DataGenerationStatus</code>
 - <code title="get /data/input/generate_from_seeds">client.data.input.generateFromSeeds.<a href="./src/resources/data/input/generate-from-seeds.ts">list</a>({ ...params }) -> GenerateFromSeedListResponse</code>
 - <code title="delete /data/input/generate_from_seeds/{job_id}">client.data.input.generateFromSeeds.<a href="./src/resources/data/input/generate-from-seeds.ts">cancel</a>(jobId) -> string</code>
+- <code title="get /data/input/generate_from_seeds/{job_id}">client.data.input.generateFromSeeds.<a href="./src/resources/data/input/generate-from-seeds.ts">retrieveStatus</a>(jobId) -> DataGenerationStatus</code>
 - <code title="get /data/input/generate_from_seeds/{job_id}/data">client.data.input.generateFromSeeds.<a href="./src/resources/data/input/generate-from-seeds.ts">streamData</a>(jobId) -> string</code>
 - <code title="get /data/input/generate_from_seeds/{job_id}/messages">client.data.input.generateFromSeeds.<a href="./src/resources/data/input/generate-from-seeds.ts">streamMessages</a>(jobId) -> string</code>
 
@@ -100,11 +101,11 @@ Types:
 Methods:
 
 - <code title="post /model/classifier">client.model.classifier.<a href="./src/resources/model/classifier.ts">create</a>({ ...params }) -> ClassificationStatus</code>
-- <code title="get /model/classifier/{job_id}">client.model.classifier.<a href="./src/resources/model/classifier.ts">retrieve</a>(jobId) -> ClassificationStatus</code>
 - <code title="get /model/classifier">client.model.classifier.<a href="./src/resources/model/classifier.ts">list</a>({ ...params }) -> ClassifierListResponse</code>
 - <code title="delete /model/classifier/{job_id}">client.model.classifier.<a href="./src/resources/model/classifier.ts">cancel</a>(jobId) -> string</code>
 - <code title="post /model/classifier/{job_id}/download">client.model.classifier.<a href="./src/resources/model/classifier.ts">download</a>(jobId, { ...params }) -> string</code>
 - <code title="get /model/classifier/{job_id}/messages">client.model.classifier.<a href="./src/resources/model/classifier.ts">messages</a>(jobId) -> string</code>
+- <code title="get /model/classifier/{job_id}">client.model.classifier.<a href="./src/resources/model/classifier.ts">status</a>(jobId) -> ClassificationStatus</code>
 
 ## Rl
 
@@ -123,12 +124,12 @@ Types:
 Methods:
 
 - <code title="post /model/rl/grpo">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">create</a>({ ...params }) -> RlGrpoStatus</code>
-- <code title="get /model/rl/grpo/{job_id}">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">retrieve</a>(jobId) -> RlGrpoStatus</code>
 - <code title="get /model/rl/grpo">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">list</a>({ ...params }) -> GrpoListResponse</code>
 - <code title="delete /model/rl/grpo/{job_id}">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">cancel</a>(jobId) -> string</code>
 - <code title="post /model/rl/grpo/{job_id}/download">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">download</a>(jobId, { ...params }) -> string</code>
 - <code title="post /model/rl/grpo/{job_id}/load">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">load</a>(jobId) -> RlGrpoStatus</code>
 - <code title="get /model/rl/grpo/{job_id}/messages">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">messages</a>(jobId) -> string</code>
+- <code title="get /model/rl/grpo/{job_id}">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">status</a>(jobId) -> RlGrpoStatus</code>
 
 ## Sft
 
@@ -143,12 +144,41 @@ Types:
 Methods:
 
 - <code title="post /model/sft">client.model.sft.<a href="./src/resources/model/sft.ts">create</a>({ ...params }) -> SftStatus</code>
-- <code title="get /model/sft/{job_id}">client.model.sft.<a href="./src/resources/model/sft.ts">retrieve</a>(jobId) -> SftStatus</code>
 - <code title="get /model/sft">client.model.sft.<a href="./src/resources/model/sft.ts">list</a>({ ...params }) -> SftListResponse</code>
 - <code title="delete /model/sft/{job_id}">client.model.sft.<a href="./src/resources/model/sft.ts">cancel</a>(jobId) -> string</code>
 - <code title="post /model/sft/{job_id}/download">client.model.sft.<a href="./src/resources/model/sft.ts">download</a>(jobId, { ...params }) -> string</code>
 - <code title="post /model/sft/{job_id}/load">client.model.sft.<a href="./src/resources/model/sft.ts">load</a>(jobId) -> SftStatus</code>
 - <code title="get /model/sft/{job_id}/messages">client.model.sft.<a href="./src/resources/model/sft.ts">messages</a>(jobId) -> string</code>
+- <code title="get /model/sft/{job_id}">client.model.sft.<a href="./src/resources/model/sft.ts">status</a>(jobId) -> SftStatus</code>
+
+# PiScoringSystem
+
+Types:
+
+- <code><a href="./src/resources/pi-scoring-system/pi-scoring-system.ts">ScoringSystem</a></code>
+
+Methods:
+
+- <code title="post /pi_scoring_system/generate_dimensions">client.piScoringSystem.<a href="./src/resources/pi-scoring-system/pi-scoring-system.ts">generateDimensions</a>({ ...params }) -> ScoringSystem</code>
+- <code title="post /pi_scoring_system/read_from_hf">client.piScoringSystem.<a href="./src/resources/pi-scoring-system/pi-scoring-system.ts">readFromHf</a>({ ...params }) -> ScoringSystem</code>
+- <code title="post /pi_scoring_system/score">client.piScoringSystem.<a href="./src/resources/pi-scoring-system/pi-scoring-system.ts">score</a>({ ...params }) -> ScoringSystemMetrics</code>
+
+## Calibrate
+
+Types:
+
+- <code><a href="./src/resources/pi-scoring-system/calibrate.ts">ScoringSystemCalibrationStatus</a></code>
+- <code><a href="./src/resources/pi-scoring-system/calibrate.ts">CalibrateListResponse</a></code>
+- <code><a href="./src/resources/pi-scoring-system/calibrate.ts">CalibrateCancelResponse</a></code>
+- <code><a href="./src/resources/pi-scoring-system/calibrate.ts">CalibrateMessagesResponse</a></code>
+
+Methods:
+
+- <code title="post /pi_scoring_system/calibrate">client.piScoringSystem.calibrate.<a href="./src/resources/pi-scoring-system/calibrate.ts">create</a>({ ...params }) -> ScoringSystemCalibrationStatus</code>
+- <code title="get /pi_scoring_system/calibrate/{job_id}">client.piScoringSystem.calibrate.<a href="./src/resources/pi-scoring-system/calibrate.ts">retrieve</a>(jobId) -> ScoringSystemCalibrationStatus</code>
+- <code title="get /pi_scoring_system/calibrate">client.piScoringSystem.calibrate.<a href="./src/resources/pi-scoring-system/calibrate.ts">list</a>({ ...params }) -> CalibrateListResponse</code>
+- <code title="delete /pi_scoring_system/calibrate/{job_id}">client.piScoringSystem.calibrate.<a href="./src/resources/pi-scoring-system/calibrate.ts">cancel</a>(jobId) -> string</code>
+- <code title="get /pi_scoring_system/calibrate/{job_id}/messages">client.piScoringSystem.calibrate.<a href="./src/resources/pi-scoring-system/calibrate.ts">messages</a>(jobId) -> string</code>
 
 # Prompt
 
@@ -181,43 +211,3 @@ Methods:
 
 - <code title="post /queries/classify">client.queries.<a href="./src/resources/queries.ts">classify</a>({ ...params }) -> QueryClassifyResponse</code>
 - <code title="post /queries/generate_fanouts">client.queries.<a href="./src/resources/queries.ts">generateFanouts</a>({ ...params }) -> QueryGenerateFanoutsResponse</code>
-
-# ScoringSystem
-
-Types:
-
-- <code><a href="./src/resources/scoring-system/scoring-system.ts">ScoringSystem</a></code>
-
-## Calibrate
-
-Types:
-
-- <code><a href="./src/resources/scoring-system/calibrate.ts">CalibrationStatus</a></code>
-
-# PiScoringSystem
-
-Types:
-
-- <code><a href="./src/resources/pi-scoring-system/pi-scoring-system.ts">ScoringSystem</a></code>
-
-Methods:
-
-- <code title="post /pi_scoring_system/generate_dimensions">client.piScoringSystem.<a href="./src/resources/pi-scoring-system/pi-scoring-system.ts">generateDimensions</a>({ ...params }) -> ScoringSystem</code>
-- <code title="post /pi_scoring_system/read_from_hf">client.piScoringSystem.<a href="./src/resources/pi-scoring-system/pi-scoring-system.ts">readFromHf</a>({ ...params }) -> ScoringSystem</code>
-- <code title="post /pi_scoring_system/score">client.piScoringSystem.<a href="./src/resources/pi-scoring-system/pi-scoring-system.ts">score</a>({ ...params }) -> ScoringSystemMetrics</code>
-
-## Calibrate
-
-Types:
-
-- <code><a href="./src/resources/pi-scoring-system/calibrate.ts">CalibrateListResponse</a></code>
-- <code><a href="./src/resources/pi-scoring-system/calibrate.ts">CalibrateCancelResponse</a></code>
-- <code><a href="./src/resources/pi-scoring-system/calibrate.ts">CalibrateMessagesResponse</a></code>
-
-Methods:
-
-- <code title="post /pi_scoring_system/calibrate">client.piScoringSystem.calibrate.<a href="./src/resources/pi-scoring-system/calibrate.ts">create</a>({ ...params }) -> CalibrationStatus</code>
-- <code title="get /pi_scoring_system/calibrate/{job_id}">client.piScoringSystem.calibrate.<a href="./src/resources/pi-scoring-system/calibrate.ts">retrieve</a>(jobId) -> CalibrationStatus</code>
-- <code title="get /pi_scoring_system/calibrate">client.piScoringSystem.calibrate.<a href="./src/resources/pi-scoring-system/calibrate.ts">list</a>({ ...params }) -> CalibrateListResponse</code>
-- <code title="delete /pi_scoring_system/calibrate/{job_id}">client.piScoringSystem.calibrate.<a href="./src/resources/pi-scoring-system/calibrate.ts">cancel</a>(jobId) -> string</code>
-- <code title="get /pi_scoring_system/calibrate/{job_id}/messages">client.piScoringSystem.calibrate.<a href="./src/resources/pi-scoring-system/calibrate.ts">messages</a>(jobId) -> string</code>

@@ -2,6 +2,7 @@
 
 export {
   Calibrate,
+  type ScoringSystemCalibrationStatus,
   type CalibrateListResponse,
   type CalibrateCancelResponse,
   type CalibrateMessagesResponse,

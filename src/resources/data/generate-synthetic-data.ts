@@ -17,13 +17,6 @@ export class GenerateSyntheticData extends APIResource {
   }
 
   /**
-   * Checks the status of a Synthetic Data Generation job
-   */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<SyntheticDataStatus> {
-    return this._client.get(`/data/generate_synthetic_data/${jobId}`, options);
-  }
-
-  /**
    * Lists the Synthetic Data Generation Jobs owned by a user
    */
   list(
@@ -46,6 +39,13 @@ export class GenerateSyntheticData extends APIResource {
    */
   cancel(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.delete(`/data/generate_synthetic_data/${jobId}`, options);
+  }
+
+  /**
+   * Checks the status of a Synthetic Data Generation job
+   */
+  retrieveStatus(jobId: string, options?: Core.RequestOptions): Core.APIPromise<SyntheticDataStatus> {
+    return this._client.get(`/data/generate_synthetic_data/${jobId}`, options);
   }
 
   /**
