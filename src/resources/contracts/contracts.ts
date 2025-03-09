@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as Shared from '../shared';
 import * as CalibrateAPI from './calibrate';
 import {
   Calibrate,
@@ -27,29 +26,67 @@ export class Contracts extends APIResource {
   generateDimensions(
     body: ContractGenerateDimensionsParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.SDKContract> {
+  ): Core.APIPromise<SDKContract> {
     return this._client.post('/contracts/generate_dimensions', { body, ...options });
   }
 
   /**
    * Read a scoring system from Huggingface dataset
    */
-  readFromHf(
-    body: ContractReadFromHfParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.SDKContract> {
+  readFromHf(body: ContractReadFromHfParams, options?: Core.RequestOptions): Core.APIPromise<SDKContract> {
     return this._client.post('/contracts/read_from_hf', { body, ...options });
   }
 
   /**
    * Scores a contract based on the provided input and output
    */
-  score(
-    body: ContractScoreParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ScoringSystemMetrics> {
+  score(body: ContractScoreParams, options?: Core.RequestOptions): Core.APIPromise<ScoringSystemMetrics> {
     return this._client.post('/contracts/score', { body, ...options });
   }
+}
+
+export interface ScoringSystemMetrics {
+  /**
+   * The score components for each dimension
+   */
+  dimension_scores: Record<string, ScoringSystemMetrics.DimensionScores>;
+
+  /**
+   * The total score of the scoring system
+   */
+  total_score: number;
+}
+
+export namespace ScoringSystemMetrics {
+  export interface DimensionScores {
+    /**
+     * The score components for each subdimension
+     */
+    subdimension_scores: Record<string, number>;
+
+    /**
+     * The total score of the dimension
+     */
+    total_score: number;
+  }
+}
+
+export interface SDKContract {
+  /**
+   * The description of the contract
+   */
+  description: string;
+
+  /**
+   * The name of the contract
+   */
+  name: string;
+
+  /**
+   * The dimensions of the contract
+   */
+  dimensions?: Array<SDKDimension>;
+  [k: string]: unknown;
 }
 
 export interface SDKDimension {
@@ -168,13 +205,15 @@ export interface ContractScoreParams {
   /**
    * The scoring system to score
    */
-  scoring_system: Shared.SDKContract;
+  scoring_system: SDKContract;
 }
 
 Contracts.Calibrate = Calibrate;
 
 export declare namespace Contracts {
   export {
+    type ScoringSystemMetrics as ScoringSystemMetrics,
+    type SDKContract as SDKContract,
     type SDKDimension as SDKDimension,
     type ContractGenerateDimensionsParams as ContractGenerateDimensionsParams,
     type ContractReadFromHfParams as ContractReadFromHfParams,

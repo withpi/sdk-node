@@ -18,7 +18,9 @@ import {
   ContractReadFromHfParams,
   ContractScoreParams,
   Contracts,
+  SDKContract,
   SDKDimension,
+  ScoringSystemMetrics,
 } from './resources/contracts/contracts';
 import { Data } from './resources/data/data';
 import { Model } from './resources/model/model';
@@ -27,6 +29,7 @@ import {
   PiScoringSystemGenerateDimensionsParams,
   PiScoringSystemReadFromHfParams,
   PiScoringSystemScoreParams,
+  ScoringSystem,
 } from './resources/pi-scoring-system/pi-scoring-system';
 import { Prompt } from './resources/prompt/prompt';
 
@@ -197,6 +200,8 @@ export declare namespace Withpi {
 
   export {
     Contracts as Contracts,
+    type ScoringSystemMetrics as ScoringSystemMetrics,
+    type SDKContract as SDKContract,
     type SDKDimension as SDKDimension,
     type ContractGenerateDimensionsParams as ContractGenerateDimensionsParams,
     type ContractReadFromHfParams as ContractReadFromHfParams,
@@ -209,6 +214,7 @@ export declare namespace Withpi {
 
   export {
     PiScoringSystem as PiScoringSystem,
+    type ScoringSystem as ScoringSystem,
     type PiScoringSystemGenerateDimensionsParams as PiScoringSystemGenerateDimensionsParams,
     type PiScoringSystemReadFromHfParams as PiScoringSystemReadFromHfParams,
     type PiScoringSystemScoreParams as PiScoringSystemScoreParams,
@@ -224,10 +230,6 @@ export declare namespace Withpi {
     type QueryClassifyParams as QueryClassifyParams,
     type QueryGenerateFanoutsParams as QueryGenerateFanoutsParams,
   };
-
-  export type ScoringSystem = API.ScoringSystem;
-  export type ScoringSystemMetrics = API.ScoringSystemMetrics;
-  export type SDKContract = API.SDKContract;
 }
 
 export { toFile, fileFromPath } from './uploads';
