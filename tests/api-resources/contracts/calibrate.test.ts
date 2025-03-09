@@ -72,7 +72,7 @@ describe('resource calibrate', () => {
 
   test('startJob: only required params', async () => {
     const responsePromise = client.contracts.calibrate.startJob({
-      contract: {
+      scoring_system: {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Contract',
       },
@@ -88,7 +88,7 @@ describe('resource calibrate', () => {
 
   test('startJob: required and optional params', async () => {
     const response = await client.contracts.calibrate.startJob({
-      contract: {
+      scoring_system: {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Contract',
         dimensions: [
