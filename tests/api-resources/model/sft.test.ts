@@ -105,16 +105,16 @@ describe('resource sft', () => {
 
   test('startJob: only required params', async () => {
     const responsePromise = client.model.sft.startJob({
-      contract: {
-        description: "Write a children's story communicating a simple life lesson.",
-        name: 'Sample Contract',
-      },
       examples: [
         {
           llm_input: 'Tell me something different',
           llm_output: 'The lazy dog was jumped over by the quick brown fox',
         },
       ],
+      scoring_system: {
+        description: "Write a children's story communicating a simple life lesson.",
+        name: 'Sample Contract',
+      },
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -127,7 +127,13 @@ describe('resource sft', () => {
 
   test('startJob: required and optional params', async () => {
     const response = await client.model.sft.startJob({
-      contract: {
+      examples: [
+        {
+          llm_input: 'Tell me something different',
+          llm_output: 'The lazy dog was jumped over by the quick brown fox',
+        },
+      ],
+      scoring_system: {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Contract',
         dimensions: [
@@ -157,12 +163,6 @@ describe('resource sft', () => {
           },
         ],
       },
-      examples: [
-        {
-          llm_input: 'Tell me something different',
-          llm_output: 'The lazy dog was jumped over by the quick brown fox',
-        },
-      ],
       base_sft_model: 'LLAMA_3.2_3B',
       learning_rate: 0.0002,
       lora_config: { lora_rank: 'R_16' },

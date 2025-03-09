@@ -89,15 +89,15 @@ export interface SftDownloadParams {
 
 export interface SftStartJobParams {
   /**
-   * The contract to use in the SFT tuning process
-   */
-  contract: Shared.Contract;
-
-  /**
    * Examples to use in the SFT tuning process. We split this data into train/eval
    * 90/10.
    */
   examples: Array<Shared.Example>;
+
+  /**
+   * The scoring system to use in the SFT tuning process
+   */
+  scoring_system: Shared.Contract;
 
   /**
    * The base model to start the SFT tuning process.
