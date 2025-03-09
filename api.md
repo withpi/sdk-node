@@ -178,3 +178,35 @@ Methods:
 
 - <code title="post /queries/classify">client.queries.<a href="./src/resources/queries.ts">classify</a>({ ...params }) -> QueryClassifyResponse</code>
 - <code title="post /queries/generate_fanouts">client.queries.<a href="./src/resources/queries.ts">generateFanouts</a>({ ...params }) -> QueryGenerateFanoutsResponse</code>
+
+# ScoringSystem
+
+Types:
+
+- <code><a href="./src/resources/scoring-system/scoring-system.ts">ScoringSystemGenerateDimensionsResponse</a></code>
+- <code><a href="./src/resources/scoring-system/scoring-system.ts">ScoringSystemReadFromHfResponse</a></code>
+- <code><a href="./src/resources/scoring-system/scoring-system.ts">ScoringSystemScoreResponse</a></code>
+
+Methods:
+
+- <code title="post /scoring_system/generate_dimensions">client.scoringSystem.<a href="./src/resources/scoring-system/scoring-system.ts">generateDimensions</a>({ ...params }) -> ScoringSystemGenerateDimensionsResponse</code>
+- <code title="post /scoring_system/read_from_hf">client.scoringSystem.<a href="./src/resources/scoring-system/scoring-system.ts">readFromHf</a>({ ...params }) -> ScoringSystemReadFromHfResponse</code>
+- <code title="post /scoring_system/score">client.scoringSystem.<a href="./src/resources/scoring-system/scoring-system.ts">score</a>({ ...params }) -> ScoringSystemScoreResponse</code>
+
+## Calibrate
+
+Types:
+
+- <code><a href="./src/resources/scoring-system/calibrate.ts">CalibrateCreateResponse</a></code>
+- <code><a href="./src/resources/scoring-system/calibrate.ts">CalibrateRetrieveResponse</a></code>
+- <code><a href="./src/resources/scoring-system/calibrate.ts">CalibrateListResponse</a></code>
+- <code><a href="./src/resources/scoring-system/calibrate.ts">CalibrateCancelResponse</a></code>
+- <code><a href="./src/resources/scoring-system/calibrate.ts">CalibrateMessagesResponse</a></code>
+
+Methods:
+
+- <code title="post /scoring_system/calibrate">client.scoringSystem.calibrate.<a href="./src/resources/scoring-system/calibrate.ts">create</a>({ ...params }) -> CalibrateCreateResponse</code>
+- <code title="get /scoring_system/calibrate/{job_id}">client.scoringSystem.calibrate.<a href="./src/resources/scoring-system/calibrate.ts">retrieve</a>(jobId) -> CalibrateRetrieveResponse</code>
+- <code title="get /scoring_system/calibrate">client.scoringSystem.calibrate.<a href="./src/resources/scoring-system/calibrate.ts">list</a>({ ...params }) -> CalibrateListResponse</code>
+- <code title="delete /scoring_system/calibrate/{job_id}">client.scoringSystem.calibrate.<a href="./src/resources/scoring-system/calibrate.ts">cancel</a>(jobId) -> string</code>
+- <code title="get /scoring_system/calibrate/{job_id}/messages">client.scoringSystem.calibrate.<a href="./src/resources/scoring-system/calibrate.ts">messages</a>(jobId) -> string</code>
