@@ -15,6 +15,8 @@ export {
 } from './calibrate';
 export {
   Contracts,
+  type ScoringSystemMetrics,
+  type SDKContract,
   type ContractGenerateDimensionsParams,
   type ContractReadFromHfParams,
   type ContractScoreParams,

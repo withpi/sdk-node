@@ -4,8 +4,8 @@ import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as CalibrateAPI from '../contracts/calibrate';
+import * as PiScoringSystemAPI from './pi-scoring-system';
 import * as ScoringSystemCalibrateAPI from '../scoring-system/calibrate';
-import * as ScoringSystemAPI from '../scoring-system/scoring-system';
 
 export class Calibrate extends APIResource {
   /**
@@ -71,7 +71,7 @@ export interface CalibrateCreateParams {
   /**
    * The scoring system to calibrate
    */
-  scoring_system: ScoringSystemAPI.ScoringSystem;
+  scoring_system: PiScoringSystemAPI.ScoringSystem;
 
   /**
    * Rated examples to use when calibrating the scoring system. Must specify either
