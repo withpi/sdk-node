@@ -39,24 +39,24 @@ export class Contracts extends APIResource {
   /**
    * Scores a contract based on the provided input and output
    */
-  score(body: ContractScoreParams, options?: Core.RequestOptions): Core.APIPromise<ContractsScoreMetrics> {
+  score(body: ContractScoreParams, options?: Core.RequestOptions): Core.APIPromise<ContractScoreResponse> {
     return this._client.post('/contracts/score', { body, ...options });
   }
 }
 
-export interface ContractsScoreMetrics {
+export interface ContractScoreResponse {
   /**
    * The score components for each dimension
    */
-  dimension_scores: Record<string, ContractsScoreMetrics.DimensionScores>;
+  dimension_scores: Record<string, ContractScoreResponse.DimensionScores>;
 
   /**
-   * The total score of the contract
+   * The total score of the scoring system
    */
   total_score: number;
 }
 
-export namespace ContractsScoreMetrics {
+export namespace ContractScoreResponse {
   export interface DimensionScores {
     /**
      * The score components for each subdimension
@@ -118,7 +118,7 @@ Contracts.Calibrate = Calibrate;
 
 export declare namespace Contracts {
   export {
-    type ContractsScoreMetrics as ContractsScoreMetrics,
+    type ContractScoreResponse as ContractScoreResponse,
     type ContractGenerateDimensionsParams as ContractGenerateDimensionsParams,
     type ContractReadFromHfParams as ContractReadFromHfParams,
     type ContractScoreParams as ContractScoreParams,
