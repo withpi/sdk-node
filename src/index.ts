@@ -21,13 +21,14 @@ import {
 } from './resources/contracts/contracts';
 import { Data } from './resources/data/data';
 import { Model } from './resources/model/model';
-import { Prompt } from './resources/prompt/prompt';
 import {
-  ScoringSystemGenerateDimensionsParams,
-  ScoringSystemReadFromHfParams,
-  ScoringSystemResource,
-  ScoringSystemScoreParams,
-} from './resources/scoring-system/scoring-system';
+  PiScoringSystem,
+  PiScoringSystemGenerateDimensionsParams,
+  PiScoringSystemReadFromHfParams,
+  PiScoringSystemScoreParams,
+} from './resources/pi-scoring-system/pi-scoring-system';
+import { Prompt } from './resources/prompt/prompt';
+import { ScoringSystemResource } from './resources/scoring-system/scoring-system';
 
 export interface ClientOptions {
   /**
@@ -148,6 +149,7 @@ export class Withpi extends Core.APIClient {
   prompt: API.Prompt = new API.Prompt(this);
   queries: API.Queries = new API.Queries(this);
   scoringSystem: API.ScoringSystemResource = new API.ScoringSystemResource(this);
+  piScoringSystem: API.PiScoringSystem = new API.PiScoringSystem(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -191,6 +193,7 @@ Withpi.Model = Model;
 Withpi.Prompt = Prompt;
 Withpi.Queries = Queries;
 Withpi.ScoringSystemResource = ScoringSystemResource;
+Withpi.PiScoringSystem = PiScoringSystem;
 export declare namespace Withpi {
   export type RequestOptions = Core.RequestOptions;
 
@@ -216,12 +219,13 @@ export declare namespace Withpi {
     type QueryGenerateFanoutsParams as QueryGenerateFanoutsParams,
   };
 
+  export { ScoringSystemResource as ScoringSystemResource, type ScoringSystem as ScoringSystem };
+
   export {
-    ScoringSystemResource as ScoringSystemResource,
-    type ScoringSystem as ScoringSystem,
-    type ScoringSystemGenerateDimensionsParams as ScoringSystemGenerateDimensionsParams,
-    type ScoringSystemReadFromHfParams as ScoringSystemReadFromHfParams,
-    type ScoringSystemScoreParams as ScoringSystemScoreParams,
+    PiScoringSystem as PiScoringSystem,
+    type PiScoringSystemGenerateDimensionsParams as PiScoringSystemGenerateDimensionsParams,
+    type PiScoringSystemReadFromHfParams as PiScoringSystemReadFromHfParams,
+    type PiScoringSystemScoreParams as PiScoringSystemScoreParams,
   };
 
   export type ScoringSystem = API.ScoringSystem;
