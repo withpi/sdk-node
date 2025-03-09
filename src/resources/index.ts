@@ -2,8 +2,9 @@
 
 export {
   Contracts,
+  type ScoringSystemMetrics,
   type SDKContract,
-  type ContractScoreResponse,
+  type SDKDimension,
   type ContractGenerateDimensionsParams,
   type ContractReadFromHfParams,
   type ContractScoreParams,
@@ -20,10 +21,8 @@ export {
   type QueryGenerateFanoutsParams,
 } from './queries';
 export {
-  ScoringSystem,
-  type ScoringSystemGenerateDimensionsResponse,
-  type ScoringSystemReadFromHfResponse,
-  type ScoringSystemScoreResponse,
+  ScoringSystemResource,
+  type ScoringSystem,
   type ScoringSystemGenerateDimensionsParams,
   type ScoringSystemReadFromHfParams,
   type ScoringSystemScoreParams,

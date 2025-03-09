@@ -17,9 +17,10 @@ import {
   ContractGenerateDimensionsParams,
   ContractReadFromHfParams,
   ContractScoreParams,
-  ContractScoreResponse,
   Contracts,
   SDKContract,
+  SDKDimension,
+  ScoringSystemMetrics,
 } from './resources/contracts/contracts';
 import { Data } from './resources/data/data';
 import { Model } from './resources/model/model';
@@ -27,11 +28,9 @@ import { Prompt } from './resources/prompt/prompt';
 import {
   ScoringSystem,
   ScoringSystemGenerateDimensionsParams,
-  ScoringSystemGenerateDimensionsResponse,
   ScoringSystemReadFromHfParams,
-  ScoringSystemReadFromHfResponse,
+  ScoringSystemResource,
   ScoringSystemScoreParams,
-  ScoringSystemScoreResponse,
 } from './resources/scoring-system/scoring-system';
 
 export interface ClientOptions {
@@ -152,7 +151,7 @@ export class Withpi extends Core.APIClient {
   model: API.Model = new API.Model(this);
   prompt: API.Prompt = new API.Prompt(this);
   queries: API.Queries = new API.Queries(this);
-  scoringSystem: API.ScoringSystem = new API.ScoringSystem(this);
+  scoringSystem: API.ScoringSystemResource = new API.ScoringSystemResource(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -195,14 +194,15 @@ Withpi.Data = Data;
 Withpi.Model = Model;
 Withpi.Prompt = Prompt;
 Withpi.Queries = Queries;
-Withpi.ScoringSystem = ScoringSystem;
+Withpi.ScoringSystemResource = ScoringSystemResource;
 export declare namespace Withpi {
   export type RequestOptions = Core.RequestOptions;
 
   export {
     Contracts as Contracts,
+    type ScoringSystemMetrics as ScoringSystemMetrics,
     type SDKContract as SDKContract,
-    type ContractScoreResponse as ContractScoreResponse,
+    type SDKDimension as SDKDimension,
     type ContractGenerateDimensionsParams as ContractGenerateDimensionsParams,
     type ContractReadFromHfParams as ContractReadFromHfParams,
     type ContractScoreParams as ContractScoreParams,
@@ -224,10 +224,8 @@ export declare namespace Withpi {
   };
 
   export {
-    ScoringSystem as ScoringSystem,
-    type ScoringSystemGenerateDimensionsResponse as ScoringSystemGenerateDimensionsResponse,
-    type ScoringSystemReadFromHfResponse as ScoringSystemReadFromHfResponse,
-    type ScoringSystemScoreResponse as ScoringSystemScoreResponse,
+    ScoringSystemResource as ScoringSystemResource,
+    type ScoringSystem as ScoringSystem,
     type ScoringSystemGenerateDimensionsParams as ScoringSystemGenerateDimensionsParams,
     type ScoringSystemReadFromHfParams as ScoringSystemReadFromHfParams,
     type ScoringSystemScoreParams as ScoringSystemScoreParams,

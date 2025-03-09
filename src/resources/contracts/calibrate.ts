@@ -56,6 +56,8 @@ export class Calibrate extends APIResource {
   }
 }
 
+export type CalibrationStrategy = 'LITE' | 'FULL';
+
 export interface ContractCalibrationStatus {
   /**
    * Detailed status of the job
@@ -76,6 +78,46 @@ export interface ContractCalibrationStatus {
    * The calibrated contract
    */
   calibrated_contract?: ContractsAPI.SDKContract | null;
+}
+
+/**
+ * An labeled example for training or evaluation
+ */
+export interface SDKLabeledExample {
+  /**
+   * The input to LLM
+   */
+  llm_input: string;
+
+  /**
+   * The output to evaluate
+   */
+  llm_output: string;
+
+  /**
+   * The rating of the llm_output given the llm_input
+   */
+  rating: 'Strongly Agree' | 'Agree' | 'Neutral' | 'Disagree' | 'Strongly Disagree';
+}
+
+/**
+ * An preference example for training or evaluation
+ */
+export interface SDKPreferenceExample {
+  /**
+   * The chosen output in corresponding to the llm_input.
+   */
+  chosen: string;
+
+  /**
+   * The input to LLM
+   */
+  llm_input: string;
+
+  /**
+   * The rejected output in corresponding to the llm_input.
+   */
+  rejected: string;
 }
 
 export type State = 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
@@ -103,66 +145,27 @@ export interface CalibrateLaunchParams {
    * Rated examples to use when calibrating the scoring system. Must specify either
    * the examples or the preference examples
    */
-  examples?: Array<CalibrateLaunchParams.Example> | null;
+  examples?: Array<SDKLabeledExample> | null;
 
   /**
    * Preference examples to use when calibrating the scoring system. Must specify
    * either the examples or preference examples
    */
-  preference_examples?: Array<CalibrateLaunchParams.PreferenceExample> | null;
+  preference_examples?: Array<SDKPreferenceExample> | null;
 
   /**
    * The strategy to use to calibrate the scoring system. FULL would take longer than
    * LITE but may result in better result.
    */
-  strategy?: 'LITE' | 'FULL';
-}
-
-export namespace CalibrateLaunchParams {
-  /**
-   * An labeled example for training or evaluation
-   */
-  export interface Example {
-    /**
-     * The input to LLM
-     */
-    llm_input: string;
-
-    /**
-     * The output to evaluate
-     */
-    llm_output: string;
-
-    /**
-     * The rating of the llm_output given the llm_input
-     */
-    rating: 'Strongly Agree' | 'Agree' | 'Neutral' | 'Disagree' | 'Strongly Disagree';
-  }
-
-  /**
-   * An preference example for training or evaluation
-   */
-  export interface PreferenceExample {
-    /**
-     * The chosen output in corresponding to the llm_input.
-     */
-    chosen: string;
-
-    /**
-     * The input to LLM
-     */
-    llm_input: string;
-
-    /**
-     * The rejected output in corresponding to the llm_input.
-     */
-    rejected: string;
-  }
+  strategy?: CalibrationStrategy;
 }
 
 export declare namespace Calibrate {
   export {
+    type CalibrationStrategy as CalibrationStrategy,
     type ContractCalibrationStatus as ContractCalibrationStatus,
+    type SDKLabeledExample as SDKLabeledExample,
+    type SDKPreferenceExample as SDKPreferenceExample,
     type State as State,
     type CalibrateListResponse as CalibrateListResponse,
     type CalibrateCancelResponse as CalibrateCancelResponse,
