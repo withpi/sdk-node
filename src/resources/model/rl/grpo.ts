@@ -98,11 +98,6 @@ export interface GrpoStartJobParams {
   base_rl_model: 'LLAMA_3.2_3B' | 'LLAMA_3.1_8B';
 
   /**
-   * The contract to use in the GRPO tuning process
-   */
-  contract: Shared.Contract;
-
-  /**
    * Examples to use in the RL tuning process
    */
   examples: Array<GrpoStartJobParams.Example>;
@@ -121,6 +116,11 @@ export interface GrpoStartJobParams {
    * GRPO number of train epochs
    */
   num_train_epochs: number;
+
+  /**
+   * The scoring system to use in the GRPO tuning process
+   */
+  scoring_system: Shared.Contract;
 
   /**
    * A custom system prompt to use during the RL tuning process
