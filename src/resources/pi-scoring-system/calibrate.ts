@@ -3,8 +3,8 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as Shared from '../shared';
 import * as CalibrateAPI from '../contracts/calibrate';
+import * as PiScoringSystemAPI from './pi-scoring-system';
 
 export class Calibrate extends APIResource {
   /**
@@ -76,7 +76,7 @@ export interface ScoringSystemCalibrationStatus {
   /**
    * The calibrated scoring system
    */
-  calibrated_scoring_system?: Shared.ScoringSystem | null;
+  calibrated_scoring_system?: PiScoringSystemAPI.ScoringSystem | null;
 }
 
 export type CalibrateListResponse = Array<ScoringSystemCalibrationStatus>;
@@ -96,7 +96,7 @@ export interface CalibrateStartJobParams {
   /**
    * The scoring system to calibrate
    */
-  scoring_system: Shared.ScoringSystem;
+  scoring_system: PiScoringSystemAPI.ScoringSystem;
 
   /**
    * Rated examples to use when calibrating the scoring system. Must specify either

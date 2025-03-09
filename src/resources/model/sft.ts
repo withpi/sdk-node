@@ -3,8 +3,8 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as Shared from '../shared';
 import * as CalibrateAPI from '../contracts/calibrate';
+import * as ContractsAPI from '../contracts/contracts';
 import * as GenerateSyntheticDataAPI from '../data/generate-synthetic-data';
 import * as ClassifierAPI from './classifier';
 import * as GrpoAPI from './rl/grpo';
@@ -126,7 +126,7 @@ export interface SftStartJobParams {
   /**
    * The scoring system to use in the SFT tuning process
    */
-  scoring_system: Shared.SDKContract;
+  scoring_system: ContractsAPI.SDKContract;
 
   /**
    * The base model to start the SFT tuning process.
