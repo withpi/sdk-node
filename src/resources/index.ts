@@ -9,6 +9,12 @@ export {
 } from './contracts/contracts';
 export { Data } from './data/data';
 export { Model } from './model/model';
+export {
+  PiScoringSystem,
+  type PiScoringSystemGenerateDimensionsParams,
+  type PiScoringSystemReadFromHfParams,
+  type PiScoringSystemScoreParams,
+} from './pi-scoring-system/pi-scoring-system';
 export { Prompt } from './prompt/prompt';
 export {
   Queries,
@@ -18,10 +24,4 @@ export {
   type QueryClassifyParams,
   type QueryGenerateFanoutsParams,
 } from './queries';
-export {
-  ScoringSystemResource,
-  type ScoringSystem,
-  type ScoringSystemGenerateDimensionsParams,
-  type ScoringSystemReadFromHfParams,
-  type ScoringSystemScoreParams,
-} from './scoring-system/scoring-system';
+export { ScoringSystemResource, type ScoringSystem } from './scoring-system/scoring-system';

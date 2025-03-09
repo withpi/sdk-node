@@ -8,10 +8,10 @@ const client = new Withpi({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource scoringSystem', () => {
+describe('resource piScoringSystem', () => {
   // skipped: tests are disabled for the time being
   test.skip('generateDimensions: only required params', async () => {
-    const responsePromise = client.scoringSystem.generateDimensions({
+    const responsePromise = client.piScoringSystem.generateDimensions({
       application_description: "Write a children's story communicating a simple life lesson.",
     });
     const rawResponse = await responsePromise.asResponse();
@@ -25,7 +25,7 @@ describe('resource scoringSystem', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('generateDimensions: required and optional params', async () => {
-    const response = await client.scoringSystem.generateDimensions({
+    const response = await client.piScoringSystem.generateDimensions({
       application_description: "Write a children's story communicating a simple life lesson.",
       try_auto_generating_python_code: false,
     });
@@ -33,7 +33,7 @@ describe('resource scoringSystem', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('readFromHf: only required params', async () => {
-    const responsePromise = client.scoringSystem.readFromHf({
+    const responsePromise = client.piScoringSystem.readFromHf({
       hf_scoring_system_name: 'withpi/tldr_scoring_system',
     });
     const rawResponse = await responsePromise.asResponse();
@@ -47,7 +47,7 @@ describe('resource scoringSystem', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('readFromHf: required and optional params', async () => {
-    const response = await client.scoringSystem.readFromHf({
+    const response = await client.piScoringSystem.readFromHf({
       hf_scoring_system_name: 'withpi/tldr_scoring_system',
       hf_token: 'hf_token',
     });
@@ -55,7 +55,7 @@ describe('resource scoringSystem', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('score: only required params', async () => {
-    const responsePromise = client.scoringSystem.score({
+    const responsePromise = client.piScoringSystem.score({
       llm_input: 'Tell me something different',
       llm_output: 'The lazy dog was jumped over by the quick brown fox',
       scoring_system: {
@@ -74,7 +74,7 @@ describe('resource scoringSystem', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('score: required and optional params', async () => {
-    const response = await client.scoringSystem.score({
+    const response = await client.piScoringSystem.score({
       llm_input: 'Tell me something different',
       llm_output: 'The lazy dog was jumped over by the quick brown fox',
       scoring_system: {
