@@ -71,25 +71,25 @@ export interface CalibrateListParams {
 
 export interface CalibrateStartJobParams {
   /**
-   * The contract to calibrate
+   * The scoring system to calibrate
    */
-  contract: Shared.Contract;
+  scoring_system: Shared.Contract;
 
   /**
-   * Rated examples to use when calibrating the contract. Must specify either the
-   * examples or the preference examples
+   * Rated examples to use when calibrating the scoring system. Must specify either
+   * the examples or the preference examples
    */
   examples?: Array<CalibrateStartJobParams.Example> | null;
 
   /**
-   * Preference examples to use when calibrating the contract. Must specify either
-   * the examples or preference examples
+   * Preference examples to use when calibrating the scoring system. Must specify
+   * either the examples or preference examples
    */
   preference_examples?: Array<CalibrateStartJobParams.PreferenceExample> | null;
 
   /**
-   * The strategy to use to calibrate the contract. FULL would take longer than LITE
-   * but may result in better result.
+   * The strategy to use to calibrate the scoring system. FULL would take longer than
+   * LITE but may result in better result.
    */
   strategy?: 'LITE' | 'FULL';
 }

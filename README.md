@@ -28,36 +28,12 @@ const client = new PiClient({
 
 async function main() {
   const contractsScoreMetrics = await client.contracts.score({
-    contract: {
-      name: 'My Application',
-      description: 'You are a helpful assistant',
-      dimensions: [
-        {
-          description: 'Test whether the LLM follows instructions',
-          label: 'Instruction Following Dimension',
-          sub_dimensions: [
-            {
-              label: 'Instruction Following',
-              description: 'Does the response follow the given instructions?',
-              scoring_type: 'PI_SCORER',
-            },
-          ],
-        },
-        {
-          description: 'Test whether the LLM responds to the query',
-          label: 'Topicality Dimension',
-          sub_dimensions: [
-            {
-              label: 'Topicality',
-              description: 'Does the response answer the given question?',
-              scoring_type: 'PI_SCORER',
-            },
-          ],
-        },
-      ],
-    },
     llm_input: 'Help me with my problem',
     llm_output: 'Of course I can help with that',
+    scoring_system: {
+      description: "Write a children's story communicating a simple life lesson.",
+      name: 'Sample Contract',
+    },
   });
 
   console.log(contractsScoreMetrics.scores);
@@ -80,36 +56,12 @@ const client = new PiClient({
 
 async function main() {
   const params: PiClient.ContractScoreParams = {
-    contract: {
-      name: 'My Application',
-      description: 'You are a helpful assistant',
-      dimensions: [
-        {
-          description: 'Test whether the LLM follows instructions',
-          label: 'Instruction Following Dimension',
-          sub_dimensions: [
-            {
-              label: 'Instruction Following',
-              description: 'Does the response follow the given instructions?',
-              scoring_type: 'PI_SCORER',
-            },
-          ],
-        },
-        {
-          description: 'Test whether the LLM responds to the query',
-          label: 'Topicality Dimension',
-          sub_dimensions: [
-            {
-              label: 'Topicality',
-              description: 'Does the response answer the given question?',
-              scoring_type: 'PI_SCORER',
-            },
-          ],
-        },
-      ],
-    },
     llm_input: 'Help me with my problem',
     llm_output: 'Of course I can help with that',
+    scoring_system: {
+      description: "Write a children's story communicating a simple life lesson.",
+      name: 'Sample Contract',
+    },
   };
   const contractsScoreMetrics: PiClient.ContractsScoreMetrics = await client.contracts.score(params);
 }
@@ -130,36 +82,12 @@ a subclass of `APIError` will be thrown:
 async function main() {
   const contractsScoreMetrics = await client.contracts
     .score({
-      contract: {
-        name: 'My Application',
-        description: 'You are a helpful assistant',
-        dimensions: [
-          {
-            description: 'Test whether the LLM follows instructions',
-            label: 'Instruction Following Dimension',
-            sub_dimensions: [
-              {
-                label: 'Instruction Following',
-                description: 'Does the response follow the given instructions?',
-                scoring_type: 'PI_SCORER',
-              },
-            ],
-          },
-          {
-            description: 'Test whether the LLM responds to the query',
-            label: 'Topicality Dimension',
-            sub_dimensions: [
-              {
-                label: 'Topicality',
-                description: 'Does the response answer the given question?',
-                scoring_type: 'PI_SCORER',
-              },
-            ],
-          },
-        ],
-      },
       llm_input: 'Help me with my problem',
       llm_output: 'Of course I can help with that',
+      scoring_system: {
+        description: "Write a children's story communicating a simple life lesson.",
+        name: 'Sample Contract',
+      },
     })
     .catch(async (err) => {
       if (err instanceof PiClient.APIError) {
@@ -204,7 +132,7 @@ const client = new PiClient({
 });
 
 // Or, configure per-request:
-await client.contracts.score({ contract: { name: 'My Application', description: 'You are a helpful assistant', dimensions: [{ description: 'Test whether the LLM follows instructions', label: 'Instruction Following Dimension', sub_dimensions: [{ label: 'Instruction Following', description: 'Does the response follow the given instructions?', scoring_type: 'PI_SCORER' }] }, { description: 'Test whether the LLM responds to the query', label: 'Topicality Dimension', sub_dimensions: [{ label: 'Topicality', description: 'Does the response answer the given question?', scoring_type: 'PI_SCORER' }] }] }, llm_input: 'Help me with my problem', llm_output: 'Of course I can help with that' }, {
+await client.contracts.score({ llm_input: 'Help me with my problem', llm_output: 'Of course I can help with that', scoring_system: { description: 'Write a children\'s story communicating a simple life lesson.', name: 'Sample Contract' } }, {
   maxRetries: 5,
 });
 ```
@@ -221,7 +149,7 @@ const client = new PiClient({
 });
 
 // Override per-request:
-await client.contracts.score({ contract: { name: 'My Application', description: 'You are a helpful assistant', dimensions: [{ description: 'Test whether the LLM follows instructions', label: 'Instruction Following Dimension', sub_dimensions: [{ label: 'Instruction Following', description: 'Does the response follow the given instructions?', scoring_type: 'PI_SCORER' }] }, { description: 'Test whether the LLM responds to the query', label: 'Topicality Dimension', sub_dimensions: [{ label: 'Topicality', description: 'Does the response answer the given question?', scoring_type: 'PI_SCORER' }] }] }, llm_input: 'Help me with my problem', llm_output: 'Of course I can help with that' }, {
+await client.contracts.score({ llm_input: 'Help me with my problem', llm_output: 'Of course I can help with that', scoring_system: { description: 'Write a children\'s story communicating a simple life lesson.', name: 'Sample Contract' } }, {
   timeout: 5 * 1000,
 });
 ```
@@ -244,36 +172,12 @@ const client = new PiClient();
 
 const response = await client.contracts
   .score({
-    contract: {
-      name: 'My Application',
-      description: 'You are a helpful assistant',
-      dimensions: [
-        {
-          description: 'Test whether the LLM follows instructions',
-          label: 'Instruction Following Dimension',
-          sub_dimensions: [
-            {
-              label: 'Instruction Following',
-              description: 'Does the response follow the given instructions?',
-              scoring_type: 'PI_SCORER',
-            },
-          ],
-        },
-        {
-          description: 'Test whether the LLM responds to the query',
-          label: 'Topicality Dimension',
-          sub_dimensions: [
-            {
-              label: 'Topicality',
-              description: 'Does the response answer the given question?',
-              scoring_type: 'PI_SCORER',
-            },
-          ],
-        },
-      ],
-    },
     llm_input: 'Help me with my problem',
     llm_output: 'Of course I can help with that',
+    scoring_system: {
+      description: "Write a children's story communicating a simple life lesson.",
+      name: 'Sample Contract',
+    },
   })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
@@ -281,36 +185,12 @@ console.log(response.statusText); // access the underlying Response object
 
 const { data: contractsScoreMetrics, response: raw } = await client.contracts
   .score({
-    contract: {
-      name: 'My Application',
-      description: 'You are a helpful assistant',
-      dimensions: [
-        {
-          description: 'Test whether the LLM follows instructions',
-          label: 'Instruction Following Dimension',
-          sub_dimensions: [
-            {
-              label: 'Instruction Following',
-              description: 'Does the response follow the given instructions?',
-              scoring_type: 'PI_SCORER',
-            },
-          ],
-        },
-        {
-          description: 'Test whether the LLM responds to the query',
-          label: 'Topicality Dimension',
-          sub_dimensions: [
-            {
-              label: 'Topicality',
-              description: 'Does the response answer the given question?',
-              scoring_type: 'PI_SCORER',
-            },
-          ],
-        },
-      ],
-    },
     llm_input: 'Help me with my problem',
     llm_output: 'Of course I can help with that',
+    scoring_system: {
+      description: "Write a children's story communicating a simple life lesson.",
+      name: 'Sample Contract',
+    },
   })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
@@ -420,36 +300,12 @@ const client = new PiClient({
 // Override per-request:
 await client.contracts.score(
   {
-    contract: {
-      name: 'My Application',
-      description: 'You are a helpful assistant',
-      dimensions: [
-        {
-          description: 'Test whether the LLM follows instructions',
-          label: 'Instruction Following Dimension',
-          sub_dimensions: [
-            {
-              label: 'Instruction Following',
-              description: 'Does the response follow the given instructions?',
-              scoring_type: 'PI_SCORER',
-            },
-          ],
-        },
-        {
-          description: 'Test whether the LLM responds to the query',
-          label: 'Topicality Dimension',
-          sub_dimensions: [
-            {
-              label: 'Topicality',
-              description: 'Does the response answer the given question?',
-              scoring_type: 'PI_SCORER',
-            },
-          ],
-        },
-      ],
-    },
     llm_input: 'Help me with my problem',
     llm_output: 'Of course I can help with that',
+    scoring_system: {
+      description: "Write a children's story communicating a simple life lesson.",
+      name: 'Sample Contract',
+    },
   },
   {
     httpAgent: new http.Agent({ keepAlive: false }),
