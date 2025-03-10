@@ -186,6 +186,31 @@ export interface ScorerSubDimension {
 }
 
 /**
+ * SftStatus is the status of a SFT job.
+ */
+export interface SftStatus {
+  /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
+
+  /**
+   * The job id
+   */
+  job_id: string;
+
+  /**
+   * Current state of the job
+   */
+  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
+
+  /**
+   * A list of trained models selected based on the PI Contract score.
+   */
+  trained_models?: Array<TrainedModel> | null;
+}
+
+/**
  * SyntheticDataStatus is the result of a synthetic data generation job.
  */
 export interface SyntheticDataStatus {

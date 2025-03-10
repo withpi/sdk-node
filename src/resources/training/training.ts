@@ -23,10 +23,7 @@ import {
   SftDownloadResponse,
   SftListParams,
   SftListResponse,
-  SftLoadResponse,
-  SftRetrieveResponse,
   SftStartJobParams,
-  SftStartJobResponse,
   SftStreamMessagesResponse,
 } from './sft';
 
@@ -41,12 +38,9 @@ Training.Grpo = Grpo;
 export declare namespace Training {
   export {
     Sft as Sft,
-    type SftRetrieveResponse as SftRetrieveResponse,
     type SftListResponse as SftListResponse,
     type SftCancelResponse as SftCancelResponse,
     type SftDownloadResponse as SftDownloadResponse,
-    type SftLoadResponse as SftLoadResponse,
-    type SftStartJobResponse as SftStartJobResponse,
     type SftStreamMessagesResponse as SftStreamMessagesResponse,
     type SftListParams as SftListParams,
     type SftDownloadParams as SftDownloadParams,
