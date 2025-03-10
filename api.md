@@ -5,8 +5,6 @@ Types:
 - <code><a href="./src/resources/shared.ts">DataGenerationStatus</a></code>
 - <code><a href="./src/resources/shared.ts">ScoringSystem</a></code>
 - <code><a href="./src/resources/shared.ts">ScoringSystemMetrics</a></code>
-- <code><a href="./src/resources/shared.ts">SDKContract</a></code>
-- <code><a href="./src/resources/shared.ts">SDKDimension</a></code>
 - <code><a href="./src/resources/shared.ts">SDKExample</a></code>
 - <code><a href="./src/resources/shared.ts">SDKSubDimension</a></code>
 - <code><a href="./src/resources/shared.ts">SftStatus</a></code>
@@ -16,8 +14,8 @@ Types:
 
 Methods:
 
-- <code title="post /contracts/generate_dimensions">client.contracts.<a href="./src/resources/contracts/contracts.ts">generateDimensions</a>({ ...params }) -> SDKContract</code>
-- <code title="post /contracts/read_from_hf">client.contracts.<a href="./src/resources/contracts/contracts.ts">readFromHf</a>({ ...params }) -> SDKContract</code>
+- <code title="post /contracts/generate_dimensions">client.contracts.<a href="./src/resources/contracts/contracts.ts">generateDimensions</a>({ ...params }) -> ScoringSystem</code>
+- <code title="post /contracts/read_from_hf">client.contracts.<a href="./src/resources/contracts/contracts.ts">readFromHf</a>({ ...params }) -> ScoringSystem</code>
 - <code title="post /contracts/score">client.contracts.<a href="./src/resources/contracts/contracts.ts">score</a>({ ...params }) -> ScoringSystemMetrics</code>
 
 ## Calibrate
