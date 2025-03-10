@@ -15,7 +15,7 @@ import {
   CalibrateRetrieveResponse,
 } from './calibrate';
 
-export class Scorer extends APIResource {
+export class Scorers extends APIResource {
   calibrate: CalibrateAPI.Calibrate = new CalibrateAPI.Calibrate(this._client);
 
   /**
@@ -25,21 +25,21 @@ export class Scorer extends APIResource {
     body: ScorerGenerateDimensionsParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<Shared.Scorer> {
-    return this._client.post('/scorer/generate_dimensions', { body, ...options });
+    return this._client.post('/scorers/generate_dimensions', { body, ...options });
   }
 
   /**
    * Read a scoring system from Huggingface dataset
    */
   readFromHf(body: ScorerReadFromHfParams, options?: Core.RequestOptions): Core.APIPromise<Shared.Scorer> {
-    return this._client.post('/scorer/read_from_hf', { body, ...options });
+    return this._client.post('/scorers/read_from_hf', { body, ...options });
   }
 
   /**
    * Scores a scoring system based on the provided input and output
    */
   score(body: ScorerScoreParams, options?: Core.RequestOptions): Core.APIPromise<ScorerScoreResponse> {
-    return this._client.post('/scorer/score', { body, ...options });
+    return this._client.post('/scorers/score', { body, ...options });
   }
 }
 
@@ -112,9 +112,9 @@ export interface ScorerScoreParams {
   scorer: Shared.Scorer;
 }
 
-Scorer.Calibrate = Calibrate;
+Scorers.Calibrate = Calibrate;
 
-export declare namespace Scorer {
+export declare namespace Scorers {
   export {
     type ScorerScoreResponse as ScorerScoreResponse,
     type ScorerGenerateDimensionsParams as ScorerGenerateDimensionsParams,
