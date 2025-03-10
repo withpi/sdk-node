@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.108 (2025-03-10)
+
+Full Changelog: [v0.1.0-alpha.107...v0.1.0-alpha.108](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.107...v0.1.0-alpha.108)
+
+### Features
+
+* **api:** model -&gt; training ([#440](https://github.com/withpi/sdk-node/issues/440)) ([7ce0549](https://github.com/withpi/sdk-node/commit/7ce054944f21f117b76868c8a323b92f833835b1))
+
 ## 0.1.0-alpha.107 (2025-03-10)
 
 Full Changelog: [v0.1.0-alpha.106...v0.1.0-alpha.107](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.106...v0.1.0-alpha.107)
