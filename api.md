@@ -138,16 +138,16 @@ Types:
 - <code><a href="./src/resources/scoring-system/calibrate.ts">CalibrateRetrieveResponse</a></code>
 - <code><a href="./src/resources/scoring-system/calibrate.ts">CalibrateListResponse</a></code>
 - <code><a href="./src/resources/scoring-system/calibrate.ts">CalibrateCancelResponse</a></code>
-- <code><a href="./src/resources/scoring-system/calibrate.ts">CalibrateMessagesResponse</a></code>
 - <code><a href="./src/resources/scoring-system/calibrate.ts">CalibrateStartJobResponse</a></code>
+- <code><a href="./src/resources/scoring-system/calibrate.ts">CalibrateStreamMessagesResponse</a></code>
 
 Methods:
 
 - <code title="get /scoring_system/calibrate/{job_id}">client.scoringSystem.calibrate.<a href="./src/resources/scoring-system/calibrate.ts">retrieve</a>(jobId) -> CalibrateRetrieveResponse</code>
 - <code title="get /scoring_system/calibrate">client.scoringSystem.calibrate.<a href="./src/resources/scoring-system/calibrate.ts">list</a>({ ...params }) -> CalibrateListResponse</code>
 - <code title="delete /scoring_system/calibrate/{job_id}">client.scoringSystem.calibrate.<a href="./src/resources/scoring-system/calibrate.ts">cancel</a>(jobId) -> string</code>
-- <code title="get /scoring_system/calibrate/{job_id}/messages">client.scoringSystem.calibrate.<a href="./src/resources/scoring-system/calibrate.ts">messages</a>(jobId) -> string</code>
 - <code title="post /scoring_system/calibrate">client.scoringSystem.calibrate.<a href="./src/resources/scoring-system/calibrate.ts">startJob</a>({ ...params }) -> CalibrateStartJobResponse</code>
+- <code title="get /scoring_system/calibrate/{job_id}/messages">client.scoringSystem.calibrate.<a href="./src/resources/scoring-system/calibrate.ts">streamMessages</a>(jobId) -> string</code>
 
 # Search
 
