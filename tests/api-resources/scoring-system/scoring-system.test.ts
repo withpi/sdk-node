@@ -8,10 +8,10 @@ const client = new PiClient({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource scorers', () => {
+describe('resource scoringSystem', () => {
   // skipped: tests are disabled for the time being
-  test.skip('generateDimensions: only required params', async () => {
-    const responsePromise = client.scorers.generateDimensions({
+  test.skip('generate: only required params', async () => {
+    const responsePromise = client.scoringSystem.generate({
       application_description: "Write a children's story communicating a simple life lesson.",
     });
     const rawResponse = await responsePromise.asResponse();
@@ -24,16 +24,18 @@ describe('resource scorers', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('generateDimensions: required and optional params', async () => {
-    const response = await client.scorers.generateDimensions({
+  test.skip('generate: required and optional params', async () => {
+    const response = await client.scoringSystem.generate({
       application_description: "Write a children's story communicating a simple life lesson.",
       try_auto_generating_python_code: false,
     });
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('readFromHf: only required params', async () => {
-    const responsePromise = client.scorers.readFromHf({ hf_scorer_name: 'withpi/tldr_scoring_system' });
+  test.skip('readFromHuggingface: only required params', async () => {
+    const responsePromise = client.scoringSystem.readFromHuggingface({
+      hf_scorer_name: 'withpi/tldr_scoring_system',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -44,8 +46,8 @@ describe('resource scorers', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('readFromHf: required and optional params', async () => {
-    const response = await client.scorers.readFromHf({
+  test.skip('readFromHuggingface: required and optional params', async () => {
+    const response = await client.scoringSystem.readFromHuggingface({
       hf_scorer_name: 'withpi/tldr_scoring_system',
       hf_token: 'hf_token',
     });
@@ -53,7 +55,7 @@ describe('resource scorers', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('score: only required params', async () => {
-    const responsePromise = client.scorers.score({
+    const responsePromise = client.scoringSystem.score({
       llm_input: 'Tell me something different',
       llm_output: 'The lazy dog was jumped over by the quick brown fox',
       scorer: {
@@ -72,7 +74,7 @@ describe('resource scorers', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('score: required and optional params', async () => {
-    const response = await client.scorers.score({
+    const response = await client.scoringSystem.score({
       llm_input: 'Tell me something different',
       llm_output: 'The lazy dog was jumped over by the quick brown fox',
       scorer: {
