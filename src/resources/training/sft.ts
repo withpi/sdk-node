@@ -9,7 +9,7 @@ export class Sft extends APIResource {
   /**
    * Checks the status of a SFT job
    */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<SftRetrieveResponse> {
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.SftStatus> {
     return this._client.get(`/training/sft/${jobId}`, options);
   }
 
@@ -46,14 +46,14 @@ export class Sft extends APIResource {
   /**
    * Loads a SFT model into serving for a limited period of time
    */
-  load(jobId: string, options?: Core.RequestOptions): Core.APIPromise<SftLoadResponse> {
+  load(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.SftStatus> {
     return this._client.post(`/training/sft/${jobId}/load`, options);
   }
 
   /**
    * Launches a SFT job
    */
-  startJob(body: SftStartJobParams, options?: Core.RequestOptions): Core.APIPromise<SftStartJobResponse> {
+  startJob(body: SftStartJobParams, options?: Core.RequestOptions): Core.APIPromise<Shared.SftStatus> {
     return this._client.post('/training/sft', { body, ...options });
   }
 
@@ -68,113 +68,11 @@ export class Sft extends APIResource {
   }
 }
 
-/**
- * SftStatus is the status of a SFT job.
- */
-export interface SftRetrieveResponse {
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
-
-  /**
-   * The job id
-   */
-  job_id: string;
-
-  /**
-   * Current state of the job
-   */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
-
-  /**
-   * A list of trained models selected based on the PI Contract score.
-   */
-  trained_models?: Array<Shared.TrainedModel> | null;
-}
-
-export type SftListResponse = Array<SftListResponse.SftListResponseItem>;
-
-export namespace SftListResponse {
-  /**
-   * SftStatus is the status of a SFT job.
-   */
-  export interface SftListResponseItem {
-    /**
-     * Detailed status of the job
-     */
-    detailed_status: Array<string>;
-
-    /**
-     * The job id
-     */
-    job_id: string;
-
-    /**
-     * Current state of the job
-     */
-    state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
-
-    /**
-     * A list of trained models selected based on the PI Contract score.
-     */
-    trained_models?: Array<Shared.TrainedModel> | null;
-  }
-}
+export type SftListResponse = Array<Shared.SftStatus>;
 
 export type SftCancelResponse = string;
 
 export type SftDownloadResponse = string;
-
-/**
- * SftStatus is the status of a SFT job.
- */
-export interface SftLoadResponse {
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
-
-  /**
-   * The job id
-   */
-  job_id: string;
-
-  /**
-   * Current state of the job
-   */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
-
-  /**
-   * A list of trained models selected based on the PI Contract score.
-   */
-  trained_models?: Array<Shared.TrainedModel> | null;
-}
-
-/**
- * SftStatus is the status of a SFT job.
- */
-export interface SftStartJobResponse {
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
-
-  /**
-   * The job id
-   */
-  job_id: string;
-
-  /**
-   * Current state of the job
-   */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
-
-  /**
-   * A list of trained models selected based on the PI Contract score.
-   */
-  trained_models?: Array<Shared.TrainedModel> | null;
-}
 
 export type SftStreamMessagesResponse = string;
 
@@ -256,12 +154,9 @@ export namespace SftStartJobParams {
 
 export declare namespace Sft {
   export {
-    type SftRetrieveResponse as SftRetrieveResponse,
     type SftListResponse as SftListResponse,
     type SftCancelResponse as SftCancelResponse,
     type SftDownloadResponse as SftDownloadResponse,
-    type SftLoadResponse as SftLoadResponse,
-    type SftStartJobResponse as SftStartJobResponse,
     type SftStreamMessagesResponse as SftStreamMessagesResponse,
     type SftListParams as SftListParams,
     type SftDownloadParams as SftDownloadParams,

@@ -10,6 +10,7 @@ Types:
 - <code><a href="./src/resources/shared.ts">Scorer</a></code>
 - <code><a href="./src/resources/shared.ts">ScorerDimension</a></code>
 - <code><a href="./src/resources/shared.ts">ScorerSubDimension</a></code>
+- <code><a href="./src/resources/shared.ts">SftStatus</a></code>
 - <code><a href="./src/resources/shared.ts">SyntheticDataStatus</a></code>
 - <code><a href="./src/resources/shared.ts">TrainedModel</a></code>
 
@@ -65,22 +66,19 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/training/sft.ts">SftRetrieveResponse</a></code>
 - <code><a href="./src/resources/training/sft.ts">SftListResponse</a></code>
 - <code><a href="./src/resources/training/sft.ts">SftCancelResponse</a></code>
 - <code><a href="./src/resources/training/sft.ts">SftDownloadResponse</a></code>
-- <code><a href="./src/resources/training/sft.ts">SftLoadResponse</a></code>
-- <code><a href="./src/resources/training/sft.ts">SftStartJobResponse</a></code>
 - <code><a href="./src/resources/training/sft.ts">SftStreamMessagesResponse</a></code>
 
 Methods:
 
-- <code title="get /training/sft/{job_id}">client.training.sft.<a href="./src/resources/training/sft.ts">retrieve</a>(jobId) -> SftRetrieveResponse</code>
+- <code title="get /training/sft/{job_id}">client.training.sft.<a href="./src/resources/training/sft.ts">retrieve</a>(jobId) -> SftStatus</code>
 - <code title="get /training/sft">client.training.sft.<a href="./src/resources/training/sft.ts">list</a>({ ...params }) -> SftListResponse</code>
 - <code title="delete /training/sft/{job_id}">client.training.sft.<a href="./src/resources/training/sft.ts">cancel</a>(jobId) -> string</code>
 - <code title="post /training/sft/{job_id}/download">client.training.sft.<a href="./src/resources/training/sft.ts">download</a>(jobId, { ...params }) -> string</code>
-- <code title="post /training/sft/{job_id}/load">client.training.sft.<a href="./src/resources/training/sft.ts">load</a>(jobId) -> SftLoadResponse</code>
-- <code title="post /training/sft">client.training.sft.<a href="./src/resources/training/sft.ts">startJob</a>({ ...params }) -> SftStartJobResponse</code>
+- <code title="post /training/sft/{job_id}/load">client.training.sft.<a href="./src/resources/training/sft.ts">load</a>(jobId) -> SftStatus</code>
+- <code title="post /training/sft">client.training.sft.<a href="./src/resources/training/sft.ts">startJob</a>({ ...params }) -> SftStatus</code>
 - <code title="get /training/sft/{job_id}/messages">client.training.sft.<a href="./src/resources/training/sft.ts">streamMessages</a>(jobId) -> string</code>
 
 ## Grpo
