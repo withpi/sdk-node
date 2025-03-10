@@ -99,7 +99,7 @@ export interface DistillStartJobParams {
   /**
    * Examples to use in the classification tuning process
    */
-  examples: Array<DistillStartJobParams.Example>;
+  examples: Array<Shared.SDKExample>;
 
   /**
    * Classification learning rate
@@ -110,23 +110,6 @@ export interface DistillStartJobParams {
    * Classification number of train epochs
    */
   num_train_epochs?: number;
-}
-
-export namespace DistillStartJobParams {
-  /**
-   * An example for training or evaluation
-   */
-  export interface Example {
-    /**
-     * The input to LLM
-     */
-    llm_input: string;
-
-    /**
-     * The output to evaluate
-     */
-    llm_output: string;
-  }
 }
 
 export declare namespace Distill {

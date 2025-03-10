@@ -207,6 +207,7 @@ export declare namespace PiClient {
   export type ScorerDimension = API.ScorerDimension;
   export type ScorerSubDimension = API.ScorerSubDimension;
   export type ScoringSystemMetrics = API.ScoringSystemMetrics;
+  export type SDKExample = API.SDKExample;
   export type SftStatus = API.SftStatus;
   export type SyntheticDataStatus = API.SyntheticDataStatus;
   export type TrainedModel = API.TrainedModel;

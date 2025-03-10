@@ -212,6 +212,21 @@ export namespace ScoringSystemMetrics {
 }
 
 /**
+ * An example for training or evaluation
+ */
+export interface SDKExample {
+  /**
+   * The input to LLM
+   */
+  llm_input: string;
+
+  /**
+   * The output to evaluate
+   */
+  llm_output: string;
+}
+
+/**
  * SftStatus is the status of a SFT job.
  */
 export interface SftStatus {
@@ -259,24 +274,7 @@ export interface SyntheticDataStatus {
    * The generated synthetic data. Can be present even if the state is not done/error
    * as it is streamed.
    */
-  data?: Array<SyntheticDataStatus.Data> | null;
-}
-
-export namespace SyntheticDataStatus {
-  /**
-   * An example for training or evaluation
-   */
-  export interface Data {
-    /**
-     * The input to LLM
-     */
-    llm_input: string;
-
-    /**
-     * The output to evaluate
-     */
-    llm_output: string;
-  }
+  data?: Array<SDKExample> | null;
 }
 
 export interface TrainedModel {
