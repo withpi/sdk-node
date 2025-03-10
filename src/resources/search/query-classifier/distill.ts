@@ -51,7 +51,7 @@ export class Distill extends APIResource {
   }
 
   /**
-   * Launches a Query Classifier Distillation job
+   * Starts a Query Classifier Distillation job
    */
   startJob(
     body: DistillStartJobParams,
