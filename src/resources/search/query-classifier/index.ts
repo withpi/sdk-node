@@ -5,10 +5,10 @@ export {
   type DistillListResponse,
   type DistillCancelResponse,
   type DistillDownloadResponse,
-  type DistillMessagesResponse,
-  type DistillCreateParams,
+  type DistillStreamMessagesResponse,
   type DistillListParams,
   type DistillDownloadParams,
+  type DistillStartJobParams,
 } from './distill';
 export {
   QueryClassifier,

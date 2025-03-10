@@ -13,7 +13,7 @@ export {
 export {
   ScoringSystem,
   type ScoringSystemScoreResponse,
+  type ScoringSystemFromHuggingfaceParams,
   type ScoringSystemGenerateParams,
-  type ScoringSystemReadFromHuggingfaceParams,
   type ScoringSystemScoreParams,
 } from './scoring-system';

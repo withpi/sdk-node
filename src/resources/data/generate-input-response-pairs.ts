@@ -7,16 +7,6 @@ import * as Shared from '../shared';
 
 export class GenerateInputResponsePairs extends APIResource {
   /**
-   * Launches a Generation Input-Response Pairs job
-   */
-  create(
-    body: GenerateInputResponsePairCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.SyntheticDataStatus> {
-    return this._client.post('/data/generate_input_response_pairs', { body, ...options });
-  }
-
-  /**
    * Checks the status of a Generation Input-Response Pairs job
    */
   retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.SyntheticDataStatus> {
@@ -46,6 +36,16 @@ export class GenerateInputResponsePairs extends APIResource {
    */
   cancel(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.delete(`/data/generate_input_response_pairs/${jobId}`, options);
+  }
+
+  /**
+   * Launches a Generation Input-Response Pairs job
+   */
+  startJob(
+    body: GenerateInputResponsePairStartJobParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Shared.SyntheticDataStatus> {
+    return this._client.post('/data/generate_input_response_pairs', { body, ...options });
   }
 
   /**
@@ -86,7 +86,14 @@ export namespace GenerateInputResponsePairStreamDataResponse {
 
 export type GenerateInputResponsePairStreamMessagesResponse = string;
 
-export interface GenerateInputResponsePairCreateParams {
+export interface GenerateInputResponsePairListParams {
+  /**
+   * Filter jobs by state
+   */
+  state?: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED' | null;
+}
+
+export interface GenerateInputResponsePairStartJobParams {
   /**
    * The number of new LLM examples to generate
    */
@@ -95,7 +102,7 @@ export interface GenerateInputResponsePairCreateParams {
   /**
    * The list of LLM examples (inputs + outputs) to be used as seeds
    */
-  seeds: Array<GenerateInputResponsePairCreateParams.Seed>;
+  seeds: Array<GenerateInputResponsePairStartJobParams.Seed>;
 
   /**
    * The application description for which the synthetic data would be applicable.
@@ -124,7 +131,7 @@ export interface GenerateInputResponsePairCreateParams {
   system_prompt?: string | null;
 }
 
-export namespace GenerateInputResponsePairCreateParams {
+export namespace GenerateInputResponsePairStartJobParams {
   /**
    * An example for training or evaluation
    */
@@ -141,20 +148,13 @@ export namespace GenerateInputResponsePairCreateParams {
   }
 }
 
-export interface GenerateInputResponsePairListParams {
-  /**
-   * Filter jobs by state
-   */
-  state?: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED' | null;
-}
-
 export declare namespace GenerateInputResponsePairs {
   export {
     type GenerateInputResponsePairListResponse as GenerateInputResponsePairListResponse,
     type GenerateInputResponsePairCancelResponse as GenerateInputResponsePairCancelResponse,
     type GenerateInputResponsePairStreamDataResponse as GenerateInputResponsePairStreamDataResponse,
     type GenerateInputResponsePairStreamMessagesResponse as GenerateInputResponsePairStreamMessagesResponse,
-    type GenerateInputResponsePairCreateParams as GenerateInputResponsePairCreateParams,
     type GenerateInputResponsePairListParams as GenerateInputResponsePairListParams,
+    type GenerateInputResponsePairStartJobParams as GenerateInputResponsePairStartJobParams,
   };
 }

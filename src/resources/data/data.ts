@@ -6,32 +6,24 @@ import * as GenerateAPI from './generate';
 import {
   Generate,
   GenerateCancelResponse,
-  GenerateCreateParams,
   GenerateListParams,
   GenerateListResponse,
+  GenerateStartJobParams,
   GenerateStreamDataResponse,
   GenerateStreamMessagesResponse,
 } from './generate';
-import * as GenerateExamplesAPI from './generate-examples';
-import { GenerateExamples } from './generate-examples';
 import * as GenerateInputResponsePairsAPI from './generate-input-response-pairs';
 import {
   GenerateInputResponsePairCancelResponse,
-  GenerateInputResponsePairCreateParams,
   GenerateInputResponsePairListParams,
   GenerateInputResponsePairListResponse,
+  GenerateInputResponsePairStartJobParams,
   GenerateInputResponsePairStreamDataResponse,
   GenerateInputResponsePairStreamMessagesResponse,
   GenerateInputResponsePairs,
 } from './generate-input-response-pairs';
-import * as GenerateInputsAPI from './generate-inputs';
-import { GenerateInputs } from './generate-inputs';
 
 export class Data extends APIResource {
-  generateInputs: GenerateInputsAPI.GenerateInputs = new GenerateInputsAPI.GenerateInputs(this._client);
-  generateExamples: GenerateExamplesAPI.GenerateExamples = new GenerateExamplesAPI.GenerateExamples(
-    this._client,
-  );
   generate: GenerateAPI.Generate = new GenerateAPI.Generate(this._client);
   generateInputResponsePairs: GenerateInputResponsePairsAPI.GenerateInputResponsePairs =
     new GenerateInputResponsePairsAPI.GenerateInputResponsePairs(this._client);
@@ -89,8 +81,6 @@ export namespace DataClusterInputsParams {
   }
 }
 
-Data.GenerateInputs = GenerateInputs;
-Data.GenerateExamples = GenerateExamples;
 Data.Generate = Generate;
 Data.GenerateInputResponsePairs = GenerateInputResponsePairs;
 
@@ -100,18 +90,14 @@ export declare namespace Data {
     type DataClusterInputsParams as DataClusterInputsParams,
   };
 
-  export { GenerateInputs as GenerateInputs };
-
-  export { GenerateExamples as GenerateExamples };
-
   export {
     Generate as Generate,
     type GenerateListResponse as GenerateListResponse,
     type GenerateCancelResponse as GenerateCancelResponse,
     type GenerateStreamDataResponse as GenerateStreamDataResponse,
     type GenerateStreamMessagesResponse as GenerateStreamMessagesResponse,
-    type GenerateCreateParams as GenerateCreateParams,
     type GenerateListParams as GenerateListParams,
+    type GenerateStartJobParams as GenerateStartJobParams,
   };
 
   export {
@@ -120,7 +106,7 @@ export declare namespace Data {
     type GenerateInputResponsePairCancelResponse as GenerateInputResponsePairCancelResponse,
     type GenerateInputResponsePairStreamDataResponse as GenerateInputResponsePairStreamDataResponse,
     type GenerateInputResponsePairStreamMessagesResponse as GenerateInputResponsePairStreamMessagesResponse,
-    type GenerateInputResponsePairCreateParams as GenerateInputResponsePairCreateParams,
     type GenerateInputResponsePairListParams as GenerateInputResponsePairListParams,
+    type GenerateInputResponsePairStartJobParams as GenerateInputResponsePairStartJobParams,
   };
 }

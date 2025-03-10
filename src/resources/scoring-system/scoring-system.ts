@@ -19,20 +19,20 @@ export class ScoringSystem extends APIResource {
   calibrate: CalibrateAPI.Calibrate = new CalibrateAPI.Calibrate(this._client);
 
   /**
+   * Read a scoring system from Huggingface dataset
+   */
+  fromHuggingface(
+    body: ScoringSystemFromHuggingfaceParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Shared.Scorer> {
+    return this._client.post('/scoring_system/from_huggingface', { body, ...options });
+  }
+
+  /**
    * Generates a scorer
    */
   generate(body: ScoringSystemGenerateParams, options?: Core.RequestOptions): Core.APIPromise<Shared.Scorer> {
     return this._client.post('/scoring_system/generate', { body, ...options });
-  }
-
-  /**
-   * Read a scoring system from Huggingface dataset
-   */
-  readFromHuggingface(
-    body: ScoringSystemReadFromHuggingfaceParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.Scorer> {
-    return this._client.post('/scoring_system/from_huggingface', { body, ...options });
   }
 
   /**
@@ -72,19 +72,7 @@ export namespace ScoringSystemScoreResponse {
   }
 }
 
-export interface ScoringSystemGenerateParams {
-  /**
-   * The application description to generate a scoring system for.
-   */
-  application_description: string;
-
-  /**
-   * If true, try to generate python code for sub-dimensions in the scoring system.
-   */
-  try_auto_generating_python_code?: boolean;
-}
-
-export interface ScoringSystemReadFromHuggingfaceParams {
+export interface ScoringSystemFromHuggingfaceParams {
   /**
    * Huggingface scoring system name e.g. withpi/my_scoring_system. You need to
    * provide the hf_token if the scoring system dataset is not public or not own by
@@ -96,6 +84,18 @@ export interface ScoringSystemReadFromHuggingfaceParams {
    * Huggingface token to use if you want to read to your own HF organization
    */
   hf_token?: string | null;
+}
+
+export interface ScoringSystemGenerateParams {
+  /**
+   * The application description to generate a scoring system for.
+   */
+  application_description: string;
+
+  /**
+   * If true, try to generate python code for sub-dimensions in the scoring system.
+   */
+  try_auto_generating_python_code?: boolean;
 }
 
 export interface ScoringSystemScoreParams {
@@ -120,8 +120,8 @@ ScoringSystem.Calibrate = Calibrate;
 export declare namespace ScoringSystem {
   export {
     type ScoringSystemScoreResponse as ScoringSystemScoreResponse,
+    type ScoringSystemFromHuggingfaceParams as ScoringSystemFromHuggingfaceParams,
     type ScoringSystemGenerateParams as ScoringSystemGenerateParams,
-    type ScoringSystemReadFromHuggingfaceParams as ScoringSystemReadFromHuggingfaceParams,
     type ScoringSystemScoreParams as ScoringSystemScoreParams,
   };
 

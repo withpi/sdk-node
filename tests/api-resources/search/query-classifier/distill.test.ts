@@ -10,41 +10,6 @@ const client = new PiClient({
 
 describe('resource distill', () => {
   // skipped: tests are disabled for the time being
-  test.skip('create: only required params', async () => {
-    const responsePromise = client.search.queryClassifier.distill.create({
-      base_model: 'MODERNBERT_BASE',
-      examples: [
-        {
-          llm_input: 'Tell me something different',
-          llm_output: 'The lazy dog was jumped over by the quick brown fox',
-        },
-      ],
-    });
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('create: required and optional params', async () => {
-    const response = await client.search.queryClassifier.distill.create({
-      base_model: 'MODERNBERT_BASE',
-      examples: [
-        {
-          llm_input: 'Tell me something different',
-          llm_output: 'The lazy dog was jumped over by the quick brown fox',
-        },
-      ],
-      learning_rate: 0.000005,
-      num_train_epochs: 5,
-    });
-  });
-
-  // skipped: tests are disabled for the time being
   test.skip('retrieve', async () => {
     const responsePromise = client.search.queryClassifier.distill.retrieve('job_id');
     const rawResponse = await responsePromise.asResponse();
@@ -130,8 +95,16 @@ describe('resource distill', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('messages', async () => {
-    const responsePromise = client.search.queryClassifier.distill.messages('job_id');
+  test.skip('startJob: only required params', async () => {
+    const responsePromise = client.search.queryClassifier.distill.startJob({
+      base_model: 'MODERNBERT_BASE',
+      examples: [
+        {
+          llm_input: 'Tell me something different',
+          llm_output: 'The lazy dog was jumped over by the quick brown fox',
+        },
+      ],
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -142,10 +115,37 @@ describe('resource distill', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('messages: request options instead of params are passed correctly', async () => {
+  test.skip('startJob: required and optional params', async () => {
+    const response = await client.search.queryClassifier.distill.startJob({
+      base_model: 'MODERNBERT_BASE',
+      examples: [
+        {
+          llm_input: 'Tell me something different',
+          llm_output: 'The lazy dog was jumped over by the quick brown fox',
+        },
+      ],
+      learning_rate: 0.000005,
+      num_train_epochs: 5,
+    });
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('streamMessages', async () => {
+    const responsePromise = client.search.queryClassifier.distill.streamMessages('job_id');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('streamMessages: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.search.queryClassifier.distill.messages('job_id', { path: '/_stainless_unknown_path' }),
+      client.search.queryClassifier.distill.streamMessages('job_id', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(PiClient.NotFoundError);
   });
 });
