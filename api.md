@@ -143,16 +143,6 @@ Methods:
 
 # Queries
 
-Types:
-
-- <code><a href="./src/resources/queries.ts">QueryClassifyResponse</a></code>
-- <code><a href="./src/resources/queries.ts">QueryGenerateFanoutsResponse</a></code>
-
-Methods:
-
-- <code title="post /queries/classify">client.queries.<a href="./src/resources/queries.ts">classify</a>({ ...params }) -> QueryClassifyResponse</code>
-- <code title="post /queries/generate_fanouts">client.queries.<a href="./src/resources/queries.ts">generateFanouts</a>({ ...params }) -> QueryGenerateFanoutsResponse</code>
-
 # Scorers
 
 Types:
@@ -182,3 +172,15 @@ Methods:
 - <code title="get /scorers/calibrate">client.scorers.calibrate.<a href="./src/resources/scorers/calibrate.ts">list</a>({ ...params }) -> CalibrateListResponse</code>
 - <code title="delete /scorers/calibrate/{job_id}">client.scorers.calibrate.<a href="./src/resources/scorers/calibrate.ts">cancel</a>(jobId) -> string</code>
 - <code title="get /scorers/calibrate/{job_id}/messages">client.scorers.calibrate.<a href="./src/resources/scorers/calibrate.ts">messages</a>(jobId) -> string</code>
+
+# Rag
+
+Types:
+
+- <code><a href="./src/resources/rag.ts">RagClassifyQueryResponse</a></code>
+- <code><a href="./src/resources/rag.ts">RagGenerateFanoutResponse</a></code>
+
+Methods:
+
+- <code title="post /rag/query_classify">client.rag.<a href="./src/resources/rag.ts">classifyQuery</a>({ ...params }) -> RagClassifyQueryResponse</code>
+- <code title="post /rag/query_fanout">client.rag.<a href="./src/resources/rag.ts">generateFanout</a>({ ...params }) -> RagGenerateFanoutResponse</code>
