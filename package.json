@@ -1,6 +1,6 @@
 {
   "name": "withpi",
-  "version": "0.1.0-alpha.94",
+  "version": "0.1.0-alpha.95",
   "description": "The official TypeScript library for the Withpi API",
   "author": "Withpi <support@withpi.ai>",
   "types": "dist/index.d.ts",
