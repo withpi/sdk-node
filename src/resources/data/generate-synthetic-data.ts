@@ -3,13 +3,14 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
+import * as Shared from '../shared';
 import * as CalibrateAPI from '../contracts/calibrate';
 
 export class GenerateSyntheticData extends APIResource {
   /**
    * Checks the status of a Synthetic Data Generation job
    */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<SyntheticDataStatus> {
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.SyntheticDataStatus> {
     return this._client.get(`/data/generate_synthetic_data/${jobId}`, options);
   }
 
@@ -44,7 +45,7 @@ export class GenerateSyntheticData extends APIResource {
   startJob(
     body: GenerateSyntheticDataStartJobParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<SyntheticDataStatus> {
+  ): Core.APIPromise<Shared.SyntheticDataStatus> {
     return this._client.post('/data/generate_synthetic_data', { body, ...options });
   }
 
@@ -69,50 +70,9 @@ export class GenerateSyntheticData extends APIResource {
   }
 }
 
-/**
- * An example for training or evaluation
- */
-export interface SDKExample {
-  /**
-   * The input to LLM
-   */
-  llm_input: string;
-
-  /**
-   * The output to evaluate
-   */
-  llm_output: string;
-}
-
 export type SDKExplorationMode = 'CONSERVATIVE' | 'BALANCED' | 'CREATIVE' | 'ADVENTUROUS';
 
-/**
- * SyntheticDataStatus is the result of a synthetic data generation job.
- */
-export interface SyntheticDataStatus {
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
-
-  /**
-   * The job id
-   */
-  job_id: string;
-
-  /**
-   * Current state of the job
-   */
-  state: CalibrateAPI.State;
-
-  /**
-   * The generated synthetic data. Can be present even if the state is not done/error
-   * as it is streamed.
-   */
-  data?: Array<SDKExample> | null;
-}
-
-export type GenerateSyntheticDataListResponse = Array<SyntheticDataStatus>;
+export type GenerateSyntheticDataListResponse = Array<Shared.SyntheticDataStatus>;
 
 export type GenerateSyntheticDataCancelResponse = string;
 
@@ -145,7 +105,7 @@ export interface GenerateSyntheticDataStartJobParams {
   /**
    * The list of LLM examples (inputs + outputs) to be used as seeds
    */
-  seeds: Array<SDKExample>;
+  seeds: Array<Shared.SDKExample>;
 
   /**
    * The application description for which the synthetic data would be applicable.
@@ -176,9 +136,7 @@ export interface GenerateSyntheticDataStartJobParams {
 
 export declare namespace GenerateSyntheticData {
   export {
-    type SDKExample as SDKExample,
     type SDKExplorationMode as SDKExplorationMode,
-    type SyntheticDataStatus as SyntheticDataStatus,
     type GenerateSyntheticDataListResponse as GenerateSyntheticDataListResponse,
     type GenerateSyntheticDataCancelResponse as GenerateSyntheticDataCancelResponse,
     type GenerateSyntheticDataStreamDataResponse as GenerateSyntheticDataStreamDataResponse,

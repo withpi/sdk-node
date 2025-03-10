@@ -2,7 +2,6 @@
 
 export {
   GenerateFromSeeds,
-  type DataGenerationStatus,
   type GenerateFromSeedListResponse,
   type GenerateFromSeedCancelResponse,
   type GenerateFromSeedStreamDataResponse,

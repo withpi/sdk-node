@@ -4,7 +4,6 @@ import { APIResource } from '../../../resource';
 import * as Core from '../../../core';
 import * as GenerateFromSeedsAPI from './generate-from-seeds';
 import {
-  DataGenerationStatus,
   GenerateFromSeedCancelResponse,
   GenerateFromSeedListParams,
   GenerateFromSeedListResponse,
@@ -76,7 +75,6 @@ export declare namespace Inputs {
 
   export {
     GenerateFromSeeds as GenerateFromSeeds,
-    type DataGenerationStatus as DataGenerationStatus,
     type GenerateFromSeedListResponse as GenerateFromSeedListResponse,
     type GenerateFromSeedCancelResponse as GenerateFromSeedCancelResponse,
     type GenerateFromSeedStreamDataResponse as GenerateFromSeedStreamDataResponse,
