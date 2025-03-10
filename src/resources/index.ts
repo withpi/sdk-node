@@ -2,7 +2,6 @@
 
 export * from './shared';
 export { Data, type DataClusterInputsResponse, type DataClusterInputsParams } from './data/data';
-export { Model } from './model/model';
 export { Prompt } from './prompt/prompt';
 export {
   Rag,
