@@ -3,7 +3,7 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as ContractsAPI from './contracts';
+import * as Shared from '../shared';
 
 export class Calibrate extends APIResource {
   /**
@@ -77,7 +77,7 @@ export interface ContractCalibrationStatus {
   /**
    * The calibrated contract
    */
-  calibrated_contract?: ContractsAPI.SDKContract | null;
+  calibrated_contract?: Shared.SDKContract | null;
 }
 
 /**
@@ -139,7 +139,7 @@ export interface CalibrateStartJobParams {
   /**
    * The scoring system to calibrate
    */
-  scoring_system: ContractsAPI.SDKContract;
+  scoring_system: Shared.SDKContract;
 
   /**
    * Rated examples to use when calibrating the scoring system. Must specify either
