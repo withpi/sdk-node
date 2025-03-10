@@ -8,10 +8,10 @@ const client = new PiClient({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource inputs', () => {
+describe('resource data', () => {
   // skipped: tests are disabled for the time being
-  test.skip('cluster: only required params', async () => {
-    const responsePromise = client.data.inputs.cluster({
+  test.skip('createClusterInputs: only required params', async () => {
+    const responsePromise = client.data.createClusterInputs({
       inputs: [{ identifier: 'abcd12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }],
     });
     const rawResponse = await responsePromise.asResponse();
@@ -24,8 +24,8 @@ describe('resource inputs', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('cluster: required and optional params', async () => {
-    const response = await client.data.inputs.cluster({
+  test.skip('createClusterInputs: required and optional params', async () => {
+    const response = await client.data.createClusterInputs({
       inputs: [{ identifier: 'abcd12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }],
       num_clusters: 5,
     });
