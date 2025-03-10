@@ -27,9 +27,9 @@ const client = new PiClient({
 });
 
 async function main() {
-  const syntheticDataStatus = await client.data.generateSyntheticData.retrieve('job_id');
-
-  console.log(syntheticDataStatus.job_id);
+  const response = await client.data.createClusterInputs({
+    inputs: [{ identifier: 'abcd12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }],
+  });
 }
 
 main();
@@ -48,9 +48,10 @@ const client = new PiClient({
 });
 
 async function main() {
-  const syntheticDataStatus: PiClient.SyntheticDataStatus = await client.data.generateSyntheticData.retrieve(
-    'job_id',
-  );
+  const params: PiClient.DataCreateClusterInputsParams = {
+    inputs: [{ identifier: 'abcd12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }],
+  };
+  const response: PiClient.DataCreateClusterInputsResponse = await client.data.createClusterInputs(params);
 }
 
 main();
@@ -67,8 +68,10 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const syntheticDataStatus = await client.data.generateSyntheticData
-    .retrieve('job_id')
+  const response = await client.data
+    .createClusterInputs({
+      inputs: [{ identifier: 'abcd12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }],
+    })
     .catch(async (err) => {
       if (err instanceof PiClient.APIError) {
         console.log(err.status); // 400
@@ -112,7 +115,7 @@ const client = new PiClient({
 });
 
 // Or, configure per-request:
-await client.data.generateSyntheticData.retrieve('job_id', {
+await client.data.createClusterInputs({ inputs: [{ identifier: 'abcd12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }] }, {
   maxRetries: 5,
 });
 ```
@@ -129,7 +132,7 @@ const client = new PiClient({
 });
 
 // Override per-request:
-await client.data.generateSyntheticData.retrieve('job_id', {
+await client.data.createClusterInputs({ inputs: [{ identifier: 'abcd12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }] }, {
   timeout: 5 * 1000,
 });
 ```
@@ -150,15 +153,21 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const client = new PiClient();
 
-const response = await client.data.generateSyntheticData.retrieve('job_id').asResponse();
+const response = await client.data
+  .createClusterInputs({
+    inputs: [{ identifier: 'abcd12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }],
+  })
+  .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: syntheticDataStatus, response: raw } = await client.data.generateSyntheticData
-  .retrieve('job_id')
+const { data: response, response: raw } = await client.data
+  .createClusterInputs({
+    inputs: [{ identifier: 'abcd12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }],
+  })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(syntheticDataStatus.job_id);
+console.log(response);
 ```
 
 ### Making custom/undocumented requests
@@ -262,9 +271,12 @@ const client = new PiClient({
 });
 
 // Override per-request:
-await client.data.generateSyntheticData.retrieve('job_id', {
-  httpAgent: new http.Agent({ keepAlive: false }),
-});
+await client.data.createClusterInputs(
+  { inputs: [{ identifier: 'abcd12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }] },
+  {
+    httpAgent: new http.Agent({ keepAlive: false }),
+  },
+);
 ```
 
 ## Semantic versioning

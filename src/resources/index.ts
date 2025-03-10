@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 export * from './shared';
-export { Data } from './data/data';
+export { Data, type DataCreateClusterInputsResponse, type DataCreateClusterInputsParams } from './data/data';
 export { Model, type TrainedModel } from './model/model';
 export { Prompt } from './prompt/prompt';
 export {
