@@ -5,15 +5,13 @@ import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as Shared from '../shared';
 import * as CalibrateAPI from '../contracts/calibrate';
-import * as GenerateSyntheticDataAPI from '../data/generate-synthetic-data';
-import * as ClassifierAPI from './classifier';
 import * as GrpoAPI from './rl/grpo';
 
 export class Sft extends APIResource {
   /**
    * Checks the status of a SFT job
    */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<SftStatus> {
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.SftStatus> {
     return this._client.get(`/model/sft/${jobId}`, options);
   }
 
@@ -50,14 +48,14 @@ export class Sft extends APIResource {
   /**
    * Loads a SFT model into serving for a limited period of time
    */
-  load(jobId: string, options?: Core.RequestOptions): Core.APIPromise<SftStatus> {
+  load(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.SftStatus> {
     return this._client.post(`/model/sft/${jobId}/load`, options);
   }
 
   /**
    * Launches a SFT job
    */
-  startJob(body: SftStartJobParams, options?: Core.RequestOptions): Core.APIPromise<SftStatus> {
+  startJob(body: SftStartJobParams, options?: Core.RequestOptions): Core.APIPromise<Shared.SftStatus> {
     return this._client.post('/model/sft', { body, ...options });
   }
 
@@ -72,32 +70,7 @@ export class Sft extends APIResource {
   }
 }
 
-/**
- * SftStatus is the status of a SFT job.
- */
-export interface SftStatus {
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
-
-  /**
-   * The job id
-   */
-  job_id: string;
-
-  /**
-   * Current state of the job
-   */
-  state: CalibrateAPI.State;
-
-  /**
-   * A list of trained models selected based on the PI Contract score.
-   */
-  trained_models?: Array<ClassifierAPI.TrainedModel> | null;
-}
-
-export type SftListResponse = Array<SftStatus>;
+export type SftListResponse = Array<Shared.SftStatus>;
 
 export type SftCancelResponse = string;
 
@@ -121,7 +94,7 @@ export interface SftStartJobParams {
    * Examples to use in the SFT tuning process. We split this data into train/eval
    * 90/10.
    */
-  examples: Array<GenerateSyntheticDataAPI.SDKExample>;
+  examples: Array<Shared.SDKExample>;
 
   /**
    * The scoring system to use in the SFT tuning process
@@ -156,7 +129,6 @@ export interface SftStartJobParams {
 
 export declare namespace Sft {
   export {
-    type SftStatus as SftStatus,
     type SftListResponse as SftListResponse,
     type SftCancelResponse as SftCancelResponse,
     type SftDownloadResponse as SftDownloadResponse,

@@ -223,10 +223,15 @@ export declare namespace PiClient {
     type QueryGenerateFanoutsParams as QueryGenerateFanoutsParams,
   };
 
+  export type DataGenerationStatus = API.DataGenerationStatus;
   export type ScoringSystem = API.ScoringSystem;
   export type ScoringSystemMetrics = API.ScoringSystemMetrics;
   export type SDKContract = API.SDKContract;
   export type SDKDimension = API.SDKDimension;
+  export type SDKExample = API.SDKExample;
+  export type SDKSubDimension = API.SDKSubDimension;
+  export type SftStatus = API.SftStatus;
+  export type SyntheticDataStatus = API.SyntheticDataStatus;
 }
 
 export { toFile, fileFromPath } from './uploads';

@@ -23,7 +23,6 @@ import {
   SftListParams,
   SftListResponse,
   SftStartJobParams,
-  SftStatus,
   SftStreamMessagesResponse,
 } from './sft';
 import * as RlAPI from './rl/rl';
@@ -57,7 +56,6 @@ export declare namespace Model {
 
   export {
     Sft as Sft,
-    type SftStatus as SftStatus,
     type SftListResponse as SftListResponse,
     type SftCancelResponse as SftCancelResponse,
     type SftDownloadResponse as SftDownloadResponse,

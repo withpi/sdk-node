@@ -3,9 +3,7 @@
 export { Data } from './data';
 export {
   GenerateSyntheticData,
-  type SDKExample,
   type SDKExplorationMode,
-  type SyntheticDataStatus,
   type GenerateSyntheticDataListResponse,
   type GenerateSyntheticDataCancelResponse,
   type GenerateSyntheticDataStreamDataResponse,
