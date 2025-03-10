@@ -3,18 +3,14 @@
 export * from './shared';
 export { Data, type DataClusterInputsResponse, type DataClusterInputsParams } from './data/data';
 export { Prompt } from './prompt/prompt';
+export { Rag } from './rag';
+export { Scorers } from './scorers/scorers';
 export {
-  Rag,
-  type RagClassifyQueryResponse,
-  type RagGenerateFanoutResponse,
-  type RagClassifyQueryParams,
-  type RagGenerateFanoutParams,
-} from './rag';
-export {
-  Scorers,
-  type ScorerScoreResponse,
-  type ScorerGenerateDimensionsParams,
-  type ScorerReadFromHfParams,
-  type ScorerScoreParams,
-} from './scorers/scorers';
+  ScoringSystem,
+  type ScoringSystemScoreResponse,
+  type ScoringSystemGenerateParams,
+  type ScoringSystemReadFromHuggingfaceParams,
+  type ScoringSystemScoreParams,
+} from './scoring-system/scoring-system';
+export { Search } from './search/search';
 export { Training } from './training/training';

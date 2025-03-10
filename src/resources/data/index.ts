@@ -2,20 +2,22 @@
 
 export { Data, type DataClusterInputsResponse, type DataClusterInputsParams } from './data';
 export {
-  GenerateExamples,
-  type GenerateExampleListResponse,
-  type GenerateExampleCancelResponse,
-  type GenerateExampleStreamDataResponse,
-  type GenerateExampleStreamMessagesResponse,
-  type GenerateExampleListParams,
-  type GenerateExampleStartJobParams,
-} from './generate-examples';
+  Generate,
+  type GenerateListResponse,
+  type GenerateCancelResponse,
+  type GenerateStreamDataResponse,
+  type GenerateStreamMessagesResponse,
+  type GenerateCreateParams,
+  type GenerateListParams,
+} from './generate';
+export { GenerateExamples } from './generate-examples';
 export {
-  GenerateInputs,
-  type GenerateInputListResponse,
-  type GenerateInputCancelResponse,
-  type GenerateInputStreamDataResponse,
-  type GenerateInputStreamMessagesResponse,
-  type GenerateInputListParams,
-  type GenerateInputStartJobParams,
-} from './generate-inputs';
+  GenerateInputResponsePairs,
+  type GenerateInputResponsePairListResponse,
+  type GenerateInputResponsePairCancelResponse,
+  type GenerateInputResponsePairStreamDataResponse,
+  type GenerateInputResponsePairStreamMessagesResponse,
+  type GenerateInputResponsePairCreateParams,
+  type GenerateInputResponsePairListParams,
+} from './generate-input-response-pairs';
+export { GenerateInputs } from './generate-inputs';
