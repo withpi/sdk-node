@@ -16,12 +16,12 @@ import { Data, DataClusterInputsParams, DataClusterInputsResponse } from './reso
 import { Model } from './resources/model/model';
 import { Prompt } from './resources/prompt/prompt';
 import {
-  Scorer,
   ScorerGenerateDimensionsParams,
   ScorerReadFromHfParams,
   ScorerScoreParams,
   ScorerScoreResponse,
-} from './resources/scorer/scorer';
+  Scorers,
+} from './resources/scorers/scorers';
 
 export interface ClientOptions {
   /**
@@ -140,7 +140,7 @@ export class PiClient extends Core.APIClient {
   model: API.Model = new API.Model(this);
   prompt: API.Prompt = new API.Prompt(this);
   queries: API.Queries = new API.Queries(this);
-  scorer: API.Scorer = new API.Scorer(this);
+  scorers: API.Scorers = new API.Scorers(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -182,7 +182,7 @@ PiClient.Data = Data;
 PiClient.Model = Model;
 PiClient.Prompt = Prompt;
 PiClient.Queries = Queries;
-PiClient.Scorer = Scorer;
+PiClient.Scorers = Scorers;
 export declare namespace PiClient {
   export type RequestOptions = Core.RequestOptions;
 
@@ -205,7 +205,7 @@ export declare namespace PiClient {
   };
 
   export {
-    Scorer as Scorer,
+    Scorers as Scorers,
     type ScorerScoreResponse as ScorerScoreResponse,
     type ScorerGenerateDimensionsParams as ScorerGenerateDimensionsParams,
     type ScorerReadFromHfParams as ScorerReadFromHfParams,

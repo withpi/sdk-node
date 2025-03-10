@@ -13,14 +13,14 @@ export class Calibrate extends APIResource {
     body: CalibrateCreateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<CalibrateCreateResponse> {
-    return this._client.post('/scorer/calibrate', { body, ...options });
+    return this._client.post('/scorers/calibrate', { body, ...options });
   }
 
   /**
    * Checks the status of a Scoring System Calibration job
    */
   retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<CalibrateRetrieveResponse> {
-    return this._client.get(`/scorer/calibrate/${jobId}`, options);
+    return this._client.get(`/scorers/calibrate/${jobId}`, options);
   }
 
   /**
@@ -35,21 +35,21 @@ export class Calibrate extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this._client.get('/scorer/calibrate', { query, ...options });
+    return this._client.get('/scorers/calibrate', { query, ...options });
   }
 
   /**
    * Cancels a Scoring System Calibration job
    */
   cancel(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
-    return this._client.delete(`/scorer/calibrate/${jobId}`, options);
+    return this._client.delete(`/scorers/calibrate/${jobId}`, options);
   }
 
   /**
    * Opens a message stream about a Scoring System Calibration job
    */
   messages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
-    return this._client.get(`/scorer/calibrate/${jobId}/messages`, {
+    return this._client.get(`/scorers/calibrate/${jobId}/messages`, {
       ...options,
       headers: { Accept: 'text/plain', ...options?.headers },
     });

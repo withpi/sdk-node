@@ -11,9 +11,9 @@ export {
   type CalibrateListParams,
 } from './calibrate';
 export {
-  Scorer,
+  Scorers,
   type ScorerScoreResponse,
   type ScorerGenerateDimensionsParams,
   type ScorerReadFromHfParams,
   type ScorerScoreParams,
-} from './scorer';
+} from './scorers';
