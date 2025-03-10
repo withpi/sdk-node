@@ -13,7 +13,7 @@ import {
   QueryGenerateFanoutsParams,
   QueryGenerateFanoutsResponse,
 } from './resources/queries';
-import { Data } from './resources/data/data';
+import { Data, DataCreateClusterInputsParams, DataCreateClusterInputsResponse } from './resources/data/data';
 import { Model, TrainedModel } from './resources/model/model';
 import { Prompt } from './resources/prompt/prompt';
 import {
@@ -187,7 +187,11 @@ PiClient.Scorer = Scorer;
 export declare namespace PiClient {
   export type RequestOptions = Core.RequestOptions;
 
-  export { Data as Data };
+  export {
+    Data as Data,
+    type DataCreateClusterInputsResponse as DataCreateClusterInputsResponse,
+    type DataCreateClusterInputsParams as DataCreateClusterInputsParams,
+  };
 
   export { Model as Model, type TrainedModel as TrainedModel };
 
