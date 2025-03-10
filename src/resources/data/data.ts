@@ -5,9 +5,9 @@ import * as Core from '../../core';
 import * as GenerateExamplesAPI from './generate-examples';
 import {
   GenerateExampleCancelResponse,
-  GenerateExampleCreateParams,
   GenerateExampleListParams,
   GenerateExampleListResponse,
+  GenerateExampleStartJobParams,
   GenerateExampleStreamDataResponse,
   GenerateExampleStreamMessagesResponse,
   GenerateExamples,
@@ -107,7 +107,7 @@ export declare namespace Data {
     type GenerateExampleCancelResponse as GenerateExampleCancelResponse,
     type GenerateExampleStreamDataResponse as GenerateExampleStreamDataResponse,
     type GenerateExampleStreamMessagesResponse as GenerateExampleStreamMessagesResponse,
-    type GenerateExampleCreateParams as GenerateExampleCreateParams,
     type GenerateExampleListParams as GenerateExampleListParams,
+    type GenerateExampleStartJobParams as GenerateExampleStartJobParams,
   };
 }

@@ -10,6 +10,26 @@ const client = new PiClient({
 
 describe('resource grpo', () => {
   // skipped: tests are disabled for the time being
+  test.skip('retrieve', async () => {
+    const responsePromise = client.model.grpo.retrieve('job_id');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('retrieve: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(client.model.grpo.retrieve('job_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+      PiClient.NotFoundError,
+    );
+  });
+
+  // skipped: tests are disabled for the time being
   test.skip('list', async () => {
     const responsePromise = client.model.grpo.list();
     const rawResponse = await responsePromise.asResponse();
@@ -75,8 +95,28 @@ describe('resource grpo', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('launch: only required params', async () => {
-    const responsePromise = client.model.grpo.launch({
+  test.skip('load', async () => {
+    const responsePromise = client.model.grpo.load('job_id');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('load: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(client.model.grpo.load('job_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+      PiClient.NotFoundError,
+    );
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('startJob: only required params', async () => {
+    const responsePromise = client.model.grpo.startJob({
       base_rl_model: 'LLAMA_3.2_3B',
       examples: [{ llm_input: 'Tell me something different' }],
       learning_rate: 0.000005,
@@ -98,8 +138,8 @@ describe('resource grpo', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('launch: required and optional params', async () => {
-    const response = await client.model.grpo.launch({
+  test.skip('startJob: required and optional params', async () => {
+    const response = await client.model.grpo.startJob({
       base_rl_model: 'LLAMA_3.2_3B',
       examples: [{ llm_input: 'Tell me something different' }],
       learning_rate: 0.000005,
@@ -140,8 +180,8 @@ describe('resource grpo', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('load', async () => {
-    const responsePromise = client.model.grpo.load('job_id');
+  test.skip('streamMessages', async () => {
+    const responsePromise = client.model.grpo.streamMessages('job_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -152,50 +192,10 @@ describe('resource grpo', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('load: request options instead of params are passed correctly', async () => {
+  test.skip('streamMessages: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.model.grpo.load('job_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      PiClient.NotFoundError,
-    );
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('messages', async () => {
-    const responsePromise = client.model.grpo.messages('job_id');
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('messages: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.model.grpo.messages('job_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      PiClient.NotFoundError,
-    );
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('status', async () => {
-    const responsePromise = client.model.grpo.status('job_id');
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('status: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.model.grpo.status('job_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      PiClient.NotFoundError,
-    );
+    await expect(
+      client.model.grpo.streamMessages('job_id', { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(PiClient.NotFoundError);
   });
 });
