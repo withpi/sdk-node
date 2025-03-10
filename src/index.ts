@@ -5,13 +5,14 @@ import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
+import { Queries } from './resources/queries';
 import {
-  Queries,
-  QueryClassifyParams,
-  QueryClassifyResponse,
-  QueryGenerateFanoutsParams,
-  QueryGenerateFanoutsResponse,
-} from './resources/queries';
+  Rag,
+  RagClassifyQueryParams,
+  RagClassifyQueryResponse,
+  RagGenerateFanoutParams,
+  RagGenerateFanoutResponse,
+} from './resources/rag';
 import { Data, DataClusterInputsParams, DataClusterInputsResponse } from './resources/data/data';
 import { Model } from './resources/model/model';
 import { Prompt } from './resources/prompt/prompt';
@@ -141,6 +142,7 @@ export class PiClient extends Core.APIClient {
   prompt: API.Prompt = new API.Prompt(this);
   queries: API.Queries = new API.Queries(this);
   scorers: API.Scorers = new API.Scorers(this);
+  rag: API.Rag = new API.Rag(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -183,6 +185,7 @@ PiClient.Model = Model;
 PiClient.Prompt = Prompt;
 PiClient.Queries = Queries;
 PiClient.Scorers = Scorers;
+PiClient.Rag = Rag;
 export declare namespace PiClient {
   export type RequestOptions = Core.RequestOptions;
 
@@ -196,13 +199,7 @@ export declare namespace PiClient {
 
   export { Prompt as Prompt };
 
-  export {
-    Queries as Queries,
-    type QueryClassifyResponse as QueryClassifyResponse,
-    type QueryGenerateFanoutsResponse as QueryGenerateFanoutsResponse,
-    type QueryClassifyParams as QueryClassifyParams,
-    type QueryGenerateFanoutsParams as QueryGenerateFanoutsParams,
-  };
+  export { Queries as Queries };
 
   export {
     Scorers as Scorers,
@@ -210,6 +207,14 @@ export declare namespace PiClient {
     type ScorerGenerateDimensionsParams as ScorerGenerateDimensionsParams,
     type ScorerReadFromHfParams as ScorerReadFromHfParams,
     type ScorerScoreParams as ScorerScoreParams,
+  };
+
+  export {
+    Rag as Rag,
+    type RagClassifyQueryResponse as RagClassifyQueryResponse,
+    type RagGenerateFanoutResponse as RagGenerateFanoutResponse,
+    type RagClassifyQueryParams as RagClassifyQueryParams,
+    type RagGenerateFanoutParams as RagGenerateFanoutParams,
   };
 
   export type ClassificationStatus = API.ClassificationStatus;
