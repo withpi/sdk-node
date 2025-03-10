@@ -27,7 +27,9 @@ const client = new PiClient({
 });
 
 async function main() {
-  const contractCalibrationStatuses = await client.contracts.calibrate.list();
+  const syntheticDataStatus = await client.data.generateSyntheticData.retrieve('job_id');
+
+  console.log(syntheticDataStatus.job_id);
 }
 
 main();
@@ -46,8 +48,9 @@ const client = new PiClient({
 });
 
 async function main() {
-  const contractCalibrationStatuses: PiClient.Contracts.CalibrateListResponse =
-    await client.contracts.calibrate.list();
+  const syntheticDataStatus: PiClient.SyntheticDataStatus = await client.data.generateSyntheticData.retrieve(
+    'job_id',
+  );
 }
 
 main();
@@ -64,15 +67,17 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const contractCalibrationStatuses = await client.contracts.calibrate.list().catch(async (err) => {
-    if (err instanceof PiClient.APIError) {
-      console.log(err.status); // 400
-      console.log(err.name); // BadRequestError
-      console.log(err.headers); // {server: 'nginx', ...}
-    } else {
-      throw err;
-    }
-  });
+  const syntheticDataStatus = await client.data.generateSyntheticData
+    .retrieve('job_id')
+    .catch(async (err) => {
+      if (err instanceof PiClient.APIError) {
+        console.log(err.status); // 400
+        console.log(err.name); // BadRequestError
+        console.log(err.headers); // {server: 'nginx', ...}
+      } else {
+        throw err;
+      }
+    });
 }
 
 main();
@@ -107,7 +112,7 @@ const client = new PiClient({
 });
 
 // Or, configure per-request:
-await client.contracts.calibrate.list({
+await client.data.generateSyntheticData.retrieve('job_id', {
   maxRetries: 5,
 });
 ```
@@ -124,7 +129,7 @@ const client = new PiClient({
 });
 
 // Override per-request:
-await client.contracts.calibrate.list({
+await client.data.generateSyntheticData.retrieve('job_id', {
   timeout: 5 * 1000,
 });
 ```
@@ -145,15 +150,15 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const client = new PiClient();
 
-const response = await client.contracts.calibrate.list().asResponse();
+const response = await client.data.generateSyntheticData.retrieve('job_id').asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: contractCalibrationStatuses, response: raw } = await client.contracts.calibrate
-  .list()
+const { data: syntheticDataStatus, response: raw } = await client.data.generateSyntheticData
+  .retrieve('job_id')
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(contractCalibrationStatuses);
+console.log(syntheticDataStatus.job_id);
 ```
 
 ### Making custom/undocumented requests
@@ -257,7 +262,7 @@ const client = new PiClient({
 });
 
 // Override per-request:
-await client.contracts.calibrate.list({
+await client.data.generateSyntheticData.retrieve('job_id', {
   httpAgent: new http.Agent({ keepAlive: false }),
 });
 ```

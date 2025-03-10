@@ -122,7 +122,7 @@ describe('resource grpo', () => {
       learning_rate: 0.000005,
       lora_config: {},
       num_train_epochs: 10,
-      scoring_system: {
+      scorer: {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Scoring System',
       },
@@ -145,7 +145,7 @@ describe('resource grpo', () => {
       learning_rate: 0.000005,
       lora_config: { lora_rank: 'R_16' },
       num_train_epochs: 10,
-      scoring_system: {
+      scorer: {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Scoring System',
         dimensions: [
