@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Withpi from 'withpi';
+import PiClient from 'withpi';
 import { Response } from 'node-fetch';
 
-const client = new Withpi({
+const client = new PiClient({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
@@ -25,7 +25,7 @@ describe('resource sft', () => {
   test.skip('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(client.model.sft.retrieve('job_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Withpi.NotFoundError,
+      PiClient.NotFoundError,
     );
   });
 
@@ -45,7 +45,7 @@ describe('resource sft', () => {
   test.skip('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(client.model.sft.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Withpi.NotFoundError,
+      PiClient.NotFoundError,
     );
   });
 
@@ -54,7 +54,7 @@ describe('resource sft', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.model.sft.list({ state: 'QUEUED' }, { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Withpi.NotFoundError);
+    ).rejects.toThrow(PiClient.NotFoundError);
   });
 
   // skipped: tests are disabled for the time being
@@ -73,7 +73,7 @@ describe('resource sft', () => {
   test.skip('cancel: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(client.model.sft.cancel('job_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Withpi.NotFoundError,
+      PiClient.NotFoundError,
     );
   });
 
@@ -110,7 +110,7 @@ describe('resource sft', () => {
   test.skip('load: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(client.model.sft.load('job_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Withpi.NotFoundError,
+      PiClient.NotFoundError,
     );
   });
 
@@ -201,6 +201,6 @@ describe('resource sft', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.model.sft.streamMessages('job_id', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Withpi.NotFoundError);
+    ).rejects.toThrow(PiClient.NotFoundError);
   });
 });
