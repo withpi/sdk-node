@@ -13,18 +13,15 @@ import {
   QueryGenerateFanoutsParams,
   QueryGenerateFanoutsResponse,
 } from './resources/queries';
-import { Contracts } from './resources/contracts/contracts';
 import { Data } from './resources/data/data';
-import { Model } from './resources/model/model';
-import { PiScoringSystem } from './resources/pi-scoring-system/pi-scoring-system';
+import { Model, TrainedModel } from './resources/model/model';
 import { Prompt } from './resources/prompt/prompt';
 import {
   Scorer,
   ScorerGenerateDimensionsParams,
-  ScorerGenerateDimensionsResponse,
   ScorerReadFromHfParams,
-  ScorerReadFromHfResponse,
   ScorerScoreParams,
+  ScorerScoreResponse,
 } from './resources/scorer/scorer';
 
 export interface ClientOptions {
@@ -140,10 +137,8 @@ export class PiClient extends Core.APIClient {
     this.apiKey = apiKey;
   }
 
-  contracts: API.Contracts = new API.Contracts(this);
   data: API.Data = new API.Data(this);
   model: API.Model = new API.Model(this);
-  piScoringSystem: API.PiScoringSystem = new API.PiScoringSystem(this);
   prompt: API.Prompt = new API.Prompt(this);
   queries: API.Queries = new API.Queries(this);
   scorer: API.Scorer = new API.Scorer(this);
@@ -184,23 +179,17 @@ export class PiClient extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-PiClient.Contracts = Contracts;
 PiClient.Data = Data;
 PiClient.Model = Model;
-PiClient.PiScoringSystem = PiScoringSystem;
 PiClient.Prompt = Prompt;
 PiClient.Queries = Queries;
 PiClient.Scorer = Scorer;
 export declare namespace PiClient {
   export type RequestOptions = Core.RequestOptions;
 
-  export { Contracts as Contracts };
-
   export { Data as Data };
 
-  export { Model as Model };
-
-  export { PiScoringSystem as PiScoringSystem };
+  export { Model as Model, type TrainedModel as TrainedModel };
 
   export { Prompt as Prompt };
 
@@ -215,17 +204,17 @@ export declare namespace PiClient {
 
   export {
     Scorer as Scorer,
-    type ScorerGenerateDimensionsResponse as ScorerGenerateDimensionsResponse,
-    type ScorerReadFromHfResponse as ScorerReadFromHfResponse,
+    type ScorerScoreResponse as ScorerScoreResponse,
     type ScorerGenerateDimensionsParams as ScorerGenerateDimensionsParams,
     type ScorerReadFromHfParams as ScorerReadFromHfParams,
     type ScorerScoreParams as ScorerScoreParams,
   };
 
   export type DataGenerationStatus = API.DataGenerationStatus;
-  export type ScoringSystemMetrics = API.ScoringSystemMetrics;
-  export type SDKExample = API.SDKExample;
-  export type SftStatus = API.SftStatus;
+  export type ExplorationMode = API.ExplorationMode;
+  export type Scorer = API.Scorer;
+  export type ScorerDimension = API.ScorerDimension;
+  export type ScorerSubDimension = API.ScorerSubDimension;
   export type SyntheticDataStatus = API.SyntheticDataStatus;
 }
 
