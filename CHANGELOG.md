@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.111 (2025-03-10)
+
+Full Changelog: [v0.1.0-alpha.110...v0.1.0-alpha.111](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.110...v0.1.0-alpha.111)
+
+### Features
+
+* **api:** add sft_status to shared ([#450](https://github.com/withpi/sdk-node/issues/450)) ([2b9056f](https://github.com/withpi/sdk-node/commit/2b9056f97260dfb024b8fb7b037a4fcd328e7aac))
+
 ## 0.1.0-alpha.110 (2025-03-10)
 
 Full Changelog: [v0.1.0-alpha.109...v0.1.0-alpha.110](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.109...v0.1.0-alpha.110)
