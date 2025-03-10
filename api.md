@@ -2,10 +2,15 @@
 
 Types:
 
+- <code><a href="./src/resources/shared.ts">DataGenerationStatus</a></code>
 - <code><a href="./src/resources/shared.ts">ScoringSystem</a></code>
 - <code><a href="./src/resources/shared.ts">ScoringSystemMetrics</a></code>
 - <code><a href="./src/resources/shared.ts">SDKContract</a></code>
 - <code><a href="./src/resources/shared.ts">SDKDimension</a></code>
+- <code><a href="./src/resources/shared.ts">SDKExample</a></code>
+- <code><a href="./src/resources/shared.ts">SDKSubDimension</a></code>
+- <code><a href="./src/resources/shared.ts">SftStatus</a></code>
+- <code><a href="./src/resources/shared.ts">SyntheticDataStatus</a></code>
 
 # Contracts
 
@@ -42,9 +47,7 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/data/generate-synthetic-data.ts">SDKExample</a></code>
 - <code><a href="./src/resources/data/generate-synthetic-data.ts">SDKExplorationMode</a></code>
-- <code><a href="./src/resources/data/generate-synthetic-data.ts">SyntheticDataStatus</a></code>
 - <code><a href="./src/resources/data/generate-synthetic-data.ts">GenerateSyntheticDataListResponse</a></code>
 - <code><a href="./src/resources/data/generate-synthetic-data.ts">GenerateSyntheticDataCancelResponse</a></code>
 - <code><a href="./src/resources/data/generate-synthetic-data.ts">GenerateSyntheticDataStreamDataResponse</a></code>
@@ -73,7 +76,6 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/data/inputs/generate-from-seeds.ts">DataGenerationStatus</a></code>
 - <code><a href="./src/resources/data/inputs/generate-from-seeds.ts">GenerateFromSeedListResponse</a></code>
 - <code><a href="./src/resources/data/inputs/generate-from-seeds.ts">GenerateFromSeedCancelResponse</a></code>
 - <code><a href="./src/resources/data/inputs/generate-from-seeds.ts">GenerateFromSeedStreamDataResponse</a></code>
@@ -138,7 +140,6 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/model/sft.ts">SftStatus</a></code>
 - <code><a href="./src/resources/model/sft.ts">SftListResponse</a></code>
 - <code><a href="./src/resources/model/sft.ts">SftCancelResponse</a></code>
 - <code><a href="./src/resources/model/sft.ts">SftDownloadResponse</a></code>
