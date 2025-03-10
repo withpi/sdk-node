@@ -9,12 +9,11 @@ import {
   Queries,
   QueryClassifyParams,
   QueryClassifyResponse,
-  QueryFanoutExample,
   QueryGenerateFanoutsParams,
   QueryGenerateFanoutsResponse,
 } from './resources/queries';
-import { Data, DataCreateClusterInputsParams, DataCreateClusterInputsResponse } from './resources/data/data';
-import { Model, TrainedModel } from './resources/model/model';
+import { Data, DataClusterInputsParams, DataClusterInputsResponse } from './resources/data/data';
+import { Model } from './resources/model/model';
 import { Prompt } from './resources/prompt/prompt';
 import {
   Scorer,
@@ -189,17 +188,16 @@ export declare namespace PiClient {
 
   export {
     Data as Data,
-    type DataCreateClusterInputsResponse as DataCreateClusterInputsResponse,
-    type DataCreateClusterInputsParams as DataCreateClusterInputsParams,
+    type DataClusterInputsResponse as DataClusterInputsResponse,
+    type DataClusterInputsParams as DataClusterInputsParams,
   };
 
-  export { Model as Model, type TrainedModel as TrainedModel };
+  export { Model as Model };
 
   export { Prompt as Prompt };
 
   export {
     Queries as Queries,
-    type QueryFanoutExample as QueryFanoutExample,
     type QueryClassifyResponse as QueryClassifyResponse,
     type QueryGenerateFanoutsResponse as QueryGenerateFanoutsResponse,
     type QueryClassifyParams as QueryClassifyParams,
@@ -214,12 +212,16 @@ export declare namespace PiClient {
     type ScorerScoreParams as ScorerScoreParams,
   };
 
+  export type ClassificationStatus = API.ClassificationStatus;
   export type DataGenerationStatus = API.DataGenerationStatus;
   export type ExplorationMode = API.ExplorationMode;
+  export type PromptOptimizationStatus = API.PromptOptimizationStatus;
+  export type QueryFanoutExample = API.QueryFanoutExample;
   export type Scorer = API.Scorer;
   export type ScorerDimension = API.ScorerDimension;
   export type ScorerSubDimension = API.ScorerSubDimension;
   export type SyntheticDataStatus = API.SyntheticDataStatus;
+  export type TrainedModel = API.TrainedModel;
 }
 
 export { toFile, fileFromPath } from './uploads';

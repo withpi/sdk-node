@@ -3,13 +3,13 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as ModelAPI from './model';
+import * as Shared from '../shared';
 
 export class Classifier extends APIResource {
   /**
    * Checks the status of a Classifier job
    */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<ClassificationStatus> {
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.ClassificationStatus> {
     return this._client.get(`/model/classifier/${jobId}`, options);
   }
 
@@ -53,7 +53,7 @@ export class Classifier extends APIResource {
   startJob(
     body: ClassifierStartJobParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<ClassificationStatus> {
+  ): Core.APIPromise<Shared.ClassificationStatus> {
     return this._client.post('/model/classifier', { body, ...options });
   }
 
@@ -68,32 +68,7 @@ export class Classifier extends APIResource {
   }
 }
 
-/**
- * ClassificationStatus is the status of a classification job.
- */
-export interface ClassificationStatus {
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
-
-  /**
-   * The job id
-   */
-  job_id: string;
-
-  /**
-   * Current state of the job
-   */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
-
-  /**
-   * A list of trained classification models.
-   */
-  trained_models?: Array<ModelAPI.TrainedModel> | null;
-}
-
-export type ClassifierListResponse = Array<ClassificationStatus>;
+export type ClassifierListResponse = Array<Shared.ClassificationStatus>;
 
 export type ClassifierCancelResponse = string;
 
@@ -153,7 +128,6 @@ export namespace ClassifierStartJobParams {
 
 export declare namespace Classifier {
   export {
-    type ClassificationStatus as ClassificationStatus,
     type ClassifierListResponse as ClassifierListResponse,
     type ClassifierCancelResponse as ClassifierCancelResponse,
     type ClassifierDownloadResponse as ClassifierDownloadResponse,

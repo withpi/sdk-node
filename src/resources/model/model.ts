@@ -3,7 +3,6 @@
 import { APIResource } from '../../resource';
 import * as ClassifierAPI from './classifier';
 import {
-  ClassificationStatus,
   Classifier,
   ClassifierCancelResponse,
   ClassifierDownloadParams,
@@ -20,9 +19,12 @@ import {
   GrpoDownloadParams,
   GrpoDownloadResponse,
   GrpoLaunchParams,
+  GrpoLaunchResponse,
   GrpoListParams,
   GrpoListResponse,
+  GrpoLoadResponse,
   GrpoMessagesResponse,
+  GrpoStatusResponse,
 } from './grpo';
 import * as SftAPI from './sft';
 import {
@@ -38,59 +40,20 @@ import {
   SftStartJobResponse,
   SftStreamMessagesResponse,
 } from './sft';
-import * as RlAPI from './rl/rl';
-import { Rl } from './rl/rl';
 
 export class Model extends APIResource {
   classifier: ClassifierAPI.Classifier = new ClassifierAPI.Classifier(this._client);
-  rl: RlAPI.Rl = new RlAPI.Rl(this._client);
   sft: SftAPI.Sft = new SftAPI.Sft(this._client);
   grpo: GrpoAPI.Grpo = new GrpoAPI.Grpo(this._client);
 }
 
-export interface TrainedModel {
-  /**
-   * The PI contract score of the eval set what isn't used in training
-   */
-  contract_score: number;
-
-  /**
-   * The training epoch
-   */
-  epoch: number;
-
-  /**
-   * The evaluation loss
-   */
-  eval_loss: number;
-
-  /**
-   * The serving id of the trained model within this Job
-   */
-  serving_id: number;
-
-  /**
-   * State of the model in the serving system
-   */
-  serving_state: 'UNLOADED' | 'LOADING' | 'SERVING';
-
-  /**
-   * The training step
-   */
-  step: number;
-}
-
 Model.Classifier = Classifier;
-Model.Rl = Rl;
 Model.Sft = Sft;
 Model.Grpo = Grpo;
 
 export declare namespace Model {
-  export { type TrainedModel as TrainedModel };
-
   export {
     Classifier as Classifier,
-    type ClassificationStatus as ClassificationStatus,
     type ClassifierListResponse as ClassifierListResponse,
     type ClassifierCancelResponse as ClassifierCancelResponse,
     type ClassifierDownloadResponse as ClassifierDownloadResponse,
@@ -99,8 +62,6 @@ export declare namespace Model {
     type ClassifierDownloadParams as ClassifierDownloadParams,
     type ClassifierStartJobParams as ClassifierStartJobParams,
   };
-
-  export { Rl as Rl };
 
   export {
     Sft as Sft,
@@ -121,7 +82,10 @@ export declare namespace Model {
     type GrpoListResponse as GrpoListResponse,
     type GrpoCancelResponse as GrpoCancelResponse,
     type GrpoDownloadResponse as GrpoDownloadResponse,
+    type GrpoLaunchResponse as GrpoLaunchResponse,
+    type GrpoLoadResponse as GrpoLoadResponse,
     type GrpoMessagesResponse as GrpoMessagesResponse,
+    type GrpoStatusResponse as GrpoStatusResponse,
     type GrpoListParams as GrpoListParams,
     type GrpoDownloadParams as GrpoDownloadParams,
     type GrpoLaunchParams as GrpoLaunchParams,

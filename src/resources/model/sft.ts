@@ -4,8 +4,6 @@ import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as Shared from '../shared';
-import * as ModelAPI from './model';
-import * as GrpoAPI from './rl/grpo';
 
 export class Sft extends APIResource {
   /**
@@ -92,7 +90,7 @@ export interface SftRetrieveResponse {
   /**
    * A list of trained models selected based on the PI Contract score.
    */
-  trained_models?: Array<ModelAPI.TrainedModel> | null;
+  trained_models?: Array<Shared.TrainedModel> | null;
 }
 
 export type SftListResponse = Array<SftListResponse.SftListResponseItem>;
@@ -120,7 +118,7 @@ export namespace SftListResponse {
     /**
      * A list of trained models selected based on the PI Contract score.
      */
-    trained_models?: Array<ModelAPI.TrainedModel> | null;
+    trained_models?: Array<Shared.TrainedModel> | null;
   }
 }
 
@@ -150,7 +148,7 @@ export interface SftLoadResponse {
   /**
    * A list of trained models selected based on the PI Contract score.
    */
-  trained_models?: Array<ModelAPI.TrainedModel> | null;
+  trained_models?: Array<Shared.TrainedModel> | null;
 }
 
 /**
@@ -175,7 +173,7 @@ export interface SftStartJobResponse {
   /**
    * A list of trained models selected based on the PI Contract score.
    */
-  trained_models?: Array<ModelAPI.TrainedModel> | null;
+  trained_models?: Array<Shared.TrainedModel> | null;
 }
 
 export type SftStreamMessagesResponse = string;
@@ -206,7 +204,7 @@ export interface SftStartJobParams {
   /**
    * The base model to start the SFT tuning process.
    */
-  base_sft_model?: GrpoAPI.TextGenerationBaseModel;
+  base_sft_model?: 'LLAMA_3.2_3B' | 'LLAMA_3.1_8B';
 
   /**
    * SFT learning rate
@@ -216,7 +214,7 @@ export interface SftStartJobParams {
   /**
    * The LoRA configuration.
    */
-  lora_config?: GrpoAPI.LoraConfig;
+  lora_config?: SftStartJobParams.LoraConfig;
 
   /**
    * SFT number of train epochs: <= 10.
@@ -243,6 +241,16 @@ export namespace SftStartJobParams {
      * The output to evaluate
      */
     llm_output: string;
+  }
+
+  /**
+   * The LoRA configuration.
+   */
+  export interface LoraConfig {
+    /**
+     * The number of dimensions in the low-rank decomposition of the weight updates.
+     */
+    lora_rank?: 'R_16' | 'R_32' | 'R_64';
   }
 }
 

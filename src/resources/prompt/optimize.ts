@@ -9,7 +9,7 @@ export class Optimize extends APIResource {
   /**
    * Checks the status of a Prompt Optimization job
    */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<PromptOptimizationStatus> {
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.PromptOptimizationStatus> {
     return this._client.get(`/prompt/optimize/${jobId}`, options);
   }
 
@@ -41,7 +41,7 @@ export class Optimize extends APIResource {
   startJob(
     body: OptimizeStartJobParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<PromptOptimizationStatus> {
+  ): Core.APIPromise<Shared.PromptOptimizationStatus> {
     return this._client.post('/prompt/optimize', { body, ...options });
   }
 
@@ -56,33 +56,7 @@ export class Optimize extends APIResource {
   }
 }
 
-/**
- * The optimized_prompt_messages field is an empty list unless the state is done.
- */
-export interface PromptOptimizationStatus {
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
-
-  /**
-   * The job id
-   */
-  job_id: string;
-
-  /**
-   * Current state of the job
-   */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
-
-  /**
-   * The optimized prompt messages in the OpenAI message format with the jinja
-   * {{ input }} variable for the next user prompt
-   */
-  optimized_prompt_messages?: Array<Record<string, string>>;
-}
-
-export type OptimizeListResponse = Array<PromptOptimizationStatus>;
+export type OptimizeListResponse = Array<Shared.PromptOptimizationStatus>;
 
 export type OptimizeCancelResponse = string;
 
@@ -153,7 +127,6 @@ export namespace OptimizeStartJobParams {
 
 export declare namespace Optimize {
   export {
-    type PromptOptimizationStatus as PromptOptimizationStatus,
     type OptimizeListResponse as OptimizeListResponse,
     type OptimizeCancelResponse as OptimizeCancelResponse,
     type OptimizeStreamMessagesResponse as OptimizeStreamMessagesResponse,
