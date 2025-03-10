@@ -5,7 +5,6 @@ import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as Shared from '../shared';
 import * as CalibrateAPI from '../contracts/calibrate';
-import * as GenerateSyntheticDataAPI from '../data/generate-synthetic-data';
 
 export class Optimize extends APIResource {
   /**
@@ -106,7 +105,7 @@ export interface OptimizeStartJobParams {
   /**
    * The examples to train and validate on
    */
-  examples: Array<GenerateSyntheticDataAPI.SDKExample>;
+  examples: Array<Shared.SDKExample>;
 
   /**
    * The initial system instruction

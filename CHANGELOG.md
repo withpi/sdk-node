@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.100 (2025-03-10)
+
+Full Changelog: [v0.1.0-alpha.99...v0.1.0-alpha.100](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.99...v0.1.0-alpha.100)
+
+### Features
+
+* **api:** move to shared models. ([#413](https://github.com/withpi/sdk-node/issues/413)) ([882ff94](https://github.com/withpi/sdk-node/commit/882ff945e5fc8fb8f05c72bd7a88d4ceabe92315))
+
 ## 0.1.0-alpha.99 (2025-03-10)
 
 Full Changelog: [v0.1.0-alpha.98...v0.1.0-alpha.99](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.98...v0.1.0-alpha.99)

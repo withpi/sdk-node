@@ -16,7 +16,6 @@ export { Model } from './model';
 export { Rl } from './rl/index';
 export {
   Sft,
-  type SftStatus,
   type SftListResponse,
   type SftCancelResponse,
   type SftDownloadResponse,

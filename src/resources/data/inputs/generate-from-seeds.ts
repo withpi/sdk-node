@@ -3,6 +3,7 @@
 import { APIResource } from '../../../resource';
 import { isRequestOptions } from '../../../core';
 import * as Core from '../../../core';
+import * as Shared from '../../shared';
 import * as CalibrateAPI from '../../contracts/calibrate';
 import * as GenerateSyntheticDataAPI from '../generate-synthetic-data';
 
@@ -10,7 +11,7 @@ export class GenerateFromSeeds extends APIResource {
   /**
    * Checks the status of a Data Generation job
    */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<DataGenerationStatus> {
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.DataGenerationStatus> {
     return this._client.get(`/data/input/generate_from_seeds/${jobId}`, options);
   }
 
@@ -45,7 +46,7 @@ export class GenerateFromSeeds extends APIResource {
   startJob(
     body: GenerateFromSeedStartJobParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<DataGenerationStatus> {
+  ): Core.APIPromise<Shared.DataGenerationStatus> {
     return this._client.post('/data/input/generate_from_seeds', { body, ...options });
   }
 
@@ -70,33 +71,7 @@ export class GenerateFromSeeds extends APIResource {
   }
 }
 
-/**
- * DataGenerationStatus is the result of a data generation job.
- */
-export interface DataGenerationStatus {
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
-
-  /**
-   * The job id
-   */
-  job_id: string;
-
-  /**
-   * Current state of the job
-   */
-  state: CalibrateAPI.State;
-
-  /**
-   * The generated data. Can be present even if the state is not done/error as it is
-   * streamed.
-   */
-  data?: Array<string> | null;
-}
-
-export type GenerateFromSeedListResponse = Array<DataGenerationStatus>;
+export type GenerateFromSeedListResponse = Array<Shared.DataGenerationStatus>;
 
 export type GenerateFromSeedCancelResponse = string;
 
@@ -128,7 +103,7 @@ export interface GenerateFromSeedStartJobParams {
   seeds: Array<string>;
 
   /**
-   * Number of inputs to generate in one LLM call. Must be <= 10. Generally it could
+   * Number of inputs to generate in one LLM call. Must be <=10. Generally it could
    * be same as `num_shots`.
    */
   batch_size?: number;
@@ -139,15 +114,14 @@ export interface GenerateFromSeedStartJobParams {
   exploration_mode?: GenerateSyntheticDataAPI.SDKExplorationMode;
 
   /**
-   * Number of inputs to be included in the prompt for generation. Must be <= 10.
-   * Generally it could be same as `batch_size`.
+   * Number of inputs to be included in the prompt for generation. Generally it could
+   * be same as `batch_size`.
    */
   num_shots?: number;
 }
 
 export declare namespace GenerateFromSeeds {
   export {
-    type DataGenerationStatus as DataGenerationStatus,
     type GenerateFromSeedListResponse as GenerateFromSeedListResponse,
     type GenerateFromSeedCancelResponse as GenerateFromSeedCancelResponse,
     type GenerateFromSeedStreamDataResponse as GenerateFromSeedStreamDataResponse,

@@ -1,5 +1,34 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+import * as CalibrateAPI from './contracts/calibrate';
+import * as ClassifierAPI from './model/classifier';
+
+/**
+ * DataGenerationStatus is the result of a data generation job.
+ */
+export interface DataGenerationStatus {
+  /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
+
+  /**
+   * The job id
+   */
+  job_id: string;
+
+  /**
+   * Current state of the job
+   */
+  state: CalibrateAPI.State;
+
+  /**
+   * The generated data. Can be present even if the state is not done/error as it is
+   * streamed.
+   */
+  data?: Array<string> | null;
+}
+
 export interface ScoringSystem {
   /**
    * The application description
@@ -76,7 +105,7 @@ export interface SDKDimension {
   /**
    * The sub dimensions of the dimension
    */
-  sub_dimensions: Array<SDKDimension.SubDimension>;
+  sub_dimensions: Array<SDKSubDimension>;
 
   /**
    * The learned parameters for the scoring method. This represents piecewise linear
@@ -93,46 +122,110 @@ export interface SDKDimension {
   [k: string]: unknown;
 }
 
-export namespace SDKDimension {
-  export interface SubDimension {
-    /**
-     * The description of the dimension
-     */
-    description: string;
+/**
+ * An example for training or evaluation
+ */
+export interface SDKExample {
+  /**
+   * The input to LLM
+   */
+  llm_input: string;
 
-    /**
-     * The label of the dimension
-     */
-    label: string;
+  /**
+   * The output to evaluate
+   */
+  llm_output: string;
+}
 
-    /**
-     * The type of scoring performed for this dimension
-     */
-    scoring_type: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER';
+export interface SDKSubDimension {
+  /**
+   * The description of the dimension
+   */
+  description: string;
 
-    /**
-     * The ID of the custom model to use for scoring. Only relevant for scoring_type of
-     * CUSTOM_MODEL_SCORER
-     */
-    custom_model_id?: string | null;
+  /**
+   * The label of the dimension
+   */
+  label: string;
 
-    /**
-     * The learned parameters for the scoring method. This represents piecewise linear
-     * interpolation between [0, 1].
-     */
-    parameters?: Array<number> | null;
+  /**
+   * The type of scoring performed for this dimension
+   */
+  scoring_type: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER';
 
-    /**
-     * The PYTHON code associated the PYTHON_CODE DimensionScoringType.
-     */
-    python_code?: string | null;
+  /**
+   * The ID of the custom model to use for scoring. Only relevant for scoring_type of
+   * CUSTOM_MODEL_SCORER
+   */
+  custom_model_id?: string | null;
 
-    /**
-     * The weight of the subdimension. The sum of subdimension weights will be
-     * normalized to one internally. A higher weight counts for more when aggregating
-     * this subdimension into the parent dimension.
-     */
-    weight?: number | null;
-    [k: string]: unknown;
-  }
+  /**
+   * The learned parameters for the scoring method. This represents piecewise linear
+   * interpolation between [0, 1].
+   */
+  parameters?: Array<number> | null;
+
+  /**
+   * The PYTHON code associated the PYTHON_CODE DimensionScoringType.
+   */
+  python_code?: string | null;
+
+  /**
+   * The weight of the subdimension. The sum of subdimension weights will be
+   * normalized to one internally. A higher weight counts for more when aggregating
+   * this subdimension into the parent dimension.
+   */
+  weight?: number | null;
+  [k: string]: unknown;
+}
+
+/**
+ * SftStatus is the status of a SFT job.
+ */
+export interface SftStatus {
+  /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
+
+  /**
+   * The job id
+   */
+  job_id: string;
+
+  /**
+   * Current state of the job
+   */
+  state: CalibrateAPI.State;
+
+  /**
+   * A list of trained models selected based on the PI Contract score.
+   */
+  trained_models?: Array<ClassifierAPI.TrainedModel> | null;
+}
+
+/**
+ * SyntheticDataStatus is the result of a synthetic data generation job.
+ */
+export interface SyntheticDataStatus {
+  /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
+
+  /**
+   * The job id
+   */
+  job_id: string;
+
+  /**
+   * Current state of the job
+   */
+  state: CalibrateAPI.State;
+
+  /**
+   * The generated synthetic data. Can be present even if the state is not done/error
+   * as it is streamed.
+   */
+  data?: Array<SDKExample> | null;
 }
