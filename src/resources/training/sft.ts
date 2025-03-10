@@ -92,7 +92,7 @@ export interface SftStartJobParams {
    * Examples to use in the SFT tuning process. We split this data into train/eval
    * 90/10.
    */
-  examples: Array<SftStartJobParams.Example>;
+  examples: Array<Shared.SDKExample>;
 
   /**
    * The scoring system to use in the SFT tuning process
@@ -126,21 +126,6 @@ export interface SftStartJobParams {
 }
 
 export namespace SftStartJobParams {
-  /**
-   * An example for training or evaluation
-   */
-  export interface Example {
-    /**
-     * The input to LLM
-     */
-    llm_input: string;
-
-    /**
-     * The output to evaluate
-     */
-    llm_output: string;
-  }
-
   /**
    * The LoRA configuration.
    */
