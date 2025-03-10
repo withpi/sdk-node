@@ -13,6 +13,17 @@ import {
   ClassifierStartJobParams,
   ClassifierStreamMessagesResponse,
 } from './classifier';
+import * as GrpoAPI from './grpo';
+import {
+  Grpo,
+  GrpoCancelResponse,
+  GrpoDownloadParams,
+  GrpoDownloadResponse,
+  GrpoLaunchParams,
+  GrpoListParams,
+  GrpoListResponse,
+  GrpoMessagesResponse,
+} from './grpo';
 import * as SftAPI from './sft';
 import {
   Sft,
@@ -34,6 +45,7 @@ export class Model extends APIResource {
   classifier: ClassifierAPI.Classifier = new ClassifierAPI.Classifier(this._client);
   rl: RlAPI.Rl = new RlAPI.Rl(this._client);
   sft: SftAPI.Sft = new SftAPI.Sft(this._client);
+  grpo: GrpoAPI.Grpo = new GrpoAPI.Grpo(this._client);
 }
 
 export interface TrainedModel {
@@ -71,6 +83,7 @@ export interface TrainedModel {
 Model.Classifier = Classifier;
 Model.Rl = Rl;
 Model.Sft = Sft;
+Model.Grpo = Grpo;
 
 export declare namespace Model {
   export { type TrainedModel as TrainedModel };
@@ -101,5 +114,16 @@ export declare namespace Model {
     type SftListParams as SftListParams,
     type SftDownloadParams as SftDownloadParams,
     type SftStartJobParams as SftStartJobParams,
+  };
+
+  export {
+    Grpo as Grpo,
+    type GrpoListResponse as GrpoListResponse,
+    type GrpoCancelResponse as GrpoCancelResponse,
+    type GrpoDownloadResponse as GrpoDownloadResponse,
+    type GrpoMessagesResponse as GrpoMessagesResponse,
+    type GrpoListParams as GrpoListParams,
+    type GrpoDownloadParams as GrpoDownloadParams,
+    type GrpoLaunchParams as GrpoLaunchParams,
   };
 }

@@ -11,6 +11,16 @@ export {
   type ClassifierDownloadParams,
   type ClassifierStartJobParams,
 } from './classifier';
+export {
+  Grpo,
+  type GrpoListResponse,
+  type GrpoCancelResponse,
+  type GrpoDownloadResponse,
+  type GrpoMessagesResponse,
+  type GrpoListParams,
+  type GrpoDownloadParams,
+  type GrpoLaunchParams,
+} from './grpo';
 export { Model, type TrainedModel } from './model';
 export { Rl } from './rl/index';
 export {

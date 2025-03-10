@@ -91,20 +91,6 @@ Types:
 - <code><a href="./src/resources/model/rl/grpo.ts">LoraConfig</a></code>
 - <code><a href="./src/resources/model/rl/grpo.ts">RlGrpoStatus</a></code>
 - <code><a href="./src/resources/model/rl/grpo.ts">TextGenerationBaseModel</a></code>
-- <code><a href="./src/resources/model/rl/grpo.ts">GrpoListResponse</a></code>
-- <code><a href="./src/resources/model/rl/grpo.ts">GrpoCancelResponse</a></code>
-- <code><a href="./src/resources/model/rl/grpo.ts">GrpoDownloadResponse</a></code>
-- <code><a href="./src/resources/model/rl/grpo.ts">GrpoStreamMessagesResponse</a></code>
-
-Methods:
-
-- <code title="get /model/rl/grpo/{job_id}">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">retrieve</a>(jobId) -> RlGrpoStatus</code>
-- <code title="get /model/rl/grpo">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">list</a>({ ...params }) -> GrpoListResponse</code>
-- <code title="delete /model/rl/grpo/{job_id}">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">cancel</a>(jobId) -> string</code>
-- <code title="post /model/rl/grpo/{job_id}/download">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">download</a>(jobId, { ...params }) -> string</code>
-- <code title="post /model/rl/grpo/{job_id}/load">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">load</a>(jobId) -> RlGrpoStatus</code>
-- <code title="post /model/rl/grpo">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">startJob</a>({ ...params }) -> RlGrpoStatus</code>
-- <code title="get /model/rl/grpo/{job_id}/messages">client.model.rl.grpo.<a href="./src/resources/model/rl/grpo.ts">streamMessages</a>(jobId) -> string</code>
 
 ## Sft
 
@@ -127,6 +113,25 @@ Methods:
 - <code title="post /model/sft/{job_id}/load">client.model.sft.<a href="./src/resources/model/sft.ts">load</a>(jobId) -> SftLoadResponse</code>
 - <code title="post /model/sft">client.model.sft.<a href="./src/resources/model/sft.ts">startJob</a>({ ...params }) -> SftStartJobResponse</code>
 - <code title="get /model/sft/{job_id}/messages">client.model.sft.<a href="./src/resources/model/sft.ts">streamMessages</a>(jobId) -> string</code>
+
+## Grpo
+
+Types:
+
+- <code><a href="./src/resources/model/grpo.ts">GrpoListResponse</a></code>
+- <code><a href="./src/resources/model/grpo.ts">GrpoCancelResponse</a></code>
+- <code><a href="./src/resources/model/grpo.ts">GrpoDownloadResponse</a></code>
+- <code><a href="./src/resources/model/grpo.ts">GrpoMessagesResponse</a></code>
+
+Methods:
+
+- <code title="get /model/grpo">client.model.grpo.<a href="./src/resources/model/grpo.ts">list</a>({ ...params }) -> GrpoListResponse</code>
+- <code title="delete /model/grpo/{job_id}">client.model.grpo.<a href="./src/resources/model/grpo.ts">cancel</a>(jobId) -> string</code>
+- <code title="post /model/grpo/{job_id}/download">client.model.grpo.<a href="./src/resources/model/grpo.ts">download</a>(jobId, { ...params }) -> string</code>
+- <code title="post /model/grpo">client.model.grpo.<a href="./src/resources/model/grpo.ts">launch</a>({ ...params }) -> RlGrpoStatus</code>
+- <code title="post /model/grpo/{job_id}/load">client.model.grpo.<a href="./src/resources/model/grpo.ts">load</a>(jobId) -> RlGrpoStatus</code>
+- <code title="get /model/grpo/{job_id}/messages">client.model.grpo.<a href="./src/resources/model/grpo.ts">messages</a>(jobId) -> string</code>
+- <code title="get /model/grpo/{job_id}">client.model.grpo.<a href="./src/resources/model/grpo.ts">status</a>(jobId) -> RlGrpoStatus</code>
 
 # Prompt
 
