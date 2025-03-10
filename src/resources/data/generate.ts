@@ -36,7 +36,7 @@ export class Generate extends APIResource {
   }
 
   /**
-   * Launches a Generation Data job
+   * Starts a Generation Data job
    */
   startJob(
     body: GenerateStartJobParams,

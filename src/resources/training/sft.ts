@@ -51,7 +51,7 @@ export class Sft extends APIResource {
   }
 
   /**
-   * Launches a SFT job
+   * Starts a SFT job
    */
   startJob(body: SftStartJobParams, options?: Core.RequestOptions): Core.APIPromise<Shared.SftStatus> {
     return this._client.post('/training/sft', { body, ...options });

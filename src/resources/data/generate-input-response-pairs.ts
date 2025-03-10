@@ -39,7 +39,7 @@ export class GenerateInputResponsePairs extends APIResource {
   }
 
   /**
-   * Launches a Generation Input-Response Pairs job
+   * Starts a Generation Input-Response Pairs job
    */
   startJob(
     body: GenerateInputResponsePairStartJobParams,

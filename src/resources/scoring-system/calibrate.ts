@@ -7,7 +7,7 @@ import * as Shared from '../shared';
 
 export class Calibrate extends APIResource {
   /**
-   * Launches a Scorer Calibration job
+   * Starts a Scorer Calibration job
    */
   create(
     body: CalibrateCreateParams,
