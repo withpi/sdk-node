@@ -2,18 +2,22 @@
 
 export {
   Calibrate,
+  type CalibrationStrategy,
   type ContractCalibrationStatus,
+  type SDKLabeledExample,
+  type SDKPreferenceExample,
   type State,
   type CalibrateListResponse,
   type CalibrateCancelResponse,
-  type CalibrateMessagesResponse,
+  type CalibrateStreamMessagesResponse,
   type CalibrateListParams,
-  type CalibrateLaunchParams,
+  type CalibrateStartJobParams,
 } from './calibrate';
 export {
   Contracts,
+  type ScoringSystemMetrics,
   type SDKContract,
-  type ContractScoreResponse,
+  type SDKDimension,
   type ContractGenerateDimensionsParams,
   type ContractReadFromHfParams,
   type ContractScoreParams,

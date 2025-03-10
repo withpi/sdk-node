@@ -8,13 +8,6 @@ import * as GenerateSyntheticDataAPI from '../data/generate-synthetic-data';
 
 export class Classifier extends APIResource {
   /**
-   * Launches a Classifier job
-   */
-  create(body: ClassifierCreateParams, options?: Core.RequestOptions): Core.APIPromise<ClassificationStatus> {
-    return this._client.post('/model/classifier', { body, ...options });
-  }
-
-  /**
    * Checks the status of a Classifier job
    */
   retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<ClassificationStatus> {
@@ -56,9 +49,19 @@ export class Classifier extends APIResource {
   }
 
   /**
+   * Launches a Classifier job
+   */
+  startJob(
+    body: ClassifierStartJobParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<ClassificationStatus> {
+    return this._client.post('/model/classifier', { body, ...options });
+  }
+
+  /**
    * Opens a message stream about a Classifier job
    */
-  messages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+  streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.get(`/model/classifier/${jobId}/messages`, {
       ...options,
       headers: { Accept: 'text/plain', ...options?.headers },
@@ -129,9 +132,20 @@ export type ClassifierCancelResponse = string;
 
 export type ClassifierDownloadResponse = string;
 
-export type ClassifierMessagesResponse = string;
+export type ClassifierStreamMessagesResponse = string;
 
-export interface ClassifierCreateParams {
+export interface ClassifierListParams {
+  /**
+   * Filter jobs by state
+   */
+  state?: CalibrateAPI.State | null;
+}
+
+export interface ClassifierDownloadParams {
+  serving_id: number;
+}
+
+export interface ClassifierStartJobParams {
   /**
    * The base model to start the classification tuning process
    */
@@ -153,17 +167,6 @@ export interface ClassifierCreateParams {
   num_train_epochs?: number;
 }
 
-export interface ClassifierListParams {
-  /**
-   * Filter jobs by state
-   */
-  state?: CalibrateAPI.State | null;
-}
-
-export interface ClassifierDownloadParams {
-  serving_id: number;
-}
-
 export declare namespace Classifier {
   export {
     type ClassificationStatus as ClassificationStatus,
@@ -171,9 +174,9 @@ export declare namespace Classifier {
     type ClassifierListResponse as ClassifierListResponse,
     type ClassifierCancelResponse as ClassifierCancelResponse,
     type ClassifierDownloadResponse as ClassifierDownloadResponse,
-    type ClassifierMessagesResponse as ClassifierMessagesResponse,
-    type ClassifierCreateParams as ClassifierCreateParams,
+    type ClassifierStreamMessagesResponse as ClassifierStreamMessagesResponse,
     type ClassifierListParams as ClassifierListParams,
     type ClassifierDownloadParams as ClassifierDownloadParams,
+    type ClassifierStartJobParams as ClassifierStartJobParams,
   };
 }

@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.1.0-alpha.94 (2025-03-10)
+
+Full Changelog: [v0.1.0-alpha.93...v0.1.0-alpha.94](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.93...v0.1.0-alpha.94)
+
+### Features
+
+* **api:** api update ([#392](https://github.com/withpi/sdk-node/issues/392)) ([0e5a47c](https://github.com/withpi/sdk-node/commit/0e5a47c80c58c6a0966a9bb1f1fd72447ea88f69))
+* **api:** manual updates ([b8d5cb4](https://github.com/withpi/sdk-node/commit/b8d5cb4ef854bda58307fcc34eacb9e7cdff6e19))
+* **api:** manual updates ([d255240](https://github.com/withpi/sdk-node/commit/d255240e19e571e1cfec656f2e01c69ab5cd230f))
+* **api:** manual updates ([594aec8](https://github.com/withpi/sdk-node/commit/594aec8388cd129c542075dc1f007341b5ea89a4))
+* **api:** manual updates ([ecdf3ee](https://github.com/withpi/sdk-node/commit/ecdf3ee16ff7bec8f46c88086944bd9db342e95a))
+* **api:** manual updates ([b8b2dd3](https://github.com/withpi/sdk-node/commit/b8b2dd3f1a9e7ab71b46775abb0755c19b1c1274))
+* **api:** manual updates ([#391](https://github.com/withpi/sdk-node/issues/391)) ([0dc189b](https://github.com/withpi/sdk-node/commit/0dc189b9bda677ff1db73c79535e93a3fce79472))
+* **api:** manual updates ([#393](https://github.com/withpi/sdk-node/issues/393)) ([d59e0f4](https://github.com/withpi/sdk-node/commit/d59e0f484996a539698a2e7f5ab2e7147d20aa82))
+
+
+### Chores
+
+* go live ([#386](https://github.com/withpi/sdk-node/issues/386)) ([67067e1](https://github.com/withpi/sdk-node/commit/67067e11b1932a16b679a0a42d35fca03fa7735c))
+* go live ([#394](https://github.com/withpi/sdk-node/issues/394)) ([38c9b80](https://github.com/withpi/sdk-node/commit/38c9b80084aebb768e0a6beb4a988e2e8154ac11))
+* update SDK settings ([#387](https://github.com/withpi/sdk-node/issues/387)) ([f0ebeda](https://github.com/withpi/sdk-node/commit/f0ebeda34f65468eb499e363ab1f4b4dc3826215))
+
 ## 0.1.0-alpha.93 (2025-03-09)
 
 Full Changelog: [v0.1.0-alpha.92...v0.1.0-alpha.93](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.92...v0.1.0-alpha.93)

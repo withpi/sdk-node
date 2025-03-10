@@ -10,40 +10,6 @@ const client = new Withpi({
 
 describe('resource generateFromSeeds', () => {
   // skipped: tests are disabled for the time being
-  test.skip('create: only required params', async () => {
-    const responsePromise = client.data.input.generateFromSeeds.create({
-      application_description: "Write a children's story communicating a simple life lesson.",
-      num_inputs_to_generate: 50,
-      seeds: [
-        'The quick brown fox jumped over the lazy dog',
-        'The lazy dog was jumped over by the quick brown fox',
-      ],
-    });
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('create: required and optional params', async () => {
-    const response = await client.data.input.generateFromSeeds.create({
-      application_description: "Write a children's story communicating a simple life lesson.",
-      num_inputs_to_generate: 50,
-      seeds: [
-        'The quick brown fox jumped over the lazy dog',
-        'The lazy dog was jumped over by the quick brown fox',
-      ],
-      batch_size: 5,
-      exploration_mode: 'CONSERVATIVE',
-      num_shots: 5,
-    });
-  });
-
-  // skipped: tests are disabled for the time being
   test.skip('retrieve', async () => {
     const responsePromise = client.data.input.generateFromSeeds.retrieve('job_id');
     const rawResponse = await responsePromise.asResponse();
@@ -109,6 +75,40 @@ describe('resource generateFromSeeds', () => {
     await expect(
       client.data.input.generateFromSeeds.cancel('job_id', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Withpi.NotFoundError);
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('startJob: only required params', async () => {
+    const responsePromise = client.data.input.generateFromSeeds.startJob({
+      application_description: "Write a children's story communicating a simple life lesson.",
+      num_inputs_to_generate: 50,
+      seeds: [
+        'The quick brown fox jumped over the lazy dog',
+        'The lazy dog was jumped over by the quick brown fox',
+      ],
+    });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('startJob: required and optional params', async () => {
+    const response = await client.data.input.generateFromSeeds.startJob({
+      application_description: "Write a children's story communicating a simple life lesson.",
+      num_inputs_to_generate: 50,
+      seeds: [
+        'The quick brown fox jumped over the lazy dog',
+        'The lazy dog was jumped over by the quick brown fox',
+      ],
+      batch_size: 5,
+      exploration_mode: 'CONSERVATIVE',
+      num_shots: 5,
+    });
   });
 
   // skipped: tests are disabled for the time being

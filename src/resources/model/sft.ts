@@ -11,13 +11,6 @@ import * as GrpoAPI from './rl/grpo';
 
 export class Sft extends APIResource {
   /**
-   * Launches a SFT job
-   */
-  create(body: SftCreateParams, options?: Core.RequestOptions): Core.APIPromise<SftStatus> {
-    return this._client.post('/model/sft', { body, ...options });
-  }
-
-  /**
    * Checks the status of a SFT job
    */
   retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<SftStatus> {
@@ -62,9 +55,16 @@ export class Sft extends APIResource {
   }
 
   /**
+   * Launches a SFT job
+   */
+  startJob(body: SftStartJobParams, options?: Core.RequestOptions): Core.APIPromise<SftStatus> {
+    return this._client.post('/model/sft', { body, ...options });
+  }
+
+  /**
    * Opens a message stream about a SFT job
    */
-  messages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+  streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.get(`/model/sft/${jobId}/messages`, {
       ...options,
       headers: { Accept: 'text/plain', ...options?.headers },
@@ -103,9 +103,20 @@ export type SftCancelResponse = string;
 
 export type SftDownloadResponse = string;
 
-export type SftMessagesResponse = string;
+export type SftStreamMessagesResponse = string;
 
-export interface SftCreateParams {
+export interface SftListParams {
+  /**
+   * Filter jobs by state
+   */
+  state?: CalibrateAPI.State | null;
+}
+
+export interface SftDownloadParams {
+  serving_id: number;
+}
+
+export interface SftStartJobParams {
   /**
    * Examples to use in the SFT tuning process. We split this data into train/eval
    * 90/10.
@@ -143,26 +154,15 @@ export interface SftCreateParams {
   system_prompt?: string | null;
 }
 
-export interface SftListParams {
-  /**
-   * Filter jobs by state
-   */
-  state?: CalibrateAPI.State | null;
-}
-
-export interface SftDownloadParams {
-  serving_id: number;
-}
-
 export declare namespace Sft {
   export {
     type SftStatus as SftStatus,
     type SftListResponse as SftListResponse,
     type SftCancelResponse as SftCancelResponse,
     type SftDownloadResponse as SftDownloadResponse,
-    type SftMessagesResponse as SftMessagesResponse,
-    type SftCreateParams as SftCreateParams,
+    type SftStreamMessagesResponse as SftStreamMessagesResponse,
     type SftListParams as SftListParams,
     type SftDownloadParams as SftDownloadParams,
+    type SftStartJobParams as SftStartJobParams,
   };
 }

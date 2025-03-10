@@ -8,10 +8,10 @@ const client = new Withpi({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource optimize', () => {
+describe('resource calibrate', () => {
   // skipped: tests are disabled for the time being
   test.skip('retrieve', async () => {
-    const responsePromise = client.prompt.optimize.retrieve('job_id');
+    const responsePromise = client.piScoringSystem.calibrate.retrieve('job_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -25,13 +25,13 @@ describe('resource optimize', () => {
   test.skip('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.prompt.optimize.retrieve('job_id', { path: '/_stainless_unknown_path' }),
+      client.piScoringSystem.calibrate.retrieve('job_id', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Withpi.NotFoundError);
   });
 
   // skipped: tests are disabled for the time being
   test.skip('list', async () => {
-    const responsePromise = client.prompt.optimize.list();
+    const responsePromise = client.piScoringSystem.calibrate.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -44,7 +44,7 @@ describe('resource optimize', () => {
   // skipped: tests are disabled for the time being
   test.skip('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.prompt.optimize.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.piScoringSystem.calibrate.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Withpi.NotFoundError,
     );
   });
@@ -53,13 +53,13 @@ describe('resource optimize', () => {
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.prompt.optimize.list({ state: 'QUEUED' }, { path: '/_stainless_unknown_path' }),
+      client.piScoringSystem.calibrate.list({ state: 'QUEUED' }, { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Withpi.NotFoundError);
   });
 
   // skipped: tests are disabled for the time being
   test.skip('cancel', async () => {
-    const responsePromise = client.prompt.optimize.cancel('job_id');
+    const responsePromise = client.piScoringSystem.calibrate.cancel('job_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -73,26 +73,17 @@ describe('resource optimize', () => {
   test.skip('cancel: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.prompt.optimize.cancel('job_id', { path: '/_stainless_unknown_path' }),
+      client.piScoringSystem.calibrate.cancel('job_id', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Withpi.NotFoundError);
   });
 
   // skipped: tests are disabled for the time being
   test.skip('startJob: only required params', async () => {
-    const responsePromise = client.prompt.optimize.startJob({
-      contract: {
+    const responsePromise = client.piScoringSystem.calibrate.startJob({
+      scoring_system: {
         description: "Write a children's story communicating a simple life lesson.",
-        name: 'Sample Contract',
+        name: 'Sample Scoring System',
       },
-      examples: [
-        {
-          llm_input: 'Tell me something different',
-          llm_output: 'The lazy dog was jumped over by the quick brown fox',
-        },
-      ],
-      initial_system_instruction: 'Write a great story around the given topic.',
-      model_id: 'gpt-4o-mini',
-      tuning_algorithm: 'PI',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -105,10 +96,10 @@ describe('resource optimize', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('startJob: required and optional params', async () => {
-    const response = await client.prompt.optimize.startJob({
-      contract: {
+    const response = await client.piScoringSystem.calibrate.startJob({
+      scoring_system: {
         description: "Write a children's story communicating a simple life lesson.",
-        name: 'Sample Contract',
+        name: 'Sample Scoring System',
         dimensions: [
           {
             description: 'Relevance of the response',
@@ -140,19 +131,23 @@ describe('resource optimize', () => {
         {
           llm_input: 'Tell me something different',
           llm_output: 'The lazy dog was jumped over by the quick brown fox',
+          rating: 'Strongly Agree',
         },
       ],
-      initial_system_instruction: 'Write a great story around the given topic.',
-      model_id: 'gpt-4o-mini',
-      tuning_algorithm: 'PI',
-      dspy_optimization_type: 'BOOTSTRAP_FEW_SHOT',
-      use_chain_of_thought: false,
+      preference_examples: [
+        {
+          chosen: 'The lazy dog was jumped over by the quick brown fox',
+          llm_input: 'Tell me something different',
+          rejected: 'The lazy dog was flied over by the quick brown fox',
+        },
+      ],
+      strategy: 'LITE',
     });
   });
 
   // skipped: tests are disabled for the time being
   test.skip('streamMessages', async () => {
-    const responsePromise = client.prompt.optimize.streamMessages('job_id');
+    const responsePromise = client.piScoringSystem.calibrate.streamMessages('job_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -166,7 +161,7 @@ describe('resource optimize', () => {
   test.skip('streamMessages: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.prompt.optimize.streamMessages('job_id', { path: '/_stainless_unknown_path' }),
+      client.piScoringSystem.calibrate.streamMessages('job_id', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Withpi.NotFoundError);
   });
 });

@@ -5,10 +5,10 @@ import * as OptimizeAPI from './optimize';
 import {
   Optimize,
   OptimizeCancelResponse,
-  OptimizeCreateParams,
   OptimizeListParams,
   OptimizeListResponse,
-  OptimizeMessagesResponse,
+  OptimizeStartJobParams,
+  OptimizeStreamMessagesResponse,
   PromptOptimizationStatus,
 } from './optimize';
 
@@ -24,8 +24,8 @@ export declare namespace Prompt {
     type PromptOptimizationStatus as PromptOptimizationStatus,
     type OptimizeListResponse as OptimizeListResponse,
     type OptimizeCancelResponse as OptimizeCancelResponse,
-    type OptimizeMessagesResponse as OptimizeMessagesResponse,
-    type OptimizeCreateParams as OptimizeCreateParams,
+    type OptimizeStreamMessagesResponse as OptimizeStreamMessagesResponse,
     type OptimizeListParams as OptimizeListParams,
+    type OptimizeStartJobParams as OptimizeStartJobParams,
   };
 }

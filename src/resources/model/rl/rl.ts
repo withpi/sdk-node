@@ -5,12 +5,12 @@ import * as GrpoAPI from './grpo';
 import {
   Grpo,
   GrpoCancelResponse,
-  GrpoCreateParams,
   GrpoDownloadParams,
   GrpoDownloadResponse,
   GrpoListParams,
   GrpoListResponse,
-  GrpoMessagesResponse,
+  GrpoStartJobParams,
+  GrpoStreamMessagesResponse,
   LoraConfig,
   RlGrpoStatus,
   TextGenerationBaseModel,
@@ -31,9 +31,9 @@ export declare namespace Rl {
     type GrpoListResponse as GrpoListResponse,
     type GrpoCancelResponse as GrpoCancelResponse,
     type GrpoDownloadResponse as GrpoDownloadResponse,
-    type GrpoMessagesResponse as GrpoMessagesResponse,
-    type GrpoCreateParams as GrpoCreateParams,
+    type GrpoStreamMessagesResponse as GrpoStreamMessagesResponse,
     type GrpoListParams as GrpoListParams,
     type GrpoDownloadParams as GrpoDownloadParams,
+    type GrpoStartJobParams as GrpoStartJobParams,
   };
 }

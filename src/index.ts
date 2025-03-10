@@ -17,22 +17,21 @@ import {
   ContractGenerateDimensionsParams,
   ContractReadFromHfParams,
   ContractScoreParams,
-  ContractScoreResponse,
   Contracts,
   SDKContract,
+  SDKDimension,
+  ScoringSystemMetrics,
 } from './resources/contracts/contracts';
 import { Data } from './resources/data/data';
 import { Model } from './resources/model/model';
-import { Prompt } from './resources/prompt/prompt';
 import {
+  PiScoringSystem,
+  PiScoringSystemGenerateDimensionsParams,
+  PiScoringSystemReadFromHfParams,
+  PiScoringSystemScoreParams,
   ScoringSystem,
-  ScoringSystemGenerateDimensionsParams,
-  ScoringSystemGenerateDimensionsResponse,
-  ScoringSystemReadFromHfParams,
-  ScoringSystemReadFromHfResponse,
-  ScoringSystemScoreParams,
-  ScoringSystemScoreResponse,
-} from './resources/scoring-system/scoring-system';
+} from './resources/pi-scoring-system/pi-scoring-system';
+import { Prompt } from './resources/prompt/prompt';
 
 export interface ClientOptions {
   /**
@@ -150,9 +149,9 @@ export class Withpi extends Core.APIClient {
   contracts: API.Contracts = new API.Contracts(this);
   data: API.Data = new API.Data(this);
   model: API.Model = new API.Model(this);
+  piScoringSystem: API.PiScoringSystem = new API.PiScoringSystem(this);
   prompt: API.Prompt = new API.Prompt(this);
   queries: API.Queries = new API.Queries(this);
-  scoringSystem: API.ScoringSystem = new API.ScoringSystem(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -193,16 +192,17 @@ export class Withpi extends Core.APIClient {
 Withpi.Contracts = Contracts;
 Withpi.Data = Data;
 Withpi.Model = Model;
+Withpi.PiScoringSystem = PiScoringSystem;
 Withpi.Prompt = Prompt;
 Withpi.Queries = Queries;
-Withpi.ScoringSystem = ScoringSystem;
 export declare namespace Withpi {
   export type RequestOptions = Core.RequestOptions;
 
   export {
     Contracts as Contracts,
+    type ScoringSystemMetrics as ScoringSystemMetrics,
     type SDKContract as SDKContract,
-    type ContractScoreResponse as ContractScoreResponse,
+    type SDKDimension as SDKDimension,
     type ContractGenerateDimensionsParams as ContractGenerateDimensionsParams,
     type ContractReadFromHfParams as ContractReadFromHfParams,
     type ContractScoreParams as ContractScoreParams,
@@ -211,6 +211,14 @@ export declare namespace Withpi {
   export { Data as Data };
 
   export { Model as Model };
+
+  export {
+    PiScoringSystem as PiScoringSystem,
+    type ScoringSystem as ScoringSystem,
+    type PiScoringSystemGenerateDimensionsParams as PiScoringSystemGenerateDimensionsParams,
+    type PiScoringSystemReadFromHfParams as PiScoringSystemReadFromHfParams,
+    type PiScoringSystemScoreParams as PiScoringSystemScoreParams,
+  };
 
   export { Prompt as Prompt };
 
@@ -221,16 +229,6 @@ export declare namespace Withpi {
     type QueryGenerateFanoutsResponse as QueryGenerateFanoutsResponse,
     type QueryClassifyParams as QueryClassifyParams,
     type QueryGenerateFanoutsParams as QueryGenerateFanoutsParams,
-  };
-
-  export {
-    ScoringSystem as ScoringSystem,
-    type ScoringSystemGenerateDimensionsResponse as ScoringSystemGenerateDimensionsResponse,
-    type ScoringSystemReadFromHfResponse as ScoringSystemReadFromHfResponse,
-    type ScoringSystemScoreResponse as ScoringSystemScoreResponse,
-    type ScoringSystemGenerateDimensionsParams as ScoringSystemGenerateDimensionsParams,
-    type ScoringSystemReadFromHfParams as ScoringSystemReadFromHfParams,
-    type ScoringSystemScoreParams as ScoringSystemScoreParams,
   };
 }
 

@@ -3,18 +3,19 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as ContractsAPI from './contracts';
+import * as CalibrateAPI from '../contracts/calibrate';
+import * as PiScoringSystemAPI from './pi-scoring-system';
 
 export class Calibrate extends APIResource {
   /**
-   * Checks the status of a Contract Calibration job
+   * Checks the status of a Scoring System Calibration job
    */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<ContractCalibrationStatus> {
-    return this._client.get(`/contracts/calibrate/${jobId}`, options);
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<ScoringSystemCalibrationStatus> {
+    return this._client.get(`/pi_scoring_system/calibrate/${jobId}`, options);
   }
 
   /**
-   * Lists the Contract Calibration Jobs owned by a user
+   * Lists the Scoring System Calibration Jobs owned by a user
    */
   list(query?: CalibrateListParams, options?: Core.RequestOptions): Core.APIPromise<CalibrateListResponse>;
   list(options?: Core.RequestOptions): Core.APIPromise<CalibrateListResponse>;
@@ -25,40 +26,38 @@ export class Calibrate extends APIResource {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this._client.get('/contracts/calibrate', { query, ...options });
+    return this._client.get('/pi_scoring_system/calibrate', { query, ...options });
   }
 
   /**
-   * Cancels a Contract Calibration job
+   * Cancels a Scoring System Calibration job
    */
   cancel(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
-    return this._client.delete(`/contracts/calibrate/${jobId}`, options);
+    return this._client.delete(`/pi_scoring_system/calibrate/${jobId}`, options);
   }
 
   /**
-   * Launches a Contract Calibration job
+   * Launches a Scoring System Calibration job
    */
   startJob(
     body: CalibrateStartJobParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<ContractCalibrationStatus> {
-    return this._client.post('/contracts/calibrate', { body, ...options });
+  ): Core.APIPromise<ScoringSystemCalibrationStatus> {
+    return this._client.post('/pi_scoring_system/calibrate', { body, ...options });
   }
 
   /**
-   * Opens a message stream about a Contract Calibration job
+   * Opens a message stream about a Scoring System Calibration job
    */
   streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
-    return this._client.get(`/contracts/calibrate/${jobId}/messages`, {
+    return this._client.get(`/pi_scoring_system/calibrate/${jobId}/messages`, {
       ...options,
       headers: { Accept: 'text/plain', ...options?.headers },
     });
   }
 }
 
-export type CalibrationStrategy = 'LITE' | 'FULL';
-
-export interface ContractCalibrationStatus {
+export interface ScoringSystemCalibrationStatus {
   /**
    * Detailed status of the job
    */
@@ -72,57 +71,15 @@ export interface ContractCalibrationStatus {
   /**
    * Current state of the job
    */
-  state: State;
+  state: CalibrateAPI.State;
 
   /**
-   * The calibrated contract
+   * The calibrated scoring system
    */
-  calibrated_contract?: ContractsAPI.SDKContract | null;
+  calibrated_scoring_system?: PiScoringSystemAPI.ScoringSystem | null;
 }
 
-/**
- * An labeled example for training or evaluation
- */
-export interface SDKLabeledExample {
-  /**
-   * The input to LLM
-   */
-  llm_input: string;
-
-  /**
-   * The output to evaluate
-   */
-  llm_output: string;
-
-  /**
-   * The rating of the llm_output given the llm_input
-   */
-  rating: 'Strongly Agree' | 'Agree' | 'Neutral' | 'Disagree' | 'Strongly Disagree';
-}
-
-/**
- * An preference example for training or evaluation
- */
-export interface SDKPreferenceExample {
-  /**
-   * The chosen output in corresponding to the llm_input.
-   */
-  chosen: string;
-
-  /**
-   * The input to LLM
-   */
-  llm_input: string;
-
-  /**
-   * The rejected output in corresponding to the llm_input.
-   */
-  rejected: string;
-}
-
-export type State = 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
-
-export type CalibrateListResponse = Array<ContractCalibrationStatus>;
+export type CalibrateListResponse = Array<ScoringSystemCalibrationStatus>;
 
 export type CalibrateCancelResponse = string;
 
@@ -132,41 +89,37 @@ export interface CalibrateListParams {
   /**
    * Filter jobs by state
    */
-  state?: State | null;
+  state?: CalibrateAPI.State | null;
 }
 
 export interface CalibrateStartJobParams {
   /**
    * The scoring system to calibrate
    */
-  scoring_system: ContractsAPI.SDKContract;
+  scoring_system: PiScoringSystemAPI.ScoringSystem;
 
   /**
    * Rated examples to use when calibrating the scoring system. Must specify either
    * the examples or the preference examples
    */
-  examples?: Array<SDKLabeledExample> | null;
+  examples?: Array<CalibrateAPI.SDKLabeledExample> | null;
 
   /**
    * Preference examples to use when calibrating the scoring system. Must specify
    * either the examples or preference examples
    */
-  preference_examples?: Array<SDKPreferenceExample> | null;
+  preference_examples?: Array<CalibrateAPI.SDKPreferenceExample> | null;
 
   /**
    * The strategy to use to calibrate the scoring system. FULL would take longer than
    * LITE but may result in better result.
    */
-  strategy?: CalibrationStrategy;
+  strategy?: CalibrateAPI.CalibrationStrategy;
 }
 
 export declare namespace Calibrate {
   export {
-    type CalibrationStrategy as CalibrationStrategy,
-    type ContractCalibrationStatus as ContractCalibrationStatus,
-    type SDKLabeledExample as SDKLabeledExample,
-    type SDKPreferenceExample as SDKPreferenceExample,
-    type State as State,
+    type ScoringSystemCalibrationStatus as ScoringSystemCalibrationStatus,
     type CalibrateListResponse as CalibrateListResponse,
     type CalibrateCancelResponse as CalibrateCancelResponse,
     type CalibrateStreamMessagesResponse as CalibrateStreamMessagesResponse,

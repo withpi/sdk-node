@@ -8,16 +8,6 @@ import * as GenerateSyntheticDataAPI from '../generate-synthetic-data';
 
 export class GenerateFromSeeds extends APIResource {
   /**
-   * Launches a Data Generation job
-   */
-  create(
-    body: GenerateFromSeedCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<DataGenerationStatus> {
-    return this._client.post('/data/input/generate_from_seeds', { body, ...options });
-  }
-
-  /**
    * Checks the status of a Data Generation job
    */
   retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<DataGenerationStatus> {
@@ -47,6 +37,16 @@ export class GenerateFromSeeds extends APIResource {
    */
   cancel(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.delete(`/data/input/generate_from_seeds/${jobId}`, options);
+  }
+
+  /**
+   * Launches a Data Generation job
+   */
+  startJob(
+    body: GenerateFromSeedStartJobParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<DataGenerationStatus> {
+    return this._client.post('/data/input/generate_from_seeds', { body, ...options });
   }
 
   /**
@@ -104,7 +104,14 @@ export type GenerateFromSeedStreamDataResponse = string;
 
 export type GenerateFromSeedStreamMessagesResponse = string;
 
-export interface GenerateFromSeedCreateParams {
+export interface GenerateFromSeedListParams {
+  /**
+   * Filter jobs by state
+   */
+  state?: CalibrateAPI.State | null;
+}
+
+export interface GenerateFromSeedStartJobParams {
   /**
    * The application description for which the inputs would be applicable.
    */
@@ -138,13 +145,6 @@ export interface GenerateFromSeedCreateParams {
   num_shots?: number;
 }
 
-export interface GenerateFromSeedListParams {
-  /**
-   * Filter jobs by state
-   */
-  state?: CalibrateAPI.State | null;
-}
-
 export declare namespace GenerateFromSeeds {
   export {
     type DataGenerationStatus as DataGenerationStatus,
@@ -152,7 +152,7 @@ export declare namespace GenerateFromSeeds {
     type GenerateFromSeedCancelResponse as GenerateFromSeedCancelResponse,
     type GenerateFromSeedStreamDataResponse as GenerateFromSeedStreamDataResponse,
     type GenerateFromSeedStreamMessagesResponse as GenerateFromSeedStreamMessagesResponse,
-    type GenerateFromSeedCreateParams as GenerateFromSeedCreateParams,
     type GenerateFromSeedListParams as GenerateFromSeedListParams,
+    type GenerateFromSeedStartJobParams as GenerateFromSeedStartJobParams,
   };
 }
