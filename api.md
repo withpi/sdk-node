@@ -25,39 +25,43 @@ Methods:
 
 ## GenerateInputs
 
-Types:
-
-- <code><a href="./src/resources/data/generate-inputs.ts">GenerateInputListResponse</a></code>
-- <code><a href="./src/resources/data/generate-inputs.ts">GenerateInputCancelResponse</a></code>
-- <code><a href="./src/resources/data/generate-inputs.ts">GenerateInputStreamDataResponse</a></code>
-- <code><a href="./src/resources/data/generate-inputs.ts">GenerateInputStreamMessagesResponse</a></code>
-
-Methods:
-
-- <code title="get /data/generate_inputs/{job_id}">client.data.generateInputs.<a href="./src/resources/data/generate-inputs.ts">retrieve</a>(jobId) -> DataGenerationStatus</code>
-- <code title="get /data/generate_inputs">client.data.generateInputs.<a href="./src/resources/data/generate-inputs.ts">list</a>({ ...params }) -> GenerateInputListResponse</code>
-- <code title="delete /data/generate_inputs/{job_id}">client.data.generateInputs.<a href="./src/resources/data/generate-inputs.ts">cancel</a>(jobId) -> string</code>
-- <code title="post /data/generate_inputs">client.data.generateInputs.<a href="./src/resources/data/generate-inputs.ts">startJob</a>({ ...params }) -> DataGenerationStatus</code>
-- <code title="get /data/generate_inputs/{job_id}/data">client.data.generateInputs.<a href="./src/resources/data/generate-inputs.ts">streamData</a>(jobId) -> string</code>
-- <code title="get /data/generate_inputs/{job_id}/messages">client.data.generateInputs.<a href="./src/resources/data/generate-inputs.ts">streamMessages</a>(jobId) -> string</code>
-
 ## GenerateExamples
 
+## Generate
+
 Types:
 
-- <code><a href="./src/resources/data/generate-examples.ts">GenerateExampleListResponse</a></code>
-- <code><a href="./src/resources/data/generate-examples.ts">GenerateExampleCancelResponse</a></code>
-- <code><a href="./src/resources/data/generate-examples.ts">GenerateExampleStreamDataResponse</a></code>
-- <code><a href="./src/resources/data/generate-examples.ts">GenerateExampleStreamMessagesResponse</a></code>
+- <code><a href="./src/resources/data/generate.ts">GenerateListResponse</a></code>
+- <code><a href="./src/resources/data/generate.ts">GenerateCancelResponse</a></code>
+- <code><a href="./src/resources/data/generate.ts">GenerateStreamDataResponse</a></code>
+- <code><a href="./src/resources/data/generate.ts">GenerateStreamMessagesResponse</a></code>
 
 Methods:
 
-- <code title="get /data/generate_examples/{job_id}">client.data.generateExamples.<a href="./src/resources/data/generate-examples.ts">retrieve</a>(jobId) -> SyntheticDataStatus</code>
-- <code title="get /data/generate_examples">client.data.generateExamples.<a href="./src/resources/data/generate-examples.ts">list</a>({ ...params }) -> GenerateExampleListResponse</code>
-- <code title="delete /data/generate_examples/{job_id}">client.data.generateExamples.<a href="./src/resources/data/generate-examples.ts">cancel</a>(jobId) -> string</code>
-- <code title="post /data/generate_examples">client.data.generateExamples.<a href="./src/resources/data/generate-examples.ts">startJob</a>({ ...params }) -> SyntheticDataStatus</code>
-- <code title="get /data/generate_examples/{job_id}/data">client.data.generateExamples.<a href="./src/resources/data/generate-examples.ts">streamData</a>(jobId) -> GenerateExampleStreamDataResponse</code>
-- <code title="get /data/generate_examples/{job_id}/messages">client.data.generateExamples.<a href="./src/resources/data/generate-examples.ts">streamMessages</a>(jobId) -> string</code>
+- <code title="post /data/generate">client.data.generate.<a href="./src/resources/data/generate.ts">create</a>({ ...params }) -> DataGenerationStatus</code>
+- <code title="get /data/generate/{job_id}">client.data.generate.<a href="./src/resources/data/generate.ts">retrieve</a>(jobId) -> DataGenerationStatus</code>
+- <code title="get /data/generate">client.data.generate.<a href="./src/resources/data/generate.ts">list</a>({ ...params }) -> GenerateListResponse</code>
+- <code title="delete /data/generate/{job_id}">client.data.generate.<a href="./src/resources/data/generate.ts">cancel</a>(jobId) -> string</code>
+- <code title="get /data/generate/{job_id}/data">client.data.generate.<a href="./src/resources/data/generate.ts">streamData</a>(jobId) -> string</code>
+- <code title="get /data/generate/{job_id}/messages">client.data.generate.<a href="./src/resources/data/generate.ts">streamMessages</a>(jobId) -> string</code>
+
+## GenerateInputResponsePairs
+
+Types:
+
+- <code><a href="./src/resources/data/generate-input-response-pairs.ts">GenerateInputResponsePairListResponse</a></code>
+- <code><a href="./src/resources/data/generate-input-response-pairs.ts">GenerateInputResponsePairCancelResponse</a></code>
+- <code><a href="./src/resources/data/generate-input-response-pairs.ts">GenerateInputResponsePairStreamDataResponse</a></code>
+- <code><a href="./src/resources/data/generate-input-response-pairs.ts">GenerateInputResponsePairStreamMessagesResponse</a></code>
+
+Methods:
+
+- <code title="post /data/generate_input_response_pairs">client.data.generateInputResponsePairs.<a href="./src/resources/data/generate-input-response-pairs.ts">create</a>({ ...params }) -> SyntheticDataStatus</code>
+- <code title="get /data/generate_input_response_pairs/{job_id}">client.data.generateInputResponsePairs.<a href="./src/resources/data/generate-input-response-pairs.ts">retrieve</a>(jobId) -> SyntheticDataStatus</code>
+- <code title="get /data/generate_input_response_pairs">client.data.generateInputResponsePairs.<a href="./src/resources/data/generate-input-response-pairs.ts">list</a>({ ...params }) -> GenerateInputResponsePairListResponse</code>
+- <code title="delete /data/generate_input_response_pairs/{job_id}">client.data.generateInputResponsePairs.<a href="./src/resources/data/generate-input-response-pairs.ts">cancel</a>(jobId) -> string</code>
+- <code title="get /data/generate_input_response_pairs/{job_id}/data">client.data.generateInputResponsePairs.<a href="./src/resources/data/generate-input-response-pairs.ts">streamData</a>(jobId) -> GenerateInputResponsePairStreamDataResponse</code>
+- <code title="get /data/generate_input_response_pairs/{job_id}/messages">client.data.generateInputResponsePairs.<a href="./src/resources/data/generate-input-response-pairs.ts">streamMessages</a>(jobId) -> string</code>
 
 # Training
 
@@ -65,7 +69,47 @@ Methods:
 
 ## Sft
 
+Types:
+
+- <code><a href="./src/resources/training/sft.ts">SftListResponse</a></code>
+- <code><a href="./src/resources/training/sft.ts">SftCancelResponse</a></code>
+- <code><a href="./src/resources/training/sft.ts">SftDownloadResponse</a></code>
+- <code><a href="./src/resources/training/sft.ts">SftLaunchResponse</a></code>
+- <code><a href="./src/resources/training/sft.ts">SftLoadResponse</a></code>
+- <code><a href="./src/resources/training/sft.ts">SftMessagesResponse</a></code>
+- <code><a href="./src/resources/training/sft.ts">SftStatusResponse</a></code>
+
+Methods:
+
+- <code title="get /training/sft">client.training.sft.<a href="./src/resources/training/sft.ts">list</a>({ ...params }) -> SftListResponse</code>
+- <code title="delete /training/sft/{job_id}">client.training.sft.<a href="./src/resources/training/sft.ts">cancel</a>(jobId) -> string</code>
+- <code title="post /training/sft/{job_id}/download">client.training.sft.<a href="./src/resources/training/sft.ts">download</a>(jobId, { ...params }) -> string</code>
+- <code title="post /training/sft">client.training.sft.<a href="./src/resources/training/sft.ts">launch</a>({ ...params }) -> SftLaunchResponse</code>
+- <code title="post /training/sft/{job_id}/load">client.training.sft.<a href="./src/resources/training/sft.ts">load</a>(jobId) -> SftLoadResponse</code>
+- <code title="get /training/sft/{job_id}/messages">client.training.sft.<a href="./src/resources/training/sft.ts">messages</a>(jobId) -> string</code>
+- <code title="get /training/sft/{job_id}">client.training.sft.<a href="./src/resources/training/sft.ts">status</a>(jobId) -> SftStatusResponse</code>
+
 ## Grpo
+
+Types:
+
+- <code><a href="./src/resources/training/grpo.ts">GrpoListResponse</a></code>
+- <code><a href="./src/resources/training/grpo.ts">GrpoCancelResponse</a></code>
+- <code><a href="./src/resources/training/grpo.ts">GrpoDownloadResponse</a></code>
+- <code><a href="./src/resources/training/grpo.ts">GrpoLaunchResponse</a></code>
+- <code><a href="./src/resources/training/grpo.ts">GrpoLoadResponse</a></code>
+- <code><a href="./src/resources/training/grpo.ts">GrpoMessagesResponse</a></code>
+- <code><a href="./src/resources/training/grpo.ts">GrpoStatusResponse</a></code>
+
+Methods:
+
+- <code title="get /training/grpo">client.training.grpo.<a href="./src/resources/training/grpo.ts">list</a>({ ...params }) -> GrpoListResponse</code>
+- <code title="delete /training/grpo/{job_id}">client.training.grpo.<a href="./src/resources/training/grpo.ts">cancel</a>(jobId) -> string</code>
+- <code title="post /training/grpo/{job_id}/download">client.training.grpo.<a href="./src/resources/training/grpo.ts">download</a>(jobId, { ...params }) -> string</code>
+- <code title="post /training/grpo">client.training.grpo.<a href="./src/resources/training/grpo.ts">launch</a>({ ...params }) -> GrpoLaunchResponse</code>
+- <code title="post /training/grpo/{job_id}/load">client.training.grpo.<a href="./src/resources/training/grpo.ts">load</a>(jobId) -> GrpoLoadResponse</code>
+- <code title="get /training/grpo/{job_id}/messages">client.training.grpo.<a href="./src/resources/training/grpo.ts">messages</a>(jobId) -> string</code>
+- <code title="get /training/grpo/{job_id}">client.training.grpo.<a href="./src/resources/training/grpo.ts">status</a>(jobId) -> GrpoStatusResponse</code>
 
 # Prompt
 
@@ -87,42 +131,76 @@ Methods:
 
 # Scorers
 
+## Calibrate
+
+# Rag
+
+# ScoringSystem
+
 Types:
 
-- <code><a href="./src/resources/scorers/scorers.ts">ScorerScoreResponse</a></code>
+- <code><a href="./src/resources/scoring-system/scoring-system.ts">ScoringSystemScoreResponse</a></code>
 
 Methods:
 
-- <code title="post /scorers/generate_dimensions">client.scorers.<a href="./src/resources/scorers/scorers.ts">generateDimensions</a>({ ...params }) -> Scorer</code>
-- <code title="post /scorers/read_from_hf">client.scorers.<a href="./src/resources/scorers/scorers.ts">readFromHf</a>({ ...params }) -> Scorer</code>
-- <code title="post /scorers/score">client.scorers.<a href="./src/resources/scorers/scorers.ts">score</a>({ ...params }) -> ScorerScoreResponse</code>
+- <code title="post /scoring_system/generate">client.scoringSystem.<a href="./src/resources/scoring-system/scoring-system.ts">generate</a>({ ...params }) -> Scorer</code>
+- <code title="post /scoring_system/from_huggingface">client.scoringSystem.<a href="./src/resources/scoring-system/scoring-system.ts">readFromHuggingface</a>({ ...params }) -> Scorer</code>
+- <code title="post /scoring_system/score">client.scoringSystem.<a href="./src/resources/scoring-system/scoring-system.ts">score</a>({ ...params }) -> ScoringSystemScoreResponse</code>
 
 ## Calibrate
 
 Types:
 
-- <code><a href="./src/resources/scorers/calibrate.ts">CalibrateCreateResponse</a></code>
-- <code><a href="./src/resources/scorers/calibrate.ts">CalibrateRetrieveResponse</a></code>
-- <code><a href="./src/resources/scorers/calibrate.ts">CalibrateListResponse</a></code>
-- <code><a href="./src/resources/scorers/calibrate.ts">CalibrateCancelResponse</a></code>
-- <code><a href="./src/resources/scorers/calibrate.ts">CalibrateMessagesResponse</a></code>
+- <code><a href="./src/resources/scoring-system/calibrate.ts">CalibrateCreateResponse</a></code>
+- <code><a href="./src/resources/scoring-system/calibrate.ts">CalibrateRetrieveResponse</a></code>
+- <code><a href="./src/resources/scoring-system/calibrate.ts">CalibrateListResponse</a></code>
+- <code><a href="./src/resources/scoring-system/calibrate.ts">CalibrateCancelResponse</a></code>
+- <code><a href="./src/resources/scoring-system/calibrate.ts">CalibrateMessagesResponse</a></code>
 
 Methods:
 
-- <code title="post /scorers/calibrate">client.scorers.calibrate.<a href="./src/resources/scorers/calibrate.ts">create</a>({ ...params }) -> CalibrateCreateResponse</code>
-- <code title="get /scorers/calibrate/{job_id}">client.scorers.calibrate.<a href="./src/resources/scorers/calibrate.ts">retrieve</a>(jobId) -> CalibrateRetrieveResponse</code>
-- <code title="get /scorers/calibrate">client.scorers.calibrate.<a href="./src/resources/scorers/calibrate.ts">list</a>({ ...params }) -> CalibrateListResponse</code>
-- <code title="delete /scorers/calibrate/{job_id}">client.scorers.calibrate.<a href="./src/resources/scorers/calibrate.ts">cancel</a>(jobId) -> string</code>
-- <code title="get /scorers/calibrate/{job_id}/messages">client.scorers.calibrate.<a href="./src/resources/scorers/calibrate.ts">messages</a>(jobId) -> string</code>
+- <code title="post /scoring_system/calibrate">client.scoringSystem.calibrate.<a href="./src/resources/scoring-system/calibrate.ts">create</a>({ ...params }) -> CalibrateCreateResponse</code>
+- <code title="get /scoring_system/calibrate/{job_id}">client.scoringSystem.calibrate.<a href="./src/resources/scoring-system/calibrate.ts">retrieve</a>(jobId) -> CalibrateRetrieveResponse</code>
+- <code title="get /scoring_system/calibrate">client.scoringSystem.calibrate.<a href="./src/resources/scoring-system/calibrate.ts">list</a>({ ...params }) -> CalibrateListResponse</code>
+- <code title="delete /scoring_system/calibrate/{job_id}">client.scoringSystem.calibrate.<a href="./src/resources/scoring-system/calibrate.ts">cancel</a>(jobId) -> string</code>
+- <code title="get /scoring_system/calibrate/{job_id}/messages">client.scoringSystem.calibrate.<a href="./src/resources/scoring-system/calibrate.ts">messages</a>(jobId) -> string</code>
 
-# Rag
+# Search
+
+## QueryClassifier
 
 Types:
 
-- <code><a href="./src/resources/rag.ts">RagClassifyQueryResponse</a></code>
-- <code><a href="./src/resources/rag.ts">RagGenerateFanoutResponse</a></code>
+- <code><a href="./src/resources/search/query-classifier/query-classifier.ts">QueryClassifierClassifyResponse</a></code>
 
 Methods:
 
-- <code title="post /rag/query_classify">client.rag.<a href="./src/resources/rag.ts">classifyQuery</a>({ ...params }) -> RagClassifyQueryResponse</code>
-- <code title="post /rag/query_fanout">client.rag.<a href="./src/resources/rag.ts">generateFanout</a>({ ...params }) -> RagGenerateFanoutResponse</code>
+- <code title="post /search/query_classifier/classify">client.search.queryClassifier.<a href="./src/resources/search/query-classifier/query-classifier.ts">classify</a>({ ...params }) -> QueryClassifierClassifyResponse</code>
+
+### Distill
+
+Types:
+
+- <code><a href="./src/resources/search/query-classifier/distill.ts">DistillListResponse</a></code>
+- <code><a href="./src/resources/search/query-classifier/distill.ts">DistillCancelResponse</a></code>
+- <code><a href="./src/resources/search/query-classifier/distill.ts">DistillDownloadResponse</a></code>
+- <code><a href="./src/resources/search/query-classifier/distill.ts">DistillMessagesResponse</a></code>
+
+Methods:
+
+- <code title="post /search/query_classifier/distill">client.search.queryClassifier.distill.<a href="./src/resources/search/query-classifier/distill.ts">create</a>({ ...params }) -> ClassificationStatus</code>
+- <code title="get /search/query_classifier/distill/{job_id}">client.search.queryClassifier.distill.<a href="./src/resources/search/query-classifier/distill.ts">retrieve</a>(jobId) -> ClassificationStatus</code>
+- <code title="get /search/query_classifier/distill">client.search.queryClassifier.distill.<a href="./src/resources/search/query-classifier/distill.ts">list</a>({ ...params }) -> DistillListResponse</code>
+- <code title="delete /search/query_classifier/distill/{job_id}">client.search.queryClassifier.distill.<a href="./src/resources/search/query-classifier/distill.ts">cancel</a>(jobId) -> string</code>
+- <code title="post /search/query_classifier/distill/{job_id}/download">client.search.queryClassifier.distill.<a href="./src/resources/search/query-classifier/distill.ts">download</a>(jobId, { ...params }) -> string</code>
+- <code title="get /search/query_classifier/distill/{job_id}/messages">client.search.queryClassifier.distill.<a href="./src/resources/search/query-classifier/distill.ts">messages</a>(jobId) -> string</code>
+
+## QueryFanout
+
+Types:
+
+- <code><a href="./src/resources/search/query-fanout.ts">QueryFanoutGenerateResponse</a></code>
+
+Methods:
+
+- <code title="post /search/query_fanout/generate">client.search.queryFanout.<a href="./src/resources/search/query-fanout.ts">generate</a>({ ...params }) -> QueryFanoutGenerateResponse</code>

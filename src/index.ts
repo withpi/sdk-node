@@ -5,22 +5,18 @@ import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
-import {
-  Rag,
-  RagClassifyQueryParams,
-  RagClassifyQueryResponse,
-  RagGenerateFanoutParams,
-  RagGenerateFanoutResponse,
-} from './resources/rag';
+import { Rag } from './resources/rag';
 import { Data, DataClusterInputsParams, DataClusterInputsResponse } from './resources/data/data';
 import { Prompt } from './resources/prompt/prompt';
+import { Scorers } from './resources/scorers/scorers';
 import {
-  ScorerGenerateDimensionsParams,
-  ScorerReadFromHfParams,
-  ScorerScoreParams,
-  ScorerScoreResponse,
-  Scorers,
-} from './resources/scorers/scorers';
+  ScoringSystem,
+  ScoringSystemGenerateParams,
+  ScoringSystemReadFromHuggingfaceParams,
+  ScoringSystemScoreParams,
+  ScoringSystemScoreResponse,
+} from './resources/scoring-system/scoring-system';
+import { Search } from './resources/search/search';
 import { Training } from './resources/training/training';
 
 export interface ClientOptions {
@@ -141,6 +137,8 @@ export class PiClient extends Core.APIClient {
   prompt: API.Prompt = new API.Prompt(this);
   scorers: API.Scorers = new API.Scorers(this);
   rag: API.Rag = new API.Rag(this);
+  scoringSystem: API.ScoringSystem = new API.ScoringSystem(this);
+  search: API.Search = new API.Search(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -183,6 +181,8 @@ PiClient.Training = Training;
 PiClient.Prompt = Prompt;
 PiClient.Scorers = Scorers;
 PiClient.Rag = Rag;
+PiClient.ScoringSystem = ScoringSystem;
+PiClient.Search = Search;
 export declare namespace PiClient {
   export type RequestOptions = Core.RequestOptions;
 
@@ -196,21 +196,19 @@ export declare namespace PiClient {
 
   export { Prompt as Prompt };
 
-  export {
-    Scorers as Scorers,
-    type ScorerScoreResponse as ScorerScoreResponse,
-    type ScorerGenerateDimensionsParams as ScorerGenerateDimensionsParams,
-    type ScorerReadFromHfParams as ScorerReadFromHfParams,
-    type ScorerScoreParams as ScorerScoreParams,
-  };
+  export { Scorers as Scorers };
+
+  export { Rag as Rag };
 
   export {
-    Rag as Rag,
-    type RagClassifyQueryResponse as RagClassifyQueryResponse,
-    type RagGenerateFanoutResponse as RagGenerateFanoutResponse,
-    type RagClassifyQueryParams as RagClassifyQueryParams,
-    type RagGenerateFanoutParams as RagGenerateFanoutParams,
+    ScoringSystem as ScoringSystem,
+    type ScoringSystemScoreResponse as ScoringSystemScoreResponse,
+    type ScoringSystemGenerateParams as ScoringSystemGenerateParams,
+    type ScoringSystemReadFromHuggingfaceParams as ScoringSystemReadFromHuggingfaceParams,
+    type ScoringSystemScoreParams as ScoringSystemScoreParams,
   };
+
+  export { Search as Search };
 
   export type ClassificationStatus = API.ClassificationStatus;
   export type DataGenerationStatus = API.DataGenerationStatus;
