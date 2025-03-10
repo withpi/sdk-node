@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.113 (2025-03-10)
+
+Full Changelog: [v0.1.0-alpha.112...v0.1.0-alpha.113](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.112...v0.1.0-alpha.113)
+
+### Features
+
+* **api:** scoring_system_metrics ([#456](https://github.com/withpi/sdk-node/issues/456)) ([73f784a](https://github.com/withpi/sdk-node/commit/73f784acd25d474c64edbbaa7e8980d7e7166aa1))
+
 ## 0.1.0-alpha.112 (2025-03-10)
 
 Full Changelog: [v0.1.0-alpha.111...v0.1.0-alpha.112](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.111...v0.1.0-alpha.112)

@@ -11,6 +11,7 @@ Types:
 - <code><a href="./src/resources/shared.ts">ScorerDimension</a></code>
 - <code><a href="./src/resources/shared.ts">ScorerSubDimension</a></code>
 - <code><a href="./src/resources/shared.ts">ScoringSystemMetrics</a></code>
+- <code><a href="./src/resources/shared.ts">SDKExample</a></code>
 - <code><a href="./src/resources/shared.ts">SftStatus</a></code>
 - <code><a href="./src/resources/shared.ts">SyntheticDataStatus</a></code>
 - <code><a href="./src/resources/shared.ts">TrainedModel</a></code>
