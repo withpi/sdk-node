@@ -3,7 +3,6 @@
 import { APIResource } from '../../resource';
 import * as ClassifierAPI from './classifier';
 import {
-  ClassificationStatus,
   Classifier,
   ClassifierCancelResponse,
   ClassifierDownloadParams,
@@ -12,8 +11,21 @@ import {
   ClassifierListResponse,
   ClassifierStartJobParams,
   ClassifierStreamMessagesResponse,
-  TrainedModel,
 } from './classifier';
+import * as GrpoAPI from './grpo';
+import {
+  Grpo,
+  GrpoCancelResponse,
+  GrpoDownloadParams,
+  GrpoDownloadResponse,
+  GrpoLaunchParams,
+  GrpoLaunchResponse,
+  GrpoListParams,
+  GrpoListResponse,
+  GrpoLoadResponse,
+  GrpoMessagesResponse,
+  GrpoStatusResponse,
+} from './grpo';
 import * as SftAPI from './sft';
 import {
   Sft,
@@ -22,27 +34,26 @@ import {
   SftDownloadResponse,
   SftListParams,
   SftListResponse,
+  SftLoadResponse,
+  SftRetrieveResponse,
   SftStartJobParams,
+  SftStartJobResponse,
   SftStreamMessagesResponse,
 } from './sft';
-import * as RlAPI from './rl/rl';
-import { Rl } from './rl/rl';
 
 export class Model extends APIResource {
   classifier: ClassifierAPI.Classifier = new ClassifierAPI.Classifier(this._client);
-  rl: RlAPI.Rl = new RlAPI.Rl(this._client);
   sft: SftAPI.Sft = new SftAPI.Sft(this._client);
+  grpo: GrpoAPI.Grpo = new GrpoAPI.Grpo(this._client);
 }
 
 Model.Classifier = Classifier;
-Model.Rl = Rl;
 Model.Sft = Sft;
+Model.Grpo = Grpo;
 
 export declare namespace Model {
   export {
     Classifier as Classifier,
-    type ClassificationStatus as ClassificationStatus,
-    type TrainedModel as TrainedModel,
     type ClassifierListResponse as ClassifierListResponse,
     type ClassifierCancelResponse as ClassifierCancelResponse,
     type ClassifierDownloadResponse as ClassifierDownloadResponse,
@@ -52,16 +63,31 @@ export declare namespace Model {
     type ClassifierStartJobParams as ClassifierStartJobParams,
   };
 
-  export { Rl as Rl };
-
   export {
     Sft as Sft,
+    type SftRetrieveResponse as SftRetrieveResponse,
     type SftListResponse as SftListResponse,
     type SftCancelResponse as SftCancelResponse,
     type SftDownloadResponse as SftDownloadResponse,
+    type SftLoadResponse as SftLoadResponse,
+    type SftStartJobResponse as SftStartJobResponse,
     type SftStreamMessagesResponse as SftStreamMessagesResponse,
     type SftListParams as SftListParams,
     type SftDownloadParams as SftDownloadParams,
     type SftStartJobParams as SftStartJobParams,
+  };
+
+  export {
+    Grpo as Grpo,
+    type GrpoListResponse as GrpoListResponse,
+    type GrpoCancelResponse as GrpoCancelResponse,
+    type GrpoDownloadResponse as GrpoDownloadResponse,
+    type GrpoLaunchResponse as GrpoLaunchResponse,
+    type GrpoLoadResponse as GrpoLoadResponse,
+    type GrpoMessagesResponse as GrpoMessagesResponse,
+    type GrpoStatusResponse as GrpoStatusResponse,
+    type GrpoListParams as GrpoListParams,
+    type GrpoDownloadParams as GrpoDownloadParams,
+    type GrpoLaunchParams as GrpoLaunchParams,
   };
 }

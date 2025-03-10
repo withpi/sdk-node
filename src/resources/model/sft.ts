@@ -4,14 +4,12 @@ import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as Shared from '../shared';
-import * as CalibrateAPI from '../contracts/calibrate';
-import * as GrpoAPI from './rl/grpo';
 
 export class Sft extends APIResource {
   /**
    * Checks the status of a SFT job
    */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.SftStatus> {
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<SftRetrieveResponse> {
     return this._client.get(`/model/sft/${jobId}`, options);
   }
 
@@ -48,14 +46,14 @@ export class Sft extends APIResource {
   /**
    * Loads a SFT model into serving for a limited period of time
    */
-  load(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.SftStatus> {
+  load(jobId: string, options?: Core.RequestOptions): Core.APIPromise<SftLoadResponse> {
     return this._client.post(`/model/sft/${jobId}/load`, options);
   }
 
   /**
    * Launches a SFT job
    */
-  startJob(body: SftStartJobParams, options?: Core.RequestOptions): Core.APIPromise<Shared.SftStatus> {
+  startJob(body: SftStartJobParams, options?: Core.RequestOptions): Core.APIPromise<SftStartJobResponse> {
     return this._client.post('/model/sft', { body, ...options });
   }
 
@@ -70,11 +68,113 @@ export class Sft extends APIResource {
   }
 }
 
-export type SftListResponse = Array<Shared.SftStatus>;
+/**
+ * SftStatus is the status of a SFT job.
+ */
+export interface SftRetrieveResponse {
+  /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
+
+  /**
+   * The job id
+   */
+  job_id: string;
+
+  /**
+   * Current state of the job
+   */
+  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
+
+  /**
+   * A list of trained models selected based on the PI Contract score.
+   */
+  trained_models?: Array<Shared.TrainedModel> | null;
+}
+
+export type SftListResponse = Array<SftListResponse.SftListResponseItem>;
+
+export namespace SftListResponse {
+  /**
+   * SftStatus is the status of a SFT job.
+   */
+  export interface SftListResponseItem {
+    /**
+     * Detailed status of the job
+     */
+    detailed_status: Array<string>;
+
+    /**
+     * The job id
+     */
+    job_id: string;
+
+    /**
+     * Current state of the job
+     */
+    state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
+
+    /**
+     * A list of trained models selected based on the PI Contract score.
+     */
+    trained_models?: Array<Shared.TrainedModel> | null;
+  }
+}
 
 export type SftCancelResponse = string;
 
 export type SftDownloadResponse = string;
+
+/**
+ * SftStatus is the status of a SFT job.
+ */
+export interface SftLoadResponse {
+  /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
+
+  /**
+   * The job id
+   */
+  job_id: string;
+
+  /**
+   * Current state of the job
+   */
+  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
+
+  /**
+   * A list of trained models selected based on the PI Contract score.
+   */
+  trained_models?: Array<Shared.TrainedModel> | null;
+}
+
+/**
+ * SftStatus is the status of a SFT job.
+ */
+export interface SftStartJobResponse {
+  /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
+
+  /**
+   * The job id
+   */
+  job_id: string;
+
+  /**
+   * Current state of the job
+   */
+  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
+
+  /**
+   * A list of trained models selected based on the PI Contract score.
+   */
+  trained_models?: Array<Shared.TrainedModel> | null;
+}
 
 export type SftStreamMessagesResponse = string;
 
@@ -82,7 +182,7 @@ export interface SftListParams {
   /**
    * Filter jobs by state
    */
-  state?: CalibrateAPI.State | null;
+  state?: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED' | null;
 }
 
 export interface SftDownloadParams {
@@ -94,17 +194,17 @@ export interface SftStartJobParams {
    * Examples to use in the SFT tuning process. We split this data into train/eval
    * 90/10.
    */
-  examples: Array<Shared.SDKExample>;
+  examples: Array<SftStartJobParams.Example>;
 
   /**
    * The scoring system to use in the SFT tuning process
    */
-  scorer: SftStartJobParams.Scorer;
+  scorer: Shared.Scorer;
 
   /**
    * The base model to start the SFT tuning process.
    */
-  base_sft_model?: GrpoAPI.TextGenerationBaseModel;
+  base_sft_model?: 'LLAMA_3.2_3B' | 'LLAMA_3.1_8B';
 
   /**
    * SFT learning rate
@@ -114,7 +214,7 @@ export interface SftStartJobParams {
   /**
    * The LoRA configuration.
    */
-  lora_config?: GrpoAPI.LoraConfig;
+  lora_config?: SftStartJobParams.LoraConfig;
 
   /**
    * SFT number of train epochs: <= 10.
@@ -129,109 +229,39 @@ export interface SftStartJobParams {
 
 export namespace SftStartJobParams {
   /**
-   * The scoring system to use in the SFT tuning process
+   * An example for training or evaluation
    */
-  export interface Scorer {
+  export interface Example {
     /**
-     * The application description
+     * The input to LLM
      */
-    description: string;
+    llm_input: string;
 
     /**
-     * The name of the scoring system
+     * The output to evaluate
      */
-    name: string;
-
-    /**
-     * The dimensions of the scoring system
-     */
-    dimensions?: Array<Scorer.Dimension>;
-    [k: string]: unknown;
+    llm_output: string;
   }
 
-  export namespace Scorer {
-    export interface Dimension {
-      /**
-       * The description of the dimension
-       */
-      description: string;
-
-      /**
-       * The label of the dimension
-       */
-      label: string;
-
-      /**
-       * The sub dimensions of the dimension
-       */
-      sub_dimensions: Array<Dimension.SubDimension>;
-
-      /**
-       * The learned parameters for the scoring method. This represents piecewise linear
-       * interpolation between [0, 1].
-       */
-      parameters?: Array<number> | null;
-
-      /**
-       * The weight of the dimension The sum of dimension weights will be normalized to
-       * one internally. A higher weight counts for more when aggregating this dimension
-       * is aggregated into the final score.
-       */
-      weight?: number | null;
-      [k: string]: unknown;
-    }
-
-    export namespace Dimension {
-      export interface SubDimension {
-        /**
-         * The description of the dimension
-         */
-        description: string;
-
-        /**
-         * The label of the dimension
-         */
-        label: string;
-
-        /**
-         * The type of scoring performed for this dimension
-         */
-        scoring_type: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER';
-
-        /**
-         * The ID of the custom model to use for scoring. Only relevant for scoring_type of
-         * CUSTOM_MODEL_SCORER
-         */
-        custom_model_id?: string | null;
-
-        /**
-         * The learned parameters for the scoring method. This represents piecewise linear
-         * interpolation between [0, 1].
-         */
-        parameters?: Array<number> | null;
-
-        /**
-         * The PYTHON code associated the PYTHON_CODE DimensionScoringType.
-         */
-        python_code?: string | null;
-
-        /**
-         * The weight of the subdimension. The sum of subdimension weights will be
-         * normalized to one internally. A higher weight counts for more when aggregating
-         * this subdimension into the parent dimension.
-         */
-        weight?: number | null;
-        [k: string]: unknown;
-      }
-    }
+  /**
+   * The LoRA configuration.
+   */
+  export interface LoraConfig {
+    /**
+     * The number of dimensions in the low-rank decomposition of the weight updates.
+     */
+    lora_rank?: 'R_16' | 'R_32' | 'R_64';
   }
 }
 
 export declare namespace Sft {
   export {
+    type SftRetrieveResponse as SftRetrieveResponse,
     type SftListResponse as SftListResponse,
     type SftCancelResponse as SftCancelResponse,
     type SftDownloadResponse as SftDownloadResponse,
+    type SftLoadResponse as SftLoadResponse,
+    type SftStartJobResponse as SftStartJobResponse,
     type SftStreamMessagesResponse as SftStreamMessagesResponse,
     type SftListParams as SftListParams,
     type SftDownloadParams as SftDownloadParams,

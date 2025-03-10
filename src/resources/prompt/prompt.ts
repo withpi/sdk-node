@@ -9,7 +9,6 @@ import {
   OptimizeListResponse,
   OptimizeStartJobParams,
   OptimizeStreamMessagesResponse,
-  PromptOptimizationStatus,
 } from './optimize';
 
 export class Prompt extends APIResource {
@@ -21,7 +20,6 @@ Prompt.Optimize = Optimize;
 export declare namespace Prompt {
   export {
     Optimize as Optimize,
-    type PromptOptimizationStatus as PromptOptimizationStatus,
     type OptimizeListResponse as OptimizeListResponse,
     type OptimizeCancelResponse as OptimizeCancelResponse,
     type OptimizeStreamMessagesResponse as OptimizeStreamMessagesResponse,

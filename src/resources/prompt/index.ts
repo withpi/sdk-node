@@ -2,7 +2,6 @@
 
 export {
   Optimize,
-  type PromptOptimizationStatus,
   type OptimizeListResponse,
   type OptimizeCancelResponse,
   type OptimizeStreamMessagesResponse,

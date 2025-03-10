@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.0-alpha.104 (2025-03-10)
+
+Full Changelog: [v0.1.0-alpha.103...v0.1.0-alpha.104](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.103...v0.1.0-alpha.104)
+
+### Features
+
+* **api:** api update ([#427](https://github.com/withpi/sdk-node/issues/427)) ([e40333f](https://github.com/withpi/sdk-node/commit/e40333fccdf1fc26cc91c2c3820b7b6b3969cfe7))
+* **api:** api update ([#428](https://github.com/withpi/sdk-node/issues/428)) ([26efc69](https://github.com/withpi/sdk-node/commit/26efc69e1a92f8ff3c056740ed170311c9fc57d8))
+* **api:** generate rename ([#429](https://github.com/withpi/sdk-node/issues/429)) ([a056afd](https://github.com/withpi/sdk-node/commit/a056afd84266867a284a4fefcd5b43a5dff4ac94))
+* **api:** manual updates ([#430](https://github.com/withpi/sdk-node/issues/430)) ([4002b34](https://github.com/withpi/sdk-node/commit/4002b3469e4cc86927e9000b83914fc470ba93e4))
+* next round of renaming ([#425](https://github.com/withpi/sdk-node/issues/425)) ([b350057](https://github.com/withpi/sdk-node/commit/b3500570208ff6ff88927288ad656fc57ae7109d))
+
 ## 0.1.0-alpha.103 (2025-03-10)
 
 Full Changelog: [v0.1.0-alpha.102...v0.1.0-alpha.103](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.102...v0.1.0-alpha.103)

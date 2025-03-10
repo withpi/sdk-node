@@ -8,10 +8,10 @@ const client = new PiClient({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource generateSyntheticData', () => {
+describe('resource generateInputs', () => {
   // skipped: tests are disabled for the time being
   test.skip('retrieve', async () => {
-    const responsePromise = client.data.generateSyntheticData.retrieve('job_id');
+    const responsePromise = client.data.generateInputs.retrieve('job_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -25,13 +25,13 @@ describe('resource generateSyntheticData', () => {
   test.skip('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.data.generateSyntheticData.retrieve('job_id', { path: '/_stainless_unknown_path' }),
+      client.data.generateInputs.retrieve('job_id', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(PiClient.NotFoundError);
   });
 
   // skipped: tests are disabled for the time being
   test.skip('list', async () => {
-    const responsePromise = client.data.generateSyntheticData.list();
+    const responsePromise = client.data.generateInputs.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -44,22 +44,22 @@ describe('resource generateSyntheticData', () => {
   // skipped: tests are disabled for the time being
   test.skip('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.data.generateSyntheticData.list({ path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(PiClient.NotFoundError);
+    await expect(client.data.generateInputs.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+      PiClient.NotFoundError,
+    );
   });
 
   // skipped: tests are disabled for the time being
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.data.generateSyntheticData.list({ state: 'QUEUED' }, { path: '/_stainless_unknown_path' }),
+      client.data.generateInputs.list({ state: 'QUEUED' }, { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(PiClient.NotFoundError);
   });
 
   // skipped: tests are disabled for the time being
   test.skip('cancel', async () => {
-    const responsePromise = client.data.generateSyntheticData.cancel('job_id');
+    const responsePromise = client.data.generateInputs.cancel('job_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -73,19 +73,18 @@ describe('resource generateSyntheticData', () => {
   test.skip('cancel: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.data.generateSyntheticData.cancel('job_id', { path: '/_stainless_unknown_path' }),
+      client.data.generateInputs.cancel('job_id', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(PiClient.NotFoundError);
   });
 
   // skipped: tests are disabled for the time being
   test.skip('startJob: only required params', async () => {
-    const responsePromise = client.data.generateSyntheticData.startJob({
-      num_examples_to_generate: 50,
+    const responsePromise = client.data.generateInputs.startJob({
+      application_description: "Write a children's story communicating a simple life lesson.",
+      num_inputs_to_generate: 50,
       seeds: [
-        {
-          llm_input: 'Tell me something different',
-          llm_output: 'The lazy dog was jumped over by the quick brown fox',
-        },
+        'The quick brown fox jumped over the lazy dog',
+        'The lazy dog was jumped over by the quick brown fox',
       ],
     });
     const rawResponse = await responsePromise.asResponse();
@@ -99,25 +98,22 @@ describe('resource generateSyntheticData', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('startJob: required and optional params', async () => {
-    const response = await client.data.generateSyntheticData.startJob({
-      num_examples_to_generate: 50,
+    const response = await client.data.generateInputs.startJob({
+      application_description: "Write a children's story communicating a simple life lesson.",
+      num_inputs_to_generate: 50,
       seeds: [
-        {
-          llm_input: 'Tell me something different',
-          llm_output: 'The lazy dog was jumped over by the quick brown fox',
-        },
+        'The quick brown fox jumped over the lazy dog',
+        'The lazy dog was jumped over by the quick brown fox',
       ],
-      application_description: "AI application for writing a children's story given topics.",
       batch_size: 5,
       exploration_mode: 'CONSERVATIVE',
       num_shots: 5,
-      system_prompt: "Write a children's story given a topic from the user.",
     });
   });
 
   // skipped: tests are disabled for the time being
   test.skip('streamData', async () => {
-    const responsePromise = client.data.generateSyntheticData.streamData('job_id');
+    const responsePromise = client.data.generateInputs.streamData('job_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -131,13 +127,13 @@ describe('resource generateSyntheticData', () => {
   test.skip('streamData: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.data.generateSyntheticData.streamData('job_id', { path: '/_stainless_unknown_path' }),
+      client.data.generateInputs.streamData('job_id', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(PiClient.NotFoundError);
   });
 
   // skipped: tests are disabled for the time being
   test.skip('streamMessages', async () => {
-    const responsePromise = client.data.generateSyntheticData.streamMessages('job_id');
+    const responsePromise = client.data.generateInputs.streamMessages('job_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -151,7 +147,7 @@ describe('resource generateSyntheticData', () => {
   test.skip('streamMessages: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.data.generateSyntheticData.streamMessages('job_id', { path: '/_stainless_unknown_path' }),
+      client.data.generateInputs.streamMessages('job_id', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(PiClient.NotFoundError);
   });
 });

@@ -9,23 +9,19 @@ import {
   Queries,
   QueryClassifyParams,
   QueryClassifyResponse,
-  QueryFanoutExample,
   QueryGenerateFanoutsParams,
   QueryGenerateFanoutsResponse,
 } from './resources/queries';
-import { Contracts } from './resources/contracts/contracts';
-import { Data } from './resources/data/data';
+import { Data, DataClusterInputsParams, DataClusterInputsResponse } from './resources/data/data';
 import { Model } from './resources/model/model';
-import { PiScoringSystem } from './resources/pi-scoring-system/pi-scoring-system';
 import { Prompt } from './resources/prompt/prompt';
 import {
-  Scorer,
   ScorerGenerateDimensionsParams,
-  ScorerGenerateDimensionsResponse,
   ScorerReadFromHfParams,
-  ScorerReadFromHfResponse,
   ScorerScoreParams,
-} from './resources/scorer/scorer';
+  ScorerScoreResponse,
+  Scorers,
+} from './resources/scorers/scorers';
 
 export interface ClientOptions {
   /**
@@ -140,13 +136,11 @@ export class PiClient extends Core.APIClient {
     this.apiKey = apiKey;
   }
 
-  contracts: API.Contracts = new API.Contracts(this);
   data: API.Data = new API.Data(this);
   model: API.Model = new API.Model(this);
-  piScoringSystem: API.PiScoringSystem = new API.PiScoringSystem(this);
   prompt: API.Prompt = new API.Prompt(this);
   queries: API.Queries = new API.Queries(this);
-  scorer: API.Scorer = new API.Scorer(this);
+  scorers: API.Scorers = new API.Scorers(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -184,29 +178,26 @@ export class PiClient extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-PiClient.Contracts = Contracts;
 PiClient.Data = Data;
 PiClient.Model = Model;
-PiClient.PiScoringSystem = PiScoringSystem;
 PiClient.Prompt = Prompt;
 PiClient.Queries = Queries;
-PiClient.Scorer = Scorer;
+PiClient.Scorers = Scorers;
 export declare namespace PiClient {
   export type RequestOptions = Core.RequestOptions;
 
-  export { Contracts as Contracts };
-
-  export { Data as Data };
+  export {
+    Data as Data,
+    type DataClusterInputsResponse as DataClusterInputsResponse,
+    type DataClusterInputsParams as DataClusterInputsParams,
+  };
 
   export { Model as Model };
-
-  export { PiScoringSystem as PiScoringSystem };
 
   export { Prompt as Prompt };
 
   export {
     Queries as Queries,
-    type QueryFanoutExample as QueryFanoutExample,
     type QueryClassifyResponse as QueryClassifyResponse,
     type QueryGenerateFanoutsResponse as QueryGenerateFanoutsResponse,
     type QueryClassifyParams as QueryClassifyParams,
@@ -214,19 +205,23 @@ export declare namespace PiClient {
   };
 
   export {
-    Scorer as Scorer,
-    type ScorerGenerateDimensionsResponse as ScorerGenerateDimensionsResponse,
-    type ScorerReadFromHfResponse as ScorerReadFromHfResponse,
+    Scorers as Scorers,
+    type ScorerScoreResponse as ScorerScoreResponse,
     type ScorerGenerateDimensionsParams as ScorerGenerateDimensionsParams,
     type ScorerReadFromHfParams as ScorerReadFromHfParams,
     type ScorerScoreParams as ScorerScoreParams,
   };
 
+  export type ClassificationStatus = API.ClassificationStatus;
   export type DataGenerationStatus = API.DataGenerationStatus;
-  export type ScoringSystemMetrics = API.ScoringSystemMetrics;
-  export type SDKExample = API.SDKExample;
-  export type SftStatus = API.SftStatus;
+  export type ExplorationMode = API.ExplorationMode;
+  export type PromptOptimizationStatus = API.PromptOptimizationStatus;
+  export type QueryFanoutExample = API.QueryFanoutExample;
+  export type Scorer = API.Scorer;
+  export type ScorerDimension = API.ScorerDimension;
+  export type ScorerSubDimension = API.ScorerSubDimension;
   export type SyntheticDataStatus = API.SyntheticDataStatus;
+  export type TrainedModel = API.TrainedModel;
 }
 
 export { toFile, fileFromPath } from './uploads';

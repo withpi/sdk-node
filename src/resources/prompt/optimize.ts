@@ -4,13 +4,12 @@ import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as Shared from '../shared';
-import * as CalibrateAPI from '../contracts/calibrate';
 
 export class Optimize extends APIResource {
   /**
    * Checks the status of a Prompt Optimization job
    */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<PromptOptimizationStatus> {
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.PromptOptimizationStatus> {
     return this._client.get(`/prompt/optimize/${jobId}`, options);
   }
 
@@ -42,7 +41,7 @@ export class Optimize extends APIResource {
   startJob(
     body: OptimizeStartJobParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<PromptOptimizationStatus> {
+  ): Core.APIPromise<Shared.PromptOptimizationStatus> {
     return this._client.post('/prompt/optimize', { body, ...options });
   }
 
@@ -57,33 +56,7 @@ export class Optimize extends APIResource {
   }
 }
 
-/**
- * The optimized_prompt_messages field is an empty list unless the state is done.
- */
-export interface PromptOptimizationStatus {
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
-
-  /**
-   * The job id
-   */
-  job_id: string;
-
-  /**
-   * Current state of the job
-   */
-  state: CalibrateAPI.State;
-
-  /**
-   * The optimized prompt messages in the OpenAI message format with the jinja
-   * {{ input }} variable for the next user prompt
-   */
-  optimized_prompt_messages?: Array<Record<string, string>>;
-}
-
-export type OptimizeListResponse = Array<PromptOptimizationStatus>;
+export type OptimizeListResponse = Array<Shared.PromptOptimizationStatus>;
 
 export type OptimizeCancelResponse = string;
 
@@ -93,14 +66,14 @@ export interface OptimizeListParams {
   /**
    * Filter jobs by state
    */
-  state?: CalibrateAPI.State | null;
+  state?: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED' | null;
 }
 
 export interface OptimizeStartJobParams {
   /**
    * The examples to train and validate on
    */
-  examples: Array<Shared.SDKExample>;
+  examples: Array<OptimizeStartJobParams.Example>;
 
   /**
    * The initial system instruction
@@ -115,7 +88,7 @@ export interface OptimizeStartJobParams {
   /**
    * The contract to optimize
    */
-  scorer: OptimizeStartJobParams.Scorer;
+  scorer: Shared.Scorer;
 
   /**
    * The tuning algorithm to use
@@ -137,107 +110,23 @@ export interface OptimizeStartJobParams {
 
 export namespace OptimizeStartJobParams {
   /**
-   * The contract to optimize
+   * An example for training or evaluation
    */
-  export interface Scorer {
+  export interface Example {
     /**
-     * The application description
+     * The input to LLM
      */
-    description: string;
-
-    /**
-     * The name of the scoring system
-     */
-    name: string;
+    llm_input: string;
 
     /**
-     * The dimensions of the scoring system
+     * The output to evaluate
      */
-    dimensions?: Array<Scorer.Dimension>;
-    [k: string]: unknown;
-  }
-
-  export namespace Scorer {
-    export interface Dimension {
-      /**
-       * The description of the dimension
-       */
-      description: string;
-
-      /**
-       * The label of the dimension
-       */
-      label: string;
-
-      /**
-       * The sub dimensions of the dimension
-       */
-      sub_dimensions: Array<Dimension.SubDimension>;
-
-      /**
-       * The learned parameters for the scoring method. This represents piecewise linear
-       * interpolation between [0, 1].
-       */
-      parameters?: Array<number> | null;
-
-      /**
-       * The weight of the dimension The sum of dimension weights will be normalized to
-       * one internally. A higher weight counts for more when aggregating this dimension
-       * is aggregated into the final score.
-       */
-      weight?: number | null;
-      [k: string]: unknown;
-    }
-
-    export namespace Dimension {
-      export interface SubDimension {
-        /**
-         * The description of the dimension
-         */
-        description: string;
-
-        /**
-         * The label of the dimension
-         */
-        label: string;
-
-        /**
-         * The type of scoring performed for this dimension
-         */
-        scoring_type: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER';
-
-        /**
-         * The ID of the custom model to use for scoring. Only relevant for scoring_type of
-         * CUSTOM_MODEL_SCORER
-         */
-        custom_model_id?: string | null;
-
-        /**
-         * The learned parameters for the scoring method. This represents piecewise linear
-         * interpolation between [0, 1].
-         */
-        parameters?: Array<number> | null;
-
-        /**
-         * The PYTHON code associated the PYTHON_CODE DimensionScoringType.
-         */
-        python_code?: string | null;
-
-        /**
-         * The weight of the subdimension. The sum of subdimension weights will be
-         * normalized to one internally. A higher weight counts for more when aggregating
-         * this subdimension into the parent dimension.
-         */
-        weight?: number | null;
-        [k: string]: unknown;
-      }
-    }
+    llm_output: string;
   }
 }
 
 export declare namespace Optimize {
   export {
-    type PromptOptimizationStatus as PromptOptimizationStatus,
     type OptimizeListResponse as OptimizeListResponse,
     type OptimizeCancelResponse as OptimizeCancelResponse,
     type OptimizeStreamMessagesResponse as OptimizeStreamMessagesResponse,
