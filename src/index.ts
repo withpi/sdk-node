@@ -13,7 +13,6 @@ import {
   RagGenerateFanoutResponse,
 } from './resources/rag';
 import { Data, DataClusterInputsParams, DataClusterInputsResponse } from './resources/data/data';
-import { Model } from './resources/model/model';
 import { Prompt } from './resources/prompt/prompt';
 import {
   ScorerGenerateDimensionsParams,
@@ -138,11 +137,10 @@ export class PiClient extends Core.APIClient {
   }
 
   data: API.Data = new API.Data(this);
-  model: API.Model = new API.Model(this);
+  training: API.Training = new API.Training(this);
   prompt: API.Prompt = new API.Prompt(this);
   scorers: API.Scorers = new API.Scorers(this);
   rag: API.Rag = new API.Rag(this);
-  training: API.Training = new API.Training(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -181,11 +179,10 @@ export class PiClient extends Core.APIClient {
 }
 
 PiClient.Data = Data;
-PiClient.Model = Model;
+PiClient.Training = Training;
 PiClient.Prompt = Prompt;
 PiClient.Scorers = Scorers;
 PiClient.Rag = Rag;
-PiClient.Training = Training;
 export declare namespace PiClient {
   export type RequestOptions = Core.RequestOptions;
 
@@ -195,7 +192,7 @@ export declare namespace PiClient {
     type DataClusterInputsParams as DataClusterInputsParams,
   };
 
-  export { Model as Model };
+  export { Training as Training };
 
   export { Prompt as Prompt };
 
@@ -214,8 +211,6 @@ export declare namespace PiClient {
     type RagClassifyQueryParams as RagClassifyQueryParams,
     type RagGenerateFanoutParams as RagGenerateFanoutParams,
   };
-
-  export { Training as Training };
 
   export type ClassificationStatus = API.ClassificationStatus;
   export type DataGenerationStatus = API.DataGenerationStatus;
