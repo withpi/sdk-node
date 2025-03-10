@@ -7,16 +7,6 @@ import * as Shared from '../shared';
 
 export class GenerateExamples extends APIResource {
   /**
-   * Launches a Synthetic Data Generation job
-   */
-  create(
-    body: GenerateExampleCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.SyntheticDataStatus> {
-    return this._client.post('/data/generate_examples', { body, ...options });
-  }
-
-  /**
    * Checks the status of a Synthetic Data Generation job
    */
   retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.SyntheticDataStatus> {
@@ -46,6 +36,16 @@ export class GenerateExamples extends APIResource {
    */
   cancel(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.delete(`/data/generate_examples/${jobId}`, options);
+  }
+
+  /**
+   * Launches a Synthetic Data Generation job
+   */
+  startJob(
+    body: GenerateExampleStartJobParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Shared.SyntheticDataStatus> {
+    return this._client.post('/data/generate_examples', { body, ...options });
   }
 
   /**
@@ -86,7 +86,14 @@ export namespace GenerateExampleStreamDataResponse {
 
 export type GenerateExampleStreamMessagesResponse = string;
 
-export interface GenerateExampleCreateParams {
+export interface GenerateExampleListParams {
+  /**
+   * Filter jobs by state
+   */
+  state?: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED' | null;
+}
+
+export interface GenerateExampleStartJobParams {
   /**
    * The number of new LLM examples to generate
    */
@@ -95,7 +102,7 @@ export interface GenerateExampleCreateParams {
   /**
    * The list of LLM examples (inputs + outputs) to be used as seeds
    */
-  seeds: Array<GenerateExampleCreateParams.Seed>;
+  seeds: Array<GenerateExampleStartJobParams.Seed>;
 
   /**
    * The application description for which the synthetic data would be applicable.
@@ -124,7 +131,7 @@ export interface GenerateExampleCreateParams {
   system_prompt?: string | null;
 }
 
-export namespace GenerateExampleCreateParams {
+export namespace GenerateExampleStartJobParams {
   /**
    * An example for training or evaluation
    */
@@ -141,20 +148,13 @@ export namespace GenerateExampleCreateParams {
   }
 }
 
-export interface GenerateExampleListParams {
-  /**
-   * Filter jobs by state
-   */
-  state?: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED' | null;
-}
-
 export declare namespace GenerateExamples {
   export {
     type GenerateExampleListResponse as GenerateExampleListResponse,
     type GenerateExampleCancelResponse as GenerateExampleCancelResponse,
     type GenerateExampleStreamDataResponse as GenerateExampleStreamDataResponse,
     type GenerateExampleStreamMessagesResponse as GenerateExampleStreamMessagesResponse,
-    type GenerateExampleCreateParams as GenerateExampleCreateParams,
     type GenerateExampleListParams as GenerateExampleListParams,
+    type GenerateExampleStartJobParams as GenerateExampleStartJobParams,
   };
 }

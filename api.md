@@ -52,10 +52,10 @@ Types:
 
 Methods:
 
-- <code title="post /data/generate_examples">client.data.generateExamples.<a href="./src/resources/data/generate-examples.ts">create</a>({ ...params }) -> SyntheticDataStatus</code>
 - <code title="get /data/generate_examples/{job_id}">client.data.generateExamples.<a href="./src/resources/data/generate-examples.ts">retrieve</a>(jobId) -> SyntheticDataStatus</code>
 - <code title="get /data/generate_examples">client.data.generateExamples.<a href="./src/resources/data/generate-examples.ts">list</a>({ ...params }) -> GenerateExampleListResponse</code>
 - <code title="delete /data/generate_examples/{job_id}">client.data.generateExamples.<a href="./src/resources/data/generate-examples.ts">cancel</a>(jobId) -> string</code>
+- <code title="post /data/generate_examples">client.data.generateExamples.<a href="./src/resources/data/generate-examples.ts">startJob</a>({ ...params }) -> SyntheticDataStatus</code>
 - <code title="get /data/generate_examples/{job_id}/data">client.data.generateExamples.<a href="./src/resources/data/generate-examples.ts">streamData</a>(jobId) -> GenerateExampleStreamDataResponse</code>
 - <code title="get /data/generate_examples/{job_id}/messages">client.data.generateExamples.<a href="./src/resources/data/generate-examples.ts">streamMessages</a>(jobId) -> string</code>
 
@@ -105,23 +105,23 @@ Methods:
 
 Types:
 
+- <code><a href="./src/resources/model/grpo.ts">GrpoRetrieveResponse</a></code>
 - <code><a href="./src/resources/model/grpo.ts">GrpoListResponse</a></code>
 - <code><a href="./src/resources/model/grpo.ts">GrpoCancelResponse</a></code>
 - <code><a href="./src/resources/model/grpo.ts">GrpoDownloadResponse</a></code>
-- <code><a href="./src/resources/model/grpo.ts">GrpoLaunchResponse</a></code>
 - <code><a href="./src/resources/model/grpo.ts">GrpoLoadResponse</a></code>
-- <code><a href="./src/resources/model/grpo.ts">GrpoMessagesResponse</a></code>
-- <code><a href="./src/resources/model/grpo.ts">GrpoStatusResponse</a></code>
+- <code><a href="./src/resources/model/grpo.ts">GrpoStartJobResponse</a></code>
+- <code><a href="./src/resources/model/grpo.ts">GrpoStreamMessagesResponse</a></code>
 
 Methods:
 
+- <code title="get /model/grpo/{job_id}">client.model.grpo.<a href="./src/resources/model/grpo.ts">retrieve</a>(jobId) -> GrpoRetrieveResponse</code>
 - <code title="get /model/grpo">client.model.grpo.<a href="./src/resources/model/grpo.ts">list</a>({ ...params }) -> GrpoListResponse</code>
 - <code title="delete /model/grpo/{job_id}">client.model.grpo.<a href="./src/resources/model/grpo.ts">cancel</a>(jobId) -> string</code>
 - <code title="post /model/grpo/{job_id}/download">client.model.grpo.<a href="./src/resources/model/grpo.ts">download</a>(jobId, { ...params }) -> string</code>
-- <code title="post /model/grpo">client.model.grpo.<a href="./src/resources/model/grpo.ts">launch</a>({ ...params }) -> GrpoLaunchResponse</code>
 - <code title="post /model/grpo/{job_id}/load">client.model.grpo.<a href="./src/resources/model/grpo.ts">load</a>(jobId) -> GrpoLoadResponse</code>
-- <code title="get /model/grpo/{job_id}/messages">client.model.grpo.<a href="./src/resources/model/grpo.ts">messages</a>(jobId) -> string</code>
-- <code title="get /model/grpo/{job_id}">client.model.grpo.<a href="./src/resources/model/grpo.ts">status</a>(jobId) -> GrpoStatusResponse</code>
+- <code title="post /model/grpo">client.model.grpo.<a href="./src/resources/model/grpo.ts">startJob</a>({ ...params }) -> GrpoStartJobResponse</code>
+- <code title="get /model/grpo/{job_id}/messages">client.model.grpo.<a href="./src/resources/model/grpo.ts">streamMessages</a>(jobId) -> string</code>
 
 # Prompt
 
@@ -140,8 +140,6 @@ Methods:
 - <code title="delete /prompt/optimize/{job_id}">client.prompt.optimize.<a href="./src/resources/prompt/optimize.ts">cancel</a>(jobId) -> string</code>
 - <code title="post /prompt/optimize">client.prompt.optimize.<a href="./src/resources/prompt/optimize.ts">startJob</a>({ ...params }) -> PromptOptimizationStatus</code>
 - <code title="get /prompt/optimize/{job_id}/messages">client.prompt.optimize.<a href="./src/resources/prompt/optimize.ts">streamMessages</a>(jobId) -> string</code>
-
-# Queries
 
 # Scorers
 
