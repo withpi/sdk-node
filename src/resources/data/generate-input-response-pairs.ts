@@ -102,7 +102,7 @@ export interface GenerateInputResponsePairStartJobParams {
   /**
    * The list of LLM examples (inputs + outputs) to be used as seeds
    */
-  seeds: Array<GenerateInputResponsePairStartJobParams.Seed>;
+  seeds: Array<Shared.SDKExample>;
 
   /**
    * The application description for which the synthetic data would be applicable.
@@ -129,23 +129,6 @@ export interface GenerateInputResponsePairStartJobParams {
    * The system prompt to generate the responses for the application's inputs
    */
   system_prompt?: string | null;
-}
-
-export namespace GenerateInputResponsePairStartJobParams {
-  /**
-   * An example for training or evaluation
-   */
-  export interface Seed {
-    /**
-     * The input to LLM
-     */
-    llm_input: string;
-
-    /**
-     * The output to evaluate
-     */
-    llm_output: string;
-  }
 }
 
 export declare namespace GenerateInputResponsePairs {
