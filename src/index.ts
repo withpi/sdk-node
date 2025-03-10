@@ -22,6 +22,7 @@ import {
   ScorerScoreResponse,
   Scorers,
 } from './resources/scorers/scorers';
+import { Training } from './resources/training/training';
 
 export interface ClientOptions {
   /**
@@ -141,6 +142,7 @@ export class PiClient extends Core.APIClient {
   prompt: API.Prompt = new API.Prompt(this);
   scorers: API.Scorers = new API.Scorers(this);
   rag: API.Rag = new API.Rag(this);
+  training: API.Training = new API.Training(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -183,6 +185,7 @@ PiClient.Model = Model;
 PiClient.Prompt = Prompt;
 PiClient.Scorers = Scorers;
 PiClient.Rag = Rag;
+PiClient.Training = Training;
 export declare namespace PiClient {
   export type RequestOptions = Core.RequestOptions;
 
@@ -211,6 +214,8 @@ export declare namespace PiClient {
     type RagClassifyQueryParams as RagClassifyQueryParams,
     type RagGenerateFanoutParams as RagGenerateFanoutParams,
   };
+
+  export { Training as Training };
 
   export type ClassificationStatus = API.ClassificationStatus;
   export type DataGenerationStatus = API.DataGenerationStatus;
