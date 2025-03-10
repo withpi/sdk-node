@@ -60,7 +60,7 @@ describe('resource contracts', () => {
       llm_output: 'The lazy dog was jumped over by the quick brown fox',
       scoring_system: {
         description: "Write a children's story communicating a simple life lesson.",
-        name: 'Sample Contract',
+        name: 'Sample Scoring System',
       },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -79,7 +79,7 @@ describe('resource contracts', () => {
       llm_output: 'The lazy dog was jumped over by the quick brown fox',
       scoring_system: {
         description: "Write a children's story communicating a simple life lesson.",
-        name: 'Sample Contract',
+        name: 'Sample Scoring System',
         dimensions: [
           {
             description: 'Relevance of the response',

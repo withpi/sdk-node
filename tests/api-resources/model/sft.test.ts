@@ -125,7 +125,7 @@ describe('resource sft', () => {
       ],
       scoring_system: {
         description: "Write a children's story communicating a simple life lesson.",
-        name: 'Sample Contract',
+        name: 'Sample Scoring System',
       },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -148,7 +148,7 @@ describe('resource sft', () => {
       ],
       scoring_system: {
         description: "Write a children's story communicating a simple life lesson.",
-        name: 'Sample Contract',
+        name: 'Sample Scoring System',
         dimensions: [
           {
             description: 'Relevance of the response',
