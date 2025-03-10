@@ -59,34 +59,34 @@ Methods:
 - <code title="get /data/generate_synthetic_data/{job_id}/data">client.data.generateSyntheticData.<a href="./src/resources/data/generate-synthetic-data.ts">streamData</a>(jobId) -> GenerateSyntheticDataStreamDataResponse</code>
 - <code title="get /data/generate_synthetic_data/{job_id}/messages">client.data.generateSyntheticData.<a href="./src/resources/data/generate-synthetic-data.ts">streamMessages</a>(jobId) -> string</code>
 
-## Input
+## Inputs
 
 Types:
 
-- <code><a href="./src/resources/data/input/input.ts">InputClusterResponse</a></code>
+- <code><a href="./src/resources/data/inputs/inputs.ts">InputClusterResponse</a></code>
 
 Methods:
 
-- <code title="post /data/input/cluster">client.data.input.<a href="./src/resources/data/input/input.ts">cluster</a>({ ...params }) -> InputClusterResponse</code>
+- <code title="post /data/input/cluster">client.data.inputs.<a href="./src/resources/data/inputs/inputs.ts">cluster</a>({ ...params }) -> InputClusterResponse</code>
 
 ### GenerateFromSeeds
 
 Types:
 
-- <code><a href="./src/resources/data/input/generate-from-seeds.ts">DataGenerationStatus</a></code>
-- <code><a href="./src/resources/data/input/generate-from-seeds.ts">GenerateFromSeedListResponse</a></code>
-- <code><a href="./src/resources/data/input/generate-from-seeds.ts">GenerateFromSeedCancelResponse</a></code>
-- <code><a href="./src/resources/data/input/generate-from-seeds.ts">GenerateFromSeedStreamDataResponse</a></code>
-- <code><a href="./src/resources/data/input/generate-from-seeds.ts">GenerateFromSeedStreamMessagesResponse</a></code>
+- <code><a href="./src/resources/data/inputs/generate-from-seeds.ts">DataGenerationStatus</a></code>
+- <code><a href="./src/resources/data/inputs/generate-from-seeds.ts">GenerateFromSeedListResponse</a></code>
+- <code><a href="./src/resources/data/inputs/generate-from-seeds.ts">GenerateFromSeedCancelResponse</a></code>
+- <code><a href="./src/resources/data/inputs/generate-from-seeds.ts">GenerateFromSeedStreamDataResponse</a></code>
+- <code><a href="./src/resources/data/inputs/generate-from-seeds.ts">GenerateFromSeedStreamMessagesResponse</a></code>
 
 Methods:
 
-- <code title="get /data/input/generate_from_seeds/{job_id}">client.data.input.generateFromSeeds.<a href="./src/resources/data/input/generate-from-seeds.ts">retrieve</a>(jobId) -> DataGenerationStatus</code>
-- <code title="get /data/input/generate_from_seeds">client.data.input.generateFromSeeds.<a href="./src/resources/data/input/generate-from-seeds.ts">list</a>({ ...params }) -> GenerateFromSeedListResponse</code>
-- <code title="delete /data/input/generate_from_seeds/{job_id}">client.data.input.generateFromSeeds.<a href="./src/resources/data/input/generate-from-seeds.ts">cancel</a>(jobId) -> string</code>
-- <code title="post /data/input/generate_from_seeds">client.data.input.generateFromSeeds.<a href="./src/resources/data/input/generate-from-seeds.ts">startJob</a>({ ...params }) -> DataGenerationStatus</code>
-- <code title="get /data/input/generate_from_seeds/{job_id}/data">client.data.input.generateFromSeeds.<a href="./src/resources/data/input/generate-from-seeds.ts">streamData</a>(jobId) -> string</code>
-- <code title="get /data/input/generate_from_seeds/{job_id}/messages">client.data.input.generateFromSeeds.<a href="./src/resources/data/input/generate-from-seeds.ts">streamMessages</a>(jobId) -> string</code>
+- <code title="get /data/input/generate_from_seeds/{job_id}">client.data.inputs.generateFromSeeds.<a href="./src/resources/data/inputs/generate-from-seeds.ts">retrieve</a>(jobId) -> DataGenerationStatus</code>
+- <code title="get /data/input/generate_from_seeds">client.data.inputs.generateFromSeeds.<a href="./src/resources/data/inputs/generate-from-seeds.ts">list</a>({ ...params }) -> GenerateFromSeedListResponse</code>
+- <code title="delete /data/input/generate_from_seeds/{job_id}">client.data.inputs.generateFromSeeds.<a href="./src/resources/data/inputs/generate-from-seeds.ts">cancel</a>(jobId) -> string</code>
+- <code title="post /data/input/generate_from_seeds">client.data.inputs.generateFromSeeds.<a href="./src/resources/data/inputs/generate-from-seeds.ts">startJob</a>({ ...params }) -> DataGenerationStatus</code>
+- <code title="get /data/input/generate_from_seeds/{job_id}/data">client.data.inputs.generateFromSeeds.<a href="./src/resources/data/inputs/generate-from-seeds.ts">streamData</a>(jobId) -> string</code>
+- <code title="get /data/input/generate_from_seeds/{job_id}/messages">client.data.inputs.generateFromSeeds.<a href="./src/resources/data/inputs/generate-from-seeds.ts">streamMessages</a>(jobId) -> string</code>
 
 # Model
 

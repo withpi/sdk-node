@@ -13,4 +13,4 @@ export {
   type GenerateSyntheticDataListParams,
   type GenerateSyntheticDataStartJobParams,
 } from './generate-synthetic-data';
-export { Input, type InputClusterResponse, type InputClusterParams } from './input/index';
+export { Inputs, type InputClusterResponse, type InputClusterParams } from './inputs/index';
