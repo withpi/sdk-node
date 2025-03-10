@@ -7,12 +7,12 @@ import * as CalibrateAPI from './calibrate';
 import {
   Calibrate,
   CalibrateCancelResponse,
-  CalibrateCreateParams,
-  CalibrateCreateResponse,
   CalibrateListParams,
   CalibrateListResponse,
   CalibrateMessagesResponse,
   CalibrateRetrieveResponse,
+  CalibrateStartJobParams,
+  CalibrateStartJobResponse,
 } from './calibrate';
 
 export class ScoringSystem extends APIResource {
@@ -100,12 +100,12 @@ export declare namespace ScoringSystem {
 
   export {
     Calibrate as Calibrate,
-    type CalibrateCreateResponse as CalibrateCreateResponse,
     type CalibrateRetrieveResponse as CalibrateRetrieveResponse,
     type CalibrateListResponse as CalibrateListResponse,
     type CalibrateCancelResponse as CalibrateCancelResponse,
     type CalibrateMessagesResponse as CalibrateMessagesResponse,
-    type CalibrateCreateParams as CalibrateCreateParams,
+    type CalibrateStartJobResponse as CalibrateStartJobResponse,
     type CalibrateListParams as CalibrateListParams,
+    type CalibrateStartJobParams as CalibrateStartJobParams,
   };
 }
