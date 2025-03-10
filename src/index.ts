@@ -5,7 +5,6 @@ import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
-import { Queries } from './resources/queries';
 import {
   Rag,
   RagClassifyQueryParams,
@@ -140,7 +139,6 @@ export class PiClient extends Core.APIClient {
   data: API.Data = new API.Data(this);
   model: API.Model = new API.Model(this);
   prompt: API.Prompt = new API.Prompt(this);
-  queries: API.Queries = new API.Queries(this);
   scorers: API.Scorers = new API.Scorers(this);
   rag: API.Rag = new API.Rag(this);
 
@@ -183,7 +181,6 @@ export class PiClient extends Core.APIClient {
 PiClient.Data = Data;
 PiClient.Model = Model;
 PiClient.Prompt = Prompt;
-PiClient.Queries = Queries;
 PiClient.Scorers = Scorers;
 PiClient.Rag = Rag;
 export declare namespace PiClient {
@@ -198,8 +195,6 @@ export declare namespace PiClient {
   export { Model as Model };
 
   export { Prompt as Prompt };
-
-  export { Queries as Queries };
 
   export {
     Scorers as Scorers,

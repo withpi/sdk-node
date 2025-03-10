@@ -18,13 +18,13 @@ import {
   GrpoCancelResponse,
   GrpoDownloadParams,
   GrpoDownloadResponse,
-  GrpoLaunchParams,
-  GrpoLaunchResponse,
   GrpoListParams,
   GrpoListResponse,
   GrpoLoadResponse,
-  GrpoMessagesResponse,
-  GrpoStatusResponse,
+  GrpoRetrieveResponse,
+  GrpoStartJobParams,
+  GrpoStartJobResponse,
+  GrpoStreamMessagesResponse,
 } from './grpo';
 import * as SftAPI from './sft';
 import {
@@ -79,15 +79,15 @@ export declare namespace Model {
 
   export {
     Grpo as Grpo,
+    type GrpoRetrieveResponse as GrpoRetrieveResponse,
     type GrpoListResponse as GrpoListResponse,
     type GrpoCancelResponse as GrpoCancelResponse,
     type GrpoDownloadResponse as GrpoDownloadResponse,
-    type GrpoLaunchResponse as GrpoLaunchResponse,
     type GrpoLoadResponse as GrpoLoadResponse,
-    type GrpoMessagesResponse as GrpoMessagesResponse,
-    type GrpoStatusResponse as GrpoStatusResponse,
+    type GrpoStartJobResponse as GrpoStartJobResponse,
+    type GrpoStreamMessagesResponse as GrpoStreamMessagesResponse,
     type GrpoListParams as GrpoListParams,
     type GrpoDownloadParams as GrpoDownloadParams,
-    type GrpoLaunchParams as GrpoLaunchParams,
+    type GrpoStartJobParams as GrpoStartJobParams,
   };
 }
