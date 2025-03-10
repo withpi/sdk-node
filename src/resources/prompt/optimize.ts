@@ -36,7 +36,7 @@ export class Optimize extends APIResource {
   }
 
   /**
-   * Launches a Prompt Optimization job
+   * Starts a Prompt Optimization job
    */
   startJob(
     body: OptimizeStartJobParams,
