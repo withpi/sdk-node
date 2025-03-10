@@ -95,12 +95,12 @@ export interface GenerateInputResponsePairListParams {
 
 export interface GenerateInputResponsePairStartJobParams {
   /**
-   * The number of new LLM examples to generate
+   * The number of new LLM input-response pairs to generate
    */
-  num_examples_to_generate: number;
+  num_pairs_to_generate: number;
 
   /**
-   * The list of LLM examples (inputs + outputs) to be used as seeds
+   * The list of LLM input response-pairs to be used as seeds
    */
   seeds: Array<Shared.SDKExample>;
 
@@ -110,18 +110,18 @@ export interface GenerateInputResponsePairStartJobParams {
   application_description?: string | null;
 
   /**
-   * Number of examples to generate in one LLM call. Must be <=10. Generally it could
-   * be same as `num_shots`.
+   * Number of input-response pairs to generate in one LLM call. Must be <=10.
+   * Generally it could be same as `num_shots`.
    */
   batch_size?: number;
 
   /**
-   * The exploration mode for examples generation. Defaults to `BALANCED`
+   * The exploration mode for input-response pairs generation. Defaults to `BALANCED`
    */
   exploration_mode?: Shared.ExplorationMode;
 
   /**
-   * Number of examples to be included in the prompt for generation
+   * Number of input-response pairs to be included in the prompt for generation
    */
   num_shots?: number;
 
