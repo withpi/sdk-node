@@ -55,7 +55,7 @@ export class Grpo extends APIResource {
   }
 
   /**
-   * Launches a RL GRPO job
+   * Starts a RL GRPO job
    */
   startJob(body: GrpoStartJobParams, options?: Core.RequestOptions): Core.APIPromise<GrpoStartJobResponse> {
     return this._client.post('/training/grpo', { body, ...options });
