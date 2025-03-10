@@ -41,34 +41,8 @@ export class ScoringSystem extends APIResource {
   score(
     body: ScoringSystemScoreParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<ScoringSystemScoreResponse> {
+  ): Core.APIPromise<Shared.ScoringSystemMetrics> {
     return this._client.post('/scoring_system/score', { body, ...options });
-  }
-}
-
-export interface ScoringSystemScoreResponse {
-  /**
-   * The score components for each dimension
-   */
-  dimension_scores: Record<string, ScoringSystemScoreResponse.DimensionScores>;
-
-  /**
-   * The total score of the scoring system
-   */
-  total_score: number;
-}
-
-export namespace ScoringSystemScoreResponse {
-  export interface DimensionScores {
-    /**
-     * The score components for each subdimension
-     */
-    subdimension_scores: Record<string, number>;
-
-    /**
-     * The total score of the dimension
-     */
-    total_score: number;
   }
 }
 
@@ -119,7 +93,6 @@ ScoringSystem.Calibrate = Calibrate;
 
 export declare namespace ScoringSystem {
   export {
-    type ScoringSystemScoreResponse as ScoringSystemScoreResponse,
     type ScoringSystemFromHuggingfaceParams as ScoringSystemFromHuggingfaceParams,
     type ScoringSystemGenerateParams as ScoringSystemGenerateParams,
     type ScoringSystemScoreParams as ScoringSystemScoreParams,
