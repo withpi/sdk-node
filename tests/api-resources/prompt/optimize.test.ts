@@ -80,10 +80,6 @@ describe('resource optimize', () => {
   // skipped: tests are disabled for the time being
   test.skip('startJob: only required params', async () => {
     const responsePromise = client.prompt.optimize.startJob({
-      contract: {
-        description: "Write a children's story communicating a simple life lesson.",
-        name: 'Sample Contract',
-      },
       examples: [
         {
           llm_input: 'Tell me something different',
@@ -92,6 +88,10 @@ describe('resource optimize', () => {
       ],
       initial_system_instruction: 'Write a great story around the given topic.',
       model_id: 'gpt-4o-mini',
+      scoring_system: {
+        description: "Write a children's story communicating a simple life lesson.",
+        name: 'Sample Scoring System',
+      },
       tuning_algorithm: 'PI',
     });
     const rawResponse = await responsePromise.asResponse();
@@ -106,9 +106,17 @@ describe('resource optimize', () => {
   // skipped: tests are disabled for the time being
   test.skip('startJob: required and optional params', async () => {
     const response = await client.prompt.optimize.startJob({
-      contract: {
+      examples: [
+        {
+          llm_input: 'Tell me something different',
+          llm_output: 'The lazy dog was jumped over by the quick brown fox',
+        },
+      ],
+      initial_system_instruction: 'Write a great story around the given topic.',
+      model_id: 'gpt-4o-mini',
+      scoring_system: {
         description: "Write a children's story communicating a simple life lesson.",
-        name: 'Sample Contract',
+        name: 'Sample Scoring System',
         dimensions: [
           {
             description: 'Relevance of the response',
@@ -136,14 +144,6 @@ describe('resource optimize', () => {
           },
         ],
       },
-      examples: [
-        {
-          llm_input: 'Tell me something different',
-          llm_output: 'The lazy dog was jumped over by the quick brown fox',
-        },
-      ],
-      initial_system_instruction: 'Write a great story around the given topic.',
-      model_id: 'gpt-4o-mini',
       tuning_algorithm: 'PI',
       dspy_optimization_type: 'BOOTSTRAP_FEW_SHOT',
       use_chain_of_thought: false,

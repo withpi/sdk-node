@@ -1,5 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+import * as Shared from './shared';
 import * as CalibrateAPI from './contracts/calibrate';
 import * as ClassifierAPI from './model/classifier';
 
@@ -43,8 +44,41 @@ export interface ScoringSystem {
   /**
    * The dimensions of the scoring system
    */
-  dimensions?: Array<SDKDimension>;
+  dimensions?: Array<ScoringSystem.Dimension>;
   [k: string]: unknown;
+}
+
+export namespace ScoringSystem {
+  export interface Dimension {
+    /**
+     * The description of the dimension
+     */
+    description: string;
+
+    /**
+     * The label of the dimension
+     */
+    label: string;
+
+    /**
+     * The sub dimensions of the dimension
+     */
+    sub_dimensions: Array<Shared.SDKSubDimension>;
+
+    /**
+     * The learned parameters for the scoring method. This represents piecewise linear
+     * interpolation between [0, 1].
+     */
+    parameters?: Array<number> | null;
+
+    /**
+     * The weight of the dimension The sum of dimension weights will be normalized to
+     * one internally. A higher weight counts for more when aggregating this dimension
+     * is aggregated into the final score.
+     */
+    weight?: number | null;
+    [k: string]: unknown;
+  }
 }
 
 export interface ScoringSystemMetrics {
@@ -71,55 +105,6 @@ export namespace ScoringSystemMetrics {
      */
     total_score: number;
   }
-}
-
-export interface SDKContract {
-  /**
-   * The description of the contract
-   */
-  description: string;
-
-  /**
-   * The name of the contract
-   */
-  name: string;
-
-  /**
-   * The dimensions of the contract
-   */
-  dimensions?: Array<SDKDimension>;
-  [k: string]: unknown;
-}
-
-export interface SDKDimension {
-  /**
-   * The description of the dimension
-   */
-  description: string;
-
-  /**
-   * The label of the dimension
-   */
-  label: string;
-
-  /**
-   * The sub dimensions of the dimension
-   */
-  sub_dimensions: Array<SDKSubDimension>;
-
-  /**
-   * The learned parameters for the scoring method. This represents piecewise linear
-   * interpolation between [0, 1].
-   */
-  parameters?: Array<number> | null;
-
-  /**
-   * The weight of the dimension The sum of dimension weights will be normalized to
-   * one internally. A higher weight counts for more when aggregating this dimension
-   * is aggregated into the final score.
-   */
-  weight?: number | null;
-  [k: string]: unknown;
 }
 
 /**

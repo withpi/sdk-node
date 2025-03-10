@@ -156,7 +156,7 @@ export interface GrpoStartJobParams {
   /**
    * The scoring system to use in the GRPO tuning process
    */
-  scoring_system: Shared.SDKContract;
+  scoring_system: Shared.ScoringSystem;
 
   /**
    * A custom system prompt to use during the RL tuning process

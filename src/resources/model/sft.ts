@@ -99,7 +99,7 @@ export interface SftStartJobParams {
   /**
    * The scoring system to use in the SFT tuning process
    */
-  scoring_system: Shared.SDKContract;
+  scoring_system: Shared.ScoringSystem;
 
   /**
    * The base model to start the SFT tuning process.
