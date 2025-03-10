@@ -10,6 +10,7 @@ Types:
 - <code><a href="./src/resources/shared.ts">Scorer</a></code>
 - <code><a href="./src/resources/shared.ts">ScorerDimension</a></code>
 - <code><a href="./src/resources/shared.ts">ScorerSubDimension</a></code>
+- <code><a href="./src/resources/shared.ts">ScoringSystemMetrics</a></code>
 - <code><a href="./src/resources/shared.ts">SftStatus</a></code>
 - <code><a href="./src/resources/shared.ts">SyntheticDataStatus</a></code>
 - <code><a href="./src/resources/shared.ts">TrainedModel</a></code>
@@ -123,15 +124,11 @@ Methods:
 
 # ScoringSystem
 
-Types:
-
-- <code><a href="./src/resources/scoring-system/scoring-system.ts">ScoringSystemScoreResponse</a></code>
-
 Methods:
 
 - <code title="post /scoring_system/from_huggingface">client.scoringSystem.<a href="./src/resources/scoring-system/scoring-system.ts">fromHuggingface</a>({ ...params }) -> Scorer</code>
 - <code title="post /scoring_system/generate">client.scoringSystem.<a href="./src/resources/scoring-system/scoring-system.ts">generate</a>({ ...params }) -> Scorer</code>
-- <code title="post /scoring_system/score">client.scoringSystem.<a href="./src/resources/scoring-system/scoring-system.ts">score</a>({ ...params }) -> ScoringSystemScoreResponse</code>
+- <code title="post /scoring_system/score">client.scoringSystem.<a href="./src/resources/scoring-system/scoring-system.ts">score</a>({ ...params }) -> ScoringSystemMetrics</code>
 
 ## Calibrate
 
