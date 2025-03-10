@@ -7,16 +7,6 @@ import * as Shared from '../../shared';
 
 export class Distill extends APIResource {
   /**
-   * Launches a Query Classifier Distillation job
-   */
-  create(
-    body: DistillCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ClassificationStatus> {
-    return this._client.post('/search/query_classifier/distill', { body, ...options });
-  }
-
-  /**
    * Checks the status of a Query Classifier Distillation job
    */
   retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.ClassificationStatus> {
@@ -61,9 +51,19 @@ export class Distill extends APIResource {
   }
 
   /**
+   * Launches a Query Classifier Distillation job
+   */
+  startJob(
+    body: DistillStartJobParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Shared.ClassificationStatus> {
+    return this._client.post('/search/query_classifier/distill', { body, ...options });
+  }
+
+  /**
    * Opens a message stream about a Query Classifier Distillation job
    */
-  messages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+  streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.get(`/search/query_classifier/distill/${jobId}/messages`, {
       ...options,
       headers: { Accept: 'text/plain', ...options?.headers },
@@ -77,9 +77,20 @@ export type DistillCancelResponse = string;
 
 export type DistillDownloadResponse = string;
 
-export type DistillMessagesResponse = string;
+export type DistillStreamMessagesResponse = string;
 
-export interface DistillCreateParams {
+export interface DistillListParams {
+  /**
+   * Filter jobs by state
+   */
+  state?: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED' | null;
+}
+
+export interface DistillDownloadParams {
+  serving_id: number;
+}
+
+export interface DistillStartJobParams {
   /**
    * The base model to start the classification tuning process
    */
@@ -88,7 +99,7 @@ export interface DistillCreateParams {
   /**
    * Examples to use in the classification tuning process
    */
-  examples: Array<DistillCreateParams.Example>;
+  examples: Array<DistillStartJobParams.Example>;
 
   /**
    * Classification learning rate
@@ -101,7 +112,7 @@ export interface DistillCreateParams {
   num_train_epochs?: number;
 }
 
-export namespace DistillCreateParams {
+export namespace DistillStartJobParams {
   /**
    * An example for training or evaluation
    */
@@ -118,25 +129,14 @@ export namespace DistillCreateParams {
   }
 }
 
-export interface DistillListParams {
-  /**
-   * Filter jobs by state
-   */
-  state?: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED' | null;
-}
-
-export interface DistillDownloadParams {
-  serving_id: number;
-}
-
 export declare namespace Distill {
   export {
     type DistillListResponse as DistillListResponse,
     type DistillCancelResponse as DistillCancelResponse,
     type DistillDownloadResponse as DistillDownloadResponse,
-    type DistillMessagesResponse as DistillMessagesResponse,
-    type DistillCreateParams as DistillCreateParams,
+    type DistillStreamMessagesResponse as DistillStreamMessagesResponse,
     type DistillListParams as DistillListParams,
     type DistillDownloadParams as DistillDownloadParams,
+    type DistillStartJobParams as DistillStartJobParams,
   };
 }

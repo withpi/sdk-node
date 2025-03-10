@@ -10,6 +10,26 @@ const client = new PiClient({
 
 describe('resource sft', () => {
   // skipped: tests are disabled for the time being
+  test.skip('retrieve', async () => {
+    const responsePromise = client.training.sft.retrieve('job_id');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('retrieve: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.training.sft.retrieve('job_id', { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(PiClient.NotFoundError);
+  });
+
+  // skipped: tests are disabled for the time being
   test.skip('list', async () => {
     const responsePromise = client.training.sft.list();
     const rawResponse = await responsePromise.asResponse();
@@ -75,8 +95,28 @@ describe('resource sft', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('launch: only required params', async () => {
-    const responsePromise = client.training.sft.launch({
+  test.skip('load', async () => {
+    const responsePromise = client.training.sft.load('job_id');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('load: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(client.training.sft.load('job_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+      PiClient.NotFoundError,
+    );
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('startJob: only required params', async () => {
+    const responsePromise = client.training.sft.startJob({
       examples: [
         {
           llm_input: 'Tell me something different',
@@ -98,8 +138,8 @@ describe('resource sft', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('launch: required and optional params', async () => {
-    const response = await client.training.sft.launch({
+  test.skip('startJob: required and optional params', async () => {
+    const response = await client.training.sft.startJob({
       examples: [
         {
           llm_input: 'Tell me something different',
@@ -145,8 +185,8 @@ describe('resource sft', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('load', async () => {
-    const responsePromise = client.training.sft.load('job_id');
+  test.skip('streamMessages', async () => {
+    const responsePromise = client.training.sft.streamMessages('job_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -157,50 +197,10 @@ describe('resource sft', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('load: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.training.sft.load('job_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      PiClient.NotFoundError,
-    );
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('messages', async () => {
-    const responsePromise = client.training.sft.messages('job_id');
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('messages: request options instead of params are passed correctly', async () => {
+  test.skip('streamMessages: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.training.sft.messages('job_id', { path: '/_stainless_unknown_path' }),
+      client.training.sft.streamMessages('job_id', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(PiClient.NotFoundError);
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('status', async () => {
-    const responsePromise = client.training.sft.status('job_id');
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('status: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.training.sft.status('job_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      PiClient.NotFoundError,
-    );
   });
 });

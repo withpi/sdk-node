@@ -7,16 +7,6 @@ import * as Shared from '../shared';
 
 export class Generate extends APIResource {
   /**
-   * Launches a Generation Data job
-   */
-  create(
-    body: GenerateCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.DataGenerationStatus> {
-    return this._client.post('/data/generate', { body, ...options });
-  }
-
-  /**
    * Checks the status of a Generation Data job
    */
   retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.DataGenerationStatus> {
@@ -43,6 +33,16 @@ export class Generate extends APIResource {
    */
   cancel(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.delete(`/data/generate/${jobId}`, options);
+  }
+
+  /**
+   * Launches a Generation Data job
+   */
+  startJob(
+    body: GenerateStartJobParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Shared.DataGenerationStatus> {
+    return this._client.post('/data/generate', { body, ...options });
   }
 
   /**
@@ -74,7 +74,14 @@ export type GenerateStreamDataResponse = string;
 
 export type GenerateStreamMessagesResponse = string;
 
-export interface GenerateCreateParams {
+export interface GenerateListParams {
+  /**
+   * Filter jobs by state
+   */
+  state?: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED' | null;
+}
+
+export interface GenerateStartJobParams {
   /**
    * The application description for which the inputs would be applicable.
    */
@@ -108,20 +115,13 @@ export interface GenerateCreateParams {
   num_shots?: number;
 }
 
-export interface GenerateListParams {
-  /**
-   * Filter jobs by state
-   */
-  state?: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED' | null;
-}
-
 export declare namespace Generate {
   export {
     type GenerateListResponse as GenerateListResponse,
     type GenerateCancelResponse as GenerateCancelResponse,
     type GenerateStreamDataResponse as GenerateStreamDataResponse,
     type GenerateStreamMessagesResponse as GenerateStreamMessagesResponse,
-    type GenerateCreateParams as GenerateCreateParams,
     type GenerateListParams as GenerateListParams,
+    type GenerateStartJobParams as GenerateStartJobParams,
   };
 }

@@ -7,6 +7,13 @@ import * as Shared from '../shared';
 
 export class Sft extends APIResource {
   /**
+   * Checks the status of a SFT job
+   */
+  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<SftRetrieveResponse> {
+    return this._client.get(`/training/sft/${jobId}`, options);
+  }
+
+  /**
    * Lists the SFT Jobs owned by a user
    */
   list(query?: SftListParams, options?: Core.RequestOptions): Core.APIPromise<SftListResponse>;
@@ -37,13 +44,6 @@ export class Sft extends APIResource {
   }
 
   /**
-   * Launches a SFT job
-   */
-  launch(body: SftLaunchParams, options?: Core.RequestOptions): Core.APIPromise<SftLaunchResponse> {
-    return this._client.post('/training/sft', { body, ...options });
-  }
-
-  /**
    * Loads a SFT model into serving for a limited period of time
    */
   load(jobId: string, options?: Core.RequestOptions): Core.APIPromise<SftLoadResponse> {
@@ -51,21 +51,46 @@ export class Sft extends APIResource {
   }
 
   /**
+   * Launches a SFT job
+   */
+  startJob(body: SftStartJobParams, options?: Core.RequestOptions): Core.APIPromise<SftStartJobResponse> {
+    return this._client.post('/training/sft', { body, ...options });
+  }
+
+  /**
    * Opens a message stream about a SFT job
    */
-  messages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+  streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.get(`/training/sft/${jobId}/messages`, {
       ...options,
       headers: { Accept: 'text/plain', ...options?.headers },
     });
   }
+}
+
+/**
+ * SftStatus is the status of a SFT job.
+ */
+export interface SftRetrieveResponse {
+  /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
 
   /**
-   * Checks the status of a SFT job
+   * The job id
    */
-  status(jobId: string, options?: Core.RequestOptions): Core.APIPromise<SftStatusResponse> {
-    return this._client.get(`/training/sft/${jobId}`, options);
-  }
+  job_id: string;
+
+  /**
+   * Current state of the job
+   */
+  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
+
+  /**
+   * A list of trained models selected based on the PI Contract score.
+   */
+  trained_models?: Array<Shared.TrainedModel> | null;
 }
 
 export type SftListResponse = Array<SftListResponse.SftListResponseItem>;
@@ -104,31 +129,6 @@ export type SftDownloadResponse = string;
 /**
  * SftStatus is the status of a SFT job.
  */
-export interface SftLaunchResponse {
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
-
-  /**
-   * The job id
-   */
-  job_id: string;
-
-  /**
-   * Current state of the job
-   */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
-
-  /**
-   * A list of trained models selected based on the PI Contract score.
-   */
-  trained_models?: Array<Shared.TrainedModel> | null;
-}
-
-/**
- * SftStatus is the status of a SFT job.
- */
 export interface SftLoadResponse {
   /**
    * Detailed status of the job
@@ -151,12 +151,10 @@ export interface SftLoadResponse {
   trained_models?: Array<Shared.TrainedModel> | null;
 }
 
-export type SftMessagesResponse = string;
-
 /**
  * SftStatus is the status of a SFT job.
  */
-export interface SftStatusResponse {
+export interface SftStartJobResponse {
   /**
    * Detailed status of the job
    */
@@ -178,6 +176,8 @@ export interface SftStatusResponse {
   trained_models?: Array<Shared.TrainedModel> | null;
 }
 
+export type SftStreamMessagesResponse = string;
+
 export interface SftListParams {
   /**
    * Filter jobs by state
@@ -189,12 +189,12 @@ export interface SftDownloadParams {
   serving_id: number;
 }
 
-export interface SftLaunchParams {
+export interface SftStartJobParams {
   /**
    * Examples to use in the SFT tuning process. We split this data into train/eval
    * 90/10.
    */
-  examples: Array<SftLaunchParams.Example>;
+  examples: Array<SftStartJobParams.Example>;
 
   /**
    * The scoring system to use in the SFT tuning process
@@ -214,7 +214,7 @@ export interface SftLaunchParams {
   /**
    * The LoRA configuration.
    */
-  lora_config?: SftLaunchParams.LoraConfig;
+  lora_config?: SftStartJobParams.LoraConfig;
 
   /**
    * SFT number of train epochs: <= 10.
@@ -227,7 +227,7 @@ export interface SftLaunchParams {
   system_prompt?: string | null;
 }
 
-export namespace SftLaunchParams {
+export namespace SftStartJobParams {
   /**
    * An example for training or evaluation
    */
@@ -256,15 +256,15 @@ export namespace SftLaunchParams {
 
 export declare namespace Sft {
   export {
+    type SftRetrieveResponse as SftRetrieveResponse,
     type SftListResponse as SftListResponse,
     type SftCancelResponse as SftCancelResponse,
     type SftDownloadResponse as SftDownloadResponse,
-    type SftLaunchResponse as SftLaunchResponse,
     type SftLoadResponse as SftLoadResponse,
-    type SftMessagesResponse as SftMessagesResponse,
-    type SftStatusResponse as SftStatusResponse,
+    type SftStartJobResponse as SftStartJobResponse,
+    type SftStreamMessagesResponse as SftStreamMessagesResponse,
     type SftListParams as SftListParams,
     type SftDownloadParams as SftDownloadParams,
-    type SftLaunchParams as SftLaunchParams,
+    type SftStartJobParams as SftStartJobParams,
   };
 }

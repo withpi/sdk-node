@@ -5,14 +5,12 @@ import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
-import { Rag } from './resources/rag';
 import { Data, DataClusterInputsParams, DataClusterInputsResponse } from './resources/data/data';
 import { Prompt } from './resources/prompt/prompt';
-import { Scorers } from './resources/scorers/scorers';
 import {
   ScoringSystem,
+  ScoringSystemFromHuggingfaceParams,
   ScoringSystemGenerateParams,
-  ScoringSystemReadFromHuggingfaceParams,
   ScoringSystemScoreParams,
   ScoringSystemScoreResponse,
 } from './resources/scoring-system/scoring-system';
@@ -135,8 +133,6 @@ export class PiClient extends Core.APIClient {
   data: API.Data = new API.Data(this);
   training: API.Training = new API.Training(this);
   prompt: API.Prompt = new API.Prompt(this);
-  scorers: API.Scorers = new API.Scorers(this);
-  rag: API.Rag = new API.Rag(this);
   scoringSystem: API.ScoringSystem = new API.ScoringSystem(this);
   search: API.Search = new API.Search(this);
 
@@ -179,8 +175,6 @@ export class PiClient extends Core.APIClient {
 PiClient.Data = Data;
 PiClient.Training = Training;
 PiClient.Prompt = Prompt;
-PiClient.Scorers = Scorers;
-PiClient.Rag = Rag;
 PiClient.ScoringSystem = ScoringSystem;
 PiClient.Search = Search;
 export declare namespace PiClient {
@@ -196,15 +190,11 @@ export declare namespace PiClient {
 
   export { Prompt as Prompt };
 
-  export { Scorers as Scorers };
-
-  export { Rag as Rag };
-
   export {
     ScoringSystem as ScoringSystem,
     type ScoringSystemScoreResponse as ScoringSystemScoreResponse,
+    type ScoringSystemFromHuggingfaceParams as ScoringSystemFromHuggingfaceParams,
     type ScoringSystemGenerateParams as ScoringSystemGenerateParams,
-    type ScoringSystemReadFromHuggingfaceParams as ScoringSystemReadFromHuggingfaceParams,
     type ScoringSystemScoreParams as ScoringSystemScoreParams,
   };
 
