@@ -14,7 +14,7 @@ import {
   GenerateFromSeeds,
 } from './generate-from-seeds';
 
-export class Input extends APIResource {
+export class Inputs extends APIResource {
   generateFromSeeds: GenerateFromSeedsAPI.GenerateFromSeeds = new GenerateFromSeedsAPI.GenerateFromSeeds(
     this._client,
   );
@@ -69,9 +69,9 @@ export namespace InputClusterParams {
   }
 }
 
-Input.GenerateFromSeeds = GenerateFromSeeds;
+Inputs.GenerateFromSeeds = GenerateFromSeeds;
 
-export declare namespace Input {
+export declare namespace Inputs {
   export { type InputClusterResponse as InputClusterResponse, type InputClusterParams as InputClusterParams };
 
   export {
