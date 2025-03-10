@@ -7,8 +7,8 @@ export {
   type GenerateExampleCancelResponse,
   type GenerateExampleStreamDataResponse,
   type GenerateExampleStreamMessagesResponse,
-  type GenerateExampleCreateParams,
   type GenerateExampleListParams,
+  type GenerateExampleStartJobParams,
 } from './generate-examples';
 export {
   GenerateInputs,

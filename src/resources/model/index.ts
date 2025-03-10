@@ -12,16 +12,16 @@ export {
 } from './classifier';
 export {
   Grpo,
+  type GrpoRetrieveResponse,
   type GrpoListResponse,
   type GrpoCancelResponse,
   type GrpoDownloadResponse,
-  type GrpoLaunchResponse,
   type GrpoLoadResponse,
-  type GrpoMessagesResponse,
-  type GrpoStatusResponse,
+  type GrpoStartJobResponse,
+  type GrpoStreamMessagesResponse,
   type GrpoListParams,
   type GrpoDownloadParams,
-  type GrpoLaunchParams,
+  type GrpoStartJobParams,
 } from './grpo';
 export { Model } from './model';
 export {
