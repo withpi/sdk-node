@@ -77,7 +77,7 @@ export interface ContractCalibrationStatus {
   /**
    * The calibrated contract
    */
-  calibrated_contract?: Shared.SDKContract | null;
+  calibrated_contract?: Shared.ScoringSystem | null;
 }
 
 /**
@@ -139,7 +139,7 @@ export interface CalibrateStartJobParams {
   /**
    * The scoring system to calibrate
    */
-  scoring_system: Shared.SDKContract;
+  scoring_system: Shared.ScoringSystem;
 
   /**
    * Rated examples to use when calibrating the scoring system. Must specify either

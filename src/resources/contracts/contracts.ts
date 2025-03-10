@@ -27,7 +27,7 @@ export class Contracts extends APIResource {
   generateDimensions(
     body: ContractGenerateDimensionsParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.SDKContract> {
+  ): Core.APIPromise<Shared.ScoringSystem> {
     return this._client.post('/contracts/generate_dimensions', { body, ...options });
   }
 
@@ -37,7 +37,7 @@ export class Contracts extends APIResource {
   readFromHf(
     body: ContractReadFromHfParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.SDKContract> {
+  ): Core.APIPromise<Shared.ScoringSystem> {
     return this._client.post('/contracts/read_from_hf', { body, ...options });
   }
 
@@ -93,7 +93,7 @@ export interface ContractScoreParams {
   /**
    * The scoring system to score
    */
-  scoring_system: Shared.SDKContract;
+  scoring_system: Shared.ScoringSystem;
 }
 
 Contracts.Calibrate = Calibrate;

@@ -124,7 +124,7 @@ describe('resource grpo', () => {
       num_train_epochs: 10,
       scoring_system: {
         description: "Write a children's story communicating a simple life lesson.",
-        name: 'Sample Contract',
+        name: 'Sample Scoring System',
       },
       system_prompt: 'An optional system prompt.',
     });
@@ -147,7 +147,7 @@ describe('resource grpo', () => {
       num_train_epochs: 10,
       scoring_system: {
         description: "Write a children's story communicating a simple life lesson.",
-        name: 'Sample Contract',
+        name: 'Sample Scoring System',
         dimensions: [
           {
             description: 'Relevance of the response',
