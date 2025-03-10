@@ -11,7 +11,7 @@ const client = new PiClient({
 describe('resource calibrate', () => {
   // skipped: tests are disabled for the time being
   test.skip('create: only required params', async () => {
-    const responsePromise = client.scorer.calibrate.create({
+    const responsePromise = client.scorers.calibrate.create({
       scorer: {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Scoring System',
@@ -28,7 +28,7 @@ describe('resource calibrate', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('create: required and optional params', async () => {
-    const response = await client.scorer.calibrate.create({
+    const response = await client.scorers.calibrate.create({
       scorer: {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Scoring System',
@@ -79,7 +79,7 @@ describe('resource calibrate', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('retrieve', async () => {
-    const responsePromise = client.scorer.calibrate.retrieve('job_id');
+    const responsePromise = client.scorers.calibrate.retrieve('job_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -93,13 +93,13 @@ describe('resource calibrate', () => {
   test.skip('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.scorer.calibrate.retrieve('job_id', { path: '/_stainless_unknown_path' }),
+      client.scorers.calibrate.retrieve('job_id', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(PiClient.NotFoundError);
   });
 
   // skipped: tests are disabled for the time being
   test.skip('list', async () => {
-    const responsePromise = client.scorer.calibrate.list();
+    const responsePromise = client.scorers.calibrate.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -112,7 +112,7 @@ describe('resource calibrate', () => {
   // skipped: tests are disabled for the time being
   test.skip('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.scorer.calibrate.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.scorers.calibrate.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       PiClient.NotFoundError,
     );
   });
@@ -121,13 +121,13 @@ describe('resource calibrate', () => {
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.scorer.calibrate.list({ state: 'QUEUED' }, { path: '/_stainless_unknown_path' }),
+      client.scorers.calibrate.list({ state: 'QUEUED' }, { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(PiClient.NotFoundError);
   });
 
   // skipped: tests are disabled for the time being
   test.skip('cancel', async () => {
-    const responsePromise = client.scorer.calibrate.cancel('job_id');
+    const responsePromise = client.scorers.calibrate.cancel('job_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -141,13 +141,13 @@ describe('resource calibrate', () => {
   test.skip('cancel: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.scorer.calibrate.cancel('job_id', { path: '/_stainless_unknown_path' }),
+      client.scorers.calibrate.cancel('job_id', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(PiClient.NotFoundError);
   });
 
   // skipped: tests are disabled for the time being
   test.skip('messages', async () => {
-    const responsePromise = client.scorer.calibrate.messages('job_id');
+    const responsePromise = client.scorers.calibrate.messages('job_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -161,7 +161,7 @@ describe('resource calibrate', () => {
   test.skip('messages: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.scorer.calibrate.messages('job_id', { path: '/_stainless_unknown_path' }),
+      client.scorers.calibrate.messages('job_id', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(PiClient.NotFoundError);
   });
 });

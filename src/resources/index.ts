@@ -12,9 +12,9 @@ export {
   type QueryGenerateFanoutsParams,
 } from './queries';
 export {
-  Scorer,
+  Scorers,
   type ScorerScoreResponse,
   type ScorerGenerateDimensionsParams,
   type ScorerReadFromHfParams,
   type ScorerScoreParams,
-} from './scorer/scorer';
+} from './scorers/scorers';

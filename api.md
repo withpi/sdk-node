@@ -153,32 +153,32 @@ Methods:
 - <code title="post /queries/classify">client.queries.<a href="./src/resources/queries.ts">classify</a>({ ...params }) -> QueryClassifyResponse</code>
 - <code title="post /queries/generate_fanouts">client.queries.<a href="./src/resources/queries.ts">generateFanouts</a>({ ...params }) -> QueryGenerateFanoutsResponse</code>
 
-# Scorer
+# Scorers
 
 Types:
 
-- <code><a href="./src/resources/scorer/scorer.ts">ScorerScoreResponse</a></code>
+- <code><a href="./src/resources/scorers/scorers.ts">ScorerScoreResponse</a></code>
 
 Methods:
 
-- <code title="post /scorer/generate_dimensions">client.scorer.<a href="./src/resources/scorer/scorer.ts">generateDimensions</a>({ ...params }) -> Scorer</code>
-- <code title="post /scorer/read_from_hf">client.scorer.<a href="./src/resources/scorer/scorer.ts">readFromHf</a>({ ...params }) -> Scorer</code>
-- <code title="post /scorer/score">client.scorer.<a href="./src/resources/scorer/scorer.ts">score</a>({ ...params }) -> ScorerScoreResponse</code>
+- <code title="post /scorers/generate_dimensions">client.scorers.<a href="./src/resources/scorers/scorers.ts">generateDimensions</a>({ ...params }) -> Scorer</code>
+- <code title="post /scorers/read_from_hf">client.scorers.<a href="./src/resources/scorers/scorers.ts">readFromHf</a>({ ...params }) -> Scorer</code>
+- <code title="post /scorers/score">client.scorers.<a href="./src/resources/scorers/scorers.ts">score</a>({ ...params }) -> ScorerScoreResponse</code>
 
 ## Calibrate
 
 Types:
 
-- <code><a href="./src/resources/scorer/calibrate.ts">CalibrateCreateResponse</a></code>
-- <code><a href="./src/resources/scorer/calibrate.ts">CalibrateRetrieveResponse</a></code>
-- <code><a href="./src/resources/scorer/calibrate.ts">CalibrateListResponse</a></code>
-- <code><a href="./src/resources/scorer/calibrate.ts">CalibrateCancelResponse</a></code>
-- <code><a href="./src/resources/scorer/calibrate.ts">CalibrateMessagesResponse</a></code>
+- <code><a href="./src/resources/scorers/calibrate.ts">CalibrateCreateResponse</a></code>
+- <code><a href="./src/resources/scorers/calibrate.ts">CalibrateRetrieveResponse</a></code>
+- <code><a href="./src/resources/scorers/calibrate.ts">CalibrateListResponse</a></code>
+- <code><a href="./src/resources/scorers/calibrate.ts">CalibrateCancelResponse</a></code>
+- <code><a href="./src/resources/scorers/calibrate.ts">CalibrateMessagesResponse</a></code>
 
 Methods:
 
-- <code title="post /scorer/calibrate">client.scorer.calibrate.<a href="./src/resources/scorer/calibrate.ts">create</a>({ ...params }) -> CalibrateCreateResponse</code>
-- <code title="get /scorer/calibrate/{job_id}">client.scorer.calibrate.<a href="./src/resources/scorer/calibrate.ts">retrieve</a>(jobId) -> CalibrateRetrieveResponse</code>
-- <code title="get /scorer/calibrate">client.scorer.calibrate.<a href="./src/resources/scorer/calibrate.ts">list</a>({ ...params }) -> CalibrateListResponse</code>
-- <code title="delete /scorer/calibrate/{job_id}">client.scorer.calibrate.<a href="./src/resources/scorer/calibrate.ts">cancel</a>(jobId) -> string</code>
-- <code title="get /scorer/calibrate/{job_id}/messages">client.scorer.calibrate.<a href="./src/resources/scorer/calibrate.ts">messages</a>(jobId) -> string</code>
+- <code title="post /scorers/calibrate">client.scorers.calibrate.<a href="./src/resources/scorers/calibrate.ts">create</a>({ ...params }) -> CalibrateCreateResponse</code>
+- <code title="get /scorers/calibrate/{job_id}">client.scorers.calibrate.<a href="./src/resources/scorers/calibrate.ts">retrieve</a>(jobId) -> CalibrateRetrieveResponse</code>
+- <code title="get /scorers/calibrate">client.scorers.calibrate.<a href="./src/resources/scorers/calibrate.ts">list</a>({ ...params }) -> CalibrateListResponse</code>
+- <code title="delete /scorers/calibrate/{job_id}">client.scorers.calibrate.<a href="./src/resources/scorers/calibrate.ts">cancel</a>(jobId) -> string</code>
+- <code title="get /scorers/calibrate/{job_id}/messages">client.scorers.calibrate.<a href="./src/resources/scorers/calibrate.ts">messages</a>(jobId) -> string</code>
