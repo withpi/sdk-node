@@ -13,21 +13,19 @@ import {
   QueryGenerateFanoutsParams,
   QueryGenerateFanoutsResponse,
 } from './resources/queries';
-import {
-  ContractGenerateDimensionsParams,
-  ContractReadFromHfParams,
-  ContractScoreParams,
-  Contracts,
-} from './resources/contracts/contracts';
+import { Contracts } from './resources/contracts/contracts';
 import { Data } from './resources/data/data';
 import { Model } from './resources/model/model';
-import {
-  PiScoringSystem,
-  PiScoringSystemGenerateDimensionsParams,
-  PiScoringSystemReadFromHfParams,
-  PiScoringSystemScoreParams,
-} from './resources/pi-scoring-system/pi-scoring-system';
+import { PiScoringSystem } from './resources/pi-scoring-system/pi-scoring-system';
 import { Prompt } from './resources/prompt/prompt';
+import {
+  Scorer,
+  ScorerGenerateDimensionsParams,
+  ScorerGenerateDimensionsResponse,
+  ScorerReadFromHfParams,
+  ScorerReadFromHfResponse,
+  ScorerScoreParams,
+} from './resources/scorer/scorer';
 
 export interface ClientOptions {
   /**
@@ -148,6 +146,7 @@ export class PiClient extends Core.APIClient {
   piScoringSystem: API.PiScoringSystem = new API.PiScoringSystem(this);
   prompt: API.Prompt = new API.Prompt(this);
   queries: API.Queries = new API.Queries(this);
+  scorer: API.Scorer = new API.Scorer(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -191,26 +190,17 @@ PiClient.Model = Model;
 PiClient.PiScoringSystem = PiScoringSystem;
 PiClient.Prompt = Prompt;
 PiClient.Queries = Queries;
+PiClient.Scorer = Scorer;
 export declare namespace PiClient {
   export type RequestOptions = Core.RequestOptions;
 
-  export {
-    Contracts as Contracts,
-    type ContractGenerateDimensionsParams as ContractGenerateDimensionsParams,
-    type ContractReadFromHfParams as ContractReadFromHfParams,
-    type ContractScoreParams as ContractScoreParams,
-  };
+  export { Contracts as Contracts };
 
   export { Data as Data };
 
   export { Model as Model };
 
-  export {
-    PiScoringSystem as PiScoringSystem,
-    type PiScoringSystemGenerateDimensionsParams as PiScoringSystemGenerateDimensionsParams,
-    type PiScoringSystemReadFromHfParams as PiScoringSystemReadFromHfParams,
-    type PiScoringSystemScoreParams as PiScoringSystemScoreParams,
-  };
+  export { PiScoringSystem as PiScoringSystem };
 
   export { Prompt as Prompt };
 
@@ -223,11 +213,18 @@ export declare namespace PiClient {
     type QueryGenerateFanoutsParams as QueryGenerateFanoutsParams,
   };
 
+  export {
+    Scorer as Scorer,
+    type ScorerGenerateDimensionsResponse as ScorerGenerateDimensionsResponse,
+    type ScorerReadFromHfResponse as ScorerReadFromHfResponse,
+    type ScorerGenerateDimensionsParams as ScorerGenerateDimensionsParams,
+    type ScorerReadFromHfParams as ScorerReadFromHfParams,
+    type ScorerScoreParams as ScorerScoreParams,
+  };
+
   export type DataGenerationStatus = API.DataGenerationStatus;
-  export type ScoringSystem = API.ScoringSystem;
   export type ScoringSystemMetrics = API.ScoringSystemMetrics;
   export type SDKExample = API.SDKExample;
-  export type SDKSubDimension = API.SDKSubDimension;
   export type SftStatus = API.SftStatus;
   export type SyntheticDataStatus = API.SyntheticDataStatus;
 }
