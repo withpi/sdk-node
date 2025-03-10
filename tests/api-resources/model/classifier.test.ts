@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Withpi from 'withpi';
+import PiClient from 'withpi';
 import { Response } from 'node-fetch';
 
-const client = new Withpi({
+const client = new PiClient({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
@@ -26,7 +26,7 @@ describe('resource classifier', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.model.classifier.retrieve('job_id', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Withpi.NotFoundError);
+    ).rejects.toThrow(PiClient.NotFoundError);
   });
 
   // skipped: tests are disabled for the time being
@@ -45,7 +45,7 @@ describe('resource classifier', () => {
   test.skip('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(client.model.classifier.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Withpi.NotFoundError,
+      PiClient.NotFoundError,
     );
   });
 
@@ -54,7 +54,7 @@ describe('resource classifier', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.model.classifier.list({ state: 'QUEUED' }, { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Withpi.NotFoundError);
+    ).rejects.toThrow(PiClient.NotFoundError);
   });
 
   // skipped: tests are disabled for the time being
@@ -74,7 +74,7 @@ describe('resource classifier', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.model.classifier.cancel('job_id', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Withpi.NotFoundError);
+    ).rejects.toThrow(PiClient.NotFoundError);
   });
 
   // skipped: tests are disabled for the time being
@@ -146,6 +146,6 @@ describe('resource classifier', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.model.classifier.streamMessages('job_id', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Withpi.NotFoundError);
+    ).rejects.toThrow(PiClient.NotFoundError);
   });
 });

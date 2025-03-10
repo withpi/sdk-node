@@ -1,21 +1,18 @@
-# Withpi Node API Library
+# Pi Client Node API Library
 
 [![NPM version](https://img.shields.io/npm/v/withpi.svg)](https://npmjs.org/package/withpi) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/withpi)
 
-This library provides convenient access to the Withpi REST API from server-side TypeScript or JavaScript.
+This library provides convenient access to the Pi Client REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found on [docs.withpi.com](https://docs.withpi.com). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [code.withpi.ai](https://code.withpi.ai). The full API of this library can be found in [api.md](api.md).
 
 It is generated with [Stainless](https://www.stainless.com/).
 
 ## Installation
 
 ```sh
-npm install git+ssh://git@github.com:withpi/sdk-node.git
+npm install withpi
 ```
-
-> [!NOTE]
-> Once this package is [published to npm](https://app.stainless.com/docs/guides/publish), this will become: `npm install withpi`
 
 ## Usage
 
@@ -23,9 +20,9 @@ The full API of this library can be found in [api.md](api.md).
 
 <!-- prettier-ignore -->
 ```js
-import Withpi from 'withpi';
+import PiClient from 'withpi';
 
-const client = new Withpi({
+const client = new PiClient({
   apiKey: process.env['WITHPI_API_KEY'], // This is the default and can be omitted
 });
 
@@ -42,14 +39,14 @@ This library includes TypeScript definitions for all request params and response
 
 <!-- prettier-ignore -->
 ```ts
-import Withpi from 'withpi';
+import PiClient from 'withpi';
 
-const client = new Withpi({
+const client = new PiClient({
   apiKey: process.env['WITHPI_API_KEY'], // This is the default and can be omitted
 });
 
 async function main() {
-  const contractCalibrationStatuses: Withpi.Contracts.CalibrateListResponse =
+  const contractCalibrationStatuses: PiClient.Contracts.CalibrateListResponse =
     await client.contracts.calibrate.list();
 }
 
@@ -68,7 +65,7 @@ a subclass of `APIError` will be thrown:
 ```ts
 async function main() {
   const contractCalibrationStatuses = await client.contracts.calibrate.list().catch(async (err) => {
-    if (err instanceof Withpi.APIError) {
+    if (err instanceof PiClient.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
       console.log(err.headers); // {server: 'nginx', ...}
@@ -105,7 +102,7 @@ You can use the `maxRetries` option to configure or disable this:
 <!-- prettier-ignore -->
 ```js
 // Configure the default for all requests:
-const client = new Withpi({
+const client = new PiClient({
   maxRetries: 0, // default is 2
 });
 
@@ -122,7 +119,7 @@ Requests time out after 1 minute by default. You can configure this with a `time
 <!-- prettier-ignore -->
 ```ts
 // Configure the default for all requests:
-const client = new Withpi({
+const client = new PiClient({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
 });
 
@@ -146,7 +143,7 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 
 <!-- prettier-ignore -->
 ```ts
-const client = new Withpi();
+const client = new PiClient();
 
 const response = await client.contracts.calibrate.list().asResponse();
 console.log(response.headers.get('X-My-Header'));
@@ -209,13 +206,13 @@ By default, this library uses `node-fetch` in Node, and expects a global `fetch`
 
 If you would prefer to use a global, web-standards-compliant `fetch` function even in a Node environment,
 (for example, if you are running Node with `--experimental-fetch` or using NextJS which polyfills with `undici`),
-add the following import before your first import `from "Withpi"`:
+add the following import before your first import `from "PiClient"`:
 
 ```ts
 // Tell TypeScript and the package to use the global web fetch instead of node-fetch.
 // Note, despite the name, this does not add any polyfills, but expects them to be provided if needed.
 import 'withpi/shims/web';
-import Withpi from 'withpi';
+import PiClient from 'withpi';
 ```
 
 To do the inverse, add `import "withpi/shims/node"` (which does import polyfills).
@@ -228,9 +225,9 @@ which can be used to inspect or alter the `Request` or `Response` before/after e
 
 ```ts
 import { fetch } from 'undici'; // as one example
-import Withpi from 'withpi';
+import PiClient from 'withpi';
 
-const client = new Withpi({
+const client = new PiClient({
   fetch: async (url: RequestInfo, init?: RequestInit): Promise<Response> => {
     console.log('About to make a request', url, init);
     const response = await fetch(url, init);
@@ -255,7 +252,7 @@ import http from 'http';
 import { HttpsProxyAgent } from 'https-proxy-agent';
 
 // Configure the default for all requests:
-const client = new Withpi({
+const client = new PiClient({
   httpAgent: new HttpsProxyAgent(process.env.PROXY_URL),
 });
 
