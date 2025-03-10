@@ -14,17 +14,17 @@ import {
   SDKExplorationMode,
   SyntheticDataStatus,
 } from './generate-synthetic-data';
-import * as InputAPI from './input/input';
-import { Input, InputClusterParams, InputClusterResponse } from './input/input';
+import * as InputsAPI from './inputs/inputs';
+import { InputClusterParams, InputClusterResponse, Inputs } from './inputs/inputs';
 
 export class Data extends APIResource {
   generateSyntheticData: GenerateSyntheticDataAPI.GenerateSyntheticData =
     new GenerateSyntheticDataAPI.GenerateSyntheticData(this._client);
-  input: InputAPI.Input = new InputAPI.Input(this._client);
+  inputs: InputsAPI.Inputs = new InputsAPI.Inputs(this._client);
 }
 
 Data.GenerateSyntheticData = GenerateSyntheticData;
-Data.Input = Input;
+Data.Inputs = Inputs;
 
 export declare namespace Data {
   export {
@@ -41,7 +41,7 @@ export declare namespace Data {
   };
 
   export {
-    Input as Input,
+    Inputs as Inputs,
     type InputClusterResponse as InputClusterResponse,
     type InputClusterParams as InputClusterParams,
   };
