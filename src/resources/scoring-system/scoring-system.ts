@@ -1,0 +1,138 @@
+// File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+import { APIResource } from '../../resource';
+import * as Core from '../../core';
+import * as Shared from '../shared';
+import * as CalibrateAPI from './calibrate';
+import {
+  Calibrate,
+  CalibrateCancelResponse,
+  CalibrateCreateParams,
+  CalibrateCreateResponse,
+  CalibrateListParams,
+  CalibrateListResponse,
+  CalibrateMessagesResponse,
+  CalibrateRetrieveResponse,
+} from './calibrate';
+
+export class ScoringSystem extends APIResource {
+  calibrate: CalibrateAPI.Calibrate = new CalibrateAPI.Calibrate(this._client);
+
+  /**
+   * Generates a scorer
+   */
+  generate(body: ScoringSystemGenerateParams, options?: Core.RequestOptions): Core.APIPromise<Shared.Scorer> {
+    return this._client.post('/scoring_system/generate', { body, ...options });
+  }
+
+  /**
+   * Read a scoring system from Huggingface dataset
+   */
+  readFromHuggingface(
+    body: ScoringSystemReadFromHuggingfaceParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Shared.Scorer> {
+    return this._client.post('/scoring_system/from_huggingface', { body, ...options });
+  }
+
+  /**
+   * Scores the provided input and output based on the given scorer
+   */
+  score(
+    body: ScoringSystemScoreParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<ScoringSystemScoreResponse> {
+    return this._client.post('/scoring_system/score', { body, ...options });
+  }
+}
+
+export interface ScoringSystemScoreResponse {
+  /**
+   * The score components for each dimension
+   */
+  dimension_scores: Record<string, ScoringSystemScoreResponse.DimensionScores>;
+
+  /**
+   * The total score of the scoring system
+   */
+  total_score: number;
+}
+
+export namespace ScoringSystemScoreResponse {
+  export interface DimensionScores {
+    /**
+     * The score components for each subdimension
+     */
+    subdimension_scores: Record<string, number>;
+
+    /**
+     * The total score of the dimension
+     */
+    total_score: number;
+  }
+}
+
+export interface ScoringSystemGenerateParams {
+  /**
+   * The application description to generate a scoring system for.
+   */
+  application_description: string;
+
+  /**
+   * If true, try to generate python code for sub-dimensions in the scoring system.
+   */
+  try_auto_generating_python_code?: boolean;
+}
+
+export interface ScoringSystemReadFromHuggingfaceParams {
+  /**
+   * Huggingface scoring system name e.g. withpi/my_scoring_system. You need to
+   * provide the hf_token if the scoring system dataset is not public or not own by
+   * the withpi organization.
+   */
+  hf_scorer_name: string;
+
+  /**
+   * Huggingface token to use if you want to read to your own HF organization
+   */
+  hf_token?: string | null;
+}
+
+export interface ScoringSystemScoreParams {
+  /**
+   * The input to score
+   */
+  llm_input: string;
+
+  /**
+   * The output to score
+   */
+  llm_output: string;
+
+  /**
+   * The scoring system to score
+   */
+  scorer: Shared.Scorer;
+}
+
+ScoringSystem.Calibrate = Calibrate;
+
+export declare namespace ScoringSystem {
+  export {
+    type ScoringSystemScoreResponse as ScoringSystemScoreResponse,
+    type ScoringSystemGenerateParams as ScoringSystemGenerateParams,
+    type ScoringSystemReadFromHuggingfaceParams as ScoringSystemReadFromHuggingfaceParams,
+    type ScoringSystemScoreParams as ScoringSystemScoreParams,
+  };
+
+  export {
+    Calibrate as Calibrate,
+    type CalibrateCreateResponse as CalibrateCreateResponse,
+    type CalibrateRetrieveResponse as CalibrateRetrieveResponse,
+    type CalibrateListResponse as CalibrateListResponse,
+    type CalibrateCancelResponse as CalibrateCancelResponse,
+    type CalibrateMessagesResponse as CalibrateMessagesResponse,
+    type CalibrateCreateParams as CalibrateCreateParams,
+    type CalibrateListParams as CalibrateListParams,
+  };
+}
