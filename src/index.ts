@@ -31,14 +31,14 @@ import { Prompt } from './resources/prompt/prompt';
 
 export interface ClientOptions {
   /**
-   * Defaults to process.env['WITHPI_API_KEY'].
+   * The API key required for authentication
    */
   apiKey?: string | undefined;
 
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
-   * Defaults to process.env['WITHPI_BASE_URL'].
+   * Defaults to process.env['PI_CLIENT_BASE_URL'].
    */
   baseURL?: string | null | undefined;
 
@@ -93,18 +93,18 @@ export interface ClientOptions {
 }
 
 /**
- * API Client for interfacing with the Withpi API.
+ * API Client for interfacing with the Pi Client API.
  */
-export class Withpi extends Core.APIClient {
+export class PiClient extends Core.APIClient {
   apiKey: string;
 
   private _options: ClientOptions;
 
   /**
-   * API Client for interfacing with the Withpi API.
+   * API Client for interfacing with the Pi Client API.
    *
    * @param {string | undefined} [opts.apiKey=process.env['WITHPI_API_KEY'] ?? undefined]
-   * @param {string} [opts.baseURL=process.env['WITHPI_BASE_URL'] ?? https://api.withpi.ai/v1] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['PI_CLIENT_BASE_URL'] ?? https://api.withpi.ai/v1] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
    * @param {Core.Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -113,13 +113,13 @@ export class Withpi extends Core.APIClient {
    * @param {Core.DefaultQuery} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
   constructor({
-    baseURL = Core.readEnv('WITHPI_BASE_URL'),
+    baseURL = Core.readEnv('PI_CLIENT_BASE_URL'),
     apiKey = Core.readEnv('WITHPI_API_KEY'),
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
-      throw new Errors.WithpiError(
-        "The WITHPI_API_KEY environment variable is missing or empty; either provide it, or instantiate the Withpi client with an apiKey option, like new Withpi({ apiKey: 'My API Key' }).",
+      throw new Errors.PiClientError(
+        "The WITHPI_API_KEY environment variable is missing or empty; either provide it, or instantiate the PiClient client with an apiKey option, like new PiClient({ apiKey: 'My API Key' }).",
       );
     }
 
@@ -164,10 +164,10 @@ export class Withpi extends Core.APIClient {
     return { 'x-api-key': this.apiKey };
   }
 
-  static Withpi = this;
+  static PiClient = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
-  static WithpiError = Errors.WithpiError;
+  static PiClientError = Errors.PiClientError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -185,13 +185,13 @@ export class Withpi extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-Withpi.Contracts = Contracts;
-Withpi.Data = Data;
-Withpi.Model = Model;
-Withpi.PiScoringSystem = PiScoringSystem;
-Withpi.Prompt = Prompt;
-Withpi.Queries = Queries;
-export declare namespace Withpi {
+PiClient.Contracts = Contracts;
+PiClient.Data = Data;
+PiClient.Model = Model;
+PiClient.PiScoringSystem = PiScoringSystem;
+PiClient.Prompt = Prompt;
+PiClient.Queries = Queries;
+export declare namespace PiClient {
   export type RequestOptions = Core.RequestOptions;
 
   export {
@@ -231,7 +231,7 @@ export declare namespace Withpi {
 
 export { toFile, fileFromPath } from './uploads';
 export {
-  WithpiError,
+  PiClientError,
   APIError,
   APIConnectionError,
   APIConnectionTimeoutError,
@@ -246,4 +246,4 @@ export {
   UnprocessableEntityError,
 } from './error';
 
-export default Withpi;
+export default PiClient;
