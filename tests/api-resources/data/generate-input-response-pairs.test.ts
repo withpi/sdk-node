@@ -80,7 +80,7 @@ describe('resource generateInputResponsePairs', () => {
   // skipped: tests are disabled for the time being
   test.skip('startJob: only required params', async () => {
     const responsePromise = client.data.generateInputResponsePairs.startJob({
-      num_examples_to_generate: 50,
+      num_pairs_to_generate: 50,
       seeds: [
         {
           llm_input: 'Tell me something different',
@@ -100,7 +100,7 @@ describe('resource generateInputResponsePairs', () => {
   // skipped: tests are disabled for the time being
   test.skip('startJob: required and optional params', async () => {
     const response = await client.data.generateInputResponsePairs.startJob({
-      num_examples_to_generate: 50,
+      num_pairs_to_generate: 50,
       seeds: [
         {
           llm_input: 'Tell me something different',
