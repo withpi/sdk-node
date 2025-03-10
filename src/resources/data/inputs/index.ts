@@ -10,4 +10,4 @@ export {
   type GenerateFromSeedListParams,
   type GenerateFromSeedStartJobParams,
 } from './generate-from-seeds';
-export { Input, type InputClusterResponse, type InputClusterParams } from './input';
+export { Inputs, type InputClusterResponse, type InputClusterParams } from './inputs';
