@@ -36,16 +36,6 @@ export class Calibrate extends APIResource {
   }
 
   /**
-   * Opens a message stream about a Scorer Calibration job
-   */
-  messages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
-    return this._client.get(`/scoring_system/calibrate/${jobId}/messages`, {
-      ...options,
-      headers: { Accept: 'text/plain', ...options?.headers },
-    });
-  }
-
-  /**
    * Starts a Scorer Calibration job
    */
   startJob(
@@ -53,6 +43,16 @@ export class Calibrate extends APIResource {
     options?: Core.RequestOptions,
   ): Core.APIPromise<CalibrateStartJobResponse> {
     return this._client.post('/scoring_system/calibrate', { body, ...options });
+  }
+
+  /**
+   * Opens a message stream about a Scorer Calibration job
+   */
+  streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+    return this._client.get(`/scoring_system/calibrate/${jobId}/messages`, {
+      ...options,
+      headers: { Accept: 'text/plain', ...options?.headers },
+    });
   }
 }
 
@@ -106,8 +106,6 @@ export namespace CalibrateListResponse {
 
 export type CalibrateCancelResponse = string;
 
-export type CalibrateMessagesResponse = string;
-
 export interface CalibrateStartJobResponse {
   /**
    * Detailed status of the job
@@ -129,6 +127,8 @@ export interface CalibrateStartJobResponse {
    */
   calibrated_scoring_system?: Shared.Scorer | null;
 }
+
+export type CalibrateStreamMessagesResponse = string;
 
 export interface CalibrateListParams {
   /**
@@ -209,8 +209,8 @@ export declare namespace Calibrate {
     type CalibrateRetrieveResponse as CalibrateRetrieveResponse,
     type CalibrateListResponse as CalibrateListResponse,
     type CalibrateCancelResponse as CalibrateCancelResponse,
-    type CalibrateMessagesResponse as CalibrateMessagesResponse,
     type CalibrateStartJobResponse as CalibrateStartJobResponse,
+    type CalibrateStreamMessagesResponse as CalibrateStreamMessagesResponse,
     type CalibrateListParams as CalibrateListParams,
     type CalibrateStartJobParams as CalibrateStartJobParams,
   };

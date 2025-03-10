@@ -5,8 +5,8 @@ export {
   type CalibrateRetrieveResponse,
   type CalibrateListResponse,
   type CalibrateCancelResponse,
-  type CalibrateMessagesResponse,
   type CalibrateStartJobResponse,
+  type CalibrateStreamMessagesResponse,
   type CalibrateListParams,
   type CalibrateStartJobParams,
 } from './calibrate';
