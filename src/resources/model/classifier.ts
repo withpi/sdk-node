@@ -3,8 +3,7 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as Shared from '../shared';
-import * as CalibrateAPI from '../contracts/calibrate';
+import * as ModelAPI from './model';
 
 export class Classifier extends APIResource {
   /**
@@ -86,44 +85,12 @@ export interface ClassificationStatus {
   /**
    * Current state of the job
    */
-  state: CalibrateAPI.State;
+  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
 
   /**
    * A list of trained classification models.
    */
-  trained_models?: Array<TrainedModel> | null;
-}
-
-export interface TrainedModel {
-  /**
-   * The PI contract score of the eval set what isn't used in training
-   */
-  contract_score: number;
-
-  /**
-   * The training epoch
-   */
-  epoch: number;
-
-  /**
-   * The evaluation loss
-   */
-  eval_loss: number;
-
-  /**
-   * The serving id of the trained model within this Job
-   */
-  serving_id: number;
-
-  /**
-   * State of the model in the serving system
-   */
-  serving_state: 'UNLOADED' | 'LOADING' | 'SERVING';
-
-  /**
-   * The training step
-   */
-  step: number;
+  trained_models?: Array<ModelAPI.TrainedModel> | null;
 }
 
 export type ClassifierListResponse = Array<ClassificationStatus>;
@@ -138,7 +105,7 @@ export interface ClassifierListParams {
   /**
    * Filter jobs by state
    */
-  state?: CalibrateAPI.State | null;
+  state?: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED' | null;
 }
 
 export interface ClassifierDownloadParams {
@@ -154,7 +121,7 @@ export interface ClassifierStartJobParams {
   /**
    * Examples to use in the classification tuning process
    */
-  examples: Array<Shared.SDKExample>;
+  examples: Array<ClassifierStartJobParams.Example>;
 
   /**
    * Classification learning rate
@@ -167,10 +134,26 @@ export interface ClassifierStartJobParams {
   num_train_epochs?: number;
 }
 
+export namespace ClassifierStartJobParams {
+  /**
+   * An example for training or evaluation
+   */
+  export interface Example {
+    /**
+     * The input to LLM
+     */
+    llm_input: string;
+
+    /**
+     * The output to evaluate
+     */
+    llm_output: string;
+  }
+}
+
 export declare namespace Classifier {
   export {
     type ClassificationStatus as ClassificationStatus,
-    type TrainedModel as TrainedModel,
     type ClassifierListResponse as ClassifierListResponse,
     type ClassifierCancelResponse as ClassifierCancelResponse,
     type ClassifierDownloadResponse as ClassifierDownloadResponse,

@@ -12,7 +12,6 @@ import {
   ClassifierListResponse,
   ClassifierStartJobParams,
   ClassifierStreamMessagesResponse,
-  TrainedModel,
 } from './classifier';
 import * as SftAPI from './sft';
 import {
@@ -22,7 +21,10 @@ import {
   SftDownloadResponse,
   SftListParams,
   SftListResponse,
+  SftLoadResponse,
+  SftRetrieveResponse,
   SftStartJobParams,
+  SftStartJobResponse,
   SftStreamMessagesResponse,
 } from './sft';
 import * as RlAPI from './rl/rl';
@@ -34,15 +36,48 @@ export class Model extends APIResource {
   sft: SftAPI.Sft = new SftAPI.Sft(this._client);
 }
 
+export interface TrainedModel {
+  /**
+   * The PI contract score of the eval set what isn't used in training
+   */
+  contract_score: number;
+
+  /**
+   * The training epoch
+   */
+  epoch: number;
+
+  /**
+   * The evaluation loss
+   */
+  eval_loss: number;
+
+  /**
+   * The serving id of the trained model within this Job
+   */
+  serving_id: number;
+
+  /**
+   * State of the model in the serving system
+   */
+  serving_state: 'UNLOADED' | 'LOADING' | 'SERVING';
+
+  /**
+   * The training step
+   */
+  step: number;
+}
+
 Model.Classifier = Classifier;
 Model.Rl = Rl;
 Model.Sft = Sft;
 
 export declare namespace Model {
+  export { type TrainedModel as TrainedModel };
+
   export {
     Classifier as Classifier,
     type ClassificationStatus as ClassificationStatus,
-    type TrainedModel as TrainedModel,
     type ClassifierListResponse as ClassifierListResponse,
     type ClassifierCancelResponse as ClassifierCancelResponse,
     type ClassifierDownloadResponse as ClassifierDownloadResponse,
@@ -56,9 +91,12 @@ export declare namespace Model {
 
   export {
     Sft as Sft,
+    type SftRetrieveResponse as SftRetrieveResponse,
     type SftListResponse as SftListResponse,
     type SftCancelResponse as SftCancelResponse,
     type SftDownloadResponse as SftDownloadResponse,
+    type SftLoadResponse as SftLoadResponse,
+    type SftStartJobResponse as SftStartJobResponse,
     type SftStreamMessagesResponse as SftStreamMessagesResponse,
     type SftListParams as SftListParams,
     type SftDownloadParams as SftDownloadParams,

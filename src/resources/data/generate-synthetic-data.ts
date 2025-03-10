@@ -4,7 +4,6 @@ import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as Shared from '../shared';
-import * as CalibrateAPI from '../contracts/calibrate';
 
 export class GenerateSyntheticData extends APIResource {
   /**
@@ -70,8 +69,6 @@ export class GenerateSyntheticData extends APIResource {
   }
 }
 
-export type SDKExplorationMode = 'CONSERVATIVE' | 'BALANCED' | 'CREATIVE' | 'ADVENTUROUS';
-
 export type GenerateSyntheticDataListResponse = Array<Shared.SyntheticDataStatus>;
 
 export type GenerateSyntheticDataCancelResponse = string;
@@ -93,7 +90,7 @@ export interface GenerateSyntheticDataListParams {
   /**
    * Filter jobs by state
    */
-  state?: CalibrateAPI.State | null;
+  state?: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED' | null;
 }
 
 export interface GenerateSyntheticDataStartJobParams {
@@ -105,7 +102,7 @@ export interface GenerateSyntheticDataStartJobParams {
   /**
    * The list of LLM examples (inputs + outputs) to be used as seeds
    */
-  seeds: Array<Shared.SDKExample>;
+  seeds: Array<GenerateSyntheticDataStartJobParams.Seed>;
 
   /**
    * The application description for which the synthetic data would be applicable.
@@ -121,7 +118,7 @@ export interface GenerateSyntheticDataStartJobParams {
   /**
    * The exploration mode for examples generation. Defaults to `BALANCED`
    */
-  exploration_mode?: SDKExplorationMode;
+  exploration_mode?: Shared.ExplorationMode;
 
   /**
    * Number of examples to be included in the prompt for generation
@@ -134,9 +131,25 @@ export interface GenerateSyntheticDataStartJobParams {
   system_prompt?: string | null;
 }
 
+export namespace GenerateSyntheticDataStartJobParams {
+  /**
+   * An example for training or evaluation
+   */
+  export interface Seed {
+    /**
+     * The input to LLM
+     */
+    llm_input: string;
+
+    /**
+     * The output to evaluate
+     */
+    llm_output: string;
+  }
+}
+
 export declare namespace GenerateSyntheticData {
   export {
-    type SDKExplorationMode as SDKExplorationMode,
     type GenerateSyntheticDataListResponse as GenerateSyntheticDataListResponse,
     type GenerateSyntheticDataCancelResponse as GenerateSyntheticDataCancelResponse,
     type GenerateSyntheticDataStreamDataResponse as GenerateSyntheticDataStreamDataResponse,

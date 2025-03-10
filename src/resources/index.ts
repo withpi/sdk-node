@@ -1,10 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 export * from './shared';
-export { Contracts } from './contracts/contracts';
 export { Data } from './data/data';
-export { Model } from './model/model';
-export { PiScoringSystem } from './pi-scoring-system/pi-scoring-system';
+export { Model, type TrainedModel } from './model/model';
 export { Prompt } from './prompt/prompt';
 export {
   Queries,
@@ -16,8 +14,7 @@ export {
 } from './queries';
 export {
   Scorer,
-  type ScorerGenerateDimensionsResponse,
-  type ScorerReadFromHfResponse,
+  type ScorerScoreResponse,
   type ScorerGenerateDimensionsParams,
   type ScorerReadFromHfParams,
   type ScorerScoreParams,

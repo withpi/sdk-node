@@ -3,7 +3,6 @@
 export { Data } from './data';
 export {
   GenerateSyntheticData,
-  type SDKExplorationMode,
   type GenerateSyntheticDataListResponse,
   type GenerateSyntheticDataCancelResponse,
   type GenerateSyntheticDataStreamDataResponse,

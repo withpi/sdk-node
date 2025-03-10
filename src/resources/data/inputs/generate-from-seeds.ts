@@ -4,8 +4,6 @@ import { APIResource } from '../../../resource';
 import { isRequestOptions } from '../../../core';
 import * as Core from '../../../core';
 import * as Shared from '../../shared';
-import * as CalibrateAPI from '../../contracts/calibrate';
-import * as GenerateSyntheticDataAPI from '../generate-synthetic-data';
 
 export class GenerateFromSeeds extends APIResource {
   /**
@@ -83,7 +81,7 @@ export interface GenerateFromSeedListParams {
   /**
    * Filter jobs by state
    */
-  state?: CalibrateAPI.State | null;
+  state?: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED' | null;
 }
 
 export interface GenerateFromSeedStartJobParams {
@@ -111,7 +109,7 @@ export interface GenerateFromSeedStartJobParams {
   /**
    * The exloration mode for input generation. Defaults to `BALANCED`
    */
-  exploration_mode?: GenerateSyntheticDataAPI.SDKExplorationMode;
+  exploration_mode?: Shared.ExplorationMode;
 
   /**
    * Number of inputs to be included in the prompt for generation. Must be <= 10.

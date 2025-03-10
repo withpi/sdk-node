@@ -10,7 +10,6 @@ import {
   GenerateSyntheticDataStartJobParams,
   GenerateSyntheticDataStreamDataResponse,
   GenerateSyntheticDataStreamMessagesResponse,
-  SDKExplorationMode,
 } from './generate-synthetic-data';
 import * as InputsAPI from './inputs/inputs';
 import { InputClusterParams, InputClusterResponse, Inputs } from './inputs/inputs';
@@ -27,7 +26,6 @@ Data.Inputs = Inputs;
 export declare namespace Data {
   export {
     GenerateSyntheticData as GenerateSyntheticData,
-    type SDKExplorationMode as SDKExplorationMode,
     type GenerateSyntheticDataListResponse as GenerateSyntheticDataListResponse,
     type GenerateSyntheticDataCancelResponse as GenerateSyntheticDataCancelResponse,
     type GenerateSyntheticDataStreamDataResponse as GenerateSyntheticDataStreamDataResponse,
