@@ -2,7 +2,6 @@
 
 export {
   Classifier,
-  type ClassificationStatus,
   type ClassifierListResponse,
   type ClassifierCancelResponse,
   type ClassifierDownloadResponse,
@@ -16,13 +15,15 @@ export {
   type GrpoListResponse,
   type GrpoCancelResponse,
   type GrpoDownloadResponse,
+  type GrpoLaunchResponse,
+  type GrpoLoadResponse,
   type GrpoMessagesResponse,
+  type GrpoStatusResponse,
   type GrpoListParams,
   type GrpoDownloadParams,
   type GrpoLaunchParams,
 } from './grpo';
-export { Model, type TrainedModel } from './model';
-export { Rl } from './rl/index';
+export { Model } from './model';
 export {
   Sft,
   type SftRetrieveResponse,
