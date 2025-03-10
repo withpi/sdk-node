@@ -3,41 +3,21 @@
 Types:
 
 - <code><a href="./src/resources/shared.ts">DataGenerationStatus</a></code>
-- <code><a href="./src/resources/shared.ts">ScoringSystem</a></code>
 - <code><a href="./src/resources/shared.ts">ScoringSystemMetrics</a></code>
 - <code><a href="./src/resources/shared.ts">SDKExample</a></code>
-- <code><a href="./src/resources/shared.ts">SDKSubDimension</a></code>
 - <code><a href="./src/resources/shared.ts">SftStatus</a></code>
 - <code><a href="./src/resources/shared.ts">SyntheticDataStatus</a></code>
 
 # Contracts
-
-Methods:
-
-- <code title="post /contracts/generate_dimensions">client.contracts.<a href="./src/resources/contracts/contracts.ts">generateDimensions</a>({ ...params }) -> ScoringSystem</code>
-- <code title="post /contracts/read_from_hf">client.contracts.<a href="./src/resources/contracts/contracts.ts">readFromHf</a>({ ...params }) -> ScoringSystem</code>
-- <code title="post /contracts/score">client.contracts.<a href="./src/resources/contracts/contracts.ts">score</a>({ ...params }) -> ScoringSystemMetrics</code>
 
 ## Calibrate
 
 Types:
 
 - <code><a href="./src/resources/contracts/calibrate.ts">CalibrationStrategy</a></code>
-- <code><a href="./src/resources/contracts/calibrate.ts">ContractCalibrationStatus</a></code>
 - <code><a href="./src/resources/contracts/calibrate.ts">SDKLabeledExample</a></code>
 - <code><a href="./src/resources/contracts/calibrate.ts">SDKPreferenceExample</a></code>
 - <code><a href="./src/resources/contracts/calibrate.ts">State</a></code>
-- <code><a href="./src/resources/contracts/calibrate.ts">CalibrateListResponse</a></code>
-- <code><a href="./src/resources/contracts/calibrate.ts">CalibrateCancelResponse</a></code>
-- <code><a href="./src/resources/contracts/calibrate.ts">CalibrateStreamMessagesResponse</a></code>
-
-Methods:
-
-- <code title="get /contracts/calibrate/{job_id}">client.contracts.calibrate.<a href="./src/resources/contracts/calibrate.ts">retrieve</a>(jobId) -> ContractCalibrationStatus</code>
-- <code title="get /contracts/calibrate">client.contracts.calibrate.<a href="./src/resources/contracts/calibrate.ts">list</a>({ ...params }) -> CalibrateListResponse</code>
-- <code title="delete /contracts/calibrate/{job_id}">client.contracts.calibrate.<a href="./src/resources/contracts/calibrate.ts">cancel</a>(jobId) -> string</code>
-- <code title="post /contracts/calibrate">client.contracts.calibrate.<a href="./src/resources/contracts/calibrate.ts">startJob</a>({ ...params }) -> ContractCalibrationStatus</code>
-- <code title="get /contracts/calibrate/{job_id}/messages">client.contracts.calibrate.<a href="./src/resources/contracts/calibrate.ts">streamMessages</a>(jobId) -> string</code>
 
 # Data
 
@@ -155,28 +135,11 @@ Methods:
 
 # PiScoringSystem
 
-Methods:
-
-- <code title="post /pi_scoring_system/generate_dimensions">client.piScoringSystem.<a href="./src/resources/pi-scoring-system/pi-scoring-system.ts">generateDimensions</a>({ ...params }) -> ScoringSystem</code>
-- <code title="post /pi_scoring_system/read_from_hf">client.piScoringSystem.<a href="./src/resources/pi-scoring-system/pi-scoring-system.ts">readFromHf</a>({ ...params }) -> ScoringSystem</code>
-- <code title="post /pi_scoring_system/score">client.piScoringSystem.<a href="./src/resources/pi-scoring-system/pi-scoring-system.ts">score</a>({ ...params }) -> ScoringSystemMetrics</code>
-
 ## Calibrate
 
 Types:
 
 - <code><a href="./src/resources/pi-scoring-system/calibrate.ts">ScoringSystemCalibrationStatus</a></code>
-- <code><a href="./src/resources/pi-scoring-system/calibrate.ts">CalibrateListResponse</a></code>
-- <code><a href="./src/resources/pi-scoring-system/calibrate.ts">CalibrateCancelResponse</a></code>
-- <code><a href="./src/resources/pi-scoring-system/calibrate.ts">CalibrateStreamMessagesResponse</a></code>
-
-Methods:
-
-- <code title="get /pi_scoring_system/calibrate/{job_id}">client.piScoringSystem.calibrate.<a href="./src/resources/pi-scoring-system/calibrate.ts">retrieve</a>(jobId) -> ScoringSystemCalibrationStatus</code>
-- <code title="get /pi_scoring_system/calibrate">client.piScoringSystem.calibrate.<a href="./src/resources/pi-scoring-system/calibrate.ts">list</a>({ ...params }) -> CalibrateListResponse</code>
-- <code title="delete /pi_scoring_system/calibrate/{job_id}">client.piScoringSystem.calibrate.<a href="./src/resources/pi-scoring-system/calibrate.ts">cancel</a>(jobId) -> string</code>
-- <code title="post /pi_scoring_system/calibrate">client.piScoringSystem.calibrate.<a href="./src/resources/pi-scoring-system/calibrate.ts">startJob</a>({ ...params }) -> ScoringSystemCalibrationStatus</code>
-- <code title="get /pi_scoring_system/calibrate/{job_id}/messages">client.piScoringSystem.calibrate.<a href="./src/resources/pi-scoring-system/calibrate.ts">streamMessages</a>(jobId) -> string</code>
 
 # Prompt
 
@@ -209,3 +172,32 @@ Methods:
 
 - <code title="post /queries/classify">client.queries.<a href="./src/resources/queries.ts">classify</a>({ ...params }) -> QueryClassifyResponse</code>
 - <code title="post /queries/generate_fanouts">client.queries.<a href="./src/resources/queries.ts">generateFanouts</a>({ ...params }) -> QueryGenerateFanoutsResponse</code>
+
+# Scorer
+
+Types:
+
+- <code><a href="./src/resources/scorer/scorer.ts">ScorerGenerateDimensionsResponse</a></code>
+- <code><a href="./src/resources/scorer/scorer.ts">ScorerReadFromHfResponse</a></code>
+
+Methods:
+
+- <code title="post /scorer/generate_dimensions">client.scorer.<a href="./src/resources/scorer/scorer.ts">generateDimensions</a>({ ...params }) -> ScorerGenerateDimensionsResponse</code>
+- <code title="post /scorer/read_from_hf">client.scorer.<a href="./src/resources/scorer/scorer.ts">readFromHf</a>({ ...params }) -> ScorerReadFromHfResponse</code>
+- <code title="post /scorer/score">client.scorer.<a href="./src/resources/scorer/scorer.ts">score</a>({ ...params }) -> ScoringSystemMetrics</code>
+
+## Calibrate
+
+Types:
+
+- <code><a href="./src/resources/scorer/calibrate.ts">CalibrateListResponse</a></code>
+- <code><a href="./src/resources/scorer/calibrate.ts">CalibrateCancelResponse</a></code>
+- <code><a href="./src/resources/scorer/calibrate.ts">CalibrateMessagesResponse</a></code>
+
+Methods:
+
+- <code title="post /scorer/calibrate">client.scorer.calibrate.<a href="./src/resources/scorer/calibrate.ts">create</a>({ ...params }) -> ScoringSystemCalibrationStatus</code>
+- <code title="get /scorer/calibrate/{job_id}">client.scorer.calibrate.<a href="./src/resources/scorer/calibrate.ts">retrieve</a>(jobId) -> ScoringSystemCalibrationStatus</code>
+- <code title="get /scorer/calibrate">client.scorer.calibrate.<a href="./src/resources/scorer/calibrate.ts">list</a>({ ...params }) -> CalibrateListResponse</code>
+- <code title="delete /scorer/calibrate/{job_id}">client.scorer.calibrate.<a href="./src/resources/scorer/calibrate.ts">cancel</a>(jobId) -> string</code>
+- <code title="get /scorer/calibrate/{job_id}/messages">client.scorer.calibrate.<a href="./src/resources/scorer/calibrate.ts">messages</a>(jobId) -> string</code>

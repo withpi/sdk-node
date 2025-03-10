@@ -1,61 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../resource';
-import { isRequestOptions } from '../../core';
-import * as Core from '../../core';
-import * as Shared from '../shared';
 import * as CalibrateAPI from '../contracts/calibrate';
 
-export class Calibrate extends APIResource {
-  /**
-   * Checks the status of a Scoring System Calibration job
-   */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<ScoringSystemCalibrationStatus> {
-    return this._client.get(`/pi_scoring_system/calibrate/${jobId}`, options);
-  }
-
-  /**
-   * Lists the Scoring System Calibration Jobs owned by a user
-   */
-  list(query?: CalibrateListParams, options?: Core.RequestOptions): Core.APIPromise<CalibrateListResponse>;
-  list(options?: Core.RequestOptions): Core.APIPromise<CalibrateListResponse>;
-  list(
-    query: CalibrateListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<CalibrateListResponse> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.get('/pi_scoring_system/calibrate', { query, ...options });
-  }
-
-  /**
-   * Cancels a Scoring System Calibration job
-   */
-  cancel(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
-    return this._client.delete(`/pi_scoring_system/calibrate/${jobId}`, options);
-  }
-
-  /**
-   * Launches a Scoring System Calibration job
-   */
-  startJob(
-    body: CalibrateStartJobParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<ScoringSystemCalibrationStatus> {
-    return this._client.post('/pi_scoring_system/calibrate', { body, ...options });
-  }
-
-  /**
-   * Opens a message stream about a Scoring System Calibration job
-   */
-  streamMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
-    return this._client.get(`/pi_scoring_system/calibrate/${jobId}/messages`, {
-      ...options,
-      headers: { Accept: 'text/plain', ...options?.headers },
-    });
-  }
-}
+export class Calibrate extends APIResource {}
 
 export interface ScoringSystemCalibrationStatus {
   /**
@@ -76,54 +24,109 @@ export interface ScoringSystemCalibrationStatus {
   /**
    * The calibrated scoring system
    */
-  calibrated_scoring_system?: Shared.ScoringSystem | null;
+  calibrated_scoring_system?: ScoringSystemCalibrationStatus.CalibratedScoringSystem | null;
 }
 
-export type CalibrateListResponse = Array<ScoringSystemCalibrationStatus>;
-
-export type CalibrateCancelResponse = string;
-
-export type CalibrateStreamMessagesResponse = string;
-
-export interface CalibrateListParams {
+export namespace ScoringSystemCalibrationStatus {
   /**
-   * Filter jobs by state
+   * The calibrated scoring system
    */
-  state?: CalibrateAPI.State | null;
-}
+  export interface CalibratedScoringSystem {
+    /**
+     * The application description
+     */
+    description: string;
 
-export interface CalibrateStartJobParams {
-  /**
-   * The scoring system to calibrate
-   */
-  scoring_system: Shared.ScoringSystem;
+    /**
+     * The name of the scoring system
+     */
+    name: string;
 
-  /**
-   * Rated examples to use when calibrating the scoring system. Must specify either
-   * the examples or the preference examples
-   */
-  examples?: Array<CalibrateAPI.SDKLabeledExample> | null;
+    /**
+     * The dimensions of the scoring system
+     */
+    dimensions?: Array<CalibratedScoringSystem.Dimension>;
+    [k: string]: unknown;
+  }
 
-  /**
-   * Preference examples to use when calibrating the scoring system. Must specify
-   * either the examples or preference examples
-   */
-  preference_examples?: Array<CalibrateAPI.SDKPreferenceExample> | null;
+  export namespace CalibratedScoringSystem {
+    export interface Dimension {
+      /**
+       * The description of the dimension
+       */
+      description: string;
 
-  /**
-   * The strategy to use to calibrate the scoring system. FULL would take longer than
-   * LITE but may result in better result.
-   */
-  strategy?: CalibrateAPI.CalibrationStrategy;
+      /**
+       * The label of the dimension
+       */
+      label: string;
+
+      /**
+       * The sub dimensions of the dimension
+       */
+      sub_dimensions: Array<Dimension.SubDimension>;
+
+      /**
+       * The learned parameters for the scoring method. This represents piecewise linear
+       * interpolation between [0, 1].
+       */
+      parameters?: Array<number> | null;
+
+      /**
+       * The weight of the dimension The sum of dimension weights will be normalized to
+       * one internally. A higher weight counts for more when aggregating this dimension
+       * is aggregated into the final score.
+       */
+      weight?: number | null;
+      [k: string]: unknown;
+    }
+
+    export namespace Dimension {
+      export interface SubDimension {
+        /**
+         * The description of the dimension
+         */
+        description: string;
+
+        /**
+         * The label of the dimension
+         */
+        label: string;
+
+        /**
+         * The type of scoring performed for this dimension
+         */
+        scoring_type: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER';
+
+        /**
+         * The ID of the custom model to use for scoring. Only relevant for scoring_type of
+         * CUSTOM_MODEL_SCORER
+         */
+        custom_model_id?: string | null;
+
+        /**
+         * The learned parameters for the scoring method. This represents piecewise linear
+         * interpolation between [0, 1].
+         */
+        parameters?: Array<number> | null;
+
+        /**
+         * The PYTHON code associated the PYTHON_CODE DimensionScoringType.
+         */
+        python_code?: string | null;
+
+        /**
+         * The weight of the subdimension. The sum of subdimension weights will be
+         * normalized to one internally. A higher weight counts for more when aggregating
+         * this subdimension into the parent dimension.
+         */
+        weight?: number | null;
+        [k: string]: unknown;
+      }
+    }
+  }
 }
 
 export declare namespace Calibrate {
-  export {
-    type ScoringSystemCalibrationStatus as ScoringSystemCalibrationStatus,
-    type CalibrateListResponse as CalibrateListResponse,
-    type CalibrateCancelResponse as CalibrateCancelResponse,
-    type CalibrateStreamMessagesResponse as CalibrateStreamMessagesResponse,
-    type CalibrateListParams as CalibrateListParams,
-    type CalibrateStartJobParams as CalibrateStartJobParams,
-  };
+  export { type ScoringSystemCalibrationStatus as ScoringSystemCalibrationStatus };
 }
