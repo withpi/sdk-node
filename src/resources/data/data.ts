@@ -15,43 +15,35 @@ import {
 import * as GenerateInputsAPI from './generate-inputs';
 import {
   GenerateInputCancelResponse,
-  GenerateInputCreateParams,
   GenerateInputListParams,
   GenerateInputListResponse,
+  GenerateInputStartJobParams,
   GenerateInputStreamDataResponse,
   GenerateInputStreamMessagesResponse,
   GenerateInputs,
 } from './generate-inputs';
-import * as GenerateSyntheticDataAPI from './generate-synthetic-data';
-import { GenerateSyntheticData } from './generate-synthetic-data';
-import * as InputsAPI from './inputs/inputs';
-import { Inputs } from './inputs/inputs';
 
 export class Data extends APIResource {
-  generateSyntheticData: GenerateSyntheticDataAPI.GenerateSyntheticData =
-    new GenerateSyntheticDataAPI.GenerateSyntheticData(this._client);
-  inputs: InputsAPI.Inputs = new InputsAPI.Inputs(this._client);
+  generateInputs: GenerateInputsAPI.GenerateInputs = new GenerateInputsAPI.GenerateInputs(this._client);
   generateExamples: GenerateExamplesAPI.GenerateExamples = new GenerateExamplesAPI.GenerateExamples(
     this._client,
   );
-  generateInputs: GenerateInputsAPI.GenerateInputs = new GenerateInputsAPI.GenerateInputs(this._client);
 
   /**
    * Clusters inputs into groups with counts
    */
-  createClusterInputs(
-    body: DataCreateClusterInputsParams,
+  clusterInputs(
+    body: DataClusterInputsParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<DataCreateClusterInputsResponse> {
+  ): Core.APIPromise<DataClusterInputsResponse> {
     return this._client.post('/data/cluster_inputs', { body, ...options });
   }
 }
 
-export type DataCreateClusterInputsResponse =
-  Array<DataCreateClusterInputsResponse.DataCreateClusterInputsResponseItem>;
+export type DataClusterInputsResponse = Array<DataClusterInputsResponse.DataClusterInputsResponseItem>;
 
-export namespace DataCreateClusterInputsResponse {
-  export interface DataCreateClusterInputsResponseItem {
+export namespace DataClusterInputsResponse {
+  export interface DataClusterInputsResponseItem {
     /**
      * The input IDs assigned to this topic
      */
@@ -64,11 +56,11 @@ export namespace DataCreateClusterInputsResponse {
   }
 }
 
-export interface DataCreateClusterInputsParams {
+export interface DataClusterInputsParams {
   /**
    * The data to create clusters from.
    */
-  inputs: Array<DataCreateClusterInputsParams.Input>;
+  inputs: Array<DataClusterInputsParams.Input>;
 
   /**
    * The number of clusters to form. If none, the api chooses a number automatically.
@@ -76,7 +68,7 @@ export interface DataCreateClusterInputsParams {
   num_clusters?: number | null;
 }
 
-export namespace DataCreateClusterInputsParams {
+export namespace DataClusterInputsParams {
   export interface Input {
     /**
      * The identifier of the input
@@ -90,20 +82,24 @@ export namespace DataCreateClusterInputsParams {
   }
 }
 
-Data.GenerateSyntheticData = GenerateSyntheticData;
-Data.Inputs = Inputs;
-Data.GenerateExamples = GenerateExamples;
 Data.GenerateInputs = GenerateInputs;
+Data.GenerateExamples = GenerateExamples;
 
 export declare namespace Data {
   export {
-    type DataCreateClusterInputsResponse as DataCreateClusterInputsResponse,
-    type DataCreateClusterInputsParams as DataCreateClusterInputsParams,
+    type DataClusterInputsResponse as DataClusterInputsResponse,
+    type DataClusterInputsParams as DataClusterInputsParams,
   };
 
-  export { GenerateSyntheticData as GenerateSyntheticData };
-
-  export { Inputs as Inputs };
+  export {
+    GenerateInputs as GenerateInputs,
+    type GenerateInputListResponse as GenerateInputListResponse,
+    type GenerateInputCancelResponse as GenerateInputCancelResponse,
+    type GenerateInputStreamDataResponse as GenerateInputStreamDataResponse,
+    type GenerateInputStreamMessagesResponse as GenerateInputStreamMessagesResponse,
+    type GenerateInputListParams as GenerateInputListParams,
+    type GenerateInputStartJobParams as GenerateInputStartJobParams,
+  };
 
   export {
     GenerateExamples as GenerateExamples,
@@ -113,15 +109,5 @@ export declare namespace Data {
     type GenerateExampleStreamMessagesResponse as GenerateExampleStreamMessagesResponse,
     type GenerateExampleCreateParams as GenerateExampleCreateParams,
     type GenerateExampleListParams as GenerateExampleListParams,
-  };
-
-  export {
-    GenerateInputs as GenerateInputs,
-    type GenerateInputListResponse as GenerateInputListResponse,
-    type GenerateInputCancelResponse as GenerateInputCancelResponse,
-    type GenerateInputStreamDataResponse as GenerateInputStreamDataResponse,
-    type GenerateInputStreamMessagesResponse as GenerateInputStreamMessagesResponse,
-    type GenerateInputCreateParams as GenerateInputCreateParams,
-    type GenerateInputListParams as GenerateInputListParams,
   };
 }

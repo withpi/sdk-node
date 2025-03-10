@@ -4,7 +4,6 @@ import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as Shared from '../shared';
-import * as RlGrpoAPI from './rl/grpo';
 
 export class Grpo extends APIResource {
   /**
@@ -44,14 +43,14 @@ export class Grpo extends APIResource {
   /**
    * Launches a RL GRPO job
    */
-  launch(body: GrpoLaunchParams, options?: Core.RequestOptions): Core.APIPromise<RlGrpoAPI.RlGrpoStatus> {
+  launch(body: GrpoLaunchParams, options?: Core.RequestOptions): Core.APIPromise<GrpoLaunchResponse> {
     return this._client.post('/model/grpo', { body, ...options });
   }
 
   /**
    * Loads a RL GRPO model into serving for a limited period of time
    */
-  load(jobId: string, options?: Core.RequestOptions): Core.APIPromise<RlGrpoAPI.RlGrpoStatus> {
+  load(jobId: string, options?: Core.RequestOptions): Core.APIPromise<GrpoLoadResponse> {
     return this._client.post(`/model/grpo/${jobId}/load`, options);
   }
 
@@ -68,18 +67,120 @@ export class Grpo extends APIResource {
   /**
    * Checks the status of a RL GRPO job
    */
-  status(jobId: string, options?: Core.RequestOptions): Core.APIPromise<RlGrpoAPI.RlGrpoStatus> {
+  status(jobId: string, options?: Core.RequestOptions): Core.APIPromise<GrpoStatusResponse> {
     return this._client.get(`/model/grpo/${jobId}`, options);
   }
 }
 
-export type GrpoListResponse = Array<RlGrpoAPI.RlGrpoStatus>;
+export type GrpoListResponse = Array<GrpoListResponse.GrpoListResponseItem>;
+
+export namespace GrpoListResponse {
+  /**
+   * RlGrpoStatus is the status of a RL PPO job.
+   */
+  export interface GrpoListResponseItem {
+    /**
+     * Detailed status of the job
+     */
+    detailed_status: Array<string>;
+
+    /**
+     * The job id
+     */
+    job_id: string;
+
+    /**
+     * Current state of the job
+     */
+    state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
+
+    /**
+     * A list of trained models selected based on the PI Contract score.
+     */
+    trained_models?: Array<Shared.TrainedModel> | null;
+  }
+}
 
 export type GrpoCancelResponse = string;
 
 export type GrpoDownloadResponse = string;
 
+/**
+ * RlGrpoStatus is the status of a RL PPO job.
+ */
+export interface GrpoLaunchResponse {
+  /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
+
+  /**
+   * The job id
+   */
+  job_id: string;
+
+  /**
+   * Current state of the job
+   */
+  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
+
+  /**
+   * A list of trained models selected based on the PI Contract score.
+   */
+  trained_models?: Array<Shared.TrainedModel> | null;
+}
+
+/**
+ * RlGrpoStatus is the status of a RL PPO job.
+ */
+export interface GrpoLoadResponse {
+  /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
+
+  /**
+   * The job id
+   */
+  job_id: string;
+
+  /**
+   * Current state of the job
+   */
+  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
+
+  /**
+   * A list of trained models selected based on the PI Contract score.
+   */
+  trained_models?: Array<Shared.TrainedModel> | null;
+}
+
 export type GrpoMessagesResponse = string;
+
+/**
+ * RlGrpoStatus is the status of a RL PPO job.
+ */
+export interface GrpoStatusResponse {
+  /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
+
+  /**
+   * The job id
+   */
+  job_id: string;
+
+  /**
+   * Current state of the job
+   */
+  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
+
+  /**
+   * A list of trained models selected based on the PI Contract score.
+   */
+  trained_models?: Array<Shared.TrainedModel> | null;
+}
 
 export interface GrpoListParams {
   /**
@@ -96,7 +197,7 @@ export interface GrpoLaunchParams {
   /**
    * The base model to start the RL tunning process
    */
-  base_rl_model: RlGrpoAPI.TextGenerationBaseModel;
+  base_rl_model: 'LLAMA_3.2_3B' | 'LLAMA_3.1_8B';
 
   /**
    * Examples to use in the RL tuning process
@@ -111,7 +212,7 @@ export interface GrpoLaunchParams {
   /**
    * The LoRA configuration.
    */
-  lora_config: RlGrpoAPI.LoraConfig;
+  lora_config: GrpoLaunchParams.LoraConfig;
 
   /**
    * GRPO number of train epochs
@@ -139,6 +240,16 @@ export namespace GrpoLaunchParams {
      */
     llm_input: string;
   }
+
+  /**
+   * The LoRA configuration.
+   */
+  export interface LoraConfig {
+    /**
+     * The number of dimensions in the low-rank decomposition of the weight updates.
+     */
+    lora_rank?: 'R_16' | 'R_32' | 'R_64';
+  }
 }
 
 export declare namespace Grpo {
@@ -146,7 +257,10 @@ export declare namespace Grpo {
     type GrpoListResponse as GrpoListResponse,
     type GrpoCancelResponse as GrpoCancelResponse,
     type GrpoDownloadResponse as GrpoDownloadResponse,
+    type GrpoLaunchResponse as GrpoLaunchResponse,
+    type GrpoLoadResponse as GrpoLoadResponse,
     type GrpoMessagesResponse as GrpoMessagesResponse,
+    type GrpoStatusResponse as GrpoStatusResponse,
     type GrpoListParams as GrpoListParams,
     type GrpoDownloadParams as GrpoDownloadParams,
     type GrpoLaunchParams as GrpoLaunchParams,

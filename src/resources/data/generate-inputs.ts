@@ -7,16 +7,6 @@ import * as Shared from '../shared';
 
 export class GenerateInputs extends APIResource {
   /**
-   * Launches a Data Generation job
-   */
-  create(
-    body: GenerateInputCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.DataGenerationStatus> {
-    return this._client.post('/data/generate_inputs', { body, ...options });
-  }
-
-  /**
    * Checks the status of a Data Generation job
    */
   retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.DataGenerationStatus> {
@@ -49,6 +39,16 @@ export class GenerateInputs extends APIResource {
   }
 
   /**
+   * Launches a Data Generation job
+   */
+  startJob(
+    body: GenerateInputStartJobParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Shared.DataGenerationStatus> {
+    return this._client.post('/data/generate_inputs', { body, ...options });
+  }
+
+  /**
    * Streams data from the Data Generation job
    */
   streamData(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
@@ -77,7 +77,14 @@ export type GenerateInputStreamDataResponse = string;
 
 export type GenerateInputStreamMessagesResponse = string;
 
-export interface GenerateInputCreateParams {
+export interface GenerateInputListParams {
+  /**
+   * Filter jobs by state
+   */
+  state?: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED' | null;
+}
+
+export interface GenerateInputStartJobParams {
   /**
    * The application description for which the inputs would be applicable.
    */
@@ -111,20 +118,13 @@ export interface GenerateInputCreateParams {
   num_shots?: number;
 }
 
-export interface GenerateInputListParams {
-  /**
-   * Filter jobs by state
-   */
-  state?: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED' | null;
-}
-
 export declare namespace GenerateInputs {
   export {
     type GenerateInputListResponse as GenerateInputListResponse,
     type GenerateInputCancelResponse as GenerateInputCancelResponse,
     type GenerateInputStreamDataResponse as GenerateInputStreamDataResponse,
     type GenerateInputStreamMessagesResponse as GenerateInputStreamMessagesResponse,
-    type GenerateInputCreateParams as GenerateInputCreateParams,
     type GenerateInputListParams as GenerateInputListParams,
+    type GenerateInputStartJobParams as GenerateInputStartJobParams,
   };
 }

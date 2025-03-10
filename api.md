@@ -2,28 +2,44 @@
 
 Types:
 
+- <code><a href="./src/resources/shared.ts">ClassificationStatus</a></code>
 - <code><a href="./src/resources/shared.ts">DataGenerationStatus</a></code>
 - <code><a href="./src/resources/shared.ts">ExplorationMode</a></code>
+- <code><a href="./src/resources/shared.ts">PromptOptimizationStatus</a></code>
+- <code><a href="./src/resources/shared.ts">QueryFanoutExample</a></code>
 - <code><a href="./src/resources/shared.ts">Scorer</a></code>
 - <code><a href="./src/resources/shared.ts">ScorerDimension</a></code>
 - <code><a href="./src/resources/shared.ts">ScorerSubDimension</a></code>
 - <code><a href="./src/resources/shared.ts">SyntheticDataStatus</a></code>
+- <code><a href="./src/resources/shared.ts">TrainedModel</a></code>
 
 # Data
 
 Types:
 
-- <code><a href="./src/resources/data/data.ts">DataCreateClusterInputsResponse</a></code>
+- <code><a href="./src/resources/data/data.ts">DataClusterInputsResponse</a></code>
 
 Methods:
 
-- <code title="post /data/cluster_inputs">client.data.<a href="./src/resources/data/data.ts">createClusterInputs</a>({ ...params }) -> DataCreateClusterInputsResponse</code>
+- <code title="post /data/cluster_inputs">client.data.<a href="./src/resources/data/data.ts">clusterInputs</a>({ ...params }) -> DataClusterInputsResponse</code>
 
-## GenerateSyntheticData
+## GenerateInputs
 
-## Inputs
+Types:
 
-### GenerateFromSeeds
+- <code><a href="./src/resources/data/generate-inputs.ts">GenerateInputListResponse</a></code>
+- <code><a href="./src/resources/data/generate-inputs.ts">GenerateInputCancelResponse</a></code>
+- <code><a href="./src/resources/data/generate-inputs.ts">GenerateInputStreamDataResponse</a></code>
+- <code><a href="./src/resources/data/generate-inputs.ts">GenerateInputStreamMessagesResponse</a></code>
+
+Methods:
+
+- <code title="get /data/generate_inputs/{job_id}">client.data.generateInputs.<a href="./src/resources/data/generate-inputs.ts">retrieve</a>(jobId) -> DataGenerationStatus</code>
+- <code title="get /data/generate_inputs">client.data.generateInputs.<a href="./src/resources/data/generate-inputs.ts">list</a>({ ...params }) -> GenerateInputListResponse</code>
+- <code title="delete /data/generate_inputs/{job_id}">client.data.generateInputs.<a href="./src/resources/data/generate-inputs.ts">cancel</a>(jobId) -> string</code>
+- <code title="post /data/generate_inputs">client.data.generateInputs.<a href="./src/resources/data/generate-inputs.ts">startJob</a>({ ...params }) -> DataGenerationStatus</code>
+- <code title="get /data/generate_inputs/{job_id}/data">client.data.generateInputs.<a href="./src/resources/data/generate-inputs.ts">streamData</a>(jobId) -> string</code>
+- <code title="get /data/generate_inputs/{job_id}/messages">client.data.generateInputs.<a href="./src/resources/data/generate-inputs.ts">streamMessages</a>(jobId) -> string</code>
 
 ## GenerateExamples
 
@@ -43,35 +59,12 @@ Methods:
 - <code title="get /data/generate_examples/{job_id}/data">client.data.generateExamples.<a href="./src/resources/data/generate-examples.ts">streamData</a>(jobId) -> GenerateExampleStreamDataResponse</code>
 - <code title="get /data/generate_examples/{job_id}/messages">client.data.generateExamples.<a href="./src/resources/data/generate-examples.ts">streamMessages</a>(jobId) -> string</code>
 
-## GenerateInputs
-
-Types:
-
-- <code><a href="./src/resources/data/generate-inputs.ts">GenerateInputListResponse</a></code>
-- <code><a href="./src/resources/data/generate-inputs.ts">GenerateInputCancelResponse</a></code>
-- <code><a href="./src/resources/data/generate-inputs.ts">GenerateInputStreamDataResponse</a></code>
-- <code><a href="./src/resources/data/generate-inputs.ts">GenerateInputStreamMessagesResponse</a></code>
-
-Methods:
-
-- <code title="post /data/generate_inputs">client.data.generateInputs.<a href="./src/resources/data/generate-inputs.ts">create</a>({ ...params }) -> DataGenerationStatus</code>
-- <code title="get /data/generate_inputs/{job_id}">client.data.generateInputs.<a href="./src/resources/data/generate-inputs.ts">retrieve</a>(jobId) -> DataGenerationStatus</code>
-- <code title="get /data/generate_inputs">client.data.generateInputs.<a href="./src/resources/data/generate-inputs.ts">list</a>({ ...params }) -> GenerateInputListResponse</code>
-- <code title="delete /data/generate_inputs/{job_id}">client.data.generateInputs.<a href="./src/resources/data/generate-inputs.ts">cancel</a>(jobId) -> string</code>
-- <code title="get /data/generate_inputs/{job_id}/data">client.data.generateInputs.<a href="./src/resources/data/generate-inputs.ts">streamData</a>(jobId) -> string</code>
-- <code title="get /data/generate_inputs/{job_id}/messages">client.data.generateInputs.<a href="./src/resources/data/generate-inputs.ts">streamMessages</a>(jobId) -> string</code>
-
 # Model
-
-Types:
-
-- <code><a href="./src/resources/model/model.ts">TrainedModel</a></code>
 
 ## Classifier
 
 Types:
 
-- <code><a href="./src/resources/model/classifier.ts">ClassificationStatus</a></code>
 - <code><a href="./src/resources/model/classifier.ts">ClassifierListResponse</a></code>
 - <code><a href="./src/resources/model/classifier.ts">ClassifierCancelResponse</a></code>
 - <code><a href="./src/resources/model/classifier.ts">ClassifierDownloadResponse</a></code>
@@ -85,16 +78,6 @@ Methods:
 - <code title="post /model/classifier/{job_id}/download">client.model.classifier.<a href="./src/resources/model/classifier.ts">download</a>(jobId, { ...params }) -> string</code>
 - <code title="post /model/classifier">client.model.classifier.<a href="./src/resources/model/classifier.ts">startJob</a>({ ...params }) -> ClassificationStatus</code>
 - <code title="get /model/classifier/{job_id}/messages">client.model.classifier.<a href="./src/resources/model/classifier.ts">streamMessages</a>(jobId) -> string</code>
-
-## Rl
-
-### Grpo
-
-Types:
-
-- <code><a href="./src/resources/model/rl/grpo.ts">LoraConfig</a></code>
-- <code><a href="./src/resources/model/rl/grpo.ts">RlGrpoStatus</a></code>
-- <code><a href="./src/resources/model/rl/grpo.ts">TextGenerationBaseModel</a></code>
 
 ## Sft
 
@@ -125,17 +108,20 @@ Types:
 - <code><a href="./src/resources/model/grpo.ts">GrpoListResponse</a></code>
 - <code><a href="./src/resources/model/grpo.ts">GrpoCancelResponse</a></code>
 - <code><a href="./src/resources/model/grpo.ts">GrpoDownloadResponse</a></code>
+- <code><a href="./src/resources/model/grpo.ts">GrpoLaunchResponse</a></code>
+- <code><a href="./src/resources/model/grpo.ts">GrpoLoadResponse</a></code>
 - <code><a href="./src/resources/model/grpo.ts">GrpoMessagesResponse</a></code>
+- <code><a href="./src/resources/model/grpo.ts">GrpoStatusResponse</a></code>
 
 Methods:
 
 - <code title="get /model/grpo">client.model.grpo.<a href="./src/resources/model/grpo.ts">list</a>({ ...params }) -> GrpoListResponse</code>
 - <code title="delete /model/grpo/{job_id}">client.model.grpo.<a href="./src/resources/model/grpo.ts">cancel</a>(jobId) -> string</code>
 - <code title="post /model/grpo/{job_id}/download">client.model.grpo.<a href="./src/resources/model/grpo.ts">download</a>(jobId, { ...params }) -> string</code>
-- <code title="post /model/grpo">client.model.grpo.<a href="./src/resources/model/grpo.ts">launch</a>({ ...params }) -> RlGrpoStatus</code>
-- <code title="post /model/grpo/{job_id}/load">client.model.grpo.<a href="./src/resources/model/grpo.ts">load</a>(jobId) -> RlGrpoStatus</code>
+- <code title="post /model/grpo">client.model.grpo.<a href="./src/resources/model/grpo.ts">launch</a>({ ...params }) -> GrpoLaunchResponse</code>
+- <code title="post /model/grpo/{job_id}/load">client.model.grpo.<a href="./src/resources/model/grpo.ts">load</a>(jobId) -> GrpoLoadResponse</code>
 - <code title="get /model/grpo/{job_id}/messages">client.model.grpo.<a href="./src/resources/model/grpo.ts">messages</a>(jobId) -> string</code>
-- <code title="get /model/grpo/{job_id}">client.model.grpo.<a href="./src/resources/model/grpo.ts">status</a>(jobId) -> RlGrpoStatus</code>
+- <code title="get /model/grpo/{job_id}">client.model.grpo.<a href="./src/resources/model/grpo.ts">status</a>(jobId) -> GrpoStatusResponse</code>
 
 # Prompt
 
@@ -143,7 +129,6 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/prompt/optimize.ts">PromptOptimizationStatus</a></code>
 - <code><a href="./src/resources/prompt/optimize.ts">OptimizeListResponse</a></code>
 - <code><a href="./src/resources/prompt/optimize.ts">OptimizeCancelResponse</a></code>
 - <code><a href="./src/resources/prompt/optimize.ts">OptimizeStreamMessagesResponse</a></code>
@@ -160,7 +145,6 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/queries.ts">QueryFanoutExample</a></code>
 - <code><a href="./src/resources/queries.ts">QueryClassifyResponse</a></code>
 - <code><a href="./src/resources/queries.ts">QueryGenerateFanoutsResponse</a></code>
 

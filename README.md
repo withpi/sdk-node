@@ -27,7 +27,7 @@ const client = new PiClient({
 });
 
 async function main() {
-  const response = await client.data.createClusterInputs({
+  const response = await client.data.clusterInputs({
     inputs: [{ identifier: 'abcd12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }],
   });
 }
@@ -48,10 +48,10 @@ const client = new PiClient({
 });
 
 async function main() {
-  const params: PiClient.DataCreateClusterInputsParams = {
+  const params: PiClient.DataClusterInputsParams = {
     inputs: [{ identifier: 'abcd12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }],
   };
-  const response: PiClient.DataCreateClusterInputsResponse = await client.data.createClusterInputs(params);
+  const response: PiClient.DataClusterInputsResponse = await client.data.clusterInputs(params);
 }
 
 main();
@@ -69,7 +69,7 @@ a subclass of `APIError` will be thrown:
 ```ts
 async function main() {
   const response = await client.data
-    .createClusterInputs({
+    .clusterInputs({
       inputs: [{ identifier: 'abcd12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }],
     })
     .catch(async (err) => {
@@ -115,7 +115,7 @@ const client = new PiClient({
 });
 
 // Or, configure per-request:
-await client.data.createClusterInputs({ inputs: [{ identifier: 'abcd12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }] }, {
+await client.data.clusterInputs({ inputs: [{ identifier: 'abcd12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }] }, {
   maxRetries: 5,
 });
 ```
@@ -132,7 +132,7 @@ const client = new PiClient({
 });
 
 // Override per-request:
-await client.data.createClusterInputs({ inputs: [{ identifier: 'abcd12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }] }, {
+await client.data.clusterInputs({ inputs: [{ identifier: 'abcd12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }] }, {
   timeout: 5 * 1000,
 });
 ```
@@ -154,7 +154,7 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 const client = new PiClient();
 
 const response = await client.data
-  .createClusterInputs({
+  .clusterInputs({
     inputs: [{ identifier: 'abcd12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }],
   })
   .asResponse();
@@ -162,7 +162,7 @@ console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
 const { data: response, response: raw } = await client.data
-  .createClusterInputs({
+  .clusterInputs({
     inputs: [{ identifier: 'abcd12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }],
   })
   .withResponse();
@@ -271,7 +271,7 @@ const client = new PiClient({
 });
 
 // Override per-request:
-await client.data.createClusterInputs(
+await client.data.clusterInputs(
   { inputs: [{ identifier: 'abcd12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }] },
   {
     httpAgent: new http.Agent({ keepAlive: false }),
