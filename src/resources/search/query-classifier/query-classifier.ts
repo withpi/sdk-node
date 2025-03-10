@@ -6,12 +6,12 @@ import * as DistillAPI from './distill';
 import {
   Distill,
   DistillCancelResponse,
-  DistillCreateParams,
   DistillDownloadParams,
   DistillDownloadResponse,
   DistillListParams,
   DistillListResponse,
-  DistillMessagesResponse,
+  DistillStartJobParams,
+  DistillStreamMessagesResponse,
 } from './distill';
 
 export class QueryClassifier extends APIResource {
@@ -106,9 +106,9 @@ export declare namespace QueryClassifier {
     type DistillListResponse as DistillListResponse,
     type DistillCancelResponse as DistillCancelResponse,
     type DistillDownloadResponse as DistillDownloadResponse,
-    type DistillMessagesResponse as DistillMessagesResponse,
-    type DistillCreateParams as DistillCreateParams,
+    type DistillStreamMessagesResponse as DistillStreamMessagesResponse,
     type DistillListParams as DistillListParams,
     type DistillDownloadParams as DistillDownloadParams,
+    type DistillStartJobParams as DistillStartJobParams,
   };
 }
