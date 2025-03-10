@@ -11,23 +11,23 @@ import {
 } from './query-classifier/query-classifier';
 
 export class Search extends APIResource {
-  queryClassifier: QueryClassifierAPI.QueryClassifier = new QueryClassifierAPI.QueryClassifier(this._client);
   queryFanout: QueryFanoutAPI.QueryFanout = new QueryFanoutAPI.QueryFanout(this._client);
+  queryClassifier: QueryClassifierAPI.QueryClassifier = new QueryClassifierAPI.QueryClassifier(this._client);
 }
 
-Search.QueryClassifier = QueryClassifier;
 Search.QueryFanout = QueryFanout;
+Search.QueryClassifier = QueryClassifier;
 
 export declare namespace Search {
-  export {
-    QueryClassifier as QueryClassifier,
-    type QueryClassifierClassifyResponse as QueryClassifierClassifyResponse,
-    type QueryClassifierClassifyParams as QueryClassifierClassifyParams,
-  };
-
   export {
     QueryFanout as QueryFanout,
     type QueryFanoutGenerateResponse as QueryFanoutGenerateResponse,
     type QueryFanoutGenerateParams as QueryFanoutGenerateParams,
+  };
+
+  export {
+    QueryClassifier as QueryClassifier,
+    type QueryClassifierClassifyResponse as QueryClassifierClassifyResponse,
+    type QueryClassifierClassifyParams as QueryClassifierClassifyParams,
   };
 }
