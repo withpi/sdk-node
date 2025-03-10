@@ -3,21 +3,11 @@
 Types:
 
 - <code><a href="./src/resources/shared.ts">DataGenerationStatus</a></code>
-- <code><a href="./src/resources/shared.ts">ScoringSystemMetrics</a></code>
-- <code><a href="./src/resources/shared.ts">SDKExample</a></code>
-- <code><a href="./src/resources/shared.ts">SftStatus</a></code>
+- <code><a href="./src/resources/shared.ts">ExplorationMode</a></code>
+- <code><a href="./src/resources/shared.ts">Scorer</a></code>
+- <code><a href="./src/resources/shared.ts">ScorerDimension</a></code>
+- <code><a href="./src/resources/shared.ts">ScorerSubDimension</a></code>
 - <code><a href="./src/resources/shared.ts">SyntheticDataStatus</a></code>
-
-# Contracts
-
-## Calibrate
-
-Types:
-
-- <code><a href="./src/resources/contracts/calibrate.ts">CalibrationStrategy</a></code>
-- <code><a href="./src/resources/contracts/calibrate.ts">SDKLabeledExample</a></code>
-- <code><a href="./src/resources/contracts/calibrate.ts">SDKPreferenceExample</a></code>
-- <code><a href="./src/resources/contracts/calibrate.ts">State</a></code>
 
 # Data
 
@@ -25,7 +15,6 @@ Types:
 
 Types:
 
-- <code><a href="./src/resources/data/generate-synthetic-data.ts">SDKExplorationMode</a></code>
 - <code><a href="./src/resources/data/generate-synthetic-data.ts">GenerateSyntheticDataListResponse</a></code>
 - <code><a href="./src/resources/data/generate-synthetic-data.ts">GenerateSyntheticDataCancelResponse</a></code>
 - <code><a href="./src/resources/data/generate-synthetic-data.ts">GenerateSyntheticDataStreamDataResponse</a></code>
@@ -70,12 +59,15 @@ Methods:
 
 # Model
 
+Types:
+
+- <code><a href="./src/resources/model/model.ts">TrainedModel</a></code>
+
 ## Classifier
 
 Types:
 
 - <code><a href="./src/resources/model/classifier.ts">ClassificationStatus</a></code>
-- <code><a href="./src/resources/model/classifier.ts">TrainedModel</a></code>
 - <code><a href="./src/resources/model/classifier.ts">ClassifierListResponse</a></code>
 - <code><a href="./src/resources/model/classifier.ts">ClassifierCancelResponse</a></code>
 - <code><a href="./src/resources/model/classifier.ts">ClassifierDownloadResponse</a></code>
@@ -118,28 +110,23 @@ Methods:
 
 Types:
 
+- <code><a href="./src/resources/model/sft.ts">SftRetrieveResponse</a></code>
 - <code><a href="./src/resources/model/sft.ts">SftListResponse</a></code>
 - <code><a href="./src/resources/model/sft.ts">SftCancelResponse</a></code>
 - <code><a href="./src/resources/model/sft.ts">SftDownloadResponse</a></code>
+- <code><a href="./src/resources/model/sft.ts">SftLoadResponse</a></code>
+- <code><a href="./src/resources/model/sft.ts">SftStartJobResponse</a></code>
 - <code><a href="./src/resources/model/sft.ts">SftStreamMessagesResponse</a></code>
 
 Methods:
 
-- <code title="get /model/sft/{job_id}">client.model.sft.<a href="./src/resources/model/sft.ts">retrieve</a>(jobId) -> SftStatus</code>
+- <code title="get /model/sft/{job_id}">client.model.sft.<a href="./src/resources/model/sft.ts">retrieve</a>(jobId) -> SftRetrieveResponse</code>
 - <code title="get /model/sft">client.model.sft.<a href="./src/resources/model/sft.ts">list</a>({ ...params }) -> SftListResponse</code>
 - <code title="delete /model/sft/{job_id}">client.model.sft.<a href="./src/resources/model/sft.ts">cancel</a>(jobId) -> string</code>
 - <code title="post /model/sft/{job_id}/download">client.model.sft.<a href="./src/resources/model/sft.ts">download</a>(jobId, { ...params }) -> string</code>
-- <code title="post /model/sft/{job_id}/load">client.model.sft.<a href="./src/resources/model/sft.ts">load</a>(jobId) -> SftStatus</code>
-- <code title="post /model/sft">client.model.sft.<a href="./src/resources/model/sft.ts">startJob</a>({ ...params }) -> SftStatus</code>
+- <code title="post /model/sft/{job_id}/load">client.model.sft.<a href="./src/resources/model/sft.ts">load</a>(jobId) -> SftLoadResponse</code>
+- <code title="post /model/sft">client.model.sft.<a href="./src/resources/model/sft.ts">startJob</a>({ ...params }) -> SftStartJobResponse</code>
 - <code title="get /model/sft/{job_id}/messages">client.model.sft.<a href="./src/resources/model/sft.ts">streamMessages</a>(jobId) -> string</code>
-
-# PiScoringSystem
-
-## Calibrate
-
-Types:
-
-- <code><a href="./src/resources/pi-scoring-system/calibrate.ts">ScoringSystemCalibrationStatus</a></code>
 
 # Prompt
 
@@ -177,27 +164,28 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/scorer/scorer.ts">ScorerGenerateDimensionsResponse</a></code>
-- <code><a href="./src/resources/scorer/scorer.ts">ScorerReadFromHfResponse</a></code>
+- <code><a href="./src/resources/scorer/scorer.ts">ScorerScoreResponse</a></code>
 
 Methods:
 
-- <code title="post /scorer/generate_dimensions">client.scorer.<a href="./src/resources/scorer/scorer.ts">generateDimensions</a>({ ...params }) -> ScorerGenerateDimensionsResponse</code>
-- <code title="post /scorer/read_from_hf">client.scorer.<a href="./src/resources/scorer/scorer.ts">readFromHf</a>({ ...params }) -> ScorerReadFromHfResponse</code>
-- <code title="post /scorer/score">client.scorer.<a href="./src/resources/scorer/scorer.ts">score</a>({ ...params }) -> ScoringSystemMetrics</code>
+- <code title="post /scorer/generate_dimensions">client.scorer.<a href="./src/resources/scorer/scorer.ts">generateDimensions</a>({ ...params }) -> Scorer</code>
+- <code title="post /scorer/read_from_hf">client.scorer.<a href="./src/resources/scorer/scorer.ts">readFromHf</a>({ ...params }) -> Scorer</code>
+- <code title="post /scorer/score">client.scorer.<a href="./src/resources/scorer/scorer.ts">score</a>({ ...params }) -> ScorerScoreResponse</code>
 
 ## Calibrate
 
 Types:
 
+- <code><a href="./src/resources/scorer/calibrate.ts">CalibrateCreateResponse</a></code>
+- <code><a href="./src/resources/scorer/calibrate.ts">CalibrateRetrieveResponse</a></code>
 - <code><a href="./src/resources/scorer/calibrate.ts">CalibrateListResponse</a></code>
 - <code><a href="./src/resources/scorer/calibrate.ts">CalibrateCancelResponse</a></code>
 - <code><a href="./src/resources/scorer/calibrate.ts">CalibrateMessagesResponse</a></code>
 
 Methods:
 
-- <code title="post /scorer/calibrate">client.scorer.calibrate.<a href="./src/resources/scorer/calibrate.ts">create</a>({ ...params }) -> ScoringSystemCalibrationStatus</code>
-- <code title="get /scorer/calibrate/{job_id}">client.scorer.calibrate.<a href="./src/resources/scorer/calibrate.ts">retrieve</a>(jobId) -> ScoringSystemCalibrationStatus</code>
+- <code title="post /scorer/calibrate">client.scorer.calibrate.<a href="./src/resources/scorer/calibrate.ts">create</a>({ ...params }) -> CalibrateCreateResponse</code>
+- <code title="get /scorer/calibrate/{job_id}">client.scorer.calibrate.<a href="./src/resources/scorer/calibrate.ts">retrieve</a>(jobId) -> CalibrateRetrieveResponse</code>
 - <code title="get /scorer/calibrate">client.scorer.calibrate.<a href="./src/resources/scorer/calibrate.ts">list</a>({ ...params }) -> CalibrateListResponse</code>
 - <code title="delete /scorer/calibrate/{job_id}">client.scorer.calibrate.<a href="./src/resources/scorer/calibrate.ts">cancel</a>(jobId) -> string</code>
 - <code title="get /scorer/calibrate/{job_id}/messages">client.scorer.calibrate.<a href="./src/resources/scorer/calibrate.ts">messages</a>(jobId) -> string</code>

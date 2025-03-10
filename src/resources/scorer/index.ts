@@ -2,6 +2,8 @@
 
 export {
   Calibrate,
+  type CalibrateCreateResponse,
+  type CalibrateRetrieveResponse,
   type CalibrateListResponse,
   type CalibrateCancelResponse,
   type CalibrateMessagesResponse,
@@ -10,8 +12,7 @@ export {
 } from './calibrate';
 export {
   Scorer,
-  type ScorerGenerateDimensionsResponse,
-  type ScorerReadFromHfResponse,
+  type ScorerScoreResponse,
   type ScorerGenerateDimensionsParams,
   type ScorerReadFromHfParams,
   type ScorerScoreParams,
