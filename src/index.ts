@@ -12,7 +12,6 @@ import {
   ScoringSystemFromHuggingfaceParams,
   ScoringSystemGenerateParams,
   ScoringSystemScoreParams,
-  ScoringSystemScoreResponse,
 } from './resources/scoring-system/scoring-system';
 import { Search } from './resources/search/search';
 import { Training } from './resources/training/training';
@@ -192,7 +191,6 @@ export declare namespace PiClient {
 
   export {
     ScoringSystem as ScoringSystem,
-    type ScoringSystemScoreResponse as ScoringSystemScoreResponse,
     type ScoringSystemFromHuggingfaceParams as ScoringSystemFromHuggingfaceParams,
     type ScoringSystemGenerateParams as ScoringSystemGenerateParams,
     type ScoringSystemScoreParams as ScoringSystemScoreParams,
@@ -208,6 +206,7 @@ export declare namespace PiClient {
   export type Scorer = API.Scorer;
   export type ScorerDimension = API.ScorerDimension;
   export type ScorerSubDimension = API.ScorerSubDimension;
+  export type ScoringSystemMetrics = API.ScoringSystemMetrics;
   export type SftStatus = API.SftStatus;
   export type SyntheticDataStatus = API.SyntheticDataStatus;
   export type TrainedModel = API.TrainedModel;

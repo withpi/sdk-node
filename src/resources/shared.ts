@@ -185,6 +185,32 @@ export interface ScorerSubDimension {
   [k: string]: unknown;
 }
 
+export interface ScoringSystemMetrics {
+  /**
+   * The score components for each dimension
+   */
+  dimension_scores: Record<string, ScoringSystemMetrics.DimensionScores>;
+
+  /**
+   * The total score of the scoring system
+   */
+  total_score: number;
+}
+
+export namespace ScoringSystemMetrics {
+  export interface DimensionScores {
+    /**
+     * The score components for each subdimension
+     */
+    subdimension_scores: Record<string, number>;
+
+    /**
+     * The total score of the dimension
+     */
+    total_score: number;
+  }
+}
+
 /**
  * SftStatus is the status of a SFT job.
  */
