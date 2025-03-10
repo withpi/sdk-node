@@ -18,3 +18,4 @@ export {
   type ScorerReadFromHfParams,
   type ScorerScoreParams,
 } from './scorers/scorers';
+export { Training } from './training/training';

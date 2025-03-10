@@ -63,65 +63,9 @@ Methods:
 
 ## Classifier
 
-Types:
-
-- <code><a href="./src/resources/model/classifier.ts">ClassifierListResponse</a></code>
-- <code><a href="./src/resources/model/classifier.ts">ClassifierCancelResponse</a></code>
-- <code><a href="./src/resources/model/classifier.ts">ClassifierDownloadResponse</a></code>
-- <code><a href="./src/resources/model/classifier.ts">ClassifierStreamMessagesResponse</a></code>
-
-Methods:
-
-- <code title="get /model/classifier/{job_id}">client.model.classifier.<a href="./src/resources/model/classifier.ts">retrieve</a>(jobId) -> ClassificationStatus</code>
-- <code title="get /model/classifier">client.model.classifier.<a href="./src/resources/model/classifier.ts">list</a>({ ...params }) -> ClassifierListResponse</code>
-- <code title="delete /model/classifier/{job_id}">client.model.classifier.<a href="./src/resources/model/classifier.ts">cancel</a>(jobId) -> string</code>
-- <code title="post /model/classifier/{job_id}/download">client.model.classifier.<a href="./src/resources/model/classifier.ts">download</a>(jobId, { ...params }) -> string</code>
-- <code title="post /model/classifier">client.model.classifier.<a href="./src/resources/model/classifier.ts">startJob</a>({ ...params }) -> ClassificationStatus</code>
-- <code title="get /model/classifier/{job_id}/messages">client.model.classifier.<a href="./src/resources/model/classifier.ts">streamMessages</a>(jobId) -> string</code>
-
 ## Sft
 
-Types:
-
-- <code><a href="./src/resources/model/sft.ts">SftRetrieveResponse</a></code>
-- <code><a href="./src/resources/model/sft.ts">SftListResponse</a></code>
-- <code><a href="./src/resources/model/sft.ts">SftCancelResponse</a></code>
-- <code><a href="./src/resources/model/sft.ts">SftDownloadResponse</a></code>
-- <code><a href="./src/resources/model/sft.ts">SftLoadResponse</a></code>
-- <code><a href="./src/resources/model/sft.ts">SftStartJobResponse</a></code>
-- <code><a href="./src/resources/model/sft.ts">SftStreamMessagesResponse</a></code>
-
-Methods:
-
-- <code title="get /model/sft/{job_id}">client.model.sft.<a href="./src/resources/model/sft.ts">retrieve</a>(jobId) -> SftRetrieveResponse</code>
-- <code title="get /model/sft">client.model.sft.<a href="./src/resources/model/sft.ts">list</a>({ ...params }) -> SftListResponse</code>
-- <code title="delete /model/sft/{job_id}">client.model.sft.<a href="./src/resources/model/sft.ts">cancel</a>(jobId) -> string</code>
-- <code title="post /model/sft/{job_id}/download">client.model.sft.<a href="./src/resources/model/sft.ts">download</a>(jobId, { ...params }) -> string</code>
-- <code title="post /model/sft/{job_id}/load">client.model.sft.<a href="./src/resources/model/sft.ts">load</a>(jobId) -> SftLoadResponse</code>
-- <code title="post /model/sft">client.model.sft.<a href="./src/resources/model/sft.ts">startJob</a>({ ...params }) -> SftStartJobResponse</code>
-- <code title="get /model/sft/{job_id}/messages">client.model.sft.<a href="./src/resources/model/sft.ts">streamMessages</a>(jobId) -> string</code>
-
 ## Grpo
-
-Types:
-
-- <code><a href="./src/resources/model/grpo.ts">GrpoRetrieveResponse</a></code>
-- <code><a href="./src/resources/model/grpo.ts">GrpoListResponse</a></code>
-- <code><a href="./src/resources/model/grpo.ts">GrpoCancelResponse</a></code>
-- <code><a href="./src/resources/model/grpo.ts">GrpoDownloadResponse</a></code>
-- <code><a href="./src/resources/model/grpo.ts">GrpoLoadResponse</a></code>
-- <code><a href="./src/resources/model/grpo.ts">GrpoStartJobResponse</a></code>
-- <code><a href="./src/resources/model/grpo.ts">GrpoStreamMessagesResponse</a></code>
-
-Methods:
-
-- <code title="get /model/grpo/{job_id}">client.model.grpo.<a href="./src/resources/model/grpo.ts">retrieve</a>(jobId) -> GrpoRetrieveResponse</code>
-- <code title="get /model/grpo">client.model.grpo.<a href="./src/resources/model/grpo.ts">list</a>({ ...params }) -> GrpoListResponse</code>
-- <code title="delete /model/grpo/{job_id}">client.model.grpo.<a href="./src/resources/model/grpo.ts">cancel</a>(jobId) -> string</code>
-- <code title="post /model/grpo/{job_id}/download">client.model.grpo.<a href="./src/resources/model/grpo.ts">download</a>(jobId, { ...params }) -> string</code>
-- <code title="post /model/grpo/{job_id}/load">client.model.grpo.<a href="./src/resources/model/grpo.ts">load</a>(jobId) -> GrpoLoadResponse</code>
-- <code title="post /model/grpo">client.model.grpo.<a href="./src/resources/model/grpo.ts">startJob</a>({ ...params }) -> GrpoStartJobResponse</code>
-- <code title="get /model/grpo/{job_id}/messages">client.model.grpo.<a href="./src/resources/model/grpo.ts">streamMessages</a>(jobId) -> string</code>
 
 # Prompt
 
@@ -182,3 +126,67 @@ Methods:
 
 - <code title="post /rag/query_classify">client.rag.<a href="./src/resources/rag.ts">classifyQuery</a>({ ...params }) -> RagClassifyQueryResponse</code>
 - <code title="post /rag/query_fanout">client.rag.<a href="./src/resources/rag.ts">generateFanout</a>({ ...params }) -> RagGenerateFanoutResponse</code>
+
+# Training
+
+## Classifier
+
+Types:
+
+- <code><a href="./src/resources/training/classifier.ts">ClassifierListResponse</a></code>
+- <code><a href="./src/resources/training/classifier.ts">ClassifierCancelResponse</a></code>
+- <code><a href="./src/resources/training/classifier.ts">ClassifierDownloadResponse</a></code>
+- <code><a href="./src/resources/training/classifier.ts">ClassifierMessagesResponse</a></code>
+
+Methods:
+
+- <code title="post /training/classifier">client.training.classifier.<a href="./src/resources/training/classifier.ts">create</a>({ ...params }) -> ClassificationStatus</code>
+- <code title="get /training/classifier/{job_id}">client.training.classifier.<a href="./src/resources/training/classifier.ts">retrieve</a>(jobId) -> ClassificationStatus</code>
+- <code title="get /training/classifier">client.training.classifier.<a href="./src/resources/training/classifier.ts">list</a>({ ...params }) -> ClassifierListResponse</code>
+- <code title="delete /training/classifier/{job_id}">client.training.classifier.<a href="./src/resources/training/classifier.ts">cancel</a>(jobId) -> string</code>
+- <code title="post /training/classifier/{job_id}/download">client.training.classifier.<a href="./src/resources/training/classifier.ts">download</a>(jobId, { ...params }) -> string</code>
+- <code title="get /training/classifier/{job_id}/messages">client.training.classifier.<a href="./src/resources/training/classifier.ts">messages</a>(jobId) -> string</code>
+
+## Grpo
+
+Types:
+
+- <code><a href="./src/resources/training/grpo.ts">GrpoCreateResponse</a></code>
+- <code><a href="./src/resources/training/grpo.ts">GrpoRetrieveResponse</a></code>
+- <code><a href="./src/resources/training/grpo.ts">GrpoListResponse</a></code>
+- <code><a href="./src/resources/training/grpo.ts">GrpoCancelResponse</a></code>
+- <code><a href="./src/resources/training/grpo.ts">GrpoDownloadResponse</a></code>
+- <code><a href="./src/resources/training/grpo.ts">GrpoLoadResponse</a></code>
+- <code><a href="./src/resources/training/grpo.ts">GrpoMessagesResponse</a></code>
+
+Methods:
+
+- <code title="post /training/grpo">client.training.grpo.<a href="./src/resources/training/grpo.ts">create</a>({ ...params }) -> GrpoCreateResponse</code>
+- <code title="get /training/grpo/{job_id}">client.training.grpo.<a href="./src/resources/training/grpo.ts">retrieve</a>(jobId) -> GrpoRetrieveResponse</code>
+- <code title="get /training/grpo">client.training.grpo.<a href="./src/resources/training/grpo.ts">list</a>({ ...params }) -> GrpoListResponse</code>
+- <code title="delete /training/grpo/{job_id}">client.training.grpo.<a href="./src/resources/training/grpo.ts">cancel</a>(jobId) -> string</code>
+- <code title="post /training/grpo/{job_id}/download">client.training.grpo.<a href="./src/resources/training/grpo.ts">download</a>(jobId, { ...params }) -> string</code>
+- <code title="post /training/grpo/{job_id}/load">client.training.grpo.<a href="./src/resources/training/grpo.ts">load</a>(jobId) -> GrpoLoadResponse</code>
+- <code title="get /training/grpo/{job_id}/messages">client.training.grpo.<a href="./src/resources/training/grpo.ts">messages</a>(jobId) -> string</code>
+
+## Sft
+
+Types:
+
+- <code><a href="./src/resources/training/sft.ts">SftCreateResponse</a></code>
+- <code><a href="./src/resources/training/sft.ts">SftRetrieveResponse</a></code>
+- <code><a href="./src/resources/training/sft.ts">SftListResponse</a></code>
+- <code><a href="./src/resources/training/sft.ts">SftCancelResponse</a></code>
+- <code><a href="./src/resources/training/sft.ts">SftDownloadResponse</a></code>
+- <code><a href="./src/resources/training/sft.ts">SftLoadResponse</a></code>
+- <code><a href="./src/resources/training/sft.ts">SftMessagesResponse</a></code>
+
+Methods:
+
+- <code title="post /training/sft">client.training.sft.<a href="./src/resources/training/sft.ts">create</a>({ ...params }) -> SftCreateResponse</code>
+- <code title="get /training/sft/{job_id}">client.training.sft.<a href="./src/resources/training/sft.ts">retrieve</a>(jobId) -> SftRetrieveResponse</code>
+- <code title="get /training/sft">client.training.sft.<a href="./src/resources/training/sft.ts">list</a>({ ...params }) -> SftListResponse</code>
+- <code title="delete /training/sft/{job_id}">client.training.sft.<a href="./src/resources/training/sft.ts">cancel</a>(jobId) -> string</code>
+- <code title="post /training/sft/{job_id}/download">client.training.sft.<a href="./src/resources/training/sft.ts">download</a>(jobId, { ...params }) -> string</code>
+- <code title="post /training/sft/{job_id}/load">client.training.sft.<a href="./src/resources/training/sft.ts">load</a>(jobId) -> SftLoadResponse</code>
+- <code title="get /training/sft/{job_id}/messages">client.training.sft.<a href="./src/resources/training/sft.ts">messages</a>(jobId) -> string</code>
