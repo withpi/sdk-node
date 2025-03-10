@@ -7,16 +7,6 @@ import * as Shared from '../shared';
 
 export class Calibrate extends APIResource {
   /**
-   * Starts a Scorer Calibration job
-   */
-  create(
-    body: CalibrateCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<CalibrateCreateResponse> {
-    return this._client.post('/scoring_system/calibrate', { body, ...options });
-  }
-
-  /**
    * Checks the status of a Scorer Calibration job
    */
   retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<CalibrateRetrieveResponse> {
@@ -54,28 +44,16 @@ export class Calibrate extends APIResource {
       headers: { Accept: 'text/plain', ...options?.headers },
     });
   }
-}
-
-export interface CalibrateCreateResponse {
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
 
   /**
-   * The job id
+   * Starts a Scorer Calibration job
    */
-  job_id: string;
-
-  /**
-   * Current state of the job
-   */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
-
-  /**
-   * The calibrated scoring system
-   */
-  calibrated_scoring_system?: Shared.Scorer | null;
+  startJob(
+    body: CalibrateStartJobParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<CalibrateStartJobResponse> {
+    return this._client.post('/scoring_system/calibrate', { body, ...options });
+  }
 }
 
 export interface CalibrateRetrieveResponse {
@@ -130,7 +108,36 @@ export type CalibrateCancelResponse = string;
 
 export type CalibrateMessagesResponse = string;
 
-export interface CalibrateCreateParams {
+export interface CalibrateStartJobResponse {
+  /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
+
+  /**
+   * The job id
+   */
+  job_id: string;
+
+  /**
+   * Current state of the job
+   */
+  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
+
+  /**
+   * The calibrated scoring system
+   */
+  calibrated_scoring_system?: Shared.Scorer | null;
+}
+
+export interface CalibrateListParams {
+  /**
+   * Filter jobs by state
+   */
+  state?: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED' | null;
+}
+
+export interface CalibrateStartJobParams {
   /**
    * The scoring system to calibrate
    */
@@ -140,13 +147,13 @@ export interface CalibrateCreateParams {
    * Rated examples to use when calibrating the scoring system. Must specify either
    * the examples or the preference examples
    */
-  examples?: Array<CalibrateCreateParams.Example> | null;
+  examples?: Array<CalibrateStartJobParams.Example> | null;
 
   /**
    * Preference examples to use when calibrating the scoring system. Must specify
    * either the examples or preference examples
    */
-  preference_examples?: Array<CalibrateCreateParams.PreferenceExample> | null;
+  preference_examples?: Array<CalibrateStartJobParams.PreferenceExample> | null;
 
   /**
    * The strategy to use to calibrate the scoring system. FULL would take longer than
@@ -155,7 +162,7 @@ export interface CalibrateCreateParams {
   strategy?: 'LITE' | 'FULL';
 }
 
-export namespace CalibrateCreateParams {
+export namespace CalibrateStartJobParams {
   /**
    * An labeled example for training or evaluation
    */
@@ -197,21 +204,14 @@ export namespace CalibrateCreateParams {
   }
 }
 
-export interface CalibrateListParams {
-  /**
-   * Filter jobs by state
-   */
-  state?: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED' | null;
-}
-
 export declare namespace Calibrate {
   export {
-    type CalibrateCreateResponse as CalibrateCreateResponse,
     type CalibrateRetrieveResponse as CalibrateRetrieveResponse,
     type CalibrateListResponse as CalibrateListResponse,
     type CalibrateCancelResponse as CalibrateCancelResponse,
     type CalibrateMessagesResponse as CalibrateMessagesResponse,
-    type CalibrateCreateParams as CalibrateCreateParams,
+    type CalibrateStartJobResponse as CalibrateStartJobResponse,
     type CalibrateListParams as CalibrateListParams,
+    type CalibrateStartJobParams as CalibrateStartJobParams,
   };
 }
