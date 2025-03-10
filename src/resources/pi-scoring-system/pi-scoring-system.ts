@@ -55,8 +55,7 @@ export interface PiScoringSystemGenerateDimensionsParams {
   application_description: string;
 
   /**
-   * If true, try to generate python code for sub-dimensions with structured
-   * evaluation
+   * If true, try to generate python code for sub-dimensions in the scoring system.
    */
   try_auto_generating_python_code?: boolean;
 }
