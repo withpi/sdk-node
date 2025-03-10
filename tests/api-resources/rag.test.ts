@@ -8,10 +8,10 @@ const client = new PiClient({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource queries', () => {
+describe('resource rag', () => {
   // skipped: tests are disabled for the time being
-  test.skip('classify: only required params', async () => {
-    const responsePromise = client.queries.classify({
+  test.skip('classifyQuery: only required params', async () => {
+    const responsePromise = client.rag.classifyQuery({
       classes: [
         { description: 'Questions seeking objective, verifiable information or facts', label: 'factual' },
         {
@@ -39,8 +39,8 @@ describe('resource queries', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('classify: required and optional params', async () => {
-    const response = await client.queries.classify({
+  test.skip('classifyQuery: required and optional params', async () => {
+    const response = await client.rag.classifyQuery({
       classes: [
         { description: 'Questions seeking objective, verifiable information or facts', label: 'factual' },
         {
@@ -68,8 +68,8 @@ describe('resource queries', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('generateFanouts: only required params', async () => {
-    const responsePromise = client.queries.generateFanouts({
+  test.skip('generateFanout: only required params', async () => {
+    const responsePromise = client.rag.generateFanout({
       queries: [
         'Name the four largest fish and what they eat.',
         'What was the profession of both Ellery Queen and John Fowles?',
@@ -85,8 +85,8 @@ describe('resource queries', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('generateFanouts: required and optional params', async () => {
-    const response = await client.queries.generateFanouts({
+  test.skip('generateFanout: required and optional params', async () => {
+    const response = await client.rag.generateFanout({
       queries: [
         'Name the four largest fish and what they eat.',
         'What was the profession of both Ellery Queen and John Fowles?',
