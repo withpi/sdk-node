@@ -103,7 +103,7 @@ export interface GenerateFromSeedStartJobParams {
   seeds: Array<string>;
 
   /**
-   * Number of inputs to generate in one LLM call. Must be <=10. Generally it could
+   * Number of inputs to generate in one LLM call. Must be <= 10. Generally it could
    * be same as `num_shots`.
    */
   batch_size?: number;
@@ -114,8 +114,8 @@ export interface GenerateFromSeedStartJobParams {
   exploration_mode?: GenerateSyntheticDataAPI.SDKExplorationMode;
 
   /**
-   * Number of inputs to be included in the prompt for generation. Generally it could
-   * be same as `batch_size`.
+   * Number of inputs to be included in the prompt for generation. Must be <= 10.
+   * Generally it could be same as `batch_size`.
    */
   num_shots?: number;
 }
