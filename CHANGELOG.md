@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.118 (2025-03-10)
+
+Full Changelog: [v0.1.0-alpha.117...v0.1.0-alpha.118](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.117...v0.1.0-alpha.118)
+
+### Features
+
+* **api:** calibrate stream_messages ([#471](https://github.com/withpi/sdk-node/issues/471)) ([b13c5a5](https://github.com/withpi/sdk-node/commit/b13c5a550195a6155c2ddf1a7785ad2639a85abf))
+
 ## 0.1.0-alpha.117 (2025-03-10)
 
 Full Changelog: [v0.1.0-alpha.116...v0.1.0-alpha.117](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.116...v0.1.0-alpha.117)
