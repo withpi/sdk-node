@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.0-alpha.120 (2025-03-11)
+
+Full Changelog: [v0.1.0-alpha.119...v0.1.0-alpha.120](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.119...v0.1.0-alpha.120)
+
+### Features
+
+* add SKIP_BREW env var to ./scripts/bootstrap ([#477](https://github.com/withpi/sdk-node/issues/477)) ([f9a44f3](https://github.com/withpi/sdk-node/commit/f9a44f3a8c746c4d9e7291fb6b27e56c9a3e7074))
+* **api:** api update ([#480](https://github.com/withpi/sdk-node/issues/480)) ([2af01ef](https://github.com/withpi/sdk-node/commit/2af01eff376bb2a64091fdc4f561fd624687436f))
+* **client:** accept RFC6838 JSON content types ([#479](https://github.com/withpi/sdk-node/issues/479)) ([e6d99f9](https://github.com/withpi/sdk-node/commit/e6d99f996dea7c26c76a587583f35ed40e2ce62d))
+
 ## 0.1.0-alpha.119 (2025-03-10)
 
 Full Changelog: [v0.1.0-alpha.118...v0.1.0-alpha.119](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.118...v0.1.0-alpha.119)

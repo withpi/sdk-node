@@ -139,25 +139,25 @@ export interface CalibrateListParams {
 
 export interface CalibrateStartJobParams {
   /**
-   * The scoring system to calibrate
+   * The scorer to calibrate
    */
   scorer: Shared.Scorer;
 
   /**
-   * Rated examples to use when calibrating the scoring system. Must specify either
-   * the examples or the preference examples
+   * Rated examples to use when calibrating the scorer. Must specify either the
+   * examples or the preference examples
    */
   examples?: Array<CalibrateStartJobParams.Example> | null;
 
   /**
-   * Preference examples to use when calibrating the scoring system. Must specify
-   * either the examples or preference examples
+   * Preference examples to use when calibrating the scorer. Must specify either the
+   * examples or preference examples
    */
   preference_examples?: Array<CalibrateStartJobParams.PreferenceExample> | null;
 
   /**
-   * The strategy to use to calibrate the scoring system. FULL would take longer than
-   * LITE but may result in better result.
+   * The strategy to use to calibrate the scorer. FULL would take longer than LITE
+   * but may result in better result.
    */
   strategy?: 'LITE' | 'FULL';
 }
