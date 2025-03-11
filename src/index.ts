@@ -10,9 +10,7 @@ import { Prompt } from './resources/prompt/prompt';
 import {
   ScoringSystem,
   ScoringSystemGenerateParams,
-  ScoringSystemGenerateResponse,
   ScoringSystemImportSpecParams,
-  ScoringSystemImportSpecResponse,
   ScoringSystemScoreParams,
 } from './resources/scoring-system/scoring-system';
 import { Search } from './resources/search/search';
@@ -193,8 +191,6 @@ export declare namespace PiClient {
 
   export {
     ScoringSystem as ScoringSystem,
-    type ScoringSystemGenerateResponse as ScoringSystemGenerateResponse,
-    type ScoringSystemImportSpecResponse as ScoringSystemImportSpecResponse,
     type ScoringSystemGenerateParams as ScoringSystemGenerateParams,
     type ScoringSystemImportSpecParams as ScoringSystemImportSpecParams,
     type ScoringSystemScoreParams as ScoringSystemScoreParams,
@@ -207,6 +203,9 @@ export declare namespace PiClient {
   export type ExplorationMode = API.ExplorationMode;
   export type PromptOptimizationStatus = API.PromptOptimizationStatus;
   export type QueryFanoutExample = API.QueryFanoutExample;
+  export type ScoringDimension = API.ScoringDimension;
+  export type ScoringSpec = API.ScoringSpec;
+  export type ScoringSubDimension = API.ScoringSubDimension;
   export type ScoringSystemMetrics = API.ScoringSystemMetrics;
   export type SDKExample = API.SDKExample;
   export type SftStatus = API.SftStatus;
