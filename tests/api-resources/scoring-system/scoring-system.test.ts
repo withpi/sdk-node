@@ -70,7 +70,7 @@ describe('resource scoringSystem', () => {
             ],
           },
         ],
-        name: 'Sample Scoring System',
+        name: 'Sample Scoring Spec',
       },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -115,7 +115,7 @@ describe('resource scoringSystem', () => {
             weight: 1,
           },
         ],
-        name: 'Sample Scoring System',
+        name: 'Sample Scoring Spec',
       },
     });
   });

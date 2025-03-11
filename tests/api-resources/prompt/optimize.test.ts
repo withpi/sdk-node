@@ -99,7 +99,7 @@ describe('resource optimize', () => {
             ],
           },
         ],
-        name: 'Sample Scoring System',
+        name: 'Sample Scoring Spec',
       },
       tuning_algorithm: 'DSPY',
     });
@@ -151,7 +151,7 @@ describe('resource optimize', () => {
             weight: 1,
           },
         ],
-        name: 'Sample Scoring System',
+        name: 'Sample Scoring Spec',
       },
       tuning_algorithm: 'DSPY',
       dspy_optimization_type: 'BOOTSTRAP_FEW_SHOT',

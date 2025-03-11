@@ -133,7 +133,7 @@ describe('resource grpo', () => {
             ],
           },
         ],
-        name: 'Sample Scoring System',
+        name: 'Sample Scoring Spec',
       },
       system_prompt: 'An optional system prompt.',
     });
@@ -182,7 +182,7 @@ describe('resource grpo', () => {
             weight: 1,
           },
         ],
-        name: 'Sample Scoring System',
+        name: 'Sample Scoring Spec',
       },
       system_prompt: 'An optional system prompt.',
     });
