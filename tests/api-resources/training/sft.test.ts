@@ -125,6 +125,15 @@ describe('resource sft', () => {
       ],
       scoring_spec: {
         description: "Write a children's story communicating a simple life lesson.",
+        dimensions: [
+          {
+            description: 'dimension1 description',
+            label: 'dimension1',
+            sub_dimensions: [
+              { description: 'subdimension1 description', label: 'subdimension1', scoring_type: 'PI_SCORER' },
+            ],
+          },
+        ],
         name: 'Sample Scoring System',
       },
     });
@@ -148,7 +157,6 @@ describe('resource sft', () => {
       ],
       scoring_spec: {
         description: "Write a children's story communicating a simple life lesson.",
-        name: 'Sample Scoring System',
         dimensions: [
           {
             description: 'dimension1 description',
@@ -175,6 +183,7 @@ describe('resource sft', () => {
             weight: 1,
           },
         ],
+        name: 'Sample Scoring System',
       },
       base_sft_model: 'LLAMA_3.2_3B',
       learning_rate: 0.0002,
