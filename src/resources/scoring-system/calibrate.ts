@@ -73,9 +73,9 @@ export interface CalibrateRetrieveResponse {
   state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
 
   /**
-   * The calibrated scoring system
+   * The calibrated scorer
    */
-  calibrated_scoring_system?: Shared.Scorer | null;
+  calibrated_scorer?: Shared.Scorer | null;
 }
 
 export type CalibrateListResponse = Array<CalibrateListResponse.CalibrateListResponseItem>;
@@ -98,9 +98,9 @@ export namespace CalibrateListResponse {
     state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
 
     /**
-     * The calibrated scoring system
+     * The calibrated scorer
      */
-    calibrated_scoring_system?: Shared.Scorer | null;
+    calibrated_scorer?: Shared.Scorer | null;
   }
 }
 
@@ -123,9 +123,9 @@ export interface CalibrateStartJobResponse {
   state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
 
   /**
-   * The calibrated scoring system
+   * The calibrated scorer
    */
-  calibrated_scoring_system?: Shared.Scorer | null;
+  calibrated_scorer?: Shared.Scorer | null;
 }
 
 export type CalibrateStreamMessagesResponse = string;
