@@ -12,7 +12,9 @@ export {
 } from './calibrate';
 export {
   ScoringSystem,
-  type ScoringSystemFromHuggingfaceParams,
+  type ScoringSystemGenerateResponse,
+  type ScoringSystemImportSpecResponse,
   type ScoringSystemGenerateParams,
+  type ScoringSystemImportSpecParams,
   type ScoringSystemScoreParams,
 } from './scoring-system';

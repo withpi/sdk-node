@@ -80,7 +80,7 @@ describe('resource calibrate', () => {
   // skipped: tests are disabled for the time being
   test.skip('startJob: only required params', async () => {
     const responsePromise = client.scoringSystem.calibrate.startJob({
-      scorer: {
+      scoring_spec: {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Scoring System',
       },
@@ -97,7 +97,7 @@ describe('resource calibrate', () => {
   // skipped: tests are disabled for the time being
   test.skip('startJob: required and optional params', async () => {
     const response = await client.scoringSystem.calibrate.startJob({
-      scorer: {
+      scoring_spec: {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Scoring System',
         dimensions: [

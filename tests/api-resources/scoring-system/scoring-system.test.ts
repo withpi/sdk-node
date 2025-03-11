@@ -10,28 +10,6 @@ const client = new PiClient({
 
 describe('resource scoringSystem', () => {
   // skipped: tests are disabled for the time being
-  test.skip('fromHuggingface: only required params', async () => {
-    const responsePromise = client.scoringSystem.fromHuggingface({
-      hf_scorer_name: 'withpi/tldr_scoring_system',
-    });
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('fromHuggingface: required and optional params', async () => {
-    const response = await client.scoringSystem.fromHuggingface({
-      hf_scorer_name: 'withpi/tldr_scoring_system',
-      hf_token: 'hf_token',
-    });
-  });
-
-  // skipped: tests are disabled for the time being
   test.skip('generate: only required params', async () => {
     const responsePromise = client.scoringSystem.generate({
       application_description: "Write a children's story communicating a simple life lesson.",
@@ -54,11 +32,34 @@ describe('resource scoringSystem', () => {
   });
 
   // skipped: tests are disabled for the time being
+  test.skip('importSpec: only required params', async () => {
+    const responsePromise = client.scoringSystem.importSpec({
+      hf_scoring_spec_name: 'withpi/tldr_scoring_system',
+    });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('importSpec: required and optional params', async () => {
+    const response = await client.scoringSystem.importSpec({
+      hf_scoring_spec_name: 'withpi/tldr_scoring_system',
+      hf_token: 'hf_token',
+      source: 'HUGGINGFACE',
+    });
+  });
+
+  // skipped: tests are disabled for the time being
   test.skip('score: only required params', async () => {
     const responsePromise = client.scoringSystem.score({
       llm_input: 'Tell me something different',
       llm_output: 'The lazy dog was jumped over by the quick brown fox',
-      scorer: {
+      scoring_spec: {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Scoring System',
       },
@@ -77,7 +78,7 @@ describe('resource scoringSystem', () => {
     const response = await client.scoringSystem.score({
       llm_input: 'Tell me something different',
       llm_output: 'The lazy dog was jumped over by the quick brown fox',
-      scorer: {
+      scoring_spec: {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Scoring System',
         dimensions: [
