@@ -71,7 +71,7 @@ export interface OptimizeListParams {
 
 export interface OptimizeStartJobParams {
   /**
-   * The examples to train and validate on
+   * The examples (input-response pairs) to train and validate on
    */
   examples: Array<Shared.SDKExample>;
 
@@ -86,7 +86,7 @@ export interface OptimizeStartJobParams {
   model_id: 'gpt-4o-mini' | 'llama-3.1-8b' | 'mock-llm';
 
   /**
-   * The contract to optimize
+   * The scorer to optimize
    */
   scorer: Shared.Scorer;
 

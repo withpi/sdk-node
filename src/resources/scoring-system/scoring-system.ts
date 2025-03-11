@@ -19,7 +19,7 @@ export class ScoringSystem extends APIResource {
   calibrate: CalibrateAPI.Calibrate = new CalibrateAPI.Calibrate(this._client);
 
   /**
-   * Read a scoring system from Huggingface dataset
+   * Read a scorer from Huggingface dataset
    */
   fromHuggingface(
     body: ScoringSystemFromHuggingfaceParams,
@@ -48,9 +48,9 @@ export class ScoringSystem extends APIResource {
 
 export interface ScoringSystemFromHuggingfaceParams {
   /**
-   * Huggingface scoring system name e.g. withpi/my_scoring_system. You need to
-   * provide the hf_token if the scoring system dataset is not public or not own by
-   * the withpi organization.
+   * Huggingface scorer name e.g. withpi/my_scoring_system. You need to provide the
+   * hf_token if the scorer dataset is not public or not own by the withpi
+   * organization.
    */
   hf_scorer_name: string;
 
@@ -62,12 +62,12 @@ export interface ScoringSystemFromHuggingfaceParams {
 
 export interface ScoringSystemGenerateParams {
   /**
-   * The application description to generate a scoring system for.
+   * The application description to generate a scorer for.
    */
   application_description: string;
 
   /**
-   * If true, try to generate python code for sub-dimensions in the scoring system.
+   * If true, try to generate python code for sub-dimensions in the scorer.
    */
   try_auto_generating_python_code?: boolean;
 }
@@ -84,7 +84,7 @@ export interface ScoringSystemScoreParams {
   llm_output: string;
 
   /**
-   * The scoring system to score
+   * The scorer to score
    */
   scorer: Shared.Scorer;
 }
