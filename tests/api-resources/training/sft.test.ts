@@ -134,7 +134,7 @@ describe('resource sft', () => {
             ],
           },
         ],
-        name: 'Sample Scoring System',
+        name: 'Sample Scoring Spec',
       },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -183,7 +183,7 @@ describe('resource sft', () => {
             weight: 1,
           },
         ],
-        name: 'Sample Scoring System',
+        name: 'Sample Scoring Spec',
       },
       base_sft_model: 'LLAMA_3.2_3B',
       learning_rate: 0.0002,
