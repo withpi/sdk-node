@@ -91,7 +91,7 @@ describe('resource calibrate', () => {
             ],
           },
         ],
-        name: 'Sample Scoring System',
+        name: 'Sample Scoring Spec',
       },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -134,7 +134,7 @@ describe('resource calibrate', () => {
             weight: 1,
           },
         ],
-        name: 'Sample Scoring System',
+        name: 'Sample Scoring Spec',
       },
       examples: [
         {
