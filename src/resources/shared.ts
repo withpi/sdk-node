@@ -132,14 +132,14 @@ export interface ScoringSpec {
   description: string;
 
   /**
+   * The dimensions of the scoring system
+   */
+  dimensions: Array<ScoringDimension>;
+
+  /**
    * The name of the scoring system
    */
   name: string;
-
-  /**
-   * The dimensions of the scoring system
-   */
-  dimensions?: Array<ScoringDimension>;
   [k: string]: unknown;
 }
 

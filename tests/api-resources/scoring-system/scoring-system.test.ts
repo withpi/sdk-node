@@ -61,6 +61,15 @@ describe('resource scoringSystem', () => {
       llm_output: 'The lazy dog was jumped over by the quick brown fox',
       scoring_spec: {
         description: "Write a children's story communicating a simple life lesson.",
+        dimensions: [
+          {
+            description: 'dimension1 description',
+            label: 'dimension1',
+            sub_dimensions: [
+              { description: 'subdimension1 description', label: 'subdimension1', scoring_type: 'PI_SCORER' },
+            ],
+          },
+        ],
         name: 'Sample Scoring System',
       },
     });
@@ -80,7 +89,6 @@ describe('resource scoringSystem', () => {
       llm_output: 'The lazy dog was jumped over by the quick brown fox',
       scoring_spec: {
         description: "Write a children's story communicating a simple life lesson.",
-        name: 'Sample Scoring System',
         dimensions: [
           {
             description: 'dimension1 description',
@@ -107,6 +115,7 @@ describe('resource scoringSystem', () => {
             weight: 1,
           },
         ],
+        name: 'Sample Scoring System',
       },
     });
   });
