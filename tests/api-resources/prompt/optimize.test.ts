@@ -88,7 +88,7 @@ describe('resource optimize', () => {
       ],
       initial_system_instruction: 'Write a great story around the given topic.',
       model_id: 'gpt-4o-mini',
-      scorer: {
+      scoring_spec: {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Scoring System',
       },
@@ -114,7 +114,7 @@ describe('resource optimize', () => {
       ],
       initial_system_instruction: 'Write a great story around the given topic.',
       model_id: 'gpt-4o-mini',
-      scorer: {
+      scoring_spec: {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Scoring System',
         dimensions: [

@@ -123,7 +123,7 @@ describe('resource sft', () => {
           llm_output: 'The lazy dog was jumped over by the quick brown fox',
         },
       ],
-      scorer: {
+      scoring_spec: {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Scoring System',
       },
@@ -146,7 +146,7 @@ describe('resource sft', () => {
           llm_output: 'The lazy dog was jumped over by the quick brown fox',
         },
       ],
-      scorer: {
+      scoring_spec: {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Scoring System',
         dimensions: [
