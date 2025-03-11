@@ -92,7 +92,7 @@ describe('resource optimize', () => {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Scoring System',
       },
-      tuning_algorithm: 'PI',
+      tuning_algorithm: 'DSPY',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -144,7 +144,7 @@ describe('resource optimize', () => {
           },
         ],
       },
-      tuning_algorithm: 'PI',
+      tuning_algorithm: 'DSPY',
       dspy_optimization_type: 'BOOTSTRAP_FEW_SHOT',
       use_chain_of_thought: false,
     });

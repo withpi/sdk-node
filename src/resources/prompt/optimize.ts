@@ -93,7 +93,7 @@ export interface OptimizeStartJobParams {
   /**
    * The tuning algorithm to use
    */
-  tuning_algorithm: 'PI' | 'DSPY';
+  tuning_algorithm: 'DSPY' | 'PI';
 
   /**
    * The DSPY teleprompter/optimizer to use. This only applies for the DSPY. Leave it
