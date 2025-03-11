@@ -3,6 +3,7 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
+import * as Shared from '../shared';
 
 export class Calibrate extends APIResource {
   /**
@@ -74,107 +75,7 @@ export interface CalibrateRetrieveResponse {
   /**
    * The calibrated scoring spec
    */
-  calibrated_scoring_spec?: CalibrateRetrieveResponse.CalibratedScoringSpec | null;
-}
-
-export namespace CalibrateRetrieveResponse {
-  /**
-   * The calibrated scoring spec
-   */
-  export interface CalibratedScoringSpec {
-    /**
-     * The application description
-     */
-    description: string;
-
-    /**
-     * The name of the scoring system
-     */
-    name: string;
-
-    /**
-     * The dimensions of the scoring system
-     */
-    dimensions?: Array<CalibratedScoringSpec.Dimension>;
-    [k: string]: unknown;
-  }
-
-  export namespace CalibratedScoringSpec {
-    export interface Dimension {
-      /**
-       * The description of the dimension
-       */
-      description: string;
-
-      /**
-       * The label of the dimension
-       */
-      label: string;
-
-      /**
-       * The sub dimensions of the dimension
-       */
-      sub_dimensions: Array<Dimension.SubDimension>;
-
-      /**
-       * The learned parameters for the scoring method. This represents piecewise linear
-       * interpolation between [0, 1].
-       */
-      parameters?: Array<number> | null;
-
-      /**
-       * The weight of the dimension The sum of dimension weights will be normalized to
-       * one internally. A higher weight counts for more when aggregating this dimension
-       * is aggregated into the final score.
-       */
-      weight?: number | null;
-      [k: string]: unknown;
-    }
-
-    export namespace Dimension {
-      export interface SubDimension {
-        /**
-         * The description of the dimension
-         */
-        description: string;
-
-        /**
-         * The label of the dimension
-         */
-        label: string;
-
-        /**
-         * The type of scoring performed for this dimension
-         */
-        scoring_type: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER';
-
-        /**
-         * The ID of the custom model to use for scoring. Only relevant for scoring_type of
-         * CUSTOM_MODEL_SCORER
-         */
-        custom_model_id?: string | null;
-
-        /**
-         * The learned parameters for the scoring method. This represents piecewise linear
-         * interpolation between [0, 1].
-         */
-        parameters?: Array<number> | null;
-
-        /**
-         * The PYTHON code associated the PYTHON_CODE DimensionScoringType.
-         */
-        python_code?: string | null;
-
-        /**
-         * The weight of the subdimension. The sum of subdimension weights will be
-         * normalized to one internally. A higher weight counts for more when aggregating
-         * this subdimension into the parent dimension.
-         */
-        weight?: number | null;
-        [k: string]: unknown;
-      }
-    }
-  }
+  calibrated_scoring_spec?: Shared.ScoringSpec | null;
 }
 
 export type CalibrateListResponse = Array<CalibrateListResponse.CalibrateListResponseItem>;
@@ -199,107 +100,7 @@ export namespace CalibrateListResponse {
     /**
      * The calibrated scoring spec
      */
-    calibrated_scoring_spec?: CalibrateListResponseItem.CalibratedScoringSpec | null;
-  }
-
-  export namespace CalibrateListResponseItem {
-    /**
-     * The calibrated scoring spec
-     */
-    export interface CalibratedScoringSpec {
-      /**
-       * The application description
-       */
-      description: string;
-
-      /**
-       * The name of the scoring system
-       */
-      name: string;
-
-      /**
-       * The dimensions of the scoring system
-       */
-      dimensions?: Array<CalibratedScoringSpec.Dimension>;
-      [k: string]: unknown;
-    }
-
-    export namespace CalibratedScoringSpec {
-      export interface Dimension {
-        /**
-         * The description of the dimension
-         */
-        description: string;
-
-        /**
-         * The label of the dimension
-         */
-        label: string;
-
-        /**
-         * The sub dimensions of the dimension
-         */
-        sub_dimensions: Array<Dimension.SubDimension>;
-
-        /**
-         * The learned parameters for the scoring method. This represents piecewise linear
-         * interpolation between [0, 1].
-         */
-        parameters?: Array<number> | null;
-
-        /**
-         * The weight of the dimension The sum of dimension weights will be normalized to
-         * one internally. A higher weight counts for more when aggregating this dimension
-         * is aggregated into the final score.
-         */
-        weight?: number | null;
-        [k: string]: unknown;
-      }
-
-      export namespace Dimension {
-        export interface SubDimension {
-          /**
-           * The description of the dimension
-           */
-          description: string;
-
-          /**
-           * The label of the dimension
-           */
-          label: string;
-
-          /**
-           * The type of scoring performed for this dimension
-           */
-          scoring_type: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER';
-
-          /**
-           * The ID of the custom model to use for scoring. Only relevant for scoring_type of
-           * CUSTOM_MODEL_SCORER
-           */
-          custom_model_id?: string | null;
-
-          /**
-           * The learned parameters for the scoring method. This represents piecewise linear
-           * interpolation between [0, 1].
-           */
-          parameters?: Array<number> | null;
-
-          /**
-           * The PYTHON code associated the PYTHON_CODE DimensionScoringType.
-           */
-          python_code?: string | null;
-
-          /**
-           * The weight of the subdimension. The sum of subdimension weights will be
-           * normalized to one internally. A higher weight counts for more when aggregating
-           * this subdimension into the parent dimension.
-           */
-          weight?: number | null;
-          [k: string]: unknown;
-        }
-      }
-    }
+    calibrated_scoring_spec?: Shared.ScoringSpec | null;
   }
 }
 
@@ -324,107 +125,7 @@ export interface CalibrateStartJobResponse {
   /**
    * The calibrated scoring spec
    */
-  calibrated_scoring_spec?: CalibrateStartJobResponse.CalibratedScoringSpec | null;
-}
-
-export namespace CalibrateStartJobResponse {
-  /**
-   * The calibrated scoring spec
-   */
-  export interface CalibratedScoringSpec {
-    /**
-     * The application description
-     */
-    description: string;
-
-    /**
-     * The name of the scoring system
-     */
-    name: string;
-
-    /**
-     * The dimensions of the scoring system
-     */
-    dimensions?: Array<CalibratedScoringSpec.Dimension>;
-    [k: string]: unknown;
-  }
-
-  export namespace CalibratedScoringSpec {
-    export interface Dimension {
-      /**
-       * The description of the dimension
-       */
-      description: string;
-
-      /**
-       * The label of the dimension
-       */
-      label: string;
-
-      /**
-       * The sub dimensions of the dimension
-       */
-      sub_dimensions: Array<Dimension.SubDimension>;
-
-      /**
-       * The learned parameters for the scoring method. This represents piecewise linear
-       * interpolation between [0, 1].
-       */
-      parameters?: Array<number> | null;
-
-      /**
-       * The weight of the dimension The sum of dimension weights will be normalized to
-       * one internally. A higher weight counts for more when aggregating this dimension
-       * is aggregated into the final score.
-       */
-      weight?: number | null;
-      [k: string]: unknown;
-    }
-
-    export namespace Dimension {
-      export interface SubDimension {
-        /**
-         * The description of the dimension
-         */
-        description: string;
-
-        /**
-         * The label of the dimension
-         */
-        label: string;
-
-        /**
-         * The type of scoring performed for this dimension
-         */
-        scoring_type: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER';
-
-        /**
-         * The ID of the custom model to use for scoring. Only relevant for scoring_type of
-         * CUSTOM_MODEL_SCORER
-         */
-        custom_model_id?: string | null;
-
-        /**
-         * The learned parameters for the scoring method. This represents piecewise linear
-         * interpolation between [0, 1].
-         */
-        parameters?: Array<number> | null;
-
-        /**
-         * The PYTHON code associated the PYTHON_CODE DimensionScoringType.
-         */
-        python_code?: string | null;
-
-        /**
-         * The weight of the subdimension. The sum of subdimension weights will be
-         * normalized to one internally. A higher weight counts for more when aggregating
-         * this subdimension into the parent dimension.
-         */
-        weight?: number | null;
-        [k: string]: unknown;
-      }
-    }
-  }
+  calibrated_scoring_spec?: Shared.ScoringSpec | null;
 }
 
 export type CalibrateStreamMessagesResponse = string;
@@ -440,7 +141,7 @@ export interface CalibrateStartJobParams {
   /**
    * The scoring spec to calibrate
    */
-  scoring_spec: CalibrateStartJobParams.ScoringSpec;
+  scoring_spec: Shared.ScoringSpec;
 
   /**
    * Rated examples to use when calibrating the scoring spec. Must specify either the
@@ -462,104 +163,6 @@ export interface CalibrateStartJobParams {
 }
 
 export namespace CalibrateStartJobParams {
-  /**
-   * The scoring spec to calibrate
-   */
-  export interface ScoringSpec {
-    /**
-     * The application description
-     */
-    description: string;
-
-    /**
-     * The name of the scoring system
-     */
-    name: string;
-
-    /**
-     * The dimensions of the scoring system
-     */
-    dimensions?: Array<ScoringSpec.Dimension>;
-    [k: string]: unknown;
-  }
-
-  export namespace ScoringSpec {
-    export interface Dimension {
-      /**
-       * The description of the dimension
-       */
-      description: string;
-
-      /**
-       * The label of the dimension
-       */
-      label: string;
-
-      /**
-       * The sub dimensions of the dimension
-       */
-      sub_dimensions: Array<Dimension.SubDimension>;
-
-      /**
-       * The learned parameters for the scoring method. This represents piecewise linear
-       * interpolation between [0, 1].
-       */
-      parameters?: Array<number> | null;
-
-      /**
-       * The weight of the dimension The sum of dimension weights will be normalized to
-       * one internally. A higher weight counts for more when aggregating this dimension
-       * is aggregated into the final score.
-       */
-      weight?: number | null;
-      [k: string]: unknown;
-    }
-
-    export namespace Dimension {
-      export interface SubDimension {
-        /**
-         * The description of the dimension
-         */
-        description: string;
-
-        /**
-         * The label of the dimension
-         */
-        label: string;
-
-        /**
-         * The type of scoring performed for this dimension
-         */
-        scoring_type: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER';
-
-        /**
-         * The ID of the custom model to use for scoring. Only relevant for scoring_type of
-         * CUSTOM_MODEL_SCORER
-         */
-        custom_model_id?: string | null;
-
-        /**
-         * The learned parameters for the scoring method. This represents piecewise linear
-         * interpolation between [0, 1].
-         */
-        parameters?: Array<number> | null;
-
-        /**
-         * The PYTHON code associated the PYTHON_CODE DimensionScoringType.
-         */
-        python_code?: string | null;
-
-        /**
-         * The weight of the subdimension. The sum of subdimension weights will be
-         * normalized to one internally. A higher weight counts for more when aggregating
-         * this subdimension into the parent dimension.
-         */
-        weight?: number | null;
-        [k: string]: unknown;
-      }
-    }
-  }
-
   /**
    * An labeled example for training or evaluation
    */
