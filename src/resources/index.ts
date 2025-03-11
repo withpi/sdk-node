@@ -5,8 +5,10 @@ export { Data, type DataClusterInputsResponse, type DataClusterInputsParams } fr
 export { Prompt } from './prompt/prompt';
 export {
   ScoringSystem,
-  type ScoringSystemFromHuggingfaceParams,
+  type ScoringSystemGenerateResponse,
+  type ScoringSystemImportSpecResponse,
   type ScoringSystemGenerateParams,
+  type ScoringSystemImportSpecParams,
   type ScoringSystemScoreParams,
 } from './scoring-system/scoring-system';
 export { Search } from './search/search';
