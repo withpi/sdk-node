@@ -30,7 +30,7 @@ async function main() {
   const scoringSystemMetrics = await client.scoringSystem.score({
     llm_input: 'Tell me something different',
     llm_output: 'The lazy dog was jumped over by the quick brown fox',
-    scorer: {
+    scoring_spec: {
       description: "Write a children's story communicating a simple life lesson.",
       name: 'Sample Scoring System',
     },
@@ -58,7 +58,7 @@ async function main() {
   const params: PiClient.ScoringSystemScoreParams = {
     llm_input: 'Tell me something different',
     llm_output: 'The lazy dog was jumped over by the quick brown fox',
-    scorer: {
+    scoring_spec: {
       description: "Write a children's story communicating a simple life lesson.",
       name: 'Sample Scoring System',
     },
@@ -84,7 +84,7 @@ async function main() {
     .score({
       llm_input: 'Tell me something different',
       llm_output: 'The lazy dog was jumped over by the quick brown fox',
-      scorer: {
+      scoring_spec: {
         description: "Write a children's story communicating a simple life lesson.",
         name: 'Sample Scoring System',
       },
@@ -132,7 +132,7 @@ const client = new PiClient({
 });
 
 // Or, configure per-request:
-await client.scoringSystem.score({ llm_input: 'Tell me something different', llm_output: 'The lazy dog was jumped over by the quick brown fox', scorer: { description: 'Write a children\'s story communicating a simple life lesson.', name: 'Sample Scoring System' } }, {
+await client.scoringSystem.score({ llm_input: 'Tell me something different', llm_output: 'The lazy dog was jumped over by the quick brown fox', scoring_spec: { description: 'Write a children\'s story communicating a simple life lesson.', name: 'Sample Scoring System' } }, {
   maxRetries: 5,
 });
 ```
@@ -149,7 +149,7 @@ const client = new PiClient({
 });
 
 // Override per-request:
-await client.scoringSystem.score({ llm_input: 'Tell me something different', llm_output: 'The lazy dog was jumped over by the quick brown fox', scorer: { description: 'Write a children\'s story communicating a simple life lesson.', name: 'Sample Scoring System' } }, {
+await client.scoringSystem.score({ llm_input: 'Tell me something different', llm_output: 'The lazy dog was jumped over by the quick brown fox', scoring_spec: { description: 'Write a children\'s story communicating a simple life lesson.', name: 'Sample Scoring System' } }, {
   timeout: 5 * 1000,
 });
 ```
@@ -174,7 +174,7 @@ const response = await client.scoringSystem
   .score({
     llm_input: 'Tell me something different',
     llm_output: 'The lazy dog was jumped over by the quick brown fox',
-    scorer: {
+    scoring_spec: {
       description: "Write a children's story communicating a simple life lesson.",
       name: 'Sample Scoring System',
     },
@@ -187,7 +187,7 @@ const { data: scoringSystemMetrics, response: raw } = await client.scoringSystem
   .score({
     llm_input: 'Tell me something different',
     llm_output: 'The lazy dog was jumped over by the quick brown fox',
-    scorer: {
+    scoring_spec: {
       description: "Write a children's story communicating a simple life lesson.",
       name: 'Sample Scoring System',
     },
@@ -302,7 +302,7 @@ await client.scoringSystem.score(
   {
     llm_input: 'Tell me something different',
     llm_output: 'The lazy dog was jumped over by the quick brown fox',
-    scorer: {
+    scoring_spec: {
       description: "Write a children's story communicating a simple life lesson.",
       name: 'Sample Scoring System',
     },
