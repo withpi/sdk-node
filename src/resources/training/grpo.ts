@@ -92,7 +92,7 @@ export interface GrpoRetrieveResponse {
   state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
 
   /**
-   * A list of trained models selected based on the PI Contract score.
+   * A list of trained models selected based on the PI score.
    */
   trained_models?: Array<Shared.TrainedModel> | null;
 }
@@ -120,7 +120,7 @@ export namespace GrpoListResponse {
     state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
 
     /**
-     * A list of trained models selected based on the PI Contract score.
+     * A list of trained models selected based on the PI score.
      */
     trained_models?: Array<Shared.TrainedModel> | null;
   }
@@ -150,7 +150,7 @@ export interface GrpoLoadResponse {
   state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
 
   /**
-   * A list of trained models selected based on the PI Contract score.
+   * A list of trained models selected based on the PI score.
    */
   trained_models?: Array<Shared.TrainedModel> | null;
 }
@@ -175,7 +175,7 @@ export interface GrpoStartJobResponse {
   state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
 
   /**
-   * A list of trained models selected based on the PI Contract score.
+   * A list of trained models selected based on the PI score.
    */
   trained_models?: Array<Shared.TrainedModel> | null;
 }
