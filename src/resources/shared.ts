@@ -289,11 +289,6 @@ export interface TrainedModel {
   eval_loss: number;
 
   /**
-   * The PI score of the eval set what isn't used in training
-   */
-  pi_score: number;
-
-  /**
    * The serving id of the trained model within this Job
    */
   serving_id: number;
@@ -307,4 +302,10 @@ export interface TrainedModel {
    * The training step
    */
   step: number;
+
+  /**
+   * The PI score of the eval set what isn't used in training
+   */
+  pi_score?: number;
+  [k: string]: unknown;
 }
