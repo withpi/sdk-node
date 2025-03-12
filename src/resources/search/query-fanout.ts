@@ -16,13 +16,13 @@ export class QueryFanout extends APIResource {
   }
 }
 
-export type QueryFanoutGenerateResponse = Array<Shared.QueryFanoutExample>;
+export type QueryFanoutGenerateResponse = Array<string>;
 
 export interface QueryFanoutGenerateParams {
   /**
    * The list of queries to generate fanouts for
    */
-  queries: Array<string>;
+  query: string;
 
   /**
    * The list of queries to use as few-shot examples for the fanout generation

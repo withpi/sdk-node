@@ -12,10 +12,7 @@ describe('resource queryFanout', () => {
   // skipped: tests are disabled for the time being
   test.skip('generate: only required params', async () => {
     const responsePromise = client.search.queryFanout.generate({
-      queries: [
-        'Name the four largest fish and what they eat.',
-        'What was the profession of both Ellery Queen and John Fowles?',
-      ],
+      query: 'Name the four largest fish and what they eat.',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -29,10 +26,7 @@ describe('resource queryFanout', () => {
   // skipped: tests are disabled for the time being
   test.skip('generate: required and optional params', async () => {
     const response = await client.search.queryFanout.generate({
-      queries: [
-        'Name the four largest fish and what they eat.',
-        'What was the profession of both Ellery Queen and John Fowles?',
-      ],
+      query: 'Name the four largest fish and what they eat.',
       example_fanout_queries: [
         {
           fanout_queries: [
