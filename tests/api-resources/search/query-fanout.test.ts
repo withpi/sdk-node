@@ -27,7 +27,7 @@ describe('resource queryFanout', () => {
   test.skip('generate: required and optional params', async () => {
     const response = await client.search.queryFanout.generate({
       query: 'Name the four largest fish and what they eat.',
-      example_fanout_queries: [
+      few_shot_examples: [
         {
           fanout_queries: [
             'Genus of the cheetah',
