@@ -246,7 +246,7 @@ export interface SftStatus {
   state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
 
   /**
-   * A list of trained models selected based on the PI Contract score.
+   * A list of trained models selected based on the PI score.
    */
   trained_models?: Array<TrainedModel> | null;
 }
@@ -279,11 +279,6 @@ export interface SyntheticDataStatus {
 
 export interface TrainedModel {
   /**
-   * The PI contract score of the eval set what isn't used in training
-   */
-  contract_score: number;
-
-  /**
    * The training epoch
    */
   epoch: number;
@@ -292,6 +287,11 @@ export interface TrainedModel {
    * The evaluation loss
    */
   eval_loss: number;
+
+  /**
+   * The PI score of the eval set what isn't used in training
+   */
+  pi_score: number;
 
   /**
    * The serving id of the trained model within this Job
