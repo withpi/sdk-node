@@ -20,17 +20,18 @@ export type QueryFanoutGenerateResponse = Array<string>;
 
 export interface QueryFanoutGenerateParams {
   /**
-   * The list of queries to generate fanouts for
+   * The query to generate fanouts for
    */
   query: string;
 
   /**
-   * The list of queries to use as few-shot examples for the fanout generation
+   * The list of few-shot examples for the fanout generation. Only needed if the
+   * default fanouts are not working well.
    */
-  example_fanout_queries?: Array<Shared.QueryFanoutExample>;
+  few_shot_examples?: Array<Shared.QueryFanoutExample>;
 
   /**
-   * The number of fanout queries to generate for each input query
+   * The number of fanout queries to generate
    */
   num_fanout_queries?: number;
 }
