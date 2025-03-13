@@ -73,7 +73,7 @@ export interface OptimizeStartJobParams {
   /**
    * The examples (input-response pairs) to train and validate on
    */
-  examples: Array<Shared.SDKExample>;
+  examples: Array<Shared.Example>;
 
   /**
    * The initial system instruction

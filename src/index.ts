@@ -200,6 +200,7 @@ export declare namespace PiClient {
 
   export type ClassificationStatus = API.ClassificationStatus;
   export type DataGenerationStatus = API.DataGenerationStatus;
+  export type Example = API.Example;
   export type ExplorationMode = API.ExplorationMode;
   export type PromptOptimizationStatus = API.PromptOptimizationStatus;
   export type QueryFanoutExample = API.QueryFanoutExample;
@@ -207,7 +208,6 @@ export declare namespace PiClient {
   export type ScoringSpec = API.ScoringSpec;
   export type ScoringSubDimension = API.ScoringSubDimension;
   export type ScoringSystemMetrics = API.ScoringSystemMetrics;
-  export type SDKExample = API.SDKExample;
   export type SftStatus = API.SftStatus;
   export type SyntheticDataStatus = API.SyntheticDataStatus;
   export type TrainedModel = API.TrainedModel;

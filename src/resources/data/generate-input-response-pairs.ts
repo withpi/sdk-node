@@ -102,7 +102,7 @@ export interface GenerateInputResponsePairStartJobParams {
   /**
    * The list of LLM input response-pairs to be used as seeds
    */
-  seeds: Array<Shared.SDKExample>;
+  seeds: Array<Shared.Example>;
 
   /**
    * The application description for which the synthetic data would be applicable.
