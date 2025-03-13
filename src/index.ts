@@ -18,7 +18,7 @@ import { Training } from './resources/training/training';
 
 export interface ClientOptions {
   /**
-   * The API key required for authentication
+   * The API key needed for authentication
    */
   apiKey?: string | undefined;
 
