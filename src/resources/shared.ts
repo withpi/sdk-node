@@ -51,6 +51,21 @@ export interface DataGenerationStatus {
   data?: Array<string> | null;
 }
 
+/**
+ * An example for training or evaluation
+ */
+export interface Example {
+  /**
+   * The input to LLM
+   */
+  llm_input: string;
+
+  /**
+   * The output to evaluate
+   */
+  llm_output: string;
+}
+
 export type ExplorationMode = 'CONSERVATIVE' | 'BALANCED' | 'CREATIVE' | 'ADVENTUROUS';
 
 /**
@@ -212,21 +227,6 @@ export namespace ScoringSystemMetrics {
 }
 
 /**
- * An example for training or evaluation
- */
-export interface SDKExample {
-  /**
-   * The input to LLM
-   */
-  llm_input: string;
-
-  /**
-   * The output to evaluate
-   */
-  llm_output: string;
-}
-
-/**
  * SftStatus is the status of a SFT job.
  */
 export interface SftStatus {
@@ -274,7 +274,7 @@ export interface SyntheticDataStatus {
    * The generated synthetic data. Can be present even if the state is not done/error
    * as it is streamed.
    */
-  data?: Array<SDKExample> | null;
+  data?: Array<Example> | null;
 }
 
 export interface TrainedModel {
