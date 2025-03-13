@@ -4,6 +4,7 @@ Types:
 
 - <code><a href="./src/resources/shared.ts">ClassificationStatus</a></code>
 - <code><a href="./src/resources/shared.ts">DataGenerationStatus</a></code>
+- <code><a href="./src/resources/shared.ts">Example</a></code>
 - <code><a href="./src/resources/shared.ts">ExplorationMode</a></code>
 - <code><a href="./src/resources/shared.ts">PromptOptimizationStatus</a></code>
 - <code><a href="./src/resources/shared.ts">QueryFanoutExample</a></code>
@@ -11,7 +12,6 @@ Types:
 - <code><a href="./src/resources/shared.ts">ScoringSpec</a></code>
 - <code><a href="./src/resources/shared.ts">ScoringSubDimension</a></code>
 - <code><a href="./src/resources/shared.ts">ScoringSystemMetrics</a></code>
-- <code><a href="./src/resources/shared.ts">SDKExample</a></code>
 - <code><a href="./src/resources/shared.ts">SftStatus</a></code>
 - <code><a href="./src/resources/shared.ts">SyntheticDataStatus</a></code>
 - <code><a href="./src/resources/shared.ts">TrainedModel</a></code>

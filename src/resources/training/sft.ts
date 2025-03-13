@@ -92,7 +92,7 @@ export interface SftStartJobParams {
    * Examples to use in the SFT tuning process. We split this data into train/eval
    * 90/10.
    */
-  examples: Array<Shared.SDKExample>;
+  examples: Array<Shared.Example>;
 
   /**
    * The scoring spec to use in the SFT tuning process
