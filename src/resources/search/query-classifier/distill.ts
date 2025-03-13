@@ -99,7 +99,7 @@ export interface DistillStartJobParams {
   /**
    * Examples to use in the classification tuning process
    */
-  examples: Array<Shared.SDKExample>;
+  examples: Array<Shared.Example>;
 
   /**
    * Classification learning rate
