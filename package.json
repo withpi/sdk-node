@@ -1,6 +1,6 @@
 {
   "name": "withpi",
-  "version": "0.1.0-alpha.131",
+  "version": "1.0.0",
   "description": "The official TypeScript library for the Pi Client API",
   "author": "Pi Client <support@withpi.ai>",
   "types": "dist/index.d.ts",
