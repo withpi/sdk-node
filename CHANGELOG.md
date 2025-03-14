@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.0.1 (2025-03-14)
+
+Full Changelog: [v1.0.0...v1.0.1](https://github.com/withpi/sdk-node/compare/v1.0.0...v1.0.1)
+
+### Bug Fixes
+
+* **exports:** ensure resource imports don't require /index ([#520](https://github.com/withpi/sdk-node/issues/520)) ([d8537ec](https://github.com/withpi/sdk-node/commit/d8537ec9cc3f6e82e8eed94761d5764b5e0ac808))
+
+
+### Chores
+
+* **internal:** remove extra empty newlines ([#518](https://github.com/withpi/sdk-node/issues/518)) ([54bccb4](https://github.com/withpi/sdk-node/commit/54bccb4d0e6c58807aab96b8bcf8fb253a8b927f))
+
 ## 1.0.0 (2025-03-13)
 
 Full Changelog: [v0.1.0-alpha.131...v1.0.0](https://github.com/withpi/sdk-node/compare/v0.1.0-alpha.131...v1.0.0)
