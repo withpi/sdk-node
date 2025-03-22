@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.0.2 (2025-03-22)
+
+Full Changelog: [v1.0.1...v1.0.2](https://github.com/withpi/sdk-node/compare/v1.0.1...v1.0.2)
+
+### Bug Fixes
+
+* avoid type error in certain environments ([#525](https://github.com/withpi/sdk-node/issues/525)) ([8b3df3b](https://github.com/withpi/sdk-node/commit/8b3df3b0db3cf56ff4866148a2a1c7a531539c7f))
+
+
+### Chores
+
+* **exports:** cleaner resource index imports ([#522](https://github.com/withpi/sdk-node/issues/522)) ([7f5e380](https://github.com/withpi/sdk-node/commit/7f5e380312316ae38a49a1fd22f25c99222c9f80))
+* **exports:** stop using path fallbacks ([#524](https://github.com/withpi/sdk-node/issues/524)) ([70d15f5](https://github.com/withpi/sdk-node/commit/70d15f58f5f03336322941092e2f050d9ce69512))
+
 ## 1.0.1 (2025-03-14)
 
 Full Changelog: [v1.0.0...v1.0.1](https://github.com/withpi/sdk-node/compare/v1.0.0...v1.0.1)
