@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.3 (2025-03-28)
+
+Full Changelog: [v1.0.2...v1.0.3](https://github.com/withpi/sdk-node/compare/v1.0.2...v1.0.3)
+
+### Bug Fixes
+
+* **internal:** work around https://github.com/vercel/next.js/issues/76881 ([#527](https://github.com/withpi/sdk-node/issues/527)) ([9975695](https://github.com/withpi/sdk-node/commit/9975695a85a2fdc57e49bba22bb2a314d2a7ad0b))
+
 ## 1.0.2 (2025-03-22)
 
 Full Changelog: [v1.0.1...v1.0.2](https://github.com/withpi/sdk-node/compare/v1.0.1...v1.0.2)
