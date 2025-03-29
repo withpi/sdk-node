@@ -98,7 +98,7 @@ export interface GenerateStartJobParams {
   seeds: Array<string>;
 
   /**
-   * Number of inputs to generate in one LLM call. Must be <= 10. Generally it could
+   * Number of inputs to generate in one LLM call. Must be <= 125. Generally it could
    * be same as `num_shots`.
    */
   batch_size?: number;
@@ -109,7 +109,7 @@ export interface GenerateStartJobParams {
   exploration_mode?: Shared.ExplorationMode;
 
   /**
-   * Number of inputs to be included in the prompt for generation. Must be <= 10.
+   * Number of inputs to be included in the prompt for generation. Must be <= 50.
    * Generally it could be same as `batch_size`.
    */
   num_shots?: number;
