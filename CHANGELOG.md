@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.1.0 (2025-03-31)
+
+Full Changelog: [v1.0.2...v1.1.0](https://github.com/withpi/sdk-node/compare/v1.0.2...v1.1.0)
+
+### Features
+
+* **api:** api update ([#529](https://github.com/withpi/sdk-node/issues/529)) ([fd988ae](https://github.com/withpi/sdk-node/commit/fd988aee7d40efa60a450e1360fc277ce09ab1c5))
+* **api:** api update ([#530](https://github.com/withpi/sdk-node/issues/530)) ([e2e9dc8](https://github.com/withpi/sdk-node/commit/e2e9dc8bcca67025d39d64234757f5cbc587a413))
+
+
+### Bug Fixes
+
+* **internal:** work around https://github.com/vercel/next.js/issues/76881 ([#527](https://github.com/withpi/sdk-node/issues/527)) ([9975695](https://github.com/withpi/sdk-node/commit/9975695a85a2fdc57e49bba22bb2a314d2a7ad0b))
+
 ## 1.0.2 (2025-03-22)
 
 Full Changelog: [v1.0.1...v1.0.2](https://github.com/withpi/sdk-node/compare/v1.0.1...v1.0.2)
