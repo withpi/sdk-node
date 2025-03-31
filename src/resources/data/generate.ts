@@ -113,6 +113,11 @@ export interface GenerateStartJobParams {
    * Generally it could be same as `batch_size`.
    */
   num_shots?: number;
+
+  /**
+   * If true, multiple batches of generation and critique run concurrently.
+   */
+  run_parallel_batches?: boolean;
 }
 
 export declare namespace Generate {
