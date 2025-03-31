@@ -126,6 +126,11 @@ export interface GenerateInputResponsePairStartJobParams {
   num_shots?: number;
 
   /**
+   * If true, multiple batches of generation and critique run concurrently.
+   */
+  run_parallel_batches?: boolean;
+
+  /**
    * The system prompt to generate the responses for the application's inputs
    */
   system_prompt?: string | null;
