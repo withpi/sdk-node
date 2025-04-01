@@ -105,7 +105,7 @@ describe('resource generate', () => {
         'The quick brown fox jumped over the lazy dog',
         'The lazy dog was jumped over by the quick brown fox',
       ],
-      batch_size: 5,
+      batch_size: 10,
       exploration_mode: 'CONSERVATIVE',
       num_shots: 5,
       run_parallel_batches: false,
