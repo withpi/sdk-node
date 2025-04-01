@@ -108,7 +108,7 @@ describe('resource generateInputResponsePairs', () => {
         },
       ],
       application_description: "AI application for writing a children's story given topics.",
-      batch_size: 5,
+      batch_size: 10,
       exploration_mode: 'CONSERVATIVE',
       num_shots: 5,
       run_parallel_batches: false,
