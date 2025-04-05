@@ -137,6 +137,7 @@ export interface ScoringDimension {
    * is aggregated into the final score.
    */
   weight?: number | null;
+
   [k: string]: unknown;
 }
 
@@ -155,6 +156,7 @@ export interface ScoringSpec {
    * The name of the scoring spec
    */
   name: string;
+
   [k: string]: unknown;
 }
 
@@ -197,6 +199,7 @@ export interface ScoringSubDimension {
    * this subdimension into the parent dimension.
    */
   weight?: number | null;
+
   [k: string]: unknown;
 }
 
@@ -307,5 +310,6 @@ export interface TrainedModel {
    * The PI score of the eval set what isn't used in training
    */
   pi_score?: number;
+
   [k: string]: unknown;
 }
