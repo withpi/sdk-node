@@ -1,5 +1,26 @@
 # Changelog
 
+## 1.3.0 (2025-04-05)
+
+Full Changelog: [v1.2.0...v1.3.0](https://github.com/withpi/sdk-node/compare/v1.2.0...v1.3.0)
+
+### Features
+
+* **api:** api update ([#535](https://github.com/withpi/sdk-node/issues/535)) ([75863e4](https://github.com/withpi/sdk-node/commit/75863e4c28ee8ef9d9ef889f05794fffd6873449))
+
+
+### Bug Fixes
+
+* **api:** improve type resolution when importing as a package ([#539](https://github.com/withpi/sdk-node/issues/539)) ([8432516](https://github.com/withpi/sdk-node/commit/8432516476d1372250688a3d85a087fcc9f9ec24))
+* **client:** send `X-Stainless-Timeout` in seconds ([#537](https://github.com/withpi/sdk-node/issues/537)) ([03daee7](https://github.com/withpi/sdk-node/commit/03daee771e3f9c86aedc83bf5e25f0b73ed48db3))
+* **mcp:** remove unused tools.ts ([#541](https://github.com/withpi/sdk-node/issues/541)) ([da303cb](https://github.com/withpi/sdk-node/commit/da303cbecfb5c1b3ba761aaf7713bbae4a7a10cc))
+
+
+### Chores
+
+* **internal:** add aliases for Record and Array ([#538](https://github.com/withpi/sdk-node/issues/538)) ([4f723bb](https://github.com/withpi/sdk-node/commit/4f723bb0cec23a01eda4431fe3f1629054017971))
+* **internal:** improve index signature formatting ([#540](https://github.com/withpi/sdk-node/issues/540)) ([dc89f31](https://github.com/withpi/sdk-node/commit/dc89f31244e52491cae5657051c6480509c8a945))
+
 ## 1.2.0 (2025-04-01)
 
 Full Changelog: [v1.1.0...v1.2.0](https://github.com/withpi/sdk-node/compare/v1.1.0...v1.2.0)

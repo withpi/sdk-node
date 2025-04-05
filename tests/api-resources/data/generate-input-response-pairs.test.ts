@@ -111,7 +111,7 @@ describe('resource generateInputResponsePairs', () => {
       batch_size: 10,
       exploration_mode: 'CONSERVATIVE',
       num_shots: 5,
-      run_parallel_batches: false,
+      run_parallel_batches: true,
       system_prompt: "Write a children's story given a topic from the user.",
     });
   });

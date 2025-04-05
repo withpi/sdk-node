@@ -108,7 +108,7 @@ describe('resource generate', () => {
       batch_size: 10,
       exploration_mode: 'CONSERVATIVE',
       num_shots: 5,
-      run_parallel_batches: false,
+      run_parallel_batches: true,
     });
   });
 
