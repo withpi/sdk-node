@@ -185,7 +185,7 @@ describe('resource sft', () => {
         ],
         name: 'Sample Scoring Spec',
       },
-      base_sft_model: 'LLAMA_3.2_3B',
+      base_sft_model: 'LLAMA_3.1_8B',
       learning_rate: 0.0002,
       lora_config: { lora_rank: 'R_16' },
       num_train_epochs: 10,
