@@ -154,7 +154,7 @@ describe('resource optimize', () => {
         name: 'Sample Scoring Spec',
       },
       tuning_algorithm: 'DSPY',
-      dspy_optimization_type: 'BOOTSTRAP_FEW_SHOT',
+      dspy_optimization_type: 'COPRO',
       use_chain_of_thought: false,
     });
   });

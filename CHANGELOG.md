@@ -1,5 +1,35 @@
 # Changelog
 
+## 1.3.0 (2025-04-10)
+
+Full Changelog: [v1.2.0...v1.3.0](https://github.com/withpi/sdk-node/compare/v1.2.0...v1.3.0)
+
+### Features
+
+* **api:** api update ([cde5bbe](https://github.com/withpi/sdk-node/commit/cde5bbe3d56b125ee493691d5616e1f61e8d0323))
+* **api:** api update ([dc9ef25](https://github.com/withpi/sdk-node/commit/dc9ef258c1814f64343d52d978161352ac80994e))
+* **api:** api update ([20808ae](https://github.com/withpi/sdk-node/commit/20808aed821d13f01fd0a1278788369b8521994b))
+* **api:** api update ([edb7774](https://github.com/withpi/sdk-node/commit/edb7774b968bc986694a4a821eb4dbbd2093649e))
+* **api:** api update ([5ad3d3c](https://github.com/withpi/sdk-node/commit/5ad3d3ca4e895be57feaf2f4cf24054edac658f9))
+* **api:** api update ([ecc2530](https://github.com/withpi/sdk-node/commit/ecc253086a688f38423a4e8bd89831451c122aee))
+* **api:** api update ([#535](https://github.com/withpi/sdk-node/issues/535)) ([75863e4](https://github.com/withpi/sdk-node/commit/75863e4c28ee8ef9d9ef889f05794fffd6873449))
+
+
+### Bug Fixes
+
+* **api:** improve type resolution when importing as a package ([#539](https://github.com/withpi/sdk-node/issues/539)) ([8432516](https://github.com/withpi/sdk-node/commit/8432516476d1372250688a3d85a087fcc9f9ec24))
+* **client:** send `X-Stainless-Timeout` in seconds ([#537](https://github.com/withpi/sdk-node/issues/537)) ([03daee7](https://github.com/withpi/sdk-node/commit/03daee771e3f9c86aedc83bf5e25f0b73ed48db3))
+* **mcp:** remove unused tools.ts ([#541](https://github.com/withpi/sdk-node/issues/541)) ([da303cb](https://github.com/withpi/sdk-node/commit/da303cbecfb5c1b3ba761aaf7713bbae4a7a10cc))
+
+
+### Chores
+
+* **internal:** add aliases for Record and Array ([#538](https://github.com/withpi/sdk-node/issues/538)) ([4f723bb](https://github.com/withpi/sdk-node/commit/4f723bb0cec23a01eda4431fe3f1629054017971))
+* **internal:** improve index signature formatting ([#540](https://github.com/withpi/sdk-node/issues/540)) ([dc89f31](https://github.com/withpi/sdk-node/commit/dc89f31244e52491cae5657051c6480509c8a945))
+* **internal:** reduce CI branch coverage ([4833570](https://github.com/withpi/sdk-node/commit/4833570dcb1260a316248f541396bc108bdf1644))
+* **internal:** upload builds and expand CI branch coverage ([a3e54d3](https://github.com/withpi/sdk-node/commit/a3e54d3f88f734aedfb095d3f7aaba5506844881))
+* **tests:** improve enum examples ([#542](https://github.com/withpi/sdk-node/issues/542)) ([1797c12](https://github.com/withpi/sdk-node/commit/1797c123f425edcee2bcbc19f41c9badd66ee2f8))
+
 ## 1.2.0 (2025-04-01)
 
 Full Changelog: [v1.1.0...v1.2.0](https://github.com/withpi/sdk-node/compare/v1.1.0...v1.2.0)
