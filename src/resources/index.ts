@@ -5,6 +5,8 @@ export { Data, type DataClusterInputsResponse, type DataClusterInputsParams } fr
 export { Prompt } from './prompt/prompt';
 export {
   ScoringSystem,
+  type ScoringSystemGenerateResponse,
+  type ScoringSystemScoreResponse,
   type ScoringSystemGenerateParams,
   type ScoringSystemImportSpecParams,
   type ScoringSystemScoreParams,
