@@ -147,7 +147,7 @@ describe('resource scoringSystem', () => {
     const responsePromise = client.scoringSystem.scoreV2({
       llm_input: 'Tell me something different',
       llm_output: 'The lazy dog was jumped over by the quick brown fox',
-      scoring_spec: { dimensions: [{ question: 'Is the response relevant to the prompt?' }] },
+      scoring_spec_v2: { dimensions_v2: [{ question: 'Is the response relevant to the prompt?' }] },
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -163,8 +163,8 @@ describe('resource scoringSystem', () => {
     const response = await client.scoringSystem.scoreV2({
       llm_input: 'Tell me something different',
       llm_output: 'The lazy dog was jumped over by the quick brown fox',
-      scoring_spec: {
-        dimensions: [
+      scoring_spec_v2: {
+        dimensions_v2: [
           {
             question: 'Is the response relevant to the prompt?',
             custom_model_id: 'your-model-id',

@@ -73,11 +73,11 @@ export interface ScoringSystemGenerateV2Response {
   /**
    * The dimensions of the scoring spec
    */
-  dimensions: Array<ScoringSystemGenerateV2Response.Dimension>;
+  dimensions_v2: Array<ScoringSystemGenerateV2Response.DimensionsV2>;
 }
 
 export namespace ScoringSystemGenerateV2Response {
-  export interface Dimension {
+  export interface DimensionsV2 {
     /**
      * The description of the dimension
      */
@@ -200,22 +200,22 @@ export interface ScoringSystemScoreV2Params {
   /**
    * The scoring spec to score
    */
-  scoring_spec: ScoringSystemScoreV2Params.ScoringSpec;
+  scoring_spec_v2: ScoringSystemScoreV2Params.ScoringSpecV2;
 }
 
 export namespace ScoringSystemScoreV2Params {
   /**
    * The scoring spec to score
    */
-  export interface ScoringSpec {
+  export interface ScoringSpecV2 {
     /**
      * The dimensions of the scoring spec
      */
-    dimensions: Array<ScoringSpec.Dimension>;
+    dimensions_v2: Array<ScoringSpecV2.DimensionsV2>;
   }
 
-  export namespace ScoringSpec {
-    export interface Dimension {
+  export namespace ScoringSpecV2 {
+    export interface DimensionsV2 {
       /**
        * The description of the dimension
        */
