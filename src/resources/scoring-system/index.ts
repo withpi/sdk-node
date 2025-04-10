@@ -12,8 +12,6 @@ export {
 } from './calibrate';
 export {
   ScoringSystem,
-  type ScoringSystemGenerateResponse,
-  type ScoringSystemScoreResponse,
   type ScoringSystemGenerateParams,
   type ScoringSystemImportSpecParams,
   type ScoringSystemScoreParams,
