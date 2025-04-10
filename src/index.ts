@@ -12,6 +12,7 @@ import {
   ScoringSystemGenerateParams,
   ScoringSystemImportSpecParams,
   ScoringSystemScoreParams,
+  ScoringSystemScoreResponse,
 } from './resources/scoring-system/scoring-system';
 import { Search } from './resources/search/search';
 import { Training } from './resources/training/training';
@@ -191,6 +192,7 @@ export declare namespace PiClient {
 
   export {
     ScoringSystem as ScoringSystem,
+    type ScoringSystemScoreResponse as ScoringSystemScoreResponse,
     type ScoringSystemGenerateParams as ScoringSystemGenerateParams,
     type ScoringSystemImportSpecParams as ScoringSystemImportSpecParams,
     type ScoringSystemScoreParams as ScoringSystemScoreParams,

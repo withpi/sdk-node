@@ -27,25 +27,9 @@ const client = new PiClient({
 });
 
 async function main() {
-  const scoringSystemMetrics = await client.scoringSystem.score({
-    llm_input: 'Tell me something different',
-    llm_output: 'The lazy dog was jumped over by the quick brown fox',
-    scoring_spec: {
-      description: "Write a children's story communicating a simple life lesson.",
-      dimensions: [
-        {
-          description: 'dimension1 description',
-          label: 'dimension1',
-          sub_dimensions: [
-            { description: 'subdimension1 description', label: 'subdimension1', scoring_type: 'PI_SCORER' },
-          ],
-        },
-      ],
-      name: 'Sample Scoring Spec',
-    },
+  const response = await client.data.clusterInputs({
+    inputs: [{ identifier: 'abcd12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }],
   });
-
-  console.log(scoringSystemMetrics.dimension_scores);
 }
 
 main();
@@ -64,24 +48,10 @@ const client = new PiClient({
 });
 
 async function main() {
-  const params: PiClient.ScoringSystemScoreParams = {
-    llm_input: 'Tell me something different',
-    llm_output: 'The lazy dog was jumped over by the quick brown fox',
-    scoring_spec: {
-      description: "Write a children's story communicating a simple life lesson.",
-      dimensions: [
-        {
-          description: 'dimension1 description',
-          label: 'dimension1',
-          sub_dimensions: [
-            { description: 'subdimension1 description', label: 'subdimension1', scoring_type: 'PI_SCORER' },
-          ],
-        },
-      ],
-      name: 'Sample Scoring Spec',
-    },
+  const params: PiClient.DataClusterInputsParams = {
+    inputs: [{ identifier: 'abcd12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }],
   };
-  const scoringSystemMetrics: PiClient.ScoringSystemMetrics = await client.scoringSystem.score(params);
+  const response: PiClient.DataClusterInputsResponse = await client.data.clusterInputs(params);
 }
 
 main();
@@ -98,23 +68,9 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const scoringSystemMetrics = await client.scoringSystem
-    .score({
-      llm_input: 'Tell me something different',
-      llm_output: 'The lazy dog was jumped over by the quick brown fox',
-      scoring_spec: {
-        description: "Write a children's story communicating a simple life lesson.",
-        dimensions: [
-          {
-            description: 'dimension1 description',
-            label: 'dimension1',
-            sub_dimensions: [
-              { description: 'subdimension1 description', label: 'subdimension1', scoring_type: 'PI_SCORER' },
-            ],
-          },
-        ],
-        name: 'Sample Scoring Spec',
-      },
+  const response = await client.data
+    .clusterInputs({
+      inputs: [{ identifier: 'abcd12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }],
     })
     .catch(async (err) => {
       if (err instanceof PiClient.APIError) {
@@ -159,7 +115,7 @@ const client = new PiClient({
 });
 
 // Or, configure per-request:
-await client.scoringSystem.score({ llm_input: 'Tell me something different', llm_output: 'The lazy dog was jumped over by the quick brown fox', scoring_spec: { description: 'Write a children\'s story communicating a simple life lesson.', dimensions: [{ description: 'dimension1 description', label: 'dimension1', sub_dimensions: [{ description: 'subdimension1 description', label: 'subdimension1', scoring_type: 'PI_SCORER' }] }], name: 'Sample Scoring Spec' } }, {
+await client.data.clusterInputs({ inputs: [{ identifier: 'abcd12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }] }, {
   maxRetries: 5,
 });
 ```
@@ -176,7 +132,7 @@ const client = new PiClient({
 });
 
 // Override per-request:
-await client.scoringSystem.score({ llm_input: 'Tell me something different', llm_output: 'The lazy dog was jumped over by the quick brown fox', scoring_spec: { description: 'Write a children\'s story communicating a simple life lesson.', dimensions: [{ description: 'dimension1 description', label: 'dimension1', sub_dimensions: [{ description: 'subdimension1 description', label: 'subdimension1', scoring_type: 'PI_SCORER' }] }], name: 'Sample Scoring Spec' } }, {
+await client.data.clusterInputs({ inputs: [{ identifier: 'abcd12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }] }, {
   timeout: 5 * 1000,
 });
 ```
@@ -197,49 +153,21 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const client = new PiClient();
 
-const response = await client.scoringSystem
-  .score({
-    llm_input: 'Tell me something different',
-    llm_output: 'The lazy dog was jumped over by the quick brown fox',
-    scoring_spec: {
-      description: "Write a children's story communicating a simple life lesson.",
-      dimensions: [
-        {
-          description: 'dimension1 description',
-          label: 'dimension1',
-          sub_dimensions: [
-            { description: 'subdimension1 description', label: 'subdimension1', scoring_type: 'PI_SCORER' },
-          ],
-        },
-      ],
-      name: 'Sample Scoring Spec',
-    },
+const response = await client.data
+  .clusterInputs({
+    inputs: [{ identifier: 'abcd12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }],
   })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: scoringSystemMetrics, response: raw } = await client.scoringSystem
-  .score({
-    llm_input: 'Tell me something different',
-    llm_output: 'The lazy dog was jumped over by the quick brown fox',
-    scoring_spec: {
-      description: "Write a children's story communicating a simple life lesson.",
-      dimensions: [
-        {
-          description: 'dimension1 description',
-          label: 'dimension1',
-          sub_dimensions: [
-            { description: 'subdimension1 description', label: 'subdimension1', scoring_type: 'PI_SCORER' },
-          ],
-        },
-      ],
-      name: 'Sample Scoring Spec',
-    },
+const { data: response, response: raw } = await client.data
+  .clusterInputs({
+    inputs: [{ identifier: 'abcd12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }],
   })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(scoringSystemMetrics.dimension_scores);
+console.log(response);
 ```
 
 ### Making custom/undocumented requests
@@ -343,24 +271,8 @@ const client = new PiClient({
 });
 
 // Override per-request:
-await client.scoringSystem.score(
-  {
-    llm_input: 'Tell me something different',
-    llm_output: 'The lazy dog was jumped over by the quick brown fox',
-    scoring_spec: {
-      description: "Write a children's story communicating a simple life lesson.",
-      dimensions: [
-        {
-          description: 'dimension1 description',
-          label: 'dimension1',
-          sub_dimensions: [
-            { description: 'subdimension1 description', label: 'subdimension1', scoring_type: 'PI_SCORER' },
-          ],
-        },
-      ],
-      name: 'Sample Scoring Spec',
-    },
-  },
+await client.data.clusterInputs(
+  { inputs: [{ identifier: 'abcd12345', llm_input: 'The lazy dog was jumped over by the quick brown fox' }] },
   {
     httpAgent: new http.Agent({ keepAlive: false }),
   },

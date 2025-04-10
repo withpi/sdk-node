@@ -44,9 +44,21 @@ export class ScoringSystem extends APIResource {
   score(
     body: ScoringSystemScoreParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ScoringSystemMetrics> {
-    return this._client.post('/scoring_system/score', { body, ...options });
+  ): Core.APIPromise<ScoringSystemScoreResponse> {
+    return this._client.post('/scoring_system/score_v2', { body, ...options });
   }
+}
+
+export interface ScoringSystemScoreResponse {
+  /**
+   * The score components for each dimension
+   */
+  dimension_scores: Record<string, number>;
+
+  /**
+   * The total score of the scoring spec
+   */
+  total_score: number;
 }
 
 export interface ScoringSystemGenerateParams {
@@ -94,13 +106,64 @@ export interface ScoringSystemScoreParams {
   /**
    * The scoring spec to score
    */
-  scoring_spec: Shared.ScoringSpec;
+  scoring_spec: ScoringSystemScoreParams.ScoringSpec;
+}
+
+export namespace ScoringSystemScoreParams {
+  /**
+   * The scoring spec to score
+   */
+  export interface ScoringSpec {
+    /**
+     * The dimensions of the scoring spec
+     */
+    dimensions: Array<ScoringSpec.Dimension>;
+  }
+
+  export namespace ScoringSpec {
+    export interface Dimension {
+      /**
+       * The description of the dimension
+       */
+      question: string;
+
+      /**
+       * The ID of the custom model to use for scoring. Only relevant for scoring_type of
+       * CUSTOM_MODEL_SCORER
+       */
+      custom_model_id?: string | null;
+
+      /**
+       * The learned parameters for the scoring method. This represents piecewise linear
+       * interpolation between [0, 1].
+       */
+      parameters?: Array<number> | null;
+
+      /**
+       * The PYTHON code associated the PYTHON_CODE DimensionScoringType.
+       */
+      python_code?: string | null;
+
+      /**
+       * The type of scoring performed for this dimension
+       */
+      scoring_type?: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER' | null;
+
+      /**
+       * The weight of the dimension. The sum of subdimension weights will be normalized
+       * to one internally. A higher weight counts for more when aggregating this
+       * subdimension into the parent dimension.
+       */
+      weight?: number | null;
+    }
+  }
 }
 
 ScoringSystem.Calibrate = Calibrate;
 
 export declare namespace ScoringSystem {
   export {
+    type ScoringSystemScoreResponse as ScoringSystemScoreResponse,
     type ScoringSystemGenerateParams as ScoringSystemGenerateParams,
     type ScoringSystemImportSpecParams as ScoringSystemImportSpecParams,
     type ScoringSystemScoreParams as ScoringSystemScoreParams,
