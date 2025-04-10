@@ -10,10 +10,12 @@ import { Prompt } from './resources/prompt/prompt';
 import {
   ScoringSystem,
   ScoringSystemGenerateParams,
-  ScoringSystemGenerateResponse,
+  ScoringSystemGenerateV2Params,
+  ScoringSystemGenerateV2Response,
   ScoringSystemImportSpecParams,
   ScoringSystemScoreParams,
-  ScoringSystemScoreResponse,
+  ScoringSystemScoreV2Params,
+  ScoringSystemScoreV2Response,
 } from './resources/scoring-system/scoring-system';
 import { Search } from './resources/search/search';
 import { Training } from './resources/training/training';
@@ -193,11 +195,13 @@ export declare namespace PiClient {
 
   export {
     ScoringSystem as ScoringSystem,
-    type ScoringSystemGenerateResponse as ScoringSystemGenerateResponse,
-    type ScoringSystemScoreResponse as ScoringSystemScoreResponse,
+    type ScoringSystemGenerateV2Response as ScoringSystemGenerateV2Response,
+    type ScoringSystemScoreV2Response as ScoringSystemScoreV2Response,
     type ScoringSystemGenerateParams as ScoringSystemGenerateParams,
+    type ScoringSystemGenerateV2Params as ScoringSystemGenerateV2Params,
     type ScoringSystemImportSpecParams as ScoringSystemImportSpecParams,
     type ScoringSystemScoreParams as ScoringSystemScoreParams,
+    type ScoringSystemScoreV2Params as ScoringSystemScoreV2Params,
   };
 
   export { Search as Search };

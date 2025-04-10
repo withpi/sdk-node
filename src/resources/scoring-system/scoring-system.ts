@@ -19,12 +19,22 @@ export class ScoringSystem extends APIResource {
   calibrate: CalibrateAPI.Calibrate = new CalibrateAPI.Calibrate(this._client);
 
   /**
-   * Generates a scoring spec v2
+   * Generates a scoring spec
    */
   generate(
     body: ScoringSystemGenerateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<ScoringSystemGenerateResponse> {
+  ): Core.APIPromise<Shared.ScoringSpec> {
+    return this._client.post('/scoring_system/generate', { body, ...options });
+  }
+
+  /**
+   * Generates a scoring spec v2
+   */
+  generateV2(
+    body: ScoringSystemGenerateV2Params,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<ScoringSystemGenerateV2Response> {
     return this._client.post('/scoring_system/generate_v2', { body, ...options });
   }
 
@@ -44,19 +54,29 @@ export class ScoringSystem extends APIResource {
   score(
     body: ScoringSystemScoreParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<ScoringSystemScoreResponse> {
+  ): Core.APIPromise<Shared.ScoringSystemMetrics> {
+    return this._client.post('/scoring_system/score', { body, ...options });
+  }
+
+  /**
+   * Scores the provided input and output based on the given scoring spec
+   */
+  scoreV2(
+    body: ScoringSystemScoreV2Params,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<ScoringSystemScoreV2Response> {
     return this._client.post('/scoring_system/score_v2', { body, ...options });
   }
 }
 
-export interface ScoringSystemGenerateResponse {
+export interface ScoringSystemGenerateV2Response {
   /**
    * The dimensions of the scoring spec
    */
-  dimensions: Array<ScoringSystemGenerateResponse.Dimension>;
+  dimensions: Array<ScoringSystemGenerateV2Response.Dimension>;
 }
 
-export namespace ScoringSystemGenerateResponse {
+export namespace ScoringSystemGenerateV2Response {
   export interface Dimension {
     /**
      * The description of the dimension
@@ -94,7 +114,7 @@ export namespace ScoringSystemGenerateResponse {
   }
 }
 
-export interface ScoringSystemScoreResponse {
+export interface ScoringSystemScoreV2Response {
   /**
    * The score components for each dimension
    */
@@ -107,6 +127,18 @@ export interface ScoringSystemScoreResponse {
 }
 
 export interface ScoringSystemGenerateParams {
+  /**
+   * The application description to generate a scoring spec for.
+   */
+  application_description: string;
+
+  /**
+   * If true, try to generate python code for sub-dimensions in the scoring spec.
+   */
+  try_auto_generating_python_code?: boolean;
+}
+
+export interface ScoringSystemGenerateV2Params {
   /**
    * The application description to generate a scoring spec for.
    */
@@ -151,10 +183,27 @@ export interface ScoringSystemScoreParams {
   /**
    * The scoring spec to score
    */
-  scoring_spec: ScoringSystemScoreParams.ScoringSpec;
+  scoring_spec: Shared.ScoringSpec;
 }
 
-export namespace ScoringSystemScoreParams {
+export interface ScoringSystemScoreV2Params {
+  /**
+   * The input to score
+   */
+  llm_input: string;
+
+  /**
+   * The output to score
+   */
+  llm_output: string;
+
+  /**
+   * The scoring spec to score
+   */
+  scoring_spec: ScoringSystemScoreV2Params.ScoringSpec;
+}
+
+export namespace ScoringSystemScoreV2Params {
   /**
    * The scoring spec to score
    */
@@ -208,11 +257,13 @@ ScoringSystem.Calibrate = Calibrate;
 
 export declare namespace ScoringSystem {
   export {
-    type ScoringSystemGenerateResponse as ScoringSystemGenerateResponse,
-    type ScoringSystemScoreResponse as ScoringSystemScoreResponse,
+    type ScoringSystemGenerateV2Response as ScoringSystemGenerateV2Response,
+    type ScoringSystemScoreV2Response as ScoringSystemScoreV2Response,
     type ScoringSystemGenerateParams as ScoringSystemGenerateParams,
+    type ScoringSystemGenerateV2Params as ScoringSystemGenerateV2Params,
     type ScoringSystemImportSpecParams as ScoringSystemImportSpecParams,
     type ScoringSystemScoreParams as ScoringSystemScoreParams,
+    type ScoringSystemScoreV2Params as ScoringSystemScoreV2Params,
   };
 
   export {
