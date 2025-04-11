@@ -24,18 +24,8 @@ export class ScoringSystem extends APIResource {
   generate(
     body: ScoringSystemGenerateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ScoringSpec> {
+  ): Core.APIPromise<ScoringSystemGenerateResponse> {
     return this._client.post('/scoring_system/generate', { body, ...options });
-  }
-
-  /**
-   * Generates a scoring spec v2
-   */
-  generateV2(
-    body: ScoringSystemGenerateV2Params,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<ScoringSystemGenerateV2Response> {
-    return this._client.post('/scoring_system/generate_v2', { body, ...options });
   }
 
   /**
@@ -49,7 +39,8 @@ export class ScoringSystem extends APIResource {
   }
 
   /**
-   * Scores the provided input and output based on the given scoring spec
+   * Scores the provided input and output based on the given scoring spec or a list
+   * of questions
    */
   score(
     body: ScoringSystemScoreParams,
@@ -57,31 +48,22 @@ export class ScoringSystem extends APIResource {
   ): Core.APIPromise<Shared.ScoringSystemMetrics> {
     return this._client.post('/scoring_system/score', { body, ...options });
   }
-
-  /**
-   * Scores the provided input and output based on the given scoring spec
-   */
-  scoreV2(
-    body: ScoringSystemScoreV2Params,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<ScoringSystemScoreV2Response> {
-    return this._client.post('/scoring_system/score_v2', { body, ...options });
-  }
 }
 
-export interface ScoringSystemGenerateV2Response {
-  /**
-   * The dimensions of the scoring spec
-   */
-  dimensions_v2: Array<ScoringSystemGenerateV2Response.DimensionsV2>;
-}
+export type ScoringSystemGenerateResponse =
+  Array<ScoringSystemGenerateResponse.ScoringSystemGenerateResponseItem>;
 
-export namespace ScoringSystemGenerateV2Response {
-  export interface DimensionsV2 {
+export namespace ScoringSystemGenerateResponse {
+  export interface ScoringSystemGenerateResponseItem {
     /**
      * The description of the dimension
      */
     question: string;
+
+    /**
+     * The tag or the group to which
+     */
+    tag: string | null;
 
     /**
      * The ID of the custom model to use for scoring. Only relevant for scoring_type of
@@ -114,31 +96,7 @@ export namespace ScoringSystemGenerateV2Response {
   }
 }
 
-export interface ScoringSystemScoreV2Response {
-  /**
-   * The score components for each dimension
-   */
-  dimension_scores: Record<string, number>;
-
-  /**
-   * The total score of the scoring spec
-   */
-  total_score: number;
-}
-
 export interface ScoringSystemGenerateParams {
-  /**
-   * The application description to generate a scoring spec for.
-   */
-  application_description: string;
-
-  /**
-   * If true, try to generate python code for sub-dimensions in the scoring spec.
-   */
-  try_auto_generating_python_code?: boolean;
-}
-
-export interface ScoringSystemGenerateV2Params {
   /**
    * The application description to generate a scoring spec for.
    */
@@ -181,75 +139,51 @@ export interface ScoringSystemScoreParams {
   llm_output: string;
 
   /**
-   * The scoring spec to score
+   * Either a scoring spec or a list of questions to score
    */
-  scoring_spec: Shared.ScoringSpec;
+  scoring_input: Shared.ScoringSpec | Array<ScoringSystemScoreParams.UnionMember1>;
 }
 
-export interface ScoringSystemScoreV2Params {
-  /**
-   * The input to score
-   */
-  llm_input: string;
-
-  /**
-   * The output to score
-   */
-  llm_output: string;
-
-  /**
-   * The scoring spec to score
-   */
-  scoring_spec_v2: ScoringSystemScoreV2Params.ScoringSpecV2;
-}
-
-export namespace ScoringSystemScoreV2Params {
-  /**
-   * The scoring spec to score
-   */
-  export interface ScoringSpecV2 {
+export namespace ScoringSystemScoreParams {
+  export interface UnionMember1 {
     /**
-     * The dimensions of the scoring spec
+     * The description of the dimension
      */
-    dimensions_v2: Array<ScoringSpecV2.DimensionsV2>;
-  }
+    question: string;
 
-  export namespace ScoringSpecV2 {
-    export interface DimensionsV2 {
-      /**
-       * The description of the dimension
-       */
-      question: string;
+    /**
+     * The tag or the group to which
+     */
+    tag: string | null;
 
-      /**
-       * The ID of the custom model to use for scoring. Only relevant for scoring_type of
-       * CUSTOM_MODEL_SCORER
-       */
-      custom_model_id?: string | null;
+    /**
+     * The ID of the custom model to use for scoring. Only relevant for scoring_type of
+     * CUSTOM_MODEL_SCORER
+     */
+    custom_model_id?: string | null;
 
-      /**
-       * The learned parameters for the scoring method. This represents piecewise linear
-       * interpolation between [0, 1].
-       */
-      parameters?: Array<number> | null;
+    /**
+     * The learned parameters for the scoring method. This represents piecewise linear
+     * interpolation between [0, 1].
+     */
+    parameters?: Array<number> | null;
 
-      /**
-       * The PYTHON code associated the PYTHON_CODE DimensionScoringType.
-       */
-      python_code?: string | null;
+    /**
+     * The PYTHON code associated the PYTHON_CODE DimensionScoringType.
+     */
+    python_code?: string | null;
 
-      /**
-       * The type of scoring performed for this dimension
-       */
-      scoring_type?: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER' | null;
+    /**
+     * The type of scoring performed for this dimension
+     */
+    scoring_type?: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER' | null;
 
-      /**
-       * The weight of the dimension. The sum of subdimension weights will be normalized
-       * to one internally. A higher weight counts for more when aggregating this
-       * subdimension into the parent dimension.
-       */
-      weight?: number | null;
-    }
+    /**
+     * The weight of the dimension. The sum of subdimension weights will be normalized
+     * to one internally. A higher weight counts for more when aggregating this
+     * subdimension into the parent dimension.
+     */
+    weight?: number | null;
   }
 }
 
@@ -257,13 +191,10 @@ ScoringSystem.Calibrate = Calibrate;
 
 export declare namespace ScoringSystem {
   export {
-    type ScoringSystemGenerateV2Response as ScoringSystemGenerateV2Response,
-    type ScoringSystemScoreV2Response as ScoringSystemScoreV2Response,
+    type ScoringSystemGenerateResponse as ScoringSystemGenerateResponse,
     type ScoringSystemGenerateParams as ScoringSystemGenerateParams,
-    type ScoringSystemGenerateV2Params as ScoringSystemGenerateV2Params,
     type ScoringSystemImportSpecParams as ScoringSystemImportSpecParams,
     type ScoringSystemScoreParams as ScoringSystemScoreParams,
-    type ScoringSystemScoreV2Params as ScoringSystemScoreV2Params,
   };
 
   export {

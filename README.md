@@ -30,7 +30,7 @@ async function main() {
   const scoringSystemMetrics = await client.scoringSystem.score({
     llm_input: 'Tell me something different',
     llm_output: 'The lazy dog was jumped over by the quick brown fox',
-    scoring_spec: {
+    scoring_input: {
       description: "Write a children's story communicating a simple life lesson.",
       dimensions: [
         {
@@ -67,7 +67,7 @@ async function main() {
   const params: PiClient.ScoringSystemScoreParams = {
     llm_input: 'Tell me something different',
     llm_output: 'The lazy dog was jumped over by the quick brown fox',
-    scoring_spec: {
+    scoring_input: {
       description: "Write a children's story communicating a simple life lesson.",
       dimensions: [
         {
@@ -102,7 +102,7 @@ async function main() {
     .score({
       llm_input: 'Tell me something different',
       llm_output: 'The lazy dog was jumped over by the quick brown fox',
-      scoring_spec: {
+      scoring_input: {
         description: "Write a children's story communicating a simple life lesson.",
         dimensions: [
           {
@@ -159,7 +159,7 @@ const client = new PiClient({
 });
 
 // Or, configure per-request:
-await client.scoringSystem.score({ llm_input: 'Tell me something different', llm_output: 'The lazy dog was jumped over by the quick brown fox', scoring_spec: { description: 'Write a children\'s story communicating a simple life lesson.', dimensions: [{ description: 'dimension1 description', label: 'dimension1', sub_dimensions: [{ description: 'subdimension1 description', label: 'subdimension1', scoring_type: 'PI_SCORER' }] }], name: 'Sample Scoring Spec' } }, {
+await client.scoringSystem.score({ llm_input: 'Tell me something different', llm_output: 'The lazy dog was jumped over by the quick brown fox', scoring_input: { description: 'Write a children\'s story communicating a simple life lesson.', dimensions: [{ description: 'dimension1 description', label: 'dimension1', sub_dimensions: [{ description: 'subdimension1 description', label: 'subdimension1', scoring_type: 'PI_SCORER' }] }], name: 'Sample Scoring Spec' } }, {
   maxRetries: 5,
 });
 ```
@@ -176,7 +176,7 @@ const client = new PiClient({
 });
 
 // Override per-request:
-await client.scoringSystem.score({ llm_input: 'Tell me something different', llm_output: 'The lazy dog was jumped over by the quick brown fox', scoring_spec: { description: 'Write a children\'s story communicating a simple life lesson.', dimensions: [{ description: 'dimension1 description', label: 'dimension1', sub_dimensions: [{ description: 'subdimension1 description', label: 'subdimension1', scoring_type: 'PI_SCORER' }] }], name: 'Sample Scoring Spec' } }, {
+await client.scoringSystem.score({ llm_input: 'Tell me something different', llm_output: 'The lazy dog was jumped over by the quick brown fox', scoring_input: { description: 'Write a children\'s story communicating a simple life lesson.', dimensions: [{ description: 'dimension1 description', label: 'dimension1', sub_dimensions: [{ description: 'subdimension1 description', label: 'subdimension1', scoring_type: 'PI_SCORER' }] }], name: 'Sample Scoring Spec' } }, {
   timeout: 5 * 1000,
 });
 ```
@@ -201,7 +201,7 @@ const response = await client.scoringSystem
   .score({
     llm_input: 'Tell me something different',
     llm_output: 'The lazy dog was jumped over by the quick brown fox',
-    scoring_spec: {
+    scoring_input: {
       description: "Write a children's story communicating a simple life lesson.",
       dimensions: [
         {
@@ -223,7 +223,7 @@ const { data: scoringSystemMetrics, response: raw } = await client.scoringSystem
   .score({
     llm_input: 'Tell me something different',
     llm_output: 'The lazy dog was jumped over by the quick brown fox',
-    scoring_spec: {
+    scoring_input: {
       description: "Write a children's story communicating a simple life lesson.",
       dimensions: [
         {
@@ -347,7 +347,7 @@ await client.scoringSystem.score(
   {
     llm_input: 'Tell me something different',
     llm_output: 'The lazy dog was jumped over by the quick brown fox',
-    scoring_spec: {
+    scoring_input: {
       description: "Write a children's story communicating a simple life lesson.",
       dimensions: [
         {
