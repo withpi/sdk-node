@@ -59,6 +59,7 @@ Types:
 Methods:
 
 - <code title="post /scoring_system/generate">client.scoringSystem.<a href="./src/resources/scoring-system/scoring-system.ts">generate</a>({ ...params }) -> ScoringSystemGenerateResponse</code>
+- <code title="post /scoring_system/import_spec">client.scoringSystem.<a href="./src/resources/scoring-system/scoring-system.ts">importSpec</a>({ ...params }) -> ScoringSpec</code>
 - <code title="post /scoring_system/score">client.scoringSystem.<a href="./src/resources/scoring-system/scoring-system.ts">score</a>({ ...params }) -> ScoringSystemMetrics</code>
 
 ## Calibrate
