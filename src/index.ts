@@ -5,13 +5,12 @@ import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
-import { Data, DataClusterInputsParams, DataClusterInputsResponse } from './resources/data/data';
+import { Data } from './resources/data/data';
 import { Prompt } from './resources/prompt/prompt';
 import {
   ScoringSystem,
   ScoringSystemGenerateParams,
   ScoringSystemGenerateResponse,
-  ScoringSystemImportSpecParams,
   ScoringSystemScoreParams,
 } from './resources/scoring-system/scoring-system';
 import { Search } from './resources/search/search';
@@ -180,11 +179,7 @@ PiClient.Search = Search;
 export declare namespace PiClient {
   export type RequestOptions = Core.RequestOptions;
 
-  export {
-    Data as Data,
-    type DataClusterInputsResponse as DataClusterInputsResponse,
-    type DataClusterInputsParams as DataClusterInputsParams,
-  };
+  export { Data as Data };
 
   export { Training as Training };
 
@@ -194,25 +189,20 @@ export declare namespace PiClient {
     ScoringSystem as ScoringSystem,
     type ScoringSystemGenerateResponse as ScoringSystemGenerateResponse,
     type ScoringSystemGenerateParams as ScoringSystemGenerateParams,
-    type ScoringSystemImportSpecParams as ScoringSystemImportSpecParams,
     type ScoringSystemScoreParams as ScoringSystemScoreParams,
   };
 
   export { Search as Search };
 
-  export type ClassificationStatus = API.ClassificationStatus;
   export type DataGenerationStatus = API.DataGenerationStatus;
   export type Example = API.Example;
   export type ExplorationMode = API.ExplorationMode;
-  export type PromptOptimizationStatus = API.PromptOptimizationStatus;
   export type QueryFanoutExample = API.QueryFanoutExample;
   export type ScoringDimension = API.ScoringDimension;
   export type ScoringSpec = API.ScoringSpec;
   export type ScoringSubDimension = API.ScoringSubDimension;
   export type ScoringSystemMetrics = API.ScoringSystemMetrics;
-  export type SftStatus = API.SftStatus;
   export type SyntheticDataStatus = API.SyntheticDataStatus;
-  export type TrainedModel = API.TrainedModel;
 }
 
 export { toFile, fileFromPath } from './uploads';

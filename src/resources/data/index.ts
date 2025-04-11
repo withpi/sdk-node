@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-export { Data, type DataClusterInputsResponse, type DataClusterInputsParams } from './data';
+export { Data } from './data';
 export {
   Generate,
   type GenerateListResponse,

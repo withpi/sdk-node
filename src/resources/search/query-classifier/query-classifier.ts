@@ -3,16 +3,7 @@
 import { APIResource } from '../../../resource';
 import * as Core from '../../../core';
 import * as DistillAPI from './distill';
-import {
-  Distill,
-  DistillCancelResponse,
-  DistillDownloadParams,
-  DistillDownloadResponse,
-  DistillListParams,
-  DistillListResponse,
-  DistillStartJobParams,
-  DistillStreamMessagesResponse,
-} from './distill';
+import { Distill } from './distill';
 
 export class QueryClassifier extends APIResource {
   distill: DistillAPI.Distill = new DistillAPI.Distill(this._client);
@@ -101,14 +92,5 @@ export declare namespace QueryClassifier {
     type QueryClassifierClassifyParams as QueryClassifierClassifyParams,
   };
 
-  export {
-    Distill as Distill,
-    type DistillListResponse as DistillListResponse,
-    type DistillCancelResponse as DistillCancelResponse,
-    type DistillDownloadResponse as DistillDownloadResponse,
-    type DistillStreamMessagesResponse as DistillStreamMessagesResponse,
-    type DistillListParams as DistillListParams,
-    type DistillDownloadParams as DistillDownloadParams,
-    type DistillStartJobParams as DistillStartJobParams,
-  };
+  export { Distill as Distill };
 }
