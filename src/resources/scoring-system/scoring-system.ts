@@ -88,7 +88,7 @@ export namespace ScoringSystemGenerateResponse {
     scoring_type?: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER' | null;
 
     /**
-     * The tag or the group to which
+     * The tag or the group to which this question belongs.
      */
     tag?: string | null;
 
@@ -184,7 +184,7 @@ export namespace ScoringSystemScoreParams {
     scoring_type?: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER' | null;
 
     /**
-     * The tag or the group to which
+     * The tag or the group to which this question belongs.
      */
     tag?: string | null;
 
