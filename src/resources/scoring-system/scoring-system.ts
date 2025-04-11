@@ -29,16 +29,6 @@ export class ScoringSystem extends APIResource {
   }
 
   /**
-   * Import a scoring spec from various sources
-   */
-  importSpec(
-    body: ScoringSystemImportSpecParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ScoringSpec> {
-    return this._client.post('/scoring_system/import_spec', { body, ...options });
-  }
-
-  /**
    * Scores the provided input and output based on the given scoring spec or a list
    * of questions
    */
@@ -113,25 +103,6 @@ export interface ScoringSystemGenerateParams {
   try_auto_generating_python_code?: boolean;
 }
 
-export interface ScoringSystemImportSpecParams {
-  /**
-   * Huggingface dataset e.g. withpi/my_scoring_system containing the Scoring spec.
-   * This is only needed for the source=HUGGINGFACE.
-   */
-  hf_scoring_spec_name: string;
-
-  /**
-   * Huggingface token to use if you want to read to your own HF organization. This
-   * is only needed for the source=HUGGINGFACE.
-   */
-  hf_token?: string | null;
-
-  /**
-   * Source of where to get the Scoring spec
-   */
-  source?: 'HUGGINGFACE';
-}
-
 export interface ScoringSystemScoreParams {
   /**
    * The input to score
@@ -203,7 +174,6 @@ export declare namespace ScoringSystem {
   export {
     type ScoringSystemGenerateResponse as ScoringSystemGenerateResponse,
     type ScoringSystemGenerateParams as ScoringSystemGenerateParams,
-    type ScoringSystemImportSpecParams as ScoringSystemImportSpecParams,
     type ScoringSystemScoreParams as ScoringSystemScoreParams,
   };
 

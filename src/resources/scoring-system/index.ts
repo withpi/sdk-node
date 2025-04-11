@@ -14,6 +14,5 @@ export {
   ScoringSystem,
   type ScoringSystemGenerateResponse,
   type ScoringSystemGenerateParams,
-  type ScoringSystemImportSpecParams,
   type ScoringSystemScoreParams,
 } from './scoring-system';
