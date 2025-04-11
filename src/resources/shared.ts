@@ -210,6 +210,11 @@ export interface ScoringSystemMetrics {
   dimension_scores: Record<string, ScoringSystemMetrics.DimensionScores>;
 
   /**
+   * The score components for each question
+   */
+  question_scores: Record<string, number>;
+
+  /**
    * The total score of the scoring spec
    */
   total_score: number;
