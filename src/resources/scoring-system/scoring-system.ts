@@ -141,7 +141,7 @@ export interface ScoringSystemScoreParams {
   /**
    * Either a scoring spec or a list of questions to score
    */
-  scoring_input: Shared.ScoringSpec | Array<ScoringSystemScoreParams.UnionMember1>;
+  scoring_spec: Shared.ScoringSpec | Array<ScoringSystemScoreParams.UnionMember1>;
 }
 
 export namespace ScoringSystemScoreParams {

@@ -59,7 +59,7 @@ describe('resource scoringSystem', () => {
     const responsePromise = client.scoringSystem.score({
       llm_input: 'Tell me something different',
       llm_output: 'The lazy dog was jumped over by the quick brown fox',
-      scoring_input: {
+      scoring_spec: {
         description: "Write a children's story communicating a simple life lesson.",
         dimensions: [
           {
@@ -87,7 +87,7 @@ describe('resource scoringSystem', () => {
     const response = await client.scoringSystem.score({
       llm_input: 'Tell me something different',
       llm_output: 'The lazy dog was jumped over by the quick brown fox',
-      scoring_input: {
+      scoring_spec: {
         description: "Write a children's story communicating a simple life lesson.",
         dimensions: [
           {
