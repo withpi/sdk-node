@@ -4,7 +4,7 @@ export {
   QueryClassifier,
   type QueryClassifierClassifyResponse,
   type QueryClassifierClassifyParams,
-} from './query-classifier/index';
+} from './query-classifier';
 export {
   QueryFanout,
   type QueryFanoutGenerateResponse,

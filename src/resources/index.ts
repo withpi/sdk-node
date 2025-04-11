@@ -2,7 +2,6 @@
 
 export * from './shared';
 export { Data } from './data/data';
-export { Prompt } from './prompt/prompt';
 export {
   ScoringSystem,
   type ScoringSystemGenerateResponse,
@@ -10,4 +9,3 @@ export {
   type ScoringSystemScoreParams,
 } from './scoring-system/scoring-system';
 export { Search } from './search/search';
-export { Training } from './training/training';

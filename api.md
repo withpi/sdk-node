@@ -50,16 +50,6 @@ Methods:
 - <code title="get /data/generate_input_response_pairs/{job_id}/data">client.data.generateInputResponsePairs.<a href="./src/resources/data/generate-input-response-pairs.ts">streamData</a>(jobId) -> GenerateInputResponsePairStreamDataResponse</code>
 - <code title="get /data/generate_input_response_pairs/{job_id}/messages">client.data.generateInputResponsePairs.<a href="./src/resources/data/generate-input-response-pairs.ts">streamMessages</a>(jobId) -> string</code>
 
-# Training
-
-## Sft
-
-## Grpo
-
-# Prompt
-
-## Optimize
-
 # ScoringSystem
 
 Types:
@@ -105,10 +95,8 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/search/query-classifier/query-classifier.ts">QueryClassifierClassifyResponse</a></code>
+- <code><a href="./src/resources/search/query-classifier.ts">QueryClassifierClassifyResponse</a></code>
 
 Methods:
 
-- <code title="post /search/query_classifier/classify">client.search.queryClassifier.<a href="./src/resources/search/query-classifier/query-classifier.ts">classify</a>({ ...params }) -> QueryClassifierClassifyResponse</code>
-
-### Distill
+- <code title="post /search/query_classifier/classify">client.search.queryClassifier.<a href="./src/resources/search/query-classifier.ts">classify</a>({ ...params }) -> QueryClassifierClassifyResponse</code>

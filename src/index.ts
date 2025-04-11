@@ -6,7 +6,6 @@ import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
 import { Data } from './resources/data/data';
-import { Prompt } from './resources/prompt/prompt';
 import {
   ScoringSystem,
   ScoringSystemGenerateParams,
@@ -14,7 +13,6 @@ import {
   ScoringSystemScoreParams,
 } from './resources/scoring-system/scoring-system';
 import { Search } from './resources/search/search';
-import { Training } from './resources/training/training';
 
 export interface ClientOptions {
   /**
@@ -130,8 +128,6 @@ export class PiClient extends Core.APIClient {
   }
 
   data: API.Data = new API.Data(this);
-  training: API.Training = new API.Training(this);
-  prompt: API.Prompt = new API.Prompt(this);
   scoringSystem: API.ScoringSystem = new API.ScoringSystem(this);
   search: API.Search = new API.Search(this);
 
@@ -172,18 +168,12 @@ export class PiClient extends Core.APIClient {
 }
 
 PiClient.Data = Data;
-PiClient.Training = Training;
-PiClient.Prompt = Prompt;
 PiClient.ScoringSystem = ScoringSystem;
 PiClient.Search = Search;
 export declare namespace PiClient {
   export type RequestOptions = Core.RequestOptions;
 
   export { Data as Data };
-
-  export { Training as Training };
-
-  export { Prompt as Prompt };
 
   export {
     ScoringSystem as ScoringSystem,
