@@ -61,15 +61,15 @@ export namespace ScoringSystemGenerateResponse {
     question: string;
 
     /**
-     * The tag or the group to which
-     */
-    tag: string | null;
-
-    /**
      * The ID of the custom model to use for scoring. Only relevant for scoring_type of
      * CUSTOM_MODEL_SCORER
      */
     custom_model_id?: string | null;
+
+    /**
+     * The label of the question
+     */
+    label?: string | null;
 
     /**
      * The learned parameters for the scoring method. This represents piecewise linear
@@ -86,6 +86,11 @@ export namespace ScoringSystemGenerateResponse {
      * The type of scoring performed for this dimension
      */
     scoring_type?: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER' | null;
+
+    /**
+     * The tag or the group to which
+     */
+    tag?: string | null;
 
     /**
      * The weight of the dimension. The sum of subdimension weights will be normalized
@@ -152,15 +157,15 @@ export namespace ScoringSystemScoreParams {
     question: string;
 
     /**
-     * The tag or the group to which
-     */
-    tag: string | null;
-
-    /**
      * The ID of the custom model to use for scoring. Only relevant for scoring_type of
      * CUSTOM_MODEL_SCORER
      */
     custom_model_id?: string | null;
+
+    /**
+     * The label of the question
+     */
+    label?: string | null;
 
     /**
      * The learned parameters for the scoring method. This represents piecewise linear
@@ -177,6 +182,11 @@ export namespace ScoringSystemScoreParams {
      * The type of scoring performed for this dimension
      */
     scoring_type?: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER' | null;
+
+    /**
+     * The tag or the group to which
+     */
+    tag?: string | null;
 
     /**
      * The weight of the dimension. The sum of subdimension weights will be normalized
