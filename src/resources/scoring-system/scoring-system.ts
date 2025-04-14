@@ -32,7 +32,7 @@ export class ScoringSystem extends APIResource {
   importSpec(
     body: ScoringSystemImportSpecParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ScoringSpec> {
+  ): Core.APIPromise<ScoringSystemImportSpecResponse> {
     return this._client.post('/scoring_system/import_spec', { body, ...options });
   }
 
@@ -49,6 +49,8 @@ export class ScoringSystem extends APIResource {
 }
 
 export type ScoringSystemGenerateResponse = Array<Shared.Question>;
+
+export type ScoringSystemImportSpecResponse = Shared.ScoringSpec | Array<Shared.Question>;
 
 export interface ScoringSystemGenerateParams {
   /**
@@ -103,6 +105,7 @@ ScoringSystem.Calibrate = Calibrate;
 export declare namespace ScoringSystem {
   export {
     type ScoringSystemGenerateResponse as ScoringSystemGenerateResponse,
+    type ScoringSystemImportSpecResponse as ScoringSystemImportSpecResponse,
     type ScoringSystemGenerateParams as ScoringSystemGenerateParams,
     type ScoringSystemImportSpecParams as ScoringSystemImportSpecParams,
     type ScoringSystemScoreParams as ScoringSystemScoreParams,

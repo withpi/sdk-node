@@ -5,6 +5,7 @@ export { Data } from './data/data';
 export {
   ScoringSystem,
   type ScoringSystemGenerateResponse,
+  type ScoringSystemImportSpecResponse,
   type ScoringSystemGenerateParams,
   type ScoringSystemImportSpecParams,
   type ScoringSystemScoreParams,
