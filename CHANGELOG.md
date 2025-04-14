@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.4.0 (2025-04-14)
+
+Full Changelog: [v1.3.0...v1.4.0](https://github.com/withpi/sdk-node/compare/v1.3.0...v1.4.0)
+
+### Features
+
+* **api:** api update ([219fcf4](https://github.com/withpi/sdk-node/commit/219fcf445cdba806606e01ade860c74fee91602f))
+* **api:** api update ([dfe9344](https://github.com/withpi/sdk-node/commit/dfe9344c29cecd55ec1430e582a85f0a4fbe0f01))
+* **api:** api update ([c5afde8](https://github.com/withpi/sdk-node/commit/c5afde8a37d360339506e4beff14657cce5cade7))
+* **api:** api update ([84fbea9](https://github.com/withpi/sdk-node/commit/84fbea9d6d92995aebcabaae162b8587398e569b))
+* **api:** api update ([0ca3ea1](https://github.com/withpi/sdk-node/commit/0ca3ea169a80cd2d109814eaa186469d45b482a3))
+* **api:** api update ([2f25143](https://github.com/withpi/sdk-node/commit/2f25143fb7c45266fd911fcc87ed37bba7b7ddc9))
+* **api:** api update ([0e0c2a7](https://github.com/withpi/sdk-node/commit/0e0c2a789274af15bea205872308bb598a4c4797))
+* **api:** api update ([92accc2](https://github.com/withpi/sdk-node/commit/92accc260469ffac34800166303ba462ac5d06ce))
+* **api:** api update ([10b8413](https://github.com/withpi/sdk-node/commit/10b84132119f6d9027e23bfb41d6569fccda9ced))
+* **api:** Duplicate score_v2 and generate_v2 ([4add546](https://github.com/withpi/sdk-node/commit/4add54639aa948ecbaafb86a25247f6b808e4606))
+* **api:** name the types ([a40e747](https://github.com/withpi/sdk-node/commit/a40e74703172a915fcebc6d979fae583f00be7f5))
+* **api:** Prune excess endpoints ([681de80](https://github.com/withpi/sdk-node/commit/681de8090fab63498e557bccf839ccc5c08bfba5))
+
 ## 1.3.0 (2025-04-10)
 
 Full Changelog: [v1.2.0...v1.3.0](https://github.com/withpi/sdk-node/compare/v1.2.0...v1.3.0)
