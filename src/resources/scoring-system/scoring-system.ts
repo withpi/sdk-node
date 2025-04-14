@@ -46,11 +46,23 @@ export class ScoringSystem extends APIResource {
   ): Core.APIPromise<Shared.ScoringSystemMetrics> {
     return this._client.post('/scoring_system/score', { body, ...options });
   }
+
+  /**
+   * Write a scoring spec to Huggingface dataset
+   */
+  uploadToHuggingface(
+    body: ScoringSystemUploadToHuggingfaceParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<string> {
+    return this._client.post('/scoring_system/to_huggingface', { body, ...options });
+  }
 }
 
 export type ScoringSystemGenerateResponse = Array<Shared.Question>;
 
 export type ScoringSystemImportSpecResponse = Shared.ScoringSpec | Array<Shared.Question>;
+
+export type ScoringSystemUploadToHuggingfaceResponse = string;
 
 export interface ScoringSystemGenerateParams {
   /**
@@ -100,15 +112,36 @@ export interface ScoringSystemScoreParams {
   scoring_spec: Shared.ScoringSpec | Array<Shared.Question>;
 }
 
+export interface ScoringSystemUploadToHuggingfaceParams {
+  /**
+   * Huggingface scoring spec name e.g. withpi/my_scoring_system. By default we
+   * export to the withpi organization. If you want to use your own organization, we
+   * provide the hf_token.
+   */
+  hf_scoring_spec_name: string;
+
+  /**
+   * The scoring spec or the list of questions to write to Huggingface
+   */
+  scoring_spec: Shared.ScoringSpec | Array<Shared.Question>;
+
+  /**
+   * Huggingface token to use if you want to write to your own HF organization
+   */
+  hf_token?: string | null;
+}
+
 ScoringSystem.Calibrate = Calibrate;
 
 export declare namespace ScoringSystem {
   export {
     type ScoringSystemGenerateResponse as ScoringSystemGenerateResponse,
     type ScoringSystemImportSpecResponse as ScoringSystemImportSpecResponse,
+    type ScoringSystemUploadToHuggingfaceResponse as ScoringSystemUploadToHuggingfaceResponse,
     type ScoringSystemGenerateParams as ScoringSystemGenerateParams,
     type ScoringSystemImportSpecParams as ScoringSystemImportSpecParams,
     type ScoringSystemScoreParams as ScoringSystemScoreParams,
+    type ScoringSystemUploadToHuggingfaceParams as ScoringSystemUploadToHuggingfaceParams,
   };
 
   export {

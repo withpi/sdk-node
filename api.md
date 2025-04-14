@@ -59,12 +59,14 @@ Types:
 
 - <code><a href="./src/resources/scoring-system/scoring-system.ts">ScoringSystemGenerateResponse</a></code>
 - <code><a href="./src/resources/scoring-system/scoring-system.ts">ScoringSystemImportSpecResponse</a></code>
+- <code><a href="./src/resources/scoring-system/scoring-system.ts">ScoringSystemUploadToHuggingfaceResponse</a></code>
 
 Methods:
 
 - <code title="post /scoring_system/generate">client.scoringSystem.<a href="./src/resources/scoring-system/scoring-system.ts">generate</a>({ ...params }) -> ScoringSystemGenerateResponse</code>
 - <code title="post /scoring_system/import_spec">client.scoringSystem.<a href="./src/resources/scoring-system/scoring-system.ts">importSpec</a>({ ...params }) -> ScoringSystemImportSpecResponse</code>
 - <code title="post /scoring_system/score">client.scoringSystem.<a href="./src/resources/scoring-system/scoring-system.ts">score</a>({ ...params }) -> ScoringSystemMetrics</code>
+- <code title="post /scoring_system/to_huggingface">client.scoringSystem.<a href="./src/resources/scoring-system/scoring-system.ts">uploadToHuggingface</a>({ ...params }) -> string</code>
 
 ## Calibrate
 
