@@ -2,6 +2,7 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
+import * as Shared from '../shared';
 
 export class QueryClassifier extends APIResource {
   /**
@@ -16,25 +17,7 @@ export class QueryClassifier extends APIResource {
 }
 
 export interface QueryClassifierClassifyResponse {
-  results: Array<QueryClassifierClassifyResponse.Result>;
-}
-
-export namespace QueryClassifierClassifyResponse {
-  export interface Result {
-    prediction: string;
-
-    probabilities: Array<Result.Probability>;
-
-    query: string;
-  }
-
-  export namespace Result {
-    export interface Probability {
-      label: string;
-
-      score: number;
-    }
-  }
+  results: Array<Shared.QueryClassifierResult>;
 }
 
 export interface QueryClassifierClassifyParams {
