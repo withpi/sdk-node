@@ -1,14 +1,14 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../resource';
-import * as QueryFanoutAPI from './query-fanout';
-import { QueryFanout, QueryFanoutGenerateParams, QueryFanoutGenerateResponse } from './query-fanout';
-import * as QueryClassifierAPI from './query-classifier/query-classifier';
+import * as QueryClassifierAPI from './query-classifier';
 import {
   QueryClassifier,
   QueryClassifierClassifyParams,
   QueryClassifierClassifyResponse,
-} from './query-classifier/query-classifier';
+} from './query-classifier';
+import * as QueryFanoutAPI from './query-fanout';
+import { QueryFanout, QueryFanoutGenerateParams, QueryFanoutGenerateResponse } from './query-fanout';
 
 export class Search extends APIResource {
   queryFanout: QueryFanoutAPI.QueryFanout = new QueryFanoutAPI.QueryFanout(this._client);

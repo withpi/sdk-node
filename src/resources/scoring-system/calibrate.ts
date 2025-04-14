@@ -9,7 +9,10 @@ export class Calibrate extends APIResource {
   /**
    * Checks the status of a Scoring Spec Calibration job
    */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<CalibrateRetrieveResponse> {
+  retrieve(
+    jobId: string,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Shared.ScoringSpecCalibrationStatus> {
     return this._client.get(`/scoring_system/calibrate/${jobId}`, options);
   }
 
@@ -41,7 +44,7 @@ export class Calibrate extends APIResource {
   startJob(
     body: CalibrateStartJobParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<CalibrateStartJobResponse> {
+  ): Core.APIPromise<Shared.ScoringSpecCalibrationStatus> {
     return this._client.post('/scoring_system/calibrate', { body, ...options });
   }
 
@@ -56,77 +59,9 @@ export class Calibrate extends APIResource {
   }
 }
 
-export interface CalibrateRetrieveResponse {
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
-
-  /**
-   * The job id
-   */
-  job_id: string;
-
-  /**
-   * Current state of the job
-   */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
-
-  /**
-   * The calibrated scoring spec
-   */
-  calibrated_scoring_spec?: Shared.ScoringSpec | null;
-}
-
-export type CalibrateListResponse = Array<CalibrateListResponse.CalibrateListResponseItem>;
-
-export namespace CalibrateListResponse {
-  export interface CalibrateListResponseItem {
-    /**
-     * Detailed status of the job
-     */
-    detailed_status: Array<string>;
-
-    /**
-     * The job id
-     */
-    job_id: string;
-
-    /**
-     * Current state of the job
-     */
-    state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
-
-    /**
-     * The calibrated scoring spec
-     */
-    calibrated_scoring_spec?: Shared.ScoringSpec | null;
-  }
-}
+export type CalibrateListResponse = Array<Shared.ScoringSpecCalibrationStatus>;
 
 export type CalibrateCancelResponse = string;
-
-export interface CalibrateStartJobResponse {
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
-
-  /**
-   * The job id
-   */
-  job_id: string;
-
-  /**
-   * Current state of the job
-   */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
-
-  /**
-   * The calibrated scoring spec
-   */
-  calibrated_scoring_spec?: Shared.ScoringSpec | null;
-}
 
 export type CalibrateStreamMessagesResponse = string;
 
@@ -206,10 +141,8 @@ export namespace CalibrateStartJobParams {
 
 export declare namespace Calibrate {
   export {
-    type CalibrateRetrieveResponse as CalibrateRetrieveResponse,
     type CalibrateListResponse as CalibrateListResponse,
     type CalibrateCancelResponse as CalibrateCancelResponse,
-    type CalibrateStartJobResponse as CalibrateStartJobResponse,
     type CalibrateStreamMessagesResponse as CalibrateStreamMessagesResponse,
     type CalibrateListParams as CalibrateListParams,
     type CalibrateStartJobParams as CalibrateStartJobParams,

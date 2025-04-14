@@ -30,19 +30,7 @@ async function main() {
   const scoringSystemMetrics = await client.scoringSystem.score({
     llm_input: 'Tell me something different',
     llm_output: 'The lazy dog was jumped over by the quick brown fox',
-    scoring_spec: {
-      description: "Write a children's story communicating a simple life lesson.",
-      dimensions: [
-        {
-          description: 'dimension1 description',
-          label: 'dimension1',
-          sub_dimensions: [
-            { description: 'subdimension1 description', label: 'subdimension1', scoring_type: 'PI_SCORER' },
-          ],
-        },
-      ],
-      name: 'Sample Scoring Spec',
-    },
+    scoring_spec: [{ question: 'Is this response truthful?' }, { question: 'Is this response relevant?' }],
   });
 
   console.log(scoringSystemMetrics.dimension_scores);
@@ -67,19 +55,7 @@ async function main() {
   const params: PiClient.ScoringSystemScoreParams = {
     llm_input: 'Tell me something different',
     llm_output: 'The lazy dog was jumped over by the quick brown fox',
-    scoring_spec: {
-      description: "Write a children's story communicating a simple life lesson.",
-      dimensions: [
-        {
-          description: 'dimension1 description',
-          label: 'dimension1',
-          sub_dimensions: [
-            { description: 'subdimension1 description', label: 'subdimension1', scoring_type: 'PI_SCORER' },
-          ],
-        },
-      ],
-      name: 'Sample Scoring Spec',
-    },
+    scoring_spec: [{ question: 'Is this response truthful?' }, { question: 'Is this response relevant?' }],
   };
   const scoringSystemMetrics: PiClient.ScoringSystemMetrics = await client.scoringSystem.score(params);
 }
@@ -102,19 +78,7 @@ async function main() {
     .score({
       llm_input: 'Tell me something different',
       llm_output: 'The lazy dog was jumped over by the quick brown fox',
-      scoring_spec: {
-        description: "Write a children's story communicating a simple life lesson.",
-        dimensions: [
-          {
-            description: 'dimension1 description',
-            label: 'dimension1',
-            sub_dimensions: [
-              { description: 'subdimension1 description', label: 'subdimension1', scoring_type: 'PI_SCORER' },
-            ],
-          },
-        ],
-        name: 'Sample Scoring Spec',
-      },
+      scoring_spec: [{ question: 'Is this response truthful?' }, { question: 'Is this response relevant?' }],
     })
     .catch(async (err) => {
       if (err instanceof PiClient.APIError) {
@@ -159,7 +123,7 @@ const client = new PiClient({
 });
 
 // Or, configure per-request:
-await client.scoringSystem.score({ llm_input: 'Tell me something different', llm_output: 'The lazy dog was jumped over by the quick brown fox', scoring_spec: { description: 'Write a children\'s story communicating a simple life lesson.', dimensions: [{ description: 'dimension1 description', label: 'dimension1', sub_dimensions: [{ description: 'subdimension1 description', label: 'subdimension1', scoring_type: 'PI_SCORER' }] }], name: 'Sample Scoring Spec' } }, {
+await client.scoringSystem.score({ llm_input: 'Tell me something different', llm_output: 'The lazy dog was jumped over by the quick brown fox', scoring_spec: [{ question: 'Is this response truthful?' }, { question: 'Is this response relevant?' }] }, {
   maxRetries: 5,
 });
 ```
@@ -176,7 +140,7 @@ const client = new PiClient({
 });
 
 // Override per-request:
-await client.scoringSystem.score({ llm_input: 'Tell me something different', llm_output: 'The lazy dog was jumped over by the quick brown fox', scoring_spec: { description: 'Write a children\'s story communicating a simple life lesson.', dimensions: [{ description: 'dimension1 description', label: 'dimension1', sub_dimensions: [{ description: 'subdimension1 description', label: 'subdimension1', scoring_type: 'PI_SCORER' }] }], name: 'Sample Scoring Spec' } }, {
+await client.scoringSystem.score({ llm_input: 'Tell me something different', llm_output: 'The lazy dog was jumped over by the quick brown fox', scoring_spec: [{ question: 'Is this response truthful?' }, { question: 'Is this response relevant?' }] }, {
   timeout: 5 * 1000,
 });
 ```
@@ -201,19 +165,7 @@ const response = await client.scoringSystem
   .score({
     llm_input: 'Tell me something different',
     llm_output: 'The lazy dog was jumped over by the quick brown fox',
-    scoring_spec: {
-      description: "Write a children's story communicating a simple life lesson.",
-      dimensions: [
-        {
-          description: 'dimension1 description',
-          label: 'dimension1',
-          sub_dimensions: [
-            { description: 'subdimension1 description', label: 'subdimension1', scoring_type: 'PI_SCORER' },
-          ],
-        },
-      ],
-      name: 'Sample Scoring Spec',
-    },
+    scoring_spec: [{ question: 'Is this response truthful?' }, { question: 'Is this response relevant?' }],
   })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
@@ -223,19 +175,7 @@ const { data: scoringSystemMetrics, response: raw } = await client.scoringSystem
   .score({
     llm_input: 'Tell me something different',
     llm_output: 'The lazy dog was jumped over by the quick brown fox',
-    scoring_spec: {
-      description: "Write a children's story communicating a simple life lesson.",
-      dimensions: [
-        {
-          description: 'dimension1 description',
-          label: 'dimension1',
-          sub_dimensions: [
-            { description: 'subdimension1 description', label: 'subdimension1', scoring_type: 'PI_SCORER' },
-          ],
-        },
-      ],
-      name: 'Sample Scoring Spec',
-    },
+    scoring_spec: [{ question: 'Is this response truthful?' }, { question: 'Is this response relevant?' }],
   })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
@@ -347,19 +287,7 @@ await client.scoringSystem.score(
   {
     llm_input: 'Tell me something different',
     llm_output: 'The lazy dog was jumped over by the quick brown fox',
-    scoring_spec: {
-      description: "Write a children's story communicating a simple life lesson.",
-      dimensions: [
-        {
-          description: 'dimension1 description',
-          label: 'dimension1',
-          sub_dimensions: [
-            { description: 'subdimension1 description', label: 'subdimension1', scoring_type: 'PI_SCORER' },
-          ],
-        },
-      ],
-      name: 'Sample Scoring Spec',
-    },
+    scoring_spec: [{ question: 'Is this response truthful?' }, { question: 'Is this response relevant?' }],
   },
   {
     httpAgent: new http.Agent({ keepAlive: false }),

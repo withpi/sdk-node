@@ -5,16 +5,15 @@ import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
-import { Data, DataClusterInputsParams, DataClusterInputsResponse } from './resources/data/data';
-import { Prompt } from './resources/prompt/prompt';
+import { Data } from './resources/data/data';
 import {
   ScoringSystem,
   ScoringSystemGenerateParams,
+  ScoringSystemGenerateResponse,
   ScoringSystemImportSpecParams,
   ScoringSystemScoreParams,
 } from './resources/scoring-system/scoring-system';
 import { Search } from './resources/search/search';
-import { Training } from './resources/training/training';
 
 export interface ClientOptions {
   /**
@@ -130,8 +129,6 @@ export class PiClient extends Core.APIClient {
   }
 
   data: API.Data = new API.Data(this);
-  training: API.Training = new API.Training(this);
-  prompt: API.Prompt = new API.Prompt(this);
   scoringSystem: API.ScoringSystem = new API.ScoringSystem(this);
   search: API.Search = new API.Search(this);
 
@@ -172,25 +169,16 @@ export class PiClient extends Core.APIClient {
 }
 
 PiClient.Data = Data;
-PiClient.Training = Training;
-PiClient.Prompt = Prompt;
 PiClient.ScoringSystem = ScoringSystem;
 PiClient.Search = Search;
 export declare namespace PiClient {
   export type RequestOptions = Core.RequestOptions;
 
-  export {
-    Data as Data,
-    type DataClusterInputsResponse as DataClusterInputsResponse,
-    type DataClusterInputsParams as DataClusterInputsParams,
-  };
-
-  export { Training as Training };
-
-  export { Prompt as Prompt };
+  export { Data as Data };
 
   export {
     ScoringSystem as ScoringSystem,
+    type ScoringSystemGenerateResponse as ScoringSystemGenerateResponse,
     type ScoringSystemGenerateParams as ScoringSystemGenerateParams,
     type ScoringSystemImportSpecParams as ScoringSystemImportSpecParams,
     type ScoringSystemScoreParams as ScoringSystemScoreParams,
@@ -198,19 +186,18 @@ export declare namespace PiClient {
 
   export { Search as Search };
 
-  export type ClassificationStatus = API.ClassificationStatus;
   export type DataGenerationStatus = API.DataGenerationStatus;
   export type Example = API.Example;
   export type ExplorationMode = API.ExplorationMode;
-  export type PromptOptimizationStatus = API.PromptOptimizationStatus;
+  export type QueryClassifierResult = API.QueryClassifierResult;
   export type QueryFanoutExample = API.QueryFanoutExample;
+  export type Question = API.Question;
   export type ScoringDimension = API.ScoringDimension;
   export type ScoringSpec = API.ScoringSpec;
+  export type ScoringSpecCalibrationStatus = API.ScoringSpecCalibrationStatus;
   export type ScoringSubDimension = API.ScoringSubDimension;
   export type ScoringSystemMetrics = API.ScoringSystemMetrics;
-  export type SftStatus = API.SftStatus;
   export type SyntheticDataStatus = API.SyntheticDataStatus;
-  export type TrainedModel = API.TrainedModel;
 }
 
 export { toFile, fileFromPath } from './uploads';

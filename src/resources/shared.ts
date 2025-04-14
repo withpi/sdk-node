@@ -1,31 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 /**
- * ClassificationStatus is the status of a classification job.
- */
-export interface ClassificationStatus {
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
-
-  /**
-   * The job id
-   */
-  job_id: string;
-
-  /**
-   * Current state of the job
-   */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
-
-  /**
-   * A list of trained classification models.
-   */
-  trained_models?: Array<TrainedModel> | null;
-}
-
-/**
  * DataGenerationStatus is the result of a data generation job.
  */
 export interface DataGenerationStatus {
@@ -68,30 +43,20 @@ export interface Example {
 
 export type ExplorationMode = 'CONSERVATIVE' | 'BALANCED' | 'CREATIVE' | 'ADVENTUROUS';
 
-/**
- * The optimized_prompt_messages field is an empty list unless the state is done.
- */
-export interface PromptOptimizationStatus {
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
+export interface QueryClassifierResult {
+  prediction: string;
 
-  /**
-   * The job id
-   */
-  job_id: string;
+  probabilities: Array<QueryClassifierResult.Probability>;
 
-  /**
-   * Current state of the job
-   */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
+  query: string;
+}
 
-  /**
-   * The optimized prompt messages in the OpenAI message format with the jinja
-   * {{ input }} variable for the next user prompt
-   */
-  optimized_prompt_messages?: Array<Record<string, string>>;
+export namespace QueryClassifierResult {
+  export interface Probability {
+    label: string;
+
+    score: number;
+  }
 }
 
 /**
@@ -107,6 +72,52 @@ export interface QueryFanoutExample {
    * The input query that the fanout queries are based on.
    */
   query: string;
+}
+
+export interface Question {
+  /**
+   * The description of the dimension
+   */
+  question: string;
+
+  /**
+   * The ID of the custom model to use for scoring. Only relevant for scoring_type of
+   * CUSTOM_MODEL_SCORER
+   */
+  custom_model_id?: string | null;
+
+  /**
+   * The label of the question
+   */
+  label?: string | null;
+
+  /**
+   * The learned parameters for the scoring method. This represents piecewise linear
+   * interpolation between [0, 1].
+   */
+  parameters?: Array<number> | null;
+
+  /**
+   * The PYTHON code associated the PYTHON_CODE DimensionScoringType.
+   */
+  python_code?: string | null;
+
+  /**
+   * The type of scoring performed for this dimension
+   */
+  scoring_type?: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER' | null;
+
+  /**
+   * The tag or the group to which this question belongs.
+   */
+  tag?: string | null;
+
+  /**
+   * The weight of the dimension. The sum of subdimension weights will be normalized
+   * to one internally. A higher weight counts for more when aggregating this
+   * subdimension into the parent dimension.
+   */
+  weight?: number | null;
 }
 
 export interface ScoringDimension {
@@ -160,6 +171,28 @@ export interface ScoringSpec {
   [k: string]: unknown;
 }
 
+export interface ScoringSpecCalibrationStatus {
+  /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
+
+  /**
+   * The job id
+   */
+  job_id: string;
+
+  /**
+   * Current state of the job
+   */
+  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
+
+  /**
+   * The calibrated scoring spec
+   */
+  calibrated_scoring_spec?: ScoringSpec | null;
+}
+
 export interface ScoringSubDimension {
   /**
    * The description of the dimension
@@ -210,6 +243,11 @@ export interface ScoringSystemMetrics {
   dimension_scores: Record<string, ScoringSystemMetrics.DimensionScores>;
 
   /**
+   * The score components for each question
+   */
+  question_scores: Record<string, number>;
+
+  /**
    * The total score of the scoring spec
    */
   total_score: number;
@@ -227,31 +265,6 @@ export namespace ScoringSystemMetrics {
      */
     total_score: number;
   }
-}
-
-/**
- * SftStatus is the status of a SFT job.
- */
-export interface SftStatus {
-  /**
-   * Detailed status of the job
-   */
-  detailed_status: Array<string>;
-
-  /**
-   * The job id
-   */
-  job_id: string;
-
-  /**
-   * Current state of the job
-   */
-  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
-
-  /**
-   * A list of trained models selected based on the PI score.
-   */
-  trained_models?: Array<TrainedModel> | null;
 }
 
 /**
@@ -278,38 +291,4 @@ export interface SyntheticDataStatus {
    * as it is streamed.
    */
   data?: Array<Example> | null;
-}
-
-export interface TrainedModel {
-  /**
-   * The training epoch
-   */
-  epoch: number;
-
-  /**
-   * The evaluation loss
-   */
-  eval_loss: number;
-
-  /**
-   * The serving id of the trained model within this Job
-   */
-  serving_id: number;
-
-  /**
-   * State of the model in the serving system
-   */
-  serving_state: 'UNLOADED' | 'LOADING' | 'SERVING';
-
-  /**
-   * The training step
-   */
-  step: number;
-
-  /**
-   * The PI score of the eval set what isn't used in training
-   */
-  pi_score?: number;
-
-  [k: string]: unknown;
 }

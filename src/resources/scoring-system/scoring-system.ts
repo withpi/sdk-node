@@ -9,9 +9,7 @@ import {
   CalibrateCancelResponse,
   CalibrateListParams,
   CalibrateListResponse,
-  CalibrateRetrieveResponse,
   CalibrateStartJobParams,
-  CalibrateStartJobResponse,
   CalibrateStreamMessagesResponse,
 } from './calibrate';
 
@@ -24,7 +22,7 @@ export class ScoringSystem extends APIResource {
   generate(
     body: ScoringSystemGenerateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ScoringSpec> {
+  ): Core.APIPromise<ScoringSystemGenerateResponse> {
     return this._client.post('/scoring_system/generate', { body, ...options });
   }
 
@@ -39,7 +37,8 @@ export class ScoringSystem extends APIResource {
   }
 
   /**
-   * Scores the provided input and output based on the given scoring spec
+   * Scores the provided input and output based on the given scoring spec or a list
+   * of questions
    */
   score(
     body: ScoringSystemScoreParams,
@@ -48,6 +47,8 @@ export class ScoringSystem extends APIResource {
     return this._client.post('/scoring_system/score', { body, ...options });
   }
 }
+
+export type ScoringSystemGenerateResponse = Array<Shared.Question>;
 
 export interface ScoringSystemGenerateParams {
   /**
@@ -92,15 +93,16 @@ export interface ScoringSystemScoreParams {
   llm_output: string;
 
   /**
-   * The scoring spec to score
+   * Either a scoring spec or a list of questions to score
    */
-  scoring_spec: Shared.ScoringSpec;
+  scoring_spec: Shared.ScoringSpec | Array<Shared.Question>;
 }
 
 ScoringSystem.Calibrate = Calibrate;
 
 export declare namespace ScoringSystem {
   export {
+    type ScoringSystemGenerateResponse as ScoringSystemGenerateResponse,
     type ScoringSystemGenerateParams as ScoringSystemGenerateParams,
     type ScoringSystemImportSpecParams as ScoringSystemImportSpecParams,
     type ScoringSystemScoreParams as ScoringSystemScoreParams,
@@ -108,10 +110,8 @@ export declare namespace ScoringSystem {
 
   export {
     Calibrate as Calibrate,
-    type CalibrateRetrieveResponse as CalibrateRetrieveResponse,
     type CalibrateListResponse as CalibrateListResponse,
     type CalibrateCancelResponse as CalibrateCancelResponse,
-    type CalibrateStartJobResponse as CalibrateStartJobResponse,
     type CalibrateStreamMessagesResponse as CalibrateStreamMessagesResponse,
     type CalibrateListParams as CalibrateListParams,
     type CalibrateStartJobParams as CalibrateStartJobParams,
