@@ -43,6 +43,22 @@ export interface Example {
 
 export type ExplorationMode = 'CONSERVATIVE' | 'BALANCED' | 'CREATIVE' | 'ADVENTUROUS';
 
+export interface QueryClassifierResult {
+  prediction: string;
+
+  probabilities: Array<QueryClassifierResult.Probability>;
+
+  query: string;
+}
+
+export namespace QueryClassifierResult {
+  export interface Probability {
+    label: string;
+
+    score: number;
+  }
+}
+
 /**
  * An input query and its associated fanout queries
  */
@@ -56,6 +72,52 @@ export interface QueryFanoutExample {
    * The input query that the fanout queries are based on.
    */
   query: string;
+}
+
+export interface Question {
+  /**
+   * The description of the dimension
+   */
+  question: string;
+
+  /**
+   * The ID of the custom model to use for scoring. Only relevant for scoring_type of
+   * CUSTOM_MODEL_SCORER
+   */
+  custom_model_id?: string | null;
+
+  /**
+   * The label of the question
+   */
+  label?: string | null;
+
+  /**
+   * The learned parameters for the scoring method. This represents piecewise linear
+   * interpolation between [0, 1].
+   */
+  parameters?: Array<number> | null;
+
+  /**
+   * The PYTHON code associated the PYTHON_CODE DimensionScoringType.
+   */
+  python_code?: string | null;
+
+  /**
+   * The type of scoring performed for this dimension
+   */
+  scoring_type?: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER' | null;
+
+  /**
+   * The tag or the group to which this question belongs.
+   */
+  tag?: string | null;
+
+  /**
+   * The weight of the dimension. The sum of subdimension weights will be normalized
+   * to one internally. A higher weight counts for more when aggregating this
+   * subdimension into the parent dimension.
+   */
+  weight?: number | null;
 }
 
 export interface ScoringDimension {
@@ -107,6 +169,28 @@ export interface ScoringSpec {
   name: string;
 
   [k: string]: unknown;
+}
+
+export interface ScoringSpecCalibrationStatus {
+  /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
+
+  /**
+   * The job id
+   */
+  job_id: string;
+
+  /**
+   * Current state of the job
+   */
+  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
+
+  /**
+   * The calibrated scoring spec
+   */
+  calibrated_scoring_spec?: ScoringSpec | null;
 }
 
 export interface ScoringSubDimension {

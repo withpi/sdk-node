@@ -9,9 +9,7 @@ import {
   CalibrateCancelResponse,
   CalibrateListParams,
   CalibrateListResponse,
-  CalibrateRetrieveResponse,
   CalibrateStartJobParams,
-  CalibrateStartJobResponse,
   CalibrateStreamMessagesResponse,
 } from './calibrate';
 
@@ -50,56 +48,7 @@ export class ScoringSystem extends APIResource {
   }
 }
 
-export type ScoringSystemGenerateResponse =
-  Array<ScoringSystemGenerateResponse.ScoringSystemGenerateResponseItem>;
-
-export namespace ScoringSystemGenerateResponse {
-  export interface ScoringSystemGenerateResponseItem {
-    /**
-     * The description of the dimension
-     */
-    question: string;
-
-    /**
-     * The ID of the custom model to use for scoring. Only relevant for scoring_type of
-     * CUSTOM_MODEL_SCORER
-     */
-    custom_model_id?: string | null;
-
-    /**
-     * The label of the question
-     */
-    label?: string | null;
-
-    /**
-     * The learned parameters for the scoring method. This represents piecewise linear
-     * interpolation between [0, 1].
-     */
-    parameters?: Array<number> | null;
-
-    /**
-     * The PYTHON code associated the PYTHON_CODE DimensionScoringType.
-     */
-    python_code?: string | null;
-
-    /**
-     * The type of scoring performed for this dimension
-     */
-    scoring_type?: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER' | null;
-
-    /**
-     * The tag or the group to which this question belongs.
-     */
-    tag?: string | null;
-
-    /**
-     * The weight of the dimension. The sum of subdimension weights will be normalized
-     * to one internally. A higher weight counts for more when aggregating this
-     * subdimension into the parent dimension.
-     */
-    weight?: number | null;
-  }
-}
+export type ScoringSystemGenerateResponse = Array<Shared.Question>;
 
 export interface ScoringSystemGenerateParams {
   /**
@@ -146,55 +95,7 @@ export interface ScoringSystemScoreParams {
   /**
    * Either a scoring spec or a list of questions to score
    */
-  scoring_spec: Shared.ScoringSpec | Array<ScoringSystemScoreParams.UnionMember1>;
-}
-
-export namespace ScoringSystemScoreParams {
-  export interface UnionMember1 {
-    /**
-     * The description of the dimension
-     */
-    question: string;
-
-    /**
-     * The ID of the custom model to use for scoring. Only relevant for scoring_type of
-     * CUSTOM_MODEL_SCORER
-     */
-    custom_model_id?: string | null;
-
-    /**
-     * The label of the question
-     */
-    label?: string | null;
-
-    /**
-     * The learned parameters for the scoring method. This represents piecewise linear
-     * interpolation between [0, 1].
-     */
-    parameters?: Array<number> | null;
-
-    /**
-     * The PYTHON code associated the PYTHON_CODE DimensionScoringType.
-     */
-    python_code?: string | null;
-
-    /**
-     * The type of scoring performed for this dimension
-     */
-    scoring_type?: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER' | null;
-
-    /**
-     * The tag or the group to which this question belongs.
-     */
-    tag?: string | null;
-
-    /**
-     * The weight of the dimension. The sum of subdimension weights will be normalized
-     * to one internally. A higher weight counts for more when aggregating this
-     * subdimension into the parent dimension.
-     */
-    weight?: number | null;
-  }
+  scoring_spec: Shared.ScoringSpec | Array<Shared.Question>;
 }
 
 ScoringSystem.Calibrate = Calibrate;
@@ -209,10 +110,8 @@ export declare namespace ScoringSystem {
 
   export {
     Calibrate as Calibrate,
-    type CalibrateRetrieveResponse as CalibrateRetrieveResponse,
     type CalibrateListResponse as CalibrateListResponse,
     type CalibrateCancelResponse as CalibrateCancelResponse,
-    type CalibrateStartJobResponse as CalibrateStartJobResponse,
     type CalibrateStreamMessagesResponse as CalibrateStreamMessagesResponse,
     type CalibrateListParams as CalibrateListParams,
     type CalibrateStartJobParams as CalibrateStartJobParams,
