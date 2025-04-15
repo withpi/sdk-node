@@ -238,7 +238,7 @@ export interface ScoringSubDimension {
 
 export interface ScoringSystemMetrics {
   /**
-   * The score components for each dimension
+   * @deprecated The score components for each dimension
    */
   dimension_scores: Record<string, ScoringSystemMetrics.DimensionScores>;
 
