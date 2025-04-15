@@ -105,6 +105,7 @@ describe('resource scoringSystem', () => {
           weight: 1,
         },
       ],
+      kwargs: { any_param: 'any_value' },
     });
   });
 

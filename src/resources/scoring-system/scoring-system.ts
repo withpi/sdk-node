@@ -110,6 +110,11 @@ export interface ScoringSystemScoreParams {
    * Either a scoring spec or a list of questions to score
    */
   scoring_spec: Array<Shared.Question> | Shared.ScoringSpec;
+
+  /**
+   * Optional additional parameters (keyword arguments)
+   */
+  kwargs?: unknown;
 }
 
 export interface ScoringSystemUploadToHuggingfaceParams {
