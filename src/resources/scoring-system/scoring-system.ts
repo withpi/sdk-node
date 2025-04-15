@@ -126,7 +126,7 @@ export interface ScoringSystemUploadToHuggingfaceParams {
   hf_scoring_spec_name: string;
 
   /**
-   * The scoring spec or the list of questions to write to Huggingface
+   * The list of questions or the scoring spec to write to Huggingface
    */
   scoring_spec: Array<Shared.Question> | Shared.ScoringSpec;
 
