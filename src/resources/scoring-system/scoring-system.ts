@@ -60,7 +60,7 @@ export class ScoringSystem extends APIResource {
 
 export type ScoringSystemGenerateResponse = Array<Shared.Question>;
 
-export type ScoringSystemImportSpecResponse = Shared.ScoringSpec | Array<Shared.Question>;
+export type ScoringSystemImportSpecResponse = Array<Shared.Question> | Shared.ScoringSpec;
 
 export type ScoringSystemUploadToHuggingfaceResponse = string;
 
@@ -109,7 +109,7 @@ export interface ScoringSystemScoreParams {
   /**
    * Either a scoring spec or a list of questions to score
    */
-  scoring_spec: Shared.ScoringSpec | Array<Shared.Question>;
+  scoring_spec: Array<Shared.Question> | Shared.ScoringSpec;
 }
 
 export interface ScoringSystemUploadToHuggingfaceParams {
@@ -123,7 +123,7 @@ export interface ScoringSystemUploadToHuggingfaceParams {
   /**
    * The scoring spec or the list of questions to write to Huggingface
    */
-  scoring_spec: Shared.ScoringSpec | Array<Shared.Question>;
+  scoring_spec: Array<Shared.Question> | Shared.ScoringSpec;
 
   /**
    * Huggingface token to use if you want to write to your own HF organization
