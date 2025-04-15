@@ -33,7 +33,7 @@ async function main() {
     scoring_spec: [{ question: 'Is this response truthful?' }, { question: 'Is this response relevant?' }],
   });
 
-  console.log(scoringSystemMetrics.dimension_scores);
+  console.log(scoringSystemMetrics.total_score);
 }
 
 main();
@@ -179,7 +179,7 @@ const { data: scoringSystemMetrics, response: raw } = await client.scoringSystem
   })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(scoringSystemMetrics.dimension_scores);
+console.log(scoringSystemMetrics.total_score);
 ```
 
 ### Making custom/undocumented requests
