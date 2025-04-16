@@ -190,7 +190,7 @@ export interface ScoringSpecCalibrationStatus {
   /**
    * The calibrated scoring spec
    */
-  calibrated_scoring_spec?: ScoringSpec | null;
+  calibrated_scoring_spec?: Array<Question> | null;
 }
 
 export interface ScoringSubDimension {
@@ -238,7 +238,7 @@ export interface ScoringSubDimension {
 
 export interface ScoringSystemMetrics {
   /**
-   * The score components for each dimension
+   * @deprecated The score components for each dimension
    */
   dimension_scores: Record<string, ScoringSystemMetrics.DimensionScores>;
 

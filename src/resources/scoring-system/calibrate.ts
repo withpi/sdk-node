@@ -74,9 +74,9 @@ export interface CalibrateListParams {
 
 export interface CalibrateStartJobParams {
   /**
-   * The scoring spec to calibrate
+   * Either a scoring spec or a list of questions to score
    */
-  scoring_spec: Shared.ScoringSpec;
+  scoring_spec: Array<Shared.Question> | Shared.ScoringSpec;
 
   /**
    * Rated examples to use when calibrating the scoring spec. Must specify either the

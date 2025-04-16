@@ -5,8 +5,11 @@ export { Data } from './data/data';
 export {
   ScoringSystem,
   type ScoringSystemGenerateResponse,
+  type ScoringSystemImportSpecResponse,
+  type ScoringSystemUploadToHuggingfaceResponse,
   type ScoringSystemGenerateParams,
   type ScoringSystemImportSpecParams,
   type ScoringSystemScoreParams,
+  type ScoringSystemUploadToHuggingfaceParams,
 } from './scoring-system/scoring-system';
 export { Search } from './search/search';

@@ -32,7 +32,7 @@ export class ScoringSystem extends APIResource {
   importSpec(
     body: ScoringSystemImportSpecParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ScoringSpec> {
+  ): Core.APIPromise<ScoringSystemImportSpecResponse> {
     return this._client.post('/scoring_system/import_spec', { body, ...options });
   }
 
@@ -46,9 +46,23 @@ export class ScoringSystem extends APIResource {
   ): Core.APIPromise<Shared.ScoringSystemMetrics> {
     return this._client.post('/scoring_system/score', { body, ...options });
   }
+
+  /**
+   * Write a scoring spec to Huggingface dataset
+   */
+  uploadToHuggingface(
+    body: ScoringSystemUploadToHuggingfaceParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<string> {
+    return this._client.post('/scoring_system/to_huggingface', { body, ...options });
+  }
 }
 
 export type ScoringSystemGenerateResponse = Array<Shared.Question>;
+
+export type ScoringSystemImportSpecResponse = Array<Shared.Question> | Shared.ScoringSpec;
+
+export type ScoringSystemUploadToHuggingfaceResponse = string;
 
 export interface ScoringSystemGenerateParams {
   /**
@@ -95,7 +109,31 @@ export interface ScoringSystemScoreParams {
   /**
    * Either a scoring spec or a list of questions to score
    */
-  scoring_spec: Shared.ScoringSpec | Array<Shared.Question>;
+  scoring_spec: Array<Shared.Question> | Shared.ScoringSpec;
+
+  /**
+   * Optional additional parameters (keyword arguments)
+   */
+  kwargs?: unknown;
+}
+
+export interface ScoringSystemUploadToHuggingfaceParams {
+  /**
+   * Huggingface scoring spec name e.g. withpi/my_scoring_system. By default we
+   * export to the withpi organization. If you want to use your own organization, we
+   * provide the hf_token.
+   */
+  hf_scoring_spec_name: string;
+
+  /**
+   * The list of questions or the scoring spec to write to Huggingface
+   */
+  scoring_spec: Array<Shared.Question> | Shared.ScoringSpec;
+
+  /**
+   * Huggingface token to use if you want to write to your own HF organization
+   */
+  hf_token?: string | null;
 }
 
 ScoringSystem.Calibrate = Calibrate;
@@ -103,9 +141,12 @@ ScoringSystem.Calibrate = Calibrate;
 export declare namespace ScoringSystem {
   export {
     type ScoringSystemGenerateResponse as ScoringSystemGenerateResponse,
+    type ScoringSystemImportSpecResponse as ScoringSystemImportSpecResponse,
+    type ScoringSystemUploadToHuggingfaceResponse as ScoringSystemUploadToHuggingfaceResponse,
     type ScoringSystemGenerateParams as ScoringSystemGenerateParams,
     type ScoringSystemImportSpecParams as ScoringSystemImportSpecParams,
     type ScoringSystemScoreParams as ScoringSystemScoreParams,
+    type ScoringSystemUploadToHuggingfaceParams as ScoringSystemUploadToHuggingfaceParams,
   };
 
   export {
