@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.5.0 (2025-04-16)
+
+Full Changelog: [v1.4.0...v1.5.0](https://github.com/withpi/sdk-node/compare/v1.4.0...v1.5.0)
+
+### Features
+
+* **api:** api update ([b697d95](https://github.com/withpi/sdk-node/commit/b697d959085561470c3f217f030b2e121e2fe2e0))
+* **api:** api update ([94a1b4a](https://github.com/withpi/sdk-node/commit/94a1b4a8017d907812d260b437b632d6df1f7896))
+* **api:** api update ([cce12be](https://github.com/withpi/sdk-node/commit/cce12be710720f079f1f25f56e4d33b3bf4bed49))
+* **api:** api update ([419a693](https://github.com/withpi/sdk-node/commit/419a6938f08422b0a0cf9b73236edf05fca63d44))
+* **api:** api update ([52f9fcf](https://github.com/withpi/sdk-node/commit/52f9fcf85ede2adaaa8ccca4c3478fc8fcad8f2b))
+* **api:** api update ([198d17c](https://github.com/withpi/sdk-node/commit/198d17ca4d03cff0b96f21bbfac05d3b3fa84651))
+* **api:** emphasize the total score ([a369755](https://github.com/withpi/sdk-node/commit/a369755e7ca0f2876f5bc742fee8abd02900046e))
+
+
+### Chores
+
+* **client:** minor internal fixes ([fe9dc14](https://github.com/withpi/sdk-node/commit/fe9dc14f82b2429ad5e043da4fcb7fd5d6e7cdb7))
+
 ## 1.4.0 (2025-04-14)
 
 Full Changelog: [v1.3.0...v1.4.0](https://github.com/withpi/sdk-node/compare/v1.3.0...v1.4.0)
