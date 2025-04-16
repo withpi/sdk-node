@@ -82,13 +82,13 @@ export interface CalibrateStartJobParams {
    * Rated examples to use when calibrating the scoring spec. Must specify either the
    * examples or the preference examples
    */
-  examples?: Array<CalibrateStartJobParams.Example> | null;
+  examples?: Array<CalibrateStartJobParams.Example>;
 
   /**
    * Preference examples to use when calibrating the scoring spec. Must specify
    * either the examples or preference examples
    */
-  preference_examples?: Array<CalibrateStartJobParams.PreferenceExample> | null;
+  preference_examples?: Array<CalibrateStartJobParams.PreferenceExample>;
 
   /**
    * The strategy to use to calibrate the scoring spec. FULL would take longer than
