@@ -80,6 +80,13 @@ describe('resource calibrate', () => {
   // skipped: tests are disabled for the time being
   test.skip('startJob: only required params', async () => {
     const responsePromise = client.scoringSystem.calibrate.startJob({
+      examples: [
+        { llm_input: 'good input', llm_output: 'good response', rating: 'Strongly Agree' },
+        { llm_input: 'neutral input', llm_output: 'neutral response', rating: 'Neutral' },
+      ],
+      preference_examples: [
+        { chosen: 'chosen response', llm_input: 'some input', rejected: 'rejected response' },
+      ],
       scoring_spec: [{ question: 'Is this response truthful?' }, { question: 'Is this response relevant?' }],
     });
     const rawResponse = await responsePromise.asResponse();
@@ -94,6 +101,13 @@ describe('resource calibrate', () => {
   // skipped: tests are disabled for the time being
   test.skip('startJob: required and optional params', async () => {
     const response = await client.scoringSystem.calibrate.startJob({
+      examples: [
+        { llm_input: 'good input', llm_output: 'good response', rating: 'Strongly Agree' },
+        { llm_input: 'neutral input', llm_output: 'neutral response', rating: 'Neutral' },
+      ],
+      preference_examples: [
+        { chosen: 'chosen response', llm_input: 'some input', rejected: 'rejected response' },
+      ],
       scoring_spec: [
         {
           question: 'Is this response truthful?',
@@ -123,13 +137,6 @@ describe('resource calibrate', () => {
           tag: 'Legal Formatting',
           weight: 1,
         },
-      ],
-      examples: [
-        { llm_input: 'good input', llm_output: 'good response', rating: 'Strongly Agree' },
-        { llm_input: 'neutral input', llm_output: 'neutral response', rating: 'Neutral' },
-      ],
-      preference_examples: [
-        { chosen: 'chosen response', llm_input: 'some input', rejected: 'rejected response' },
       ],
       strategy: 'LITE',
     });

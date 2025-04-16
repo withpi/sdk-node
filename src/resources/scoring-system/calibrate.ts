@@ -74,21 +74,21 @@ export interface CalibrateListParams {
 
 export interface CalibrateStartJobParams {
   /**
-   * Either a scoring spec or a list of questions to score
-   */
-  scoring_spec: Array<Shared.Question> | Shared.ScoringSpec;
-
-  /**
    * Rated examples to use when calibrating the scoring spec. Must specify either the
    * examples or the preference examples
    */
-  examples?: Array<CalibrateStartJobParams.Example>;
+  examples: Array<CalibrateStartJobParams.Example>;
 
   /**
    * Preference examples to use when calibrating the scoring spec. Must specify
    * either the examples or preference examples
    */
-  preference_examples?: Array<CalibrateStartJobParams.PreferenceExample>;
+  preference_examples: Array<CalibrateStartJobParams.PreferenceExample>;
+
+  /**
+   * Either a scoring spec or a list of questions to score
+   */
+  scoring_spec: Array<Shared.Question> | Shared.ScoringSpec;
 
   /**
    * The strategy to use to calibrate the scoring spec. FULL would take longer than
