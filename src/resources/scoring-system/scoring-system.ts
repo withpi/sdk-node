@@ -71,7 +71,7 @@ export interface ScoringSystemGenerateParams {
   application_description: string;
 
   /**
-   * If true, try to generate python code for sub-dimensions in the scoring spec.
+   * If true, try to generate python code for the generated questions.
    */
   try_auto_generating_python_code?: boolean;
 }
