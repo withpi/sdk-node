@@ -190,7 +190,7 @@ export interface ScoringSpecCalibrationStatus {
   /**
    * The calibrated scoring spec
    */
-  calibrated_scoring_spec?: ScoringSpec | null;
+  calibrated_scoring_spec?: Array<Question> | null;
 }
 
 export interface ScoringSubDimension {
