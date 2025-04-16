@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.6.0 (2025-04-16)
+
+Full Changelog: [v1.5.0...v1.6.0](https://github.com/withpi/sdk-node/compare/v1.5.0...v1.6.0)
+
+### Features
+
+* **api:** api update ([cea3a1d](https://github.com/withpi/sdk-node/commit/cea3a1dadd7b7df29b4dae3b9edebe9dbdadb7e8))
+* **api:** api update ([ccf7ecd](https://github.com/withpi/sdk-node/commit/ccf7ecd29d737ef77d966934725b8a9ecfed6425))
+* **api:** api update ([ed06f00](https://github.com/withpi/sdk-node/commit/ed06f005d1e461e32b103c9a2441647dc1755e78))
+* **api:** api update ([5df8396](https://github.com/withpi/sdk-node/commit/5df839637e6866c5e041a01401068a58bc1e046d))
+* **api:** force push because GH is stuck ([faa80d6](https://github.com/withpi/sdk-node/commit/faa80d613a1fbc862a13b08e21f728e802dd2fce))
+
 ## 1.5.0 (2025-04-16)
 
 Full Changelog: [v1.4.0...v1.5.0](https://github.com/withpi/sdk-node/compare/v1.4.0...v1.5.0)
