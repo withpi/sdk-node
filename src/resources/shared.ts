@@ -104,7 +104,7 @@ export interface Question {
   python_code?: string | null;
 
   /**
-   * The type of scoring performed for this question.
+   * The type of scoring performed for this question. Default: PI_SCORER.
    */
   scoring_type?: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER' | null;
 
