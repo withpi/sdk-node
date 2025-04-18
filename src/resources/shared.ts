@@ -76,34 +76,35 @@ export interface QueryFanoutExample {
 
 export interface Question {
   /**
-   * The description of the dimension
+   * The yes/no question to ask Pi Scoring System.
    */
   question: string;
 
   /**
-   * The ID of the custom model to use for scoring. Only relevant for scoring_type of
-   * CUSTOM_MODEL_SCORER
+   * The ID of the custom model associated with the CUSTOM_MODEL_SCORER scoring_type.
    */
   custom_model_id?: string | null;
 
   /**
-   * The label of the question
+   * The label of the question.
    */
   label?: string | null;
 
   /**
-   * The learned parameters for the scoring method. This represents piecewise linear
-   * interpolation between [0, 1].
+   * The learned parameters for the scoring question define a piecewise linear
+   * interpolation over the range [0, 1]. This transformation adjusts the score
+   * distribution to better match your preferences—for example, by pulling scores
+   * below 0.5 closer to 0, and scores above 0.5 closer to 1.
    */
   parameters?: Array<number> | null;
 
   /**
-   * The PYTHON code associated the PYTHON_CODE DimensionScoringType.
+   * The PYTHON code associated with the PYTHON_CODE scoring_type.
    */
   python_code?: string | null;
 
   /**
-   * The type of scoring performed for this dimension
+   * The type of scoring performed for this question.
    */
   scoring_type?: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER' | null;
 
@@ -113,9 +114,9 @@ export interface Question {
   tag?: string | null;
 
   /**
-   * The weight of the dimension. The sum of subdimension weights will be normalized
-   * to one internally. A higher weight counts for more when aggregating this
-   * subdimension into the parent dimension.
+   * The weight of the question which reflects its relative importance. The sum of
+   * question weights will be normalized to one internally. A higher weight counts
+   * for more when aggregating this subdimension into the parent dimension.
    */
   weight?: number | null;
 }
