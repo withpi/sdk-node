@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.8.0 (2025-04-24)
+
+Full Changelog: [v1.7.0...v1.8.0](https://github.com/withpi/sdk-node/compare/v1.7.0...v1.8.0)
+
+### Features
+
+* **api:** api update ([91ad0ac](https://github.com/withpi/sdk-node/commit/91ad0ac2d853fb957dc8de07fea00b209fcb4cec))
+
+
+### Chores
+
+* **ci:** add timeout thresholds for CI jobs ([bc6f3c9](https://github.com/withpi/sdk-node/commit/bc6f3c97b1ffffa73e3f217a4b55acf539d18f3b))
+* **ci:** only use depot for staging repos ([59fb641](https://github.com/withpi/sdk-node/commit/59fb64151ce867582df3badd2d1d4c8fcb8e76d4))
+* **internal:** codegen related update ([45eea43](https://github.com/withpi/sdk-node/commit/45eea436948ff95e6c430def2c936698847ccdde))
+
 ## 1.7.0 (2025-04-18)
 
 Full Changelog: [v1.6.0...v1.7.0](https://github.com/withpi/sdk-node/compare/v1.6.0...v1.7.0)
