@@ -71,6 +71,12 @@ export interface ScoringSystemGenerateParams {
   application_description: string;
 
   /**
+   * The number of questions that the scoring system should contain. If <= 0, then
+   * the number is auto selected.
+   */
+  num_questions?: number;
+
+  /**
    * If true, try to generate python code for the generated questions.
    */
   try_auto_generating_python_code?: boolean;

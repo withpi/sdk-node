@@ -86,6 +86,12 @@ export interface Question {
   custom_model_id?: string | null;
 
   /**
+   * Indicates whether a lower score represents a better outcome (e.g., fewer errors,
+   * less toxicity)
+   */
+  is_lower_score_better?: boolean;
+
+  /**
    * The label of the question.
    */
   label?: string | null;
