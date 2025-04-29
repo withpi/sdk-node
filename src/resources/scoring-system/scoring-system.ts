@@ -71,8 +71,8 @@ export interface ScoringSystemGenerateParams {
   application_description: string;
 
   /**
-   * The number of questions that the scoring system should contain. If <= 0, then
-   * the number is auto selected.
+   * The number of questions that the generated scoring system should contain. If <=
+   * 0, then the number is auto selected.
    */
   num_questions?: number;
 
