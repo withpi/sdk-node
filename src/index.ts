@@ -20,7 +20,7 @@ import { Search } from './resources/search/search';
 
 export interface ClientOptions {
   /**
-   * The API key needed for authentication
+   * Defaults to process.env['WITHPI_API_KEY'].
    */
   apiKey?: string | undefined;
 
