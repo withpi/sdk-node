@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.9.1 (2025-05-01)
+
+Full Changelog: [v1.9.0...v1.9.1](https://github.com/withpi/sdk-node/compare/v1.9.0...v1.9.1)
+
+### Documentation
+
+* **readme:** fix typo ([04c7c0b](https://github.com/withpi/sdk-node/commit/04c7c0bdb2f4384cecbf3a46beb78ed56fad73c2))
+
 ## 1.9.0 (2025-04-29)
 
 Full Changelog: [v1.8.0...v1.9.0](https://github.com/withpi/sdk-node/compare/v1.8.0...v1.9.0)
