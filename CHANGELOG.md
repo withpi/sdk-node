@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.9.2 (2025-05-07)
+
+Full Changelog: [v1.9.1...v1.9.2](https://github.com/withpi/sdk-node/compare/v1.9.1...v1.9.2)
+
+### Chores
+
+* **ci:** bump node version for release workflows ([e4a1791](https://github.com/withpi/sdk-node/commit/e4a179181d78d19f1ef103974741bc210212c8e7))
+
 ## 1.9.1 (2025-05-01)
 
 Full Changelog: [v1.9.0...v1.9.1](https://github.com/withpi/sdk-node/compare/v1.9.0...v1.9.1)
