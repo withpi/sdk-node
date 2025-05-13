@@ -105,3 +105,13 @@ Types:
 Methods:
 
 - <code title="post /search/query_classifier/classify">client.search.queryClassifier.<a href="./src/resources/search/query-classifier.ts">classify</a>({ ...params }) -> QueryClassifierClassifyResponse</code>
+
+## Groundedness
+
+Types:
+
+- <code><a href="./src/resources/search/groundedness.ts">GroundednessCheckResponse</a></code>
+
+Methods:
+
+- <code title="post /search/groundedness/check">client.search.groundedness.<a href="./src/resources/search/groundedness.ts">check</a>({ ...params }) -> GroundednessCheckResponse</code>
