@@ -80,7 +80,7 @@ describe('resource scoringSystem', () => {
         {
           question: 'Is this response truthful?',
           custom_model_id: 'your-model-id',
-          is_lower_score_desirable: false,
+          is_lower_score_desirable: true,
           label: 'Relevance to Prompt',
           parameters: [
             0.14285714285714285, 0.2857142857142857, 0.42857142857142855, 0.5714285714285714,
@@ -95,7 +95,7 @@ describe('resource scoringSystem', () => {
         {
           question: 'Is this response relevant?',
           custom_model_id: 'your-model-id',
-          is_lower_score_desirable: false,
+          is_lower_score_desirable: true,
           label: 'Relevance to Prompt',
           parameters: [
             0.14285714285714285, 0.2857142857142857, 0.42857142857142855, 0.5714285714285714,
@@ -135,7 +135,7 @@ describe('resource scoringSystem', () => {
         {
           question: 'Is this response truthful?',
           custom_model_id: 'your-model-id',
-          is_lower_score_desirable: false,
+          is_lower_score_desirable: true,
           label: 'Relevance to Prompt',
           parameters: [
             0.14285714285714285, 0.2857142857142857, 0.42857142857142855, 0.5714285714285714,
@@ -150,7 +150,7 @@ describe('resource scoringSystem', () => {
         {
           question: 'Is this response relevant?',
           custom_model_id: 'your-model-id',
-          is_lower_score_desirable: false,
+          is_lower_score_desirable: true,
           label: 'Relevance to Prompt',
           parameters: [
             0.14285714285714285, 0.2857142857142857, 0.42857142857142855, 0.5714285714285714,
