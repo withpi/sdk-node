@@ -89,7 +89,7 @@ export interface Question {
    * Indicates whether a lower score represents a better outcome (e.g., fewer errors,
    * less toxicity)
    */
-  is_lower_score_desirable?: boolean;
+  is_lower_score_desirable?: boolean | null;
 
   /**
    * The label of the question.
