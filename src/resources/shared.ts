@@ -110,6 +110,11 @@ export interface Question {
   python_code?: string | null;
 
   /**
+   * Remapping spec to modulate the scores returned by Pi Scorer
+   */
+  remap_spec?: 'NEUTRAL' | 'STRICT' | 'LENIENT' | Record<string, number> | null;
+
+  /**
    * The type of scoring performed for this question. Default: PI_SCORER.
    */
   scoring_type?: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER' | null;

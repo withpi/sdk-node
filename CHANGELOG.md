@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.12.0 (2025-06-01)
+
+Full Changelog: [v1.11.0...v1.12.0](https://github.com/withpi/sdk-node/compare/v1.11.0...v1.12.0)
+
+### Features
+
+* **api:** api update ([ac9292d](https://github.com/withpi/sdk-node/commit/ac9292ddb8ebe3b7c68460d8c16028503794fd34))
+
+
+### Chores
+
+* **docs:** grammar improvements ([91f680a](https://github.com/withpi/sdk-node/commit/91f680aed56ce06e9fe2f939eb91a3eb283f120d))
+* improve publish-npm script --latest tag logic ([bda678e](https://github.com/withpi/sdk-node/commit/bda678e00b40049f5e9f22327c0f42655f19c7e9))
+
 ## 1.11.0 (2025-05-19)
 
 Full Changelog: [v1.10.0...v1.11.0](https://github.com/withpi/sdk-node/compare/v1.10.0...v1.11.0)
