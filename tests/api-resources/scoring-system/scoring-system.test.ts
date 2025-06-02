@@ -110,6 +110,7 @@ describe('resource scoringSystem', () => {
           weight: 1,
         },
       ],
+      aggregtion_method: 'ARITHMETIC_MEAN',
       kwargs: { any_param: 'any_value' },
     });
   });
