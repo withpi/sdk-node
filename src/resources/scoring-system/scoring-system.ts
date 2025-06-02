@@ -118,6 +118,12 @@ export interface ScoringSystemScoreParams {
   scoring_spec: Array<Shared.Question> | Shared.ScoringSpec;
 
   /**
+   * The strategy to combine the individual question scores to get the total score.
+   * Defaults to HARMONIC_MEAN.
+   */
+  aggregtion_method?: 'ARITHMETIC_MEAN' | 'GEOMETRIC_MEAN' | 'HARMONIC_MEAN';
+
+  /**
    * Optional additional parameters (keyword arguments)
    */
   kwargs?: unknown;
