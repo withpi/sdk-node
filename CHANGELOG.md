@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.14.1 (2025-06-04)
+
+Full Changelog: [v1.14.0...v1.14.1](https://github.com/withpi/sdk-node/compare/v1.14.0...v1.14.1)
+
+### Chores
+
+* **docs:** use top-level-await in example snippets ([66f661e](https://github.com/withpi/sdk-node/commit/66f661ef1edc523337ba5e31a98c76675b431663))
+
 ## 1.14.0 (2025-06-02)
 
 Full Changelog: [v1.13.0...v1.14.0](https://github.com/withpi/sdk-node/compare/v1.13.0...v1.14.0)
