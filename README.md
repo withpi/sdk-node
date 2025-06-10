@@ -26,17 +26,13 @@ const client = new PiClient({
   apiKey: process.env['WITHPI_API_KEY'], // This is the default and can be omitted
 });
 
-async function main() {
-  const scoringSystemMetrics = await client.scoringSystem.score({
-    llm_input: 'Tell me something different',
-    llm_output: 'The lazy dog was jumped over by the quick brown fox',
-    scoring_spec: [{ question: 'Is this response truthful?' }, { question: 'Is this response relevant?' }],
-  });
+const scoringSystemMetrics = await client.scoringSystem.score({
+  llm_input: 'Tell me something different',
+  llm_output: 'The lazy dog was jumped over by the quick brown fox',
+  scoring_spec: [{ question: 'Is this response truthful?' }, { question: 'Is this response relevant?' }],
+});
 
-  console.log(scoringSystemMetrics.total_score);
-}
-
-main();
+console.log(scoringSystemMetrics.total_score);
 ```
 
 ### Request & Response types
@@ -51,16 +47,12 @@ const client = new PiClient({
   apiKey: process.env['WITHPI_API_KEY'], // This is the default and can be omitted
 });
 
-async function main() {
-  const params: PiClient.ScoringSystemScoreParams = {
-    llm_input: 'Tell me something different',
-    llm_output: 'The lazy dog was jumped over by the quick brown fox',
-    scoring_spec: [{ question: 'Is this response truthful?' }, { question: 'Is this response relevant?' }],
-  };
-  const scoringSystemMetrics: PiClient.ScoringSystemMetrics = await client.scoringSystem.score(params);
-}
-
-main();
+const params: PiClient.ScoringSystemScoreParams = {
+  llm_input: 'Tell me something different',
+  llm_output: 'The lazy dog was jumped over by the quick brown fox',
+  scoring_spec: [{ question: 'Is this response truthful?' }, { question: 'Is this response relevant?' }],
+};
+const scoringSystemMetrics: PiClient.ScoringSystemMetrics = await client.scoringSystem.score(params);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -73,25 +65,21 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-async function main() {
-  const scoringSystemMetrics = await client.scoringSystem
-    .score({
-      llm_input: 'Tell me something different',
-      llm_output: 'The lazy dog was jumped over by the quick brown fox',
-      scoring_spec: [{ question: 'Is this response truthful?' }, { question: 'Is this response relevant?' }],
-    })
-    .catch(async (err) => {
-      if (err instanceof PiClient.APIError) {
-        console.log(err.status); // 400
-        console.log(err.name); // BadRequestError
-        console.log(err.headers); // {server: 'nginx', ...}
-      } else {
-        throw err;
-      }
-    });
-}
-
-main();
+const scoringSystemMetrics = await client.scoringSystem
+  .score({
+    llm_input: 'Tell me something different',
+    llm_output: 'The lazy dog was jumped over by the quick brown fox',
+    scoring_spec: [{ question: 'Is this response truthful?' }, { question: 'Is this response relevant?' }],
+  })
+  .catch(async (err) => {
+    if (err instanceof PiClient.APIError) {
+      console.log(err.status); // 400
+      console.log(err.name); // BadRequestError
+      console.log(err.headers); // {server: 'nginx', ...}
+    } else {
+      throw err;
+    }
+  });
 ```
 
 Error codes are as follows:
