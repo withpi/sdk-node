@@ -81,8 +81,8 @@ describe('resource calibrate', () => {
   test.skip('startJob: only required params', async () => {
     const responsePromise = client.scoringSystem.calibrate.startJob({
       examples: [
-        { llm_input: 'good input', llm_output: 'good response', rating: 'Strongly Agree' },
-        { llm_input: 'neutral input', llm_output: 'neutral response', rating: 'Neutral' },
+        { llm_input: 'good input', llm_output: 'good response' },
+        { llm_input: 'neutral input', llm_output: 'neutral response' },
       ],
       preference_examples: [
         { chosen: 'chosen response', llm_input: 'some input', rejected: 'rejected response' },
@@ -102,8 +102,8 @@ describe('resource calibrate', () => {
   test.skip('startJob: required and optional params', async () => {
     const response = await client.scoringSystem.calibrate.startJob({
       examples: [
-        { llm_input: 'good input', llm_output: 'good response', rating: 'Strongly Agree' },
-        { llm_input: 'neutral input', llm_output: 'neutral response', rating: 'Neutral' },
+        { llm_input: 'good input', llm_output: 'good response', rating: 'Disagree', score: 0.9 },
+        { llm_input: 'neutral input', llm_output: 'neutral response', rating: 'Disagree', score: 0.5 },
       ],
       preference_examples: [
         { chosen: 'chosen response', llm_input: 'some input', rejected: 'rejected response' },
