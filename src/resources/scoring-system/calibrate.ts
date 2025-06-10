@@ -113,9 +113,14 @@ export namespace CalibrateStartJobParams {
     llm_output: string;
 
     /**
-     * The rating of the llm_output given the llm_input
+     * @deprecated DEPRECATED: Instead fill the desired score to the 'score' field.
      */
-    rating: 'Strongly Agree' | 'Agree' | 'Neutral' | 'Disagree' | 'Strongly Disagree';
+    rating?: 'Strongly Agree' | 'Agree' | 'Neutral' | 'Disagree' | 'Strongly Disagree' | null;
+
+    /**
+     * The target score of the example, between 0 and 1.
+     */
+    score?: number;
   }
 
   /**
