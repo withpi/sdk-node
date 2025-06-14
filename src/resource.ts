@@ -2,7 +2,7 @@
 
 import type { PiClient } from './index';
 
-export class APIResource {
+export abstract class APIResource {
   protected _client: PiClient;
 
   constructor(client: PiClient) {
