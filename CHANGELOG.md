@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.15.1 (2025-06-14)
+
+Full Changelog: [v1.15.0...v1.15.1](https://github.com/withpi/sdk-node/compare/v1.15.0...v1.15.1)
+
+### Bug Fixes
+
+* publish script — handle NPM errors correctly ([0ae67c0](https://github.com/withpi/sdk-node/commit/0ae67c062b88455eca0b20e378cf3c913eb08ba5))
+
 ## 1.15.0 (2025-06-10)
 
 Full Changelog: [v1.14.0...v1.15.0](https://github.com/withpi/sdk-node/compare/v1.14.0...v1.15.0)
