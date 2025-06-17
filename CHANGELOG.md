@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.16.0 (2025-06-17)
+
+Full Changelog: [v1.15.1...v1.16.0](https://github.com/withpi/sdk-node/compare/v1.15.1...v1.16.0)
+
+### Features
+
+* **client:** add support for endpoint-specific base URLs ([e363d69](https://github.com/withpi/sdk-node/commit/e363d696dc8c3c297d684007458871f419021f6c))
+
+
+### Chores
+
+* **ci:** enable for pull requests ([dd63891](https://github.com/withpi/sdk-node/commit/dd6389169dd8d00cb130b70dbb92fd3302a53179))
+* **internal:** make base APIResource abstract ([c22bc7c](https://github.com/withpi/sdk-node/commit/c22bc7c34672a0280e1b6f1f5667a57842d737eb))
+
 ## 1.15.1 (2025-06-14)
 
 Full Changelog: [v1.15.0...v1.15.1](https://github.com/withpi/sdk-node/compare/v1.15.0...v1.15.1)
