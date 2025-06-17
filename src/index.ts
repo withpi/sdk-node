@@ -120,6 +120,7 @@ export class PiClient extends Core.APIClient {
 
     super({
       baseURL: options.baseURL!,
+      baseURLOverridden: baseURL ? baseURL !== 'https://api.withpi.ai/v1' : false,
       timeout: options.timeout ?? 60000 /* 1 minute */,
       httpAgent: options.httpAgent,
       maxRetries: options.maxRetries,
@@ -134,6 +135,13 @@ export class PiClient extends Core.APIClient {
   data: API.Data = new API.Data(this);
   scoringSystem: API.ScoringSystem = new API.ScoringSystem(this);
   search: API.Search = new API.Search(this);
+
+  /**
+   * Check whether the base URL is set to its default.
+   */
+  #baseURLOverridden(): boolean {
+    return this.baseURL !== 'https://api.withpi.ai/v1';
+  }
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
