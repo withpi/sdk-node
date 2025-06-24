@@ -112,7 +112,7 @@ export interface Question {
   /**
    * Remapping spec to modulate the scores returned by Pi Scorer
    */
-  remap_spec?: 'NEUTRAL' | 'STRICT' | 'LENIENT' | Record<string, number> | null;
+  remap_spec?: 'NEUTRAL' | 'STRICT' | 'LENIENT' | { [key: string]: number } | null;
 
   /**
    * The type of scoring performed for this question. Default: PI_SCORER.
@@ -252,12 +252,12 @@ export interface ScoringSystemMetrics {
   /**
    * @deprecated The score components for each dimension
    */
-  dimension_scores: Record<string, ScoringSystemMetrics.DimensionScores>;
+  dimension_scores: { [key: string]: ScoringSystemMetrics.DimensionScores };
 
   /**
    * The score components for each question
    */
-  question_scores: Record<string, number>;
+  question_scores: { [key: string]: number };
 
   /**
    * The total score of the scoring spec
@@ -270,7 +270,7 @@ export namespace ScoringSystemMetrics {
     /**
      * The score components for each subdimension
      */
-    subdimension_scores: Record<string, number>;
+    subdimension_scores: { [key: string]: number };
 
     /**
      * The total score of the dimension
