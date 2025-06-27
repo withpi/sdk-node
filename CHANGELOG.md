@@ -1,5 +1,29 @@
 # Changelog
 
+## 1.16.0 (2025-06-27)
+
+Full Changelog: [v1.15.1...v1.16.0](https://github.com/withpi/sdk-node/compare/v1.15.1...v1.16.0)
+
+### Features
+
+* **client:** add support for endpoint-specific base URLs ([e363d69](https://github.com/withpi/sdk-node/commit/e363d696dc8c3c297d684007458871f419021f6c))
+
+
+### Bug Fixes
+
+* **ci:** release-doctor — report correct token name ([5619ea2](https://github.com/withpi/sdk-node/commit/5619ea2e40c41a2266f64a15ec743da4b11b127e))
+
+
+### Chores
+
+* **ci:** enable for pull requests ([dd63891](https://github.com/withpi/sdk-node/commit/dd6389169dd8d00cb130b70dbb92fd3302a53179))
+* **internal:** make base APIResource abstract ([c22bc7c](https://github.com/withpi/sdk-node/commit/c22bc7c34672a0280e1b6f1f5667a57842d737eb))
+
+
+### Refactors
+
+* **types:** replace Record with mapped types ([580b52e](https://github.com/withpi/sdk-node/commit/580b52ed98e8d18f49df6403979c9b482390139d))
+
 ## 1.15.1 (2025-06-14)
 
 Full Changelog: [v1.15.0...v1.15.1](https://github.com/withpi/sdk-node/compare/v1.15.0...v1.15.1)
