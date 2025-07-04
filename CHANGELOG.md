@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.16.1 (2025-07-03)
+
+Full Changelog: [v1.16.0...v1.16.1](https://github.com/withpi/sdk-node/compare/v1.16.0...v1.16.1)
+
+### Bug Fixes
+
+* **client:** don't send `Content-Type` for bodyless methods ([8691146](https://github.com/withpi/sdk-node/commit/8691146ce476bba1db7fcdf6463b8c05c36e0a33))
+
+
+### Chores
+
+* **ci:** only run for pushes and fork pull requests ([b1ed610](https://github.com/withpi/sdk-node/commit/b1ed61014141ab2f9afbd50d9475ae4a7fed5f94))
+* mention unit type in timeout docs ([58ea0bd](https://github.com/withpi/sdk-node/commit/58ea0bd3bc3d02de066532eb1e987a4fb83cccf2))
+
 ## 1.16.0 (2025-06-27)
 
 Full Changelog: [v1.15.1...v1.16.0](https://github.com/withpi/sdk-node/compare/v1.15.1...v1.16.0)
