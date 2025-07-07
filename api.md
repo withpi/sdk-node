@@ -8,10 +8,7 @@ Types:
 - <code><a href="./src/resources/shared.ts">QueryClassifierResult</a></code>
 - <code><a href="./src/resources/shared.ts">QueryFanoutExample</a></code>
 - <code><a href="./src/resources/shared.ts">Question</a></code>
-- <code><a href="./src/resources/shared.ts">ScoringDimension</a></code>
-- <code><a href="./src/resources/shared.ts">ScoringSpec</a></code>
 - <code><a href="./src/resources/shared.ts">ScoringSpecCalibrationStatus</a></code>
-- <code><a href="./src/resources/shared.ts">ScoringSubDimension</a></code>
 - <code><a href="./src/resources/shared.ts">ScoringSystemMetrics</a></code>
 - <code><a href="./src/resources/shared.ts">SyntheticDataStatus</a></code>
 

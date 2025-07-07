@@ -88,7 +88,7 @@ export interface CalibrateStartJobParams {
   /**
    * Either a scoring spec or a list of questions to score
    */
-  scoring_spec: Array<Shared.Question> | Shared.ScoringSpec;
+  scoring_spec: Array<Shared.Question>;
 
   /**
    * The strategy to use to calibrate the scoring spec. FULL would take longer than

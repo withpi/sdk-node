@@ -208,10 +208,7 @@ export declare namespace PiClient {
   export type QueryClassifierResult = API.QueryClassifierResult;
   export type QueryFanoutExample = API.QueryFanoutExample;
   export type Question = API.Question;
-  export type ScoringDimension = API.ScoringDimension;
-  export type ScoringSpec = API.ScoringSpec;
   export type ScoringSpecCalibrationStatus = API.ScoringSpecCalibrationStatus;
-  export type ScoringSubDimension = API.ScoringSubDimension;
   export type ScoringSystemMetrics = API.ScoringSystemMetrics;
   export type SyntheticDataStatus = API.SyntheticDataStatus;
 }
