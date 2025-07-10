@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.17.1 (2025-07-10)
+
+Full Changelog: [v1.17.0...v1.17.1](https://github.com/withpi/sdk-node/compare/v1.17.0...v1.17.1)
+
+### Chores
+
+* make some internal functions async ([02a78ae](https://github.com/withpi/sdk-node/commit/02a78aeb2672629def1a81dab2509fd2bc06d8d2))
+
 ## 1.17.0 (2025-07-07)
 
 Full Changelog: [v1.16.1...v1.17.0](https://github.com/withpi/sdk-node/compare/v1.16.1...v1.17.0)
