@@ -71,6 +71,23 @@ export interface ScoringSystemGenerateParams {
   application_description: string;
 
   /**
+   * Rated examples to use for generating the discriminating questions. The scores
+   * can be class labels or actual scores (but must be between 0 and 1)
+   */
+  examples: Array<ScoringSystemGenerateParams.Example>;
+
+  /**
+   * Preference examples to use for generating the discriminating questions. Must
+   * specify either the examples or preference examples
+   */
+  preference_examples: Array<ScoringSystemGenerateParams.PreferenceExample>;
+
+  /**
+   * Number of examples to use in one batch to generate the questions.
+   */
+  batch_size?: number;
+
+  /**
    * The number of questions that the generated scoring system should contain. If <=
    * 0, then the number is auto selected.
    */
@@ -80,6 +97,53 @@ export interface ScoringSystemGenerateParams {
    * If true, try to generate python code for the generated questions.
    */
   try_auto_generating_python_code?: boolean;
+}
+
+export namespace ScoringSystemGenerateParams {
+  /**
+   * An labeled example for training or evaluation
+   */
+  export interface Example {
+    /**
+     * The input to LLM
+     */
+    llm_input: string;
+
+    /**
+     * The output to evaluate
+     */
+    llm_output: string;
+
+    /**
+     * @deprecated DEPRECATED: Instead fill the desired score to the 'score' field.
+     */
+    rating?: 'Strongly Agree' | 'Agree' | 'Neutral' | 'Disagree' | 'Strongly Disagree' | null;
+
+    /**
+     * The target score of the example, between 0 and 1.
+     */
+    score?: number;
+  }
+
+  /**
+   * An preference example for training or evaluation
+   */
+  export interface PreferenceExample {
+    /**
+     * The chosen output in corresponding to the llm_input.
+     */
+    chosen: string;
+
+    /**
+     * The input to LLM
+     */
+    llm_input: string;
+
+    /**
+     * The rejected output in corresponding to the llm_input.
+     */
+    rejected: string;
+  }
 }
 
 export interface ScoringSystemImportSpecParams {
