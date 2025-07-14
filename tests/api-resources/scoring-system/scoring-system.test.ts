@@ -13,6 +13,13 @@ describe('resource scoringSystem', () => {
   test.skip('generate: only required params', async () => {
     const responsePromise = client.scoringSystem.generate({
       application_description: "Write a children's story communicating a simple life lesson.",
+      examples: [
+        { llm_input: 'good input', llm_output: 'good response' },
+        { llm_input: 'neutral input', llm_output: 'neutral response' },
+      ],
+      preference_examples: [
+        { chosen: 'chosen response', llm_input: 'some input', rejected: 'rejected response' },
+      ],
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -27,6 +34,14 @@ describe('resource scoringSystem', () => {
   test.skip('generate: required and optional params', async () => {
     const response = await client.scoringSystem.generate({
       application_description: "Write a children's story communicating a simple life lesson.",
+      examples: [
+        { llm_input: 'good input', llm_output: 'good response', rating: 'Disagree', score: 0.9 },
+        { llm_input: 'neutral input', llm_output: 'neutral response', rating: 'Disagree', score: 0.5 },
+      ],
+      preference_examples: [
+        { chosen: 'chosen response', llm_input: 'some input', rejected: 'rejected response' },
+      ],
+      batch_size: 0,
       num_questions: 0,
       try_auto_generating_python_code: false,
     });
