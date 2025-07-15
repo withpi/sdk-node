@@ -6,9 +6,5 @@ export {
   type QueryClassifierClassifyResponse,
   type QueryClassifierClassifyParams,
 } from './query-classifier';
-export {
-  QueryFanout,
-  type QueryFanoutGenerateResponse,
-  type QueryFanoutGenerateParams,
-} from './query-fanout';
+export { QueryFanout } from './query-fanout';
 export { Search } from './search';

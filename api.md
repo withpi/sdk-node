@@ -6,7 +6,6 @@ Types:
 - <code><a href="./src/resources/shared.ts">Example</a></code>
 - <code><a href="./src/resources/shared.ts">ExplorationMode</a></code>
 - <code><a href="./src/resources/shared.ts">QueryClassifierResult</a></code>
-- <code><a href="./src/resources/shared.ts">QueryFanoutExample</a></code>
 - <code><a href="./src/resources/shared.ts">Question</a></code>
 - <code><a href="./src/resources/shared.ts">ScoringSpecCalibrationStatus</a></code>
 - <code><a href="./src/resources/shared.ts">ScoringSystemMetrics</a></code>
@@ -84,14 +83,6 @@ Methods:
 # Search
 
 ## QueryFanout
-
-Types:
-
-- <code><a href="./src/resources/search/query-fanout.ts">QueryFanoutGenerateResponse</a></code>
-
-Methods:
-
-- <code title="post /search/query_fanout/generate">client.search.queryFanout.<a href="./src/resources/search/query-fanout.ts">generate</a>({ ...params }) -> QueryFanoutGenerateResponse</code>
 
 ## QueryClassifier
 
