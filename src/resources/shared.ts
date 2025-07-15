@@ -59,21 +59,6 @@ export namespace QueryClassifierResult {
   }
 }
 
-/**
- * An input query and its associated fanout queries
- */
-export interface QueryFanoutExample {
-  /**
-   * The list of fanout queries associated with the input
-   */
-  fanout_queries: Array<string>;
-
-  /**
-   * The input query that the fanout queries are based on.
-   */
-  query: string;
-}
-
 export interface Question {
   /**
    * The yes/no question to ask Pi Scoring System.
