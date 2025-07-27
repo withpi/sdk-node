@@ -8,11 +8,16 @@ import * as API from './resources/index';
 import { Data } from './resources/data/data';
 import {
   ScoringSystem,
+  ScoringSystemCancelJobResponse,
   ScoringSystemGenerateParams,
   ScoringSystemGenerateResponse,
   ScoringSystemImportSpecParams,
   ScoringSystemImportSpecResponse,
+  ScoringSystemListJobsParams,
+  ScoringSystemListJobsResponse,
+  ScoringSystemRetrieveJobResponse,
   ScoringSystemScoreParams,
+  ScoringSystemStreamJobMessagesResponse,
   ScoringSystemUploadToHuggingfaceParams,
   ScoringSystemUploadToHuggingfaceResponse,
 } from './resources/scoring-system/scoring-system';
@@ -191,11 +196,16 @@ export declare namespace PiClient {
 
   export {
     ScoringSystem as ScoringSystem,
+    type ScoringSystemCancelJobResponse as ScoringSystemCancelJobResponse,
     type ScoringSystemGenerateResponse as ScoringSystemGenerateResponse,
     type ScoringSystemImportSpecResponse as ScoringSystemImportSpecResponse,
+    type ScoringSystemListJobsResponse as ScoringSystemListJobsResponse,
+    type ScoringSystemRetrieveJobResponse as ScoringSystemRetrieveJobResponse,
+    type ScoringSystemStreamJobMessagesResponse as ScoringSystemStreamJobMessagesResponse,
     type ScoringSystemUploadToHuggingfaceResponse as ScoringSystemUploadToHuggingfaceResponse,
     type ScoringSystemGenerateParams as ScoringSystemGenerateParams,
     type ScoringSystemImportSpecParams as ScoringSystemImportSpecParams,
+    type ScoringSystemListJobsParams as ScoringSystemListJobsParams,
     type ScoringSystemScoreParams as ScoringSystemScoreParams,
     type ScoringSystemUploadToHuggingfaceParams as ScoringSystemUploadToHuggingfaceParams,
   };
