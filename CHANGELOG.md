@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.23.0 (2025-07-27)
+
+Full Changelog: [v1.22.0...v1.23.0](https://github.com/withpi/sdk-node/compare/v1.22.0...v1.23.0)
+
+### Features
+
+* **api:** api update ([9c7263b](https://github.com/withpi/sdk-node/commit/9c7263be5f8ed277c507b801661b78780235acb4))
+
 ## 1.22.0 (2025-07-27)
 
 Full Changelog: [v1.21.0...v1.22.0](https://github.com/withpi/sdk-node/compare/v1.21.0...v1.22.0)
