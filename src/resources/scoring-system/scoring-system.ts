@@ -25,7 +25,7 @@ export class ScoringSystem extends APIResource {
   }
 
   /**
-   * Generates a scoring spec
+   * Starts a Generate Scoring Spec job
    */
   generate(
     body: ScoringSystemGenerateParams,
