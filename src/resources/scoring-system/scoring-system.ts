@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../resource';
+import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as Shared from '../shared';
 import * as CalibrateAPI from './calibrate';
@@ -15,6 +16,13 @@ import {
 
 export class ScoringSystem extends APIResource {
   calibrate: CalibrateAPI.Calibrate = new CalibrateAPI.Calibrate(this._client);
+
+  /**
+   * Cancels a Generate Scoring Spec job
+   */
+  cancelJob(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+    return this._client.delete(`/scoring_system/generate/${jobId}`, options);
+  }
 
   /**
    * Generates a scoring spec
@@ -37,6 +45,34 @@ export class ScoringSystem extends APIResource {
   }
 
   /**
+   * Lists the Generate Scoring Spec Jobs owned by a user
+   */
+  listJobs(
+    query?: ScoringSystemListJobsParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<ScoringSystemListJobsResponse>;
+  listJobs(options?: Core.RequestOptions): Core.APIPromise<ScoringSystemListJobsResponse>;
+  listJobs(
+    query: ScoringSystemListJobsParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<ScoringSystemListJobsResponse> {
+    if (isRequestOptions(query)) {
+      return this.listJobs({}, query);
+    }
+    return this._client.get('/scoring_system/generate', { query, ...options });
+  }
+
+  /**
+   * Checks the status of a Generate Scoring Spec job
+   */
+  retrieveJob(
+    jobId: string,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<ScoringSystemRetrieveJobResponse> {
+    return this._client.get(`/scoring_system/generate/${jobId}`, options);
+  }
+
+  /**
    * Scores the provided input and output based on the given scoring spec or a list
    * of questions
    */
@@ -45,6 +81,16 @@ export class ScoringSystem extends APIResource {
     options?: Core.RequestOptions,
   ): Core.APIPromise<Shared.ScoringSystemMetrics> {
     return this._client.post('/scoring_system/score', { body, ...options });
+  }
+
+  /**
+   * Opens a message stream about a Generate Scoring Spec job
+   */
+  streamJobMessages(jobId: string, options?: Core.RequestOptions): Core.APIPromise<string> {
+    return this._client.get(`/scoring_system/generate/${jobId}/messages`, {
+      ...options,
+      headers: { Accept: 'text/plain', ...options?.headers },
+    });
   }
 
   /**
@@ -58,9 +104,82 @@ export class ScoringSystem extends APIResource {
   }
 }
 
-export type ScoringSystemGenerateResponse = Array<Shared.Question>;
+export type ScoringSystemCancelJobResponse = string;
+
+export interface ScoringSystemGenerateResponse {
+  /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
+
+  /**
+   * The job id
+   */
+  job_id: string;
+
+  /**
+   * Current state of the job
+   */
+  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
+
+  /**
+   * The generated scoring spec
+   */
+  scoring_spec?: Array<Shared.Question> | null;
+}
 
 export type ScoringSystemImportSpecResponse = Array<Shared.Question>;
+
+export type ScoringSystemListJobsResponse =
+  Array<ScoringSystemListJobsResponse.ScoringSystemListJobsResponseItem>;
+
+export namespace ScoringSystemListJobsResponse {
+  export interface ScoringSystemListJobsResponseItem {
+    /**
+     * Detailed status of the job
+     */
+    detailed_status: Array<string>;
+
+    /**
+     * The job id
+     */
+    job_id: string;
+
+    /**
+     * Current state of the job
+     */
+    state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
+
+    /**
+     * The generated scoring spec
+     */
+    scoring_spec?: Array<Shared.Question> | null;
+  }
+}
+
+export interface ScoringSystemRetrieveJobResponse {
+  /**
+   * Detailed status of the job
+   */
+  detailed_status: Array<string>;
+
+  /**
+   * The job id
+   */
+  job_id: string;
+
+  /**
+   * Current state of the job
+   */
+  state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
+
+  /**
+   * The generated scoring spec
+   */
+  scoring_spec?: Array<Shared.Question> | null;
+}
+
+export type ScoringSystemStreamJobMessagesResponse = string;
 
 export type ScoringSystemUploadToHuggingfaceResponse = string;
 
@@ -165,6 +284,13 @@ export interface ScoringSystemImportSpecParams {
   source?: 'HUGGINGFACE';
 }
 
+export interface ScoringSystemListJobsParams {
+  /**
+   * Filter jobs by state
+   */
+  state?: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED' | null;
+}
+
 export interface ScoringSystemScoreParams {
   /**
    * The input to score
@@ -216,11 +342,16 @@ ScoringSystem.Calibrate = Calibrate;
 
 export declare namespace ScoringSystem {
   export {
+    type ScoringSystemCancelJobResponse as ScoringSystemCancelJobResponse,
     type ScoringSystemGenerateResponse as ScoringSystemGenerateResponse,
     type ScoringSystemImportSpecResponse as ScoringSystemImportSpecResponse,
+    type ScoringSystemListJobsResponse as ScoringSystemListJobsResponse,
+    type ScoringSystemRetrieveJobResponse as ScoringSystemRetrieveJobResponse,
+    type ScoringSystemStreamJobMessagesResponse as ScoringSystemStreamJobMessagesResponse,
     type ScoringSystemUploadToHuggingfaceResponse as ScoringSystemUploadToHuggingfaceResponse,
     type ScoringSystemGenerateParams as ScoringSystemGenerateParams,
     type ScoringSystemImportSpecParams as ScoringSystemImportSpecParams,
+    type ScoringSystemListJobsParams as ScoringSystemListJobsParams,
     type ScoringSystemScoreParams as ScoringSystemScoreParams,
     type ScoringSystemUploadToHuggingfaceParams as ScoringSystemUploadToHuggingfaceParams,
   };
