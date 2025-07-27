@@ -10,64 +10,6 @@ const client = new PiClient({
 
 describe('resource scoringSystem', () => {
   // skipped: tests are disabled for the time being
-  test.skip('cancelJob', async () => {
-    const responsePromise = client.scoringSystem.cancelJob('job_id');
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('cancelJob: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.scoringSystem.cancelJob('job_id', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(PiClient.NotFoundError);
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('generate: only required params', async () => {
-    const responsePromise = client.scoringSystem.generate({
-      application_description: "Write a children's story communicating a simple life lesson.",
-      examples: [
-        { llm_input: 'good input', llm_output: 'good response' },
-        { llm_input: 'neutral input', llm_output: 'neutral response' },
-      ],
-      preference_examples: [
-        { chosen: 'chosen response', llm_input: 'some input', rejected: 'rejected response' },
-      ],
-    });
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('generate: required and optional params', async () => {
-    const response = await client.scoringSystem.generate({
-      application_description: "Write a children's story communicating a simple life lesson.",
-      examples: [
-        { llm_input: 'good input', llm_output: 'good response', rating: 'Disagree', score: 0.9 },
-        { llm_input: 'neutral input', llm_output: 'neutral response', rating: 'Disagree', score: 0.5 },
-      ],
-      preference_examples: [
-        { chosen: 'chosen response', llm_input: 'some input', rejected: 'rejected response' },
-      ],
-      batch_size: 0,
-      num_questions: 0,
-      try_auto_generating_python_code: false,
-    });
-  });
-
-  // skipped: tests are disabled for the time being
   test.skip('importSpec: only required params', async () => {
     const responsePromise = client.scoringSystem.importSpec({
       hf_scoring_spec_name: 'withpi/tldr_scoring_system',
@@ -88,54 +30,6 @@ describe('resource scoringSystem', () => {
       hf_token: 'hf_token',
       source: 'HUGGINGFACE',
     });
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('listJobs', async () => {
-    const responsePromise = client.scoringSystem.listJobs();
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('listJobs: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.scoringSystem.listJobs({ path: '/_stainless_unknown_path' })).rejects.toThrow(
-      PiClient.NotFoundError,
-    );
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('listJobs: request options and params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.scoringSystem.listJobs({ state: 'QUEUED' }, { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(PiClient.NotFoundError);
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('retrieveJob', async () => {
-    const responsePromise = client.scoringSystem.retrieveJob('job_id');
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('retrieveJob: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.scoringSystem.retrieveJob('job_id', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(PiClient.NotFoundError);
   });
 
   // skipped: tests are disabled for the time being
@@ -196,26 +90,6 @@ describe('resource scoringSystem', () => {
       aggregation_method: 'ARITHMETIC_MEAN',
       kwargs: { any_param: 'any_value' },
     });
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('streamJobMessages', async () => {
-    const responsePromise = client.scoringSystem.streamJobMessages('job_id');
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('streamJobMessages: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.scoringSystem.streamJobMessages('job_id', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(PiClient.NotFoundError);
   });
 
   // skipped: tests are disabled for the time being
