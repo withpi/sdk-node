@@ -10,9 +10,16 @@ export {
 } from './calibrate';
 export {
   ScoringSystem,
+  type ScoringSystemCancelJobResponse,
+  type ScoringSystemGenerateResponse,
   type ScoringSystemImportSpecResponse,
+  type ScoringSystemListJobsResponse,
+  type ScoringSystemRetrieveJobResponse,
+  type ScoringSystemStreamJobMessagesResponse,
   type ScoringSystemUploadToHuggingfaceResponse,
+  type ScoringSystemGenerateParams,
   type ScoringSystemImportSpecParams,
+  type ScoringSystemListJobsParams,
   type ScoringSystemScoreParams,
   type ScoringSystemUploadToHuggingfaceParams,
 } from './scoring-system';
