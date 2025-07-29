@@ -53,23 +53,13 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/scoring-system/scoring-system.ts">ScoringSystemCancelJobResponse</a></code>
-- <code><a href="./src/resources/scoring-system/scoring-system.ts">ScoringSystemGenerateResponse</a></code>
 - <code><a href="./src/resources/scoring-system/scoring-system.ts">ScoringSystemImportSpecResponse</a></code>
-- <code><a href="./src/resources/scoring-system/scoring-system.ts">ScoringSystemListJobsResponse</a></code>
-- <code><a href="./src/resources/scoring-system/scoring-system.ts">ScoringSystemRetrieveJobResponse</a></code>
-- <code><a href="./src/resources/scoring-system/scoring-system.ts">ScoringSystemStreamJobMessagesResponse</a></code>
 - <code><a href="./src/resources/scoring-system/scoring-system.ts">ScoringSystemUploadToHuggingfaceResponse</a></code>
 
 Methods:
 
-- <code title="delete /scoring_system/generate/{job_id}">client.scoringSystem.<a href="./src/resources/scoring-system/scoring-system.ts">cancelJob</a>(jobId) -> string</code>
-- <code title="post /scoring_system/generate">client.scoringSystem.<a href="./src/resources/scoring-system/scoring-system.ts">generate</a>({ ...params }) -> ScoringSystemGenerateResponse</code>
 - <code title="post /scoring_system/import_spec">client.scoringSystem.<a href="./src/resources/scoring-system/scoring-system.ts">importSpec</a>({ ...params }) -> ScoringSystemImportSpecResponse</code>
-- <code title="get /scoring_system/generate">client.scoringSystem.<a href="./src/resources/scoring-system/scoring-system.ts">listJobs</a>({ ...params }) -> ScoringSystemListJobsResponse</code>
-- <code title="get /scoring_system/generate/{job_id}">client.scoringSystem.<a href="./src/resources/scoring-system/scoring-system.ts">retrieveJob</a>(jobId) -> ScoringSystemRetrieveJobResponse</code>
 - <code title="post /scoring_system/score">client.scoringSystem.<a href="./src/resources/scoring-system/scoring-system.ts">score</a>({ ...params }) -> ScoringSystemMetrics</code>
-- <code title="get /scoring_system/generate/{job_id}/messages">client.scoringSystem.<a href="./src/resources/scoring-system/scoring-system.ts">streamJobMessages</a>(jobId) -> string</code>
 - <code title="post /scoring_system/to_huggingface">client.scoringSystem.<a href="./src/resources/scoring-system/scoring-system.ts">uploadToHuggingface</a>({ ...params }) -> string</code>
 
 ## Calibrate
@@ -87,6 +77,24 @@ Methods:
 - <code title="delete /scoring_system/calibrate/{job_id}">client.scoringSystem.calibrate.<a href="./src/resources/scoring-system/calibrate.ts">cancel</a>(jobId) -> string</code>
 - <code title="post /scoring_system/calibrate">client.scoringSystem.calibrate.<a href="./src/resources/scoring-system/calibrate.ts">startJob</a>({ ...params }) -> ScoringSpecCalibrationStatus</code>
 - <code title="get /scoring_system/calibrate/{job_id}/messages">client.scoringSystem.calibrate.<a href="./src/resources/scoring-system/calibrate.ts">streamMessages</a>(jobId) -> string</code>
+
+## Generate
+
+Types:
+
+- <code><a href="./src/resources/scoring-system/generate.ts">GenerateRetrieveResponse</a></code>
+- <code><a href="./src/resources/scoring-system/generate.ts">GenerateListResponse</a></code>
+- <code><a href="./src/resources/scoring-system/generate.ts">GenerateCancelResponse</a></code>
+- <code><a href="./src/resources/scoring-system/generate.ts">GenerateStartJobResponse</a></code>
+- <code><a href="./src/resources/scoring-system/generate.ts">GenerateStreamMessagesResponse</a></code>
+
+Methods:
+
+- <code title="get /scoring_system/generate/{job_id}">client.scoringSystem.generate.<a href="./src/resources/scoring-system/generate.ts">retrieve</a>(jobId) -> GenerateRetrieveResponse</code>
+- <code title="get /scoring_system/generate">client.scoringSystem.generate.<a href="./src/resources/scoring-system/generate.ts">list</a>({ ...params }) -> GenerateListResponse</code>
+- <code title="delete /scoring_system/generate/{job_id}">client.scoringSystem.generate.<a href="./src/resources/scoring-system/generate.ts">cancel</a>(jobId) -> string</code>
+- <code title="post /scoring_system/generate">client.scoringSystem.generate.<a href="./src/resources/scoring-system/generate.ts">startJob</a>({ ...params }) -> GenerateStartJobResponse</code>
+- <code title="get /scoring_system/generate/{job_id}/messages">client.scoringSystem.generate.<a href="./src/resources/scoring-system/generate.ts">streamMessages</a>(jobId) -> string</code>
 
 # Search
 
