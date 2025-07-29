@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.24.0 (2025-07-29)
+
+Full Changelog: [v1.23.0...v1.24.0](https://github.com/withpi/sdk-node/compare/v1.23.0...v1.24.0)
+
+### Features
+
+* **api:** manual updates to nest generate scoring spec methods ([8f29fff](https://github.com/withpi/sdk-node/commit/8f29fffff8cb4f536bb985080e9a5efee5c03f27))
+* **api:** manual updates to nest generate scoring spec methods ([8f29fff](https://github.com/withpi/sdk-node/commit/8f29fffff8cb4f536bb985080e9a5efee5c03f27))
+
 ## 1.23.0 (2025-07-27)
 
 Full Changelog: [v1.22.0...v1.23.0](https://github.com/withpi/sdk-node/compare/v1.22.0...v1.23.0)
