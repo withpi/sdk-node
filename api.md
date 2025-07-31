@@ -98,8 +98,6 @@ Methods:
 
 # Search
 
-## QueryFanout
-
 ## QueryClassifier
 
 Types:

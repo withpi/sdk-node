@@ -1,6 +1,6 @@
 {
   "name": "withpi",
-  "version": "1.24.0",
+  "version": "1.25.0",
   "description": "The official TypeScript library for the Pi Client API",
   "author": "Pi Client <support@withpi.ai>",
   "types": "dist/index.d.ts",
@@ -58,10 +58,6 @@
     "./shims/web.js",
     "./shims/web.mjs"
   ],
-  "imports": {
-    "withpi": ".",
-    "withpi/*": "./src/*"
-  },
   "exports": {
     "./_shims/auto/*": {
       "deno": {

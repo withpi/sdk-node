@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.25.0 (2025-07-31)
+
+Full Changelog: [v1.24.0...v1.25.0](https://github.com/withpi/sdk-node/compare/v1.24.0...v1.25.0)
+
+### Features
+
+* **api:** Drop query fanout from main config ([20162de](https://github.com/withpi/sdk-node/commit/20162deaaf662cfb21fb596ec0f0b35a9cfc1e80))
+
+
+### Chores
+
+* **internal:** remove redundant imports config ([84d73d6](https://github.com/withpi/sdk-node/commit/84d73d694aabf795611becd29606b9589630a84d))
+
 ## 1.24.0 (2025-07-29)
 
 Full Changelog: [v1.23.0...v1.24.0](https://github.com/withpi/sdk-node/compare/v1.23.0...v1.24.0)
