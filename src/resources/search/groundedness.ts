@@ -31,12 +31,12 @@ export namespace GroundednessCheckResponse {
 
 export interface GroundednessCheckParams {
   /**
-   * The context to check groundedness against. Must be < 15,000 characters.
+   * The context to check groundedness against.
    */
   context: string;
 
   /**
-   * The generated output to check for groundedness. Must be < 15,000 characters.
+   * The generated output to check for groundedness.
    */
   output: string;
 
@@ -46,7 +46,7 @@ export interface GroundednessCheckParams {
   processing_strategy?: 'speed_optimized' | 'balanced' | 'quality_optimized';
 
   /**
-   * The optional query that generated the output. Must be < 2,000 characters.
+   * The optional query that generated the output.
    */
   query?: string;
 }
