@@ -73,6 +73,11 @@ export interface GenerateRetrieveResponse {
   state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
 
   /**
+   * The supplementary information regarding the generation of scoring spec
+   */
+  info?: unknown | null;
+
+  /**
    * The generated scoring spec
    */
   scoring_spec?: Array<Shared.Question> | null;
@@ -98,6 +103,11 @@ export namespace GenerateListResponse {
     state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
 
     /**
+     * The supplementary information regarding the generation of scoring spec
+     */
+    info?: unknown | null;
+
+    /**
      * The generated scoring spec
      */
     scoring_spec?: Array<Shared.Question> | null;
@@ -121,6 +131,11 @@ export interface GenerateStartJobResponse {
    * Current state of the job
    */
   state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
+
+  /**
+   * The supplementary information regarding the generation of scoring spec
+   */
+  info?: unknown | null;
 
   /**
    * The generated scoring spec
