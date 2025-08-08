@@ -73,14 +73,14 @@ export interface GenerateRetrieveResponse {
   state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
 
   /**
-   * The supplementary information regarding the generation of scoring spec
-   */
-  info?: unknown | null;
-
-  /**
    * The generated scoring spec
    */
   scoring_spec?: Array<Shared.Question> | null;
+
+  /**
+   * Threshold to use to separate 0 and 1 labels in the case of classification.
+   */
+  threshold?: number | null;
 }
 
 export type GenerateListResponse = Array<GenerateListResponse.GenerateListResponseItem>;
@@ -103,14 +103,14 @@ export namespace GenerateListResponse {
     state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
 
     /**
-     * The supplementary information regarding the generation of scoring spec
-     */
-    info?: unknown | null;
-
-    /**
      * The generated scoring spec
      */
     scoring_spec?: Array<Shared.Question> | null;
+
+    /**
+     * Threshold to use to separate 0 and 1 labels in the case of classification.
+     */
+    threshold?: number | null;
   }
 }
 
@@ -133,14 +133,14 @@ export interface GenerateStartJobResponse {
   state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
 
   /**
-   * The supplementary information regarding the generation of scoring spec
-   */
-  info?: unknown | null;
-
-  /**
    * The generated scoring spec
    */
   scoring_spec?: Array<Shared.Question> | null;
+
+  /**
+   * Threshold to use to separate 0 and 1 labels in the case of classification.
+   */
+  threshold?: number | null;
 }
 
 export type GenerateStreamMessagesResponse = string;
