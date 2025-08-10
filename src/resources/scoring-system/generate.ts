@@ -176,6 +176,12 @@ export interface GenerateStartJobParams {
   batch_size?: number;
 
   /**
+   * Existing questions for the applications, these may or may not be retained in the
+   * output depending on their performance
+   */
+  existing_questions?: Array<Shared.Question>;
+
+  /**
    * The number of questions that the generated scoring system should contain. If <=
    * 0, then the number is auto selected.
    */
