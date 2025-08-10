@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.27.1 (2025-08-10)
+
+Full Changelog: [v1.27.0...v1.27.1](https://github.com/withpi/sdk-node/compare/v1.27.0...v1.27.1)
+
+### Features
+
+* **api:** api update ([6ab9846](https://github.com/withpi/sdk-node/commit/6ab98461cfd3a33388ea9cbcd672d6aaef1ac1f4))
+
+
+### Chores
+
+* **internal:** update comment in script ([f5cf5ef](https://github.com/withpi/sdk-node/commit/f5cf5ef33ba5ccde150dc15aca8156d775d5026d))
+* update @stainless-api/prism-cli to v5.15.0 ([ffa943b](https://github.com/withpi/sdk-node/commit/ffa943b23a5944153ed6a5054733f2fcabcb25d8))
+
 ## 1.27.0 (2025-08-08)
 
 Full Changelog: [v1.26.1...v1.27.0](https://github.com/withpi/sdk-node/compare/v1.26.1...v1.27.0)
