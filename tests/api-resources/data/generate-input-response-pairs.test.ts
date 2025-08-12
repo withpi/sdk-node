@@ -9,7 +9,7 @@ const client = new PiClient({
 });
 
 describe('resource generateInputResponsePairs', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.data.generateInputResponsePairs.retrieve('job_id');
     const rawResponse = await responsePromise.asResponse();
@@ -21,7 +21,7 @@ describe('resource generateInputResponsePairs', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -29,7 +29,7 @@ describe('resource generateInputResponsePairs', () => {
     ).rejects.toThrow(PiClient.NotFoundError);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.data.generateInputResponsePairs.list();
     const rawResponse = await responsePromise.asResponse();
@@ -41,7 +41,7 @@ describe('resource generateInputResponsePairs', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -49,7 +49,7 @@ describe('resource generateInputResponsePairs', () => {
     ).rejects.toThrow(PiClient.NotFoundError);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -57,7 +57,7 @@ describe('resource generateInputResponsePairs', () => {
     ).rejects.toThrow(PiClient.NotFoundError);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('cancel', async () => {
     const responsePromise = client.data.generateInputResponsePairs.cancel('job_id');
     const rawResponse = await responsePromise.asResponse();
@@ -69,7 +69,7 @@ describe('resource generateInputResponsePairs', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('cancel: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -77,7 +77,7 @@ describe('resource generateInputResponsePairs', () => {
     ).rejects.toThrow(PiClient.NotFoundError);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('startJob: only required params', async () => {
     const responsePromise = client.data.generateInputResponsePairs.startJob({
       num_pairs_to_generate: 50,
@@ -97,7 +97,7 @@ describe('resource generateInputResponsePairs', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('startJob: required and optional params', async () => {
     const response = await client.data.generateInputResponsePairs.startJob({
       num_pairs_to_generate: 50,
@@ -116,7 +116,7 @@ describe('resource generateInputResponsePairs', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('streamData', async () => {
     const responsePromise = client.data.generateInputResponsePairs.streamData('job_id');
     const rawResponse = await responsePromise.asResponse();
@@ -128,7 +128,7 @@ describe('resource generateInputResponsePairs', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('streamData: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -136,7 +136,7 @@ describe('resource generateInputResponsePairs', () => {
     ).rejects.toThrow(PiClient.NotFoundError);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('streamMessages', async () => {
     const responsePromise = client.data.generateInputResponsePairs.streamMessages('job_id');
     const rawResponse = await responsePromise.asResponse();
@@ -148,7 +148,7 @@ describe('resource generateInputResponsePairs', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('streamMessages: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(

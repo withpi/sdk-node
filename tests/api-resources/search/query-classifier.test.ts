@@ -9,7 +9,7 @@ const client = new PiClient({
 });
 
 describe('resource queryClassifier', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('classify: only required params', async () => {
     const responsePromise = client.search.queryClassifier.classify({
       classes: [
@@ -38,7 +38,7 @@ describe('resource queryClassifier', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('classify: required and optional params', async () => {
     const response = await client.search.queryClassifier.classify({
       classes: [
