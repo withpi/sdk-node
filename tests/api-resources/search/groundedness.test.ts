@@ -9,7 +9,7 @@ const client = new PiClient({
 });
 
 describe('resource groundedness', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('check: only required params', async () => {
     const responsePromise = client.search.groundedness.check({ context: 'context', output: 'output' });
     const rawResponse = await responsePromise.asResponse();
@@ -21,7 +21,7 @@ describe('resource groundedness', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('check: required and optional params', async () => {
     const response = await client.search.groundedness.check({
       context: 'context',
