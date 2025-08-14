@@ -28,6 +28,11 @@ export namespace GroundednessCheckResponse {
      */
     claim: string;
 
+    /**
+     * Explanation regarding why the claim is incorrect
+     */
+    explanation: string;
+
     hallucination_type:
       | 'Evident conflict'
       | 'Subtle conflict'
@@ -35,20 +40,15 @@ export namespace GroundednessCheckResponse {
       | 'Subtle introduction of baseless information';
 
     /**
+     * A quote of the answer or output text that is not supported by the context
+     * (select the minimal text that is hallucinated)
+     */
+    output_text: string;
+
+    /**
      * The reasoning for the hallucination
      */
     reasoning: string;
-
-    /**
-     * A quote of the text that is not supported by the context (select the minimal
-     * text that is hallucinated)
-     */
-    text: string;
-
-    /**
-     * Why is the claim incorrect?
-     */
-    why_incorrect: string;
   }
 }
 
