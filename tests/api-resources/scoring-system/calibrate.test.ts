@@ -9,7 +9,7 @@ const client = new PiClient({
 });
 
 describe('resource calibrate', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.scoringSystem.calibrate.retrieve('job_id');
     const rawResponse = await responsePromise.asResponse();
@@ -21,7 +21,7 @@ describe('resource calibrate', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieve: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -29,7 +29,7 @@ describe('resource calibrate', () => {
     ).rejects.toThrow(PiClient.NotFoundError);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.scoringSystem.calibrate.list();
     const rawResponse = await responsePromise.asResponse();
@@ -41,7 +41,7 @@ describe('resource calibrate', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(client.scoringSystem.calibrate.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
@@ -49,7 +49,7 @@ describe('resource calibrate', () => {
     );
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -57,7 +57,7 @@ describe('resource calibrate', () => {
     ).rejects.toThrow(PiClient.NotFoundError);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('cancel', async () => {
     const responsePromise = client.scoringSystem.calibrate.cancel('job_id');
     const rawResponse = await responsePromise.asResponse();
@@ -69,7 +69,7 @@ describe('resource calibrate', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('cancel: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -77,7 +77,7 @@ describe('resource calibrate', () => {
     ).rejects.toThrow(PiClient.NotFoundError);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('startJob: only required params', async () => {
     const responsePromise = client.scoringSystem.calibrate.startJob({
       examples: [
@@ -98,7 +98,7 @@ describe('resource calibrate', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('startJob: required and optional params', async () => {
     const response = await client.scoringSystem.calibrate.startJob({
       examples: [
@@ -146,7 +146,7 @@ describe('resource calibrate', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('streamMessages', async () => {
     const responsePromise = client.scoringSystem.calibrate.streamMessages('job_id');
     const rawResponse = await responsePromise.asResponse();
@@ -158,7 +158,7 @@ describe('resource calibrate', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('streamMessages: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(

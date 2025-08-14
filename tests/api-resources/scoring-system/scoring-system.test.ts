@@ -9,7 +9,7 @@ const client = new PiClient({
 });
 
 describe('resource scoringSystem', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('importSpec: only required params', async () => {
     const responsePromise = client.scoringSystem.importSpec({
       hf_scoring_spec_name: 'withpi/tldr_scoring_system',
@@ -23,7 +23,7 @@ describe('resource scoringSystem', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('importSpec: required and optional params', async () => {
     const response = await client.scoringSystem.importSpec({
       hf_scoring_spec_name: 'withpi/tldr_scoring_system',
@@ -32,7 +32,7 @@ describe('resource scoringSystem', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('score: only required params', async () => {
     const responsePromise = client.scoringSystem.score({
       llm_input: 'Tell me something different',
@@ -48,7 +48,7 @@ describe('resource scoringSystem', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('score: required and optional params', async () => {
     const response = await client.scoringSystem.score({
       llm_input: 'Tell me something different',
@@ -92,7 +92,7 @@ describe('resource scoringSystem', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('uploadToHuggingface: only required params', async () => {
     const responsePromise = client.scoringSystem.uploadToHuggingface({
       hf_scoring_spec_name: 'withpi/tldr_scoring_system',
@@ -107,7 +107,7 @@ describe('resource scoringSystem', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('uploadToHuggingface: required and optional params', async () => {
     const response = await client.scoringSystem.uploadToHuggingface({
       hf_scoring_spec_name: 'withpi/tldr_scoring_system',

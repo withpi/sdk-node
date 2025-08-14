@@ -23,9 +23,32 @@ export interface GroundednessCheckResponse {
 
 export namespace GroundednessCheckResponse {
   export interface Hallucination {
-    explanation: string;
+    /**
+     * What claim is being made in the text that is incorrect
+     */
+    claim: string;
 
-    output_text: string;
+    hallucination_type:
+      | 'Evident conflict'
+      | 'Subtle conflict'
+      | 'Evident introduction of baseless information'
+      | 'Subtle introduction of baseless information';
+
+    /**
+     * The reasoning for the hallucination
+     */
+    reasoning: string;
+
+    /**
+     * A quote of the text that is not supported by the context (select the minimal
+     * text that is hallucinated)
+     */
+    text: string;
+
+    /**
+     * Why is the claim incorrect?
+     */
+    why_incorrect: string;
   }
 }
 
