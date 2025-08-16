@@ -182,6 +182,7 @@ export class PiClient extends Core.APIClient {
 PiClient.Data = Data;
 PiClient.ScoringSystem = ScoringSystem;
 PiClient.Search = Search;
+
 export declare namespace PiClient {
   export type RequestOptions = Core.RequestOptions;
 
