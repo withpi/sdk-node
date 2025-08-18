@@ -6,4 +6,9 @@ export {
   type QueryClassifierClassifyResponse,
   type QueryClassifierClassifyParams,
 } from './query-classifier';
-export { Search } from './search';
+export {
+  QueryToPassage,
+  type QueryToPassageRankDocumentsResponse,
+  type QueryToPassageRankDocumentsParams,
+} from './query-to-passage';
+export { Search, type SearchEmbedDocumentsResponse, type SearchEmbedDocumentsParams } from './search';
