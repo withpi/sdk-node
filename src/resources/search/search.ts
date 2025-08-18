@@ -16,7 +16,7 @@ export class Search extends APIResource {
   groundedness: GroundednessAPI.Groundedness = new GroundednessAPI.Groundedness(this._client);
 
   /**
-   * Embeds documents or passages for Search applications. This will return 256
+   * Creates embeddings of provided text input for Search applications. Returns 256
    * dimensional embeddings with the same length as the input query parameter.
    */
   embed(body: SearchEmbedParams, options?: Core.RequestOptions): Core.APIPromise<SearchEmbedResponse> {
@@ -24,9 +24,9 @@ export class Search extends APIResource {
   }
 
   /**
-   * Ranks documents based on their relevance to the query. This will return a score
-   * for each passage indicating its relevance to the query. Scores are returned in
-   * the same order as the input passages.
+   * Rank passages based on their relevance to a query. This will return a score for
+   * each passage indicating its relevance to the query. Scores are returned in the
+   * same order as the input passages.
    */
   rank(body: SearchRankParams, options?: Core.RequestOptions): Core.APIPromise<SearchRankResponse> {
     return this._client.post('/search/query_to_passage/score', { body, ...options });
