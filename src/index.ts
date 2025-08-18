@@ -14,7 +14,7 @@ import {
   ScoringSystemUploadToHuggingfaceParams,
   ScoringSystemUploadToHuggingfaceResponse,
 } from './resources/scoring-system/scoring-system';
-import { Search } from './resources/search/search';
+import { Search, SearchEmbedDocumentsParams, SearchEmbedDocumentsResponse } from './resources/search/search';
 
 export interface ClientOptions {
   /**
@@ -197,7 +197,11 @@ export declare namespace PiClient {
     type ScoringSystemUploadToHuggingfaceParams as ScoringSystemUploadToHuggingfaceParams,
   };
 
-  export { Search as Search };
+  export {
+    Search as Search,
+    type SearchEmbedDocumentsResponse as SearchEmbedDocumentsResponse,
+    type SearchEmbedDocumentsParams as SearchEmbedDocumentsParams,
+  };
 
   export type DataGenerationStatus = API.DataGenerationStatus;
   export type Example = API.Example;
