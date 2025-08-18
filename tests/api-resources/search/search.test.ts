@@ -11,7 +11,7 @@ const client = new PiClient({
 describe('resource search', () => {
   // Prism tests are disabled
   test.skip('embed: only required params', async () => {
-    const responsePromise = client.search.embed({ batch: ['string'], query: ['string'] });
+    const responsePromise = client.search.embed({ batch: true, query: ['string'] });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -23,7 +23,7 @@ describe('resource search', () => {
 
   // Prism tests are disabled
   test.skip('embed: required and optional params', async () => {
-    const response = await client.search.embed({ batch: ['string'], query: ['string'] });
+    const response = await client.search.embed({ batch: true, query: ['string'] });
   });
 
   // Prism tests are disabled
