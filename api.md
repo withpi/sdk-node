@@ -98,6 +98,14 @@ Methods:
 
 # Search
 
+Types:
+
+- <code><a href="./src/resources/search/search.ts">SearchEmbedDocumentsResponse</a></code>
+
+Methods:
+
+- <code title="post /search/embed">client.search.<a href="./src/resources/search/search.ts">embedDocuments</a>({ ...params }) -> SearchEmbedDocumentsResponse</code>
+
 ## QueryClassifier
 
 Types:
@@ -117,3 +125,13 @@ Types:
 Methods:
 
 - <code title="post /search/groundedness/check">client.search.groundedness.<a href="./src/resources/search/groundedness.ts">check</a>({ ...params }) -> GroundednessCheckResponse</code>
+
+## QueryToPassage
+
+Types:
+
+- <code><a href="./src/resources/search/query-to-passage.ts">QueryToPassageRankDocumentsResponse</a></code>
+
+Methods:
+
+- <code title="post /search/query_to_passage/score">client.search.queryToPassage.<a href="./src/resources/search/query-to-passage.ts">rankDocuments</a>({ ...params }) -> QueryToPassageRankDocumentsResponse</code>
