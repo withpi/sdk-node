@@ -10,8 +10,8 @@ const client = new PiClient({
 
 describe('resource search', () => {
   // Prism tests are disabled
-  test.skip('embedDocuments: only required params', async () => {
-    const responsePromise = client.search.embedDocuments({ batch: ['string'], query: ['string'] });
+  test.skip('embed: only required params', async () => {
+    const responsePromise = client.search.embed({ batch: ['string'], query: ['string'] });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,7 +22,24 @@ describe('resource search', () => {
   });
 
   // Prism tests are disabled
-  test.skip('embedDocuments: required and optional params', async () => {
-    const response = await client.search.embedDocuments({ batch: ['string'], query: ['string'] });
+  test.skip('embed: required and optional params', async () => {
+    const response = await client.search.embed({ batch: ['string'], query: ['string'] });
+  });
+
+  // Prism tests are disabled
+  test.skip('rank: only required params', async () => {
+    const responsePromise = client.search.rank({ passages: ['string'], query: 'query' });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // Prism tests are disabled
+  test.skip('rank: required and optional params', async () => {
+    const response = await client.search.rank({ passages: ['string'], query: 'query' });
   });
 });

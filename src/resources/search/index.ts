@@ -7,8 +7,9 @@ export {
   type QueryClassifierClassifyParams,
 } from './query-classifier';
 export {
-  QueryToPassage,
-  type QueryToPassageRankDocumentsResponse,
-  type QueryToPassageRankDocumentsParams,
-} from './query-to-passage';
-export { Search, type SearchEmbedDocumentsResponse, type SearchEmbedDocumentsParams } from './search';
+  Search,
+  type SearchEmbedResponse,
+  type SearchRankResponse,
+  type SearchEmbedParams,
+  type SearchRankParams,
+} from './search';

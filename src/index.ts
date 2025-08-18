@@ -14,7 +14,13 @@ import {
   ScoringSystemUploadToHuggingfaceParams,
   ScoringSystemUploadToHuggingfaceResponse,
 } from './resources/scoring-system/scoring-system';
-import { Search, SearchEmbedDocumentsParams, SearchEmbedDocumentsResponse } from './resources/search/search';
+import {
+  Search,
+  SearchEmbedParams,
+  SearchEmbedResponse,
+  SearchRankParams,
+  SearchRankResponse,
+} from './resources/search/search';
 
 export interface ClientOptions {
   /**
@@ -199,8 +205,10 @@ export declare namespace PiClient {
 
   export {
     Search as Search,
-    type SearchEmbedDocumentsResponse as SearchEmbedDocumentsResponse,
-    type SearchEmbedDocumentsParams as SearchEmbedDocumentsParams,
+    type SearchEmbedResponse as SearchEmbedResponse,
+    type SearchRankResponse as SearchRankResponse,
+    type SearchEmbedParams as SearchEmbedParams,
+    type SearchRankParams as SearchRankParams,
   };
 
   export type DataGenerationStatus = API.DataGenerationStatus;
