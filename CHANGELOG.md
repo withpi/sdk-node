@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.30.0 (2025-08-18)
+
+Full Changelog: [v1.29.0...v1.30.0](https://github.com/withpi/sdk-node/compare/v1.29.0...v1.30.0)
+
+### Features
+
+* **api:** api update ([d0f75e7](https://github.com/withpi/sdk-node/commit/d0f75e731bed5346a16aad3b739400da006f5cc3))
+
+
+### Chores
+
+* **deps:** update dependency node-fetch to v2.6.13 ([3cd566d](https://github.com/withpi/sdk-node/commit/3cd566d2fedc83d0e9cab22b0923a26a757b3ccc))
+* **internal:** formatting change ([c68444b](https://github.com/withpi/sdk-node/commit/c68444b442159a4ba2fddbc25209afd20df13a96))
+
 ## 1.29.0 (2025-08-14)
 
 Full Changelog: [v1.28.0...v1.29.0](https://github.com/withpi/sdk-node/compare/v1.28.0...v1.29.0)
