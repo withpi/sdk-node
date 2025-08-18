@@ -10,33 +10,34 @@ import {
   QueryClassifierClassifyParams,
   QueryClassifierClassifyResponse,
 } from './query-classifier';
-import * as QueryToPassageAPI from './query-to-passage';
-import {
-  QueryToPassage,
-  QueryToPassageRankDocumentsParams,
-  QueryToPassageRankDocumentsResponse,
-} from './query-to-passage';
 
 export class Search extends APIResource {
   queryClassifier: QueryClassifierAPI.QueryClassifier = new QueryClassifierAPI.QueryClassifier(this._client);
   groundedness: GroundednessAPI.Groundedness = new GroundednessAPI.Groundedness(this._client);
-  queryToPassage: QueryToPassageAPI.QueryToPassage = new QueryToPassageAPI.QueryToPassage(this._client);
 
   /**
    * Embeds documents or passages for Search applications. This will return 256
    * dimensional embeddings with the same length as the input query parameter.
    */
-  embedDocuments(
-    body: SearchEmbedDocumentsParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<SearchEmbedDocumentsResponse> {
+  embed(body: SearchEmbedParams, options?: Core.RequestOptions): Core.APIPromise<SearchEmbedResponse> {
     return this._client.post('/search/embed', { body, ...options });
+  }
+
+  /**
+   * Ranks documents based on their relevance to the query. This will return a score
+   * for each passage indicating its relevance to the query. Scores are returned in
+   * the same order as the input passages.
+   */
+  rank(body: SearchRankParams, options?: Core.RequestOptions): Core.APIPromise<SearchRankResponse> {
+    return this._client.post('/search/query_to_passage/score', { body, ...options });
   }
 }
 
-export type SearchEmbedDocumentsResponse = Array<Array<number>>;
+export type SearchEmbedResponse = Array<Array<number>>;
 
-export interface SearchEmbedDocumentsParams {
+export type SearchRankResponse = Array<number>;
+
+export interface SearchEmbedParams {
   /**
    * Set to false for realtime usage, such as embedding queries. Set to true for
    * batch usage, such as for embedding documents as part of indexing.
@@ -49,14 +50,27 @@ export interface SearchEmbedDocumentsParams {
   query: Array<string>;
 }
 
+export interface SearchRankParams {
+  /**
+   * The passages to rank
+   */
+  passages: Array<string>;
+
+  /**
+   * The query to compare against
+   */
+  query: string;
+}
+
 Search.QueryClassifier = QueryClassifier;
 Search.Groundedness = Groundedness;
-Search.QueryToPassage = QueryToPassage;
 
 export declare namespace Search {
   export {
-    type SearchEmbedDocumentsResponse as SearchEmbedDocumentsResponse,
-    type SearchEmbedDocumentsParams as SearchEmbedDocumentsParams,
+    type SearchEmbedResponse as SearchEmbedResponse,
+    type SearchRankResponse as SearchRankResponse,
+    type SearchEmbedParams as SearchEmbedParams,
+    type SearchRankParams as SearchRankParams,
   };
 
   export {
@@ -69,11 +83,5 @@ export declare namespace Search {
     Groundedness as Groundedness,
     type GroundednessCheckResponse as GroundednessCheckResponse,
     type GroundednessCheckParams as GroundednessCheckParams,
-  };
-
-  export {
-    QueryToPassage as QueryToPassage,
-    type QueryToPassageRankDocumentsResponse as QueryToPassageRankDocumentsResponse,
-    type QueryToPassageRankDocumentsParams as QueryToPassageRankDocumentsParams,
   };
 }

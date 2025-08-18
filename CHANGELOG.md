@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.31.0 (2025-08-18)
+
+Full Changelog: [v1.30.0...v1.31.0](https://github.com/withpi/sdk-node/compare/v1.30.0...v1.31.0)
+
+### Features
+
+* **api:** add embedding and ranking methods ([ccef705](https://github.com/withpi/sdk-node/commit/ccef705997f7335b57231592b68b14b12c6fe37b))
+
 ## 1.30.0 (2025-08-18)
 
 Full Changelog: [v1.29.0...v1.30.0](https://github.com/withpi/sdk-node/compare/v1.29.0...v1.30.0)
