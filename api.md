@@ -100,11 +100,13 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/search/search.ts">SearchEmbedDocumentsResponse</a></code>
+- <code><a href="./src/resources/search/search.ts">SearchEmbedResponse</a></code>
+- <code><a href="./src/resources/search/search.ts">SearchRankResponse</a></code>
 
 Methods:
 
-- <code title="post /search/embed">client.search.<a href="./src/resources/search/search.ts">embedDocuments</a>({ ...params }) -> SearchEmbedDocumentsResponse</code>
+- <code title="post /search/embed">client.search.<a href="./src/resources/search/search.ts">embed</a>({ ...params }) -> SearchEmbedResponse</code>
+- <code title="post /search/query_to_passage/score">client.search.<a href="./src/resources/search/search.ts">rank</a>({ ...params }) -> SearchRankResponse</code>
 
 ## QueryClassifier
 
@@ -125,13 +127,3 @@ Types:
 Methods:
 
 - <code title="post /search/groundedness/check">client.search.groundedness.<a href="./src/resources/search/groundedness.ts">check</a>({ ...params }) -> GroundednessCheckResponse</code>
-
-## QueryToPassage
-
-Types:
-
-- <code><a href="./src/resources/search/query-to-passage.ts">QueryToPassageRankDocumentsResponse</a></code>
-
-Methods:
-
-- <code title="post /search/query_to_passage/score">client.search.queryToPassage.<a href="./src/resources/search/query-to-passage.ts">rankDocuments</a>({ ...params }) -> QueryToPassageRankDocumentsResponse</code>

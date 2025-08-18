@@ -10,4 +10,10 @@ export {
   type ScoringSystemScoreParams,
   type ScoringSystemUploadToHuggingfaceParams,
 } from './scoring-system/scoring-system';
-export { Search, type SearchEmbedDocumentsResponse, type SearchEmbedDocumentsParams } from './search/search';
+export {
+  Search,
+  type SearchEmbedResponse,
+  type SearchRankResponse,
+  type SearchEmbedParams,
+  type SearchRankParams,
+} from './search/search';
