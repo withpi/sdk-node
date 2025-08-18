@@ -42,7 +42,7 @@ export interface SearchEmbedParams {
    * Set to false for realtime usage, such as embedding queries. Set to true for
    * batch usage, such as for embedding documents as part of indexing.
    */
-  batch: Array<string>;
+  batch: boolean;
 
   /**
    * List of queries or documents to embed
