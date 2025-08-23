@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.33.1 (2025-08-23)
+
+Full Changelog: [v1.33.0...v1.33.1](https://github.com/withpi/sdk-node/compare/v1.33.0...v1.33.1)
+
+### Chores
+
+* update CI script ([223db0e](https://github.com/withpi/sdk-node/commit/223db0e1b86c76a1e6b605deeed97ba2064fe50c))
+
 ## 1.33.0 (2025-08-18)
 
 Full Changelog: [v1.32.0...v1.33.0](https://github.com/withpi/sdk-node/compare/v1.32.0...v1.33.0)
