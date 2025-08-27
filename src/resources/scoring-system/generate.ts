@@ -73,6 +73,16 @@ export interface GenerateRetrieveResponse {
   state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
 
   /**
+   * Number of labeled examples used for spec generation.
+   */
+  num_labeled_examples_used?: number | null;
+
+  /**
+   * Number of preference examples used for spec generation.
+   */
+  num_preference_examples_used?: number | null;
+
+  /**
    * The generated scoring spec
    */
   scoring_spec?: Array<Shared.Question> | null;
@@ -103,6 +113,16 @@ export namespace GenerateListResponse {
     state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
 
     /**
+     * Number of labeled examples used for spec generation.
+     */
+    num_labeled_examples_used?: number | null;
+
+    /**
+     * Number of preference examples used for spec generation.
+     */
+    num_preference_examples_used?: number | null;
+
+    /**
      * The generated scoring spec
      */
     scoring_spec?: Array<Shared.Question> | null;
@@ -131,6 +151,16 @@ export interface GenerateStartJobResponse {
    * Current state of the job
    */
   state: 'QUEUED' | 'RUNNING' | 'DONE' | 'ERROR' | 'CANCELLED';
+
+  /**
+   * Number of labeled examples used for spec generation.
+   */
+  num_labeled_examples_used?: number | null;
+
+  /**
+   * Number of preference examples used for spec generation.
+   */
+  num_preference_examples_used?: number | null;
 
   /**
    * The generated scoring spec
