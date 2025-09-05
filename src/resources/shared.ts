@@ -71,12 +71,6 @@ export interface Question {
   custom_model_id?: string | null;
 
   /**
-   * [DEPRECATED] Indicates whether a lower score represents a better outcome (e.g.,
-   * fewer errors, less toxicity)
-   */
-  is_lower_score_desirable?: boolean | null;
-
-  /**
    * The label of the question.
    */
   label?: string | null;
@@ -95,11 +89,6 @@ export interface Question {
   python_code?: string | null;
 
   /**
-   * [DEPRECATED] Remapping spec to modulate the scores returned by Pi Scorer
-   */
-  remap_spec?: 'NEUTRAL' | 'STRICT' | 'LENIENT' | { [key: string]: number } | null;
-
-  /**
    * The type of scoring performed for this question. Default: PI_SCORER.
    */
   scoring_type?: 'PI_SCORER' | 'PYTHON_CODE' | 'CUSTOM_MODEL_SCORER' | null;
@@ -115,6 +104,8 @@ export interface Question {
    * for more when aggregating this subdimension into the parent dimension.
    */
   weight?: number | null;
+
+  [k: string]: unknown;
 }
 
 export interface ScoringSpecCalibrationStatus {
