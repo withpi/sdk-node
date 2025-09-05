@@ -71,8 +71,8 @@ export interface Question {
   custom_model_id?: string | null;
 
   /**
-   * Indicates whether a lower score represents a better outcome (e.g., fewer errors,
-   * less toxicity)
+   * [DEPRECATED] Indicates whether a lower score represents a better outcome (e.g.,
+   * fewer errors, less toxicity)
    */
   is_lower_score_desirable?: boolean | null;
 
@@ -95,7 +95,7 @@ export interface Question {
   python_code?: string | null;
 
   /**
-   * Remapping spec to modulate the scores returned by Pi Scorer
+   * [DEPRECATED] Remapping spec to modulate the scores returned by Pi Scorer
    */
   remap_spec?: 'NEUTRAL' | 'STRICT' | 'LENIENT' | { [key: string]: number } | null;
 
