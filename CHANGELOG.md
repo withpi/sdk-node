@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.37.1 (2025-09-06)
+
+Full Changelog: [v1.37.0...v1.37.1](https://github.com/withpi/sdk-node/compare/v1.37.0...v1.37.1)
+
+### Chores
+
+* ci build action ([d12d1fc](https://github.com/withpi/sdk-node/commit/d12d1fce08fa76d685a8bc2f75c7bfa7f5324679))
+
 ## 1.37.0 (2025-09-05)
 
 Full Changelog: [v1.36.0...v1.37.0](https://github.com/withpi/sdk-node/compare/v1.36.0...v1.37.0)
