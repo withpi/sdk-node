@@ -212,8 +212,8 @@ export interface GenerateStartJobParams {
   existing_questions?: Array<Shared.Question>;
 
   /**
-   * The number of questions that the generated scoring system should contain. If <=
-   * 0, then the number is auto selected.
+   * The maximum number of new questions that the generated scoring system should
+   * contain. If <= 0, then the number is auto selected.
    */
   num_questions?: number;
 
