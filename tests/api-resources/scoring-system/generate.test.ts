@@ -127,6 +127,7 @@ describe('resource generate', () => {
         },
       ],
       num_questions: 0,
+      retain_existing_questions: false,
       try_auto_generating_python_code: false,
     });
   });
