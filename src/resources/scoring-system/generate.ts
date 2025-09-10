@@ -218,6 +218,11 @@ export interface GenerateStartJobParams {
   num_questions?: number;
 
   /**
+   * If true, only generate new questions that improve the accuracy.
+   */
+  retain_existing_questions?: boolean;
+
+  /**
    * If true, try to generate python code for the generated questions.
    */
   try_auto_generating_python_code?: boolean;
