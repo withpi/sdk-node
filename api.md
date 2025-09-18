@@ -5,7 +5,6 @@ Types:
 - <code><a href="./src/resources/shared.ts">DataGenerationStatus</a></code>
 - <code><a href="./src/resources/shared.ts">Example</a></code>
 - <code><a href="./src/resources/shared.ts">ExplorationMode</a></code>
-- <code><a href="./src/resources/shared.ts">QueryClassifierResult</a></code>
 - <code><a href="./src/resources/shared.ts">Question</a></code>
 - <code><a href="./src/resources/shared.ts">ScoringSpecCalibrationStatus</a></code>
 - <code><a href="./src/resources/shared.ts">ScoringSystemMetrics</a></code>
@@ -109,14 +108,6 @@ Methods:
 - <code title="post /search/query_to_passage/score">client.search.<a href="./src/resources/search/search.ts">rank</a>({ ...params }) -> SearchRankResponse</code>
 
 ## QueryClassifier
-
-Types:
-
-- <code><a href="./src/resources/search/query-classifier.ts">QueryClassifierClassifyResponse</a></code>
-
-Methods:
-
-- <code title="post /search/query_classifier/classify">client.search.queryClassifier.<a href="./src/resources/search/query-classifier.ts">classify</a>({ ...params }) -> QueryClassifierClassifyResponse</code>
 
 ## Groundedness
 
