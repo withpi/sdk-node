@@ -43,22 +43,6 @@ export interface Example {
 
 export type ExplorationMode = 'CONSERVATIVE' | 'BALANCED' | 'CREATIVE' | 'ADVENTUROUS';
 
-export interface QueryClassifierResult {
-  prediction: string;
-
-  probabilities: Array<QueryClassifierResult.Probability>;
-
-  query: string;
-}
-
-export namespace QueryClassifierResult {
-  export interface Probability {
-    label: string;
-
-    score: number;
-  }
-}
-
 export interface Question {
   /**
    * The yes/no question to ask Pi Scoring System.

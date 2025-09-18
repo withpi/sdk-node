@@ -5,11 +5,7 @@ import * as Core from '../../core';
 import * as GroundednessAPI from './groundedness';
 import { Groundedness, GroundednessCheckParams, GroundednessCheckResponse } from './groundedness';
 import * as QueryClassifierAPI from './query-classifier';
-import {
-  QueryClassifier,
-  QueryClassifierClassifyParams,
-  QueryClassifierClassifyResponse,
-} from './query-classifier';
+import { QueryClassifier } from './query-classifier';
 
 export class Search extends APIResource {
   queryClassifier: QueryClassifierAPI.QueryClassifier = new QueryClassifierAPI.QueryClassifier(this._client);
@@ -73,11 +69,7 @@ export declare namespace Search {
     type SearchRankParams as SearchRankParams,
   };
 
-  export {
-    QueryClassifier as QueryClassifier,
-    type QueryClassifierClassifyResponse as QueryClassifierClassifyResponse,
-    type QueryClassifierClassifyParams as QueryClassifierClassifyParams,
-  };
+  export { QueryClassifier as QueryClassifier };
 
   export {
     Groundedness as Groundedness,

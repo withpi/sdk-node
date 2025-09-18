@@ -214,7 +214,6 @@ export declare namespace PiClient {
   export type DataGenerationStatus = API.DataGenerationStatus;
   export type Example = API.Example;
   export type ExplorationMode = API.ExplorationMode;
-  export type QueryClassifierResult = API.QueryClassifierResult;
   export type Question = API.Question;
   export type ScoringSpecCalibrationStatus = API.ScoringSpecCalibrationStatus;
   export type ScoringSystemMetrics = API.ScoringSystemMetrics;
