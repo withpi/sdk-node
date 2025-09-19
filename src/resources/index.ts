@@ -2,14 +2,7 @@
 
 export * from './shared';
 export { Data } from './data/data';
-export {
-  ScoringSystem,
-  type ScoringSystemImportSpecResponse,
-  type ScoringSystemUploadToHuggingfaceResponse,
-  type ScoringSystemImportSpecParams,
-  type ScoringSystemScoreParams,
-  type ScoringSystemUploadToHuggingfaceParams,
-} from './scoring-system/scoring-system';
+export { ScoringSystem, type ScoringSystemScoreParams } from './scoring-system/scoring-system';
 export {
   Search,
   type SearchEmbedResponse,
