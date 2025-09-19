@@ -18,11 +18,4 @@ export {
   type GenerateListParams,
   type GenerateStartJobParams,
 } from './generate';
-export {
-  ScoringSystem,
-  type ScoringSystemImportSpecResponse,
-  type ScoringSystemUploadToHuggingfaceResponse,
-  type ScoringSystemImportSpecParams,
-  type ScoringSystemScoreParams,
-  type ScoringSystemUploadToHuggingfaceParams,
-} from './scoring-system';
+export { ScoringSystem, type ScoringSystemScoreParams } from './scoring-system';

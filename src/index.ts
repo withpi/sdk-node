@@ -6,14 +6,7 @@ import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
 import { Data } from './resources/data/data';
-import {
-  ScoringSystem,
-  ScoringSystemImportSpecParams,
-  ScoringSystemImportSpecResponse,
-  ScoringSystemScoreParams,
-  ScoringSystemUploadToHuggingfaceParams,
-  ScoringSystemUploadToHuggingfaceResponse,
-} from './resources/scoring-system/scoring-system';
+import { ScoringSystem, ScoringSystemScoreParams } from './resources/scoring-system/scoring-system';
 import {
   Search,
   SearchEmbedParams,
@@ -194,14 +187,7 @@ export declare namespace PiClient {
 
   export { Data as Data };
 
-  export {
-    ScoringSystem as ScoringSystem,
-    type ScoringSystemImportSpecResponse as ScoringSystemImportSpecResponse,
-    type ScoringSystemUploadToHuggingfaceResponse as ScoringSystemUploadToHuggingfaceResponse,
-    type ScoringSystemImportSpecParams as ScoringSystemImportSpecParams,
-    type ScoringSystemScoreParams as ScoringSystemScoreParams,
-    type ScoringSystemUploadToHuggingfaceParams as ScoringSystemUploadToHuggingfaceParams,
-  };
+  export { ScoringSystem as ScoringSystem, type ScoringSystemScoreParams as ScoringSystemScoreParams };
 
   export {
     Search as Search,
