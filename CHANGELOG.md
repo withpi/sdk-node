@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.41.1 (2025-09-20)
+
+Full Changelog: [v1.41.0...v1.41.1](https://github.com/withpi/sdk-node/compare/v1.41.0...v1.41.1)
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([1bb3da5](https://github.com/withpi/sdk-node/commit/1bb3da5503b6969b42dee987b6eba9613c2b44f7))
+
 ## 1.41.0 (2025-09-19)
 
 Full Changelog: [v1.40.0...v1.41.0](https://github.com/withpi/sdk-node/compare/v1.40.0...v1.41.0)
